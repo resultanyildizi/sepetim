@@ -12,10 +12,10 @@ T _$identity<T>(T value) => value;
 class _$UserTearOff {
   const _$UserTearOff();
 
-  _User call(@required UniqueId id, @required SignInType signInType) {
+  _User call({@required UniqueId id, @required SignInType signInType}) {
     return _User(
-      id,
-      signInType,
+      id: id,
+      signInType: signInType,
     );
   }
 }
@@ -92,14 +92,15 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object signInType = freezed,
   }) {
     return _then(_User(
-      id == freezed ? _value.id : id as UniqueId,
-      signInType == freezed ? _value.signInType : signInType as SignInType,
+      id: id == freezed ? _value.id : id as UniqueId,
+      signInType:
+          signInType == freezed ? _value.signInType : signInType as SignInType,
     ));
   }
 }
 
 class _$_User implements _User {
-  const _$_User(@required this.id, @required this.signInType)
+  const _$_User({@required this.id, @required this.signInType})
       : assert(id != null),
         assert(signInType != null);
 
@@ -136,8 +137,8 @@ class _$_User implements _User {
 }
 
 abstract class _User implements User {
-  const factory _User(@required UniqueId id, @required SignInType signInType) =
-      _$_User;
+  const factory _User(
+      {@required UniqueId id, @required SignInType signInType}) = _$_User;
 
   @override
   UniqueId get id;

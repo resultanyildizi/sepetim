@@ -8,5 +8,4 @@ abstract class SignInType with _$SignInType {
   const factory SignInType.signedInWithEmailAndPassword() =
       SignedInWithEmailAndPassword;
   const factory SignInType.signedInAnonymously() = SignedInAnonymously;
-  const factory SignInType.unknownSignInType() = UnknownSignType;
 }

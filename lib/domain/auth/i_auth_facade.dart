@@ -22,5 +22,5 @@ abstract class IAuthFacade {
 
   Future<Either<AuthFailure, Unit>> signInAnonymously();
 
-  Future<Either<AuthFailure, Unit>> signOut();
+  Future<void> signOut();
 }

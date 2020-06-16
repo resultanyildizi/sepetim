@@ -23,10 +23,6 @@ class _$SignInTypeTearOff {
   SignedInAnonymously signedInAnonymously() {
     return const SignedInAnonymously();
   }
-
-  UnknownSignType unknownSignInType() {
-    return const UnknownSignType();
-  }
 }
 
 // ignore: unused_element
@@ -38,14 +34,12 @@ mixin _$SignInType {
     @required Result signedInWithGoogle(),
     @required Result signedInWithEmailAndPassword(),
     @required Result signedInAnonymously(),
-    @required Result unknownSignInType(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result signedInWithGoogle(),
     Result signedInWithEmailAndPassword(),
     Result signedInAnonymously(),
-    Result unknownSignInType(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -54,14 +48,12 @@ mixin _$SignInType {
     @required
         Result signedInWithEmailAndPassword(SignedInWithEmailAndPassword value),
     @required Result signedInAnonymously(SignedInAnonymously value),
-    @required Result unknownSignInType(UnknownSignType value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result signedInWithGoogle(SignedInWithGoogle value),
     Result signedInWithEmailAndPassword(SignedInWithEmailAndPassword value),
     Result signedInAnonymously(SignedInAnonymously value),
-    Result unknownSignInType(UnknownSignType value),
     @required Result orElse(),
   });
 }
@@ -119,12 +111,10 @@ class _$SignedInWithGoogle implements SignedInWithGoogle {
     @required Result signedInWithGoogle(),
     @required Result signedInWithEmailAndPassword(),
     @required Result signedInAnonymously(),
-    @required Result unknownSignInType(),
   }) {
     assert(signedInWithGoogle != null);
     assert(signedInWithEmailAndPassword != null);
     assert(signedInAnonymously != null);
-    assert(unknownSignInType != null);
     return signedInWithGoogle();
   }
 
@@ -134,7 +124,6 @@ class _$SignedInWithGoogle implements SignedInWithGoogle {
     Result signedInWithGoogle(),
     Result signedInWithEmailAndPassword(),
     Result signedInAnonymously(),
-    Result unknownSignInType(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -151,12 +140,10 @@ class _$SignedInWithGoogle implements SignedInWithGoogle {
     @required
         Result signedInWithEmailAndPassword(SignedInWithEmailAndPassword value),
     @required Result signedInAnonymously(SignedInAnonymously value),
-    @required Result unknownSignInType(UnknownSignType value),
   }) {
     assert(signedInWithGoogle != null);
     assert(signedInWithEmailAndPassword != null);
     assert(signedInAnonymously != null);
-    assert(unknownSignInType != null);
     return signedInWithGoogle(this);
   }
 
@@ -166,7 +153,6 @@ class _$SignedInWithGoogle implements SignedInWithGoogle {
     Result signedInWithGoogle(SignedInWithGoogle value),
     Result signedInWithEmailAndPassword(SignedInWithEmailAndPassword value),
     Result signedInAnonymously(SignedInAnonymously value),
-    Result unknownSignInType(UnknownSignType value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -223,12 +209,10 @@ class _$SignedInWithEmailAndPassword implements SignedInWithEmailAndPassword {
     @required Result signedInWithGoogle(),
     @required Result signedInWithEmailAndPassword(),
     @required Result signedInAnonymously(),
-    @required Result unknownSignInType(),
   }) {
     assert(signedInWithGoogle != null);
     assert(signedInWithEmailAndPassword != null);
     assert(signedInAnonymously != null);
-    assert(unknownSignInType != null);
     return signedInWithEmailAndPassword();
   }
 
@@ -238,7 +222,6 @@ class _$SignedInWithEmailAndPassword implements SignedInWithEmailAndPassword {
     Result signedInWithGoogle(),
     Result signedInWithEmailAndPassword(),
     Result signedInAnonymously(),
-    Result unknownSignInType(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -255,12 +238,10 @@ class _$SignedInWithEmailAndPassword implements SignedInWithEmailAndPassword {
     @required
         Result signedInWithEmailAndPassword(SignedInWithEmailAndPassword value),
     @required Result signedInAnonymously(SignedInAnonymously value),
-    @required Result unknownSignInType(UnknownSignType value),
   }) {
     assert(signedInWithGoogle != null);
     assert(signedInWithEmailAndPassword != null);
     assert(signedInAnonymously != null);
-    assert(unknownSignInType != null);
     return signedInWithEmailAndPassword(this);
   }
 
@@ -270,7 +251,6 @@ class _$SignedInWithEmailAndPassword implements SignedInWithEmailAndPassword {
     Result signedInWithGoogle(SignedInWithGoogle value),
     Result signedInWithEmailAndPassword(SignedInWithEmailAndPassword value),
     Result signedInAnonymously(SignedInAnonymously value),
-    Result unknownSignInType(UnknownSignType value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -324,12 +304,10 @@ class _$SignedInAnonymously implements SignedInAnonymously {
     @required Result signedInWithGoogle(),
     @required Result signedInWithEmailAndPassword(),
     @required Result signedInAnonymously(),
-    @required Result unknownSignInType(),
   }) {
     assert(signedInWithGoogle != null);
     assert(signedInWithEmailAndPassword != null);
     assert(signedInAnonymously != null);
-    assert(unknownSignInType != null);
     return signedInAnonymously();
   }
 
@@ -339,7 +317,6 @@ class _$SignedInAnonymously implements SignedInAnonymously {
     Result signedInWithGoogle(),
     Result signedInWithEmailAndPassword(),
     Result signedInAnonymously(),
-    Result unknownSignInType(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -356,12 +333,10 @@ class _$SignedInAnonymously implements SignedInAnonymously {
     @required
         Result signedInWithEmailAndPassword(SignedInWithEmailAndPassword value),
     @required Result signedInAnonymously(SignedInAnonymously value),
-    @required Result unknownSignInType(UnknownSignType value),
   }) {
     assert(signedInWithGoogle != null);
     assert(signedInWithEmailAndPassword != null);
     assert(signedInAnonymously != null);
-    assert(unknownSignInType != null);
     return signedInAnonymously(this);
   }
 
@@ -371,7 +346,6 @@ class _$SignedInAnonymously implements SignedInAnonymously {
     Result signedInWithGoogle(SignedInWithGoogle value),
     Result signedInWithEmailAndPassword(SignedInWithEmailAndPassword value),
     Result signedInAnonymously(SignedInAnonymously value),
-    Result unknownSignInType(UnknownSignType value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -384,104 +358,4 @@ class _$SignedInAnonymously implements SignedInAnonymously {
 
 abstract class SignedInAnonymously implements SignInType {
   const factory SignedInAnonymously() = _$SignedInAnonymously;
-}
-
-abstract class $UnknownSignTypeCopyWith<$Res> {
-  factory $UnknownSignTypeCopyWith(
-          UnknownSignType value, $Res Function(UnknownSignType) then) =
-      _$UnknownSignTypeCopyWithImpl<$Res>;
-}
-
-class _$UnknownSignTypeCopyWithImpl<$Res> extends _$SignInTypeCopyWithImpl<$Res>
-    implements $UnknownSignTypeCopyWith<$Res> {
-  _$UnknownSignTypeCopyWithImpl(
-      UnknownSignType _value, $Res Function(UnknownSignType) _then)
-      : super(_value, (v) => _then(v as UnknownSignType));
-
-  @override
-  UnknownSignType get _value => super._value as UnknownSignType;
-}
-
-class _$UnknownSignType implements UnknownSignType {
-  const _$UnknownSignType();
-
-  @override
-  String toString() {
-    return 'SignInType.unknownSignInType()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is UnknownSignType);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result signedInWithGoogle(),
-    @required Result signedInWithEmailAndPassword(),
-    @required Result signedInAnonymously(),
-    @required Result unknownSignInType(),
-  }) {
-    assert(signedInWithGoogle != null);
-    assert(signedInWithEmailAndPassword != null);
-    assert(signedInAnonymously != null);
-    assert(unknownSignInType != null);
-    return unknownSignInType();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result signedInWithGoogle(),
-    Result signedInWithEmailAndPassword(),
-    Result signedInAnonymously(),
-    Result unknownSignInType(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (unknownSignInType != null) {
-      return unknownSignInType();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result signedInWithGoogle(SignedInWithGoogle value),
-    @required
-        Result signedInWithEmailAndPassword(SignedInWithEmailAndPassword value),
-    @required Result signedInAnonymously(SignedInAnonymously value),
-    @required Result unknownSignInType(UnknownSignType value),
-  }) {
-    assert(signedInWithGoogle != null);
-    assert(signedInWithEmailAndPassword != null);
-    assert(signedInAnonymously != null);
-    assert(unknownSignInType != null);
-    return unknownSignInType(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result signedInWithGoogle(SignedInWithGoogle value),
-    Result signedInWithEmailAndPassword(SignedInWithEmailAndPassword value),
-    Result signedInAnonymously(SignedInAnonymously value),
-    Result unknownSignInType(UnknownSignType value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (unknownSignInType != null) {
-      return unknownSignInType(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UnknownSignType implements SignInType {
-  const factory UnknownSignType() = _$UnknownSignType;
 }
