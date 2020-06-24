@@ -34,8 +34,44 @@ void main() {
       expect(result, equals(right(strongPassword)));
     });
 
-    test('should return ValueFailure when password is weak', () {
-      const weakPassword = 'deneme123';
+    test('should return ValueFailure when password doesnt have numbers', () {
+      const weakPassword = 'deneme';
+
+      final result = validatePassword(weakPassword);
+
+      expect(
+          result,
+          equals(left(
+              const ValueFailure.weakPassword(failedValue: weakPassword))));
+    });
+
+    test('should return ValueFailure when password less than 6 characters', () {
+      const weakPassword = 'Dene1';
+
+      final result = validatePassword(weakPassword);
+
+      expect(
+          result,
+          equals(left(
+              const ValueFailure.weakPassword(failedValue: weakPassword))));
+    });
+
+    test(
+        'should return ValueFailure when password doesnt have upper case letters',
+        () {
+      const weakPassword = 'deneme12';
+
+      final result = validatePassword(weakPassword);
+
+      expect(
+          result,
+          equals(left(
+              const ValueFailure.weakPassword(failedValue: weakPassword))));
+    });
+
+    test('should return ValueFailure when password has more than 32 characters',
+        () {
+      const weakPassword = 'Deneme1212121212121212121212121212';
 
       final result = validatePassword(weakPassword);
 

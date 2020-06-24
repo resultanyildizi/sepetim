@@ -6,9 +6,11 @@ import 'package:Sepetim/domain/auth/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import './firebase_user_mapper.dart';
 
+@LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade extends IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
@@ -36,7 +38,9 @@ class FirebaseAuthFacade extends IAuthFacade {
       );
       return right(unit);
     } on PlatformException catch (e) {
-      if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
+      if (e.code == 'ERROR_NETWORK_REQUEST_FAILED') {
+        return left(const AuthFailure.networkException());
+      } else if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
         return left(const AuthFailure.emailAlreadyInUse());
       } else {
         return left(const AuthFailure.serverError());
@@ -49,8 +53,12 @@ class FirebaseAuthFacade extends IAuthFacade {
     try {
       await _firebaseAuth.signInAnonymously();
       return right(unit);
-    } on PlatformException catch (_) {
-      return left(const AuthFailure.serverError());
+    } on PlatformException catch (e) {
+      if (e.code == 'ERROR_NETWORK_REQUEST_FAILED') {
+        return left(const AuthFailure.networkException());
+      } else {
+        return left(const AuthFailure.serverError());
+      }
     }
   }
 
@@ -70,7 +78,9 @@ class FirebaseAuthFacade extends IAuthFacade {
 
       return right(unit);
     } on PlatformException catch (e) {
-      if (e.code == 'ERROR_USER_NOT_FOUND' ||
+      if (e.code == 'ERROR_NETWORK_REQUEST_FAILED') {
+        return left(const AuthFailure.networkException());
+      } else if (e.code == 'ERROR_USER_NOT_FOUND' ||
           e.code == 'ERROR_WRONG_PASSWORD') {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
       } else {
@@ -97,8 +107,12 @@ class FirebaseAuthFacade extends IAuthFacade {
 
       await _firebaseAuth.signInWithCredential(authCredential);
       return right(unit);
-    } on PlatformException catch (_) {
-      return left(const AuthFailure.serverError());
+    } on PlatformException catch (e) {
+      if (e.code == 'network_error') {
+        return left(const AuthFailure.networkException());
+      } else {
+        return left(const AuthFailure.serverError());
+      }
     }
   }
 

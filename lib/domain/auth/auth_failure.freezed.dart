@@ -27,6 +27,10 @@ class _$AuthFailureTearOff {
   InvalidEmailAndPasswordCombination invalidEmailAndPasswordCombination() {
     return const InvalidEmailAndPasswordCombination();
   }
+
+  NetworkException networkException() {
+    return const NetworkException();
+  }
 }
 
 // ignore: unused_element
@@ -39,6 +43,7 @@ mixin _$AuthFailure {
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
+    @required Result networkException(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -46,6 +51,7 @@ mixin _$AuthFailure {
     Result serverError(),
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
+    Result networkException(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -56,6 +62,7 @@ mixin _$AuthFailure {
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
+    @required Result networkException(NetworkException value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -64,6 +71,7 @@ mixin _$AuthFailure {
     Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
+    Result networkException(NetworkException value),
     @required Result orElse(),
   });
 }
@@ -122,11 +130,13 @@ class _$CancelledByUser implements CancelledByUser {
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
+    @required Result networkException(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
     return cancelledByUser();
   }
 
@@ -137,6 +147,7 @@ class _$CancelledByUser implements CancelledByUser {
     Result serverError(),
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
+    Result networkException(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -155,11 +166,13 @@ class _$CancelledByUser implements CancelledByUser {
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
+    @required Result networkException(NetworkException value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
     return cancelledByUser(this);
   }
 
@@ -171,6 +184,7 @@ class _$CancelledByUser implements CancelledByUser {
     Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
+    Result networkException(NetworkException value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -224,11 +238,13 @@ class _$ServerError implements ServerError {
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
+    @required Result networkException(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
     return serverError();
   }
 
@@ -239,6 +255,7 @@ class _$ServerError implements ServerError {
     Result serverError(),
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
+    Result networkException(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -257,11 +274,13 @@ class _$ServerError implements ServerError {
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
+    @required Result networkException(NetworkException value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
     return serverError(this);
   }
 
@@ -273,6 +292,7 @@ class _$ServerError implements ServerError {
     Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
+    Result networkException(NetworkException value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -327,11 +347,13 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
+    @required Result networkException(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
     return emailAlreadyInUse();
   }
 
@@ -342,6 +364,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     Result serverError(),
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
+    Result networkException(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -360,11 +383,13 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
+    @required Result networkException(NetworkException value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
     return emailAlreadyInUse(this);
   }
 
@@ -376,6 +401,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
+    Result networkException(NetworkException value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -435,11 +461,13 @@ class _$InvalidEmailAndPasswordCombination
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
+    @required Result networkException(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
     return invalidEmailAndPasswordCombination();
   }
 
@@ -450,6 +478,7 @@ class _$InvalidEmailAndPasswordCombination
     Result serverError(),
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
+    Result networkException(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -468,11 +497,13 @@ class _$InvalidEmailAndPasswordCombination
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
+    @required Result networkException(NetworkException value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
     return invalidEmailAndPasswordCombination(this);
   }
 
@@ -484,6 +515,7 @@ class _$InvalidEmailAndPasswordCombination
     Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
+    Result networkException(NetworkException value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -497,4 +529,113 @@ class _$InvalidEmailAndPasswordCombination
 abstract class InvalidEmailAndPasswordCombination implements AuthFailure {
   const factory InvalidEmailAndPasswordCombination() =
       _$InvalidEmailAndPasswordCombination;
+}
+
+abstract class $NetworkExceptionCopyWith<$Res> {
+  factory $NetworkExceptionCopyWith(
+          NetworkException value, $Res Function(NetworkException) then) =
+      _$NetworkExceptionCopyWithImpl<$Res>;
+}
+
+class _$NetworkExceptionCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements $NetworkExceptionCopyWith<$Res> {
+  _$NetworkExceptionCopyWithImpl(
+      NetworkException _value, $Res Function(NetworkException) _then)
+      : super(_value, (v) => _then(v as NetworkException));
+
+  @override
+  NetworkException get _value => super._value as NetworkException;
+}
+
+class _$NetworkException implements NetworkException {
+  const _$NetworkException();
+
+  @override
+  String toString() {
+    return 'AuthFailure.networkException()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NetworkException);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result invalidEmailAndPasswordCombination(),
+    @required Result networkException(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
+    return networkException();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result invalidEmailAndPasswordCombination(),
+    Result networkException(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (networkException != null) {
+      return networkException();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(CancelledByUser value),
+    @required Result serverError(ServerError value),
+    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            InvalidEmailAndPasswordCombination value),
+    @required Result networkException(NetworkException value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
+    return networkException(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(CancelledByUser value),
+    Result serverError(ServerError value),
+    Result emailAlreadyInUse(EmailAlreadyInUse value),
+    Result invalidEmailAndPasswordCombination(
+        InvalidEmailAndPasswordCombination value),
+    Result networkException(NetworkException value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (networkException != null) {
+      return networkException(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NetworkException implements AuthFailure {
+  const factory NetworkException() = _$NetworkException;
 }
