@@ -19,7 +19,6 @@ final ThemeData sepetimLightTheme = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     suffixStyle: TextStyle(color: app_color.sepetimLightGrey),
     contentPadding: const EdgeInsets.symmetric(horizontal: 1.0),
-    isDense: true,
     labelStyle: didactGothicTextStyle(
       fontSize: 16.0,
       bold: false,

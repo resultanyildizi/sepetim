@@ -112,6 +112,7 @@ class SignInForm extends StatelessWidget {
 
   Widget emailFormField(BuildContext context) {
     return TextFormField(
+      cursorColor: sepetimGrey,
       keyboardType: TextInputType.emailAddress,
       style: Theme.of(context).textTheme.subtitle1,
       decoration: InputDecoration(labelText: translate(context, 'email')),
@@ -134,6 +135,7 @@ class SignInForm extends StatelessWidget {
     return BlocBuilder<PasswordVisibilityBloc, PasswordVisibilityState>(
       builder: (context, state) => TextFormField(
         obscureText: !state.isVisible,
+        cursorColor: sepetimGrey,
         keyboardType: TextInputType.visiblePassword,
         style: Theme.of(context).textTheme.subtitle1,
         decoration: InputDecoration(
