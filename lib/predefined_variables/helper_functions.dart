@@ -5,8 +5,19 @@ double screenWidthByScalar(BuildContext context, double scalar) {
   return MediaQuery.of(context).size.width * scalar;
 }
 
-double screenHeightByScalar(BuildContext context, double scalar) {
-  return MediaQuery.of(context).size.height * scalar;
+double screenHeightByScalar(
+  BuildContext context, {
+  @required double scalarSmall,
+  @required double scalarMedium,
+  @required double scalarBig,
+}) {
+  if (MediaQuery.of(context).size.height < 700) {
+    return MediaQuery.of(context).size.height * scalarSmall;
+  } else if (MediaQuery.of(context).size.height < 800) {
+    return MediaQuery.of(context).size.height * scalarMedium;
+  } else {
+    return MediaQuery.of(context).size.height * scalarBig;
+  }
 }
 
 String translate(BuildContext context, String key) {

@@ -41,9 +41,23 @@ class SignInForm extends StatelessWidget {
             children: <Widget>[
               const SizedBox(height: 8.0),
               emailFormField(context),
-              SizedBox(height: screenWidthByScalar(context, 0.03)),
+              SizedBox(
+                height: screenHeightByScalar(
+                  context,
+                  scalarSmall: 0.005,
+                  scalarMedium: 0.01,
+                  scalarBig: 0.01,
+                ),
+              ),
               passwordFormField(context),
-              SizedBox(height: screenWidthByScalar(context, 0.03)),
+              SizedBox(
+                height: screenHeightByScalar(
+                  context,
+                  scalarSmall: 0.005,
+                  scalarMedium: 0.01,
+                  scalarBig: 0.01,
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Row(
@@ -71,9 +85,23 @@ class SignInForm extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: screenWidthByScalar(context, 0.06)),
+              SizedBox(
+                height: screenHeightByScalar(
+                  context,
+                  scalarSmall: 0.02,
+                  scalarMedium: 0.03,
+                  scalarBig: 0.04,
+                ),
+              ),
               DividerOr(),
-              SizedBox(height: screenWidthByScalar(context, 0.06)),
+              SizedBox(
+                height: screenHeightByScalar(
+                  context,
+                  scalarSmall: 0.02,
+                  scalarMedium: 0.03,
+                  scalarBig: 0.04,
+                ),
+              ),
               GoogleSignInButton(
                 onPressed: () {
                   context.bloc<SignInFormBloc>().add(

@@ -1,4 +1,5 @@
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
+import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/logo.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
@@ -21,7 +22,9 @@ class SplashPage extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: app_colors.sepetimYellow,
-        body: LogoCenter(),
+        body: LogoCenter(
+          height: screenWidthByScalar(context, 0.3),
+        ),
       ),
     );
   }

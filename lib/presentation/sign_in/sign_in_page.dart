@@ -33,22 +33,44 @@ class SignInPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SizedBox(
-                  height: screenHeightByScalar(context, 0.03),
+                  height: screenHeightByScalar(
+                    context,
+                    scalarSmall: 0.02,
+                    scalarMedium: 0.03,
+                    scalarBig: 0.03,
+                  ),
                 ),
-                LogoCenter(),
+                LogoCenter(
+                  height: screenHeightByScalar(
+                    context,
+                    scalarSmall: 0.12,
+                    scalarMedium: 0.12,
+                    scalarBig: 0.14,
+                  ),
+                ),
                 SizedBox(
-                  height: screenHeightByScalar(context, 0.06),
+                  height: screenHeightByScalar(
+                    context,
+                    scalarSmall: 0.02,
+                    scalarMedium: 0.04,
+                    scalarBig: 0.04,
+                  ),
                 ),
                 Text(
                   translate(context, 'sign_up'),
                   style: robotoTextStyle(fontSize: 20.0, bold: true),
                 ),
                 const SizedBox(
-                  height: 6.0,
+                  height: 4.0,
                 ),
                 AppLocalizations.of(context).termsAndPrivacyPolicy(context),
-                const SizedBox(
-                  height: 10.0,
+                SizedBox(
+                  height: screenHeightByScalar(
+                    context,
+                    scalarSmall: 0.001,
+                    scalarMedium: 0.0015,
+                    scalarBig: 0.0015,
+                  ),
                 ),
                 Expanded(
                   child: SignInForm(),
