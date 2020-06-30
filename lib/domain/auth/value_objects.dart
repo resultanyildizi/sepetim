@@ -6,23 +6,23 @@ import 'package:Sepetim/domain/core/value_object.dart';
 
 class EmailAddress extends ValueObject<String> {
   @override
-  Either<ValueFailure<String>, String> value;
+  final Either<ValueFailure<String>, String> value;
 
   factory EmailAddress(String input) {
     assert(input != null);
     return EmailAddress._(validateEmail(input));
   }
-  EmailAddress._(this.value);
+  const EmailAddress._(this.value);
 }
 
 class Password extends ValueObject<String> {
   @override
-  Either<ValueFailure<String>, String> value;
+  final Either<ValueFailure<String>, String> value;
 
   factory Password(String input) {
     assert(input != null);
     return Password._(validatePassword(input));
   }
 
-  Password._(this.value);
+  const Password._(this.value);
 }

@@ -20,7 +20,26 @@ class _$PasswordVisibilityEventTearOff {
 // ignore: unused_element
 const $PasswordVisibilityEvent = _$PasswordVisibilityEventTearOff();
 
-mixin _$PasswordVisibilityEvent {}
+mixin _$PasswordVisibilityEvent {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result visibilityChanged(),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result visibilityChanged(),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result visibilityChanged(_VisibilityChanged value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result visibilityChanged(_VisibilityChanged value),
+    @required Result orElse(),
+  });
+}
 
 abstract class $PasswordVisibilityEventCopyWith<$Res> {
   factory $PasswordVisibilityEventCopyWith(PasswordVisibilityEvent value,
@@ -69,6 +88,50 @@ class _$_VisibilityChanged implements _VisibilityChanged {
 
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result visibilityChanged(),
+  }) {
+    assert(visibilityChanged != null);
+    return visibilityChanged();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result visibilityChanged(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (visibilityChanged != null) {
+      return visibilityChanged();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result visibilityChanged(_VisibilityChanged value),
+  }) {
+    assert(visibilityChanged != null);
+    return visibilityChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result visibilityChanged(_VisibilityChanged value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (visibilityChanged != null) {
+      return visibilityChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _VisibilityChanged implements PasswordVisibilityEvent {

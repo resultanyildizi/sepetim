@@ -114,6 +114,27 @@ class SignInForm extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
+                    if (state.isSubmitting) ...[
+                      SizedBox(
+                        height: screenHeightByScalar(
+                          context,
+                          scalarSmall: 0.03,
+                          scalarMedium: 0.03,
+                          scalarBig: 0.03,
+                        ),
+                        width: screenHeightByScalar(
+                          context,
+                          scalarSmall: 0.03,
+                          scalarMedium: 0.03,
+                          scalarBig: 0.03,
+                        ),
+                        child: CircularProgressIndicator(
+                          backgroundColor: sepetimGrey,
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(sepetimYellow),
+                        ),
+                      ),
+                    ],
                     const Divider(
                       color: sepetimLightGrey,
                       thickness: 1,
