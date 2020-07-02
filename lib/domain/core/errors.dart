@@ -17,3 +17,8 @@ class UnknownSignInType extends Error {
   @override
   String toString() => 'Encountered an unknown sign in type. Terminating.';
 }
+
+class NotAuthenticatedError extends Error {
+  @override
+  String toString() => 'Encountered an not authenticated user. Terminating.';
+}

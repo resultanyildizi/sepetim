@@ -1,7 +1,7 @@
 import 'package:Sepetim/domain/core/failures.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
-import 'package:Sepetim/domain/item/link_object.dart';
 import 'package:Sepetim/domain/item/value_objects.dart';
+import 'package:Sepetim/domain/link_object/link_object.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kt_dart/collection.dart';
@@ -11,6 +11,7 @@ part 'item.freezed.dart';
 @freezed
 abstract class Item implements _$Item {
   const Item._();
+  // TODO: add date
 
   const factory Item({
     @required UniqueId uid,

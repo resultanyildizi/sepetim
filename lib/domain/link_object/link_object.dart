@@ -1,6 +1,6 @@
 import 'package:Sepetim/domain/core/failures.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
-import 'package:Sepetim/domain/item/value_objects.dart';
+import 'package:Sepetim/domain/link_object/value_objects.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

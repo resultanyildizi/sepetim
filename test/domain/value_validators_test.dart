@@ -2,6 +2,7 @@ import 'package:Sepetim/domain/auth/value_validators.dart';
 import 'package:Sepetim/domain/core/failures.dart';
 import 'package:Sepetim/domain/core/value_validators.dart';
 import 'package:Sepetim/domain/item/value_validators.dart';
+import 'package:Sepetim/domain/link_object/value_validators.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 

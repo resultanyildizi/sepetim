@@ -4,18 +4,6 @@ import 'package:Sepetim/domain/core/value_validators.dart';
 import 'package:Sepetim/domain/item/value_validators.dart';
 import 'package:dartz/dartz.dart';
 
-class Link extends ValueObject<String> {
-  @override
-  final Either<ValueFailure<String>, String> value;
-
-  factory Link(String input) {
-    assert(input != null);
-    return Link._(validateLink(input));
-  }
-
-  Link._(this.value);
-}
-
 class DescriptionBody extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
