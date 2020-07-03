@@ -15,20 +15,20 @@ abstract class ItemCategory implements _$ItemCategory {
     @required UniqueId uid,
     @required ShortTitle title,
     @required ItemCategoryColor color,
-    @required ImageUrl coverImagePath,
+    @required ImageUrl coverImageUrl,
   }) = _ItemCategory;
 
   factory ItemCategory.empty() => ItemCategory(
         uid: UniqueId(),
         title: ShortTitle(''),
         color: ItemCategoryColor(ItemCategoryColor.predefinedColors[0]),
-        coverImagePath: ImageUrl.defaultUrl(),
+        coverImageUrl: ImageUrl.defaultUrl(),
       );
 
   Option<ValueFailure<dynamic>> get failureOption {
     return title.failureOrUnit
         .andThen(color.failureOrUnit)
-        .andThen(coverImagePath.failureOrUnit)
+        .andThen(coverImageUrl.failureOrUnit)
         .fold((f) => some(f), (_) => none());
   }
 }

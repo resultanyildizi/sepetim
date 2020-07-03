@@ -24,7 +24,7 @@ abstract class ItemCategoryDto implements _$ItemCategoryDto {
       uid: category.uid.getOrCrash(),
       title: category.title.getOrCrash(),
       color: category.color.getOrCrash().value,
-      coverImageUrl: category.coverImagePath.getOrCrash(),
+      coverImageUrl: category.coverImageUrl.getOrCrash(),
     );
   }
   ItemCategory toDomain() {
@@ -32,7 +32,7 @@ abstract class ItemCategoryDto implements _$ItemCategoryDto {
       uid: UniqueId.fromUniqueString(uid),
       title: ShortTitle(title),
       color: ItemCategoryColor(Color(color)),
-      coverImagePath: ImageUrl(coverImageUrl),
+      coverImageUrl: ImageUrl(coverImageUrl),
     );
   }
 

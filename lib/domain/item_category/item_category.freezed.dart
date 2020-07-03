@@ -16,12 +16,12 @@ class _$ItemCategoryTearOff {
       {@required UniqueId uid,
       @required ShortTitle title,
       @required ItemCategoryColor color,
-      @required ImageUrl coverImagePath}) {
+      @required ImageUrl coverImageUrl}) {
     return _ItemCategory(
       uid: uid,
       title: title,
       color: color,
-      coverImagePath: coverImagePath,
+      coverImageUrl: coverImageUrl,
     );
   }
 }
@@ -33,7 +33,7 @@ mixin _$ItemCategory {
   UniqueId get uid;
   ShortTitle get title;
   ItemCategoryColor get color;
-  ImageUrl get coverImagePath;
+  ImageUrl get coverImageUrl;
 
   $ItemCategoryCopyWith<ItemCategory> get copyWith;
 }
@@ -46,7 +46,7 @@ abstract class $ItemCategoryCopyWith<$Res> {
       {UniqueId uid,
       ShortTitle title,
       ItemCategoryColor color,
-      ImageUrl coverImagePath});
+      ImageUrl coverImageUrl});
 }
 
 class _$ItemCategoryCopyWithImpl<$Res> implements $ItemCategoryCopyWith<$Res> {
@@ -61,15 +61,15 @@ class _$ItemCategoryCopyWithImpl<$Res> implements $ItemCategoryCopyWith<$Res> {
     Object uid = freezed,
     Object title = freezed,
     Object color = freezed,
-    Object coverImagePath = freezed,
+    Object coverImageUrl = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed ? _value.uid : uid as UniqueId,
       title: title == freezed ? _value.title : title as ShortTitle,
       color: color == freezed ? _value.color : color as ItemCategoryColor,
-      coverImagePath: coverImagePath == freezed
-          ? _value.coverImagePath
-          : coverImagePath as ImageUrl,
+      coverImageUrl: coverImageUrl == freezed
+          ? _value.coverImageUrl
+          : coverImageUrl as ImageUrl,
     ));
   }
 }
@@ -84,7 +84,7 @@ abstract class _$ItemCategoryCopyWith<$Res>
       {UniqueId uid,
       ShortTitle title,
       ItemCategoryColor color,
-      ImageUrl coverImagePath});
+      ImageUrl coverImageUrl});
 }
 
 class __$ItemCategoryCopyWithImpl<$Res> extends _$ItemCategoryCopyWithImpl<$Res>
@@ -101,15 +101,15 @@ class __$ItemCategoryCopyWithImpl<$Res> extends _$ItemCategoryCopyWithImpl<$Res>
     Object uid = freezed,
     Object title = freezed,
     Object color = freezed,
-    Object coverImagePath = freezed,
+    Object coverImageUrl = freezed,
   }) {
     return _then(_ItemCategory(
       uid: uid == freezed ? _value.uid : uid as UniqueId,
       title: title == freezed ? _value.title : title as ShortTitle,
       color: color == freezed ? _value.color : color as ItemCategoryColor,
-      coverImagePath: coverImagePath == freezed
-          ? _value.coverImagePath
-          : coverImagePath as ImageUrl,
+      coverImageUrl: coverImageUrl == freezed
+          ? _value.coverImageUrl
+          : coverImageUrl as ImageUrl,
     ));
   }
 }
@@ -119,11 +119,11 @@ class _$_ItemCategory extends _ItemCategory with DiagnosticableTreeMixin {
       {@required this.uid,
       @required this.title,
       @required this.color,
-      @required this.coverImagePath})
+      @required this.coverImageUrl})
       : assert(uid != null),
         assert(title != null),
         assert(color != null),
-        assert(coverImagePath != null),
+        assert(coverImageUrl != null),
         super._();
 
   @override
@@ -133,11 +133,11 @@ class _$_ItemCategory extends _ItemCategory with DiagnosticableTreeMixin {
   @override
   final ItemCategoryColor color;
   @override
-  final ImageUrl coverImagePath;
+  final ImageUrl coverImageUrl;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ItemCategory(uid: $uid, title: $title, color: $color, coverImagePath: $coverImagePath)';
+    return 'ItemCategory(uid: $uid, title: $title, color: $color, coverImageUrl: $coverImageUrl)';
   }
 
   @override
@@ -148,7 +148,7 @@ class _$_ItemCategory extends _ItemCategory with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('uid', uid))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('color', color))
-      ..add(DiagnosticsProperty('coverImagePath', coverImagePath));
+      ..add(DiagnosticsProperty('coverImageUrl', coverImageUrl));
   }
 
   @override
@@ -161,9 +161,9 @@ class _$_ItemCategory extends _ItemCategory with DiagnosticableTreeMixin {
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.color, color) ||
                 const DeepCollectionEquality().equals(other.color, color)) &&
-            (identical(other.coverImagePath, coverImagePath) ||
+            (identical(other.coverImageUrl, coverImageUrl) ||
                 const DeepCollectionEquality()
-                    .equals(other.coverImagePath, coverImagePath)));
+                    .equals(other.coverImageUrl, coverImageUrl)));
   }
 
   @override
@@ -172,7 +172,7 @@ class _$_ItemCategory extends _ItemCategory with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(uid) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(color) ^
-      const DeepCollectionEquality().hash(coverImagePath);
+      const DeepCollectionEquality().hash(coverImageUrl);
 
   @override
   _$ItemCategoryCopyWith<_ItemCategory> get copyWith =>
@@ -185,7 +185,7 @@ abstract class _ItemCategory extends ItemCategory {
       {@required UniqueId uid,
       @required ShortTitle title,
       @required ItemCategoryColor color,
-      @required ImageUrl coverImagePath}) = _$_ItemCategory;
+      @required ImageUrl coverImageUrl}) = _$_ItemCategory;
 
   @override
   UniqueId get uid;
@@ -194,7 +194,7 @@ abstract class _ItemCategory extends ItemCategory {
   @override
   ItemCategoryColor get color;
   @override
-  ImageUrl get coverImagePath;
+  ImageUrl get coverImageUrl;
   @override
   _$ItemCategoryCopyWith<_ItemCategory> get copyWith;
 }

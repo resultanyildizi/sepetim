@@ -17,6 +17,9 @@ import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/infrastructure/item_category/item_category_repository.dart';
 import 'package:Sepetim/domain/item_category/i_category_repository.dart';
+import 'package:Sepetim/application/item_category/actor/item_category_actor_bloc.dart';
+import 'package:Sepetim/application/item_category/form/item_category_form_bloc.dart';
+import 'package:Sepetim/application/item_category/watcher/item_category_watcher_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
@@ -41,6 +44,12 @@ void $initGetIt(GetIt g, {String environment}) {
         g<ImagePicker>(),
         g<FirebaseStorage>(),
       ));
+  g.registerFactory<ItemCategoryActorBloc>(
+      () => ItemCategoryActorBloc(g<IItemCategoryRepository>()));
+  g.registerFactory<ItemCategoryFormBloc>(
+      () => ItemCategoryFormBloc(g<IItemCategoryRepository>()));
+  g.registerFactory<ItemCategoryWatcherBloc>(
+      () => ItemCategoryWatcherBloc(g<IItemCategoryRepository>()));
 }
 
 class _$FirebaseInjectableModule extends FirebaseInjectableModule {}

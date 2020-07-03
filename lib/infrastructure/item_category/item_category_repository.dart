@@ -119,8 +119,11 @@ class ItemCategoryRepository implements IItemCategoryRepository {
             hideBottomControls: true,
           ),
         );
-
-        return right(_croppedImage);
+        if (_croppedImage != null) {
+          return right(_croppedImage);
+        } else {
+          return left(const ItemCategoryFailure.imageLoadCanceled());
+        }
       } else {
         return left(const ItemCategoryFailure.imageLoadCanceled());
       }
@@ -129,7 +132,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
     }
   }
 
-  // TODO: handle network errors specifically
+  // TODO: handle network errors and other errors specifically
   @override
   Future<Either<ItemCategoryFailure, ImageUrl>> loadCoverPictureToServer(
       ItemCategory category, File imageFile) async {
@@ -143,17 +146,28 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       coverImageStorage.putFile(imageFile);
       final coverImageDownloadUrl = await coverImageStorage.getDownloadURL();
       return right(ImageUrl(coverImageDownloadUrl.toString()));
-    } on PlatformException catch (e) {
+    } catch (e) {
       print(e.message);
       return left(const ItemCategoryFailure.unexpected());
     }
   }
 
+  // TODO: handle network errors and other errors specifically
   @override
   Future<Either<ItemCategoryFailure, ImageUrl>> removeCoverPictureFromServer(
       ItemCategory category) async {
-    // TODO: implement removeCoverPictureFromServer
-    throw UnimplementedError();
+    try {
+      final categoryCoverImageUrl = category.coverImageUrl.getOrCrash();
+      if (categoryCoverImageUrl != ImageUrl.defaultUrl().getOrCrash()) {
+        final coverImageStorage =
+            await _firebaseStorage.getReferenceFromUrl(categoryCoverImageUrl);
+
+        await coverImageStorage.delete();
+      }
+      return right(ImageUrl.defaultUrl());
+    } catch (e) {
+      return left(const ItemCategoryFailure.unexpected());
+    }
   }
 
   @override
@@ -197,7 +211,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
   }
 
   @override
-  Stream<Either<ItemCategoryFailure, KtList<ItemCategory>>> watchByTitle(
+  Stream<Either<ItemCategoryFailure, KtList<ItemCategory>>> watchAllByTitle(
       OrderType orderType, String title) async* {
     final userDoc = await _firestore.userDocument();
 

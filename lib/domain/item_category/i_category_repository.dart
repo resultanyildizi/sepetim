@@ -16,7 +16,6 @@ abstract class IItemCategoryRepository {
   Future<Either<ItemCategoryFailure, Unit>> update(ItemCategory category);
   Future<Either<ItemCategoryFailure, Unit>> delete(ItemCategory category);
 
-  // TODO: Determine the exact function declarations
   Future<Either<ItemCategoryFailure, File>> loadCoverPictureFromDevice(
       ImageSource imageSource);
   Future<Either<ItemCategoryFailure, ImageUrl>> loadCoverPictureToServer(
@@ -27,6 +26,6 @@ abstract class IItemCategoryRepository {
 
   Stream<Either<ItemCategoryFailure, KtList<ItemCategory>>> watchAll(
       OrderType orderType);
-  Stream<Either<ItemCategoryFailure, KtList<ItemCategory>>> watchByTitle(
+  Stream<Either<ItemCategoryFailure, KtList<ItemCategory>>> watchAllByTitle(
       OrderType orderType, String title);
 }
