@@ -3,19 +3,18 @@ import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'group.freezed.dart';
+part 'item_group.freezed.dart';
 
 @freezed
-abstract class Group implements _$Group {
-  const Group._();
-  // TODO: add date
+abstract class ItemGroup implements _$ItemGroup {
+  const ItemGroup._();
 
-  const factory Group({
+  const factory ItemGroup({
     @required UniqueId uid,
     @required ShortTitle title,
-  }) = _Group;
+  }) = _ItemGroup;
 
-  factory Group.empty() => Group(
+  factory ItemGroup.empty() => ItemGroup(
         uid: UniqueId(),
         title: ShortTitle(''),
       );

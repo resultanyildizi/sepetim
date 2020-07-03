@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'category_dtos.dart';
+part of 'item_category_dtos.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CategoryDto _$_$_CategoryDtoFromJson(Map<String, dynamic> json) {
-  return _$_CategoryDto(
+_$_ItemCategoryDto _$_$_ItemCategoryDtoFromJson(Map<String, dynamic> json) {
+  return _$_ItemCategoryDto(
     title: json['title'] as String,
     color: json['color'] as int,
-    coverImagePath: json['coverImagePath'] as String,
+    coverImageUrl: json['coverImageUrl'] as String,
   );
 }
 
-Map<String, dynamic> _$_$_CategoryDtoToJson(_$_CategoryDto instance) =>
+Map<String, dynamic> _$_$_ItemCategoryDtoToJson(_$_ItemCategoryDto instance) =>
     <String, dynamic>{
       'title': instance.title,
       'color': instance.color,
-      'coverImagePath': instance.coverImagePath,
+      'coverImageUrl': instance.coverImageUrl,
     };

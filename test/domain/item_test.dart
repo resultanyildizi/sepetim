@@ -17,10 +17,10 @@ void main() {
           description: DescriptionBody('helllo'),
           isFavorite: true,
           linkObjects: List5(KtList.empty()),
-          imagePaths: List3([
-            ImagePath('deneme.png'),
-            ImagePath('deneme.png'),
-            ImagePath('deneme')
+          imageUrls: List3([
+            ImageUrl('deneme.png'),
+            ImageUrl('deneme.png'),
+            ImageUrl('deneme')
           ].toImmutableList()));
 
       final result = item.failureOption;
@@ -40,10 +40,10 @@ void main() {
           description: DescriptionBody('helllo'),
           isFavorite: true,
           linkObjects: List5(KtList.empty()),
-          imagePaths: List3([
-            ImagePath('deneme.png'),
-            ImagePath('deneme.png'),
-            ImagePath('deneme.jpeg')
+          imageUrls: List3([
+            ImageUrl('deneme.png'),
+            ImageUrl('deneme.png'),
+            ImageUrl('deneme.jpeg')
           ].toImmutableList()));
 
       final result = item.failureOption;

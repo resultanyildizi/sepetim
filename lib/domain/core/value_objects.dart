@@ -1,11 +1,10 @@
-import 'dart:io';
-
 import 'package:Sepetim/domain/core/failures.dart';
 import 'package:Sepetim/domain/core/value_object.dart';
 import 'package:Sepetim/domain/core/value_validators.dart';
+import 'package:Sepetim/domain/link_object/value_validators.dart';
+import 'package:Sepetim/predefined_variables/links.dart';
 import 'package:dartz/dartz.dart';
 import 'package:kt_dart/kt.dart';
-import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
 
 class UniqueId extends ValueObject<String> {
@@ -47,22 +46,19 @@ class ShortTitle extends ValueObject<String> {
   const ShortTitle._(this.value);
 }
 
-class ImagePath extends ValueObject<String> {
+class ImageUrl extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  factory ImagePath(String input) {
+  factory ImageUrl(String input) {
     assert(input != null);
-    return ImagePath._(validateImageFile(input));
+    return ImageUrl._(validateLink(input));
+  }
+  factory ImageUrl.defaultUrl() {
+    return ImageUrl._(validateLink(defaultImageUrl));
   }
 
-  // TODO: Change the default image path
-  factory ImagePath.defaultPath() {
-    return ImagePath._(validateImageFile(
-        'gs://sepetim-e2723.appspot.com/app_images/default.png'));
-  }
-
-  const ImagePath._(this.value);
+  const ImageUrl._(this.value);
 }
 
 class List3<T> extends ValueObject<KtList<T>> {

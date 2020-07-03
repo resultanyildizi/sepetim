@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
 
-part of 'category.dart';
+part of 'item_category.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -9,15 +9,15 @@ part of 'category.dart';
 
 T _$identity<T>(T value) => value;
 
-class _$CategoryTearOff {
-  const _$CategoryTearOff();
+class _$ItemCategoryTearOff {
+  const _$ItemCategoryTearOff();
 
-  _Category call(
+  _ItemCategory call(
       {@required UniqueId uid,
       @required ShortTitle title,
-      @required CategoryColor color,
-      @required ImagePath coverImagePath}) {
-    return _Category(
+      @required ItemCategoryColor color,
+      @required ImageUrl coverImagePath}) {
+    return _ItemCategory(
       uid: uid,
       title: title,
       color: color,
@@ -27,33 +27,34 @@ class _$CategoryTearOff {
 }
 
 // ignore: unused_element
-const $Category = _$CategoryTearOff();
+const $ItemCategory = _$ItemCategoryTearOff();
 
-mixin _$Category {
+mixin _$ItemCategory {
   UniqueId get uid;
   ShortTitle get title;
-  CategoryColor get color;
-  ImagePath get coverImagePath;
+  ItemCategoryColor get color;
+  ImageUrl get coverImagePath;
 
-  $CategoryCopyWith<Category> get copyWith;
+  $ItemCategoryCopyWith<ItemCategory> get copyWith;
 }
 
-abstract class $CategoryCopyWith<$Res> {
-  factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
-      _$CategoryCopyWithImpl<$Res>;
+abstract class $ItemCategoryCopyWith<$Res> {
+  factory $ItemCategoryCopyWith(
+          ItemCategory value, $Res Function(ItemCategory) then) =
+      _$ItemCategoryCopyWithImpl<$Res>;
   $Res call(
       {UniqueId uid,
       ShortTitle title,
-      CategoryColor color,
-      ImagePath coverImagePath});
+      ItemCategoryColor color,
+      ImageUrl coverImagePath});
 }
 
-class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
-  _$CategoryCopyWithImpl(this._value, this._then);
+class _$ItemCategoryCopyWithImpl<$Res> implements $ItemCategoryCopyWith<$Res> {
+  _$ItemCategoryCopyWithImpl(this._value, this._then);
 
-  final Category _value;
+  final ItemCategory _value;
   // ignore: unused_field
-  final $Res Function(Category) _then;
+  final $Res Function(ItemCategory) _then;
 
   @override
   $Res call({
@@ -65,32 +66,35 @@ class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
     return _then(_value.copyWith(
       uid: uid == freezed ? _value.uid : uid as UniqueId,
       title: title == freezed ? _value.title : title as ShortTitle,
-      color: color == freezed ? _value.color : color as CategoryColor,
+      color: color == freezed ? _value.color : color as ItemCategoryColor,
       coverImagePath: coverImagePath == freezed
           ? _value.coverImagePath
-          : coverImagePath as ImagePath,
+          : coverImagePath as ImageUrl,
     ));
   }
 }
 
-abstract class _$CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
-  factory _$CategoryCopyWith(_Category value, $Res Function(_Category) then) =
-      __$CategoryCopyWithImpl<$Res>;
+abstract class _$ItemCategoryCopyWith<$Res>
+    implements $ItemCategoryCopyWith<$Res> {
+  factory _$ItemCategoryCopyWith(
+          _ItemCategory value, $Res Function(_ItemCategory) then) =
+      __$ItemCategoryCopyWithImpl<$Res>;
   @override
   $Res call(
       {UniqueId uid,
       ShortTitle title,
-      CategoryColor color,
-      ImagePath coverImagePath});
+      ItemCategoryColor color,
+      ImageUrl coverImagePath});
 }
 
-class __$CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
-    implements _$CategoryCopyWith<$Res> {
-  __$CategoryCopyWithImpl(_Category _value, $Res Function(_Category) _then)
-      : super(_value, (v) => _then(v as _Category));
+class __$ItemCategoryCopyWithImpl<$Res> extends _$ItemCategoryCopyWithImpl<$Res>
+    implements _$ItemCategoryCopyWith<$Res> {
+  __$ItemCategoryCopyWithImpl(
+      _ItemCategory _value, $Res Function(_ItemCategory) _then)
+      : super(_value, (v) => _then(v as _ItemCategory));
 
   @override
-  _Category get _value => super._value as _Category;
+  _ItemCategory get _value => super._value as _ItemCategory;
 
   @override
   $Res call({
@@ -99,19 +103,19 @@ class __$CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
     Object color = freezed,
     Object coverImagePath = freezed,
   }) {
-    return _then(_Category(
+    return _then(_ItemCategory(
       uid: uid == freezed ? _value.uid : uid as UniqueId,
       title: title == freezed ? _value.title : title as ShortTitle,
-      color: color == freezed ? _value.color : color as CategoryColor,
+      color: color == freezed ? _value.color : color as ItemCategoryColor,
       coverImagePath: coverImagePath == freezed
           ? _value.coverImagePath
-          : coverImagePath as ImagePath,
+          : coverImagePath as ImageUrl,
     ));
   }
 }
 
-class _$_Category extends _Category with DiagnosticableTreeMixin {
-  const _$_Category(
+class _$_ItemCategory extends _ItemCategory with DiagnosticableTreeMixin {
+  const _$_ItemCategory(
       {@required this.uid,
       @required this.title,
       @required this.color,
@@ -127,20 +131,20 @@ class _$_Category extends _Category with DiagnosticableTreeMixin {
   @override
   final ShortTitle title;
   @override
-  final CategoryColor color;
+  final ItemCategoryColor color;
   @override
-  final ImagePath coverImagePath;
+  final ImageUrl coverImagePath;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Category(uid: $uid, title: $title, color: $color, coverImagePath: $coverImagePath)';
+    return 'ItemCategory(uid: $uid, title: $title, color: $color, coverImagePath: $coverImagePath)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Category'))
+      ..add(DiagnosticsProperty('type', 'ItemCategory'))
       ..add(DiagnosticsProperty('uid', uid))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('color', color))
@@ -150,7 +154,7 @@ class _$_Category extends _Category with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Category &&
+        (other is _ItemCategory &&
             (identical(other.uid, uid) ||
                 const DeepCollectionEquality().equals(other.uid, uid)) &&
             (identical(other.title, title) ||
@@ -171,26 +175,26 @@ class _$_Category extends _Category with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(coverImagePath);
 
   @override
-  _$CategoryCopyWith<_Category> get copyWith =>
-      __$CategoryCopyWithImpl<_Category>(this, _$identity);
+  _$ItemCategoryCopyWith<_ItemCategory> get copyWith =>
+      __$ItemCategoryCopyWithImpl<_ItemCategory>(this, _$identity);
 }
 
-abstract class _Category extends Category {
-  const _Category._() : super._();
-  const factory _Category(
+abstract class _ItemCategory extends ItemCategory {
+  const _ItemCategory._() : super._();
+  const factory _ItemCategory(
       {@required UniqueId uid,
       @required ShortTitle title,
-      @required CategoryColor color,
-      @required ImagePath coverImagePath}) = _$_Category;
+      @required ItemCategoryColor color,
+      @required ImageUrl coverImagePath}) = _$_ItemCategory;
 
   @override
   UniqueId get uid;
   @override
   ShortTitle get title;
   @override
-  CategoryColor get color;
+  ItemCategoryColor get color;
   @override
-  ImagePath get coverImagePath;
+  ImageUrl get coverImagePath;
   @override
-  _$CategoryCopyWith<_Category> get copyWith;
+  _$ItemCategoryCopyWith<_ItemCategory> get copyWith;
 }

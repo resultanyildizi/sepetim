@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
 
-part of 'group.dart';
+part of 'item_group.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -9,11 +9,11 @@ part of 'group.dart';
 
 T _$identity<T>(T value) => value;
 
-class _$GroupTearOff {
-  const _$GroupTearOff();
+class _$ItemGroupTearOff {
+  const _$ItemGroupTearOff();
 
-  _Group call({@required UniqueId uid, @required ShortTitle title}) {
-    return _Group(
+  _ItemGroup call({@required UniqueId uid, @required ShortTitle title}) {
+    return _ItemGroup(
       uid: uid,
       title: title,
     );
@@ -21,27 +21,27 @@ class _$GroupTearOff {
 }
 
 // ignore: unused_element
-const $Group = _$GroupTearOff();
+const $ItemGroup = _$ItemGroupTearOff();
 
-mixin _$Group {
+mixin _$ItemGroup {
   UniqueId get uid;
   ShortTitle get title;
 
-  $GroupCopyWith<Group> get copyWith;
+  $ItemGroupCopyWith<ItemGroup> get copyWith;
 }
 
-abstract class $GroupCopyWith<$Res> {
-  factory $GroupCopyWith(Group value, $Res Function(Group) then) =
-      _$GroupCopyWithImpl<$Res>;
+abstract class $ItemGroupCopyWith<$Res> {
+  factory $ItemGroupCopyWith(ItemGroup value, $Res Function(ItemGroup) then) =
+      _$ItemGroupCopyWithImpl<$Res>;
   $Res call({UniqueId uid, ShortTitle title});
 }
 
-class _$GroupCopyWithImpl<$Res> implements $GroupCopyWith<$Res> {
-  _$GroupCopyWithImpl(this._value, this._then);
+class _$ItemGroupCopyWithImpl<$Res> implements $ItemGroupCopyWith<$Res> {
+  _$ItemGroupCopyWithImpl(this._value, this._then);
 
-  final Group _value;
+  final ItemGroup _value;
   // ignore: unused_field
-  final $Res Function(Group) _then;
+  final $Res Function(ItemGroup) _then;
 
   @override
   $Res call({
@@ -55,35 +55,36 @@ class _$GroupCopyWithImpl<$Res> implements $GroupCopyWith<$Res> {
   }
 }
 
-abstract class _$GroupCopyWith<$Res> implements $GroupCopyWith<$Res> {
-  factory _$GroupCopyWith(_Group value, $Res Function(_Group) then) =
-      __$GroupCopyWithImpl<$Res>;
+abstract class _$ItemGroupCopyWith<$Res> implements $ItemGroupCopyWith<$Res> {
+  factory _$ItemGroupCopyWith(
+          _ItemGroup value, $Res Function(_ItemGroup) then) =
+      __$ItemGroupCopyWithImpl<$Res>;
   @override
   $Res call({UniqueId uid, ShortTitle title});
 }
 
-class __$GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res>
-    implements _$GroupCopyWith<$Res> {
-  __$GroupCopyWithImpl(_Group _value, $Res Function(_Group) _then)
-      : super(_value, (v) => _then(v as _Group));
+class __$ItemGroupCopyWithImpl<$Res> extends _$ItemGroupCopyWithImpl<$Res>
+    implements _$ItemGroupCopyWith<$Res> {
+  __$ItemGroupCopyWithImpl(_ItemGroup _value, $Res Function(_ItemGroup) _then)
+      : super(_value, (v) => _then(v as _ItemGroup));
 
   @override
-  _Group get _value => super._value as _Group;
+  _ItemGroup get _value => super._value as _ItemGroup;
 
   @override
   $Res call({
     Object uid = freezed,
     Object title = freezed,
   }) {
-    return _then(_Group(
+    return _then(_ItemGroup(
       uid: uid == freezed ? _value.uid : uid as UniqueId,
       title: title == freezed ? _value.title : title as ShortTitle,
     ));
   }
 }
 
-class _$_Group extends _Group {
-  const _$_Group({@required this.uid, @required this.title})
+class _$_ItemGroup extends _ItemGroup {
+  const _$_ItemGroup({@required this.uid, @required this.title})
       : assert(uid != null),
         assert(title != null),
         super._();
@@ -95,13 +96,13 @@ class _$_Group extends _Group {
 
   @override
   String toString() {
-    return 'Group(uid: $uid, title: $title)';
+    return 'ItemGroup(uid: $uid, title: $title)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Group &&
+        (other is _ItemGroup &&
             (identical(other.uid, uid) ||
                 const DeepCollectionEquality().equals(other.uid, uid)) &&
             (identical(other.title, title) ||
@@ -115,19 +116,19 @@ class _$_Group extends _Group {
       const DeepCollectionEquality().hash(title);
 
   @override
-  _$GroupCopyWith<_Group> get copyWith =>
-      __$GroupCopyWithImpl<_Group>(this, _$identity);
+  _$ItemGroupCopyWith<_ItemGroup> get copyWith =>
+      __$ItemGroupCopyWithImpl<_ItemGroup>(this, _$identity);
 }
 
-abstract class _Group extends Group {
-  const _Group._() : super._();
-  const factory _Group({@required UniqueId uid, @required ShortTitle title}) =
-      _$_Group;
+abstract class _ItemGroup extends ItemGroup {
+  const _ItemGroup._() : super._();
+  const factory _ItemGroup(
+      {@required UniqueId uid, @required ShortTitle title}) = _$_ItemGroup;
 
   @override
   UniqueId get uid;
   @override
   ShortTitle get title;
   @override
-  _$GroupCopyWith<_Group> get copyWith;
+  _$ItemGroupCopyWith<_ItemGroup> get copyWith;
 }

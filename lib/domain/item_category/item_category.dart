@@ -1,28 +1,28 @@
-import 'package:Sepetim/domain/category/value_objects.dart';
 import 'package:Sepetim/domain/core/failures.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
+import 'package:Sepetim/domain/item_category/value_objects.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'category.freezed.dart';
+part 'item_category.freezed.dart';
 
 @freezed
-abstract class Category implements _$Category {
-  const Category._();
-  const factory Category({
+abstract class ItemCategory implements _$ItemCategory {
+  const ItemCategory._();
+  const factory ItemCategory({
     @required UniqueId uid,
     @required ShortTitle title,
-    @required CategoryColor color,
-    @required ImagePath coverImagePath,
-  }) = _Category;
+    @required ItemCategoryColor color,
+    @required ImageUrl coverImagePath,
+  }) = _ItemCategory;
 
-  factory Category.empty() => Category(
+  factory ItemCategory.empty() => ItemCategory(
         uid: UniqueId(),
         title: ShortTitle(''),
-        color: CategoryColor(CategoryColor.predefinedColors[0]),
-        coverImagePath: ImagePath.defaultPath(),
+        color: ItemCategoryColor(ItemCategoryColor.predefinedColors[0]),
+        coverImagePath: ImageUrl.defaultUrl(),
       );
 
   Option<ValueFailure<dynamic>> get failureOption {

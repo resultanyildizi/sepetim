@@ -22,5 +22,6 @@
     "invalid_email_and_password_combination_title": "Geçersiz bilgiler",
     "invalid_email_and_password_combination_message": "Girdiğiniz email adresi ve şifre kombinasyonu yanlış. Lütfen tekrar deneyin.",
     "unexpected_server_error_title": "Beklenmedik sunucu hatası",
-    "unexpected_server_error_message": "Beklenmedik bir sunucu hatası oluştu."
+    "unexpected_server_error_message": "Beklenmedik bir sunucu hatası oluştu.",
+    "crop_image": "Resmi Kırp"
 }

@@ -18,7 +18,7 @@ class DescriptionBody extends ValueObject<String> {
   DescriptionBody._(this.value);
 }
 
-//* Localize the predefined values
+// TODO: Localize the predefined values
 class Status extends ValueObject<String> {
   static const List<String> predefinedStatuses = [
     "UNKNOWN",

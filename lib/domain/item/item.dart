@@ -11,7 +11,6 @@ part 'item.freezed.dart';
 @freezed
 abstract class Item implements _$Item {
   const Item._();
-  // TODO: add date
 
   const factory Item({
     @required UniqueId uid,
@@ -19,7 +18,7 @@ abstract class Item implements _$Item {
     @required Price price,
     @required DescriptionBody description,
     @required Status status,
-    @required List3<ImagePath> imagePaths,
+    @required List3<ImageUrl> imageUrls,
     @required List5<LinkObject> linkObjects,
     @required bool isFavorite,
   }) = _Item;
@@ -30,10 +29,10 @@ abstract class Item implements _$Item {
         price: Price(0.0),
         description: DescriptionBody(''),
         status: Status(Status.predefinedStatuses[0]),
-        imagePaths: List3([
-          ImagePath.defaultPath(),
-          ImagePath.defaultPath(),
-          ImagePath.defaultPath()
+        imageUrls: List3([
+          ImageUrl.defaultUrl(),
+          ImageUrl.defaultUrl(),
+          ImageUrl.defaultUrl()
         ].toImmutableList()),
         linkObjects: List5(KtList.empty()),
         isFavorite: false,
@@ -44,8 +43,8 @@ abstract class Item implements _$Item {
         .andThen(price.failureOrUnit)
         .andThen(description.failureOrUnit)
         .andThen(status.failureOrUnit)
-        .andThen(imagePaths.failureOrUnit)
-        .andThen(imagePaths
+        .andThen(imageUrls.failureOrUnit)
+        .andThen(imageUrls
             .getOrCrash()
             .map((imagePath) => imagePath.failureOrUnit)
             .filter((o) => o.isLeft())

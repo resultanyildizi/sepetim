@@ -1,12 +1,11 @@
 import 'dart:ui';
 
-import 'package:Sepetim/domain/category/category.dart';
-import 'package:Sepetim/domain/category/value_transformer.dart';
 import 'package:Sepetim/domain/core/failures.dart';
 import 'package:Sepetim/domain/core/value_object.dart';
+import 'package:Sepetim/domain/item_category/value_transformer.dart';
 import 'package:dartz/dartz.dart';
 
-class CategoryColor extends ValueObject<Color> {
+class ItemCategoryColor extends ValueObject<Color> {
   static const List<Color> predefinedColors = [
     Color(0xFFF28B82),
     Color(0xFFFABD03),
@@ -22,10 +21,10 @@ class CategoryColor extends ValueObject<Color> {
   @override
   final Either<ValueFailure<Color>, Color> value;
 
-  factory CategoryColor(Color input) {
+  factory ItemCategoryColor(Color input) {
     assert(input != null);
-    return CategoryColor._(right(makeColorOpaque(input)));
+    return ItemCategoryColor._(right(makeColorOpaque(input)));
   }
 
-  const CategoryColor._(this.value);
+  const ItemCategoryColor._(this.value);
 }

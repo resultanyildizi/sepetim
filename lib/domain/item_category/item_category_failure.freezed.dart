@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
 
-part of 'category_failure.dart';
+part of 'item_category_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -9,8 +9,8 @@ part of 'category_failure.dart';
 
 T _$identity<T>(T value) => value;
 
-class _$CategoryFailureTearOff {
-  const _$CategoryFailureTearOff();
+class _$ItemCategoryFailureTearOff {
+  const _$ItemCategoryFailureTearOff();
 
   _Unexpected unexpected() {
     return const _Unexpected();
@@ -23,23 +23,29 @@ class _$CategoryFailureTearOff {
   _UnableToUpdate unableToUpdate() {
     return const _UnableToUpdate();
   }
+
+  _ImageLoadCanceled imageLoadCanceled() {
+    return const _ImageLoadCanceled();
+  }
 }
 
 // ignore: unused_element
-const $CategoryFailure = _$CategoryFailureTearOff();
+const $ItemCategoryFailure = _$ItemCategoryFailureTearOff();
 
-mixin _$CategoryFailure {
+mixin _$ItemCategoryFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result unexpected(),
     @required Result insufficientPermission(),
     @required Result unableToUpdate(),
+    @required Result imageLoadCanceled(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result unexpected(),
     Result insufficientPermission(),
     Result unableToUpdate(),
+    Result imageLoadCanceled(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -47,29 +53,31 @@ mixin _$CategoryFailure {
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermission(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
+    @required Result imageLoadCanceled(_ImageLoadCanceled value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result unexpected(_Unexpected value),
     Result insufficientPermission(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
+    Result imageLoadCanceled(_ImageLoadCanceled value),
     @required Result orElse(),
   });
 }
 
-abstract class $CategoryFailureCopyWith<$Res> {
-  factory $CategoryFailureCopyWith(
-          CategoryFailure value, $Res Function(CategoryFailure) then) =
-      _$CategoryFailureCopyWithImpl<$Res>;
+abstract class $ItemCategoryFailureCopyWith<$Res> {
+  factory $ItemCategoryFailureCopyWith(
+          ItemCategoryFailure value, $Res Function(ItemCategoryFailure) then) =
+      _$ItemCategoryFailureCopyWithImpl<$Res>;
 }
 
-class _$CategoryFailureCopyWithImpl<$Res>
-    implements $CategoryFailureCopyWith<$Res> {
-  _$CategoryFailureCopyWithImpl(this._value, this._then);
+class _$ItemCategoryFailureCopyWithImpl<$Res>
+    implements $ItemCategoryFailureCopyWith<$Res> {
+  _$ItemCategoryFailureCopyWithImpl(this._value, this._then);
 
-  final CategoryFailure _value;
+  final ItemCategoryFailure _value;
   // ignore: unused_field
-  final $Res Function(CategoryFailure) _then;
+  final $Res Function(ItemCategoryFailure) _then;
 }
 
 abstract class _$UnexpectedCopyWith<$Res> {
@@ -79,7 +87,7 @@ abstract class _$UnexpectedCopyWith<$Res> {
 }
 
 class __$UnexpectedCopyWithImpl<$Res>
-    extends _$CategoryFailureCopyWithImpl<$Res>
+    extends _$ItemCategoryFailureCopyWithImpl<$Res>
     implements _$UnexpectedCopyWith<$Res> {
   __$UnexpectedCopyWithImpl(
       _Unexpected _value, $Res Function(_Unexpected) _then)
@@ -94,7 +102,7 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   String toString() {
-    return 'CategoryFailure.unexpected()';
+    return 'ItemCategoryFailure.unexpected()';
   }
 
   @override
@@ -111,10 +119,12 @@ class _$_Unexpected implements _Unexpected {
     @required Result unexpected(),
     @required Result insufficientPermission(),
     @required Result unableToUpdate(),
+    @required Result imageLoadCanceled(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(imageLoadCanceled != null);
     return unexpected();
   }
 
@@ -124,6 +134,7 @@ class _$_Unexpected implements _Unexpected {
     Result unexpected(),
     Result insufficientPermission(),
     Result unableToUpdate(),
+    Result imageLoadCanceled(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -139,10 +150,12 @@ class _$_Unexpected implements _Unexpected {
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermission(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
+    @required Result imageLoadCanceled(_ImageLoadCanceled value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(imageLoadCanceled != null);
     return unexpected(this);
   }
 
@@ -152,6 +165,7 @@ class _$_Unexpected implements _Unexpected {
     Result unexpected(_Unexpected value),
     Result insufficientPermission(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
+    Result imageLoadCanceled(_ImageLoadCanceled value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -162,7 +176,7 @@ class _$_Unexpected implements _Unexpected {
   }
 }
 
-abstract class _Unexpected implements CategoryFailure {
+abstract class _Unexpected implements ItemCategoryFailure {
   const factory _Unexpected() = _$_Unexpected;
 }
 
@@ -173,7 +187,7 @@ abstract class _$InsufficientPermissionCopyWith<$Res> {
 }
 
 class __$InsufficientPermissionCopyWithImpl<$Res>
-    extends _$CategoryFailureCopyWithImpl<$Res>
+    extends _$ItemCategoryFailureCopyWithImpl<$Res>
     implements _$InsufficientPermissionCopyWith<$Res> {
   __$InsufficientPermissionCopyWithImpl(_InsufficientPermission _value,
       $Res Function(_InsufficientPermission) _then)
@@ -188,7 +202,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
 
   @override
   String toString() {
-    return 'CategoryFailure.insufficientPermission()';
+    return 'ItemCategoryFailure.insufficientPermission()';
   }
 
   @override
@@ -205,10 +219,12 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     @required Result unexpected(),
     @required Result insufficientPermission(),
     @required Result unableToUpdate(),
+    @required Result imageLoadCanceled(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(imageLoadCanceled != null);
     return insufficientPermission();
   }
 
@@ -218,6 +234,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     Result unexpected(),
     Result insufficientPermission(),
     Result unableToUpdate(),
+    Result imageLoadCanceled(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -233,10 +250,12 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermission(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
+    @required Result imageLoadCanceled(_ImageLoadCanceled value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(imageLoadCanceled != null);
     return insufficientPermission(this);
   }
 
@@ -246,6 +265,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     Result unexpected(_Unexpected value),
     Result insufficientPermission(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
+    Result imageLoadCanceled(_ImageLoadCanceled value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -256,7 +276,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   }
 }
 
-abstract class _InsufficientPermission implements CategoryFailure {
+abstract class _InsufficientPermission implements ItemCategoryFailure {
   const factory _InsufficientPermission() = _$_InsufficientPermission;
 }
 
@@ -267,7 +287,7 @@ abstract class _$UnableToUpdateCopyWith<$Res> {
 }
 
 class __$UnableToUpdateCopyWithImpl<$Res>
-    extends _$CategoryFailureCopyWithImpl<$Res>
+    extends _$ItemCategoryFailureCopyWithImpl<$Res>
     implements _$UnableToUpdateCopyWith<$Res> {
   __$UnableToUpdateCopyWithImpl(
       _UnableToUpdate _value, $Res Function(_UnableToUpdate) _then)
@@ -282,7 +302,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
 
   @override
   String toString() {
-    return 'CategoryFailure.unableToUpdate()';
+    return 'ItemCategoryFailure.unableToUpdate()';
   }
 
   @override
@@ -299,10 +319,12 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     @required Result unexpected(),
     @required Result insufficientPermission(),
     @required Result unableToUpdate(),
+    @required Result imageLoadCanceled(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(imageLoadCanceled != null);
     return unableToUpdate();
   }
 
@@ -312,6 +334,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     Result unexpected(),
     Result insufficientPermission(),
     Result unableToUpdate(),
+    Result imageLoadCanceled(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -327,10 +350,12 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermission(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
+    @required Result imageLoadCanceled(_ImageLoadCanceled value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(imageLoadCanceled != null);
     return unableToUpdate(this);
   }
 
@@ -340,6 +365,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     Result unexpected(_Unexpected value),
     Result insufficientPermission(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
+    Result imageLoadCanceled(_ImageLoadCanceled value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -350,6 +376,106 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   }
 }
 
-abstract class _UnableToUpdate implements CategoryFailure {
+abstract class _UnableToUpdate implements ItemCategoryFailure {
   const factory _UnableToUpdate() = _$_UnableToUpdate;
+}
+
+abstract class _$ImageLoadCanceledCopyWith<$Res> {
+  factory _$ImageLoadCanceledCopyWith(
+          _ImageLoadCanceled value, $Res Function(_ImageLoadCanceled) then) =
+      __$ImageLoadCanceledCopyWithImpl<$Res>;
+}
+
+class __$ImageLoadCanceledCopyWithImpl<$Res>
+    extends _$ItemCategoryFailureCopyWithImpl<$Res>
+    implements _$ImageLoadCanceledCopyWith<$Res> {
+  __$ImageLoadCanceledCopyWithImpl(
+      _ImageLoadCanceled _value, $Res Function(_ImageLoadCanceled) _then)
+      : super(_value, (v) => _then(v as _ImageLoadCanceled));
+
+  @override
+  _ImageLoadCanceled get _value => super._value as _ImageLoadCanceled;
+}
+
+class _$_ImageLoadCanceled implements _ImageLoadCanceled {
+  const _$_ImageLoadCanceled();
+
+  @override
+  String toString() {
+    return 'ItemCategoryFailure.imageLoadCanceled()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _ImageLoadCanceled);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result unexpected(),
+    @required Result insufficientPermission(),
+    @required Result unableToUpdate(),
+    @required Result imageLoadCanceled(),
+  }) {
+    assert(unexpected != null);
+    assert(insufficientPermission != null);
+    assert(unableToUpdate != null);
+    assert(imageLoadCanceled != null);
+    return imageLoadCanceled();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result unexpected(),
+    Result insufficientPermission(),
+    Result unableToUpdate(),
+    Result imageLoadCanceled(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (imageLoadCanceled != null) {
+      return imageLoadCanceled();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result unexpected(_Unexpected value),
+    @required Result insufficientPermission(_InsufficientPermission value),
+    @required Result unableToUpdate(_UnableToUpdate value),
+    @required Result imageLoadCanceled(_ImageLoadCanceled value),
+  }) {
+    assert(unexpected != null);
+    assert(insufficientPermission != null);
+    assert(unableToUpdate != null);
+    assert(imageLoadCanceled != null);
+    return imageLoadCanceled(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result unexpected(_Unexpected value),
+    Result insufficientPermission(_InsufficientPermission value),
+    Result unableToUpdate(_UnableToUpdate value),
+    Result imageLoadCanceled(_ImageLoadCanceled value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (imageLoadCanceled != null) {
+      return imageLoadCanceled(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ImageLoadCanceled implements ItemCategoryFailure {
+  const factory _ImageLoadCanceled() = _$_ImageLoadCanceled;
 }

@@ -18,7 +18,7 @@ class _$ItemTearOff {
       @required Price price,
       @required DescriptionBody description,
       @required Status status,
-      @required List3<ImagePath> imagePaths,
+      @required List3<ImageUrl> imageUrls,
       @required List5<LinkObject> linkObjects,
       @required bool isFavorite}) {
     return _Item(
@@ -27,7 +27,7 @@ class _$ItemTearOff {
       price: price,
       description: description,
       status: status,
-      imagePaths: imagePaths,
+      imageUrls: imageUrls,
       linkObjects: linkObjects,
       isFavorite: isFavorite,
     );
@@ -43,7 +43,7 @@ mixin _$Item {
   Price get price;
   DescriptionBody get description;
   Status get status;
-  List3<ImagePath> get imagePaths;
+  List3<ImageUrl> get imageUrls;
   List5<LinkObject> get linkObjects;
   bool get isFavorite;
 
@@ -59,7 +59,7 @@ abstract class $ItemCopyWith<$Res> {
       Price price,
       DescriptionBody description,
       Status status,
-      List3<ImagePath> imagePaths,
+      List3<ImageUrl> imageUrls,
       List5<LinkObject> linkObjects,
       bool isFavorite});
 }
@@ -78,7 +78,7 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
     Object price = freezed,
     Object description = freezed,
     Object status = freezed,
-    Object imagePaths = freezed,
+    Object imageUrls = freezed,
     Object linkObjects = freezed,
     Object isFavorite = freezed,
   }) {
@@ -90,9 +90,9 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
           ? _value.description
           : description as DescriptionBody,
       status: status == freezed ? _value.status : status as Status,
-      imagePaths: imagePaths == freezed
-          ? _value.imagePaths
-          : imagePaths as List3<ImagePath>,
+      imageUrls: imageUrls == freezed
+          ? _value.imageUrls
+          : imageUrls as List3<ImageUrl>,
       linkObjects: linkObjects == freezed
           ? _value.linkObjects
           : linkObjects as List5<LinkObject>,
@@ -112,7 +112,7 @@ abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
       Price price,
       DescriptionBody description,
       Status status,
-      List3<ImagePath> imagePaths,
+      List3<ImageUrl> imageUrls,
       List5<LinkObject> linkObjects,
       bool isFavorite});
 }
@@ -132,7 +132,7 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     Object price = freezed,
     Object description = freezed,
     Object status = freezed,
-    Object imagePaths = freezed,
+    Object imageUrls = freezed,
     Object linkObjects = freezed,
     Object isFavorite = freezed,
   }) {
@@ -144,9 +144,9 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
           ? _value.description
           : description as DescriptionBody,
       status: status == freezed ? _value.status : status as Status,
-      imagePaths: imagePaths == freezed
-          ? _value.imagePaths
-          : imagePaths as List3<ImagePath>,
+      imageUrls: imageUrls == freezed
+          ? _value.imageUrls
+          : imageUrls as List3<ImageUrl>,
       linkObjects: linkObjects == freezed
           ? _value.linkObjects
           : linkObjects as List5<LinkObject>,
@@ -163,7 +163,7 @@ class _$_Item extends _Item {
       @required this.price,
       @required this.description,
       @required this.status,
-      @required this.imagePaths,
+      @required this.imageUrls,
       @required this.linkObjects,
       @required this.isFavorite})
       : assert(uid != null),
@@ -171,7 +171,7 @@ class _$_Item extends _Item {
         assert(price != null),
         assert(description != null),
         assert(status != null),
-        assert(imagePaths != null),
+        assert(imageUrls != null),
         assert(linkObjects != null),
         assert(isFavorite != null),
         super._();
@@ -187,7 +187,7 @@ class _$_Item extends _Item {
   @override
   final Status status;
   @override
-  final List3<ImagePath> imagePaths;
+  final List3<ImageUrl> imageUrls;
   @override
   final List5<LinkObject> linkObjects;
   @override
@@ -195,7 +195,7 @@ class _$_Item extends _Item {
 
   @override
   String toString() {
-    return 'Item(uid: $uid, title: $title, price: $price, description: $description, status: $status, imagePaths: $imagePaths, linkObjects: $linkObjects, isFavorite: $isFavorite)';
+    return 'Item(uid: $uid, title: $title, price: $price, description: $description, status: $status, imageUrls: $imageUrls, linkObjects: $linkObjects, isFavorite: $isFavorite)';
   }
 
   @override
@@ -213,9 +213,9 @@ class _$_Item extends _Item {
                     .equals(other.description, description)) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)) &&
-            (identical(other.imagePaths, imagePaths) ||
+            (identical(other.imageUrls, imageUrls) ||
                 const DeepCollectionEquality()
-                    .equals(other.imagePaths, imagePaths)) &&
+                    .equals(other.imageUrls, imageUrls)) &&
             (identical(other.linkObjects, linkObjects) ||
                 const DeepCollectionEquality()
                     .equals(other.linkObjects, linkObjects)) &&
@@ -232,7 +232,7 @@ class _$_Item extends _Item {
       const DeepCollectionEquality().hash(price) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(imagePaths) ^
+      const DeepCollectionEquality().hash(imageUrls) ^
       const DeepCollectionEquality().hash(linkObjects) ^
       const DeepCollectionEquality().hash(isFavorite);
 
@@ -249,7 +249,7 @@ abstract class _Item extends Item {
       @required Price price,
       @required DescriptionBody description,
       @required Status status,
-      @required List3<ImagePath> imagePaths,
+      @required List3<ImageUrl> imageUrls,
       @required List5<LinkObject> linkObjects,
       @required bool isFavorite}) = _$_Item;
 
@@ -264,7 +264,7 @@ abstract class _Item extends Item {
   @override
   Status get status;
   @override
-  List3<ImagePath> get imagePaths;
+  List3<ImageUrl> get imageUrls;
   @override
   List5<LinkObject> get linkObjects;
   @override

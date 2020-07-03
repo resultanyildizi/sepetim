@@ -5,7 +5,7 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "**/sign_in_form_bloc.freezed.dart": true
+        "**/sign_in_form_bloc.freezed.dart": false
     },
     "explorerExclude.backup": null
 }
