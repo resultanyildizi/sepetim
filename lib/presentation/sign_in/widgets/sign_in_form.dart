@@ -2,10 +2,14 @@ import 'package:Sepetim/application/auth/password_visibility/password_visibility
 import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
+import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
 import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
+import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
+import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/google_sign_in_button.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/or_divider.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -115,36 +119,14 @@ class SignInForm extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     if (state.isSubmitting) ...[
-                      SizedBox(
-                        height: screenHeightByScalar(
-                          context,
-                          scalarSmall: 0.03,
-                          scalarMedium: 0.03,
-                          scalarBig: 0.03,
-                        ),
-                        width: screenHeightByScalar(
-                          context,
-                          scalarSmall: 0.03,
-                          scalarMedium: 0.03,
-                          scalarBig: 0.03,
-                        ),
-                        child: CircularProgressIndicator(
-                          backgroundColor: sepetimGrey,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(sepetimYellow),
-                        ),
-                      ),
+                      SmallCircularProgressIndicator()
                     ],
-                    const Divider(
-                      color: sepetimLightGrey,
-                      thickness: 1,
-                    ),
+                    const DividerDefault(),
                     RoundedButton(
                       width: screenWidthByScalar(context, 1.0),
                       onPressed: () {
-                        context.bloc<SignInFormBloc>().add(
-                              const SignInFormEvent.signInAnonymously(),
-                            );
+                        ExtendedNavigator.of(context)
+                            .pushNamed(Routes.verifyAnonymousLoginPage);
                         FocusScope.of(context).unfocus();
                       },
                       text: translate(context, 'without_log_in'),

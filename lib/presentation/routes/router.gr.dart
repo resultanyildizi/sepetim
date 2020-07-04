@@ -9,13 +9,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:Sepetim/presentation/splash/splash_page.dart';
 import 'package:Sepetim/presentation/sign_in/sign_in_page.dart';
+import 'package:Sepetim/presentation/sign_in/verify_anonymous_login_page.dart';
 
 abstract class Routes {
   static const splashPage = '/';
   static const signInPage = '/sign-in-page';
+  static const verifyAnonymousLoginPage = '/verify-anonymous-login-page';
   static const all = {
     splashPage,
     signInPage,
+    verifyAnonymousLoginPage,
   };
 }
 
@@ -48,6 +51,16 @@ class Router extends RouterBase {
           transitionsBuilder: TransitionsBuilders.fadeIn,
           transitionDuration: const Duration(milliseconds: 400),
         );
+      case Routes.verifyAnonymousLoginPage:
+        if (hasInvalidArgs<VerifyAnonymousLoginPageArguments>(args)) {
+          return misTypedArgsRoute<VerifyAnonymousLoginPageArguments>(args);
+        }
+        final typedArgs = args as VerifyAnonymousLoginPageArguments ??
+            VerifyAnonymousLoginPageArguments();
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => VerifyAnonymousLoginPage(key: typedArgs.key),
+          settings: settings,
+        );
       default:
         return unknownRoutePage(settings.name);
     }
@@ -64,6 +77,12 @@ class SignInPageArguments {
   SignInPageArguments({this.key});
 }
 
+//VerifyAnonymousLoginPage arguments holder class
+class VerifyAnonymousLoginPageArguments {
+  final Key key;
+  VerifyAnonymousLoginPageArguments({this.key});
+}
+
 // *************************************************************************
 // Navigation helper methods extension
 // **************************************************************************
@@ -77,5 +96,13 @@ extension RouterNavigationHelperMethods on ExtendedNavigatorState {
       pushNamed(
         Routes.signInPage,
         arguments: SignInPageArguments(key: key),
+      );
+
+  Future pushVerifyAnonymousLoginPage({
+    Key key,
+  }) =>
+      pushNamed(
+        Routes.verifyAnonymousLoginPage,
+        arguments: VerifyAnonymousLoginPageArguments(key: key),
       );
 }

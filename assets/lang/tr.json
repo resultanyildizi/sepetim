@@ -1,14 +1,14 @@
 {
-    "sign_up": "Kaydol,",
-    "by_signing_up": "Kaydolarak ",
+    "sign_up": "Kayıt ol,",
+    "by_signing_up": "Kayıt olarak ",
     "you_agree": "kabul etmiş olursunuz",
     "terms_of_service": "Hizmet Şartlarımızı ",
     "and": "ve ",
     "privacy_policy": "Gizlilik Politikamızı ",
     "email": "Email",
     "password": "Şifre",
-    "sign_up_button": "Kaydol",
-    "log_in_button": "Giriş Yap",
+    "sign_up_button": "Kayıt ol",
+    "log_in_button": "Giriş yap",
     "invalid_email": "Geçersiz email",
     "weak_password": "Zayıf şifre",
     "or": "YA DA",
@@ -23,5 +23,7 @@
     "invalid_email_and_password_combination_message": "Girdiğiniz email adresi ve şifre kombinasyonu yanlış. Lütfen tekrar deneyin.",
     "unexpected_server_error_title": "Beklenmedik sunucu hatası",
     "unexpected_server_error_message": "Beklenmedik bir sunucu hatası oluştu.",
-    "crop_image": "Resmi Kırp"
+    "crop_image": "Resmi Kırp",
+    "verify_anonymous_login_text": "Kayıt olmak Sepetim uygulamasının tüm özelliklerini kullanılır hale getirir. Şimdilik kayıt olmadan devam edebilir ve daha sonra kayıt olabilirsiniz.\n\nKayıt olmak verilerinizin sunucularımızda güvenle saklanmasını ve hesabınızı kullanarak herhangi bir Android mobil cihaz üzerinden verilerinize erişebilmenizi sağlar.\n\nEğer kayıt olmadan uygulamayı silerseniz, verileriniz de silinir.",
+    "continue_anyway": "Yine de devam et"
 }

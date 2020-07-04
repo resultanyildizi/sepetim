@@ -2,6 +2,7 @@ import 'package:Sepetim/app_localization.dart';
 import 'package:Sepetim/application/auth/password_visibility/password_visibility_bloc.dart';
 import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:Sepetim/injection.dart';
+import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/core/widgets/logo.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
@@ -26,9 +27,7 @@ class SignInPage extends StatelessWidget {
           )
         ],
         child: SafeArea(
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 22.0, vertical: 16.0),
+          child: DefaultPadding(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[

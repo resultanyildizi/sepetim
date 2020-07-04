@@ -23,5 +23,7 @@
     "invalid_email_and_password_combination_message": "Wrong email address and password combination. Try again.",
     "unexpected_server_error_title": "Unexpected server error",
     "unexpected_server_error_message": "Unexpected server error has occured.",
-    "crop_image": "Crop Image"
+    "crop_image": "Crop Image",
+    "verify_anonymous_login_text": "Signing up unlocks all the features of Sepetim app. You can skip the registration now and register later.\n\nSigning up ensures that your data is stored securely on the cloud so you can access it on any Android mobile device with your account.\n\nIf you uninstall the app before the registration, your data will be lost.",
+    "continue_anyway": "Continue anyway"
 }
