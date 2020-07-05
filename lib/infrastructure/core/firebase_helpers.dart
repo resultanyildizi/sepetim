@@ -25,7 +25,10 @@ extension FirebaseStorageX on FirebaseStorage {
   Future<StorageReference> userStorage() async {
     final userOption = await getIt<IAuthFacade>().getSignedUser();
     final user = userOption.getOrElse(() => throw NotAuthenticatedError());
-    return FirebaseStorage.instance.ref().child(user.id.getOrCrash());
+    return FirebaseStorage.instance
+        .ref()
+        .child('users')
+        .child(user.id.getOrCrash());
   }
 }
 

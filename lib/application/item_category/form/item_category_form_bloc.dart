@@ -67,27 +67,18 @@ class ItemCategoryFormBloc
             categoryFailureOrSuccessOption: some(left(f)),
           ),
           (imageFile) async {
-            final serverFailureOrRemovedImageUrl = await _categoryRepository
-                .removeCoverPictureFromServer(state.category);
-            return serverFailureOrRemovedImageUrl.fold(
+            final serverFailureOrLoadedImageUrl = await _categoryRepository
+                .loadCoverPictureToServer(state.category, imageFile);
+            return serverFailureOrLoadedImageUrl.fold(
               (f) => state.copyWith(
                 categoryFailureOrSuccessOption: some(left(f)),
               ),
-              (_) async {
-                final serverFailureOrLoadedImageUrl = await _categoryRepository
-                    .loadCoverPictureToServer(state.category, imageFile);
-                return serverFailureOrLoadedImageUrl.fold(
-                  (f) => state.copyWith(
-                    categoryFailureOrSuccessOption: some(left(f)),
-                  ),
-                  (imageUrl) => state.copyWith(
-                    category: state.category.copyWith(
-                      coverImageUrl: imageUrl,
-                    ),
-                    categoryFailureOrSuccessOption: none(),
-                  ),
-                );
-              },
+              (imageUrl) => state.copyWith(
+                category: state.category.copyWith(
+                  coverImageUrl: imageUrl,
+                ),
+                categoryFailureOrSuccessOption: none(),
+              ),
             );
           },
         );

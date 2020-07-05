@@ -1,3 +1,4 @@
+import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
@@ -6,7 +7,9 @@ import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
 import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
 import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
+import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,7 +41,13 @@ class VerifyAnonymousLoginPage extends StatelessWidget {
                       orElse: () {},
                     );
                   },
-                  (_) {},
+                  (_) {
+                    ExtendedNavigator.of(context)
+                        .pushReplacementNamed(Routes.applicationContentPage);
+                    context
+                        .bloc<AuthBloc>()
+                        .add(const AuthEvent.authCheckRequested());
+                  },
                 );
               },
             );

@@ -98,8 +98,12 @@ class ItemCategoryRepository implements IItemCategoryRepository {
   Future<Either<ItemCategoryFailure, File>> loadCoverPictureFromDevice(
       ImageSource imageSource) async {
     try {
-      final pickedFile =
-          await _imagePicker.getImage(source: imageSource, imageQuality: 70);
+      final pickedFile = await _imagePicker.getImage(
+        source: imageSource,
+        maxWidth: 4000,
+        maxHeight: 4000,
+        imageQuality: 80,
+      );
 
       if (pickedFile != null) {
         final _croppedImage = await ImageCropper.cropImage(
@@ -111,7 +115,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
           androidUiSettings: AndroidUiSettings(
             toolbarTitle: 'Crop Image',
             toolbarColor: sepetimYellow,
-            toolbarWidgetColor: Colors.white,
+            toolbarWidgetColor: sepetimGrey,
             cropFrameColor: Colors.transparent,
             initAspectRatio: CropAspectRatioPreset.original,
             lockAspectRatio: true,
@@ -143,8 +147,10 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       final coverImageStorage = userStorage.categoryCovers
           .child(categoryUid + extension(imageFile.path));
 
-      coverImageStorage.putFile(imageFile);
+      final uploadTask = coverImageStorage.putFile(imageFile);
+      await uploadTask.onComplete;
       final coverImageDownloadUrl = await coverImageStorage.getDownloadURL();
+
       return right(ImageUrl(coverImageDownloadUrl.toString()));
     } catch (e) {
       print(e.message);

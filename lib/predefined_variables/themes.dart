@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 
 final ThemeData sepetimLightTheme = ThemeData(
   brightness: Brightness.light,
-  accentColor: app_color.sepetimGrey,
+  accentColor: app_color.sepetimYellow,
   primaryColor: app_color.sepetimYellow,
+  scaffoldBackgroundColor: Colors.white,
   appBarTheme: AppBarTheme(
     iconTheme: IconThemeData(
       color: app_color.sepetimGrey,

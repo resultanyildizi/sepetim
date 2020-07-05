@@ -1,6 +1,5 @@
-import 'package:Sepetim/application/auth/password_visibility/password_visibility_bloc.dart';
+import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
-import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
 import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
@@ -9,6 +8,7 @@ import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/google_sign_in_button.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/or_divider.dart';
+import 'package:Sepetim/presentation/sign_in/widgets/text_fields.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +33,13 @@ class SignInForm extends StatelessWidget {
                   networkException: (_) async => networkExceptionPopup(context),
                 );
               },
-              (_) {},
+              (_) {
+                ExtendedNavigator.of(context)
+                    .pushReplacementNamed(Routes.applicationContentPage);
+                context
+                    .bloc<AuthBloc>()
+                    .add(const AuthEvent.authCheckRequested());
+              },
             );
           },
         );
@@ -138,62 +144,6 @@ class SignInForm extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-
-  Widget emailFormField(BuildContext context) {
-    return TextFormField(
-      cursorColor: sepetimGrey,
-      keyboardType: TextInputType.emailAddress,
-      style: Theme.of(context).textTheme.subtitle1,
-      decoration: InputDecoration(labelText: translate(context, 'email')),
-      autocorrect: false,
-      onChanged: (value) => context
-          .bloc<SignInFormBloc>()
-          .add(SignInFormEvent.emailChanged(value)),
-      validator: (_) =>
-          context.bloc<SignInFormBloc>().state.emailAddress.value.fold(
-                (f) => f.maybeMap(
-                  invalidEmail: (_) => translate(context, 'invalid_email'),
-                  orElse: () => null,
-                ),
-                (_) => null,
-              ),
-    );
-  }
-
-  Widget passwordFormField(BuildContext context) {
-    return BlocBuilder<PasswordVisibilityBloc, PasswordVisibilityState>(
-      builder: (context, state) => TextFormField(
-        obscureText: !state.isVisible,
-        cursorColor: sepetimGrey,
-        keyboardType: TextInputType.visiblePassword,
-        style: Theme.of(context).textTheme.subtitle1,
-        decoration: InputDecoration(
-          labelText: translate(context, 'password'),
-          suffixIcon: IconButton(
-            icon: state.isVisible
-                ? Icon(Icons.visibility_off)
-                : Icon(Icons.visibility),
-            onPressed: () => context.bloc<PasswordVisibilityBloc>().add(
-                  const PasswordVisibilityEvent.visibilityChanged(),
-                ),
-            color: sepetimLightGrey,
-          ),
-        ),
-        autocorrect: false,
-        onChanged: (value) => context
-            .bloc<SignInFormBloc>()
-            .add(SignInFormEvent.passwordChanged(value)),
-        validator: (_) =>
-            context.bloc<SignInFormBloc>().state.password.value.fold(
-                  (f) => f.maybeMap(
-                    weakPassword: (_) => translate(context, 'weak_password'),
-                    orElse: () => null,
-                  ),
-                  (_) => null,
-                ),
-      ),
     );
   }
 }

@@ -25,5 +25,19 @@
     "unexpected_server_error_message": "Beklenmedik bir sunucu hatası oluştu.",
     "crop_image": "Resmi Kırp",
     "verify_anonymous_login_text": "Kayıt olmak Sepetim uygulamasının tüm özelliklerini kullanılır hale getirir. Şimdilik kayıt olmadan devam edebilir ve daha sonra kayıt olabilirsiniz.\n\nKayıt olmak verilerinizin sunucularımızda güvenle saklanmasını ve hesabınızı kullanarak herhangi bir Android mobil cihaz üzerinden verilerinize erişebilmenizi sağlar.\n\nEğer kayıt olmadan uygulamayı silerseniz, verileriniz de silinir.",
-    "continue_anyway": "Yine de devam et"
+    "continue_anyway": "Yine de devam et",
+    "home": "Anasayfa",
+    "favorites": "Favoriler",
+    "settings": "Ayarlar",
+    "add_a_category": "Kategori ekle",
+    "title": "Başlık",
+    "enter_a_title": "Bir başlık girin",
+    "colors": "Renkler",
+    "save": "Kaydet",
+    "from_gallery": "Galeriden Seç",
+    "from_camera": "Kamerayla Çek",
+    "cover_picture": "Kategori Resmi",
+    "empty_title": "Başlık boş olamaz",
+    "title_exceeding_length": "Başlık 50 karakterden fazla olamaz",
+    "title_multiline": "Başlık birden fazla satır içeremez"
 }

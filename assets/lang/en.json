@@ -25,5 +25,19 @@
     "unexpected_server_error_message": "Unexpected server error has occured.",
     "crop_image": "Crop Image",
     "verify_anonymous_login_text": "Signing up unlocks all the features of Sepetim app. You can skip the registration now and register later.\n\nSigning up ensures that your data is stored securely on the cloud so you can access it on any Android mobile device with your account.\n\nIf you uninstall the app before the registration, your data will be lost.",
-    "continue_anyway": "Continue anyway"
+    "continue_anyway": "Continue anyway",
+    "home": "Home",
+    "favorites": "Favorites",
+    "settings": "Settings",
+    "add_a_category": "Add a category",
+    "title": "Title",
+    "enter_a_title": "Enter a title",
+    "colors": "Colors",
+    "save": "Save",
+    "from_gallery": "From Gallery",
+    "from_camera": "From Camera",
+    "cover_picture": "Cover Picture",
+    "empty_title": "Title can't be empty",
+    "title_exceeding_length": "Title can't be longer than 50 characters",
+    "title_multiline": "Title can't include more than a line"
 }

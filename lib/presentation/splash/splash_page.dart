@@ -15,7 +15,7 @@ class SplashPage extends StatelessWidget {
         state.map(
           initial: (_) {},
           authenticated: (_) => ExtendedNavigator.of(context)
-              .pushReplacementNamed(Routes.signInPage),
+              .pushReplacementNamed(Routes.applicationContentPage),
           unauthenticated: (_) => ExtendedNavigator.of(context)
               .pushReplacementNamed(Routes.signInPage),
         );

@@ -4,6 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
+import 'package:Sepetim/application/content/bottom_navbar/bottom_navbar_bloc.dart';
 import 'package:Sepetim/infrastructure/core/firebase_injectable_module.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -25,6 +26,7 @@ import 'package:get_it/get_it.dart';
 void $initGetIt(GetIt g, {String environment}) {
   final firebaseInjectableModule = _$FirebaseInjectableModule();
   final imagePickerInjectableModule = _$ImagePickerInjectableModule();
+  g.registerFactory<BottomNavbarBloc>(() => BottomNavbarBloc());
   g.registerLazySingleton<FirebaseAuth>(
       () => firebaseInjectableModule.fireBaseAuth);
   g.registerLazySingleton<FirebaseStorage>(
