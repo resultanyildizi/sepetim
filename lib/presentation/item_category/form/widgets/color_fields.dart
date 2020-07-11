@@ -15,7 +15,7 @@ class ColorPickerField extends StatelessWidget {
       builder: (context, state) {
         return Container(
           height: screenHeightByScalar(context,
-              scalarSmall: 0.07, scalarMedium: 0.07, scalarBig: 0.07),
+              scalarSmall: 0.07, scalarMedium: 0.03, scalarBig: 0.03),
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,

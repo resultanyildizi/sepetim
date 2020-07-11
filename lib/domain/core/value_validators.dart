@@ -50,3 +50,11 @@ Either<ValueFailure<KtList<T>>, KtList<T>> validateMaxLength<T>(
     return left(ValueFailure.listTooLong(failedValue: input, max: maxLength));
   }
 }
+
+Either<ValueFailure<int>, int> validateNotNegativeNumber(int input) {
+  if (input >= 0) {
+    return right(input);
+  } else {
+    return left(ValueFailure.invalidNumberSign(failedValue: input));
+  }
+}

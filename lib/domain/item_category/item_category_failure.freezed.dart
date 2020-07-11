@@ -27,6 +27,10 @@ class _$ItemCategoryFailureTearOff {
   _ImageLoadCanceled imageLoadCanceled() {
     return const _ImageLoadCanceled();
   }
+
+  _NetworkExcepiton networkException() {
+    return const _NetworkExcepiton();
+  }
 }
 
 // ignore: unused_element
@@ -39,6 +43,7 @@ mixin _$ItemCategoryFailure {
     @required Result insufficientPermission(),
     @required Result unableToUpdate(),
     @required Result imageLoadCanceled(),
+    @required Result networkException(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -46,6 +51,7 @@ mixin _$ItemCategoryFailure {
     Result insufficientPermission(),
     Result unableToUpdate(),
     Result imageLoadCanceled(),
+    Result networkException(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -54,6 +60,7 @@ mixin _$ItemCategoryFailure {
     @required Result insufficientPermission(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
     @required Result imageLoadCanceled(_ImageLoadCanceled value),
+    @required Result networkException(_NetworkExcepiton value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -61,6 +68,7 @@ mixin _$ItemCategoryFailure {
     Result insufficientPermission(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
     Result imageLoadCanceled(_ImageLoadCanceled value),
+    Result networkException(_NetworkExcepiton value),
     @required Result orElse(),
   });
 }
@@ -120,11 +128,13 @@ class _$_Unexpected implements _Unexpected {
     @required Result insufficientPermission(),
     @required Result unableToUpdate(),
     @required Result imageLoadCanceled(),
+    @required Result networkException(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
     assert(imageLoadCanceled != null);
+    assert(networkException != null);
     return unexpected();
   }
 
@@ -135,6 +145,7 @@ class _$_Unexpected implements _Unexpected {
     Result insufficientPermission(),
     Result unableToUpdate(),
     Result imageLoadCanceled(),
+    Result networkException(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -151,11 +162,13 @@ class _$_Unexpected implements _Unexpected {
     @required Result insufficientPermission(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
     @required Result imageLoadCanceled(_ImageLoadCanceled value),
+    @required Result networkException(_NetworkExcepiton value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
     assert(imageLoadCanceled != null);
+    assert(networkException != null);
     return unexpected(this);
   }
 
@@ -166,6 +179,7 @@ class _$_Unexpected implements _Unexpected {
     Result insufficientPermission(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
     Result imageLoadCanceled(_ImageLoadCanceled value),
+    Result networkException(_NetworkExcepiton value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -220,11 +234,13 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     @required Result insufficientPermission(),
     @required Result unableToUpdate(),
     @required Result imageLoadCanceled(),
+    @required Result networkException(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
     assert(imageLoadCanceled != null);
+    assert(networkException != null);
     return insufficientPermission();
   }
 
@@ -235,6 +251,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     Result insufficientPermission(),
     Result unableToUpdate(),
     Result imageLoadCanceled(),
+    Result networkException(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -251,11 +268,13 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     @required Result insufficientPermission(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
     @required Result imageLoadCanceled(_ImageLoadCanceled value),
+    @required Result networkException(_NetworkExcepiton value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
     assert(imageLoadCanceled != null);
+    assert(networkException != null);
     return insufficientPermission(this);
   }
 
@@ -266,6 +285,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     Result insufficientPermission(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
     Result imageLoadCanceled(_ImageLoadCanceled value),
+    Result networkException(_NetworkExcepiton value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -320,11 +340,13 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     @required Result insufficientPermission(),
     @required Result unableToUpdate(),
     @required Result imageLoadCanceled(),
+    @required Result networkException(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
     assert(imageLoadCanceled != null);
+    assert(networkException != null);
     return unableToUpdate();
   }
 
@@ -335,6 +357,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     Result insufficientPermission(),
     Result unableToUpdate(),
     Result imageLoadCanceled(),
+    Result networkException(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -351,11 +374,13 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     @required Result insufficientPermission(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
     @required Result imageLoadCanceled(_ImageLoadCanceled value),
+    @required Result networkException(_NetworkExcepiton value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
     assert(imageLoadCanceled != null);
+    assert(networkException != null);
     return unableToUpdate(this);
   }
 
@@ -366,6 +391,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     Result insufficientPermission(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
     Result imageLoadCanceled(_ImageLoadCanceled value),
+    Result networkException(_NetworkExcepiton value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -420,11 +446,13 @@ class _$_ImageLoadCanceled implements _ImageLoadCanceled {
     @required Result insufficientPermission(),
     @required Result unableToUpdate(),
     @required Result imageLoadCanceled(),
+    @required Result networkException(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
     assert(imageLoadCanceled != null);
+    assert(networkException != null);
     return imageLoadCanceled();
   }
 
@@ -435,6 +463,7 @@ class _$_ImageLoadCanceled implements _ImageLoadCanceled {
     Result insufficientPermission(),
     Result unableToUpdate(),
     Result imageLoadCanceled(),
+    Result networkException(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -451,11 +480,13 @@ class _$_ImageLoadCanceled implements _ImageLoadCanceled {
     @required Result insufficientPermission(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
     @required Result imageLoadCanceled(_ImageLoadCanceled value),
+    @required Result networkException(_NetworkExcepiton value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
     assert(imageLoadCanceled != null);
+    assert(networkException != null);
     return imageLoadCanceled(this);
   }
 
@@ -466,6 +497,7 @@ class _$_ImageLoadCanceled implements _ImageLoadCanceled {
     Result insufficientPermission(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
     Result imageLoadCanceled(_ImageLoadCanceled value),
+    Result networkException(_NetworkExcepiton value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -478,4 +510,110 @@ class _$_ImageLoadCanceled implements _ImageLoadCanceled {
 
 abstract class _ImageLoadCanceled implements ItemCategoryFailure {
   const factory _ImageLoadCanceled() = _$_ImageLoadCanceled;
+}
+
+abstract class _$NetworkExcepitonCopyWith<$Res> {
+  factory _$NetworkExcepitonCopyWith(
+          _NetworkExcepiton value, $Res Function(_NetworkExcepiton) then) =
+      __$NetworkExcepitonCopyWithImpl<$Res>;
+}
+
+class __$NetworkExcepitonCopyWithImpl<$Res>
+    extends _$ItemCategoryFailureCopyWithImpl<$Res>
+    implements _$NetworkExcepitonCopyWith<$Res> {
+  __$NetworkExcepitonCopyWithImpl(
+      _NetworkExcepiton _value, $Res Function(_NetworkExcepiton) _then)
+      : super(_value, (v) => _then(v as _NetworkExcepiton));
+
+  @override
+  _NetworkExcepiton get _value => super._value as _NetworkExcepiton;
+}
+
+class _$_NetworkExcepiton implements _NetworkExcepiton {
+  const _$_NetworkExcepiton();
+
+  @override
+  String toString() {
+    return 'ItemCategoryFailure.networkException()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _NetworkExcepiton);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result unexpected(),
+    @required Result insufficientPermission(),
+    @required Result unableToUpdate(),
+    @required Result imageLoadCanceled(),
+    @required Result networkException(),
+  }) {
+    assert(unexpected != null);
+    assert(insufficientPermission != null);
+    assert(unableToUpdate != null);
+    assert(imageLoadCanceled != null);
+    assert(networkException != null);
+    return networkException();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result unexpected(),
+    Result insufficientPermission(),
+    Result unableToUpdate(),
+    Result imageLoadCanceled(),
+    Result networkException(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (networkException != null) {
+      return networkException();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result unexpected(_Unexpected value),
+    @required Result insufficientPermission(_InsufficientPermission value),
+    @required Result unableToUpdate(_UnableToUpdate value),
+    @required Result imageLoadCanceled(_ImageLoadCanceled value),
+    @required Result networkException(_NetworkExcepiton value),
+  }) {
+    assert(unexpected != null);
+    assert(insufficientPermission != null);
+    assert(unableToUpdate != null);
+    assert(imageLoadCanceled != null);
+    assert(networkException != null);
+    return networkException(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result unexpected(_Unexpected value),
+    Result insufficientPermission(_InsufficientPermission value),
+    Result unableToUpdate(_UnableToUpdate value),
+    Result imageLoadCanceled(_ImageLoadCanceled value),
+    Result networkException(_NetworkExcepiton value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (networkException != null) {
+      return networkException(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NetworkExcepiton implements ItemCategoryFailure {
+  const factory _NetworkExcepiton() = _$_NetworkExcepiton;
 }

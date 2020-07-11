@@ -133,15 +133,23 @@ class __$InitializedCopyWithImpl<$Res>
   }
 }
 
-class _$_Initialized implements _Initialized {
+class _$_Initialized with DiagnosticableTreeMixin implements _Initialized {
   const _$_Initialized(this.initialOption) : assert(initialOption != null);
 
   @override
   final Option<ItemCategory> initialOption;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ItemCategoryFormEvent.initialized(initialOption: $initialOption)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ItemCategoryFormEvent.initialized'))
+      ..add(DiagnosticsProperty('initialOption', initialOption));
   }
 
   @override
@@ -271,15 +279,23 @@ class __$TitleChangedCopyWithImpl<$Res>
   }
 }
 
-class _$_TitleChanged implements _TitleChanged {
+class _$_TitleChanged with DiagnosticableTreeMixin implements _TitleChanged {
   const _$_TitleChanged(this.title) : assert(title != null);
 
   @override
   final String title;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ItemCategoryFormEvent.titleChanged(title: $title)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ItemCategoryFormEvent.titleChanged'))
+      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -407,15 +423,23 @@ class __$ColorChangedCopyWithImpl<$Res>
   }
 }
 
-class _$_ColorChanged implements _ColorChanged {
+class _$_ColorChanged with DiagnosticableTreeMixin implements _ColorChanged {
   const _$_ColorChanged(this.color) : assert(color != null);
 
   @override
   final Color color;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ItemCategoryFormEvent.colorChanged(color: $color)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ItemCategoryFormEvent.colorChanged'))
+      ..add(DiagnosticsProperty('color', color));
   }
 
   @override
@@ -543,15 +567,26 @@ class __$CoverImageChangedCopyWithImpl<$Res>
   }
 }
 
-class _$_CoverImageChanged implements _CoverImageChanged {
+class _$_CoverImageChanged
+    with DiagnosticableTreeMixin
+    implements _CoverImageChanged {
   const _$_CoverImageChanged(this.imageSource) : assert(imageSource != null);
 
   @override
   final ImageSource imageSource;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ItemCategoryFormEvent.coverImageChanged(imageSource: $imageSource)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'ItemCategoryFormEvent.coverImageChanged'))
+      ..add(DiagnosticsProperty('imageSource', imageSource));
   }
 
   @override
@@ -671,12 +706,22 @@ class __$CoverImageRemovedCopyWithImpl<$Res>
   _CoverImageRemoved get _value => super._value as _CoverImageRemoved;
 }
 
-class _$_CoverImageRemoved implements _CoverImageRemoved {
+class _$_CoverImageRemoved
+    with DiagnosticableTreeMixin
+    implements _CoverImageRemoved {
   const _$_CoverImageRemoved();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ItemCategoryFormEvent.coverImageRemoved()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'ItemCategoryFormEvent.coverImageRemoved'));
   }
 
   @override
@@ -781,12 +826,18 @@ class __$SavedCopyWithImpl<$Res>
   _Saved get _value => super._value as _Saved;
 }
 
-class _$_Saved implements _Saved {
+class _$_Saved with DiagnosticableTreeMixin implements _Saved {
   const _$_Saved();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ItemCategoryFormEvent.saved()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'ItemCategoryFormEvent.saved'));
   }
 
   @override
@@ -890,13 +941,16 @@ class _$ItemCategoryFormStateTearOff {
       @required
           bool isSaving,
       @required
-          bool isEditing}) {
+          bool isEditing,
+      @required
+          Option<File> temporaryImageFile}) {
     return _ItemCategoryFormState(
       category: category,
       showErrorMessages: showErrorMessages,
       categoryFailureOrSuccessOption: categoryFailureOrSuccessOption,
       isSaving: isSaving,
       isEditing: isEditing,
+      temporaryImageFile: temporaryImageFile,
     );
   }
 }
@@ -910,6 +964,7 @@ mixin _$ItemCategoryFormState {
   Option<Either<ItemCategoryFailure, Unit>> get categoryFailureOrSuccessOption;
   bool get isSaving;
   bool get isEditing;
+  Option<File> get temporaryImageFile;
 
   $ItemCategoryFormStateCopyWith<ItemCategoryFormState> get copyWith;
 }
@@ -923,7 +978,8 @@ abstract class $ItemCategoryFormStateCopyWith<$Res> {
       bool showErrorMessages,
       Option<Either<ItemCategoryFailure, Unit>> categoryFailureOrSuccessOption,
       bool isSaving,
-      bool isEditing});
+      bool isEditing,
+      Option<File> temporaryImageFile});
 
   $ItemCategoryCopyWith<$Res> get category;
 }
@@ -943,6 +999,7 @@ class _$ItemCategoryFormStateCopyWithImpl<$Res>
     Object categoryFailureOrSuccessOption = freezed,
     Object isSaving = freezed,
     Object isEditing = freezed,
+    Object temporaryImageFile = freezed,
   }) {
     return _then(_value.copyWith(
       category:
@@ -956,6 +1013,9 @@ class _$ItemCategoryFormStateCopyWithImpl<$Res>
               as Option<Either<ItemCategoryFailure, Unit>>,
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
+      temporaryImageFile: temporaryImageFile == freezed
+          ? _value.temporaryImageFile
+          : temporaryImageFile as Option<File>,
     ));
   }
 
@@ -981,7 +1041,8 @@ abstract class _$ItemCategoryFormStateCopyWith<$Res>
       bool showErrorMessages,
       Option<Either<ItemCategoryFailure, Unit>> categoryFailureOrSuccessOption,
       bool isSaving,
-      bool isEditing});
+      bool isEditing,
+      Option<File> temporaryImageFile});
 
   @override
   $ItemCategoryCopyWith<$Res> get category;
@@ -1004,6 +1065,7 @@ class __$ItemCategoryFormStateCopyWithImpl<$Res>
     Object categoryFailureOrSuccessOption = freezed,
     Object isSaving = freezed,
     Object isEditing = freezed,
+    Object temporaryImageFile = freezed,
   }) {
     return _then(_ItemCategoryFormState(
       category:
@@ -1017,22 +1079,29 @@ class __$ItemCategoryFormStateCopyWithImpl<$Res>
               as Option<Either<ItemCategoryFailure, Unit>>,
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
+      temporaryImageFile: temporaryImageFile == freezed
+          ? _value.temporaryImageFile
+          : temporaryImageFile as Option<File>,
     ));
   }
 }
 
-class _$_ItemCategoryFormState implements _ItemCategoryFormState {
+class _$_ItemCategoryFormState
+    with DiagnosticableTreeMixin
+    implements _ItemCategoryFormState {
   const _$_ItemCategoryFormState(
       {@required this.category,
       @required this.showErrorMessages,
       @required this.categoryFailureOrSuccessOption,
       @required this.isSaving,
-      @required this.isEditing})
+      @required this.isEditing,
+      @required this.temporaryImageFile})
       : assert(category != null),
         assert(showErrorMessages != null),
         assert(categoryFailureOrSuccessOption != null),
         assert(isSaving != null),
-        assert(isEditing != null);
+        assert(isEditing != null),
+        assert(temporaryImageFile != null);
 
   @override
   final ItemCategory category;
@@ -1045,10 +1114,26 @@ class _$_ItemCategoryFormState implements _ItemCategoryFormState {
   final bool isSaving;
   @override
   final bool isEditing;
+  @override
+  final Option<File> temporaryImageFile;
 
   @override
-  String toString() {
-    return 'ItemCategoryFormState(category: $category, showErrorMessages: $showErrorMessages, categoryFailureOrSuccessOption: $categoryFailureOrSuccessOption, isSaving: $isSaving, isEditing: $isEditing)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ItemCategoryFormState(category: $category, showErrorMessages: $showErrorMessages, categoryFailureOrSuccessOption: $categoryFailureOrSuccessOption, isSaving: $isSaving, isEditing: $isEditing, temporaryImageFile: $temporaryImageFile)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ItemCategoryFormState'))
+      ..add(DiagnosticsProperty('category', category))
+      ..add(DiagnosticsProperty('showErrorMessages', showErrorMessages))
+      ..add(DiagnosticsProperty(
+          'categoryFailureOrSuccessOption', categoryFailureOrSuccessOption))
+      ..add(DiagnosticsProperty('isSaving', isSaving))
+      ..add(DiagnosticsProperty('isEditing', isEditing))
+      ..add(DiagnosticsProperty('temporaryImageFile', temporaryImageFile));
   }
 
   @override
@@ -1071,7 +1156,10 @@ class _$_ItemCategoryFormState implements _ItemCategoryFormState {
                     .equals(other.isSaving, isSaving)) &&
             (identical(other.isEditing, isEditing) ||
                 const DeepCollectionEquality()
-                    .equals(other.isEditing, isEditing)));
+                    .equals(other.isEditing, isEditing)) &&
+            (identical(other.temporaryImageFile, temporaryImageFile) ||
+                const DeepCollectionEquality()
+                    .equals(other.temporaryImageFile, temporaryImageFile)));
   }
 
   @override
@@ -1081,7 +1169,8 @@ class _$_ItemCategoryFormState implements _ItemCategoryFormState {
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(categoryFailureOrSuccessOption) ^
       const DeepCollectionEquality().hash(isSaving) ^
-      const DeepCollectionEquality().hash(isEditing);
+      const DeepCollectionEquality().hash(isEditing) ^
+      const DeepCollectionEquality().hash(temporaryImageFile);
 
   @override
   _$ItemCategoryFormStateCopyWith<_ItemCategoryFormState> get copyWith =>
@@ -1101,7 +1190,9 @@ abstract class _ItemCategoryFormState implements ItemCategoryFormState {
       @required
           bool isSaving,
       @required
-          bool isEditing}) = _$_ItemCategoryFormState;
+          bool isEditing,
+      @required
+          Option<File> temporaryImageFile}) = _$_ItemCategoryFormState;
 
   @override
   ItemCategory get category;
@@ -1113,6 +1204,8 @@ abstract class _ItemCategoryFormState implements ItemCategoryFormState {
   bool get isSaving;
   @override
   bool get isEditing;
+  @override
+  Option<File> get temporaryImageFile;
   @override
   _$ItemCategoryFormStateCopyWith<_ItemCategoryFormState> get copyWith;
 }

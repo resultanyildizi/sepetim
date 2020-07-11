@@ -6,3 +6,4 @@ analyzer:
     missing_required_param: error
     must_be_immutable: error
     sort_unnamed_constructors_first: ignore
+    prefer_interpolation_to_compose_strings: ignore

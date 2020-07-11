@@ -9,4 +9,5 @@ abstract class ItemCategoryFailure with _$ItemCategoryFailure {
       _InsufficientPermission;
   const factory ItemCategoryFailure.unableToUpdate() = _UnableToUpdate;
   const factory ItemCategoryFailure.imageLoadCanceled() = _ImageLoadCanceled;
+  const factory ItemCategoryFailure.networkException() = _NetworkExcepiton;
 }

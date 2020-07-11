@@ -1,5 +1,6 @@
 import 'package:Sepetim/domain/auth/auth_failure.dart';
 import 'package:Sepetim/domain/auth/i_auth_facade.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:Sepetim/domain/auth/value_objects.dart';
 import 'package:Sepetim/domain/auth/user.dart';
@@ -28,6 +29,12 @@ class FirebaseAuthFacade extends IAuthFacade {
     @required EmailAddress emailAddress,
     @required Password password,
   }) async {
+    final connectivityResult = await Connectivity().checkConnectivity();
+
+    if (connectivityResult != ConnectivityResult.mobile &&
+        connectivityResult != ConnectivityResult.wifi) {
+      return left(const AuthFailure.networkException());
+    }
     final emailAddressString = emailAddress.getOrCrash();
     final passwordString = password.getOrCrash();
 
@@ -51,6 +58,13 @@ class FirebaseAuthFacade extends IAuthFacade {
   @override
   Future<Either<AuthFailure, Unit>> signInAnonymously() async {
     try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const AuthFailure.networkException());
+      }
+
       await _firebaseAuth.signInAnonymously();
       return right(unit);
     } on PlatformException catch (e) {
@@ -71,6 +85,12 @@ class FirebaseAuthFacade extends IAuthFacade {
     final passwordString = password.getOrCrash();
 
     try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const AuthFailure.networkException());
+      }
       await _firebaseAuth.signInWithEmailAndPassword(
         email: emailAddressString,
         password: passwordString,
@@ -92,6 +112,12 @@ class FirebaseAuthFacade extends IAuthFacade {
   @override
   Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
     try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const AuthFailure.networkException());
+      }
       final googleUser = await _googleSignIn.signIn();
 
       if (googleUser == null) {

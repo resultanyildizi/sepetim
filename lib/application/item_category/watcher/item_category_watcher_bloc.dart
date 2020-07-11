@@ -43,11 +43,13 @@ class ItemCategoryWatcherBloc
                 .categoriesReceived(failureOrCategories)));
       },
       watchAllByTitleStarted: (e) async* {
-        if (e.title.trim() == null || e.title.trim() == '') {
+        //* Not sure if it's working
+        /*if (e.title.trim() == null || e.title.trim() == '') {
           add(ItemCategoryWatcherEvent.watchAllStarted(e.orderType));
-        }
+        }*/
 
         yield const ItemCategoryWatcherState.loadInProgress();
+
         await _categoryStreamSubscription?.cancel();
         _categoryStreamSubscription = _categoryRepository
             .watchAllByTitle(e.orderType, e.title)

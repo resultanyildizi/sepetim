@@ -3,7 +3,9 @@ import 'package:Sepetim/domain/item_category/i_category_repository.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_category/item_category_failure.dart';
 import 'package:Sepetim/infrastructure/item_category/item_category_dtos.dart';
+import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +37,12 @@ class ItemCategoryRepository implements IItemCategoryRepository {
   Future<Either<ItemCategoryFailure, Unit>> create(
       ItemCategory category) async {
     try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const ItemCategoryFailure.networkException());
+      }
       final userDoc = await _firestore.userDocument();
       final categoryDto = ItemCategoryDto.fromDomain(category);
 
@@ -55,6 +63,13 @@ class ItemCategoryRepository implements IItemCategoryRepository {
   Future<Either<ItemCategoryFailure, Unit>> update(
       ItemCategory category) async {
     try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const ItemCategoryFailure.networkException());
+      }
+
       final userDoc = await _firestore.userDocument();
       final categoryDto = ItemCategoryDto.fromDomain(category);
 
@@ -77,11 +92,24 @@ class ItemCategoryRepository implements IItemCategoryRepository {
   Future<Either<ItemCategoryFailure, Unit>> delete(
       ItemCategory category) async {
     try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const ItemCategoryFailure.networkException());
+      }
       final userDoc = await _firestore.userDocument();
       final categoryUid = category.uid.getOrCrash();
 
       await userDoc.categoryCollection.document(categoryUid).delete();
-      return right(unit);
+
+      final removeFailureOrSuccess =
+          await removeCoverPictureFromServer(category);
+
+      return removeFailureOrSuccess.fold(
+        (f) => left(f),
+        (_) => right(unit),
+      );
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemCategoryFailure.insufficientPermission());
@@ -93,7 +121,6 @@ class ItemCategoryRepository implements IItemCategoryRepository {
     }
   }
 
-  // TODO: try to translate 'crop image' text
   @override
   Future<Either<ItemCategoryFailure, File>> loadCoverPictureFromDevice(
       ImageSource imageSource) async {
@@ -112,8 +139,9 @@ class ItemCategoryRepository implements IItemCategoryRepository {
           aspectRatioPresets: [
             CropAspectRatioPreset.square,
           ],
+          compressQuality: 15,
           androidUiSettings: AndroidUiSettings(
-            toolbarTitle: 'Crop Image',
+            toolbarTitle: 'Sepetim',
             toolbarColor: sepetimYellow,
             toolbarWidgetColor: sepetimGrey,
             cropFrameColor: Colors.transparent,
@@ -136,11 +164,16 @@ class ItemCategoryRepository implements IItemCategoryRepository {
     }
   }
 
-  // TODO: handle network errors and other errors specifically
   @override
   Future<Either<ItemCategoryFailure, ImageUrl>> loadCoverPictureToServer(
       ItemCategory category, File imageFile) async {
     try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const ItemCategoryFailure.networkException());
+      }
       final userStorage = await _firebaseStorage.userStorage();
       final categoryUid = category.uid.getOrCrash();
 
@@ -148,21 +181,27 @@ class ItemCategoryRepository implements IItemCategoryRepository {
           .child(categoryUid + extension(imageFile.path));
 
       final uploadTask = coverImageStorage.putFile(imageFile);
+
       await uploadTask.onComplete;
+
       final coverImageDownloadUrl = await coverImageStorage.getDownloadURL();
 
       return right(ImageUrl(coverImageDownloadUrl.toString()));
-    } catch (e) {
-      print(e.message);
+    } on PlatformException catch (e) {
       return left(const ItemCategoryFailure.unexpected());
     }
   }
 
-  // TODO: handle network errors and other errors specifically
   @override
   Future<Either<ItemCategoryFailure, ImageUrl>> removeCoverPictureFromServer(
       ItemCategory category) async {
     try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const ItemCategoryFailure.networkException());
+      }
       final categoryCoverImageUrl = category.coverImageUrl.getOrCrash();
       if (categoryCoverImageUrl != ImageUrl.defaultUrl().getOrCrash()) {
         final coverImageStorage =
@@ -171,6 +210,31 @@ class ItemCategoryRepository implements IItemCategoryRepository {
         await coverImageStorage.delete();
       }
       return right(ImageUrl.defaultUrl());
+    } catch (e) {
+      return left(const ItemCategoryFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<ItemCategoryFailure, NotNegativeIntegerNumber>> getGroupCount(
+      ItemCategory category) async {
+    try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const ItemCategoryFailure.networkException());
+      }
+      final userDoc = await _firestore.userDocument();
+      final categoryUid = category.uid.getOrCrash();
+
+      final groupCount = await userDoc.categoryCollection
+          .document(categoryUid)
+          .groupCollection
+          .getDocuments()
+          .then((snapshot) => snapshot.documents.length);
+
+      return right(NotNegativeIntegerNumber(groupCount));
     } catch (e) {
       return left(const ItemCategoryFailure.unexpected());
     }
@@ -186,7 +250,9 @@ class ItemCategoryRepository implements IItemCategoryRepository {
     switch (orderType) {
       case OrderType.date:
         {
-          orderedCategorySnapshots = userDoc.categoryCollection.snapshots();
+          orderedCategorySnapshots = userDoc.categoryCollection
+              .orderBy('serverTimeStamp', descending: true)
+              .snapshots();
           break;
         }
       case OrderType.title:

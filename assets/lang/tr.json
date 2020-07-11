@@ -39,5 +39,12 @@
     "cover_picture": "Kategori Resmi",
     "empty_title": "Başlık boş olamaz",
     "title_exceeding_length": "Başlık 50 karakterden fazla olamaz",
-    "title_multiline": "Başlık birden fazla satır içeremez"
+    "title_multiline": "Başlık birden fazla satır içeremez",
+    "delete_category_title": "Kategoriyi sil",
+    "delete_category_message": "Kategoriyi silmek istediğinizden emin misiniz? Gruplar ve ürünler de birlikte silinecektir. Bu işlem geri alınamaz.",
+    "delete": "Sil",
+    "cancel": "İptal",
+    "please_report": "Beklenmedik bir hata oluştu. Lütfen tanyildizi.resul@gmail.com adresine mail göndererek bildirin",
+    "search_for_category": "Bir kategori arayın",
+    "categories": "Kategoriler"
 }

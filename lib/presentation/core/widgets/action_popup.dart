@@ -4,12 +4,14 @@ Future actionPopup(
   BuildContext context, {
   Widget title,
   Widget content,
+  Color backgroundColor,
   List<Widget> actions,
 }) {
   return showDialog(
     context: context,
     barrierDismissible: true,
     builder: (BuildContext context) => AlertDialog(
+      backgroundColor: backgroundColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),

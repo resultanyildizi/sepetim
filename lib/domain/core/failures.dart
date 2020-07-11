@@ -42,4 +42,8 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.invalidPrice({
     @required T failedValue,
   }) = InvalidPrice<T>;
+
+  const factory ValueFailure.invalidNumberSign({
+    @required T failedValue,
+  }) = InvalidNumberSign<T>;
 }

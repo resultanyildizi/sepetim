@@ -9,7 +9,7 @@ TextStyle robotoTextStyle({
   return TextStyle(
     fontSize: fontSize,
     fontWeight: bold ? FontWeight.bold : FontWeight.normal,
-    color: app_colors.sepetimGrey,
+    color: color,
   );
 }
 

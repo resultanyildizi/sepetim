@@ -11,7 +11,7 @@ import 'package:Sepetim/presentation/splash/splash_page.dart';
 import 'package:Sepetim/presentation/sign_in/sign_in_page.dart';
 import 'package:Sepetim/presentation/sign_in/verify_anonymous_login_page.dart';
 import 'package:Sepetim/presentation/application_content/application_content_page.dart';
-import 'package:Sepetim/presentation/item_category_form/item_category_form.dart';
+import 'package:Sepetim/presentation/item_category/form/item_category_form.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 
 abstract class Routes {
@@ -51,12 +51,9 @@ class Router extends RouterBase {
           return misTypedArgsRoute<SignInPageArguments>(args);
         }
         final typedArgs = args as SignInPageArguments ?? SignInPageArguments();
-        return PageRouteBuilder<dynamic>(
-          pageBuilder: (context, animation, secondaryAnimation) =>
-              SignInPage(key: typedArgs.key),
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => SignInPage(key: typedArgs.key),
           settings: settings,
-          transitionsBuilder: TransitionsBuilders.fadeIn,
-          transitionDuration: const Duration(milliseconds: 500),
         );
       case Routes.verifyAnonymousLoginPage:
         if (hasInvalidArgs<VerifyAnonymousLoginPageArguments>(args)) {
@@ -74,12 +71,9 @@ class Router extends RouterBase {
         }
         final typedArgs = args as ApplicationContentPageArguments ??
             ApplicationContentPageArguments();
-        return PageRouteBuilder<dynamic>(
-          pageBuilder: (context, animation, secondaryAnimation) =>
-              ApplicationContentPage(key: typedArgs.key),
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => ApplicationContentPage(key: typedArgs.key),
           settings: settings,
-          transitionsBuilder: TransitionsBuilders.fadeIn,
-          transitionDuration: const Duration(milliseconds: 500),
         );
       case Routes.itemCategoryForm:
         if (hasInvalidArgs<ItemCategoryFormArguments>(args)) {

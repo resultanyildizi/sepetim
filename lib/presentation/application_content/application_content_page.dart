@@ -33,6 +33,7 @@ class ApplicationContentPage extends StatelessWidget {
           child: BlocBuilder<BottomNavbarBloc, BottomNavbarState>(
             builder: (context, state) {
               return Scaffold(
+                resizeToAvoidBottomPadding: false,
                 body: contentTabs[state.selectedIndex],
                 bottomNavigationBar: BottomNavigationBar(
                   elevation: 5.0,

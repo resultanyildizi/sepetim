@@ -11,6 +11,8 @@ _$_ItemCategoryDto _$_$_ItemCategoryDtoFromJson(Map<String, dynamic> json) {
     title: json['title'] as String,
     color: json['color'] as int,
     coverImageUrl: json['coverImageUrl'] as String,
+    serverTimeStamp:
+        const ServerTimeStampConverter().fromJson(json['serverTimeStamp']),
   );
 }
 
@@ -19,4 +21,6 @@ Map<String, dynamic> _$_$_ItemCategoryDtoToJson(_$_ItemCategoryDto instance) =>
       'title': instance.title,
       'color': instance.color,
       'coverImageUrl': instance.coverImageUrl,
+      'serverTimeStamp':
+          const ServerTimeStampConverter().toJson(instance.serverTimeStamp),
     };

@@ -10,6 +10,7 @@ abstract class ItemCategoryFormState with _$ItemCategoryFormState {
             categoryFailureOrSuccessOption,
     @required bool isSaving,
     @required bool isEditing,
+    @required Option<File> temporaryImageFile,
   }) = _ItemCategoryFormState;
 
   factory ItemCategoryFormState.initial() => ItemCategoryFormState(
@@ -18,5 +19,6 @@ abstract class ItemCategoryFormState with _$ItemCategoryFormState {
         isEditing: false,
         isSaving: false,
         categoryFailureOrSuccessOption: none(),
+        temporaryImageFile: none(),
       );
 }

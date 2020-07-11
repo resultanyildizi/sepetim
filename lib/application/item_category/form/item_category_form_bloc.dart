@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:Sepetim/domain/core/value_objects.dart';
@@ -8,6 +9,8 @@ import 'package:Sepetim/domain/item_category/item_category_failure.dart';
 import 'package:Sepetim/domain/item_category/value_objects.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
@@ -62,25 +65,13 @@ class ItemCategoryFormBloc
         final failureOrImageFile =
             await _categoryRepository.loadCoverPictureFromDevice(e.imageSource);
 
-        yield await failureOrImageFile.fold(
+        yield failureOrImageFile.fold(
           (f) => state.copyWith(
-            categoryFailureOrSuccessOption: some(left(f)),
+            temporaryImageFile: none(),
           ),
-          (imageFile) async {
-            final serverFailureOrLoadedImageUrl = await _categoryRepository
-                .loadCoverPictureToServer(state.category, imageFile);
-            return serverFailureOrLoadedImageUrl.fold(
-              (f) => state.copyWith(
-                categoryFailureOrSuccessOption: some(left(f)),
-              ),
-              (imageUrl) => state.copyWith(
-                category: state.category.copyWith(
-                  coverImageUrl: imageUrl,
-                ),
-                categoryFailureOrSuccessOption: none(),
-              ),
-            );
-          },
+          (imageFile) => state.copyWith(
+            temporaryImageFile: some(imageFile),
+          ),
         );
       },
       coverImageRemoved: (e) async* {
@@ -96,21 +87,36 @@ class ItemCategoryFormBloc
               coverImageUrl: imageUrl,
             ),
             categoryFailureOrSuccessOption: none(),
+            temporaryImageFile: none(),
           ),
         );
       },
       saved: (e) async* {
         Either<ItemCategoryFailure, Unit> failureOrSuccess;
+        ImageUrl categoryImageUrl = state.category.coverImageUrl;
 
         yield state.copyWith(
           isSaving: true,
           categoryFailureOrSuccessOption: none(),
         );
 
+        if (state.temporaryImageFile.isSome()) {
+          final serverFailureOrLoadedImageUrl =
+              await _categoryRepository.loadCoverPictureToServer(state.category,
+                  state.temporaryImageFile.getOrElse(() => null));
+          serverFailureOrLoadedImageUrl.fold((f) {
+            failureOrSuccess = left(f);
+          }, (imageUrl) {
+            categoryImageUrl = imageUrl;
+          });
+        }
+
         if (state.category.failureOption.isNone()) {
           failureOrSuccess = state.isEditing
-              ? await _categoryRepository.update(state.category)
-              : await _categoryRepository.create(state.category);
+              ? await _categoryRepository.update(
+                  state.category.copyWith(coverImageUrl: categoryImageUrl))
+              : await _categoryRepository.create(
+                  state.category.copyWith(coverImageUrl: categoryImageUrl));
         }
 
         yield state.copyWith(

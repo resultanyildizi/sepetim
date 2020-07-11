@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/domain/item_category/i_category_repository.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_category/item_category_failure.dart';
@@ -27,13 +28,11 @@ class ItemCategoryActorBloc
   Stream<ItemCategoryActorState> mapEventToState(
     ItemCategoryActorEvent event,
   ) async* {
-    yield* event.map(deleted: (e) async* {
-      yield const ItemCategoryActorState.actionInProgress();
-      final possibleFailure = await categoryRepository.delete(e.category);
-      yield possibleFailure.fold(
-        (f) => ItemCategoryActorState.deleteFailure(f),
-        (_) => const ItemCategoryActorState.deleteSuccess(),
-      );
-    });
+    yield const ItemCategoryActorState.actionInProgress();
+    final possibleFailure = await categoryRepository.delete(event.category);
+    yield possibleFailure.fold(
+      (f) => ItemCategoryActorState.deleteFailure(f),
+      (_) => const ItemCategoryActorState.deleteSuccess(),
+    );
   }
 }

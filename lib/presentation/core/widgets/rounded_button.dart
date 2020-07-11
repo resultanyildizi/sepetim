@@ -1,18 +1,20 @@
-import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:flutter/material.dart';
 
 import 'package:Sepetim/predefined_variables/colors.dart' as app_colors;
+import 'package:Sepetim/predefined_variables/text_styles.dart';
 
 class RoundedButton extends StatelessWidget {
   final double width;
   final double height;
   final String text;
+  final Color backgroundColor;
   final void Function() onPressed;
 
   const RoundedButton({
     Key key,
     this.width,
     this.height,
+    this.backgroundColor,
     @required this.text,
     @required this.onPressed,
   }) : super(key: key);
@@ -23,7 +25,7 @@ class RoundedButton extends StatelessWidget {
       width: width,
       height: height,
       child: RaisedButton(
-        color: app_colors.sepetimYellow,
+        color: backgroundColor ?? app_colors.sepetimYellow,
         elevation: 4.0,
         onPressed: onPressed,
         child: text != null

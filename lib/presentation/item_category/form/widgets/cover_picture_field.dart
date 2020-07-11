@@ -1,7 +1,7 @@
 import 'package:Sepetim/application/item_category/form/item_category_form_bloc.dart';
-import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -19,17 +19,28 @@ class CoverPictureField extends StatelessWidget {
             context,
             scalarSmall: 0.2,
             scalarMedium: 0.2,
-            scalarBig: 0.3,
+            scalarBig: 0.2,
           ),
           child: Row(
             children: [
               ClipOval(
-                child: Image.network(
-                  state.category.coverImageUrl.getOrCrash(),
-                  width: screenWidthByScalar(context, 0.3),
-                  height: screenWidthByScalar(context, 0.3),
-                  fit: BoxFit.cover,
-                ),
+                child: state.temporaryImageFile.fold(
+                    () => CachedNetworkImage(
+                          errorWidget: (context, url, error) =>
+                              Image.asset('assets/images/default.png'),
+                          imageUrl: state.category.coverImageUrl.getOrCrash(),
+                          width: screenWidthByScalar(context, 0.3),
+                          height: screenWidthByScalar(context, 0.3),
+                          fit: BoxFit.cover,
+                          fadeOutDuration: const Duration(seconds: 0),
+                          fadeInDuration: const Duration(seconds: 0),
+                        ),
+                    (imageFile) => Image.file(
+                          imageFile,
+                          width: screenWidthByScalar(context, 0.3),
+                          height: screenWidthByScalar(context, 0.3),
+                          fit: BoxFit.cover,
+                        )),
               ),
               Expanded(
                 child: Column(

@@ -19,12 +19,14 @@ class _$ItemCategoryDtoTearOff {
       {@JsonKey(ignore: true) String uid,
       @required String title,
       @required int color,
-      @required String coverImageUrl}) {
+      @required String coverImageUrl,
+      @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) {
     return _ItemCategoryDto(
       uid: uid,
       title: title,
       color: color,
       coverImageUrl: coverImageUrl,
+      serverTimeStamp: serverTimeStamp,
     );
   }
 }
@@ -38,6 +40,8 @@ mixin _$ItemCategoryDto {
   String get title;
   int get color;
   String get coverImageUrl;
+  @ServerTimeStampConverter()
+  FieldValue get serverTimeStamp;
 
   Map<String, dynamic> toJson();
   $ItemCategoryDtoCopyWith<ItemCategoryDto> get copyWith;
@@ -51,7 +55,8 @@ abstract class $ItemCategoryDtoCopyWith<$Res> {
       {@JsonKey(ignore: true) String uid,
       String title,
       int color,
-      String coverImageUrl});
+      String coverImageUrl,
+      @ServerTimeStampConverter() FieldValue serverTimeStamp});
 }
 
 class _$ItemCategoryDtoCopyWithImpl<$Res>
@@ -68,6 +73,7 @@ class _$ItemCategoryDtoCopyWithImpl<$Res>
     Object title = freezed,
     Object color = freezed,
     Object coverImageUrl = freezed,
+    Object serverTimeStamp = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed ? _value.uid : uid as String,
@@ -76,6 +82,9 @@ class _$ItemCategoryDtoCopyWithImpl<$Res>
       coverImageUrl: coverImageUrl == freezed
           ? _value.coverImageUrl
           : coverImageUrl as String,
+      serverTimeStamp: serverTimeStamp == freezed
+          ? _value.serverTimeStamp
+          : serverTimeStamp as FieldValue,
     ));
   }
 }
@@ -90,7 +99,8 @@ abstract class _$ItemCategoryDtoCopyWith<$Res>
       {@JsonKey(ignore: true) String uid,
       String title,
       int color,
-      String coverImageUrl});
+      String coverImageUrl,
+      @ServerTimeStampConverter() FieldValue serverTimeStamp});
 }
 
 class __$ItemCategoryDtoCopyWithImpl<$Res>
@@ -109,6 +119,7 @@ class __$ItemCategoryDtoCopyWithImpl<$Res>
     Object title = freezed,
     Object color = freezed,
     Object coverImageUrl = freezed,
+    Object serverTimeStamp = freezed,
   }) {
     return _then(_ItemCategoryDto(
       uid: uid == freezed ? _value.uid : uid as String,
@@ -117,6 +128,9 @@ class __$ItemCategoryDtoCopyWithImpl<$Res>
       coverImageUrl: coverImageUrl == freezed
           ? _value.coverImageUrl
           : coverImageUrl as String,
+      serverTimeStamp: serverTimeStamp == freezed
+          ? _value.serverTimeStamp
+          : serverTimeStamp as FieldValue,
     ));
   }
 }
@@ -127,10 +141,12 @@ class _$_ItemCategoryDto extends _ItemCategoryDto {
       {@JsonKey(ignore: true) this.uid,
       @required this.title,
       @required this.color,
-      @required this.coverImageUrl})
+      @required this.coverImageUrl,
+      @required @ServerTimeStampConverter() this.serverTimeStamp})
       : assert(title != null),
         assert(color != null),
         assert(coverImageUrl != null),
+        assert(serverTimeStamp != null),
         super._();
 
   factory _$_ItemCategoryDto.fromJson(Map<String, dynamic> json) =>
@@ -145,10 +161,13 @@ class _$_ItemCategoryDto extends _ItemCategoryDto {
   final int color;
   @override
   final String coverImageUrl;
+  @override
+  @ServerTimeStampConverter()
+  final FieldValue serverTimeStamp;
 
   @override
   String toString() {
-    return 'ItemCategoryDto(uid: $uid, title: $title, color: $color, coverImageUrl: $coverImageUrl)';
+    return 'ItemCategoryDto(uid: $uid, title: $title, color: $color, coverImageUrl: $coverImageUrl, serverTimeStamp: $serverTimeStamp)';
   }
 
   @override
@@ -163,7 +182,10 @@ class _$_ItemCategoryDto extends _ItemCategoryDto {
                 const DeepCollectionEquality().equals(other.color, color)) &&
             (identical(other.coverImageUrl, coverImageUrl) ||
                 const DeepCollectionEquality()
-                    .equals(other.coverImageUrl, coverImageUrl)));
+                    .equals(other.coverImageUrl, coverImageUrl)) &&
+            (identical(other.serverTimeStamp, serverTimeStamp) ||
+                const DeepCollectionEquality()
+                    .equals(other.serverTimeStamp, serverTimeStamp)));
   }
 
   @override
@@ -172,7 +194,8 @@ class _$_ItemCategoryDto extends _ItemCategoryDto {
       const DeepCollectionEquality().hash(uid) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(color) ^
-      const DeepCollectionEquality().hash(coverImageUrl);
+      const DeepCollectionEquality().hash(coverImageUrl) ^
+      const DeepCollectionEquality().hash(serverTimeStamp);
 
   @override
   _$ItemCategoryDtoCopyWith<_ItemCategoryDto> get copyWith =>
@@ -187,10 +210,12 @@ class _$_ItemCategoryDto extends _ItemCategoryDto {
 abstract class _ItemCategoryDto extends ItemCategoryDto {
   const _ItemCategoryDto._() : super._();
   const factory _ItemCategoryDto(
-      {@JsonKey(ignore: true) String uid,
-      @required String title,
-      @required int color,
-      @required String coverImageUrl}) = _$_ItemCategoryDto;
+          {@JsonKey(ignore: true) String uid,
+          @required String title,
+          @required int color,
+          @required String coverImageUrl,
+          @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) =
+      _$_ItemCategoryDto;
 
   factory _ItemCategoryDto.fromJson(Map<String, dynamic> json) =
       _$_ItemCategoryDto.fromJson;
@@ -204,6 +229,9 @@ abstract class _ItemCategoryDto extends ItemCategoryDto {
   int get color;
   @override
   String get coverImageUrl;
+  @override
+  @ServerTimeStampConverter()
+  FieldValue get serverTimeStamp;
   @override
   _$ItemCategoryDtoCopyWith<_ItemCategoryDto> get copyWith;
 }

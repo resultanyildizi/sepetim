@@ -61,6 +61,18 @@ class ImageUrl extends ValueObject<String> {
   const ImageUrl._(this.value);
 }
 
+class NotNegativeIntegerNumber extends ValueObject<int> {
+  @override
+  final Either<ValueFailure<int>, int> value;
+
+  factory NotNegativeIntegerNumber(int input) {
+    assert(input != null);
+    return NotNegativeIntegerNumber._(validateNotNegativeNumber(input));
+  }
+
+  const NotNegativeIntegerNumber._(this.value);
+}
+
 class List3<T> extends ValueObject<KtList<T>> {
   @override
   final Either<ValueFailure<KtList<T>>, KtList<T>> value;

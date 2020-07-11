@@ -39,5 +39,12 @@
     "cover_picture": "Cover Picture",
     "empty_title": "Title can't be empty",
     "title_exceeding_length": "Title can't be longer than 50 characters",
-    "title_multiline": "Title can't include more than a line"
+    "title_multiline": "Title can't include more than a line",
+    "delete_category_title": "Delete category",
+    "delete_category_message": "Are you sure to delete this category? It's groups and items will be deleted as well. This action can't be undone.",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "please_report": "Unexpected error has occured. Please report us by sending email to tanyildizi.resul@gmail.com",
+    "search_for_category": "Search for a category",
+    "categories": "Categories"
 }

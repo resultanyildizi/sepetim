@@ -5,12 +5,13 @@ import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
-import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
-import 'package:Sepetim/presentation/item_category_form/widgets/color_fields.dart';
-import 'package:Sepetim/presentation/item_category_form/widgets/cover_picture_field.dart';
-import 'package:Sepetim/presentation/item_category_form/widgets/save_button.dart';
-import 'package:Sepetim/presentation/item_category_form/widgets/text_fields.dart';
+import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
+import 'package:Sepetim/presentation/item_category/form/widgets/color_fields.dart';
+import 'package:Sepetim/presentation/item_category/form/widgets/cover_picture_field.dart';
+import 'package:Sepetim/presentation/item_category/form/widgets/save_button.dart';
+import 'package:Sepetim/presentation/item_category/form/widgets/text_fields.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
+import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
@@ -48,16 +49,20 @@ class ItemCategoryForm extends StatelessWidget {
                 either.fold(
                   (failure) {
                     failure.map(
-                        unexpected: (_) {
-                          print('unexpected');
-                        },
-                        insufficientPermission: (_) {
-                          print('insufficient permission');
-                        },
-                        unableToUpdate: (_) {
-                          print('unable to update');
-                        },
-                        imageLoadCanceled: (_) {});
+                      unexpected: (_) {
+                        serverErrorPopup(context);
+                      },
+                      insufficientPermission: (_) {
+                        serverErrorPopup(context);
+                      },
+                      unableToUpdate: (_) {
+                        serverErrorPopup(context);
+                      },
+                      networkException: (_) {
+                        networkExceptionPopup(context);
+                      },
+                      imageLoadCanceled: (_) {},
+                    );
                   },
                   (_) {
                     ExtendedNavigator.of(context).popUntil((route) =>
@@ -103,13 +108,21 @@ class ItemCategoryForm extends StatelessWidget {
                       translate(context, 'colors'),
                       style: didactGothicTextStyle(bold: false, fontSize: 18.0),
                     ),
+                    SizedBox(
+                      height: screenHeightByScalar(
+                        context,
+                        scalarSmall: 0.02,
+                        scalarMedium: 0.02,
+                        scalarBig: 0.02,
+                      ),
+                    ),
                     const ColorPickerField(),
                     SizedBox(
                       height: screenHeightByScalar(
                         context,
                         scalarSmall: 0.02,
                         scalarMedium: 0.02,
-                        scalarBig: 0.2,
+                        scalarBig: 0.02,
                       ),
                     ),
                     Text(
@@ -121,6 +134,9 @@ class ItemCategoryForm extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
+                          if (state.isSaving) ...[
+                            SmallCircularProgressIndicator()
+                          ],
                           const DividerDefault(),
                           SaveButton(),
                         ],
