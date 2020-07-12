@@ -28,14 +28,26 @@ class ItemCategorySubcollectionBloc extends Bloc<ItemCategorySubcollectionEvent,
   Stream<ItemCategorySubcollectionState> mapEventToState(
     ItemCategorySubcollectionEvent event,
   ) async* {
-    final possibleFailure =
+    final failureOrGroupCount =
         await _categoryRepository.getGroupCount(event.category);
 
-    final groupCount = possibleFailure.fold(
+    final groupCount = failureOrGroupCount.fold(
       (f) => NotNegativeIntegerNumber(0),
       (number) => number,
     );
 
-    yield state.copyWith(groupCount: groupCount);
+    NotNegativeIntegerNumber itemCount;
+
+    if (groupCount.getOrCrash() > 0) {
+      final failureOrItemCount =
+          await _categoryRepository.getItemCount(event.category);
+
+      itemCount = failureOrItemCount.fold(
+          (f) => NotNegativeIntegerNumber(0), (number) => number);
+    } else {
+      itemCount = NotNegativeIntegerNumber(0);
+    }
+
+    yield state.copyWith(groupCount: groupCount, itemCount: itemCount);
   }
 }

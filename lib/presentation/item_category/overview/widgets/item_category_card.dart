@@ -112,7 +112,7 @@ class ItemCategoryCard extends StatelessWidget {
                                     robotoTextStyle(fontSize: 10.0, bold: true),
                               ),
                               Text(
-                                'Items count: 0',
+                                'Items count: ${state.itemCount.getOrCrash()}',
                                 style:
                                     robotoTextStyle(fontSize: 10.0, bold: true),
                               ),
