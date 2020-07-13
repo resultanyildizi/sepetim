@@ -50,7 +50,18 @@ class ItemCategoryOverviewPage extends StatelessWidget {
               ),
               body: DefaultPadding(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    SearchField(
+                      controller: _controller,
+                    ),
+                    const SizedBox(
+                      height: 12.0,
+                    ),
+                    Text(
+                      translate(context, 'categories'),
+                      style: robotoTextStyle(bold: true, fontSize: 20.0),
+                    ),
                     Expanded(
                       child: Center(child: Container()),
                     ),
@@ -62,7 +73,13 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                 onPressed: () {},
               ),
             ),
-            loadInProgress: (_) {
+            loadInProgress: (loadProgress) {
+              Widget loadWidget;
+              if (loadProgress.isSearching) {
+                loadWidget = const Center();
+              } else {
+                loadWidget = SmallCircularProgressIndicator();
+              }
               return Scaffold(
                 resizeToAvoidBottomPadding: false,
                 appBar: AppBar(
@@ -73,9 +90,20 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                 ),
                 body: DefaultPadding(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      SearchField(
+                        controller: _controller,
+                      ),
+                      const SizedBox(
+                        height: 12.0,
+                      ),
+                      Text(
+                        translate(context, 'categories'),
+                        style: robotoTextStyle(bold: true, fontSize: 20.0),
+                      ),
                       Expanded(
-                        child: Center(child: SmallCircularProgressIndicator()),
+                        child: Center(child: loadWidget),
                       ),
                     ],
                   ),
@@ -99,6 +127,12 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      SearchField(
+                        controller: _controller,
+                      ),
+                      const SizedBox(
+                        height: 12.0,
+                      ),
                       Text(
                         translate(context, 'categories'),
                         style: robotoTextStyle(bold: true, fontSize: 20.0),

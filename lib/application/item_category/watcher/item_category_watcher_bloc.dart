@@ -35,7 +35,7 @@ class ItemCategoryWatcherBloc
   ) async* {
     yield* event.map(
       watchAllStarted: (e) async* {
-        yield const ItemCategoryWatcherState.loadInProgress();
+        yield const ItemCategoryWatcherState.loadInProgress(isSearching: false);
         await _categoryStreamSubscription?.cancel();
         _categoryStreamSubscription = _categoryRepository
             .watchAll(e.orderType)
@@ -48,7 +48,7 @@ class ItemCategoryWatcherBloc
           add(ItemCategoryWatcherEvent.watchAllStarted(e.orderType));
         }*/
 
-        yield const ItemCategoryWatcherState.loadInProgress();
+        yield const ItemCategoryWatcherState.loadInProgress(isSearching: true);
 
         await _categoryStreamSubscription?.cancel();
         _categoryStreamSubscription = _categoryRepository
@@ -57,9 +57,11 @@ class ItemCategoryWatcherBloc
                 .categoriesReceived(failureOrCategories)));
       },
       categoriesReceived: (e) async* {
-        yield e.failureOrCategories.fold(
-            (f) => ItemCategoryWatcherState.loadFailure(f),
-            (categories) => ItemCategoryWatcherState.loadSuccess(categories));
+        yield e.failureOrCategories
+            .fold((f) => ItemCategoryWatcherState.loadFailure(f), (categories) {
+          print(categories.size);
+          return ItemCategoryWatcherState.loadSuccess(categories);
+        });
       },
     );
   }

@@ -25,8 +25,9 @@ class ItemCategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ItemCategorySubcollectionBloc>(
-      create: (context) => getIt<ItemCategorySubcollectionBloc>()
-        ..add(ItemCategorySubcollectionEvent.getSubcollectionCount(category)),
+      // TODO: Determine a better way to watch item and group counts
+      create: (context) => getIt<ItemCategorySubcollectionBloc>(),
+      //?..add(ItemCategorySubcollectionEvent.getSubcollectionCount(category)),
       child: GestureDetector(
         onHorizontalDragEnd: (details) {
           context

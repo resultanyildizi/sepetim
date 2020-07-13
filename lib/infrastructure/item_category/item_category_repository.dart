@@ -347,8 +347,10 @@ class ItemCategoryRepository implements IItemCategoryRepository {
             .map((doc) => ItemCategoryDto.fromFirestore(doc).toDomain()))
         .map((categories) => right<ItemCategoryFailure, KtList<ItemCategory>>(
             categories
-                .where(
-                    (category) => category.title.getOrCrash().contains(title))
+                .where((category) => category.title
+                    .getOrCrash()
+                    .toLowerCase()
+                    .startsWith(title.toLowerCase()))
                 .toImmutableList()))
         .onErrorReturnWith((e) {
       if (e is PlatformException && e.message.contains('PERMISSION_DENIED')) {

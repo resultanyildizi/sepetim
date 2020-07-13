@@ -482,8 +482,10 @@ class _$ItemCategoryWatcherStateTearOff {
     return const _Initial();
   }
 
-  _LoadInProgress loadInProgress() {
-    return const _LoadInProgress();
+  _LoadInProgress loadInProgress({@required bool isSearching}) {
+    return _LoadInProgress(
+      isSearching: isSearching,
+    );
   }
 
   _LoadSuccess loadSuccess(KtList<ItemCategory> categories) {
@@ -506,14 +508,14 @@ mixin _$ItemCategoryWatcherState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result loadInProgress(),
+    @required Result loadInProgress(bool isSearching),
     @required Result loadSuccess(KtList<ItemCategory> categories),
     @required Result loadFailure(ItemCategoryFailure categoryFailure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result loadInProgress(),
+    Result loadInProgress(bool isSearching),
     Result loadSuccess(KtList<ItemCategory> categories),
     Result loadFailure(ItemCategoryFailure categoryFailure),
     @required Result orElse(),
@@ -585,7 +587,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result loadInProgress(),
+    @required Result loadInProgress(bool isSearching),
     @required Result loadSuccess(KtList<ItemCategory> categories),
     @required Result loadFailure(ItemCategoryFailure categoryFailure),
   }) {
@@ -600,7 +602,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result loadInProgress(),
+    Result loadInProgress(bool isSearching),
     Result loadSuccess(KtList<ItemCategory> categories),
     Result loadFailure(ItemCategoryFailure categoryFailure),
     @required Result orElse(),
@@ -652,6 +654,7 @@ abstract class _$LoadInProgressCopyWith<$Res> {
   factory _$LoadInProgressCopyWith(
           _LoadInProgress value, $Res Function(_LoadInProgress) then) =
       __$LoadInProgressCopyWithImpl<$Res>;
+  $Res call({bool isSearching});
 }
 
 class __$LoadInProgressCopyWithImpl<$Res>
@@ -663,29 +666,52 @@ class __$LoadInProgressCopyWithImpl<$Res>
 
   @override
   _LoadInProgress get _value => super._value as _LoadInProgress;
+
+  @override
+  $Res call({
+    Object isSearching = freezed,
+  }) {
+    return _then(_LoadInProgress(
+      isSearching:
+          isSearching == freezed ? _value.isSearching : isSearching as bool,
+    ));
+  }
 }
 
 class _$_LoadInProgress implements _LoadInProgress {
-  const _$_LoadInProgress();
+  const _$_LoadInProgress({@required this.isSearching})
+      : assert(isSearching != null);
+
+  @override
+  final bool isSearching;
 
   @override
   String toString() {
-    return 'ItemCategoryWatcherState.loadInProgress()';
+    return 'ItemCategoryWatcherState.loadInProgress(isSearching: $isSearching)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _LoadInProgress);
+    return identical(this, other) ||
+        (other is _LoadInProgress &&
+            (identical(other.isSearching, isSearching) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSearching, isSearching)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isSearching);
+
+  @override
+  _$LoadInProgressCopyWith<_LoadInProgress> get copyWith =>
+      __$LoadInProgressCopyWithImpl<_LoadInProgress>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result loadInProgress(),
+    @required Result loadInProgress(bool isSearching),
     @required Result loadSuccess(KtList<ItemCategory> categories),
     @required Result loadFailure(ItemCategoryFailure categoryFailure),
   }) {
@@ -693,21 +719,21 @@ class _$_LoadInProgress implements _LoadInProgress {
     assert(loadInProgress != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
-    return loadInProgress();
+    return loadInProgress(isSearching);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result loadInProgress(),
+    Result loadInProgress(bool isSearching),
     Result loadSuccess(KtList<ItemCategory> categories),
     Result loadFailure(ItemCategoryFailure categoryFailure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (loadInProgress != null) {
-      return loadInProgress();
+      return loadInProgress(isSearching);
     }
     return orElse();
   }
@@ -745,7 +771,11 @@ class _$_LoadInProgress implements _LoadInProgress {
 }
 
 abstract class _LoadInProgress implements ItemCategoryWatcherState {
-  const factory _LoadInProgress() = _$_LoadInProgress;
+  const factory _LoadInProgress({@required bool isSearching}) =
+      _$_LoadInProgress;
+
+  bool get isSearching;
+  _$LoadInProgressCopyWith<_LoadInProgress> get copyWith;
 }
 
 abstract class _$LoadSuccessCopyWith<$Res> {
@@ -809,7 +839,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result loadInProgress(),
+    @required Result loadInProgress(bool isSearching),
     @required Result loadSuccess(KtList<ItemCategory> categories),
     @required Result loadFailure(ItemCategoryFailure categoryFailure),
   }) {
@@ -824,7 +854,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result loadInProgress(),
+    Result loadInProgress(bool isSearching),
     Result loadSuccess(KtList<ItemCategory> categories),
     Result loadFailure(ItemCategoryFailure categoryFailure),
     @required Result orElse(),
@@ -949,7 +979,7 @@ class _$_LoadFailure implements _LoadFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result loadInProgress(),
+    @required Result loadInProgress(bool isSearching),
     @required Result loadSuccess(KtList<ItemCategory> categories),
     @required Result loadFailure(ItemCategoryFailure categoryFailure),
   }) {
@@ -964,7 +994,7 @@ class _$_LoadFailure implements _LoadFailure {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result loadInProgress(),
+    Result loadInProgress(bool isSearching),
     Result loadSuccess(KtList<ItemCategory> categories),
     Result loadFailure(ItemCategoryFailure categoryFailure),
     @required Result orElse(),

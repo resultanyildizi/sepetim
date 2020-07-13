@@ -43,11 +43,16 @@ class SearchField extends StatelessWidget {
               color: sepetimGrey,
             ),
           ),
-          onFieldSubmitted: (text) {
-            print(text);
+          onChanged: (text) {
+            if (text == '') {
+              context.bloc<ItemCategoryWatcherBloc>().add(
+                  const ItemCategoryWatcherEvent.watchAllStarted(
+                      OrderType.date));
+            }
+
             context.bloc<ItemCategoryWatcherBloc>().add(
-                const ItemCategoryWatcherEvent.watchAllByTitleStarted(
-                    OrderType.date, ''));
+                ItemCategoryWatcherEvent.watchAllByTitleStarted(
+                    OrderType.date, text));
           },
         ),
       ),
