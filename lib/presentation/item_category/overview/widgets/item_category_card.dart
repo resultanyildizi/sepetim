@@ -48,7 +48,9 @@ class ItemCategoryCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      category.title.getOrCrash(),
+                      category.title.getOrCrash().length <= 20
+                          ? category.title.getOrCrash()
+                          : '${category.title.getOrCrash().substring(0, 17)}...',
                       style: didactGothicTextStyle(
                         bold: true,
                         color: sepetimGrey,
@@ -155,7 +157,6 @@ class ItemCategoryCard extends StatelessWidget {
             deleteFailure: (failure) {
               failure.categoryFailure.maybeMap(
                 networkException: (_) {
-                  ExtendedNavigator.of(context).pop();
                   return networkExceptionPopup(context);
                 },
                 orElse: () => serverErrorPopup(context),
