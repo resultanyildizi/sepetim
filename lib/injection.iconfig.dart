@@ -12,13 +12,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:Sepetim/infrastructure/auth/firebase_auth_facade.dart';
 import 'package:Sepetim/domain/auth/i_auth_facade.dart';
-import 'package:Sepetim/infrastructure/item_group/item_group_repository.dart';
-import 'package:Sepetim/domain/item_group/i_group_repository.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:Sepetim/application/item_category/selector/item_category_selector_bloc.dart';
-import 'package:Sepetim/application/item_group/actor/item_group_actor_bloc.dart';
-import 'package:Sepetim/application/item_group/form/item_group_form_bloc.dart';
-import 'package:Sepetim/application/item_group/watcher/item_group_watcher_bloc.dart';
 import 'package:Sepetim/application/auth/password_visibility/password_visibility_bloc.dart';
 import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
@@ -43,17 +38,9 @@ void $initGetIt(GetIt g, {String environment}) {
       () => firebaseInjectableModule.googleSignIn);
   g.registerLazySingleton<IAuthFacade>(
       () => FirebaseAuthFacade(g<FirebaseAuth>(), g<GoogleSignIn>()));
-  g.registerLazySingleton<IItemGroupRepository>(
-      () => ItemGroupRepository(g<Firestore>(), g<FirebaseStorage>()));
   g.registerLazySingleton<ImagePicker>(
       () => imagePickerInjectableModule.imagePicker);
   g.registerFactory<ItemCategorySelectorBloc>(() => ItemCategorySelectorBloc());
-  g.registerFactory<ItemGroupActorBloc>(
-      () => ItemGroupActorBloc(g<IItemGroupRepository>()));
-  g.registerFactory<ItemGroupFormBloc>(
-      () => ItemGroupFormBloc(g<IItemGroupRepository>()));
-  g.registerFactory<ItemGroupWatcherBloc>(
-      () => ItemGroupWatcherBloc(g<IItemGroupRepository>()));
   g.registerFactory<PasswordVisibilityBloc>(() => PasswordVisibilityBloc());
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<IAuthFacade>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<IAuthFacade>()));

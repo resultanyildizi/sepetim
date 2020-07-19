@@ -2,7 +2,6 @@ import 'package:Sepetim/application/item_category/actor/item_category_actor_bloc
 import 'package:Sepetim/application/item_category/selector/item_category_selector_bloc.dart';
 import 'package:Sepetim/application/item_category/subcollections/item_category_subcollection_bloc.dart';
 import 'package:Sepetim/application/item_category/watcher/item_category_watcher_bloc.dart';
-import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/item_category/i_category_repository.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
@@ -74,6 +73,47 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                 onPressed: () {},
               ),
             ),
+            loadInProgress: (loadProgress) {
+              Widget loadWidget;
+              if (loadProgress.isSearching) {
+                loadWidget = const Center();
+              } else {
+                loadWidget = SmallCircularProgressIndicator();
+              }
+              return Scaffold(
+                resizeToAvoidBottomPadding: false,
+                appBar: AppBar(
+                  title: Text(
+                    'Sepetim',
+                    style: robotoTextStyle(bold: true),
+                  ),
+                ),
+                body: DefaultPadding(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      SearchField(
+                        controller: _controller,
+                      ),
+                      const SizedBox(
+                        height: 12.0,
+                      ),
+                      Text(
+                        translate(context, 'categories'),
+                        style: robotoTextStyle(bold: true, fontSize: 20.0),
+                      ),
+                      Expanded(
+                        child: Center(child: loadWidget),
+                      ),
+                    ],
+                  ),
+                ),
+                floatingActionButton: DefaultFloatingActionButton(
+                  iconData: Icons.add,
+                  onPressed: () {},
+                ),
+              );
+            },
             loadSuccess: (state) {
               return Scaffold(
                 resizeToAvoidBottomPadding: false,
