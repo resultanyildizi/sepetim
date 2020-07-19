@@ -11,7 +11,7 @@ import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
-import 'package:Sepetim/presentation/item_category/overview/widgets/action_popups.dart';
+import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
 
@@ -33,6 +33,15 @@ class ItemCategoryCard extends StatelessWidget {
           context
               .bloc<ItemCategorySelectorBloc>()
               .add(ItemCategorySelectorEvent.selectedChanged(category));
+        },
+        onTap: () {
+          ExtendedNavigator.of(context).pushNamed(
+            Routes.itemGroupOverviewPage,
+            arguments: ItemGroupOverviewPageArguments(
+              key: Key(category.uid.getOrCrash()),
+              category: category,
+            ),
+          );
         },
         child: BlocBuilder<ItemCategorySelectorBloc, ItemCategorySelectorState>(
           builder: (context, state) {
@@ -174,7 +183,15 @@ class ItemCategoryCard extends StatelessWidget {
                 child: InkWell(
                   splashColor: sepetimGrey,
                   onTap: () {
-                    deletePopup(context, category: category);
+                    deletePopup(
+                      context,
+                      title:
+                          '${translate(context, 'delete_category_title')}  ${category.title.getOrCrash()}',
+                      action: () => context.bloc<ItemCategoryActorBloc>().add(
+                            ItemCategoryActorEvent.deleted(category),
+                          ),
+                      message: translate(context, 'delete_category_message'),
+                    );
                   },
                   child: SizedBox(
                       width: 35,

@@ -11,6 +11,7 @@ import 'package:Sepetim/presentation/item_group/overview/widgets/item_group_card
 import 'package:Sepetim/presentation/item_group/overview/widgets/search_field.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +29,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
       providers: [
         BlocProvider<ItemGroupWatcherBloc>(
           create: (context) => getIt<ItemGroupWatcherBloc>()
-            ..add(ItemGroupWatcherEvent.watchAllStarted(
+            ..add(ItemGroupWatcherEvent.watchAll(
               category.uid,
               OrderType.date,
             )),

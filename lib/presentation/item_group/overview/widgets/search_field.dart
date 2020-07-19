@@ -5,6 +5,7 @@ import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/domain/item_category/i_category_repository.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
@@ -51,13 +52,13 @@ class SearchField extends StatelessWidget {
           onChanged: (text) {
             if (text == '') {
               context.bloc<ItemGroupWatcherBloc>().add(
-                  ItemGroupWatcherEvent.watchAllStarted(
-                      categoryId, OrderType.date));
+                  ItemGroupWatcherEvent.watchAll(categoryId, OrderType.date));
             }
 
             context.bloc<ItemGroupWatcherBloc>().add(
-                ItemGroupWatcherEvent.watchAllByTitleStarted(
-                    categoryId, OrderType.date, text));
+                  ItemGroupWatcherEvent.watchAllByTitle(
+                      categoryId, OrderType.date, text),
+                );
           },
         ),
       ),
