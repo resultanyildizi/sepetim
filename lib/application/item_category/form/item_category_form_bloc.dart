@@ -100,18 +100,18 @@ class ItemCategoryFormBloc
           categoryFailureOrSuccessOption: none(),
         );
 
-        if (state.temporaryImageFile.isSome()) {
-          final serverFailureOrLoadedImageUrl =
-              await _categoryRepository.loadCoverPictureToServer(state.category,
-                  state.temporaryImageFile.getOrElse(() => null));
-          serverFailureOrLoadedImageUrl.fold((f) {
-            failureOrSuccess = left(f);
-          }, (imageUrl) {
-            categoryImageUrl = imageUrl;
-          });
-        }
-
         if (state.category.failureOption.isNone()) {
+          if (state.temporaryImageFile.isSome()) {
+            final serverFailureOrLoadedImageUrl =
+                await _categoryRepository.loadCoverPictureToServer(
+                    state.category,
+                    state.temporaryImageFile.getOrElse(() => null));
+            serverFailureOrLoadedImageUrl.fold((f) {
+              failureOrSuccess = left(f);
+            }, (imageUrl) {
+              categoryImageUrl = imageUrl;
+            });
+          }
           failureOrSuccess = state.isEditing
               ? await _categoryRepository.update(
                   state.category.copyWith(coverImageUrl: categoryImageUrl))

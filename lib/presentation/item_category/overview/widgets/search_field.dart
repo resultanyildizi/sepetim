@@ -1,4 +1,5 @@
 import 'package:Sepetim/application/item_category/watcher/item_category_watcher_bloc.dart';
+import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/item_category/i_category_repository.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';

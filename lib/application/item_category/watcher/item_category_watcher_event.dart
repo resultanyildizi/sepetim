@@ -6,9 +6,11 @@ abstract class ItemCategoryWatcherEvent with _$ItemCategoryWatcherEvent {
       _WatchAllStarted;
 
   const factory ItemCategoryWatcherEvent.watchAllByTitleStarted(
-      OrderType orderType, String title) = _WatchAllByTitleStarted;
+    OrderType orderType,
+    String title,
+  ) = _WatchAllByTitleStarted;
 
   const factory ItemCategoryWatcherEvent.categoriesReceived(
-      Either<ItemCategoryFailure, KtList<ItemCategory>>
-          failureOrCategories) = _CategoriesReceived;
+    Either<ItemCategoryFailure, KtList<ItemCategory>> failureOrCategories,
+  ) = _CategoriesReceived;
 }
