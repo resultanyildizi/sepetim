@@ -55,7 +55,7 @@ class ItemGroupRepository implements IItemGroupRepository {
   }
 
   @override
-  Future<Either<ItemGroupFailure, Unit>> delete(
+  Future<Either<ItemGroupFailure, Unit>> update(
       UniqueId categoryId, ItemGroup group) async {
     try {
       final connectivityResult = await Connectivity().checkConnectivity();
@@ -87,7 +87,7 @@ class ItemGroupRepository implements IItemGroupRepository {
   }
 
   @override
-  Future<Either<ItemGroupFailure, Unit>> update(
+  Future<Either<ItemGroupFailure, Unit>> delete(
       UniqueId categoryId, ItemGroup group) async {
     try {
       final connectivityResult = await Connectivity().checkConnectivity();

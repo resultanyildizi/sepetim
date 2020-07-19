@@ -46,5 +46,10 @@
     "cancel": "İptal",
     "please_report": "Beklenmedik bir hata oluştu. Lütfen tanyildizi.resul@gmail.com adresine mail göndererek bildirin",
     "search_for_category": "Bir kategori arayın",
-    "categories": "Kategoriler"
+    "categories": "Kategoriler",
+    "groups": "Gruplar",
+    "add_a_group": "Grup ekle",
+    "delete_group_title": "Grubu sil",
+    "delete_group_message": "Grubu silmek istediğinizden emin misiniz? Ürünler de birlikte silinecektir. Bu işlem geri alınamaz.",
+    "search_for_group": "Bir grup arayın"
 }

@@ -46,5 +46,10 @@
     "cancel": "Cancel",
     "please_report": "Unexpected error has occured. Please report us by sending email to tanyildizi.resul@gmail.com",
     "search_for_category": "Search for a category",
-    "categories": "Categories"
+    "categories": "Categories",
+    "groups": "Groups",
+    "add_a_group": "Add a group",
+    "delete_group_title": "Delete group",
+    "delete_group_message": "Are you sure to delete this group? It's items will be deleted as well. This action can't be undone.",
+    "search_for_group": "Search for a group"
 }
