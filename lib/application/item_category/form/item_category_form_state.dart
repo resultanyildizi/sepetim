@@ -10,6 +10,7 @@ abstract class ItemCategoryFormState with _$ItemCategoryFormState {
             categoryFailureOrSuccessOption,
     @required bool isSaving,
     @required bool isEditing,
+    @required bool isCoverRemoved,
     @required Option<File> temporaryImageFile,
   }) = _ItemCategoryFormState;
 
@@ -18,6 +19,7 @@ abstract class ItemCategoryFormState with _$ItemCategoryFormState {
         showErrorMessages: false,
         isEditing: false,
         isSaving: false,
+        isCoverRemoved: false,
         categoryFailureOrSuccessOption: none(),
         temporaryImageFile: none(),
       );

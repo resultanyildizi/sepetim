@@ -49,3 +49,17 @@ class Price extends ValueObject<double> {
 
   Price._(this.value);
 }
+
+class SelectedIndex extends ValueObject<int> {
+  @override
+  final Either<ValueFailure<int>, int> value;
+
+  static const maxIndex = 2;
+
+  factory SelectedIndex(int input) {
+    assert(input != null);
+    return SelectedIndex._(validateSelectedIndex(input, maxIndex));
+  }
+
+  SelectedIndex._(this.value);
+}

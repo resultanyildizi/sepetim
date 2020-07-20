@@ -19,6 +19,7 @@ class _$ItemTearOff {
       @required DescriptionBody description,
       @required Status status,
       @required List3<ImageUrl> imageUrls,
+      @required SelectedIndex selectedIndex,
       @required List5<LinkObject> linkObjects,
       @required bool isFavorite}) {
     return _Item(
@@ -28,6 +29,7 @@ class _$ItemTearOff {
       description: description,
       status: status,
       imageUrls: imageUrls,
+      selectedIndex: selectedIndex,
       linkObjects: linkObjects,
       isFavorite: isFavorite,
     );
@@ -44,6 +46,7 @@ mixin _$Item {
   DescriptionBody get description;
   Status get status;
   List3<ImageUrl> get imageUrls;
+  SelectedIndex get selectedIndex;
   List5<LinkObject> get linkObjects;
   bool get isFavorite;
 
@@ -60,6 +63,7 @@ abstract class $ItemCopyWith<$Res> {
       DescriptionBody description,
       Status status,
       List3<ImageUrl> imageUrls,
+      SelectedIndex selectedIndex,
       List5<LinkObject> linkObjects,
       bool isFavorite});
 }
@@ -79,6 +83,7 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
     Object description = freezed,
     Object status = freezed,
     Object imageUrls = freezed,
+    Object selectedIndex = freezed,
     Object linkObjects = freezed,
     Object isFavorite = freezed,
   }) {
@@ -93,6 +98,9 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
       imageUrls: imageUrls == freezed
           ? _value.imageUrls
           : imageUrls as List3<ImageUrl>,
+      selectedIndex: selectedIndex == freezed
+          ? _value.selectedIndex
+          : selectedIndex as SelectedIndex,
       linkObjects: linkObjects == freezed
           ? _value.linkObjects
           : linkObjects as List5<LinkObject>,
@@ -113,6 +121,7 @@ abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
       DescriptionBody description,
       Status status,
       List3<ImageUrl> imageUrls,
+      SelectedIndex selectedIndex,
       List5<LinkObject> linkObjects,
       bool isFavorite});
 }
@@ -133,6 +142,7 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     Object description = freezed,
     Object status = freezed,
     Object imageUrls = freezed,
+    Object selectedIndex = freezed,
     Object linkObjects = freezed,
     Object isFavorite = freezed,
   }) {
@@ -147,6 +157,9 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
       imageUrls: imageUrls == freezed
           ? _value.imageUrls
           : imageUrls as List3<ImageUrl>,
+      selectedIndex: selectedIndex == freezed
+          ? _value.selectedIndex
+          : selectedIndex as SelectedIndex,
       linkObjects: linkObjects == freezed
           ? _value.linkObjects
           : linkObjects as List5<LinkObject>,
@@ -164,6 +177,7 @@ class _$_Item extends _Item {
       @required this.description,
       @required this.status,
       @required this.imageUrls,
+      @required this.selectedIndex,
       @required this.linkObjects,
       @required this.isFavorite})
       : assert(uid != null),
@@ -172,6 +186,7 @@ class _$_Item extends _Item {
         assert(description != null),
         assert(status != null),
         assert(imageUrls != null),
+        assert(selectedIndex != null),
         assert(linkObjects != null),
         assert(isFavorite != null),
         super._();
@@ -189,13 +204,15 @@ class _$_Item extends _Item {
   @override
   final List3<ImageUrl> imageUrls;
   @override
+  final SelectedIndex selectedIndex;
+  @override
   final List5<LinkObject> linkObjects;
   @override
   final bool isFavorite;
 
   @override
   String toString() {
-    return 'Item(uid: $uid, title: $title, price: $price, description: $description, status: $status, imageUrls: $imageUrls, linkObjects: $linkObjects, isFavorite: $isFavorite)';
+    return 'Item(uid: $uid, title: $title, price: $price, description: $description, status: $status, imageUrls: $imageUrls, selectedIndex: $selectedIndex, linkObjects: $linkObjects, isFavorite: $isFavorite)';
   }
 
   @override
@@ -216,6 +233,9 @@ class _$_Item extends _Item {
             (identical(other.imageUrls, imageUrls) ||
                 const DeepCollectionEquality()
                     .equals(other.imageUrls, imageUrls)) &&
+            (identical(other.selectedIndex, selectedIndex) ||
+                const DeepCollectionEquality()
+                    .equals(other.selectedIndex, selectedIndex)) &&
             (identical(other.linkObjects, linkObjects) ||
                 const DeepCollectionEquality()
                     .equals(other.linkObjects, linkObjects)) &&
@@ -233,6 +253,7 @@ class _$_Item extends _Item {
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(imageUrls) ^
+      const DeepCollectionEquality().hash(selectedIndex) ^
       const DeepCollectionEquality().hash(linkObjects) ^
       const DeepCollectionEquality().hash(isFavorite);
 
@@ -250,6 +271,7 @@ abstract class _Item extends Item {
       @required DescriptionBody description,
       @required Status status,
       @required List3<ImageUrl> imageUrls,
+      @required SelectedIndex selectedIndex,
       @required List5<LinkObject> linkObjects,
       @required bool isFavorite}) = _$_Item;
 
@@ -265,6 +287,8 @@ abstract class _Item extends Item {
   Status get status;
   @override
   List3<ImageUrl> get imageUrls;
+  @override
+  SelectedIndex get selectedIndex;
   @override
   List5<LinkObject> get linkObjects;
   @override

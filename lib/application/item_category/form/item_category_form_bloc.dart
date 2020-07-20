@@ -71,24 +71,14 @@ class ItemCategoryFormBloc
           ),
           (imageFile) => state.copyWith(
             temporaryImageFile: some(imageFile),
+            isCoverRemoved: false,
           ),
         );
       },
       coverImageRemoved: (e) async* {
-        final failureOrImageUrl = await _categoryRepository
-            .removeCoverPictureFromServer(state.category);
-
-        yield failureOrImageUrl.fold(
-          (f) => state.copyWith(
-            categoryFailureOrSuccessOption: some(left(f)),
-          ),
-          (imageUrl) => state.copyWith(
-            category: state.category.copyWith(
-              coverImageUrl: imageUrl,
-            ),
-            categoryFailureOrSuccessOption: none(),
-            temporaryImageFile: none(),
-          ),
+        yield state.copyWith(
+          isCoverRemoved: true,
+          temporaryImageFile: none(),
         );
       },
       saved: (e) async* {
@@ -101,6 +91,19 @@ class ItemCategoryFormBloc
         );
 
         if (state.category.failureOption.isNone()) {
+          if (state.isCoverRemoved) {
+            final failureOrImageUrl = await _categoryRepository
+                .removeCoverPictureFromServer(state.category);
+
+            failureOrImageUrl.fold(
+              (f) {
+                failureOrSuccess = left(f);
+              },
+              (imageUrl) {
+                categoryImageUrl = imageUrl;
+              },
+            );
+          }
           if (state.temporaryImageFile.isSome()) {
             final serverFailureOrLoadedImageUrl =
                 await _categoryRepository.loadCoverPictureToServer(

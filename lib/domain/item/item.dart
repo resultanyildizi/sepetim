@@ -19,6 +19,7 @@ abstract class Item implements _$Item {
     @required DescriptionBody description,
     @required Status status,
     @required List3<ImageUrl> imageUrls,
+    @required SelectedIndex selectedIndex,
     @required List5<LinkObject> linkObjects,
     @required bool isFavorite,
   }) = _Item;
@@ -34,6 +35,7 @@ abstract class Item implements _$Item {
           ImageUrl.defaultUrl(),
           ImageUrl.defaultUrl()
         ].toImmutableList()),
+        selectedIndex: SelectedIndex(0),
         linkObjects: List5(KtList.empty()),
         isFavorite: false,
       );
@@ -43,6 +45,7 @@ abstract class Item implements _$Item {
         .andThen(price.failureOrUnit)
         .andThen(description.failureOrUnit)
         .andThen(status.failureOrUnit)
+        .andThen(selectedIndex.failureOrUnit)
         .andThen(imageUrls.failureOrUnit)
         .andThen(imageUrls
             .getOrCrash()

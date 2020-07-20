@@ -1,4 +1,6 @@
 import 'package:Sepetim/application/item_category/form/item_category_form_bloc.dart';
+import 'package:Sepetim/domain/core/value_objects.dart';
+import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -23,24 +25,57 @@ class CoverPictureField extends StatelessWidget {
           ),
           child: Row(
             children: [
-              ClipOval(
-                child: state.temporaryImageFile.fold(
-                    () => CachedNetworkImage(
+              Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  if (state.isCoverRemoved) ...[
+                    ClipOval(
+                      child: Image.asset(
+                        'assets/images/default.png',
+                        width: screenWidthByScalar(context, 0.3),
+                        height: screenWidthByScalar(context, 0.3),
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  ] else ...[
+                    ClipOval(
+                      child: state.temporaryImageFile.fold(
+                        () => CachedNetworkImage(
                           errorWidget: (context, url, error) =>
                               Image.asset('assets/images/default.png'),
                           imageUrl: state.category.coverImageUrl.getOrCrash(),
                           width: screenWidthByScalar(context, 0.3),
                           height: screenWidthByScalar(context, 0.3),
-                          fit: BoxFit.cover,
                           fadeOutDuration: const Duration(seconds: 0),
                           fadeInDuration: const Duration(seconds: 0),
+                          fit: BoxFit.cover,
                         ),
-                    (imageFile) => Image.file(
+                        (imageFile) => Image.file(
                           imageFile,
                           width: screenWidthByScalar(context, 0.3),
                           height: screenWidthByScalar(context, 0.3),
                           fit: BoxFit.cover,
-                        )),
+                        ),
+                      ),
+                    ),
+                  ],
+                  if ((state.category.coverImageUrl.getOrCrash() !=
+                              ImageUrl.defaultUrl().getOrCrash() ||
+                          state.temporaryImageFile.isSome()) &&
+                      !state.isCoverRemoved) ...[
+                    GestureDetector(
+                      onTap: () {
+                        context.bloc<ItemCategoryFormBloc>().add(
+                            const ItemCategoryFormEvent.coverImageRemoved());
+                      },
+                      child: Icon(
+                        Icons.close,
+                        color: sepetimLightGrey,
+                        size: 15,
+                      ),
+                    )
+                  ],
+                ],
               ),
               Expanded(
                 child: Column(

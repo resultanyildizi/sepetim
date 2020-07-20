@@ -4,7 +4,6 @@ import 'package:Sepetim/domain/item_category/i_category_repository.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_category/item_category_failure.dart';
 import 'package:Sepetim/infrastructure/item_category/item_category_dtos.dart';
-import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
@@ -130,7 +129,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
         source: imageSource,
         maxWidth: 4000,
         maxHeight: 4000,
-        imageQuality: 80,
+        imageQuality: 70,
       );
 
       if (pickedFile != null) {
