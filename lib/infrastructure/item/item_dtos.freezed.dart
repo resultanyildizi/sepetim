@@ -8,6 +8,9 @@ part of 'item_dtos.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+ItemDto _$ItemDtoFromJson(Map<String, dynamic> json) {
+  return _ItemDto.fromJson(json);
+}
 
 class _$ItemDtoTearOff {
   const _$ItemDtoTearOff();
@@ -51,6 +54,7 @@ mixin _$ItemDto {
   List<LinkObjectDto> get linkObjects;
   bool get isFavorite;
 
+  Map<String, dynamic> toJson();
   $ItemDtoCopyWith<ItemDto> get copyWith;
 }
 
@@ -166,6 +170,7 @@ class __$ItemDtoCopyWithImpl<$Res> extends _$ItemDtoCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
 class _$_ItemDto extends _ItemDto {
   const _$_ItemDto(
       {@JsonKey(ignore: true) this.uid,
@@ -186,6 +191,9 @@ class _$_ItemDto extends _ItemDto {
         assert(linkObjects != null),
         assert(isFavorite != null),
         super._();
+
+  factory _$_ItemDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_ItemDtoFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -257,6 +265,11 @@ class _$_ItemDto extends _ItemDto {
   @override
   _$ItemDtoCopyWith<_ItemDto> get copyWith =>
       __$ItemDtoCopyWithImpl<_ItemDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ItemDtoToJson(this);
+  }
 }
 
 abstract class _ItemDto extends ItemDto {
@@ -271,6 +284,8 @@ abstract class _ItemDto extends ItemDto {
       @required int selectedIndex,
       @required List<LinkObjectDto> linkObjects,
       @required bool isFavorite}) = _$_ItemDto;
+
+  factory _ItemDto.fromJson(Map<String, dynamic> json) = _$_ItemDto.fromJson;
 
   @override
   @JsonKey(ignore: true)

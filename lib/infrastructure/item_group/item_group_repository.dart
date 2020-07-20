@@ -17,11 +17,9 @@ import 'package:rxdart/rxdart.dart';
 @LazySingleton(as: IItemGroupRepository)
 class ItemGroupRepository implements IItemGroupRepository {
   final Firestore _firestore;
-  final FirebaseStorage _firebaseStorage;
 
   ItemGroupRepository(
     this._firestore,
-    this._firebaseStorage,
   );
 
   @override

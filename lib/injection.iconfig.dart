@@ -14,6 +14,8 @@ import 'package:Sepetim/infrastructure/auth/firebase_auth_facade.dart';
 import 'package:Sepetim/domain/auth/i_auth_facade.dart';
 import 'package:Sepetim/infrastructure/item_group/item_group_repository.dart';
 import 'package:Sepetim/domain/item_group/i_group_repository.dart';
+import 'package:Sepetim/infrastructure/item/item_repository.dart';
+import 'package:Sepetim/domain/item/i_item_repository.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:Sepetim/application/item_category/selector/item_category_selector_bloc.dart';
 import 'package:Sepetim/application/item_group/actor/item_group_actor_bloc.dart';
@@ -44,7 +46,9 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerLazySingleton<IAuthFacade>(
       () => FirebaseAuthFacade(g<FirebaseAuth>(), g<GoogleSignIn>()));
   g.registerLazySingleton<IItemGroupRepository>(
-      () => ItemGroupRepository(g<Firestore>(), g<FirebaseStorage>()));
+      () => ItemGroupRepository(g<Firestore>()));
+  g.registerLazySingleton<IItemRepository>(
+      () => ItemRepository(g<Firestore>(), g<FirebaseStorage>()));
   g.registerLazySingleton<ImagePicker>(
       () => imagePickerInjectableModule.imagePicker);
   g.registerFactory<ItemCategorySelectorBloc>(() => ItemCategorySelectorBloc());

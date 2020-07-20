@@ -10,12 +10,18 @@ import 'package:kt_dart/kt.dart';
 
 abstract class IItemRepository {
   Future<Either<ItemFailure, Unit>> create(
+    UniqueId categoryId,
+    UniqueId groupId,
     Item item,
   );
   Future<Either<ItemFailure, Unit>> update(
+    UniqueId categoryId,
+    UniqueId groupId,
     Item item,
   );
   Future<Either<ItemFailure, Unit>> delete(
+    UniqueId categoryId,
+    UniqueId groupId,
     Item item,
   );
 
@@ -30,9 +36,13 @@ abstract class IItemRepository {
     Item item,
   );
   Stream<Either<ItemFailure, KtList<Item>>> watchAll(
+    UniqueId categoryId,
+    UniqueId groupId,
     OrderType orderType,
   );
   Stream<Either<ItemFailure, KtList<Item>>> watchAllByTitle(
+    UniqueId categoryId,
+    UniqueId groupId,
     OrderType orderType,
     String title,
   );

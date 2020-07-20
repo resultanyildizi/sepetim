@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:Sepetim/domain/link_object/link_object.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
@@ -60,6 +61,13 @@ abstract class ItemDto implements _$ItemDto {
       ),
       selectedIndex: SelectedIndex(selectedIndex),
     );
+  }
+
+  factory ItemDto.fromJson(Map<String, dynamic> json) =>
+      _$ItemDtoFromJson(json);
+
+  factory ItemDto.fromFirestore(DocumentSnapshot doc) {
+    return ItemDto.fromJson(doc.data).copyWith(uid: doc.documentID);
   }
 }
 
