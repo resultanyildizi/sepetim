@@ -23,17 +23,11 @@ abstract class IItemRepository {
     ImageSource imageSource,
   );
   Future<Either<ItemFailure, ImageUrl>> loadCoverPictureToServer(
-    Item category,
+    Item item,
     File imageFile,
   );
   Future<Either<ItemFailure, ImageUrl>> removeCoverPictureFromServer(
-    Item category,
-  );
-  Future<Either<ItemFailure, NotNegativeIntegerNumber>> getGroupCount(
-    Item category,
-  );
-  Future<Either<ItemFailure, NotNegativeIntegerNumber>> getItemCount(
-    Item category,
+    Item item,
   );
   Stream<Either<ItemFailure, KtList<Item>>> watchAll(
     OrderType orderType,

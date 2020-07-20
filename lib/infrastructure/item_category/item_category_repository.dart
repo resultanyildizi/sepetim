@@ -129,7 +129,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
         source: imageSource,
         maxWidth: 4000,
         maxHeight: 4000,
-        imageQuality: 70,
+        imageQuality: 80,
       );
 
       if (pickedFile != null) {
