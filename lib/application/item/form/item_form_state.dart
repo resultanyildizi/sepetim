@@ -9,6 +9,7 @@ abstract class ItemFormState with _$ItemFormState {
     @required bool isEditing,
     @required bool isSaving,
     @required List<Option<File>> temporaryImageFiles,
+    @required List<bool> isPictureRemoved,
   }) = _ItemFormState;
 
   factory ItemFormState.initial() => ItemFormState(
@@ -18,5 +19,6 @@ abstract class ItemFormState with _$ItemFormState {
         isSaving: false,
         itemFailureOrSuccessOption: none(),
         temporaryImageFiles: <Option<File>>[none(), none(), none()].toList(),
+        isPictureRemoved: <bool>[false, false, false].toList(),
       );
 }

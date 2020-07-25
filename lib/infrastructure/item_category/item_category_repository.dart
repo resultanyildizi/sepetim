@@ -19,7 +19,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/infrastructure/core/firebase_helpers.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
-import 'package:path/path.dart';
+import 'package:path/path.dart' as p;
 
 @LazySingleton(as: IItemCategoryRepository)
 class ItemCategoryRepository implements IItemCategoryRepository {
@@ -127,9 +127,9 @@ class ItemCategoryRepository implements IItemCategoryRepository {
     try {
       final pickedFile = await _imagePicker.getImage(
         source: imageSource,
-        maxWidth: 4000,
-        maxHeight: 4000,
-        imageQuality: 80,
+        maxWidth: 1024,
+        maxHeight: 1024,
+        imageQuality: 90,
       );
 
       if (pickedFile != null) {
@@ -139,7 +139,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
           aspectRatioPresets: [
             CropAspectRatioPreset.square,
           ],
-          compressQuality: 15,
+          compressQuality: 20,
           androidUiSettings: AndroidUiSettings(
             toolbarTitle: 'Sepetim',
             toolbarColor: sepetimYellow,
@@ -178,7 +178,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       final categoryUid = category.uid.getOrCrash();
 
       final coverImageStorage = userStorage.categoryCovers
-          .child(categoryUid + extension(imageFile.path));
+          .child(categoryUid + p.extension(imageFile.path));
 
       final uploadTask = coverImageStorage.putFile(imageFile);
 
@@ -326,7 +326,9 @@ class ItemCategoryRepository implements IItemCategoryRepository {
     switch (orderType) {
       case OrderType.date:
         {
-          orderedCategorySnapshots = userDoc.categoryCollection.snapshots();
+          orderedCategorySnapshots = userDoc.categoryCollection
+              .orderBy('serverTimeStamp', descending: true)
+              .snapshots();
           break;
         }
       case OrderType.title:

@@ -45,11 +45,11 @@ class SearchField extends StatelessWidget {
             ),
           ),
           onChanged: (text) {
-            if (text == '') {
+            /*  if (text == '') {
               context.bloc<ItemCategoryWatcherBloc>().add(
                   const ItemCategoryWatcherEvent.watchAllStarted(
                       OrderType.date));
-            }
+            }*/
 
             context.bloc<ItemCategoryWatcherBloc>().add(
                 ItemCategoryWatcherEvent.watchAllByTitleStarted(

@@ -1,3 +1,4 @@
+import 'package:Sepetim/presentation/item/form/item_form.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,6 @@ class ItemOverviewPage extends StatelessWidget {
           ),
         ),
         loadSuccess: (state) {
-          print('size ${state.items.size}');
           return Scaffold(
             appBar: AppBar(
               title: Text(
@@ -55,9 +55,21 @@ class ItemOverviewPage extends StatelessWidget {
             body: DefaultPadding(
               child: ListView.builder(
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(
-                      state.items[index].title.getOrCrash(),
+                  return GestureDetector(
+                    onTap: () {
+                      ExtendedNavigator.of(context).pushNamed(
+                        Routes.itemForm,
+                        arguments: ItemFormArguments(
+                          categoryId: categoryId,
+                          groupId: group.uid,
+                          editedItem: state.items[index],
+                        ),
+                      );
+                    },
+                    child: ListTile(
+                      title: Text(
+                        state.items[index].title.getOrCrash(),
+                      ),
                     ),
                   );
                 },

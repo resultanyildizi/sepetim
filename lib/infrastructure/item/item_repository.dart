@@ -120,7 +120,13 @@ class ItemRepository extends IItemRepository {
       final itemId = item.uid.getOrCrash();
 
       await groupDoc.itemCollection.document(itemId).delete();
-      return right(unit);
+
+      final removeFailureOrSuccess = await removeAllPicturesFromServer(item);
+
+      return removeFailureOrSuccess.fold(
+        (f) => left(f),
+        (_) => right(unit),
+      );
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemFailure.insufficientPermission());
@@ -138,17 +144,16 @@ class ItemRepository extends IItemRepository {
     try {
       final pickedFile = await _imagePicker.getImage(
         source: imageSource,
-        maxWidth: 4000,
-        maxHeight: 4000,
-        imageQuality: 80,
+        maxWidth: 1536,
+        maxHeight: 1536,
       );
 
       if (pickedFile != null) {
         final _croppedImage = await ImageCropper.cropImage(
           sourcePath: pickedFile.path,
           cropStyle: CropStyle.rectangle,
+          compressQuality: 85,
           aspectRatio: const CropAspectRatio(ratioX: 9, ratioY: 16),
-          compressQuality: 80,
           androidUiSettings: AndroidUiSettings(
             toolbarTitle: 'Sepetim',
             toolbarColor: sepetimYellow,
@@ -207,7 +212,7 @@ class ItemRepository extends IItemRepository {
 
   @override
   Future<Either<ItemFailure, ImageUrl>> removePictureFromServer(
-    int index,
+    ImageUrl imageUrl,
     Item item,
   ) async {
     try {
@@ -218,7 +223,7 @@ class ItemRepository extends IItemRepository {
         return left(const ItemFailure.networkException());
       }
 
-      final imagePictureUrl = item.imageUrls.getOrCrash()[index].getOrCrash();
+      final imagePictureUrl = imageUrl.getOrCrash();
       if (imagePictureUrl != ImageUrl.defaultUrl().getOrCrash()) {
         final imagePictureStorage =
             await _firebaseStorage.getReferenceFromUrl(imagePictureUrl);
@@ -226,6 +231,32 @@ class ItemRepository extends IItemRepository {
         await imagePictureStorage.delete();
       }
       return right(ImageUrl.defaultUrl());
+    } on PlatformException catch (_) {
+      return left(const ItemFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<ItemFailure, Unit>> removeAllPicturesFromServer(
+    Item item,
+  ) async {
+    try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const ItemFailure.networkException());
+      }
+
+      final userStorage = await _firebaseStorage.userStorage();
+      final itemId = item.uid.getOrCrash();
+      final imageId = UniqueId().getOrCrash();
+
+      final itemPictureStorageReference =
+          userStorage.imagePictures.child(itemId).child(imageId).getRoot();
+
+      await itemPictureStorageReference.delete();
+      return right(unit);
     } on PlatformException catch (_) {
       return left(const ItemFailure.unexpected());
     }

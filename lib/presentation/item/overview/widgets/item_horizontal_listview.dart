@@ -63,9 +63,9 @@ class CircularItemView extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            item.title.getOrCrash().length <= 7
+            item.title.getOrCrash().length <= 12
                 ? item.title.getOrCrash()
-                : '${item.title.getOrCrash().substring(0, 5)}...',
+                : '${item.title.getOrCrash().substring(0, 10)}...',
             style: robotoTextStyle(fontSize: 12),
           )
         ],

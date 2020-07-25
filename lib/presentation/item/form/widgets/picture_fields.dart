@@ -56,7 +56,10 @@ class PictureFields extends StatelessWidget {
                                   () => CachedNetworkImage(
                                     errorWidget: (context, url, error) =>
                                         Image.asset(
-                                            'assets/images/default.png'),
+                                      'assets/images/default.png',
+                                      width: 90,
+                                      fit: BoxFit.cover,
+                                    ),
                                     imageUrl: state.item.imageUrls
                                         .getOrCrash()[index]
                                         .getOrCrash(),
@@ -107,7 +110,7 @@ Future imagePickerPopup(
           onPressed: () {
             ExtendedNavigator.of(context).pop();
             context.bloc<ItemFormBloc>().add(
-                  ItemFormEvent.imageChanged(
+                  ItemFormEvent.pictureChanged(
                     imageIndex,
                     ImageSource.camera,
                   ),
@@ -122,7 +125,7 @@ Future imagePickerPopup(
           onPressed: () {
             ExtendedNavigator.of(context).pop();
             context.bloc<ItemFormBloc>().add(
-                  ItemFormEvent.imageChanged(
+                  ItemFormEvent.pictureChanged(
                     imageIndex,
                     ImageSource.gallery,
                   ),

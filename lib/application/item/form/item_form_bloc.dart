@@ -65,7 +65,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
           itemFailureOrSuccessOption: none(),
         );
       },
-      imageChanged: (e) async* {
+      pictureChanged: (e) async* {
         final failureOrImageFile =
             await _itemRepository.loadPictureFromDevice(e.imageSource);
 
@@ -84,15 +84,37 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
           (imageFile) {
             final tempImageFiles =
                 List<Option<File>>(state.temporaryImageFiles.length);
+            final newIsPictureRemovedList =
+                List<bool>(state.isPictureRemoved.length);
             for (int i = 0; i < tempImageFiles.length; i++) {
               tempImageFiles[i] = state.temporaryImageFiles[i];
+              newIsPictureRemovedList[i] = state.isPictureRemoved[i];
             }
             tempImageFiles[e.index] = some(imageFile);
+            newIsPictureRemovedList[e.index] = false;
 
             return state.copyWith(
               temporaryImageFiles: tempImageFiles,
+              isPictureRemoved: newIsPictureRemovedList,
             );
           },
+        );
+      },
+      pictureRemoved: (e) async* {
+        final newIsPictureRemovedList =
+            List<bool>(state.isPictureRemoved.length);
+        final tempImageFiles =
+            List<Option<File>>(state.temporaryImageFiles.length);
+        for (int i = 0; i < state.isPictureRemoved.length; i++) {
+          newIsPictureRemovedList[i] = state.isPictureRemoved[i];
+          tempImageFiles[i] = state.temporaryImageFiles[i];
+        }
+
+        newIsPictureRemovedList[e.index] = true;
+        tempImageFiles[e.index] = none();
+        yield state.copyWith(
+          isPictureRemoved: newIsPictureRemovedList,
+          temporaryImageFiles: tempImageFiles,
         );
       },
       saved: (e) async* {
@@ -104,24 +126,45 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
           itemFailureOrSuccessOption: none(),
         );
 
-        for (int i = 0; i < state.temporaryImageFiles.length; i++) {
-          final tempImageOption = state.temporaryImageFiles[i];
-          if (tempImageOption.isSome()) {
-            final serverFailureOrLoadedImageUrl =
-                await _itemRepository.loadPictureToServer(
-                    state.item, tempImageOption.getOrElse(() => null));
-            serverFailureOrLoadedImageUrl.fold(
-              (f) {
-                failureOrSuccess = left(f);
-              },
-              (imageUrl) {
-                newImageUrls[i] = imageUrl;
-              },
-            );
-          }
-        }
-
         if (state.item.failureOption.isNone()) {
+          for (int i = 0; i < state.isPictureRemoved.length; i++) {
+            final isPictureRemoved = state.isPictureRemoved[i];
+            final oldImageUrl = state.item.imageUrls.getOrCrash()[i];
+
+            if (isPictureRemoved) {
+              final failureOrImageUrl = await _itemRepository
+                  .removePictureFromServer(oldImageUrl, state.item);
+
+              failureOrImageUrl.fold(
+                (f) {
+                  failureOrSuccess = left(f);
+                },
+                (imageUrl) {
+                  newImageUrls[i] = imageUrl;
+                },
+              );
+            }
+          }
+
+          for (int i = 0; i < state.temporaryImageFiles.length; i++) {
+            final tempImageOption = state.temporaryImageFiles[i];
+            if (tempImageOption.isSome()) {
+              final oldImageUrl = state.item.imageUrls.getOrCrash()[i];
+              final serverFailureOrLoadedImageUrl =
+                  await _itemRepository.loadPictureToServer(
+                      state.item, tempImageOption.getOrElse(() => null));
+              serverFailureOrLoadedImageUrl.fold(
+                (f) {
+                  failureOrSuccess = left(f);
+                },
+                (imageUrl) async {
+                  newImageUrls[i] = imageUrl;
+                  await _itemRepository.removePictureFromServer(
+                      oldImageUrl, state.item);
+                },
+              );
+            }
+          }
           failureOrSuccess = state.isEditing
               ? await _itemRepository.update(e.categoryId, e.groupId,
                   state.item.copyWith(imageUrls: List3(newImageUrls.toList())))

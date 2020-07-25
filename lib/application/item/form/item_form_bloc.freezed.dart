@@ -36,10 +36,16 @@ class _$ItemFormEventTearOff {
     );
   }
 
-  _ImageChanged imageChanged(int index, ImageSource imageSource) {
+  _ImageChanged pictureChanged(int index, ImageSource imageSource) {
     return _ImageChanged(
       index,
       imageSource,
+    );
+  }
+
+  _PictureRemoved pictureRemoved(int index) {
+    return _PictureRemoved(
+      index,
     );
   }
 
@@ -61,7 +67,8 @@ mixin _$ItemFormEvent {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
-    @required Result imageChanged(int index, ImageSource imageSource),
+    @required Result pictureChanged(int index, ImageSource imageSource),
+    @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
   });
   @optionalTypeArgs
@@ -70,7 +77,8 @@ mixin _$ItemFormEvent {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
-    Result imageChanged(int index, ImageSource imageSource),
+    Result pictureChanged(int index, ImageSource imageSource),
+    Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
     @required Result orElse(),
   });
@@ -80,7 +88,8 @@ mixin _$ItemFormEvent {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
-    @required Result imageChanged(_ImageChanged value),
+    @required Result pictureChanged(_ImageChanged value),
+    @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
   });
   @optionalTypeArgs
@@ -89,7 +98,8 @@ mixin _$ItemFormEvent {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
-    Result imageChanged(_ImageChanged value),
+    Result pictureChanged(_ImageChanged value),
+    Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
     @required Result orElse(),
   });
@@ -173,14 +183,16 @@ class _$_Initialized implements _Initialized {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
-    @required Result imageChanged(int index, ImageSource imageSource),
+    @required Result pictureChanged(int index, ImageSource imageSource),
+    @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
-    assert(imageChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
     assert(saved != null);
     return initialized(initialOption);
   }
@@ -192,7 +204,8 @@ class _$_Initialized implements _Initialized {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
-    Result imageChanged(int index, ImageSource imageSource),
+    Result pictureChanged(int index, ImageSource imageSource),
+    Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
     @required Result orElse(),
   }) {
@@ -210,14 +223,16 @@ class _$_Initialized implements _Initialized {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
-    @required Result imageChanged(_ImageChanged value),
+    @required Result pictureChanged(_ImageChanged value),
+    @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
-    assert(imageChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
     assert(saved != null);
     return initialized(this);
   }
@@ -229,7 +244,8 @@ class _$_Initialized implements _Initialized {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
-    Result imageChanged(_ImageChanged value),
+    Result pictureChanged(_ImageChanged value),
+    Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
     @required Result orElse(),
   }) {
@@ -309,14 +325,16 @@ class _$_TitleChanged implements _TitleChanged {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
-    @required Result imageChanged(int index, ImageSource imageSource),
+    @required Result pictureChanged(int index, ImageSource imageSource),
+    @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
-    assert(imageChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
     assert(saved != null);
     return titleChanged(title);
   }
@@ -328,7 +346,8 @@ class _$_TitleChanged implements _TitleChanged {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
-    Result imageChanged(int index, ImageSource imageSource),
+    Result pictureChanged(int index, ImageSource imageSource),
+    Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
     @required Result orElse(),
   }) {
@@ -346,14 +365,16 @@ class _$_TitleChanged implements _TitleChanged {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
-    @required Result imageChanged(_ImageChanged value),
+    @required Result pictureChanged(_ImageChanged value),
+    @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
-    assert(imageChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
     assert(saved != null);
     return titleChanged(this);
   }
@@ -365,7 +386,8 @@ class _$_TitleChanged implements _TitleChanged {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
-    Result imageChanged(_ImageChanged value),
+    Result pictureChanged(_ImageChanged value),
+    Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
     @required Result orElse(),
   }) {
@@ -445,14 +467,16 @@ class _$_PriceChanged implements _PriceChanged {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
-    @required Result imageChanged(int index, ImageSource imageSource),
+    @required Result pictureChanged(int index, ImageSource imageSource),
+    @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
-    assert(imageChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
     assert(saved != null);
     return priceChanged(price);
   }
@@ -464,7 +488,8 @@ class _$_PriceChanged implements _PriceChanged {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
-    Result imageChanged(int index, ImageSource imageSource),
+    Result pictureChanged(int index, ImageSource imageSource),
+    Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
     @required Result orElse(),
   }) {
@@ -482,14 +507,16 @@ class _$_PriceChanged implements _PriceChanged {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
-    @required Result imageChanged(_ImageChanged value),
+    @required Result pictureChanged(_ImageChanged value),
+    @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
-    assert(imageChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
     assert(saved != null);
     return priceChanged(this);
   }
@@ -501,7 +528,8 @@ class _$_PriceChanged implements _PriceChanged {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
-    Result imageChanged(_ImageChanged value),
+    Result pictureChanged(_ImageChanged value),
+    Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
     @required Result orElse(),
   }) {
@@ -586,14 +614,16 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
-    @required Result imageChanged(int index, ImageSource imageSource),
+    @required Result pictureChanged(int index, ImageSource imageSource),
+    @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
-    assert(imageChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
     assert(saved != null);
     return descriptionChanged(descriptionBody);
   }
@@ -605,7 +635,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
-    Result imageChanged(int index, ImageSource imageSource),
+    Result pictureChanged(int index, ImageSource imageSource),
+    Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
     @required Result orElse(),
   }) {
@@ -623,14 +654,16 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
-    @required Result imageChanged(_ImageChanged value),
+    @required Result pictureChanged(_ImageChanged value),
+    @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
-    assert(imageChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
     assert(saved != null);
     return descriptionChanged(this);
   }
@@ -642,7 +675,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
-    Result imageChanged(_ImageChanged value),
+    Result pictureChanged(_ImageChanged value),
+    Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
     @required Result orElse(),
   }) {
@@ -703,7 +737,7 @@ class _$_ImageChanged implements _ImageChanged {
 
   @override
   String toString() {
-    return 'ItemFormEvent.imageChanged(index: $index, imageSource: $imageSource)';
+    return 'ItemFormEvent.pictureChanged(index: $index, imageSource: $imageSource)';
   }
 
   @override
@@ -734,16 +768,18 @@ class _$_ImageChanged implements _ImageChanged {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
-    @required Result imageChanged(int index, ImageSource imageSource),
+    @required Result pictureChanged(int index, ImageSource imageSource),
+    @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
-    assert(imageChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
     assert(saved != null);
-    return imageChanged(index, imageSource);
+    return pictureChanged(index, imageSource);
   }
 
   @override
@@ -753,13 +789,14 @@ class _$_ImageChanged implements _ImageChanged {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
-    Result imageChanged(int index, ImageSource imageSource),
+    Result pictureChanged(int index, ImageSource imageSource),
+    Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (imageChanged != null) {
-      return imageChanged(index, imageSource);
+    if (pictureChanged != null) {
+      return pictureChanged(index, imageSource);
     }
     return orElse();
   }
@@ -771,16 +808,18 @@ class _$_ImageChanged implements _ImageChanged {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
-    @required Result imageChanged(_ImageChanged value),
+    @required Result pictureChanged(_ImageChanged value),
+    @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
-    assert(imageChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
     assert(saved != null);
-    return imageChanged(this);
+    return pictureChanged(this);
   }
 
   @override
@@ -790,13 +829,14 @@ class _$_ImageChanged implements _ImageChanged {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
-    Result imageChanged(_ImageChanged value),
+    Result pictureChanged(_ImageChanged value),
+    Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (imageChanged != null) {
-      return imageChanged(this);
+    if (pictureChanged != null) {
+      return pictureChanged(this);
     }
     return orElse();
   }
@@ -809,6 +849,148 @@ abstract class _ImageChanged implements ItemFormEvent {
   int get index;
   ImageSource get imageSource;
   _$ImageChangedCopyWith<_ImageChanged> get copyWith;
+}
+
+abstract class _$PictureRemovedCopyWith<$Res> {
+  factory _$PictureRemovedCopyWith(
+          _PictureRemoved value, $Res Function(_PictureRemoved) then) =
+      __$PictureRemovedCopyWithImpl<$Res>;
+  $Res call({int index});
+}
+
+class __$PictureRemovedCopyWithImpl<$Res>
+    extends _$ItemFormEventCopyWithImpl<$Res>
+    implements _$PictureRemovedCopyWith<$Res> {
+  __$PictureRemovedCopyWithImpl(
+      _PictureRemoved _value, $Res Function(_PictureRemoved) _then)
+      : super(_value, (v) => _then(v as _PictureRemoved));
+
+  @override
+  _PictureRemoved get _value => super._value as _PictureRemoved;
+
+  @override
+  $Res call({
+    Object index = freezed,
+  }) {
+    return _then(_PictureRemoved(
+      index == freezed ? _value.index : index as int,
+    ));
+  }
+}
+
+class _$_PictureRemoved implements _PictureRemoved {
+  const _$_PictureRemoved(this.index) : assert(index != null);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'ItemFormEvent.pictureRemoved(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _PictureRemoved &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
+
+  @override
+  _$PictureRemovedCopyWith<_PictureRemoved> get copyWith =>
+      __$PictureRemovedCopyWithImpl<_PictureRemoved>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Option<Item> initialOption),
+    @required Result titleChanged(String title),
+    @required Result priceChanged(String price),
+    @required Result descriptionChanged(String descriptionBody),
+    @required Result pictureChanged(int index, ImageSource imageSource),
+    @required Result pictureRemoved(int index),
+    @required Result saved(UniqueId categoryId, UniqueId groupId),
+  }) {
+    assert(initialized != null);
+    assert(titleChanged != null);
+    assert(priceChanged != null);
+    assert(descriptionChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
+    assert(saved != null);
+    return pictureRemoved(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Option<Item> initialOption),
+    Result titleChanged(String title),
+    Result priceChanged(String price),
+    Result descriptionChanged(String descriptionBody),
+    Result pictureChanged(int index, ImageSource imageSource),
+    Result pictureRemoved(int index),
+    Result saved(UniqueId categoryId, UniqueId groupId),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (pictureRemoved != null) {
+      return pictureRemoved(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(_Initialized value),
+    @required Result titleChanged(_TitleChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result pictureChanged(_ImageChanged value),
+    @required Result pictureRemoved(_PictureRemoved value),
+    @required Result saved(_Saved value),
+  }) {
+    assert(initialized != null);
+    assert(titleChanged != null);
+    assert(priceChanged != null);
+    assert(descriptionChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
+    assert(saved != null);
+    return pictureRemoved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(_Initialized value),
+    Result titleChanged(_TitleChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result descriptionChanged(_DescriptionChanged value),
+    Result pictureChanged(_ImageChanged value),
+    Result pictureRemoved(_PictureRemoved value),
+    Result saved(_Saved value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (pictureRemoved != null) {
+      return pictureRemoved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PictureRemoved implements ItemFormEvent {
+  const factory _PictureRemoved(int index) = _$_PictureRemoved;
+
+  int get index;
+  _$PictureRemovedCopyWith<_PictureRemoved> get copyWith;
 }
 
 abstract class _$SavedCopyWith<$Res> {
@@ -880,14 +1062,16 @@ class _$_Saved implements _Saved {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
-    @required Result imageChanged(int index, ImageSource imageSource),
+    @required Result pictureChanged(int index, ImageSource imageSource),
+    @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
-    assert(imageChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
     assert(saved != null);
     return saved(categoryId, groupId);
   }
@@ -899,7 +1083,8 @@ class _$_Saved implements _Saved {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
-    Result imageChanged(int index, ImageSource imageSource),
+    Result pictureChanged(int index, ImageSource imageSource),
+    Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
     @required Result orElse(),
   }) {
@@ -917,14 +1102,16 @@ class _$_Saved implements _Saved {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
-    @required Result imageChanged(_ImageChanged value),
+    @required Result pictureChanged(_ImageChanged value),
+    @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
-    assert(imageChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
     assert(saved != null);
     return saved(this);
   }
@@ -936,7 +1123,8 @@ class _$_Saved implements _Saved {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
-    Result imageChanged(_ImageChanged value),
+    Result pictureChanged(_ImageChanged value),
+    Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
     @required Result orElse(),
   }) {
@@ -965,7 +1153,8 @@ class _$ItemFormStateTearOff {
       @required Option<Either<ItemFailure, Unit>> itemFailureOrSuccessOption,
       @required bool isEditing,
       @required bool isSaving,
-      @required List<Option<File>> temporaryImageFiles}) {
+      @required List<Option<File>> temporaryImageFiles,
+      @required List<bool> isPictureRemoved}) {
     return _ItemFormState(
       item: item,
       showErrorMessages: showErrorMessages,
@@ -973,6 +1162,7 @@ class _$ItemFormStateTearOff {
       isEditing: isEditing,
       isSaving: isSaving,
       temporaryImageFiles: temporaryImageFiles,
+      isPictureRemoved: isPictureRemoved,
     );
   }
 }
@@ -987,6 +1177,7 @@ mixin _$ItemFormState {
   bool get isEditing;
   bool get isSaving;
   List<Option<File>> get temporaryImageFiles;
+  List<bool> get isPictureRemoved;
 
   $ItemFormStateCopyWith<ItemFormState> get copyWith;
 }
@@ -1001,7 +1192,8 @@ abstract class $ItemFormStateCopyWith<$Res> {
       Option<Either<ItemFailure, Unit>> itemFailureOrSuccessOption,
       bool isEditing,
       bool isSaving,
-      List<Option<File>> temporaryImageFiles});
+      List<Option<File>> temporaryImageFiles,
+      List<bool> isPictureRemoved});
 
   $ItemCopyWith<$Res> get item;
 }
@@ -1022,6 +1214,7 @@ class _$ItemFormStateCopyWithImpl<$Res>
     Object isEditing = freezed,
     Object isSaving = freezed,
     Object temporaryImageFiles = freezed,
+    Object isPictureRemoved = freezed,
   }) {
     return _then(_value.copyWith(
       item: item == freezed ? _value.item : item as Item,
@@ -1036,6 +1229,9 @@ class _$ItemFormStateCopyWithImpl<$Res>
       temporaryImageFiles: temporaryImageFiles == freezed
           ? _value.temporaryImageFiles
           : temporaryImageFiles as List<Option<File>>,
+      isPictureRemoved: isPictureRemoved == freezed
+          ? _value.isPictureRemoved
+          : isPictureRemoved as List<bool>,
     ));
   }
 
@@ -1062,7 +1258,8 @@ abstract class _$ItemFormStateCopyWith<$Res>
       Option<Either<ItemFailure, Unit>> itemFailureOrSuccessOption,
       bool isEditing,
       bool isSaving,
-      List<Option<File>> temporaryImageFiles});
+      List<Option<File>> temporaryImageFiles,
+      List<bool> isPictureRemoved});
 
   @override
   $ItemCopyWith<$Res> get item;
@@ -1086,6 +1283,7 @@ class __$ItemFormStateCopyWithImpl<$Res>
     Object isEditing = freezed,
     Object isSaving = freezed,
     Object temporaryImageFiles = freezed,
+    Object isPictureRemoved = freezed,
   }) {
     return _then(_ItemFormState(
       item: item == freezed ? _value.item : item as Item,
@@ -1100,6 +1298,9 @@ class __$ItemFormStateCopyWithImpl<$Res>
       temporaryImageFiles: temporaryImageFiles == freezed
           ? _value.temporaryImageFiles
           : temporaryImageFiles as List<Option<File>>,
+      isPictureRemoved: isPictureRemoved == freezed
+          ? _value.isPictureRemoved
+          : isPictureRemoved as List<bool>,
     ));
   }
 }
@@ -1111,13 +1312,15 @@ class _$_ItemFormState implements _ItemFormState {
       @required this.itemFailureOrSuccessOption,
       @required this.isEditing,
       @required this.isSaving,
-      @required this.temporaryImageFiles})
+      @required this.temporaryImageFiles,
+      @required this.isPictureRemoved})
       : assert(item != null),
         assert(showErrorMessages != null),
         assert(itemFailureOrSuccessOption != null),
         assert(isEditing != null),
         assert(isSaving != null),
-        assert(temporaryImageFiles != null);
+        assert(temporaryImageFiles != null),
+        assert(isPictureRemoved != null);
 
   @override
   final Item item;
@@ -1131,10 +1334,12 @@ class _$_ItemFormState implements _ItemFormState {
   final bool isSaving;
   @override
   final List<Option<File>> temporaryImageFiles;
+  @override
+  final List<bool> isPictureRemoved;
 
   @override
   String toString() {
-    return 'ItemFormState(item: $item, showErrorMessages: $showErrorMessages, itemFailureOrSuccessOption: $itemFailureOrSuccessOption, isEditing: $isEditing, isSaving: $isSaving, temporaryImageFiles: $temporaryImageFiles)';
+    return 'ItemFormState(item: $item, showErrorMessages: $showErrorMessages, itemFailureOrSuccessOption: $itemFailureOrSuccessOption, isEditing: $isEditing, isSaving: $isSaving, temporaryImageFiles: $temporaryImageFiles, isPictureRemoved: $isPictureRemoved)';
   }
 
   @override
@@ -1159,7 +1364,10 @@ class _$_ItemFormState implements _ItemFormState {
                     .equals(other.isSaving, isSaving)) &&
             (identical(other.temporaryImageFiles, temporaryImageFiles) ||
                 const DeepCollectionEquality()
-                    .equals(other.temporaryImageFiles, temporaryImageFiles)));
+                    .equals(other.temporaryImageFiles, temporaryImageFiles)) &&
+            (identical(other.isPictureRemoved, isPictureRemoved) ||
+                const DeepCollectionEquality()
+                    .equals(other.isPictureRemoved, isPictureRemoved)));
   }
 
   @override
@@ -1170,7 +1378,8 @@ class _$_ItemFormState implements _ItemFormState {
       const DeepCollectionEquality().hash(itemFailureOrSuccessOption) ^
       const DeepCollectionEquality().hash(isEditing) ^
       const DeepCollectionEquality().hash(isSaving) ^
-      const DeepCollectionEquality().hash(temporaryImageFiles);
+      const DeepCollectionEquality().hash(temporaryImageFiles) ^
+      const DeepCollectionEquality().hash(isPictureRemoved);
 
   @override
   _$ItemFormStateCopyWith<_ItemFormState> get copyWith =>
@@ -1184,7 +1393,8 @@ abstract class _ItemFormState implements ItemFormState {
       @required Option<Either<ItemFailure, Unit>> itemFailureOrSuccessOption,
       @required bool isEditing,
       @required bool isSaving,
-      @required List<Option<File>> temporaryImageFiles}) = _$_ItemFormState;
+      @required List<Option<File>> temporaryImageFiles,
+      @required List<bool> isPictureRemoved}) = _$_ItemFormState;
 
   @override
   Item get item;
@@ -1198,6 +1408,8 @@ abstract class _ItemFormState implements ItemFormState {
   bool get isSaving;
   @override
   List<Option<File>> get temporaryImageFiles;
+  @override
+  List<bool> get isPictureRemoved;
   @override
   _$ItemFormStateCopyWith<_ItemFormState> get copyWith;
 }

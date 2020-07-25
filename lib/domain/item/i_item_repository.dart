@@ -33,7 +33,10 @@ abstract class IItemRepository {
     File imageFile,
   );
   Future<Either<ItemFailure, ImageUrl>> removePictureFromServer(
-    int index,
+    ImageUrl imageUrl,
+    Item item,
+  );
+  Future<Either<ItemFailure, Unit>> removeAllPicturesFromServer(
     Item item,
   );
   Stream<Either<ItemFailure, KtList<Item>>> watchAll(
