@@ -11,7 +11,6 @@ import 'package:Sepetim/presentation/item_group/overview/widgets/item_group_card
 import 'package:Sepetim/presentation/item_group/overview/widgets/search_field.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -105,7 +104,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
                       child: ListView.builder(
                         itemBuilder: (context, index) {
                           return ItemGroupCard(
-                            categoryId: category.uid,
+                            category: category,
                             group: state.groups[index],
                             key: Key(state.groups[index].uid.getOrCrash()),
                           );

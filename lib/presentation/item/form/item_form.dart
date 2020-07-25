@@ -1,6 +1,8 @@
 import 'package:Sepetim/application/item/form/item_form_bloc.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/domain/item/item.dart';
+import 'package:Sepetim/domain/item_category/item_category.dart';
+import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
@@ -18,14 +20,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ItemForm extends StatelessWidget {
-  final UniqueId categoryId;
-  final UniqueId groupId;
+  final ItemCategory category;
+  final ItemGroup group;
   final Item editedItem;
   const ItemForm({
     Key key,
-    this.categoryId,
-    this.groupId,
-    this.editedItem,
+    @required this.category,
+    @required this.group,
+    @required this.editedItem,
   }) : super(key: key);
 
   @override
@@ -155,8 +157,8 @@ class ItemForm extends StatelessWidget {
                         ],
                         const DividerDefault(),
                         SaveButton(
-                          categoryId: categoryId,
-                          groupId: groupId,
+                          categoryId: category.uid,
+                          groupId: group.uid,
                         ),
                       ],
                     ),

@@ -1,3 +1,5 @@
+import 'package:Sepetim/domain/core/value_objects.dart';
+import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
@@ -40,38 +42,25 @@ class PictureFields extends StatelessWidget {
                                 await imagePickerPopup(context,
                                     imageIndex: index);
                               },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 3,
-                                      blurRadius: 7,
-                                      offset: const Offset(0, 1),
-                                    )
+                              child: Stack(
+                                alignment: Alignment.topRight,
+                                children: [
+                                  if (state.isPictureRemoved[index]) ...[
+                                    defaultImage(),
+                                  ] else ...[
+                                    getItemImage(state, index),
                                   ],
-                                ),
-                                child: state.temporaryImageFiles[index].fold(
-                                  () => CachedNetworkImage(
-                                    errorWidget: (context, url, error) =>
-                                        Image.asset(
-                                      'assets/images/default.png',
-                                      width: 90,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    imageUrl: state.item.imageUrls
-                                        .getOrCrash()[index]
-                                        .getOrCrash(),
-                                    width: 90,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  (imageFile) => Image.file(
-                                    imageFile,
-                                    width: 90,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
+                                  if ((state.item.imageUrls
+                                                  .getOrCrash()[index]
+                                                  .getOrCrash() !=
+                                              ImageUrl.defaultUrl()
+                                                  .getOrCrash() ||
+                                          state.temporaryImageFiles[index]
+                                              .isSome()) &&
+                                      !state.isPictureRemoved[index]) ...[
+                                    deleteImageButton(context, index)
+                                  ]
+                                ],
                               ),
                             ),
                           );
@@ -87,6 +76,78 @@ class PictureFields extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  GestureDetector deleteImageButton(BuildContext context, int index) {
+    return GestureDetector(
+      onTap: () {
+        context.bloc<ItemFormBloc>().add(
+              ItemFormEvent.pictureRemoved(index),
+            );
+      },
+      child: Icon(
+        Icons.close,
+        color: sepetimLightGrey,
+        size: 15,
+      ),
+    );
+  }
+
+  Container getItemImage(ItemFormState state, int index) {
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 3,
+            blurRadius: 7,
+            offset: const Offset(0, 1),
+          ),
+        ],
+      ),
+      child: state.temporaryImageFiles[index].fold(
+        () => CachedNetworkImage(
+          errorWidget: (context, url, error) => Image.asset(
+            'assets/images/default.png',
+            width: 90,
+            height: 160,
+            fit: BoxFit.cover,
+          ),
+          imageUrl: state.item.imageUrls.getOrCrash()[index].getOrCrash(),
+          width: 90,
+          height: 160,
+          fit: BoxFit.cover,
+        ),
+        (imageFile) => Image.file(
+          imageFile,
+          width: 90,
+          height: 160,
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
+  Container defaultImage() {
+    return Container(
+      decoration: BoxDecoration(
+        shape: BoxShape.rectangle,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 3,
+            blurRadius: 7,
+            offset: const Offset(0, 1),
+          )
+        ],
+      ),
+      child: Image.asset(
+        'assets/images/default.png',
+        width: 90,
+        height: 160,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

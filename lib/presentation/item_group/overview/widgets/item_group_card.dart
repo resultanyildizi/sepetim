@@ -1,7 +1,6 @@
 import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
 import 'package:Sepetim/domain/core/enums.dart';
-import 'package:Sepetim/domain/core/value_objects.dart';
-import 'package:Sepetim/domain/item/item.dart';
+import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
@@ -12,12 +11,11 @@ import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kt_dart/kt.dart';
 
 class ItemGroupCard extends StatelessWidget {
-  final UniqueId categoryId;
+  final ItemCategory category;
   final ItemGroup group;
-  const ItemGroupCard({Key key, this.categoryId, this.group}) : super(key: key);
+  const ItemGroupCard({Key key, this.category, this.group}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,7 @@ class ItemGroupCard extends StatelessWidget {
         BlocProvider<ItemWatcherBloc>(
           create: (context) => getIt<ItemWatcherBloc>()
             ..add(ItemWatcherEvent.watchAllStarted(
-                categoryId, group.uid, OrderType.date)),
+                category.uid, group.uid, OrderType.date)),
         ),
       ],
       child: BlocBuilder<ItemWatcherBloc, ItemWatcherState>(
@@ -35,7 +33,7 @@ class ItemGroupCard extends StatelessWidget {
             ExtendedNavigator.of(context).pushNamed(
               Routes.itemOverviewPage,
               arguments: ItemOverviewPageArguments(
-                categoryId: categoryId,
+                category: category,
                 group: group,
                 watcherBloc: context.bloc<ItemWatcherBloc>(),
               ),
@@ -71,7 +69,7 @@ class ItemGroupCard extends StatelessWidget {
                         ),
                         Expanded(
                           child: ItemGroupActionButtons(
-                            categoryId: categoryId,
+                            categoryId: category.uid,
                             group: group,
                           ),
                         )

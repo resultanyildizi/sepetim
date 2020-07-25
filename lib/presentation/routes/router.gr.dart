@@ -127,29 +127,28 @@ class Router extends RouterBase {
           settings: settings,
         );
       case Routes.itemOverviewPage:
-        if (hasInvalidArgs<ItemOverviewPageArguments>(args)) {
+        if (hasInvalidArgs<ItemOverviewPageArguments>(args, isRequired: true)) {
           return misTypedArgsRoute<ItemOverviewPageArguments>(args);
         }
-        final typedArgs =
-            args as ItemOverviewPageArguments ?? ItemOverviewPageArguments();
+        final typedArgs = args as ItemOverviewPageArguments;
         return MaterialPageRoute<dynamic>(
           builder: (context) => ItemOverviewPage(
               key: typedArgs.key,
-              categoryId: typedArgs.categoryId,
+              category: typedArgs.category,
               group: typedArgs.group,
               watcherBloc: typedArgs.watcherBloc),
           settings: settings,
         );
       case Routes.itemForm:
-        if (hasInvalidArgs<ItemFormArguments>(args)) {
+        if (hasInvalidArgs<ItemFormArguments>(args, isRequired: true)) {
           return misTypedArgsRoute<ItemFormArguments>(args);
         }
-        final typedArgs = args as ItemFormArguments ?? ItemFormArguments();
+        final typedArgs = args as ItemFormArguments;
         return MaterialPageRoute<dynamic>(
           builder: (context) => ItemForm(
               key: typedArgs.key,
-              categoryId: typedArgs.categoryId,
-              groupId: typedArgs.groupId,
+              category: typedArgs.category,
+              group: typedArgs.group,
               editedItem: typedArgs.editedItem),
           settings: settings,
         );
@@ -206,20 +205,27 @@ class ItemGroupFormArguments {
 //ItemOverviewPage arguments holder class
 class ItemOverviewPageArguments {
   final Key key;
-  final UniqueId categoryId;
+  final ItemCategory category;
   final ItemGroup group;
   final ItemWatcherBloc watcherBloc;
   ItemOverviewPageArguments(
-      {this.key, this.categoryId, this.group, this.watcherBloc});
+      {this.key,
+      @required this.category,
+      @required this.group,
+      @required this.watcherBloc});
 }
 
 //ItemForm arguments holder class
 class ItemFormArguments {
   final Key key;
-  final UniqueId categoryId;
-  final UniqueId groupId;
+  final ItemCategory category;
+  final ItemGroup group;
   final Item editedItem;
-  ItemFormArguments({this.key, this.categoryId, this.groupId, this.editedItem});
+  ItemFormArguments(
+      {this.key,
+      @required this.category,
+      @required this.group,
+      @required this.editedItem});
 }
 
 // *************************************************************************
@@ -285,31 +291,28 @@ extension RouterNavigationHelperMethods on ExtendedNavigatorState {
 
   Future pushItemOverviewPage({
     Key key,
-    UniqueId categoryId,
-    ItemGroup group,
-    ItemWatcherBloc watcherBloc,
+    @required ItemCategory category,
+    @required ItemGroup group,
+    @required ItemWatcherBloc watcherBloc,
   }) =>
       pushNamed(
         Routes.itemOverviewPage,
         arguments: ItemOverviewPageArguments(
             key: key,
-            categoryId: categoryId,
+            category: category,
             group: group,
             watcherBloc: watcherBloc),
       );
 
   Future pushItemForm({
     Key key,
-    UniqueId categoryId,
-    UniqueId groupId,
-    Item editedItem,
+    @required ItemCategory category,
+    @required ItemGroup group,
+    @required Item editedItem,
   }) =>
       pushNamed(
         Routes.itemForm,
         arguments: ItemFormArguments(
-            key: key,
-            categoryId: categoryId,
-            groupId: groupId,
-            editedItem: editedItem),
+            key: key, category: category, group: group, editedItem: editedItem),
       );
 }

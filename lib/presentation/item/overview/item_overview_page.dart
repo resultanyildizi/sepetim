@@ -1,25 +1,25 @@
-import 'package:Sepetim/presentation/item/form/item_form.dart';
+import 'package:Sepetim/domain/item_category/item_category.dart';
+import 'package:Sepetim/presentation/item/overview/widgets/item_card.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
-import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/default_floating_action_button.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 
 class ItemOverviewPage extends StatelessWidget {
-  final UniqueId categoryId;
+  final ItemCategory category;
   final ItemGroup group;
   final ItemWatcherBloc watcherBloc;
   const ItemOverviewPage({
     Key key,
-    this.categoryId,
-    this.group,
-    this.watcherBloc,
+    @required this.category,
+    @required this.group,
+    @required this.watcherBloc,
   }) : super(key: key);
 
   @override
@@ -60,16 +60,16 @@ class ItemOverviewPage extends StatelessWidget {
                       ExtendedNavigator.of(context).pushNamed(
                         Routes.itemForm,
                         arguments: ItemFormArguments(
-                          categoryId: categoryId,
-                          groupId: group.uid,
+                          category: category,
+                          group: group,
                           editedItem: state.items[index],
                         ),
                       );
                     },
-                    child: ListTile(
-                      title: Text(
-                        state.items[index].title.getOrCrash(),
-                      ),
+                    child: ItemCard(
+                      item: state.items[index],
+                      category: category,
+                      group: group,
                     ),
                   );
                 },
@@ -82,8 +82,9 @@ class ItemOverviewPage extends StatelessWidget {
                 ExtendedNavigator.of(context).pushNamed(
                   Routes.itemForm,
                   arguments: ItemFormArguments(
-                    categoryId: categoryId,
-                    groupId: group.uid,
+                    category: category,
+                    group: group,
+                    editedItem: null,
                   ),
                 );
               },
