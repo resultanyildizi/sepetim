@@ -1,11 +1,15 @@
 import 'package:Sepetim/domain/core/failures.dart';
 import 'package:dartz/dartz.dart';
 
-Either<ValueFailure<double>, double> validatePrice(double input) {
-  if (input >= 0.0) {
-    return right(input);
+Either<ValueFailure<double>, double> validatePrice(String input) {
+  final price = double.tryParse(input);
+
+  if (price == null) {
+    return left(const ValueFailure.invalidPrice(failedValue: -1));
+  } else if (price >= 0.0) {
+    return right(price);
   } else {
-    return left(ValueFailure.invalidPrice(failedValue: input));
+    return left(ValueFailure.invalidPrice(failedValue: price));
   }
 }
 

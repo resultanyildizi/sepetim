@@ -27,7 +27,7 @@ abstract class Item implements _$Item {
   factory Item.empty() => Item(
         uid: UniqueId(),
         title: ShortTitle(''),
-        price: Price(0.0),
+        price: Price('0.0'),
         description: DescriptionBody(''),
         status: Status(Status.predefinedStatuses[0]),
         imageUrls: List3([

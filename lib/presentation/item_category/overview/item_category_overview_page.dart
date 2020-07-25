@@ -61,7 +61,7 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                     ),
                     Text(
                       translate(context, 'categories'),
-                      style: robotoTextStyle(bold: true, fontSize: 20.0),
+                      style: robotoTextStyle(bold: true, fontSize: 24.0),
                     ),
                     Expanded(
                       child: Center(child: Container()),
@@ -95,7 +95,7 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                       ),
                       Text(
                         translate(context, 'categories'),
-                        style: robotoTextStyle(bold: true, fontSize: 20.0),
+                        style: robotoTextStyle(bold: true, fontSize: 24.0),
                       ),
                       const SizedBox(
                         height: 8.0,

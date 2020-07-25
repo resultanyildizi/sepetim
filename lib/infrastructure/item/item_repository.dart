@@ -1,10 +1,13 @@
 import 'dart:io';
 
+import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
@@ -16,16 +19,19 @@ import 'package:Sepetim/domain/item/item.dart';
 import 'package:Sepetim/domain/item/item_failure.dart';
 import 'package:Sepetim/infrastructure/core/firebase_helpers.dart';
 import 'package:Sepetim/infrastructure/item/item_dtos.dart';
+import 'package:path/path.dart';
 import 'package:rxdart/rxdart.dart';
 
 @LazySingleton(as: IItemRepository)
 class ItemRepository extends IItemRepository {
   final Firestore _firestore;
   final FirebaseStorage _firebaseStorage;
+  final ImagePicker _imagePicker;
 
   ItemRepository(
     this._firestore,
     this._firebaseStorage,
+    this._imagePicker,
   );
 
   @override
@@ -127,24 +133,102 @@ class ItemRepository extends IItemRepository {
   }
 
   @override
-  Future<Either<ItemFailure, File>> loadCoverPictureFromDevice(
-      ImageSource imageSource) {
-    // TODO: implement loadCoverPictureFromDevice
-    throw UnimplementedError();
+  Future<Either<ItemFailure, File>> loadPictureFromDevice(
+      ImageSource imageSource) async {
+    try {
+      final pickedFile = await _imagePicker.getImage(
+        source: imageSource,
+        maxWidth: 4000,
+        maxHeight: 4000,
+        imageQuality: 80,
+      );
+
+      if (pickedFile != null) {
+        final _croppedImage = await ImageCropper.cropImage(
+          sourcePath: pickedFile.path,
+          cropStyle: CropStyle.rectangle,
+          aspectRatio: const CropAspectRatio(ratioX: 9, ratioY: 16),
+          compressQuality: 80,
+          androidUiSettings: AndroidUiSettings(
+            toolbarTitle: 'Sepetim',
+            toolbarColor: sepetimYellow,
+            toolbarWidgetColor: sepetimGrey,
+            cropFrameColor: Colors.transparent,
+            initAspectRatio: CropAspectRatioPreset.original,
+            lockAspectRatio: true,
+            showCropGrid: false,
+            hideBottomControls: true,
+          ),
+        );
+        if (_croppedImage != null) {
+          return right(_croppedImage);
+        } else {
+          return left(const ItemFailure.imageLoadCanceled());
+        }
+      } else {
+        return left(const ItemFailure.imageLoadCanceled());
+      }
+    } catch (e) {
+      return left(const ItemFailure.unexpected());
+    }
   }
 
   @override
-  Future<Either<ItemFailure, ImageUrl>> loadCoverPictureToServer(
-      Item item, File imageFile) {
-    // TODO: implement loadCoverPictureToServer
-    throw UnimplementedError();
+  Future<Either<ItemFailure, ImageUrl>> loadPictureToServer(
+    Item item,
+    File imageFile,
+  ) async {
+    try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const ItemFailure.networkException());
+      }
+      final userStorage = await _firebaseStorage.userStorage();
+      final itemId = item.uid.getOrCrash();
+      final imageId = UniqueId().getOrCrash();
+
+      final itemPictureStorage = userStorage.imagePictures
+          .child(itemId)
+          .child(imageId + extension(imageFile.path));
+
+      final uploadTask = itemPictureStorage.putFile(imageFile);
+
+      await uploadTask.onComplete;
+
+      final itemPictureDownloadUrl = await itemPictureStorage.getDownloadURL();
+
+      return right(ImageUrl(itemPictureDownloadUrl.toString()));
+    } on PlatformException catch (_) {
+      return left(const ItemFailure.unexpected());
+    }
   }
 
   @override
-  Future<Either<ItemFailure, ImageUrl>> removeCoverPictureFromServer(
-      Item item) {
-    // TODO: implement removeCoverPictureFromServer
-    throw UnimplementedError();
+  Future<Either<ItemFailure, ImageUrl>> removePictureFromServer(
+    int index,
+    Item item,
+  ) async {
+    try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const ItemFailure.networkException());
+      }
+
+      final imagePictureUrl = item.imageUrls.getOrCrash()[index].getOrCrash();
+      if (imagePictureUrl != ImageUrl.defaultUrl().getOrCrash()) {
+        final imagePictureStorage =
+            await _firebaseStorage.getReferenceFromUrl(imagePictureUrl);
+
+        await imagePictureStorage.delete();
+      }
+      return right(ImageUrl.defaultUrl());
+    } on PlatformException catch (_) {
+      return left(const ItemFailure.unexpected());
+    }
   }
 
   @override

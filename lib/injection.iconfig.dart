@@ -14,8 +14,6 @@ import 'package:Sepetim/infrastructure/auth/firebase_auth_facade.dart';
 import 'package:Sepetim/domain/auth/i_auth_facade.dart';
 import 'package:Sepetim/infrastructure/item_group/item_group_repository.dart';
 import 'package:Sepetim/domain/item_group/i_group_repository.dart';
-import 'package:Sepetim/infrastructure/item/item_repository.dart';
-import 'package:Sepetim/domain/item/i_item_repository.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:Sepetim/application/item_category/selector/item_category_selector_bloc.dart';
 import 'package:Sepetim/application/item_group/actor/item_group_actor_bloc.dart';
@@ -26,10 +24,14 @@ import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/infrastructure/item_category/item_category_repository.dart';
 import 'package:Sepetim/domain/item_category/i_category_repository.dart';
+import 'package:Sepetim/infrastructure/item/item_repository.dart';
+import 'package:Sepetim/domain/item/i_item_repository.dart';
 import 'package:Sepetim/application/item_category/actor/item_category_actor_bloc.dart';
 import 'package:Sepetim/application/item_category/form/item_category_form_bloc.dart';
 import 'package:Sepetim/application/item_category/subcollections/item_category_subcollection_bloc.dart';
 import 'package:Sepetim/application/item_category/watcher/item_category_watcher_bloc.dart';
+import 'package:Sepetim/application/item/form/item_form_bloc.dart';
+import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
@@ -47,8 +49,6 @@ void $initGetIt(GetIt g, {String environment}) {
       () => FirebaseAuthFacade(g<FirebaseAuth>(), g<GoogleSignIn>()));
   g.registerLazySingleton<IItemGroupRepository>(
       () => ItemGroupRepository(g<Firestore>()));
-  g.registerLazySingleton<IItemRepository>(
-      () => ItemRepository(g<Firestore>(), g<FirebaseStorage>()));
   g.registerLazySingleton<ImagePicker>(
       () => imagePickerInjectableModule.imagePicker);
   g.registerFactory<ItemCategorySelectorBloc>(() => ItemCategorySelectorBloc());
@@ -66,6 +66,11 @@ void $initGetIt(GetIt g, {String environment}) {
         g<ImagePicker>(),
         g<FirebaseStorage>(),
       ));
+  g.registerLazySingleton<IItemRepository>(() => ItemRepository(
+        g<Firestore>(),
+        g<FirebaseStorage>(),
+        g<ImagePicker>(),
+      ));
   g.registerFactory<ItemCategoryActorBloc>(
       () => ItemCategoryActorBloc(g<IItemCategoryRepository>()));
   g.registerFactory<ItemCategoryFormBloc>(
@@ -74,6 +79,9 @@ void $initGetIt(GetIt g, {String environment}) {
       () => ItemCategorySubcollectionBloc(g<IItemCategoryRepository>()));
   g.registerFactory<ItemCategoryWatcherBloc>(
       () => ItemCategoryWatcherBloc(g<IItemCategoryRepository>()));
+  g.registerFactory<ItemFormBloc>(() => ItemFormBloc(g<IItemRepository>()));
+  g.registerFactory<ItemWatcherBloc>(
+      () => ItemWatcherBloc(g<IItemRepository>()));
 }
 
 class _$FirebaseInjectableModule extends FirebaseInjectableModule {}

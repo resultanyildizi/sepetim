@@ -22,6 +22,7 @@ abstract class ItemDto implements _$ItemDto {
     @required int selectedIndex,
     @required List<LinkObjectDto> linkObjects,
     @required bool isFavorite,
+    @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
   }) = _ItemDto;
 
   factory ItemDto.fromDomain(Item item) {
@@ -41,6 +42,7 @@ abstract class ItemDto implements _$ItemDto {
           .map((linkObject) => LinkObjectDto.fromDomain(linkObject))
           .asList(),
       isFavorite: item.isFavorite,
+      serverTimeStamp: FieldValue.serverTimestamp(),
     );
   }
 
@@ -48,7 +50,7 @@ abstract class ItemDto implements _$ItemDto {
     return Item(
       uid: UniqueId.fromUniqueString(uid),
       title: ShortTitle(title),
-      price: Price(price),
+      price: Price(price.toString()),
       description: DescriptionBody(description),
       status: Status(status),
       imageUrls: List3(
@@ -98,4 +100,16 @@ abstract class LinkObjectDto implements _$LinkObjectDto {
 
   factory LinkObjectDto.fromJson(Map<String, dynamic> json) =>
       _$LinkObjectDtoFromJson(json);
+}
+
+class ServerTimeStampConverter implements JsonConverter<FieldValue, Object> {
+  const ServerTimeStampConverter();
+
+  @override
+  FieldValue fromJson(Object json) {
+    return FieldValue.serverTimestamp();
+  }
+
+  @override
+  Object toJson(FieldValue fieldValue) => fieldValue;
 }

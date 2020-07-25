@@ -42,7 +42,7 @@ class Price extends ValueObject<double> {
   @override
   final Either<ValueFailure<double>, double> value;
 
-  factory Price(double input) {
+  factory Price(String input) {
     assert(input != null);
     return Price._(validatePrice(input));
   }

@@ -148,12 +148,12 @@ class ItemCategoryCard extends StatelessWidget {
         placeholder: (context, url) => CircleAvatar(
           backgroundColor: Colors.white,
           radius: screenHeightByScalar(context,
-              scalarSmall: 0.062, scalarMedium: 0.060, scalarBig: 0.056),
+              scalarSmall: 0.065, scalarMedium: 0.060, scalarBig: 0.056),
         ),
         imageBuilder: (context, image) => CircleAvatar(
           backgroundImage: image,
           radius: screenHeightByScalar(context,
-              scalarSmall: 0.062, scalarMedium: 0.060, scalarBig: 0.056),
+              scalarSmall: 0.065, scalarMedium: 0.060, scalarBig: 0.056),
         ),
       ),
     );

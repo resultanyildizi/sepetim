@@ -84,7 +84,7 @@ class CoverPictureField extends StatelessWidget {
                     RoundedIconButton(
                       width: screenWidthByScalar(context, 0.5),
                       height: 25,
-                      iconData: Icons.camera,
+                      iconData: Icons.camera_alt,
                       text: translate(context, 'from_camera'),
                       onPressed: () {
                         context.bloc<ItemCategoryFormBloc>().add(

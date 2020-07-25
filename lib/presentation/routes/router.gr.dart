@@ -17,6 +17,10 @@ import 'package:Sepetim/presentation/item_group/overview/item_group_overview_pag
 import 'package:Sepetim/presentation/item_group/form/item_group_form.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
+import 'package:Sepetim/presentation/item/overview/item_overview_page.dart';
+import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
+import 'package:Sepetim/presentation/item/form/item_form.dart';
+import 'package:Sepetim/domain/item/item.dart';
 
 abstract class Routes {
   static const splashPage = '/';
@@ -26,6 +30,8 @@ abstract class Routes {
   static const itemCategoryForm = '/item-category-form';
   static const itemGroupOverviewPage = '/item-group-overview-page';
   static const itemGroupForm = '/item-group-form';
+  static const itemOverviewPage = '/item-overview-page';
+  static const itemForm = '/item-form';
   static const all = {
     splashPage,
     signInPage,
@@ -34,6 +40,8 @@ abstract class Routes {
     itemCategoryForm,
     itemGroupOverviewPage,
     itemGroupForm,
+    itemOverviewPage,
+    itemForm,
   };
 }
 
@@ -118,6 +126,33 @@ class Router extends RouterBase {
               categoryId: typedArgs.categoryId),
           settings: settings,
         );
+      case Routes.itemOverviewPage:
+        if (hasInvalidArgs<ItemOverviewPageArguments>(args)) {
+          return misTypedArgsRoute<ItemOverviewPageArguments>(args);
+        }
+        final typedArgs =
+            args as ItemOverviewPageArguments ?? ItemOverviewPageArguments();
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => ItemOverviewPage(
+              key: typedArgs.key,
+              categoryId: typedArgs.categoryId,
+              group: typedArgs.group,
+              watcherBloc: typedArgs.watcherBloc),
+          settings: settings,
+        );
+      case Routes.itemForm:
+        if (hasInvalidArgs<ItemFormArguments>(args)) {
+          return misTypedArgsRoute<ItemFormArguments>(args);
+        }
+        final typedArgs = args as ItemFormArguments ?? ItemFormArguments();
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => ItemForm(
+              key: typedArgs.key,
+              categoryId: typedArgs.categoryId,
+              groupId: typedArgs.groupId,
+              editedItem: typedArgs.editedItem),
+          settings: settings,
+        );
       default:
         return unknownRoutePage(settings.name);
     }
@@ -166,6 +201,25 @@ class ItemGroupFormArguments {
   final ItemGroup editedGroup;
   final UniqueId categoryId;
   ItemGroupFormArguments({this.key, this.editedGroup, this.categoryId});
+}
+
+//ItemOverviewPage arguments holder class
+class ItemOverviewPageArguments {
+  final Key key;
+  final UniqueId categoryId;
+  final ItemGroup group;
+  final ItemWatcherBloc watcherBloc;
+  ItemOverviewPageArguments(
+      {this.key, this.categoryId, this.group, this.watcherBloc});
+}
+
+//ItemForm arguments holder class
+class ItemFormArguments {
+  final Key key;
+  final UniqueId categoryId;
+  final UniqueId groupId;
+  final Item editedItem;
+  ItemFormArguments({this.key, this.categoryId, this.groupId, this.editedItem});
 }
 
 // *************************************************************************
@@ -227,5 +281,35 @@ extension RouterNavigationHelperMethods on ExtendedNavigatorState {
         Routes.itemGroupForm,
         arguments: ItemGroupFormArguments(
             key: key, editedGroup: editedGroup, categoryId: categoryId),
+      );
+
+  Future pushItemOverviewPage({
+    Key key,
+    UniqueId categoryId,
+    ItemGroup group,
+    ItemWatcherBloc watcherBloc,
+  }) =>
+      pushNamed(
+        Routes.itemOverviewPage,
+        arguments: ItemOverviewPageArguments(
+            key: key,
+            categoryId: categoryId,
+            group: group,
+            watcherBloc: watcherBloc),
+      );
+
+  Future pushItemForm({
+    Key key,
+    UniqueId categoryId,
+    UniqueId groupId,
+    Item editedItem,
+  }) =>
+      pushNamed(
+        Routes.itemForm,
+        arguments: ItemFormArguments(
+            key: key,
+            categoryId: categoryId,
+            groupId: groupId,
+            editedItem: editedItem),
       );
 }

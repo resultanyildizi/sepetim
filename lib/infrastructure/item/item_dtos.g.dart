@@ -20,6 +20,8 @@ _$_ItemDto _$_$_ItemDtoFromJson(Map<String, dynamic> json) {
             : LinkObjectDto.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     isFavorite: json['isFavorite'] as bool,
+    serverTimeStamp:
+        const ServerTimeStampConverter().fromJson(json['serverTimeStamp']),
   );
 }
 
@@ -33,6 +35,8 @@ Map<String, dynamic> _$_$_ItemDtoToJson(_$_ItemDto instance) =>
       'selectedIndex': instance.selectedIndex,
       'linkObjects': instance.linkObjects,
       'isFavorite': instance.isFavorite,
+      'serverTimeStamp':
+          const ServerTimeStampConverter().toJson(instance.serverTimeStamp),
     };
 
 _$_LinkObjectDto _$_$_LinkObjectDtoFromJson(Map<String, dynamic> json) {

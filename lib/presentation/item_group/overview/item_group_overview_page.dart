@@ -61,8 +61,8 @@ class ItemGroupOverviewPage extends StatelessWidget {
                       height: 12.0,
                     ),
                     Text(
-                      translate(context, 'categories'),
-                      style: robotoTextStyle(bold: true, fontSize: 20.0),
+                      '${translate(context, 'groups')} - ${category.title.getOrCrash()}',
+                      style: robotoTextStyle(bold: true, fontSize: 24.0),
                     ),
                     Expanded(
                       child: Center(child: Container()),
@@ -95,7 +95,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
                       height: 12.0,
                     ),
                     Text(
-                      category.title.getOrCrash(),
+                      '${translate(context, 'groups')} - ${category.title.getOrCrash()}',
                       style: robotoTextStyle(bold: true, fontSize: 24.0),
                     ),
                     const SizedBox(
@@ -107,6 +107,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
                           return ItemGroupCard(
                             categoryId: category.uid,
                             group: state.groups[index],
+                            key: Key(state.groups[index].uid.getOrCrash()),
                           );
                         },
                         itemCount: state.groups.size,

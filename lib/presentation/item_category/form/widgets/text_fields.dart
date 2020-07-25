@@ -39,14 +39,15 @@ class TitleTextField extends StatelessWidget {
             .title
             .value
             .fold(
-                (f) => f.maybeMap(
-                      empty: (_) => translate(context, 'empty_title'),
-                      exceedingLength: (_) =>
-                          translate(context, 'title_exceeding_length'),
-                      multiLine: (_) => translate(context, 'title_multiline'),
-                      orElse: () => null,
-                    ),
-                (_) => null),
+              (f) => f.maybeMap(
+                empty: (_) => translate(context, 'empty_title'),
+                exceedingLength: (_) =>
+                    translate(context, 'title_exceeding_length'),
+                multiLine: (_) => translate(context, 'title_multiline'),
+                orElse: () => null,
+              ),
+              (_) => null,
+            ),
       ),
     );
   }

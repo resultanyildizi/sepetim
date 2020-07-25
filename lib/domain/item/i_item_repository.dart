@@ -25,14 +25,15 @@ abstract class IItemRepository {
     Item item,
   );
 
-  Future<Either<ItemFailure, File>> loadCoverPictureFromDevice(
+  Future<Either<ItemFailure, File>> loadPictureFromDevice(
     ImageSource imageSource,
   );
-  Future<Either<ItemFailure, ImageUrl>> loadCoverPictureToServer(
+  Future<Either<ItemFailure, ImageUrl>> loadPictureToServer(
     Item item,
     File imageFile,
   );
-  Future<Either<ItemFailure, ImageUrl>> removeCoverPictureFromServer(
+  Future<Either<ItemFailure, ImageUrl>> removePictureFromServer(
+    int index,
     Item item,
   );
   Stream<Either<ItemFailure, KtList<Item>>> watchAll(

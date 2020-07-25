@@ -37,11 +37,11 @@ class ItemGroupActionButtons extends StatelessWidget {
                 );
               },
               child: SizedBox(
-                  width: 22,
-                  height: 22,
+                  width: 26,
+                  height: 26,
                   child: Icon(
                     Icons.delete_forever,
-                    size: 18,
+                    size: 22,
                     color: sepetimGrey,
                   )),
             ),
@@ -62,11 +62,11 @@ class ItemGroupActionButtons extends StatelessWidget {
                 );
               },
               child: SizedBox(
-                  width: 22,
-                  height: 22,
+                  width: 26,
+                  height: 26,
                   child: Icon(
                     Icons.edit,
-                    size: 18,
+                    size: 22,
                     color: sepetimGrey,
                   )),
             ),
