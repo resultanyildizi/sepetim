@@ -65,5 +65,7 @@
     "upload_image": "Upload image",
     "items": "Items",
     "items_count": "Items count",
-    "total_price": "Total price"
+    "total_price": "Total price",
+    "status": "Status",
+    "search_for_item": "Search for an item"
 }

@@ -66,5 +66,6 @@
     "items": "Ürünler",
     "items_count": "Ürün sayısı",
     "total_price": "Toplam fiyat",
-    "status": "Durum"
+    "status": "Durum",
+    "search_for_item": "Bir ürün arayın"
 }

@@ -2,9 +2,9 @@ part of 'item_group_watcher_bloc.dart';
 
 @freezed
 abstract class ItemGroupWatcherEvent with _$ItemGroupWatcherEvent {
-  const factory ItemGroupWatcherEvent.watchAll(
+  const factory ItemGroupWatcherEvent.watchAllStarted(
       UniqueId categoryId, OrderType orderType) = _WatchAll;
-  const factory ItemGroupWatcherEvent.watchAllByTitle(
+  const factory ItemGroupWatcherEvent.watchAllByTitleStarted(
     UniqueId categoryId,
     OrderType orderType,
     String title,

@@ -12,14 +12,14 @@ T _$identity<T>(T value) => value;
 class _$ItemGroupWatcherEventTearOff {
   const _$ItemGroupWatcherEventTearOff();
 
-  _WatchAll watchAll(UniqueId categoryId, OrderType orderType) {
+  _WatchAll watchAllStarted(UniqueId categoryId, OrderType orderType) {
     return _WatchAll(
       categoryId,
       orderType,
     );
   }
 
-  _WatchAllByTitle watchAllByTitle(
+  _WatchAllByTitle watchAllByTitleStarted(
       UniqueId categoryId, OrderType orderType, String title) {
     return _WatchAllByTitle(
       categoryId,
@@ -42,9 +42,9 @@ const $ItemGroupWatcherEvent = _$ItemGroupWatcherEventTearOff();
 mixin _$ItemGroupWatcherEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result watchAll(UniqueId categoryId, OrderType orderType),
+    @required Result watchAllStarted(UniqueId categoryId, OrderType orderType),
     @required
-        Result watchAllByTitle(
+        Result watchAllByTitleStarted(
             UniqueId categoryId, OrderType orderType, String title),
     @required
         Result groupsReceived(
@@ -52,8 +52,8 @@ mixin _$ItemGroupWatcherEvent {
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result watchAll(UniqueId categoryId, OrderType orderType),
-    Result watchAllByTitle(
+    Result watchAllStarted(UniqueId categoryId, OrderType orderType),
+    Result watchAllByTitleStarted(
         UniqueId categoryId, OrderType orderType, String title),
     Result groupsReceived(
         Either<ItemGroupFailure, KtList<ItemGroup>> failureOrGroups),
@@ -61,14 +61,14 @@ mixin _$ItemGroupWatcherEvent {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result watchAll(_WatchAll value),
-    @required Result watchAllByTitle(_WatchAllByTitle value),
+    @required Result watchAllStarted(_WatchAll value),
+    @required Result watchAllByTitleStarted(_WatchAllByTitle value),
     @required Result groupsReceived(_GroupsReceived value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result watchAll(_WatchAll value),
-    Result watchAllByTitle(_WatchAllByTitle value),
+    Result watchAllStarted(_WatchAll value),
+    Result watchAllByTitleStarted(_WatchAllByTitle value),
     Result groupsReceived(_GroupsReceived value),
     @required Result orElse(),
   });
@@ -128,7 +128,7 @@ class _$_WatchAll implements _WatchAll {
 
   @override
   String toString() {
-    return 'ItemGroupWatcherEvent.watchAll(categoryId: $categoryId, orderType: $orderType)';
+    return 'ItemGroupWatcherEvent.watchAllStarted(categoryId: $categoryId, orderType: $orderType)';
   }
 
   @override
@@ -156,33 +156,33 @@ class _$_WatchAll implements _WatchAll {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result watchAll(UniqueId categoryId, OrderType orderType),
+    @required Result watchAllStarted(UniqueId categoryId, OrderType orderType),
     @required
-        Result watchAllByTitle(
+        Result watchAllByTitleStarted(
             UniqueId categoryId, OrderType orderType, String title),
     @required
         Result groupsReceived(
             Either<ItemGroupFailure, KtList<ItemGroup>> failureOrGroups),
   }) {
-    assert(watchAll != null);
-    assert(watchAllByTitle != null);
+    assert(watchAllStarted != null);
+    assert(watchAllByTitleStarted != null);
     assert(groupsReceived != null);
-    return watchAll(categoryId, orderType);
+    return watchAllStarted(categoryId, orderType);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result watchAll(UniqueId categoryId, OrderType orderType),
-    Result watchAllByTitle(
+    Result watchAllStarted(UniqueId categoryId, OrderType orderType),
+    Result watchAllByTitleStarted(
         UniqueId categoryId, OrderType orderType, String title),
     Result groupsReceived(
         Either<ItemGroupFailure, KtList<ItemGroup>> failureOrGroups),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (watchAll != null) {
-      return watchAll(categoryId, orderType);
+    if (watchAllStarted != null) {
+      return watchAllStarted(categoryId, orderType);
     }
     return orElse();
   }
@@ -190,27 +190,27 @@ class _$_WatchAll implements _WatchAll {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result watchAll(_WatchAll value),
-    @required Result watchAllByTitle(_WatchAllByTitle value),
+    @required Result watchAllStarted(_WatchAll value),
+    @required Result watchAllByTitleStarted(_WatchAllByTitle value),
     @required Result groupsReceived(_GroupsReceived value),
   }) {
-    assert(watchAll != null);
-    assert(watchAllByTitle != null);
+    assert(watchAllStarted != null);
+    assert(watchAllByTitleStarted != null);
     assert(groupsReceived != null);
-    return watchAll(this);
+    return watchAllStarted(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result watchAll(_WatchAll value),
-    Result watchAllByTitle(_WatchAllByTitle value),
+    Result watchAllStarted(_WatchAll value),
+    Result watchAllByTitleStarted(_WatchAllByTitle value),
     Result groupsReceived(_GroupsReceived value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (watchAll != null) {
-      return watchAll(this);
+    if (watchAllStarted != null) {
+      return watchAllStarted(this);
     }
     return orElse();
   }
@@ -271,7 +271,7 @@ class _$_WatchAllByTitle implements _WatchAllByTitle {
 
   @override
   String toString() {
-    return 'ItemGroupWatcherEvent.watchAllByTitle(categoryId: $categoryId, orderType: $orderType, title: $title)';
+    return 'ItemGroupWatcherEvent.watchAllByTitleStarted(categoryId: $categoryId, orderType: $orderType, title: $title)';
   }
 
   @override
@@ -302,33 +302,33 @@ class _$_WatchAllByTitle implements _WatchAllByTitle {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result watchAll(UniqueId categoryId, OrderType orderType),
+    @required Result watchAllStarted(UniqueId categoryId, OrderType orderType),
     @required
-        Result watchAllByTitle(
+        Result watchAllByTitleStarted(
             UniqueId categoryId, OrderType orderType, String title),
     @required
         Result groupsReceived(
             Either<ItemGroupFailure, KtList<ItemGroup>> failureOrGroups),
   }) {
-    assert(watchAll != null);
-    assert(watchAllByTitle != null);
+    assert(watchAllStarted != null);
+    assert(watchAllByTitleStarted != null);
     assert(groupsReceived != null);
-    return watchAllByTitle(categoryId, orderType, title);
+    return watchAllByTitleStarted(categoryId, orderType, title);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result watchAll(UniqueId categoryId, OrderType orderType),
-    Result watchAllByTitle(
+    Result watchAllStarted(UniqueId categoryId, OrderType orderType),
+    Result watchAllByTitleStarted(
         UniqueId categoryId, OrderType orderType, String title),
     Result groupsReceived(
         Either<ItemGroupFailure, KtList<ItemGroup>> failureOrGroups),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (watchAllByTitle != null) {
-      return watchAllByTitle(categoryId, orderType, title);
+    if (watchAllByTitleStarted != null) {
+      return watchAllByTitleStarted(categoryId, orderType, title);
     }
     return orElse();
   }
@@ -336,27 +336,27 @@ class _$_WatchAllByTitle implements _WatchAllByTitle {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result watchAll(_WatchAll value),
-    @required Result watchAllByTitle(_WatchAllByTitle value),
+    @required Result watchAllStarted(_WatchAll value),
+    @required Result watchAllByTitleStarted(_WatchAllByTitle value),
     @required Result groupsReceived(_GroupsReceived value),
   }) {
-    assert(watchAll != null);
-    assert(watchAllByTitle != null);
+    assert(watchAllStarted != null);
+    assert(watchAllByTitleStarted != null);
     assert(groupsReceived != null);
-    return watchAllByTitle(this);
+    return watchAllByTitleStarted(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result watchAll(_WatchAll value),
-    Result watchAllByTitle(_WatchAllByTitle value),
+    Result watchAllStarted(_WatchAll value),
+    Result watchAllByTitleStarted(_WatchAllByTitle value),
     Result groupsReceived(_GroupsReceived value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (watchAllByTitle != null) {
-      return watchAllByTitle(this);
+    if (watchAllByTitleStarted != null) {
+      return watchAllByTitleStarted(this);
     }
     return orElse();
   }
@@ -435,16 +435,16 @@ class _$_GroupsReceived implements _GroupsReceived {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result watchAll(UniqueId categoryId, OrderType orderType),
+    @required Result watchAllStarted(UniqueId categoryId, OrderType orderType),
     @required
-        Result watchAllByTitle(
+        Result watchAllByTitleStarted(
             UniqueId categoryId, OrderType orderType, String title),
     @required
         Result groupsReceived(
             Either<ItemGroupFailure, KtList<ItemGroup>> failureOrGroups),
   }) {
-    assert(watchAll != null);
-    assert(watchAllByTitle != null);
+    assert(watchAllStarted != null);
+    assert(watchAllByTitleStarted != null);
     assert(groupsReceived != null);
     return groupsReceived(failureOrGroups);
   }
@@ -452,8 +452,8 @@ class _$_GroupsReceived implements _GroupsReceived {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result watchAll(UniqueId categoryId, OrderType orderType),
-    Result watchAllByTitle(
+    Result watchAllStarted(UniqueId categoryId, OrderType orderType),
+    Result watchAllByTitleStarted(
         UniqueId categoryId, OrderType orderType, String title),
     Result groupsReceived(
         Either<ItemGroupFailure, KtList<ItemGroup>> failureOrGroups),
@@ -469,12 +469,12 @@ class _$_GroupsReceived implements _GroupsReceived {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result watchAll(_WatchAll value),
-    @required Result watchAllByTitle(_WatchAllByTitle value),
+    @required Result watchAllStarted(_WatchAll value),
+    @required Result watchAllByTitleStarted(_WatchAllByTitle value),
     @required Result groupsReceived(_GroupsReceived value),
   }) {
-    assert(watchAll != null);
-    assert(watchAllByTitle != null);
+    assert(watchAllStarted != null);
+    assert(watchAllByTitleStarted != null);
     assert(groupsReceived != null);
     return groupsReceived(this);
   }
@@ -482,8 +482,8 @@ class _$_GroupsReceived implements _GroupsReceived {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result watchAll(_WatchAll value),
-    Result watchAllByTitle(_WatchAllByTitle value),
+    Result watchAllStarted(_WatchAll value),
+    Result watchAllByTitleStarted(_WatchAllByTitle value),
     Result groupsReceived(_GroupsReceived value),
     @required Result orElse(),
   }) {

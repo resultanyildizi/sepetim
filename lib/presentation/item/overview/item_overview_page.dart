@@ -1,5 +1,7 @@
 import 'package:Sepetim/domain/item_category/item_category.dart';
+import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/item/overview/widgets/item_card.dart';
+import 'package:Sepetim/presentation/item/overview/widgets/search_field.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +26,7 @@ class ItemOverviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _controller = TextEditingController();
     return BlocBuilder<ItemWatcherBloc, ItemWatcherState>(
       bloc: watcherBloc,
       builder: (context, state) => state.map(
@@ -34,8 +37,16 @@ class ItemOverviewPage extends StatelessWidget {
               style: robotoTextStyle(bold: true),
             ),
           ),
-          body: const DefaultPadding(
-            child: Center(),
+          body: DefaultPadding(
+            child: Column(
+              children: <Widget>[
+                SearchField(
+                  categoryId: category.uid,
+                  groupId: group.uid,
+                  controller: _controller,
+                )
+              ],
+            ),
           ),
           floatingActionButton: DefaultFloatingActionButton(
             onPressed: () {},
@@ -52,29 +63,64 @@ class ItemOverviewPage extends StatelessWidget {
                 ),
               ),
             ),
-            body: DefaultPadding(
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      ExtendedNavigator.of(context).pushNamed(
-                        Routes.itemForm,
-                        arguments: ItemFormArguments(
+            body: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(22.0, 16.0, 22.0, 0.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      SearchField(
+                        categoryId: category.uid,
+                        groupId: group.uid,
+                        controller: _controller,
+                      ),
+                      const SizedBox(height: 12.0),
+                      Text(
+                        '${translate(context, 'items')} - ${group.title.getOrCrash()}',
+                        style: robotoTextStyle(bold: true, fontSize: 24.0),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            '${translate(context, 'items_count')}: ${state.items.size}',
+                            style: robotoTextStyle(fontSize: 12.0),
+                          ),
+                          Text(
+                            '${translate(context, 'total_price')}: ${totalItemsPrice(state.items)}₺',
+                            style: robotoTextStyle(fontSize: 12.0),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          ExtendedNavigator.of(context).pushNamed(
+                            Routes.itemForm,
+                            arguments: ItemFormArguments(
+                              category: category,
+                              group: group,
+                              editedItem: state.items[index],
+                            ),
+                          );
+                        },
+                        child: ItemCard(
+                          item: state.items[index],
                           category: category,
                           group: group,
-                          editedItem: state.items[index],
                         ),
                       );
                     },
-                    child: ItemCard(
-                      item: state.items[index],
-                      category: category,
-                      group: group,
-                    ),
-                  );
-                },
-                itemCount: state.items.size,
-              ),
+                    itemCount: state.items.size,
+                  ),
+                ),
+              ],
             ),
             floatingActionButton: DefaultFloatingActionButton(
               iconData: Icons.add,

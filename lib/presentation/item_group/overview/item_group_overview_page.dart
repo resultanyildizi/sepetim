@@ -28,7 +28,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
       providers: [
         BlocProvider<ItemGroupWatcherBloc>(
           create: (context) => getIt<ItemGroupWatcherBloc>()
-            ..add(ItemGroupWatcherEvent.watchAll(
+            ..add(ItemGroupWatcherEvent.watchAllStarted(
               category.uid,
               OrderType.date,
             )),

@@ -27,7 +27,6 @@ class ItemCard extends StatelessWidget {
           border: Border(
               bottom: BorderSide(
         color: sepetimLightGrey,
-        width: 1,
       ))),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,91 +39,98 @@ class ItemCard extends StatelessWidget {
     );
   }
 
-  Expanded isFavorite() {
-    return Expanded(
-      child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-        if (item.isFavorite) ...[
-          Icon(
-            Icons.favorite,
-            color: Colors.redAccent,
-          )
-        ] else ...[
-          Icon(
-            Icons.favorite_border,
-            color: sepetimLightGrey,
-          ),
-        ]
-      ]),
-    );
-  }
-
-  Padding informations(BuildContext context) {
+  Widget isFavorite() {
     return Padding(
-      padding: const EdgeInsets.only(left: 16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          const SizedBox(
-            height: 4.0,
-          ),
-          Text(
-            item.title.getOrCrash(),
-            style: robotoTextStyle(bold: true, fontSize: 20.0),
-          ),
-          Text(
-            '${category.title.getOrCrash()}, ${group.title.getOrCrash()}',
-            style: didactGothicTextStyle(),
-          ),
-          Text(
-            '${translate(context, 'price')}: ${item.price.getOrCrash().toString()}₺',
-            style: didactGothicTextStyle(),
-          ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Text(
-                  '${translate(context, 'status')}: ${item.status.getOrCrash()}',
-                  style: didactGothicTextStyle(),
-                ),
-                const SizedBox(
-                  height: 2.0,
-                ),
-              ],
-            ),
-          ),
-        ],
+      padding: const EdgeInsets.only(right: 22.0),
+      child: Container(
+        width: 20,
+        child: item.isFavorite
+            ? Icon(
+                Icons.favorite,
+                color: Colors.redAccent,
+              )
+            : Icon(
+                Icons.favorite_border,
+                color: sepetimLightGrey,
+              ),
       ),
     );
   }
 
-  Container coverImage() {
-    return Container(
-      width: 90,
-      height: 140,
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 3,
-            blurRadius: 7,
-            offset: const Offset(0, 1),
-          ),
-        ],
+  Widget informations(BuildContext context) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            const SizedBox(
+              height: 4.0,
+            ),
+            Text(
+              item.title.getOrCrash().length <= 20
+                  ? item.title.getOrCrash()
+                  : '${item.title.getOrCrash().substring(0, 20)}...',
+              style: robotoTextStyle(bold: true, fontSize: 20.0),
+            ),
+            Text(
+              '${category.title.getOrCrash()}, ${group.title.getOrCrash()}',
+              style: didactGothicTextStyle(),
+            ),
+            Text(
+              '${translate(context, 'price')}: ${item.price.getOrCrash().toString()}₺',
+              style: didactGothicTextStyle(),
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    '${translate(context, 'status')}: ${item.status.getOrCrash()}',
+                    style: didactGothicTextStyle(),
+                  ),
+                  const SizedBox(
+                    height: 2.0,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
-      child: CachedNetworkImage(
-        errorWidget: (context, url, error) => Image.asset(
-          'assets/images/default.png',
+    );
+  }
+
+  Widget coverImage() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 22),
+      child: Container(
+        width: 90,
+        height: 140,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 3,
+              blurRadius: 7,
+              offset: const Offset(0, 1),
+            ),
+          ],
+        ),
+        child: CachedNetworkImage(
+          errorWidget: (context, url, error) => Image.asset(
+            'assets/images/default.png',
+            width: 90,
+            height: 160,
+            fit: BoxFit.cover,
+          ),
+          imageUrl: item.imageUrls
+              .getOrCrash()[item.selectedIndex.getOrCrash()]
+              .getOrCrash(),
           width: 90,
           height: 160,
           fit: BoxFit.cover,
         ),
-        imageUrl: item.imageUrls
-            .getOrCrash()[item.selectedIndex.getOrCrash()]
-            .getOrCrash(),
-        width: 90,
-        height: 160,
-        fit: BoxFit.cover,
       ),
     );
   }

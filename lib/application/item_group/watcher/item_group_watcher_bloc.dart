@@ -35,7 +35,7 @@ class ItemGroupWatcherBloc
     ItemGroupWatcherEvent event,
   ) async* {
     yield* event.map(
-      watchAll: (e) async* {
+      watchAllStarted: (e) async* {
         groupStreamSubscription?.cancel();
         groupStreamSubscription = _groupRepository
             .watchAll(e.categoryId, e.orderType)
@@ -43,7 +43,7 @@ class ItemGroupWatcherBloc
           add(ItemGroupWatcherEvent.groupsReceived(failureOrGroups));
         });
       },
-      watchAllByTitle: (e) async* {
+      watchAllByTitleStarted: (e) async* {
         groupStreamSubscription?.cancel();
         groupStreamSubscription = _groupRepository
             .watchAllByTitle(e.categoryId, e.orderType, e.title)
