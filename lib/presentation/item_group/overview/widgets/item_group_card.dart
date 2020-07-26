@@ -36,6 +36,7 @@ class ItemGroupCard extends StatelessWidget {
                 category: category,
                 group: group,
                 watcherBloc: context.bloc<ItemWatcherBloc>(),
+                key: Key(group.uid.getOrCrash()),
               ),
             );
           },

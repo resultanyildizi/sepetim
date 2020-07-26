@@ -1,3 +1,4 @@
+import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/item/overview/widgets/item_card.dart';
@@ -44,6 +45,7 @@ class ItemOverviewPage extends StatelessWidget {
                   categoryId: category.uid,
                   groupId: group.uid,
                   controller: _controller,
+                  watcherBloc: watcherBloc,
                 )
               ],
             ),
@@ -54,86 +56,96 @@ class ItemOverviewPage extends StatelessWidget {
           ),
         ),
         loadSuccess: (state) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(
-                'Sepetim',
-                style: robotoTextStyle(
-                  bold: true,
+          return WillPopScope(
+            onWillPop: () async {
+              watcherBloc.add(ItemWatcherEvent.watchAllStarted(
+                  category.uid, group.uid, OrderType.date));
+              await Future.delayed(const Duration(milliseconds: 50));
+              return true;
+            },
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text(
+                  'Sepetim',
+                  style: robotoTextStyle(
+                    bold: true,
+                  ),
                 ),
               ),
-            ),
-            body: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(22.0, 16.0, 22.0, 0.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SearchField(
-                        categoryId: category.uid,
-                        groupId: group.uid,
-                        controller: _controller,
-                      ),
-                      const SizedBox(height: 12.0),
-                      Text(
-                        '${translate(context, 'items')} - ${group.title.getOrCrash()}',
-                        style: robotoTextStyle(bold: true, fontSize: 24.0),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            '${translate(context, 'items_count')}: ${state.items.size}',
-                            style: robotoTextStyle(fontSize: 12.0),
-                          ),
-                          Text(
-                            '${translate(context, 'total_price')}: ${totalItemsPrice(state.items)}₺',
-                            style: robotoTextStyle(fontSize: 12.0),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          ExtendedNavigator.of(context).pushNamed(
-                            Routes.itemForm,
-                            arguments: ItemFormArguments(
-                              category: category,
-                              group: group,
-                              editedItem: state.items[index],
-                            ),
-                          );
-                        },
-                        child: ItemCard(
-                          item: state.items[index],
-                          category: category,
-                          group: group,
+              body: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(22.0, 16.0, 22.0, 0.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SearchField(
+                          categoryId: category.uid,
+                          groupId: group.uid,
+                          controller: _controller,
+                          watcherBloc: watcherBloc,
                         ),
-                      );
-                    },
-                    itemCount: state.items.size,
+                        const SizedBox(height: 12.0),
+                        Text(
+                          '${translate(context, 'items')} - ${group.title.getOrCrash()}',
+                          style: robotoTextStyle(bold: true, fontSize: 24.0),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              '${translate(context, 'items_count')}: ${state.items.size}',
+                              style: robotoTextStyle(fontSize: 12.0),
+                            ),
+                            Text(
+                              '${translate(context, 'total_price')}: ${totalItemsPrice(state.items)}₺',
+                              style: robotoTextStyle(fontSize: 12.0),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-            floatingActionButton: DefaultFloatingActionButton(
-              iconData: Icons.add,
-              onPressed: () {
-                ExtendedNavigator.of(context).pushNamed(
-                  Routes.itemForm,
-                  arguments: ItemFormArguments(
-                    category: category,
-                    group: group,
-                    editedItem: null,
+                  Expanded(
+                    child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            ExtendedNavigator.of(context).pushNamed(
+                              Routes.itemForm,
+                              arguments: ItemFormArguments(
+                                category: category,
+                                group: group,
+                                editedItem: state.items[index],
+                              ),
+                            );
+                          },
+                          child: ItemCard(
+                            item: state.items[index],
+                            category: category,
+                            group: group,
+                            key: Key(state.items[index].uid.getOrCrash()),
+                          ),
+                        );
+                      },
+                      itemCount: state.items.size,
+                    ),
                   ),
-                );
-              },
+                ],
+              ),
+              floatingActionButton: DefaultFloatingActionButton(
+                iconData: Icons.add,
+                onPressed: () {
+                  ExtendedNavigator.of(context).pushNamed(
+                    Routes.itemForm,
+                    arguments: ItemFormArguments(
+                      category: category,
+                      group: group,
+                      editedItem: null,
+                    ),
+                  );
+                },
+              ),
             ),
           );
         },

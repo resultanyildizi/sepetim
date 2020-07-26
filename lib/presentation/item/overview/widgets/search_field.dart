@@ -1,7 +1,7 @@
-import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
 import 'package:Sepetim/application/item_group/watcher/item_group_watcher_bloc.dart';
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
@@ -13,11 +13,13 @@ class SearchField extends StatelessWidget {
   final TextEditingController controller;
   final UniqueId categoryId;
   final UniqueId groupId;
+  final ItemWatcherBloc watcherBloc;
   const SearchField({
     Key key,
     @required this.controller,
     @required this.categoryId,
     @required this.groupId,
+    @required this.watcherBloc,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -52,23 +54,21 @@ class SearchField extends StatelessWidget {
           ),
           onChanged: (text) {
             if (text == '') {
-              context
-                  .bloc<ItemWatcherBloc>()
-                  .add(ItemWatcherEvent.watchAllStarted(
-                    categoryId,
-                    groupId,
-                    OrderType.date,
-                  ));
+              watcherBloc.add(ItemWatcherEvent.watchAllStarted(
+                categoryId,
+                groupId,
+                OrderType.date,
+              ));
             }
 
-            context.bloc<ItemWatcherBloc>().add(
-                  ItemWatcherEvent.watchAllByTitleStarted(
-                    groupId,
-                    categoryId,
-                    OrderType.date,
-                    text,
-                  ),
-                );
+            watcherBloc.add(
+              ItemWatcherEvent.watchAllByTitleStarted(
+                categoryId,
+                groupId,
+                OrderType.date,
+                text,
+              ),
+            );
           },
         ),
       ),
