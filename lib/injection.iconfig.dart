@@ -26,6 +26,7 @@ import 'package:Sepetim/infrastructure/item_category/item_category_repository.da
 import 'package:Sepetim/domain/item_category/i_category_repository.dart';
 import 'package:Sepetim/infrastructure/item/item_repository.dart';
 import 'package:Sepetim/domain/item/i_item_repository.dart';
+import 'package:Sepetim/application/item/actor/item_actor_bloc.dart';
 import 'package:Sepetim/application/item_category/actor/item_category_actor_bloc.dart';
 import 'package:Sepetim/application/item_category/form/item_category_form_bloc.dart';
 import 'package:Sepetim/application/item_category/subcollections/item_category_subcollection_bloc.dart';
@@ -71,6 +72,7 @@ void $initGetIt(GetIt g, {String environment}) {
         g<FirebaseStorage>(),
         g<ImagePicker>(),
       ));
+  g.registerFactory<ItemActorBloc>(() => ItemActorBloc(g<IItemRepository>()));
   g.registerFactory<ItemCategoryActorBloc>(
       () => ItemCategoryActorBloc(g<IItemCategoryRepository>()));
   g.registerFactory<ItemCategoryFormBloc>(

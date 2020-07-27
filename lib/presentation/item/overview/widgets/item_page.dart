@@ -1,15 +1,19 @@
+import 'package:Sepetim/application/item/actor/item_actor_bloc.dart';
 import 'package:Sepetim/application/item/form/item_form_bloc.dart';
+import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
-import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
+import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
+import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
+import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:path/path.dart';
 
 class ItemPage extends StatelessWidget {
   final ItemCategory category;
@@ -24,36 +28,44 @@ class ItemPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ItemFormBloc, ItemFormState>(
-      bloc: formBloc,
-      listener: (context, state) {
-        state.itemFailureOrSuccessOption.fold(
-          () {},
-          (either) {
-            either.fold(
-              (failure) {
-                failure.maybeMap(
-                  imageLoadCanceled: (_) {},
-                  networkException: (_) => networkExceptionPopup(context),
-                  orElse: () => serverErrorPopup(context),
-                );
-              },
-              (_) {},
-            );
-          },
-        );
-      },
-      builder: (context, state) => Scaffold(
-        appBar: AppBar(
-          title: Text('Sepetim', style: robotoTextStyle(bold: true)),
-        ),
-        body: DefaultPadding(
-          child: SingleChildScrollView(
+    return BlocProvider<ItemActorBloc>(
+      create: (context) => getIt<ItemActorBloc>(),
+      child: BlocConsumer<ItemFormBloc, ItemFormState>(
+        bloc: formBloc,
+        listener: (context, state) {
+          state.itemFailureOrSuccessOption.fold(
+            () {},
+            (either) {
+              either.fold(
+                (failure) {
+                  failure.maybeMap(
+                    imageLoadCanceled: (_) {},
+                    networkException: (_) => networkExceptionPopup(context),
+                    orElse: () => serverErrorPopup(context),
+                  );
+                },
+                (_) {},
+              );
+            },
+          );
+        },
+        builder: (context, state) => Scaffold(
+          appBar: AppBar(
+            title: Text('Sepetim', style: robotoTextStyle(bold: true)),
+            actions: <Widget>[
+              iconButtons(context, state),
+            ],
+          ),
+          body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(state.item.title.getOrCrash(),
-                    style: robotoTextStyle(bold: true, fontSize: 24.0)),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(top: 16.0, left: 22.0, right: 22.0),
+                  child: Text(state.item.title.getOrCrash(),
+                      style: robotoTextStyle(bold: true, fontSize: 24.0)),
+                ),
                 const SizedBox(
                   height: 10.0,
                 ),
@@ -61,22 +73,9 @@ class ItemPage extends StatelessWidget {
                 const SizedBox(
                   height: 10.0,
                 ),
-                Text(translate(context, 'description'),
-                    style: robotoTextStyle(bold: true, fontSize: 24.0)),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Scrollbar(
-                  child: Container(
-                    constraints: const BoxConstraints(maxHeight: 150),
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.all(4.0),
-                    color: Colors.yellow[50],
-                    child: SingleChildScrollView(
-                      child: Text(state.item.description.getOrCrash(),
-                          style: didactGothicTextStyle(bold: true)),
-                    ),
-                  ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 22.0),
+                  child: descriptionField(context, state),
                 ),
               ],
             ),
@@ -86,14 +85,35 @@ class ItemPage extends StatelessWidget {
     );
   }
 
+  Column descriptionField(BuildContext context, ItemFormState state) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const DividerDefault(),
+        Text(translate(context, 'description'),
+            style: robotoTextStyle(bold: true, fontSize: 24.0)),
+        const SizedBox(
+          height: 10.0,
+        ),
+        Scrollbar(
+          child: Container(
+            constraints: const BoxConstraints(maxHeight: 150),
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.all(4.0),
+            color: Colors.yellow[50],
+            child: SingleChildScrollView(
+              child: Text(state.item.description.getOrCrash(),
+                  style: didactGothicTextStyle(bold: true)),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   Container catalog(ItemFormState state, BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-            border: Border(
-                bottom: BorderSide(
-          color: sepetimLightGrey,
-        ))),
-        height: 150 * 1.5,
+        height: 140 * 1.5,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -106,7 +126,7 @@ class ItemPage extends StatelessWidget {
 
   Widget coverImage(BuildContext context, ItemFormState state) {
     return Padding(
-      padding: const EdgeInsets.only(left: 5.0),
+      padding: const EdgeInsets.only(left: 27.0),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -229,20 +249,23 @@ class ItemPage extends StatelessWidget {
   }
 
   Widget isFavorite(ItemFormState state) {
-    return Container(
-      width: 30,
-      child: GestureDetector(
-        onTap: () => formBloc
-            .add(ItemFormEvent.isFavoriteChanged(category.uid, group.uid)),
-        child: state.item.isFavorite
-            ? Icon(
-                Icons.favorite,
-                color: Colors.redAccent,
-              )
-            : Icon(
-                Icons.favorite_border,
-                color: sepetimLightGrey,
-              ),
+    return Padding(
+      padding: const EdgeInsets.only(right: 22.0),
+      child: Container(
+        width: 30,
+        child: GestureDetector(
+          onTap: () => formBloc
+              .add(ItemFormEvent.isFavoriteChanged(category.uid, group.uid)),
+          child: state.item.isFavorite
+              ? Icon(
+                  Icons.favorite,
+                  color: Colors.redAccent,
+                )
+              : Icon(
+                  Icons.favorite_border,
+                  color: sepetimLightGrey,
+                ),
+        ),
       ),
     );
   }
@@ -276,6 +299,92 @@ class ItemPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget iconButtons(BuildContext context, ItemFormState state) {
+    return BlocListener<ItemActorBloc, ItemActorState>(
+      listener: (context, state) {
+        state.maybeMap(
+          deleteFailure: (f) {
+            f.failure.maybeMap(
+              networkException: (_) => networkExceptionPopup(context),
+              orElse: () => serverErrorPopup(context),
+            );
+          },
+          orElse: () {},
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(right: 12.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            ClipOval(
+              child: Material(
+                color: sepetimYellow,
+                child: InkWell(
+                  splashColor: sepetimYellow,
+                  onTap: () {
+                    deletePopup(
+                      context,
+                      title:
+                          '${translate(context, 'delete_item_title')} ${state.item.title.getOrCrash()}',
+                      message: translate(context, 'delete_item_message'),
+                      action: () {
+                        context.bloc<ItemActorBloc>().add(
+                              ItemActorEvent.deleted(
+                                category.uid,
+                                group.uid,
+                                state.item,
+                              ),
+                            );
+                        ExtendedNavigator.of(context).popUntil((route) =>
+                            route.settings.name == Routes.itemOverviewPage);
+                      },
+                    );
+                  },
+                  child: SizedBox(
+                      width: 30,
+                      height: 30,
+                      child: Icon(
+                        Icons.delete_forever,
+                        size: 26,
+                        color: sepetimGrey,
+                      )),
+                ),
+              ),
+            ),
+            const SizedBox(
+              width: 5.0,
+            ),
+            ClipOval(
+              child: Material(
+                color: sepetimYellow, // button color
+                child: InkWell(
+                  splashColor: sepetimYellow, // inkwell color
+                  onTap: () {
+                    ExtendedNavigator.of(context).pushNamed(Routes.itemForm,
+                        arguments: ItemFormArguments(
+                          category: category,
+                          group: group,
+                          editedItem: state.item,
+                        ));
+                  },
+                  child: SizedBox(
+                      width: 30,
+                      height: 30,
+                      child: Icon(
+                        Icons.edit,
+                        size: 26,
+                        color: sepetimGrey,
+                      )),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

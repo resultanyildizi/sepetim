@@ -72,83 +72,114 @@ class ItemForm extends StatelessWidget {
             },
           );
         }, builder: (context, state) {
-          return DefaultPadding(
-            child: Form(
-              autovalidate: state.showErrorMessages,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                      height: MediaQuery.of(context).size.height - 220,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
+          return Form(
+            autovalidate: state.showErrorMessages,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                    height: MediaQuery.of(context).size.height - 220,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 16.0, left: 22.0, right: 22.0),
+                            child: Text(
                               translate(context, 'add_an_item'),
                               style:
                                   robotoTextStyle(bold: true, fontSize: 20.0),
                             ),
-                            SizedBox(
-                              height: screenHeightByScalar(
-                                context,
-                                scalarSmall: 0.015,
-                                scalarMedium: 0.015,
-                                scalarBig: 0.02,
-                              ),
+                          ),
+                          SizedBox(
+                            height: screenHeightByScalar(
+                              context,
+                              scalarSmall: 0.015,
+                              scalarMedium: 0.015,
+                              scalarBig: 0.02,
                             ),
-                            Text(
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 22.0),
+                            child: Text(
                               translate(context, 'title'),
                               style: didactGothicTextStyle(
                                   bold: false, fontSize: 18.0),
                             ),
-                            const TitleTextField(),
-                            SizedBox(
-                              height: screenHeightByScalar(
-                                context,
-                                scalarSmall: 0.015,
-                                scalarMedium: 0.015,
-                                scalarBig: 0.02,
-                              ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 22.0),
+                            child: TitleTextField(),
+                          ),
+                          SizedBox(
+                            height: screenHeightByScalar(
+                              context,
+                              scalarSmall: 0.015,
+                              scalarMedium: 0.015,
+                              scalarBig: 0.02,
                             ),
-                            Text(
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 22.0),
+                            child: Text(
                               translate(context, 'price'),
                               style: didactGothicTextStyle(
                                   bold: false, fontSize: 18.0),
                             ),
-                            const PriceTextField(),
-                            SizedBox(
-                              height: screenHeightByScalar(
-                                context,
-                                scalarSmall: 0.02,
-                                scalarMedium: 0.02,
-                                scalarBig: 0.02,
-                              ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 22.0),
+                            child: PriceTextField(),
+                          ),
+                          SizedBox(
+                            height: screenHeightByScalar(
+                              context,
+                              scalarSmall: 0.02,
+                              scalarMedium: 0.02,
+                              scalarBig: 0.02,
                             ),
-                            Text(
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 22.0),
+                            child: Text(
                               translate(context, 'description'),
                               style: didactGothicTextStyle(
                                   bold: false, fontSize: 18.0),
                             ),
-                            const DescriptionBodyTextField(),
-                            SizedBox(
-                              height: screenHeightByScalar(
-                                context,
-                                scalarSmall: 0.02,
-                                scalarMedium: 0.02,
-                                scalarBig: 0.02,
-                              ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 22.0),
+                            child: DescriptionBodyTextField(),
+                          ),
+                          SizedBox(
+                            height: screenHeightByScalar(
+                              context,
+                              scalarSmall: 0.02,
+                              scalarMedium: 0.02,
+                              scalarBig: 0.02,
                             ),
-                            Text(
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 22.0),
+                            child: Text(
                               translate(context, 'pictures'),
                               style: didactGothicTextStyle(
                                   bold: false, fontSize: 18.0),
                             ),
-                            const Center(child: PictureFields()),
-                          ],
-                        ),
-                      )),
-                  Expanded(
+                          ),
+                          const Center(child: PictureFields()),
+                        ],
+                      ),
+                    )),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        bottom: 16.0, left: 22.0, right: 22.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
@@ -162,9 +193,9 @@ class ItemForm extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           );
         }),

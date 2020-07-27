@@ -20,7 +20,7 @@ class _$ItemCategoryDtoTearOff {
       @required String title,
       @required int color,
       @required String coverImageUrl,
-      @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) {
+      @ServerTimeStampConverter() FieldValue serverTimeStamp}) {
     return _ItemCategoryDto(
       uid: uid,
       title: title,
@@ -142,11 +142,10 @@ class _$_ItemCategoryDto extends _ItemCategoryDto {
       @required this.title,
       @required this.color,
       @required this.coverImageUrl,
-      @required @ServerTimeStampConverter() this.serverTimeStamp})
+      @ServerTimeStampConverter() this.serverTimeStamp})
       : assert(title != null),
         assert(color != null),
         assert(coverImageUrl != null),
-        assert(serverTimeStamp != null),
         super._();
 
   factory _$_ItemCategoryDto.fromJson(Map<String, dynamic> json) =>
@@ -214,7 +213,7 @@ abstract class _ItemCategoryDto extends ItemCategoryDto {
           @required String title,
           @required int color,
           @required String coverImageUrl,
-          @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) =
+          @ServerTimeStampConverter() FieldValue serverTimeStamp}) =
       _$_ItemCategoryDto;
 
   factory _ItemCategoryDto.fromJson(Map<String, dynamic> json) =

@@ -48,7 +48,7 @@ class PictureFields extends StatelessWidget {
                                   if (state.isPictureRemoved[index]) ...[
                                     defaultImage(),
                                   ] else ...[
-                                    getItemImage(state, index),
+                                    getItemImage(context, state, index),
                                   ],
                                   if ((state.item.imageUrls
                                                   .getOrCrash()[index]
@@ -89,12 +89,12 @@ class PictureFields extends StatelessWidget {
       child: Icon(
         Icons.close,
         color: sepetimLightGrey,
-        size: 15,
+        size: 20,
       ),
     );
   }
 
-  Container getItemImage(ItemFormState state, int index) {
+  Container getItemImage(BuildContext context, ItemFormState state, int index) {
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
@@ -132,7 +132,6 @@ class PictureFields extends StatelessWidget {
   Container defaultImage() {
     return Container(
       decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),

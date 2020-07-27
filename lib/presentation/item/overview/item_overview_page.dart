@@ -1,3 +1,4 @@
+import 'package:Sepetim/application/item/actor/item_actor_bloc.dart';
 import 'package:Sepetim/application/item/form/item_form_bloc.dart';
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
@@ -34,7 +35,7 @@ class ItemOverviewPage extends StatelessWidget {
       providers: [
         BlocProvider<ItemFormBloc>(
           create: (context) => getIt<ItemFormBloc>(),
-        )
+        ),
       ],
       child: BlocBuilder<ItemWatcherBloc, ItemWatcherState>(
         bloc: watcherBloc,

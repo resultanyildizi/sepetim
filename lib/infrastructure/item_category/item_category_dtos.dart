@@ -16,7 +16,7 @@ abstract class ItemCategoryDto implements _$ItemCategoryDto {
     @required String title,
     @required int color,
     @required String coverImageUrl,
-    @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
+    @ServerTimeStampConverter() FieldValue serverTimeStamp,
   }) = _ItemCategoryDto;
 
   factory ItemCategoryDto.fromDomain(ItemCategory category) {

@@ -248,14 +248,10 @@ class ItemRepository extends IItemRepository {
         return left(const ItemFailure.networkException());
       }
 
-      final userStorage = await _firebaseStorage.userStorage();
-      final itemId = item.uid.getOrCrash();
-      final imageId = UniqueId().getOrCrash();
+      item.imageUrls
+          .getOrCrash()
+          .map((imageUrl) => removePictureFromServer(imageUrl, item));
 
-      final itemPictureStorageReference =
-          userStorage.imagePictures.child(itemId).child(imageId).getRoot();
-
-      await itemPictureStorageReference.delete();
       return right(unit);
     } on PlatformException catch (_) {
       return left(const ItemFailure.unexpected());

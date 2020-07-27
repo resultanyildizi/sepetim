@@ -72,5 +72,7 @@
     "group": "Group",
     "item": "Item",
     "select_cover_picture": "Select cover picture",
-    "set_as_cover": "Set as cover"
+    "set_as_cover": "Set as cover",
+    "delete_item_title": "Delete item",
+    "delete_item_message": "Are you sure to delete this item? This action can't be undone."
 }

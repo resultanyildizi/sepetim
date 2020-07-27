@@ -72,5 +72,7 @@
     "group": "Grup",
     "item": "Ürün",
     "select_cover_picture": "Kapak resmi seçin",
-    "set_as_cover": "Kapak olarak ayarla"
+    "set_as_cover": "Kapak olarak ayarla",
+    "delete_item_title": "Ürünü sil:",
+    "delete_item_message": "Ürünü silmek istediğinizden emin misiniz? Bu işlem geri alınamaz."
 }
