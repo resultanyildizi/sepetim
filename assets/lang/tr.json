@@ -38,7 +38,7 @@
     "from_camera": "Kamerayla Çek",
     "cover_picture": "Kategori Resmi",
     "empty_title": "Başlık boş olamaz",
-    "title_exceeding_length": "Başlık 50 karakterden fazla olamaz",
+    "title_exceeding_length": "Başlık 40 karakterden fazla olamaz",
     "title_multiline": "Başlık birden fazla satır içeremez",
     "delete_category_title": "Kategoriyi sil:",
     "delete_category_message": "Kategoriyi silmek istediğinizden emin misiniz? Gruplar ve ürünler de birlikte silinecektir. Bu işlem geri alınamaz.",
@@ -67,5 +67,10 @@
     "items_count": "Ürün sayısı",
     "total_price": "Toplam fiyat",
     "status": "Durum",
-    "search_for_item": "Bir ürün arayın"
+    "search_for_item": "Bir ürün arayın",
+    "category": "Kategori",
+    "group": "Grup",
+    "item": "Ürün",
+    "select_cover_picture": "Kapak resmi seçin",
+    "set_as_cover": "Kapak olarak ayarla"
 }

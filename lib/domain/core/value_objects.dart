@@ -32,7 +32,7 @@ class ShortTitle extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  static const maxLength = 50;
+  static const maxLength = 40;
 
   factory ShortTitle(String input) {
     assert(input != null);

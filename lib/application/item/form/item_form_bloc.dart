@@ -65,6 +65,23 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
           itemFailureOrSuccessOption: none(),
         );
       },
+      selectedIndexChanged: (e) async* {
+        yield state.copyWith(
+          item: state.item.copyWith(
+            selectedIndex: SelectedIndex(e.index),
+          ),
+          itemFailureOrSuccessOption: none(),
+        );
+      },
+      isFavoriteChanged: (e) async* {
+        yield state.copyWith(
+          item: state.item.copyWith(
+            isFavorite: !state.item.isFavorite,
+          ),
+          itemFailureOrSuccessOption: none(),
+        );
+        add(ItemFormEvent.saved(e.categoryId, e.groupId));
+      },
       pictureChanged: (e) async* {
         final failureOrImageFile =
             await _itemRepository.loadPictureFromDevice(e.imageSource);

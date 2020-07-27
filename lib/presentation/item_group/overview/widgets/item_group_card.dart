@@ -62,9 +62,9 @@ class ItemGroupCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          group.title.getOrCrash().length <= 28
+                          group.title.getOrCrash().length <= 25
                               ? group.title.getOrCrash()
-                              : '${group.title.getOrCrash().substring(0, 25)}...',
+                              : '${group.title.getOrCrash().substring(0, 22)}...',
                           style:
                               didactGothicTextStyle(bold: true, fontSize: 20),
                         ),

@@ -1,11 +1,16 @@
+import 'package:Sepetim/application/item/form/item_form_bloc.dart';
 import 'package:Sepetim/domain/item/item.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
+import 'package:Sepetim/presentation/routes/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ItemCard extends StatelessWidget {
   final Item item;
@@ -20,21 +25,34 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 160,
-      padding: const EdgeInsets.symmetric(vertical: 12.0),
-      decoration: BoxDecoration(
-          border: Border(
-              bottom: BorderSide(
-        color: sepetimLightGrey,
-      ))),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          coverImage(),
-          informations(context),
-          isFavorite(),
-        ],
+    return GestureDetector(
+      onTap: () {
+        context.bloc<ItemFormBloc>().add(ItemFormEvent.initialized(some(item)));
+        ExtendedNavigator.of(context).pushNamed(
+          Routes.itemPage,
+          arguments: ItemPageArguments(
+            formBloc: context.bloc<ItemFormBloc>(),
+            category: category,
+            group: group,
+          ),
+        );
+      },
+      child: Container(
+        height: 160,
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        decoration: BoxDecoration(
+            border: Border(
+                bottom: BorderSide(
+          color: sepetimLightGrey,
+        ))),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            coverImage(),
+            informations(context),
+            isFavorite(),
+          ],
+        ),
       ),
     );
   }
@@ -71,7 +89,7 @@ class ItemCard extends StatelessWidget {
               item.title.getOrCrash().length <= 20
                   ? item.title.getOrCrash()
                   : '${item.title.getOrCrash().substring(0, 20)}...',
-              style: robotoTextStyle(bold: true, fontSize: 20.0),
+              style: robotoTextStyle(bold: true, fontSize: 18.0),
             ),
             Text(
               '${category.title.getOrCrash()}, ${group.title.getOrCrash()}',
@@ -103,7 +121,7 @@ class ItemCard extends StatelessWidget {
 
   Widget coverImage() {
     return Padding(
-      padding: const EdgeInsets.only(left: 22),
+      padding: const EdgeInsets.only(left: 22.0),
       child: Container(
         width: 90,
         height: 140,

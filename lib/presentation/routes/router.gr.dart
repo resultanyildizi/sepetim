@@ -21,6 +21,8 @@ import 'package:Sepetim/presentation/item/overview/item_overview_page.dart';
 import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
 import 'package:Sepetim/presentation/item/form/item_form.dart';
 import 'package:Sepetim/domain/item/item.dart';
+import 'package:Sepetim/presentation/item/overview/widgets/item_page.dart';
+import 'package:Sepetim/application/item/form/item_form_bloc.dart';
 
 abstract class Routes {
   static const splashPage = '/';
@@ -32,6 +34,7 @@ abstract class Routes {
   static const itemGroupForm = '/item-group-form';
   static const itemOverviewPage = '/item-overview-page';
   static const itemForm = '/item-form';
+  static const itemPage = '/item-page';
   static const all = {
     splashPage,
     signInPage,
@@ -42,6 +45,7 @@ abstract class Routes {
     itemGroupForm,
     itemOverviewPage,
     itemForm,
+    itemPage,
   };
 }
 
@@ -152,6 +156,19 @@ class Router extends RouterBase {
               editedItem: typedArgs.editedItem),
           settings: settings,
         );
+      case Routes.itemPage:
+        if (hasInvalidArgs<ItemPageArguments>(args, isRequired: true)) {
+          return misTypedArgsRoute<ItemPageArguments>(args);
+        }
+        final typedArgs = args as ItemPageArguments;
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => ItemPage(
+              key: typedArgs.key,
+              category: typedArgs.category,
+              group: typedArgs.group,
+              formBloc: typedArgs.formBloc),
+          settings: settings,
+        );
       default:
         return unknownRoutePage(settings.name);
     }
@@ -226,6 +243,19 @@ class ItemFormArguments {
       @required this.category,
       @required this.group,
       @required this.editedItem});
+}
+
+//ItemPage arguments holder class
+class ItemPageArguments {
+  final Key key;
+  final ItemCategory category;
+  final ItemGroup group;
+  final ItemFormBloc formBloc;
+  ItemPageArguments(
+      {this.key,
+      @required this.category,
+      @required this.group,
+      @required this.formBloc});
 }
 
 // *************************************************************************
@@ -314,5 +344,17 @@ extension RouterNavigationHelperMethods on ExtendedNavigatorState {
         Routes.itemForm,
         arguments: ItemFormArguments(
             key: key, category: category, group: group, editedItem: editedItem),
+      );
+
+  Future pushItemPage({
+    Key key,
+    @required ItemCategory category,
+    @required ItemGroup group,
+    @required ItemFormBloc formBloc,
+  }) =>
+      pushNamed(
+        Routes.itemPage,
+        arguments: ItemPageArguments(
+            key: key, category: category, group: group, formBloc: formBloc),
       );
 }

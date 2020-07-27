@@ -36,6 +36,19 @@ class _$ItemFormEventTearOff {
     );
   }
 
+  _SelectedIndexChanged selectedIndexChanged(int index) {
+    return _SelectedIndexChanged(
+      index,
+    );
+  }
+
+  _IsFavoriteChanged isFavoriteChanged(UniqueId categoryId, UniqueId groupId) {
+    return _IsFavoriteChanged(
+      categoryId,
+      groupId,
+    );
+  }
+
   _ImageChanged pictureChanged(int index, ImageSource imageSource) {
     return _ImageChanged(
       index,
@@ -67,6 +80,8 @@ mixin _$ItemFormEvent {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
+    @required Result selectedIndexChanged(int index),
+    @required Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
@@ -77,6 +92,8 @@ mixin _$ItemFormEvent {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
+    Result selectedIndexChanged(int index),
+    Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
@@ -88,6 +105,8 @@ mixin _$ItemFormEvent {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result selectedIndexChanged(_SelectedIndexChanged value),
+    @required Result isFavoriteChanged(_IsFavoriteChanged value),
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
@@ -98,6 +117,8 @@ mixin _$ItemFormEvent {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result selectedIndexChanged(_SelectedIndexChanged value),
+    Result isFavoriteChanged(_IsFavoriteChanged value),
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
@@ -183,6 +204,8 @@ class _$_Initialized implements _Initialized {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
+    @required Result selectedIndexChanged(int index),
+    @required Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
@@ -191,6 +214,8 @@ class _$_Initialized implements _Initialized {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -204,6 +229,8 @@ class _$_Initialized implements _Initialized {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
+    Result selectedIndexChanged(int index),
+    Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
@@ -223,6 +250,8 @@ class _$_Initialized implements _Initialized {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result selectedIndexChanged(_SelectedIndexChanged value),
+    @required Result isFavoriteChanged(_IsFavoriteChanged value),
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
@@ -231,6 +260,8 @@ class _$_Initialized implements _Initialized {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -244,6 +275,8 @@ class _$_Initialized implements _Initialized {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result selectedIndexChanged(_SelectedIndexChanged value),
+    Result isFavoriteChanged(_IsFavoriteChanged value),
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
@@ -325,6 +358,8 @@ class _$_TitleChanged implements _TitleChanged {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
+    @required Result selectedIndexChanged(int index),
+    @required Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
@@ -333,6 +368,8 @@ class _$_TitleChanged implements _TitleChanged {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -346,6 +383,8 @@ class _$_TitleChanged implements _TitleChanged {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
+    Result selectedIndexChanged(int index),
+    Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
@@ -365,6 +404,8 @@ class _$_TitleChanged implements _TitleChanged {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result selectedIndexChanged(_SelectedIndexChanged value),
+    @required Result isFavoriteChanged(_IsFavoriteChanged value),
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
@@ -373,6 +414,8 @@ class _$_TitleChanged implements _TitleChanged {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -386,6 +429,8 @@ class _$_TitleChanged implements _TitleChanged {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result selectedIndexChanged(_SelectedIndexChanged value),
+    Result isFavoriteChanged(_IsFavoriteChanged value),
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
@@ -467,6 +512,8 @@ class _$_PriceChanged implements _PriceChanged {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
+    @required Result selectedIndexChanged(int index),
+    @required Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
@@ -475,6 +522,8 @@ class _$_PriceChanged implements _PriceChanged {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -488,6 +537,8 @@ class _$_PriceChanged implements _PriceChanged {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
+    Result selectedIndexChanged(int index),
+    Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
@@ -507,6 +558,8 @@ class _$_PriceChanged implements _PriceChanged {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result selectedIndexChanged(_SelectedIndexChanged value),
+    @required Result isFavoriteChanged(_IsFavoriteChanged value),
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
@@ -515,6 +568,8 @@ class _$_PriceChanged implements _PriceChanged {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -528,6 +583,8 @@ class _$_PriceChanged implements _PriceChanged {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result selectedIndexChanged(_SelectedIndexChanged value),
+    Result isFavoriteChanged(_IsFavoriteChanged value),
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
@@ -614,6 +671,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
+    @required Result selectedIndexChanged(int index),
+    @required Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
@@ -622,6 +681,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -635,6 +696,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
+    Result selectedIndexChanged(int index),
+    Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
@@ -654,6 +717,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result selectedIndexChanged(_SelectedIndexChanged value),
+    @required Result isFavoriteChanged(_IsFavoriteChanged value),
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
@@ -662,6 +727,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -675,6 +742,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result selectedIndexChanged(_SelectedIndexChanged value),
+    Result isFavoriteChanged(_IsFavoriteChanged value),
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
@@ -694,6 +763,328 @@ abstract class _DescriptionChanged implements ItemFormEvent {
 
   String get descriptionBody;
   _$DescriptionChangedCopyWith<_DescriptionChanged> get copyWith;
+}
+
+abstract class _$SelectedIndexChangedCopyWith<$Res> {
+  factory _$SelectedIndexChangedCopyWith(_SelectedIndexChanged value,
+          $Res Function(_SelectedIndexChanged) then) =
+      __$SelectedIndexChangedCopyWithImpl<$Res>;
+  $Res call({int index});
+}
+
+class __$SelectedIndexChangedCopyWithImpl<$Res>
+    extends _$ItemFormEventCopyWithImpl<$Res>
+    implements _$SelectedIndexChangedCopyWith<$Res> {
+  __$SelectedIndexChangedCopyWithImpl(
+      _SelectedIndexChanged _value, $Res Function(_SelectedIndexChanged) _then)
+      : super(_value, (v) => _then(v as _SelectedIndexChanged));
+
+  @override
+  _SelectedIndexChanged get _value => super._value as _SelectedIndexChanged;
+
+  @override
+  $Res call({
+    Object index = freezed,
+  }) {
+    return _then(_SelectedIndexChanged(
+      index == freezed ? _value.index : index as int,
+    ));
+  }
+}
+
+class _$_SelectedIndexChanged implements _SelectedIndexChanged {
+  const _$_SelectedIndexChanged(this.index) : assert(index != null);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'ItemFormEvent.selectedIndexChanged(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SelectedIndexChanged &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
+
+  @override
+  _$SelectedIndexChangedCopyWith<_SelectedIndexChanged> get copyWith =>
+      __$SelectedIndexChangedCopyWithImpl<_SelectedIndexChanged>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Option<Item> initialOption),
+    @required Result titleChanged(String title),
+    @required Result priceChanged(String price),
+    @required Result descriptionChanged(String descriptionBody),
+    @required Result selectedIndexChanged(int index),
+    @required Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
+    @required Result pictureChanged(int index, ImageSource imageSource),
+    @required Result pictureRemoved(int index),
+    @required Result saved(UniqueId categoryId, UniqueId groupId),
+  }) {
+    assert(initialized != null);
+    assert(titleChanged != null);
+    assert(priceChanged != null);
+    assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
+    assert(saved != null);
+    return selectedIndexChanged(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Option<Item> initialOption),
+    Result titleChanged(String title),
+    Result priceChanged(String price),
+    Result descriptionChanged(String descriptionBody),
+    Result selectedIndexChanged(int index),
+    Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
+    Result pictureChanged(int index, ImageSource imageSource),
+    Result pictureRemoved(int index),
+    Result saved(UniqueId categoryId, UniqueId groupId),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (selectedIndexChanged != null) {
+      return selectedIndexChanged(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(_Initialized value),
+    @required Result titleChanged(_TitleChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result selectedIndexChanged(_SelectedIndexChanged value),
+    @required Result isFavoriteChanged(_IsFavoriteChanged value),
+    @required Result pictureChanged(_ImageChanged value),
+    @required Result pictureRemoved(_PictureRemoved value),
+    @required Result saved(_Saved value),
+  }) {
+    assert(initialized != null);
+    assert(titleChanged != null);
+    assert(priceChanged != null);
+    assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
+    assert(saved != null);
+    return selectedIndexChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(_Initialized value),
+    Result titleChanged(_TitleChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result descriptionChanged(_DescriptionChanged value),
+    Result selectedIndexChanged(_SelectedIndexChanged value),
+    Result isFavoriteChanged(_IsFavoriteChanged value),
+    Result pictureChanged(_ImageChanged value),
+    Result pictureRemoved(_PictureRemoved value),
+    Result saved(_Saved value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (selectedIndexChanged != null) {
+      return selectedIndexChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectedIndexChanged implements ItemFormEvent {
+  const factory _SelectedIndexChanged(int index) = _$_SelectedIndexChanged;
+
+  int get index;
+  _$SelectedIndexChangedCopyWith<_SelectedIndexChanged> get copyWith;
+}
+
+abstract class _$IsFavoriteChangedCopyWith<$Res> {
+  factory _$IsFavoriteChangedCopyWith(
+          _IsFavoriteChanged value, $Res Function(_IsFavoriteChanged) then) =
+      __$IsFavoriteChangedCopyWithImpl<$Res>;
+  $Res call({UniqueId categoryId, UniqueId groupId});
+}
+
+class __$IsFavoriteChangedCopyWithImpl<$Res>
+    extends _$ItemFormEventCopyWithImpl<$Res>
+    implements _$IsFavoriteChangedCopyWith<$Res> {
+  __$IsFavoriteChangedCopyWithImpl(
+      _IsFavoriteChanged _value, $Res Function(_IsFavoriteChanged) _then)
+      : super(_value, (v) => _then(v as _IsFavoriteChanged));
+
+  @override
+  _IsFavoriteChanged get _value => super._value as _IsFavoriteChanged;
+
+  @override
+  $Res call({
+    Object categoryId = freezed,
+    Object groupId = freezed,
+  }) {
+    return _then(_IsFavoriteChanged(
+      categoryId == freezed ? _value.categoryId : categoryId as UniqueId,
+      groupId == freezed ? _value.groupId : groupId as UniqueId,
+    ));
+  }
+}
+
+class _$_IsFavoriteChanged implements _IsFavoriteChanged {
+  const _$_IsFavoriteChanged(this.categoryId, this.groupId)
+      : assert(categoryId != null),
+        assert(groupId != null);
+
+  @override
+  final UniqueId categoryId;
+  @override
+  final UniqueId groupId;
+
+  @override
+  String toString() {
+    return 'ItemFormEvent.isFavoriteChanged(categoryId: $categoryId, groupId: $groupId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _IsFavoriteChanged &&
+            (identical(other.categoryId, categoryId) ||
+                const DeepCollectionEquality()
+                    .equals(other.categoryId, categoryId)) &&
+            (identical(other.groupId, groupId) ||
+                const DeepCollectionEquality().equals(other.groupId, groupId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(categoryId) ^
+      const DeepCollectionEquality().hash(groupId);
+
+  @override
+  _$IsFavoriteChangedCopyWith<_IsFavoriteChanged> get copyWith =>
+      __$IsFavoriteChangedCopyWithImpl<_IsFavoriteChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Option<Item> initialOption),
+    @required Result titleChanged(String title),
+    @required Result priceChanged(String price),
+    @required Result descriptionChanged(String descriptionBody),
+    @required Result selectedIndexChanged(int index),
+    @required Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
+    @required Result pictureChanged(int index, ImageSource imageSource),
+    @required Result pictureRemoved(int index),
+    @required Result saved(UniqueId categoryId, UniqueId groupId),
+  }) {
+    assert(initialized != null);
+    assert(titleChanged != null);
+    assert(priceChanged != null);
+    assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
+    assert(saved != null);
+    return isFavoriteChanged(categoryId, groupId);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Option<Item> initialOption),
+    Result titleChanged(String title),
+    Result priceChanged(String price),
+    Result descriptionChanged(String descriptionBody),
+    Result selectedIndexChanged(int index),
+    Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
+    Result pictureChanged(int index, ImageSource imageSource),
+    Result pictureRemoved(int index),
+    Result saved(UniqueId categoryId, UniqueId groupId),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (isFavoriteChanged != null) {
+      return isFavoriteChanged(categoryId, groupId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(_Initialized value),
+    @required Result titleChanged(_TitleChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result selectedIndexChanged(_SelectedIndexChanged value),
+    @required Result isFavoriteChanged(_IsFavoriteChanged value),
+    @required Result pictureChanged(_ImageChanged value),
+    @required Result pictureRemoved(_PictureRemoved value),
+    @required Result saved(_Saved value),
+  }) {
+    assert(initialized != null);
+    assert(titleChanged != null);
+    assert(priceChanged != null);
+    assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
+    assert(saved != null);
+    return isFavoriteChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(_Initialized value),
+    Result titleChanged(_TitleChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result descriptionChanged(_DescriptionChanged value),
+    Result selectedIndexChanged(_SelectedIndexChanged value),
+    Result isFavoriteChanged(_IsFavoriteChanged value),
+    Result pictureChanged(_ImageChanged value),
+    Result pictureRemoved(_PictureRemoved value),
+    Result saved(_Saved value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (isFavoriteChanged != null) {
+      return isFavoriteChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IsFavoriteChanged implements ItemFormEvent {
+  const factory _IsFavoriteChanged(UniqueId categoryId, UniqueId groupId) =
+      _$_IsFavoriteChanged;
+
+  UniqueId get categoryId;
+  UniqueId get groupId;
+  _$IsFavoriteChangedCopyWith<_IsFavoriteChanged> get copyWith;
 }
 
 abstract class _$ImageChangedCopyWith<$Res> {
@@ -768,6 +1159,8 @@ class _$_ImageChanged implements _ImageChanged {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
+    @required Result selectedIndexChanged(int index),
+    @required Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
@@ -776,6 +1169,8 @@ class _$_ImageChanged implements _ImageChanged {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -789,6 +1184,8 @@ class _$_ImageChanged implements _ImageChanged {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
+    Result selectedIndexChanged(int index),
+    Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
@@ -808,6 +1205,8 @@ class _$_ImageChanged implements _ImageChanged {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result selectedIndexChanged(_SelectedIndexChanged value),
+    @required Result isFavoriteChanged(_IsFavoriteChanged value),
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
@@ -816,6 +1215,8 @@ class _$_ImageChanged implements _ImageChanged {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -829,6 +1230,8 @@ class _$_ImageChanged implements _ImageChanged {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result selectedIndexChanged(_SelectedIndexChanged value),
+    Result isFavoriteChanged(_IsFavoriteChanged value),
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
@@ -912,6 +1315,8 @@ class _$_PictureRemoved implements _PictureRemoved {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
+    @required Result selectedIndexChanged(int index),
+    @required Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
@@ -920,6 +1325,8 @@ class _$_PictureRemoved implements _PictureRemoved {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -933,6 +1340,8 @@ class _$_PictureRemoved implements _PictureRemoved {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
+    Result selectedIndexChanged(int index),
+    Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
@@ -952,6 +1361,8 @@ class _$_PictureRemoved implements _PictureRemoved {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result selectedIndexChanged(_SelectedIndexChanged value),
+    @required Result isFavoriteChanged(_IsFavoriteChanged value),
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
@@ -960,6 +1371,8 @@ class _$_PictureRemoved implements _PictureRemoved {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -973,6 +1386,8 @@ class _$_PictureRemoved implements _PictureRemoved {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result selectedIndexChanged(_SelectedIndexChanged value),
+    Result isFavoriteChanged(_IsFavoriteChanged value),
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
@@ -1062,6 +1477,8 @@ class _$_Saved implements _Saved {
     @required Result titleChanged(String title),
     @required Result priceChanged(String price),
     @required Result descriptionChanged(String descriptionBody),
+    @required Result selectedIndexChanged(int index),
+    @required Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
@@ -1070,6 +1487,8 @@ class _$_Saved implements _Saved {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -1083,6 +1502,8 @@ class _$_Saved implements _Saved {
     Result titleChanged(String title),
     Result priceChanged(String price),
     Result descriptionChanged(String descriptionBody),
+    Result selectedIndexChanged(int index),
+    Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
@@ -1102,6 +1523,8 @@ class _$_Saved implements _Saved {
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result selectedIndexChanged(_SelectedIndexChanged value),
+    @required Result isFavoriteChanged(_IsFavoriteChanged value),
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
@@ -1110,6 +1533,8 @@ class _$_Saved implements _Saved {
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
@@ -1123,6 +1548,8 @@ class _$_Saved implements _Saved {
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result selectedIndexChanged(_SelectedIndexChanged value),
+    Result isFavoriteChanged(_IsFavoriteChanged value),
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),

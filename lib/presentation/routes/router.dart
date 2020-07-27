@@ -1,6 +1,7 @@
 import 'package:Sepetim/presentation/application_content/application_content_page.dart';
 import 'package:Sepetim/presentation/item/form/item_form.dart';
 import 'package:Sepetim/presentation/item/overview/item_overview_page.dart';
+import 'package:Sepetim/presentation/item/overview/widgets/item_page.dart';
 import 'package:Sepetim/presentation/item_category/form/item_category_form.dart';
 import 'package:Sepetim/presentation/item_group/form/item_group_form.dart';
 import 'package:Sepetim/presentation/item_group/overview/item_group_overview_page.dart';
@@ -37,4 +38,7 @@ class $Router {
 
   @MaterialRoute()
   ItemForm itemForm;
+
+  @MaterialRoute()
+  ItemPage itemPage;
 }
