@@ -25,10 +25,14 @@ class ItemCategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ItemGroupWatcherBloc>(
-      create: (context) => getIt<ItemGroupWatcherBloc>()
-        ..add(ItemGroupWatcherEvent.watchAllStarted(
-            category.uid, OrderType.date)),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ItemGroupWatcherBloc>(
+          create: (context) => getIt<ItemGroupWatcherBloc>()
+            ..add(ItemGroupWatcherEvent.watchAllStarted(
+                category.uid, OrderType.date)),
+        )
+      ],
       child: GestureDetector(
         onHorizontalDragEnd: (details) {
           context
@@ -112,15 +116,17 @@ class ItemCategoryCard extends StatelessWidget {
                               children: [
                                 Text(
                                   state.map(
-                                      initial: (_) => 'Loading...',
+                                      initial: (_) =>
+                                          '${translate(context, 'loading')}...',
                                       loadSuccess: (state) =>
-                                          'Groups count: ${state.groups.size}',
-                                      loadFailure: (_) => 'Error'),
+                                          '${translate(context, 'groups_count')}: ${state.groups.size}',
+                                      loadFailure: (_) =>
+                                          translate(context, 'error')),
                                   style: robotoTextStyle(
                                       fontSize: 10.0, bold: true),
                                 ),
                                 Text(
-                                  'Last Edited: 21/12/2020',
+                                  '${translate(context, 'last_edited')}: 21/12/2020',
                                   style: robotoTextStyle(
                                       fontSize: 10.0, bold: true),
                                 ),

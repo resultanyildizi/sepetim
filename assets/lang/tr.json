@@ -74,5 +74,9 @@
     "select_cover_picture": "Kapak resmi seçin",
     "set_as_cover": "Kapak olarak ayarla",
     "delete_item_title": "Ürünü sil:",
-    "delete_item_message": "Ürünü silmek istediğinizden emin misiniz? Bu işlem geri alınamaz."
+    "delete_item_message": "Ürünü silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+    "groups_count": "Grup sayısı",
+    "last_edited": "Son düzenleme",
+    "loading": "Yükleniyor",
+    "error": "Hata"
 }
