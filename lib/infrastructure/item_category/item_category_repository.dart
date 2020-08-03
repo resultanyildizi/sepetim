@@ -306,7 +306,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       case OrderType.date:
         {
           orderedCategorySnapshots = userDoc.categoryCollection
-              .orderBy('serverTimeStamp', descending: true)
+              .orderBy('creationTime', descending: true)
               .snapshots();
           break;
         }

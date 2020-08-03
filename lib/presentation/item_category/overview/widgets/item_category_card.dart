@@ -126,9 +126,10 @@ class ItemCategoryCard extends StatelessWidget {
                                       fontSize: 10.0, bold: true),
                                 ),
                                 Text(
-                                  '${translate(context, 'last_edited')}: 21/12/2020',
+                                  '📆 ${category.creationTime.toString().substring(0, 16)}',
                                   style: robotoTextStyle(
                                       fontSize: 10.0, bold: true),
+                                  textAlign: TextAlign.center,
                                 ),
                               ]),
                         ),

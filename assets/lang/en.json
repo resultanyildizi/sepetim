@@ -76,7 +76,7 @@
     "delete_item_title": "Delete item",
     "delete_item_message": "Are you sure to delete this item? This action can't be undone.",
     "groups_count": "Groups count",
-    "last_edited": "Last edited",
+    "created_at": "Created at",
     "loading": "Loading",
     "error": "Error"
 }

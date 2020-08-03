@@ -17,14 +17,15 @@ abstract class ItemCategory implements _$ItemCategory {
     @required ShortTitle title,
     @required ItemCategoryColor color,
     @required ImageUrl coverImageUrl,
+    @required DateTime creationTime,
   }) = _ItemCategory;
 
   factory ItemCategory.empty() => ItemCategory(
-        uid: UniqueId(),
-        title: ShortTitle(''),
-        color: ItemCategoryColor(ItemCategoryColor.predefinedColors[0]),
-        coverImageUrl: ImageUrl.defaultUrl(),
-      );
+      uid: UniqueId(),
+      title: ShortTitle(''),
+      color: ItemCategoryColor(ItemCategoryColor.predefinedColors[0]),
+      coverImageUrl: ImageUrl.defaultUrl(),
+      creationTime: DateTime.now().toUtc());
 
   Option<ValueFailure<dynamic>> get failureOption {
     return title.failureOrUnit
