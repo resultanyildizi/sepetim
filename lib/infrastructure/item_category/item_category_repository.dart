@@ -1,9 +1,6 @@
 import 'dart:io';
-import 'package:Sepetim/domain/core/enums.dart';
-import 'package:Sepetim/domain/item_category/i_category_repository.dart';
-import 'package:Sepetim/domain/item_category/item_category.dart';
-import 'package:Sepetim/domain/item_category/item_category_failure.dart';
-import 'package:Sepetim/infrastructure/item_category/item_category_dtos.dart';
+
+import 'package:Sepetim/infrastructure/item_group/item_group_dtos.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
@@ -14,23 +11,31 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
+import 'package:path/path.dart' as p;
 import 'package:rxdart/rxdart.dart';
 
+import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
+import 'package:Sepetim/domain/item_category/i_category_repository.dart';
+import 'package:Sepetim/domain/item_category/item_category.dart';
+import 'package:Sepetim/domain/item_category/item_category_failure.dart';
+import 'package:Sepetim/domain/item_group/i_group_repository.dart';
 import 'package:Sepetim/infrastructure/core/firebase_helpers.dart';
+import 'package:Sepetim/infrastructure/item_category/item_category_dtos.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
-import 'package:path/path.dart' as p;
 
 @LazySingleton(as: IItemCategoryRepository)
 class ItemCategoryRepository implements IItemCategoryRepository {
   final Firestore _firestore;
   final ImagePicker _imagePicker;
   final FirebaseStorage _firebaseStorage;
+  final IItemGroupRepository _itemGroupRepository;
 
   ItemCategoryRepository(
     this._firestore,
     this._imagePicker,
     this._firebaseStorage,
+    this._itemGroupRepository,
   );
 
   @override
@@ -98,10 +103,26 @@ class ItemCategoryRepository implements IItemCategoryRepository {
           connectivityResult != ConnectivityResult.wifi) {
         return left(const ItemCategoryFailure.networkException());
       }
+      final categoryId = category.uid;
       final userDoc = await _firestore.userDocument();
-      final categoryUid = category.uid.getOrCrash();
+      final categoryDoc =
+          userDoc.categoryCollection.document(categoryId.getOrCrash());
 
-      await userDoc.categoryCollection.document(categoryUid).delete();
+      final groupDocumentSnapshots =
+          await categoryDoc.groupCollection.getDocuments();
+
+      for (final doc in groupDocumentSnapshots.documents) {
+        final failureOrSuccess = await _itemGroupRepository.delete(
+            categoryId, ItemGroupDto.fromFirestore(doc).toDomain());
+        failureOrSuccess.fold(
+          (f) {
+            return left(const ItemCategoryFailure.unexpected());
+          },
+          (_) {},
+        );
+      }
+
+      await categoryDoc.delete();
 
       final removeFailureOrSuccess =
           await removeCoverPictureFromServer(category);

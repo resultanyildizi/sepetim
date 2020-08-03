@@ -17,7 +17,6 @@ abstract class Item implements _$Item {
     @required ShortTitle title,
     @required Price price,
     @required DescriptionBody description,
-    @required Status status,
     @required List3<ImageUrl> imageUrls,
     @required SelectedIndex selectedIndex,
     @required List5<LinkObject> linkObjects,
@@ -29,7 +28,6 @@ abstract class Item implements _$Item {
         title: ShortTitle(''),
         price: Price('0.0'),
         description: DescriptionBody(''),
-        status: Status(Status.predefinedStatuses[0]),
         imageUrls: List3([
           ImageUrl.defaultUrl(),
           ImageUrl.defaultUrl(),
@@ -44,7 +42,6 @@ abstract class Item implements _$Item {
     return title.failureOrUnit
         .andThen(price.failureOrUnit)
         .andThen(description.failureOrUnit)
-        .andThen(status.failureOrUnit)
         .andThen(selectedIndex.failureOrUnit)
         .andThen(imageUrls.failureOrUnit)
         .andThen(imageUrls

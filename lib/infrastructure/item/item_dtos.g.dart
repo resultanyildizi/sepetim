@@ -11,7 +11,6 @@ _$_ItemDto _$_$_ItemDtoFromJson(Map<String, dynamic> json) {
     title: json['title'] as String,
     price: (json['price'] as num)?.toDouble(),
     description: json['description'] as String,
-    status: json['status'] as String,
     imageUrls: (json['imageUrls'] as List)?.map((e) => e as String)?.toList(),
     selectedIndex: json['selectedIndex'] as int,
     linkObjects: (json['linkObjects'] as List)
@@ -30,7 +29,6 @@ Map<String, dynamic> _$_$_ItemDtoToJson(_$_ItemDto instance) =>
       'title': instance.title,
       'price': instance.price,
       'description': instance.description,
-      'status': instance.status,
       'imageUrls': instance.imageUrls,
       'selectedIndex': instance.selectedIndex,
       'linkObjects': instance.linkObjects,

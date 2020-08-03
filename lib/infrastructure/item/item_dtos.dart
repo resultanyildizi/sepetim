@@ -17,7 +17,6 @@ abstract class ItemDto implements _$ItemDto {
     @required String title,
     @required double price,
     @required String description,
-    @required String status,
     @required List<String> imageUrls,
     @required int selectedIndex,
     @required List<LinkObjectDto> linkObjects,
@@ -31,7 +30,6 @@ abstract class ItemDto implements _$ItemDto {
       title: item.title.getOrCrash(),
       price: item.price.getOrCrash(),
       description: item.description.getOrCrash(),
-      status: item.status.getOrCrash(),
       imageUrls: item.imageUrls
           .getOrCrash()
           .map((imageUrl) => imageUrl.getOrCrash())
@@ -52,7 +50,6 @@ abstract class ItemDto implements _$ItemDto {
       title: ShortTitle(title),
       price: Price(price.toString()),
       description: DescriptionBody(description),
-      status: Status(status),
       imageUrls: List3(
           imageUrls.map((imageUrl) => ImageUrl(imageUrl)).toImmutableList()),
       isFavorite: isFavorite,

@@ -17,7 +17,6 @@ class _$ItemTearOff {
       @required ShortTitle title,
       @required Price price,
       @required DescriptionBody description,
-      @required Status status,
       @required List3<ImageUrl> imageUrls,
       @required SelectedIndex selectedIndex,
       @required List5<LinkObject> linkObjects,
@@ -27,7 +26,6 @@ class _$ItemTearOff {
       title: title,
       price: price,
       description: description,
-      status: status,
       imageUrls: imageUrls,
       selectedIndex: selectedIndex,
       linkObjects: linkObjects,
@@ -44,7 +42,6 @@ mixin _$Item {
   ShortTitle get title;
   Price get price;
   DescriptionBody get description;
-  Status get status;
   List3<ImageUrl> get imageUrls;
   SelectedIndex get selectedIndex;
   List5<LinkObject> get linkObjects;
@@ -61,7 +58,6 @@ abstract class $ItemCopyWith<$Res> {
       ShortTitle title,
       Price price,
       DescriptionBody description,
-      Status status,
       List3<ImageUrl> imageUrls,
       SelectedIndex selectedIndex,
       List5<LinkObject> linkObjects,
@@ -81,7 +77,6 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
     Object title = freezed,
     Object price = freezed,
     Object description = freezed,
-    Object status = freezed,
     Object imageUrls = freezed,
     Object selectedIndex = freezed,
     Object linkObjects = freezed,
@@ -94,7 +89,6 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description as DescriptionBody,
-      status: status == freezed ? _value.status : status as Status,
       imageUrls: imageUrls == freezed
           ? _value.imageUrls
           : imageUrls as List3<ImageUrl>,
@@ -119,7 +113,6 @@ abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
       ShortTitle title,
       Price price,
       DescriptionBody description,
-      Status status,
       List3<ImageUrl> imageUrls,
       SelectedIndex selectedIndex,
       List5<LinkObject> linkObjects,
@@ -140,7 +133,6 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     Object title = freezed,
     Object price = freezed,
     Object description = freezed,
-    Object status = freezed,
     Object imageUrls = freezed,
     Object selectedIndex = freezed,
     Object linkObjects = freezed,
@@ -153,7 +145,6 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description as DescriptionBody,
-      status: status == freezed ? _value.status : status as Status,
       imageUrls: imageUrls == freezed
           ? _value.imageUrls
           : imageUrls as List3<ImageUrl>,
@@ -175,7 +166,6 @@ class _$_Item extends _Item {
       @required this.title,
       @required this.price,
       @required this.description,
-      @required this.status,
       @required this.imageUrls,
       @required this.selectedIndex,
       @required this.linkObjects,
@@ -184,7 +174,6 @@ class _$_Item extends _Item {
         assert(title != null),
         assert(price != null),
         assert(description != null),
-        assert(status != null),
         assert(imageUrls != null),
         assert(selectedIndex != null),
         assert(linkObjects != null),
@@ -200,8 +189,6 @@ class _$_Item extends _Item {
   @override
   final DescriptionBody description;
   @override
-  final Status status;
-  @override
   final List3<ImageUrl> imageUrls;
   @override
   final SelectedIndex selectedIndex;
@@ -212,7 +199,7 @@ class _$_Item extends _Item {
 
   @override
   String toString() {
-    return 'Item(uid: $uid, title: $title, price: $price, description: $description, status: $status, imageUrls: $imageUrls, selectedIndex: $selectedIndex, linkObjects: $linkObjects, isFavorite: $isFavorite)';
+    return 'Item(uid: $uid, title: $title, price: $price, description: $description, imageUrls: $imageUrls, selectedIndex: $selectedIndex, linkObjects: $linkObjects, isFavorite: $isFavorite)';
   }
 
   @override
@@ -228,8 +215,6 @@ class _$_Item extends _Item {
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.imageUrls, imageUrls) ||
                 const DeepCollectionEquality()
                     .equals(other.imageUrls, imageUrls)) &&
@@ -251,7 +236,6 @@ class _$_Item extends _Item {
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(price) ^
       const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(imageUrls) ^
       const DeepCollectionEquality().hash(selectedIndex) ^
       const DeepCollectionEquality().hash(linkObjects) ^
@@ -269,7 +253,6 @@ abstract class _Item extends Item {
       @required ShortTitle title,
       @required Price price,
       @required DescriptionBody description,
-      @required Status status,
       @required List3<ImageUrl> imageUrls,
       @required SelectedIndex selectedIndex,
       @required List5<LinkObject> linkObjects,
@@ -283,8 +266,6 @@ abstract class _Item extends Item {
   Price get price;
   @override
   DescriptionBody get description;
-  @override
-  Status get status;
   @override
   List3<ImageUrl> get imageUrls;
   @override

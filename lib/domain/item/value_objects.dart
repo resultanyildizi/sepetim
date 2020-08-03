@@ -18,26 +18,6 @@ class DescriptionBody extends ValueObject<String> {
   DescriptionBody._(this.value);
 }
 
-// TODO: Localize the predefined values
-class Status extends ValueObject<String> {
-  static const List<String> predefinedStatuses = [
-    "UNKNOWN",
-    "BOUGHT",
-    "UNCERTAIN",
-    "MAYBE"
-  ];
-
-  @override
-  final Either<ValueFailure<String>, String> value;
-
-  factory Status(String input) {
-    assert(input != null);
-    return Status._(right(input));
-  }
-
-  const Status._(this.value);
-}
-
 class Price extends ValueObject<double> {
   @override
   final Either<ValueFailure<double>, double> value;

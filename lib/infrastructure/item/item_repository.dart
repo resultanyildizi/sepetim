@@ -153,7 +153,7 @@ class ItemRepository extends IItemRepository {
           sourcePath: pickedFile.path,
           cropStyle: CropStyle.rectangle,
           compressQuality: 85,
-          aspectRatio: const CropAspectRatio(ratioX: 9, ratioY: 16),
+          aspectRatio: const CropAspectRatio(ratioX: 6, ratioY: 9),
           androidUiSettings: AndroidUiSettings(
             toolbarTitle: 'Sepetim',
             toolbarColor: sepetimYellow,

@@ -1,25 +1,30 @@
-import 'package:Sepetim/domain/core/value_objects.dart';
-import 'package:Sepetim/domain/core/enums.dart';
-import 'package:Sepetim/domain/item_group/i_group_repository.dart';
-import 'package:Sepetim/infrastructure/item_group/item_group_dtos.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
-import 'package:Sepetim/domain/item_group/item_group_failure.dart';
-import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
-import 'package:Sepetim/infrastructure/core/firebase_helpers.dart';
 import 'package:rxdart/rxdart.dart';
+
+import 'package:Sepetim/domain/core/enums.dart';
+import 'package:Sepetim/domain/core/value_objects.dart';
+import 'package:Sepetim/domain/item/i_item_repository.dart';
+import 'package:Sepetim/domain/item_group/i_group_repository.dart';
+import 'package:Sepetim/domain/item_group/item_group.dart';
+import 'package:Sepetim/domain/item_group/item_group_failure.dart';
+import 'package:Sepetim/infrastructure/core/firebase_helpers.dart';
+import 'package:Sepetim/infrastructure/item/item_dtos.dart';
+import 'package:Sepetim/infrastructure/item_group/item_group_dtos.dart';
 
 @LazySingleton(as: IItemGroupRepository)
 class ItemGroupRepository implements IItemGroupRepository {
   final Firestore _firestore;
+  final IItemRepository _itemRepository;
 
   ItemGroupRepository(
     this._firestore,
+    this._itemRepository,
   );
 
   @override
@@ -94,12 +99,29 @@ class ItemGroupRepository implements IItemGroupRepository {
           connectivityResult != ConnectivityResult.wifi) {
         return left(const ItemGroupFailure.networkException());
       }
+      final groupId = group.uid;
       final userDoc = await _firestore.userDocument();
       final categoryDoc =
           userDoc.categoryCollection.document(categoryId.getOrCrash());
-      final groupId = group.uid.getOrCrash();
+      final groupDoc =
+          categoryDoc.groupCollection.document(groupId.getOrCrash());
 
-      await categoryDoc.groupCollection.document(groupId).delete();
+      final itemDocumentSnapshots =
+          await groupDoc.itemCollection.getDocuments();
+
+      for (final doc in itemDocumentSnapshots.documents) {
+        final failureOrSuccess = await _itemRepository.delete(
+            categoryId, groupId, ItemDto.fromFirestore(doc).toDomain());
+
+        failureOrSuccess.fold(
+          (f) {
+            return left(const ItemGroupFailure.unexpected());
+          },
+          (_) {},
+        );
+      }
+
+      await groupDoc.delete();
       return right(unit);
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {

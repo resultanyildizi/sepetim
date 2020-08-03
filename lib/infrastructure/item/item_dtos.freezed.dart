@@ -20,7 +20,6 @@ class _$ItemDtoTearOff {
       @required String title,
       @required double price,
       @required String description,
-      @required String status,
       @required List<String> imageUrls,
       @required int selectedIndex,
       @required List<LinkObjectDto> linkObjects,
@@ -31,7 +30,6 @@ class _$ItemDtoTearOff {
       title: title,
       price: price,
       description: description,
-      status: status,
       imageUrls: imageUrls,
       selectedIndex: selectedIndex,
       linkObjects: linkObjects,
@@ -50,7 +48,6 @@ mixin _$ItemDto {
   String get title;
   double get price;
   String get description;
-  String get status;
   List<String> get imageUrls;
   int get selectedIndex;
   List<LinkObjectDto> get linkObjects;
@@ -70,7 +67,6 @@ abstract class $ItemDtoCopyWith<$Res> {
       String title,
       double price,
       String description,
-      String status,
       List<String> imageUrls,
       int selectedIndex,
       List<LinkObjectDto> linkObjects,
@@ -91,7 +87,6 @@ class _$ItemDtoCopyWithImpl<$Res> implements $ItemDtoCopyWith<$Res> {
     Object title = freezed,
     Object price = freezed,
     Object description = freezed,
-    Object status = freezed,
     Object imageUrls = freezed,
     Object selectedIndex = freezed,
     Object linkObjects = freezed,
@@ -104,7 +99,6 @@ class _$ItemDtoCopyWithImpl<$Res> implements $ItemDtoCopyWith<$Res> {
       price: price == freezed ? _value.price : price as double,
       description:
           description == freezed ? _value.description : description as String,
-      status: status == freezed ? _value.status : status as String,
       imageUrls:
           imageUrls == freezed ? _value.imageUrls : imageUrls as List<String>,
       selectedIndex: selectedIndex == freezed
@@ -131,7 +125,6 @@ abstract class _$ItemDtoCopyWith<$Res> implements $ItemDtoCopyWith<$Res> {
       String title,
       double price,
       String description,
-      String status,
       List<String> imageUrls,
       int selectedIndex,
       List<LinkObjectDto> linkObjects,
@@ -153,7 +146,6 @@ class __$ItemDtoCopyWithImpl<$Res> extends _$ItemDtoCopyWithImpl<$Res>
     Object title = freezed,
     Object price = freezed,
     Object description = freezed,
-    Object status = freezed,
     Object imageUrls = freezed,
     Object selectedIndex = freezed,
     Object linkObjects = freezed,
@@ -166,7 +158,6 @@ class __$ItemDtoCopyWithImpl<$Res> extends _$ItemDtoCopyWithImpl<$Res>
       price: price == freezed ? _value.price : price as double,
       description:
           description == freezed ? _value.description : description as String,
-      status: status == freezed ? _value.status : status as String,
       imageUrls:
           imageUrls == freezed ? _value.imageUrls : imageUrls as List<String>,
       selectedIndex: selectedIndex == freezed
@@ -191,7 +182,6 @@ class _$_ItemDto extends _ItemDto {
       @required this.title,
       @required this.price,
       @required this.description,
-      @required this.status,
       @required this.imageUrls,
       @required this.selectedIndex,
       @required this.linkObjects,
@@ -200,7 +190,6 @@ class _$_ItemDto extends _ItemDto {
       : assert(title != null),
         assert(price != null),
         assert(description != null),
-        assert(status != null),
         assert(imageUrls != null),
         assert(selectedIndex != null),
         assert(linkObjects != null),
@@ -221,8 +210,6 @@ class _$_ItemDto extends _ItemDto {
   @override
   final String description;
   @override
-  final String status;
-  @override
   final List<String> imageUrls;
   @override
   final int selectedIndex;
@@ -236,7 +223,7 @@ class _$_ItemDto extends _ItemDto {
 
   @override
   String toString() {
-    return 'ItemDto(uid: $uid, title: $title, price: $price, description: $description, status: $status, imageUrls: $imageUrls, selectedIndex: $selectedIndex, linkObjects: $linkObjects, isFavorite: $isFavorite, serverTimeStamp: $serverTimeStamp)';
+    return 'ItemDto(uid: $uid, title: $title, price: $price, description: $description, imageUrls: $imageUrls, selectedIndex: $selectedIndex, linkObjects: $linkObjects, isFavorite: $isFavorite, serverTimeStamp: $serverTimeStamp)';
   }
 
   @override
@@ -252,8 +239,6 @@ class _$_ItemDto extends _ItemDto {
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.imageUrls, imageUrls) ||
                 const DeepCollectionEquality()
                     .equals(other.imageUrls, imageUrls)) &&
@@ -278,7 +263,6 @@ class _$_ItemDto extends _ItemDto {
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(price) ^
       const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(imageUrls) ^
       const DeepCollectionEquality().hash(selectedIndex) ^
       const DeepCollectionEquality().hash(linkObjects) ^
@@ -302,7 +286,6 @@ abstract class _ItemDto extends ItemDto {
           @required String title,
           @required double price,
           @required String description,
-          @required String status,
           @required List<String> imageUrls,
           @required int selectedIndex,
           @required List<LinkObjectDto> linkObjects,
@@ -321,8 +304,6 @@ abstract class _ItemDto extends ItemDto {
   double get price;
   @override
   String get description;
-  @override
-  String get status;
   @override
   List<String> get imageUrls;
   @override
