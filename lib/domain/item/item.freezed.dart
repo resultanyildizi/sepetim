@@ -20,7 +20,8 @@ class _$ItemTearOff {
       @required List3<ImageUrl> imageUrls,
       @required SelectedIndex selectedIndex,
       @required List5<LinkObject> linkObjects,
-      @required bool isFavorite}) {
+      @required bool isFavorite,
+      @required DateTime lastEditTime}) {
     return _Item(
       uid: uid,
       title: title,
@@ -30,6 +31,7 @@ class _$ItemTearOff {
       selectedIndex: selectedIndex,
       linkObjects: linkObjects,
       isFavorite: isFavorite,
+      lastEditTime: lastEditTime,
     );
   }
 }
@@ -46,6 +48,7 @@ mixin _$Item {
   SelectedIndex get selectedIndex;
   List5<LinkObject> get linkObjects;
   bool get isFavorite;
+  DateTime get lastEditTime;
 
   $ItemCopyWith<Item> get copyWith;
 }
@@ -61,7 +64,8 @@ abstract class $ItemCopyWith<$Res> {
       List3<ImageUrl> imageUrls,
       SelectedIndex selectedIndex,
       List5<LinkObject> linkObjects,
-      bool isFavorite});
+      bool isFavorite,
+      DateTime lastEditTime});
 }
 
 class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
@@ -81,6 +85,7 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
     Object selectedIndex = freezed,
     Object linkObjects = freezed,
     Object isFavorite = freezed,
+    Object lastEditTime = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed ? _value.uid : uid as UniqueId,
@@ -100,6 +105,9 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
           : linkObjects as List5<LinkObject>,
       isFavorite:
           isFavorite == freezed ? _value.isFavorite : isFavorite as bool,
+      lastEditTime: lastEditTime == freezed
+          ? _value.lastEditTime
+          : lastEditTime as DateTime,
     ));
   }
 }
@@ -116,7 +124,8 @@ abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
       List3<ImageUrl> imageUrls,
       SelectedIndex selectedIndex,
       List5<LinkObject> linkObjects,
-      bool isFavorite});
+      bool isFavorite,
+      DateTime lastEditTime});
 }
 
 class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
@@ -137,6 +146,7 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     Object selectedIndex = freezed,
     Object linkObjects = freezed,
     Object isFavorite = freezed,
+    Object lastEditTime = freezed,
   }) {
     return _then(_Item(
       uid: uid == freezed ? _value.uid : uid as UniqueId,
@@ -156,6 +166,9 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
           : linkObjects as List5<LinkObject>,
       isFavorite:
           isFavorite == freezed ? _value.isFavorite : isFavorite as bool,
+      lastEditTime: lastEditTime == freezed
+          ? _value.lastEditTime
+          : lastEditTime as DateTime,
     ));
   }
 }
@@ -169,7 +182,8 @@ class _$_Item extends _Item {
       @required this.imageUrls,
       @required this.selectedIndex,
       @required this.linkObjects,
-      @required this.isFavorite})
+      @required this.isFavorite,
+      @required this.lastEditTime})
       : assert(uid != null),
         assert(title != null),
         assert(price != null),
@@ -178,6 +192,7 @@ class _$_Item extends _Item {
         assert(selectedIndex != null),
         assert(linkObjects != null),
         assert(isFavorite != null),
+        assert(lastEditTime != null),
         super._();
 
   @override
@@ -196,10 +211,12 @@ class _$_Item extends _Item {
   final List5<LinkObject> linkObjects;
   @override
   final bool isFavorite;
+  @override
+  final DateTime lastEditTime;
 
   @override
   String toString() {
-    return 'Item(uid: $uid, title: $title, price: $price, description: $description, imageUrls: $imageUrls, selectedIndex: $selectedIndex, linkObjects: $linkObjects, isFavorite: $isFavorite)';
+    return 'Item(uid: $uid, title: $title, price: $price, description: $description, imageUrls: $imageUrls, selectedIndex: $selectedIndex, linkObjects: $linkObjects, isFavorite: $isFavorite, lastEditTime: $lastEditTime)';
   }
 
   @override
@@ -226,7 +243,10 @@ class _$_Item extends _Item {
                     .equals(other.linkObjects, linkObjects)) &&
             (identical(other.isFavorite, isFavorite) ||
                 const DeepCollectionEquality()
-                    .equals(other.isFavorite, isFavorite)));
+                    .equals(other.isFavorite, isFavorite)) &&
+            (identical(other.lastEditTime, lastEditTime) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastEditTime, lastEditTime)));
   }
 
   @override
@@ -239,7 +259,8 @@ class _$_Item extends _Item {
       const DeepCollectionEquality().hash(imageUrls) ^
       const DeepCollectionEquality().hash(selectedIndex) ^
       const DeepCollectionEquality().hash(linkObjects) ^
-      const DeepCollectionEquality().hash(isFavorite);
+      const DeepCollectionEquality().hash(isFavorite) ^
+      const DeepCollectionEquality().hash(lastEditTime);
 
   @override
   _$ItemCopyWith<_Item> get copyWith =>
@@ -256,7 +277,8 @@ abstract class _Item extends Item {
       @required List3<ImageUrl> imageUrls,
       @required SelectedIndex selectedIndex,
       @required List5<LinkObject> linkObjects,
-      @required bool isFavorite}) = _$_Item;
+      @required bool isFavorite,
+      @required DateTime lastEditTime}) = _$_Item;
 
   @override
   UniqueId get uid;
@@ -274,6 +296,8 @@ abstract class _Item extends Item {
   List5<LinkObject> get linkObjects;
   @override
   bool get isFavorite;
+  @override
+  DateTime get lastEditTime;
   @override
   _$ItemCopyWith<_Item> get copyWith;
 }

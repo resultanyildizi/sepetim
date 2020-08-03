@@ -272,7 +272,7 @@ class ItemRepository extends IItemRepository {
       case OrderType.date:
         {
           orderedItemSnapshots = groupDoc.itemCollection
-              .orderBy('serverTimeStamp', descending: true)
+              .orderBy('lastEditTime', descending: true)
               .snapshots();
           break;
         }

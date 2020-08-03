@@ -21,6 +21,7 @@ _$_ItemDto _$_$_ItemDtoFromJson(Map<String, dynamic> json) {
     isFavorite: json['isFavorite'] as bool,
     serverTimeStamp:
         const ServerTimeStampConverter().fromJson(json['serverTimeStamp']),
+    lastEditTime: json['lastEditTime'] as int,
   );
 }
 
@@ -35,6 +36,7 @@ Map<String, dynamic> _$_$_ItemDtoToJson(_$_ItemDto instance) =>
       'isFavorite': instance.isFavorite,
       'serverTimeStamp':
           const ServerTimeStampConverter().toJson(instance.serverTimeStamp),
+      'lastEditTime': instance.lastEditTime,
     };
 
 _$_LinkObjectDto _$_$_LinkObjectDtoFromJson(Map<String, dynamic> json) {

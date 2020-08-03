@@ -22,6 +22,7 @@ abstract class ItemDto implements _$ItemDto {
     @required List<LinkObjectDto> linkObjects,
     @required bool isFavorite,
     @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
+    @required int lastEditTime,
   }) = _ItemDto;
 
   factory ItemDto.fromDomain(Item item) {
@@ -41,6 +42,7 @@ abstract class ItemDto implements _$ItemDto {
           .asList(),
       isFavorite: item.isFavorite,
       serverTimeStamp: FieldValue.serverTimestamp(),
+      lastEditTime: item.lastEditTime.millisecondsSinceEpoch,
     );
   }
 
@@ -59,6 +61,7 @@ abstract class ItemDto implements _$ItemDto {
             .toImmutableList(),
       ),
       selectedIndex: SelectedIndex(selectedIndex),
+      lastEditTime: DateTime.fromMillisecondsSinceEpoch(lastEditTime),
     );
   }
 

@@ -125,11 +125,21 @@ class ItemCategoryCard extends StatelessWidget {
                                   style: robotoTextStyle(
                                       fontSize: 10.0, bold: true),
                                 ),
-                                Text(
-                                  '📆 ${category.creationTime.toString().substring(0, 16)}',
-                                  style: robotoTextStyle(
-                                      fontSize: 10.0, bold: true),
-                                  textAlign: TextAlign.center,
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(Icons.date_range,
+                                        color: sepetimGrey, size: 12.0),
+                                    const SizedBox(width: 4.0),
+                                    Text(
+                                      category.creationTime
+                                          .toString()
+                                          .substring(0, 16),
+                                      style: robotoTextStyle(
+                                          fontSize: 10.0, bold: true),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
                                 ),
                               ]),
                         ),

@@ -24,7 +24,8 @@ class _$ItemDtoTearOff {
       @required int selectedIndex,
       @required List<LinkObjectDto> linkObjects,
       @required bool isFavorite,
-      @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) {
+      @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
+      @required int lastEditTime}) {
     return _ItemDto(
       uid: uid,
       title: title,
@@ -35,6 +36,7 @@ class _$ItemDtoTearOff {
       linkObjects: linkObjects,
       isFavorite: isFavorite,
       serverTimeStamp: serverTimeStamp,
+      lastEditTime: lastEditTime,
     );
   }
 }
@@ -54,6 +56,7 @@ mixin _$ItemDto {
   bool get isFavorite;
   @ServerTimeStampConverter()
   FieldValue get serverTimeStamp;
+  int get lastEditTime;
 
   Map<String, dynamic> toJson();
   $ItemDtoCopyWith<ItemDto> get copyWith;
@@ -71,7 +74,8 @@ abstract class $ItemDtoCopyWith<$Res> {
       int selectedIndex,
       List<LinkObjectDto> linkObjects,
       bool isFavorite,
-      @ServerTimeStampConverter() FieldValue serverTimeStamp});
+      @ServerTimeStampConverter() FieldValue serverTimeStamp,
+      int lastEditTime});
 }
 
 class _$ItemDtoCopyWithImpl<$Res> implements $ItemDtoCopyWith<$Res> {
@@ -92,6 +96,7 @@ class _$ItemDtoCopyWithImpl<$Res> implements $ItemDtoCopyWith<$Res> {
     Object linkObjects = freezed,
     Object isFavorite = freezed,
     Object serverTimeStamp = freezed,
+    Object lastEditTime = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed ? _value.uid : uid as String,
@@ -112,6 +117,8 @@ class _$ItemDtoCopyWithImpl<$Res> implements $ItemDtoCopyWith<$Res> {
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp as FieldValue,
+      lastEditTime:
+          lastEditTime == freezed ? _value.lastEditTime : lastEditTime as int,
     ));
   }
 }
@@ -129,7 +136,8 @@ abstract class _$ItemDtoCopyWith<$Res> implements $ItemDtoCopyWith<$Res> {
       int selectedIndex,
       List<LinkObjectDto> linkObjects,
       bool isFavorite,
-      @ServerTimeStampConverter() FieldValue serverTimeStamp});
+      @ServerTimeStampConverter() FieldValue serverTimeStamp,
+      int lastEditTime});
 }
 
 class __$ItemDtoCopyWithImpl<$Res> extends _$ItemDtoCopyWithImpl<$Res>
@@ -151,6 +159,7 @@ class __$ItemDtoCopyWithImpl<$Res> extends _$ItemDtoCopyWithImpl<$Res>
     Object linkObjects = freezed,
     Object isFavorite = freezed,
     Object serverTimeStamp = freezed,
+    Object lastEditTime = freezed,
   }) {
     return _then(_ItemDto(
       uid: uid == freezed ? _value.uid : uid as String,
@@ -171,6 +180,8 @@ class __$ItemDtoCopyWithImpl<$Res> extends _$ItemDtoCopyWithImpl<$Res>
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp as FieldValue,
+      lastEditTime:
+          lastEditTime == freezed ? _value.lastEditTime : lastEditTime as int,
     ));
   }
 }
@@ -186,7 +197,8 @@ class _$_ItemDto extends _ItemDto {
       @required this.selectedIndex,
       @required this.linkObjects,
       @required this.isFavorite,
-      @required @ServerTimeStampConverter() this.serverTimeStamp})
+      @required @ServerTimeStampConverter() this.serverTimeStamp,
+      @required this.lastEditTime})
       : assert(title != null),
         assert(price != null),
         assert(description != null),
@@ -195,6 +207,7 @@ class _$_ItemDto extends _ItemDto {
         assert(linkObjects != null),
         assert(isFavorite != null),
         assert(serverTimeStamp != null),
+        assert(lastEditTime != null),
         super._();
 
   factory _$_ItemDto.fromJson(Map<String, dynamic> json) =>
@@ -220,10 +233,12 @@ class _$_ItemDto extends _ItemDto {
   @override
   @ServerTimeStampConverter()
   final FieldValue serverTimeStamp;
+  @override
+  final int lastEditTime;
 
   @override
   String toString() {
-    return 'ItemDto(uid: $uid, title: $title, price: $price, description: $description, imageUrls: $imageUrls, selectedIndex: $selectedIndex, linkObjects: $linkObjects, isFavorite: $isFavorite, serverTimeStamp: $serverTimeStamp)';
+    return 'ItemDto(uid: $uid, title: $title, price: $price, description: $description, imageUrls: $imageUrls, selectedIndex: $selectedIndex, linkObjects: $linkObjects, isFavorite: $isFavorite, serverTimeStamp: $serverTimeStamp, lastEditTime: $lastEditTime)';
   }
 
   @override
@@ -253,7 +268,10 @@ class _$_ItemDto extends _ItemDto {
                     .equals(other.isFavorite, isFavorite)) &&
             (identical(other.serverTimeStamp, serverTimeStamp) ||
                 const DeepCollectionEquality()
-                    .equals(other.serverTimeStamp, serverTimeStamp)));
+                    .equals(other.serverTimeStamp, serverTimeStamp)) &&
+            (identical(other.lastEditTime, lastEditTime) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastEditTime, lastEditTime)));
   }
 
   @override
@@ -267,7 +285,8 @@ class _$_ItemDto extends _ItemDto {
       const DeepCollectionEquality().hash(selectedIndex) ^
       const DeepCollectionEquality().hash(linkObjects) ^
       const DeepCollectionEquality().hash(isFavorite) ^
-      const DeepCollectionEquality().hash(serverTimeStamp);
+      const DeepCollectionEquality().hash(serverTimeStamp) ^
+      const DeepCollectionEquality().hash(lastEditTime);
 
   @override
   _$ItemDtoCopyWith<_ItemDto> get copyWith =>
@@ -282,16 +301,16 @@ class _$_ItemDto extends _ItemDto {
 abstract class _ItemDto extends ItemDto {
   const _ItemDto._() : super._();
   const factory _ItemDto(
-          {@JsonKey(ignore: true) String uid,
-          @required String title,
-          @required double price,
-          @required String description,
-          @required List<String> imageUrls,
-          @required int selectedIndex,
-          @required List<LinkObjectDto> linkObjects,
-          @required bool isFavorite,
-          @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) =
-      _$_ItemDto;
+      {@JsonKey(ignore: true) String uid,
+      @required String title,
+      @required double price,
+      @required String description,
+      @required List<String> imageUrls,
+      @required int selectedIndex,
+      @required List<LinkObjectDto> linkObjects,
+      @required bool isFavorite,
+      @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
+      @required int lastEditTime}) = _$_ItemDto;
 
   factory _ItemDto.fromJson(Map<String, dynamic> json) = _$_ItemDto.fromJson;
 
@@ -315,6 +334,8 @@ abstract class _ItemDto extends ItemDto {
   @override
   @ServerTimeStampConverter()
   FieldValue get serverTimeStamp;
+  @override
+  int get lastEditTime;
   @override
   _$ItemDtoCopyWith<_ItemDto> get copyWith;
 }

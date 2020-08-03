@@ -99,6 +99,17 @@ class ItemCard extends StatelessWidget {
               '${translate(context, 'price')}: ${item.price.getOrCrash().toString()}₺',
               style: didactGothicTextStyle(),
             ),
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    '${translate(context, 'last_edited')}: ${item.lastEditTime.toString().substring(0, 16)}',
+                    style: didactGothicTextStyle(),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

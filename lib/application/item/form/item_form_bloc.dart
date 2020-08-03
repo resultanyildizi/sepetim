@@ -36,7 +36,9 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
         yield e.initialOption.fold(
           () => state,
           (initialItem) => state.copyWith(
-            item: initialItem,
+            item: initialItem.copyWith(
+              lastEditTime: DateTime.now().toUtc(),
+            ),
             isEditing: true,
           ),
         );

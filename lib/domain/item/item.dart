@@ -21,6 +21,7 @@ abstract class Item implements _$Item {
     @required SelectedIndex selectedIndex,
     @required List5<LinkObject> linkObjects,
     @required bool isFavorite,
+    @required DateTime lastEditTime,
   }) = _Item;
 
   factory Item.empty() => Item(
@@ -36,6 +37,7 @@ abstract class Item implements _$Item {
         selectedIndex: SelectedIndex(0),
         linkObjects: List5(KtList.empty()),
         isFavorite: false,
+        lastEditTime: DateTime.now().toUtc(),
       );
 
   Option<ValueFailure<dynamic>> get failureOption {
