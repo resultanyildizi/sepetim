@@ -1,3 +1,7 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:Sepetim/application/item_group/actor/item_group_actor_bloc.dart';
 import 'package:Sepetim/application/item_group/watcher/item_group_watcher_bloc.dart';
 import 'package:Sepetim/domain/core/enums.dart';
@@ -10,15 +14,14 @@ import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/item_group/overview/widgets/item_group_card.dart';
 import 'package:Sepetim/presentation/item_group/overview/widgets/search_field.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ItemGroupOverviewPage extends StatelessWidget {
   final ItemCategory category;
+  final ItemGroupWatcherBloc watcherBloc;
   const ItemGroupOverviewPage({
     Key key,
     @required this.category,
+    @required this.watcherBloc,
   }) : super(key: key);
 
   @override
@@ -26,18 +29,12 @@ class ItemGroupOverviewPage extends StatelessWidget {
     final _controller = TextEditingController();
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ItemGroupWatcherBloc>(
-          create: (context) => getIt<ItemGroupWatcherBloc>()
-            ..add(ItemGroupWatcherEvent.watchAllStarted(
-              category.uid,
-              OrderType.date,
-            )),
-        ),
         BlocProvider<ItemGroupActorBloc>(
           create: (context) => getIt<ItemGroupActorBloc>(),
         )
       ],
       child: BlocBuilder<ItemGroupWatcherBloc, ItemGroupWatcherState>(
+        bloc: watcherBloc,
         builder: (context, state) {
           return state.map(
             initial: (_) => Scaffold(

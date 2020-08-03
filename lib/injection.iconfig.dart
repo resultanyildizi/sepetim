@@ -31,7 +31,6 @@ import 'package:Sepetim/infrastructure/item_category/item_category_repository.da
 import 'package:Sepetim/domain/item_category/i_category_repository.dart';
 import 'package:Sepetim/application/item_category/actor/item_category_actor_bloc.dart';
 import 'package:Sepetim/application/item_category/form/item_category_form_bloc.dart';
-import 'package:Sepetim/application/item_category/subcollections/item_category_subcollection_bloc.dart';
 import 'package:Sepetim/application/item_category/watcher/item_category_watcher_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -81,8 +80,6 @@ void $initGetIt(GetIt g, {String environment}) {
       () => ItemCategoryActorBloc(g<IItemCategoryRepository>()));
   g.registerFactory<ItemCategoryFormBloc>(
       () => ItemCategoryFormBloc(g<IItemCategoryRepository>()));
-  g.registerFactory<ItemCategorySubcollectionBloc>(
-      () => ItemCategorySubcollectionBloc(g<IItemCategoryRepository>()));
   g.registerFactory<ItemCategoryWatcherBloc>(
       () => ItemCategoryWatcherBloc(g<IItemCategoryRepository>()));
 }

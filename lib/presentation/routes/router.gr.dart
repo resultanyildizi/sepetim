@@ -14,6 +14,7 @@ import 'package:Sepetim/presentation/application_content/application_content_pag
 import 'package:Sepetim/presentation/item_category/form/item_category_form.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/presentation/item_group/overview/item_group_overview_page.dart';
+import 'package:Sepetim/application/item_group/watcher/item_group_watcher_bloc.dart';
 import 'package:Sepetim/presentation/item_group/form/item_group_form.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
@@ -114,7 +115,9 @@ class Router extends RouterBase {
         final typedArgs = args as ItemGroupOverviewPageArguments;
         return MaterialPageRoute<dynamic>(
           builder: (context) => ItemGroupOverviewPage(
-              key: typedArgs.key, category: typedArgs.category),
+              key: typedArgs.key,
+              category: typedArgs.category,
+              watcherBloc: typedArgs.watcherBloc),
           settings: settings,
         );
       case Routes.itemGroupForm:
@@ -208,7 +211,9 @@ class ItemCategoryFormArguments {
 class ItemGroupOverviewPageArguments {
   final Key key;
   final ItemCategory category;
-  ItemGroupOverviewPageArguments({this.key, @required this.category});
+  final ItemGroupWatcherBloc watcherBloc;
+  ItemGroupOverviewPageArguments(
+      {this.key, @required this.category, @required this.watcherBloc});
 }
 
 //ItemGroupForm arguments holder class
@@ -302,10 +307,12 @@ extension RouterNavigationHelperMethods on ExtendedNavigatorState {
   Future pushItemGroupOverviewPage({
     Key key,
     @required ItemCategory category,
+    @required ItemGroupWatcherBloc watcherBloc,
   }) =>
       pushNamed(
         Routes.itemGroupOverviewPage,
-        arguments: ItemGroupOverviewPageArguments(key: key, category: category),
+        arguments: ItemGroupOverviewPageArguments(
+            key: key, category: category, watcherBloc: watcherBloc),
       );
 
   Future pushItemGroupForm({

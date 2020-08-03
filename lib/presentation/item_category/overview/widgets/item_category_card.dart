@@ -1,4 +1,5 @@
-import 'package:Sepetim/application/item_category/subcollections/item_category_subcollection_bloc.dart';
+import 'package:Sepetim/application/item_group/watcher/item_group_watcher_bloc.dart';
+import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -24,114 +25,110 @@ class ItemCategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ItemCategorySubcollectionBloc>(
-      // TODO: Determine a better way to watch item and group counts
-      create: (context) => getIt<ItemCategorySubcollectionBloc>(),
-      //?..add(ItemCategorySubcollectionEvent.getSubcollectionCount(category)),
+    return BlocProvider<ItemGroupWatcherBloc>(
+      create: (context) => getIt<ItemGroupWatcherBloc>()
+        ..add(ItemGroupWatcherEvent.watchAllStarted(
+            category.uid, OrderType.date)),
       child: GestureDetector(
         onHorizontalDragEnd: (details) {
           context
               .bloc<ItemCategorySelectorBloc>()
               .add(ItemCategorySelectorEvent.selectedChanged(category));
         },
-        onTap: () {
-          ExtendedNavigator.of(context).pushNamed(
-            Routes.itemGroupOverviewPage,
-            arguments: ItemGroupOverviewPageArguments(
-              key: Key(category.uid.getOrCrash()),
-              category: category,
-            ),
-          );
-        },
         child: BlocBuilder<ItemCategorySelectorBloc, ItemCategorySelectorState>(
           builder: (context, state) {
-            return Card(
-              elevation: 4.0,
-              color: category.color.getOrCrash(),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      category.title.getOrCrash().length <= 20
-                          ? category.title.getOrCrash()
-                          : '${category.title.getOrCrash().substring(0, 17)}...',
-                      style: didactGothicTextStyle(
-                        bold: true,
+            return GestureDetector(
+              onTap: () => goToNextPage(context),
+              child: Card(
+                elevation: 4.0,
+                color: category.color.getOrCrash(),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        category.title.getOrCrash().length <= 20
+                            ? category.title.getOrCrash()
+                            : '${category.title.getOrCrash().substring(0, 17)}...',
+                        style: didactGothicTextStyle(
+                          bold: true,
+                          color: sepetimGrey,
+                        ),
+                      ),
+                      Divider(
                         color: sepetimGrey,
+                        height: 5.0,
+                        thickness: 1.5,
+                        indent: 10.0,
+                        endIndent: 10.0,
                       ),
-                    ),
-                    Divider(
-                      color: sepetimGrey,
-                      height: 5.0,
-                      thickness: 1.5,
-                      indent: 10.0,
-                      endIndent: 10.0,
-                    ),
-                    const SizedBox(
-                      height: 4.0,
-                    ),
-                    Expanded(
-                      child: Stack(
-                        children: <Widget>[
-                          AnimatedOpacity(
-                            duration: const Duration(milliseconds: 500),
-                            opacity: isSelected(state) ? 1 : 0,
-                            alwaysIncludeSemantics: true,
-                            child: Visibility(
-                              visible: isSelected(state),
-                              child: getIconButtons(context),
-                            ),
-                          ),
-                          AnimatedOpacity(
-                            duration: const Duration(milliseconds: 500),
-                            opacity: isSelected(state) ? 0 : 1,
-                            alwaysIncludeSemantics: true,
-                            child: Visibility(
-                              visible: !isSelected(state),
-                              child: getNetworkImage(),
-                            ),
-                          ),
-                        ],
+                      const SizedBox(
+                        height: 4.0,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 4.0,
-                    ),
-                    Divider(
-                      color: sepetimGrey,
-                      height: 5.0,
-                      thickness: 1.5,
-                      indent: 10.0,
-                      endIndent: 10.0,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
-                      child: BlocBuilder<ItemCategorySubcollectionBloc,
-                          ItemCategorySubcollectionState>(
-                        condition: (p, c) => p.groupCount != c.groupCount,
-                        builder: (context, state) => Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Groups count: ${state.groupCount.getOrCrash()}',
-                                style:
-                                    robotoTextStyle(fontSize: 10.0, bold: true),
+                      Expanded(
+                        child: Stack(
+                          children: <Widget>[
+                            AnimatedOpacity(
+                              duration: const Duration(milliseconds: 500),
+                              opacity: isSelected(state) ? 1 : 0,
+                              alwaysIncludeSemantics: true,
+                              child: Visibility(
+                                visible: isSelected(state),
+                                child: getIconButtons(context),
                               ),
-                              Text(
-                                'Items count: ${state.itemCount.getOrCrash()}',
-                                style:
-                                    robotoTextStyle(fontSize: 10.0, bold: true),
+                            ),
+                            AnimatedOpacity(
+                              duration: const Duration(milliseconds: 500),
+                              opacity: isSelected(state) ? 0 : 1,
+                              alwaysIncludeSemantics: true,
+                              child: Visibility(
+                                visible: !isSelected(state),
+                                child: getNetworkImage(),
                               ),
-                            ]),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        height: 4.0,
+                      ),
+                      Divider(
+                        color: sepetimGrey,
+                        height: 5.0,
+                        thickness: 1.5,
+                        indent: 10.0,
+                        endIndent: 10.0,
+                      ),
+                      BlocBuilder<ItemGroupWatcherBloc, ItemGroupWatcherState>(
+                        builder: (context, state) => Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  state.map(
+                                      initial: (_) => 'Loading...',
+                                      loadSuccess: (state) =>
+                                          'Groups count: ${state.groups.size}',
+                                      loadFailure: (_) => 'Error'),
+                                  style: robotoTextStyle(
+                                      fontSize: 10.0, bold: true),
+                                ),
+                                Text(
+                                  'Last Edited: 21/12/2020',
+                                  style: robotoTextStyle(
+                                      fontSize: 10.0, bold: true),
+                                ),
+                              ]),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );
@@ -240,5 +237,16 @@ class ItemCategoryCard extends StatelessWidget {
   bool isSelected(ItemCategorySelectorState state) {
     return state.selectedCategory
         .fold(() => false, (selected) => category == selected);
+  }
+
+  void goToNextPage(BuildContext context) {
+    ExtendedNavigator.of(context).pushNamed(
+      Routes.itemGroupOverviewPage,
+      arguments: ItemGroupOverviewPageArguments(
+        key: Key(category.uid.getOrCrash()),
+        category: category,
+        watcherBloc: context.bloc<ItemGroupWatcherBloc>(),
+      ),
+    );
   }
 }
