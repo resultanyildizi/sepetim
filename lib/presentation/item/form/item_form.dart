@@ -1,12 +1,10 @@
 import 'package:Sepetim/application/item/form/item_form_bloc.dart';
-import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/domain/item/item.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
-import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
 import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
 import 'package:Sepetim/presentation/item/form/widgets/picture_fields.dart';
@@ -78,7 +76,7 @@ class ItemForm extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
-                    height: MediaQuery.of(context).size.height - 220,
+                    height: MediaQuery.of(context).size.height - 180,
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,14 +90,7 @@ class ItemForm extends StatelessWidget {
                                   robotoTextStyle(bold: true, fontSize: 20.0),
                             ),
                           ),
-                          SizedBox(
-                            height: screenHeightByScalar(
-                              context,
-                              scalarSmall: 0.015,
-                              scalarMedium: 0.015,
-                              scalarBig: 0.02,
-                            ),
-                          ),
+                          const SizedBox(height: 10),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 22.0),
@@ -113,14 +104,7 @@ class ItemForm extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 22.0),
                             child: TitleTextField(),
                           ),
-                          SizedBox(
-                            height: screenHeightByScalar(
-                              context,
-                              scalarSmall: 0.015,
-                              scalarMedium: 0.015,
-                              scalarBig: 0.02,
-                            ),
-                          ),
+                          const SizedBox(height: 10),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 22.0),
@@ -134,14 +118,7 @@ class ItemForm extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 22.0),
                             child: PriceTextField(),
                           ),
-                          SizedBox(
-                            height: screenHeightByScalar(
-                              context,
-                              scalarSmall: 0.02,
-                              scalarMedium: 0.02,
-                              scalarBig: 0.02,
-                            ),
-                          ),
+                          const SizedBox(height: 10),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 22.0),
@@ -155,14 +132,7 @@ class ItemForm extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 22.0),
                             child: DescriptionBodyTextField(),
                           ),
-                          SizedBox(
-                            height: screenHeightByScalar(
-                              context,
-                              scalarSmall: 0.02,
-                              scalarMedium: 0.02,
-                              scalarBig: 0.02,
-                            ),
-                          ),
+                          const SizedBox(height: 10),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 22.0),

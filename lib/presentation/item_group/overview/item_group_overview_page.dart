@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:Sepetim/application/item_group/actor/item_group_actor_bloc.dart';
 import 'package:Sepetim/application/item_group/watcher/item_group_watcher_bloc.dart';
-import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';

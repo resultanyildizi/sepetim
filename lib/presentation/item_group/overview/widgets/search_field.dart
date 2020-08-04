@@ -1,11 +1,8 @@
-import 'package:Sepetim/application/item_category/watcher/item_category_watcher_bloc.dart';
 import 'package:Sepetim/application/item_group/watcher/item_group_watcher_bloc.dart';
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
-import 'package:Sepetim/domain/item_category/i_category_repository.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';

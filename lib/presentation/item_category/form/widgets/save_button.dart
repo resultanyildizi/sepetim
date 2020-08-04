@@ -7,8 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class SaveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return RoundedButton(
+      height: 35,
       width: screenWidthByScalar(context, 1.0),
       text: translate(
         context,

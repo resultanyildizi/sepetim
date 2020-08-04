@@ -7,7 +7,6 @@ import 'package:Sepetim/presentation/item_group/form/item_group_form.dart';
 import 'package:Sepetim/presentation/item_group/overview/item_group_overview_page.dart';
 import 'package:Sepetim/presentation/sign_in/sign_in_page.dart';
 import 'package:Sepetim/presentation/splash/splash_page.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/auto_route_annotations.dart';
 import 'package:Sepetim/presentation/sign_in/verify_anonymous_login_page.dart';
 

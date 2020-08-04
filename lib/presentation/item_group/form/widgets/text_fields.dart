@@ -1,4 +1,3 @@
-import 'package:Sepetim/application/item_category/form/item_category_form_bloc.dart';
 import 'package:Sepetim/application/item_group/form/item_group_form_bloc.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';

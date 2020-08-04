@@ -6,18 +6,8 @@ class SmallCircularProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: screenHeightByScalar(
-        context,
-        scalarSmall: 0.03,
-        scalarMedium: 0.03,
-        scalarBig: 0.03,
-      ),
-      width: screenHeightByScalar(
-        context,
-        scalarSmall: 0.03,
-        scalarMedium: 0.03,
-        scalarBig: 0.03,
-      ),
+      height: 20,
+      width: 20,
       child: CircularProgressIndicator(
         backgroundColor: sepetimGrey,
         valueColor: AlwaysStoppedAnimation<Color>(sepetimYellow),

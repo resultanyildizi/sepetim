@@ -12,6 +12,7 @@ class SaveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RoundedButton(
+      height: 35,
       width: screenWidthByScalar(context, 1.0),
       text: translate(
         context,

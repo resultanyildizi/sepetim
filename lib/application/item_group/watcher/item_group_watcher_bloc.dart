@@ -25,7 +25,8 @@ class ItemGroupWatcherBloc
   ItemGroupWatcherBloc(this._groupRepository);
 
   @override
-  ItemGroupWatcherState get initialState => ItemGroupWatcherState.initial();
+  ItemGroupWatcherState get initialState =>
+      const ItemGroupWatcherState.initial();
 
   StreamSubscription<Either<ItemGroupFailure, KtList<ItemGroup>>>
       groupStreamSubscription;

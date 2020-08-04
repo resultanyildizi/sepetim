@@ -46,8 +46,6 @@ class CoverPictureField extends StatelessWidget {
                           imageUrl: state.category.coverImageUrl.getOrCrash(),
                           width: screenWidthByScalar(context, 0.3),
                           height: screenWidthByScalar(context, 0.3),
-                          fadeOutDuration: const Duration(seconds: 0),
-                          fadeInDuration: const Duration(seconds: 0),
                           fit: BoxFit.cover,
                         ),
                         (imageFile) => Image.file(

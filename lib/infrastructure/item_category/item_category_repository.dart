@@ -208,7 +208,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       final coverImageDownloadUrl = await coverImageStorage.getDownloadURL();
 
       return right(ImageUrl(coverImageDownloadUrl.toString()));
-    } on PlatformException catch (e) {
+    } on PlatformException catch (_) {
       return left(const ItemCategoryFailure.unexpected());
     }
   }

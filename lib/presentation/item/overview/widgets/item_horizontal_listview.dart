@@ -1,4 +1,3 @@
-import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

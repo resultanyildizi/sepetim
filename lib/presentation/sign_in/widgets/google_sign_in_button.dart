@@ -30,7 +30,7 @@ class GoogleSignInButton extends StatelessWidget {
           ),
           Text(
             translate(context, 'sign_in_google'),
-            style: TextStyle(
+            style: const TextStyle(
               color: app_colors.sepetimGrey,
             ),
           ),

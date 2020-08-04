@@ -1,6 +1,5 @@
 import 'package:Sepetim/app_localization.dart';
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
-import 'package:Sepetim/application/auth/password_visibility/password_visibility_bloc.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
@@ -27,9 +26,9 @@ class AppWidget extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         builder: ExtendedNavigator(router: Router()),
         theme: app_themes.sepetimLightTheme,
-        supportedLocales: [
-          const Locale('en', 'US'),
-          const Locale.fromSubtags(languageCode: 'tr', countryCode: 'TR'),
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale.fromSubtags(languageCode: 'tr', countryCode: 'TR'),
         ],
         localizationsDelegates: [
           //* A class which loads the translations from JSON files

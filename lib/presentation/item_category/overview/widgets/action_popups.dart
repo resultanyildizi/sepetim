@@ -1,6 +1,5 @@
 import 'package:Sepetim/application/item_category/actor/item_category_actor_bloc.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
-import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';

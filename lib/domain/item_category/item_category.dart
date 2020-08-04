@@ -1,7 +1,6 @@
 import 'package:Sepetim/domain/core/failures.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/domain/item_category/value_objects.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';

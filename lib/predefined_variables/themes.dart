@@ -3,12 +3,12 @@ import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:flutter/material.dart';
 
 final ThemeData sepetimLightTheme = ThemeData(
-  brightness: Brightness.light,
+  brightness: Brightness.dark,
   accentColor: app_color.sepetimYellow,
   primaryColor: app_color.sepetimYellow,
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: AppBarTheme(
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: app_color.sepetimGrey,
     ),
     textTheme: TextTheme(headline1: robotoTextStyle(bold: true)),
@@ -17,6 +17,8 @@ final ThemeData sepetimLightTheme = ThemeData(
     bodyText1: robotoTextStyle(bold: true, color: app_color.sepetimGrey),
     subtitle1: didactGothicTextStyle(),
   ),
+  // textSelectionColor: app_color.sepetimGrey,
+  // textSelectionHandleColor: app_color.sepetimGrey,
   inputDecorationTheme: InputDecorationTheme(
     suffixStyle: TextStyle(color: app_color.sepetimLightGrey),
     contentPadding: const EdgeInsets.symmetric(horizontal: 1.0),
