@@ -24,6 +24,7 @@ import 'package:Sepetim/presentation/item/form/item_form.dart';
 import 'package:Sepetim/domain/item/item.dart';
 import 'package:Sepetim/presentation/item/overview/widgets/item_page.dart';
 import 'package:Sepetim/application/item/form/item_form_bloc.dart';
+import 'package:Sepetim/presentation/item/form/widgets/edit_description_page.dart';
 
 abstract class Routes {
   static const splashPage = '/';
@@ -36,6 +37,7 @@ abstract class Routes {
   static const itemOverviewPage = '/item-overview-page';
   static const itemForm = '/item-form';
   static const itemPage = '/item-page';
+  static const editDescriptionPage = '/edit-description-page';
   static const all = {
     splashPage,
     signInPage,
@@ -47,6 +49,7 @@ abstract class Routes {
     itemOverviewPage,
     itemForm,
     itemPage,
+    editDescriptionPage,
   };
 }
 
@@ -172,6 +175,19 @@ class Router extends RouterBase {
               formBloc: typedArgs.formBloc),
           settings: settings,
         );
+      case Routes.editDescriptionPage:
+        if (hasInvalidArgs<EditDescriptionPageArguments>(args,
+            isRequired: true)) {
+          return misTypedArgsRoute<EditDescriptionPageArguments>(args);
+        }
+        final typedArgs = args as EditDescriptionPageArguments;
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => EditDescriptionPage(
+              key: typedArgs.key,
+              itemFormBloc: typedArgs.itemFormBloc,
+              initialText: typedArgs.initialText),
+          settings: settings,
+        );
       default:
         return unknownRoutePage(settings.name);
     }
@@ -261,6 +277,15 @@ class ItemPageArguments {
       @required this.category,
       @required this.group,
       @required this.formBloc});
+}
+
+//EditDescriptionPage arguments holder class
+class EditDescriptionPageArguments {
+  final Key key;
+  final ItemFormBloc itemFormBloc;
+  final String initialText;
+  EditDescriptionPageArguments(
+      {this.key, @required this.itemFormBloc, @required this.initialText});
 }
 
 // *************************************************************************
@@ -363,5 +388,16 @@ extension RouterNavigationHelperMethods on ExtendedNavigatorState {
         Routes.itemPage,
         arguments: ItemPageArguments(
             key: key, category: category, group: group, formBloc: formBloc),
+      );
+
+  Future pushEditDescriptionPage({
+    Key key,
+    @required ItemFormBloc itemFormBloc,
+    @required String initialText,
+  }) =>
+      pushNamed(
+        Routes.editDescriptionPage,
+        arguments: EditDescriptionPageArguments(
+            key: key, itemFormBloc: itemFormBloc, initialText: initialText),
       );
 }

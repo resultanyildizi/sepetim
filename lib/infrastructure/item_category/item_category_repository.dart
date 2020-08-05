@@ -111,7 +111,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       final groupDocumentSnapshots =
           await categoryDoc.groupCollection.getDocuments();
 
-      for (final doc in groupDocumentSnapshots.documents) {
+      /*for (final doc in groupDocumentSnapshots.documents) {
         final failureOrSuccess = await _itemGroupRepository.delete(
             categoryId, ItemGroupDto.fromFirestore(doc).toDomain());
         failureOrSuccess.fold(
@@ -120,7 +120,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
           },
           (_) {},
         );
-      }
+      }*/
 
       await categoryDoc.delete();
 

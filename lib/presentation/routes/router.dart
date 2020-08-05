@@ -1,5 +1,6 @@
 import 'package:Sepetim/presentation/application_content/application_content_page.dart';
 import 'package:Sepetim/presentation/item/form/item_form.dart';
+import 'package:Sepetim/presentation/item/form/widgets/edit_description_page.dart';
 import 'package:Sepetim/presentation/item/overview/item_overview_page.dart';
 import 'package:Sepetim/presentation/item/overview/widgets/item_page.dart';
 import 'package:Sepetim/presentation/item_category/form/item_category_form.dart';
@@ -40,4 +41,7 @@ class $Router {
 
   @MaterialRoute()
   ItemPage itemPage;
+
+  @MaterialRoute()
+  EditDescriptionPage editDescriptionPage;
 }

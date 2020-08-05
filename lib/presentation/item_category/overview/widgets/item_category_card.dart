@@ -1,6 +1,7 @@
 import 'package:Sepetim/application/item_group/watcher/item_group_watcher_bloc.dart';
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/injection.dart';
+import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -176,16 +177,29 @@ class ItemCategoryCard extends StatelessWidget {
   Widget getIconButtons(BuildContext context) {
     return BlocListener<ItemCategoryActorBloc, ItemCategoryActorState>(
       listener: (context, state) {
-        state.maybeMap(
-            deleteFailure: (failure) {
-              failure.categoryFailure.maybeMap(
-                networkException: (_) {
-                  return networkExceptionPopup(context);
-                },
-                orElse: () => serverErrorPopup(context),
-              );
-            },
-            orElse: () {});
+        state.map(
+          initial: (_) {},
+          deleteFailure: (failure) {
+            ExtendedNavigator.of(context).pop();
+
+            failure.categoryFailure.maybeMap(
+              networkException: (_) {
+                return networkExceptionPopup(context);
+              },
+              orElse: () => serverErrorPopup(context),
+            );
+          },
+          actionInProgress: (_) {
+            actionPopup(context,
+                barrierDismissible: false,
+                backgroundColor: Colors.white,
+                content: Text('${translate(context, 'deleting')}...'));
+          },
+          deleteSuccess: (_) {
+            ExtendedNavigator.of(context).popUntil((route) =>
+                route.settings.name == Routes.applicationContentPage);
+          },
+        );
       },
       child: Center(
         child: Row(

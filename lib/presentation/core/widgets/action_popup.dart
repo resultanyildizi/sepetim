@@ -6,10 +6,11 @@ Future actionPopup(
   Widget content,
   Color backgroundColor,
   List<Widget> actions,
+  bool barrierDismissible,
 }) {
   return showDialog(
     context: context,
-    barrierDismissible: true,
+    barrierDismissible: barrierDismissible ?? true,
     builder: (BuildContext context) => AlertDialog(
       backgroundColor: backgroundColor,
       shape: RoundedRectangleBorder(

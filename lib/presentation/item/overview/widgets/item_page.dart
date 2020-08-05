@@ -4,6 +4,7 @@ import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
+import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
@@ -306,14 +307,25 @@ class ItemPage extends StatelessWidget {
   Widget iconButtons(BuildContext context, ItemFormState state) {
     return BlocListener<ItemActorBloc, ItemActorState>(
       listener: (context, state) {
-        state.maybeMap(
+        state.map(
+          initial: (_) {},
           deleteFailure: (f) {
+            ExtendedNavigator.of(context).pop();
             f.failure.maybeMap(
               networkException: (_) => networkExceptionPopup(context),
               orElse: () => serverErrorPopup(context),
             );
           },
-          orElse: () {},
+          deleteSuccess: (_) {
+            ExtendedNavigator.of(context).popUntil(
+                (route) => route.settings.name == Routes.itemOverviewPage);
+          },
+          actionInProgress: (_) {
+            actionPopup(context,
+                barrierDismissible: false,
+                backgroundColor: Colors.white,
+                content: Text('${translate(context, 'deleting')}...'));
+          },
         );
       },
       child: Padding(
@@ -340,8 +352,6 @@ class ItemPage extends StatelessWidget {
                                 state.item,
                               ),
                             );
-                        ExtendedNavigator.of(context).popUntil((route) =>
-                            route.settings.name == Routes.itemOverviewPage);
                       },
                     );
                   },

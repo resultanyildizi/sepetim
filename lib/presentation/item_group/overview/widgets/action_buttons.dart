@@ -3,6 +3,7 @@ import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
+import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
@@ -20,14 +21,27 @@ class ItemGroupActionButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<ItemGroupActorBloc, ItemGroupActorState>(
       listener: (context, state) {
-        state.maybeMap(
-            deleteFailure: (f) {
-              f.groupFailure.maybeMap(
-                networkException: (_) => networkExceptionPopup(context),
-                orElse: () => serverErrorPopup(context),
-              );
-            },
-            orElse: () {});
+        state.map(
+          initial: (_) {},
+          deleteFailure: (f) {
+            ExtendedNavigator.of(context).popUntil(
+                (route) => route.settings.name == Routes.itemGroupOverviewPage);
+            f.groupFailure.maybeMap(
+              networkException: (_) => networkExceptionPopup(context),
+              orElse: () => serverErrorPopup(context),
+            );
+          },
+          actionInProgress: (_) {
+            actionPopup(context,
+                barrierDismissible: false,
+                backgroundColor: Colors.white,
+                content: Text('${translate(context, 'deleting')}...'));
+          },
+          deleteSuccess: (_) {
+            ExtendedNavigator.of(context).popUntil(
+                (route) => route.settings.name == Routes.itemGroupOverviewPage);
+          },
+        );
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,

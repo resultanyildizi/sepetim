@@ -7,6 +7,7 @@ import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
 import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
+import 'package:Sepetim/presentation/item/form/widgets/edit_description_button.dart';
 import 'package:Sepetim/presentation/item/form/widgets/picture_fields.dart';
 import 'package:Sepetim/presentation/item/form/widgets/save_button.dart';
 import 'package:Sepetim/presentation/item/form/widgets/text_fields.dart';
@@ -128,10 +129,12 @@ class ItemForm extends StatelessWidget {
                                   bold: false, fontSize: 18.0),
                             ),
                           ),
+                          const SizedBox(height: 10),
                           const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 22.0),
-                            child: DescriptionBodyTextField(),
-                          ),
+                              padding: EdgeInsets.symmetric(horizontal: 22.0),
+                              child: EditDescriptionButton()
+                              // child: DescriptionBodyTextField(),
+                              ),
                           const SizedBox(height: 10),
                           Padding(
                             padding:

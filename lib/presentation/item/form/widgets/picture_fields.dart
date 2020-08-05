@@ -157,6 +157,7 @@ Future imagePickerPopup(
 }) async {
   return actionPopup(
     context,
+    backgroundColor: Colors.white,
     title: Column(
       children: <Widget>[
         Text(

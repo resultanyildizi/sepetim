@@ -60,7 +60,7 @@
     "empty_price": "Fiyat boş olamaz",
     "empty_description": "Açıklama boş olamaz",
     "enter_a_description": "Bir açıklama girin",
-    "description_exceeding_length": "Açıklama 500 karakterden fazla olamaz",
+    "description_exceeding_length": "Açıklama 1000 karakterden fazla olamaz",
     "pictures": "Resimler",
     "upload_image": "Resim yükle",
     "items": "Ürünler",
@@ -79,5 +79,6 @@
     "created_at": "Oluşturuldu",
     "last_edited": "Son düzenleme",
     "loading": "Yükleniyor",
-    "error": "Hata"
+    "error": "Hata",
+    "deleting": "Siliniyor"
 }

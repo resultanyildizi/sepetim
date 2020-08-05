@@ -1,14 +1,18 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:Sepetim/application/item/form/item_form_bloc.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/domain/item/value_objects.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:Sepetim/predefined_variables/text_styles.dart';
 
 class TitleTextField extends StatelessWidget {
-  const TitleTextField({Key key}) : super(key: key);
+  const TitleTextField({
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +29,11 @@ class TitleTextField extends StatelessWidget {
           cursorColor: sepetimGrey,
           textCapitalization: TextCapitalization.sentences,
           style: Theme.of(context).textTheme.subtitle1,
-          decoration:
-              InputDecoration(labelText: translate(context, 'enter_a_title')),
+          decoration: InputDecoration(
+              labelText: translate(context, 'enter_a_title'),
+              counterStyle: robotoTextStyle()),
           maxLength: ShortTitle.maxLength,
+          maxLengthEnforced: true,
           maxLines: 1,
           autocorrect: false,
           onChanged: (value) => context
@@ -69,8 +75,11 @@ class PriceTextField extends StatelessWidget {
           controller: _textEditingController,
           cursorColor: sepetimGrey,
           style: Theme.of(context).textTheme.subtitle1,
-          decoration:
-              InputDecoration(labelText: translate(context, 'enter_a_price')),
+          decoration: InputDecoration(
+            labelText: translate(context, 'enter_a_price'),
+          ),
+          maxLengthEnforced: true,
+          maxLength: 100,
           maxLines: 1,
           autocorrect: false,
           onTap: () {
@@ -106,44 +115,44 @@ class PriceTextField extends StatelessWidget {
 }
 
 class DescriptionBodyTextField extends StatelessWidget {
-  const DescriptionBodyTextField({Key key}) : super(key: key);
+  final ItemFormBloc itemFormBloc;
+  final TextEditingController textEditingController;
+  const DescriptionBodyTextField({
+    Key key,
+    @required this.itemFormBloc,
+    @required this.textEditingController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _textEditingController = TextEditingController();
     return BlocConsumer<ItemFormBloc, ItemFormState>(
-      listenWhen: (p, c) => p.isEditing != c.isEditing,
-      listener: (context, state) {
-        _textEditingController.text = state.item.description.getOrCrash();
-      },
+      bloc: itemFormBloc,
+      listener: (context, state) {},
       buildWhen: (p, c) => p.item.description != c.item.description,
       builder: (BuildContext context, ItemFormState state) {
         return TextFormField(
           keyboardType: TextInputType.multiline,
-          controller: _textEditingController,
+          controller: textEditingController,
           cursorColor: sepetimGrey,
           textCapitalization: TextCapitalization.sentences,
           style: Theme.of(context).textTheme.subtitle1,
           decoration: InputDecoration(
-              labelText: translate(context, 'enter_a_description')),
+              labelText: translate(context, 'enter_a_description'),
+              counterStyle: didactGothicTextStyle()),
           maxLength: DescriptionBody.maxLength,
           maxLengthEnforced: true,
-          maxLines: 4,
-          minLines: 4,
           autocorrect: false,
-          onChanged: (value) => context
-              .bloc<ItemFormBloc>()
-              .add(ItemFormEvent.descriptionChanged(value.trim())),
-          validator: (_) =>
-              context.bloc<ItemFormBloc>().state.item.description.value.fold(
-                    (f) => f.maybeMap(
-                      empty: (_) => translate(context, 'empty_description'),
-                      exceedingLength: (_) =>
-                          translate(context, 'description_exceeding_length'),
-                      orElse: () => null,
-                    ),
-                    (_) => null,
-                  ),
+          minLines: 1,
+          maxLines: 100,
+          validator: (_) => itemFormBloc.state.item.description.value.fold(
+            (f) => f.maybeMap(
+              empty: (_) => translate(context, 'empty_description'),
+              exceedingLength: (_) =>
+                  translate(context, 'description_exceeding_length'),
+              orElse: () => null,
+            ),
+            (_) => null,
+          ),
         );
       },
     );

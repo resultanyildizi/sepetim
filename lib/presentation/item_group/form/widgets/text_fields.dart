@@ -2,6 +2,7 @@ import 'package:Sepetim/application/item_group/form/item_group_form_bloc.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
+import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,8 +24,11 @@ class TitleTextField extends StatelessWidget {
         cursorColor: sepetimGrey,
         textCapitalization: TextCapitalization.sentences,
         style: Theme.of(context).textTheme.subtitle1,
-        decoration:
-            InputDecoration(labelText: translate(context, 'enter_a_title')),
+        decoration: InputDecoration(
+          labelText: translate(context, 'enter_a_title'),
+          counterStyle: robotoTextStyle(),
+        ),
+        maxLengthEnforced: true,
         maxLength: ShortTitle.maxLength,
         maxLines: 1,
         autocorrect: false,

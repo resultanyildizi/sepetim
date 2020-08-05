@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 Future networkExceptionPopup(BuildContext context) {
   return actionPopup(
     context,
+    backgroundColor: Colors.white,
     title: Text(
       translate(context, 'server_error_title'),
       style: robotoTextStyle(),
@@ -29,6 +30,7 @@ Future networkExceptionPopup(BuildContext context) {
 Future serverErrorPopup(BuildContext context) {
   return actionPopup(
     context,
+    backgroundColor: Colors.white,
     title: Text(
       translate(context, 'unexpected_server_error_title'),
       style: robotoTextStyle(),
@@ -51,6 +53,7 @@ Future serverErrorPopup(BuildContext context) {
 Future emailAlreadyInUsePopup(BuildContext context) {
   return actionPopup(
     context,
+    backgroundColor: Colors.white,
     title: Text(
       translate(context, 'email_already_in_use_title'),
       style: robotoTextStyle(),
@@ -73,6 +76,7 @@ Future emailAlreadyInUsePopup(BuildContext context) {
 Future invalidEmailAndPasswordCombinationPopup(BuildContext context) {
   return actionPopup(
     context,
+    backgroundColor: Colors.white,
     title: Text(
       translate(context, 'invalid_email_and_password_combination_title'),
       style: robotoTextStyle(),

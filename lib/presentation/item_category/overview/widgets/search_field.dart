@@ -18,6 +18,7 @@ class SearchField extends StatelessWidget {
       child: SizedBox(
         height: 35,
         child: TextFormField(
+          autofocus: false,
           controller: controller,
           cursorColor: sepetimGrey,
           textCapitalization: TextCapitalization.sentences,
@@ -44,12 +45,6 @@ class SearchField extends StatelessWidget {
             ),
           ),
           onChanged: (text) {
-            /*  if (text == '') {
-              context.bloc<ItemCategoryWatcherBloc>().add(
-                  const ItemCategoryWatcherEvent.watchAllStarted(
-                      OrderType.date));
-            }*/
-
             context.bloc<ItemCategoryWatcherBloc>().add(
                 ItemCategoryWatcherEvent.watchAllByTitleStarted(
                     OrderType.date, text));
