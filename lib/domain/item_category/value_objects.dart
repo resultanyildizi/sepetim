@@ -7,7 +7,8 @@ import 'package:dartz/dartz.dart';
 
 class ItemCategoryColor extends ValueObject<Color> {
   static const List<Color> predefinedColors = [
-    Color(0xFFF28B82),
+    // Color(0xFFF28B82),
+    Color(0xFFF29991),
     Color(0xFFFABD03),
     Color(0xFFFFF476),
     Color(0xFFCDFF90),
@@ -15,7 +16,8 @@ class ItemCategoryColor extends ValueObject<Color> {
     Color(0xFFAFCBFA),
     Color(0xFFD7AEFC),
     Color(0xFFFDCFE9),
-    Color(0xFFA6A6A6),
+    //Color(0xFFA6A6A6),
+    Color(0xFFBFBFBF),
   ];
 
   @override
