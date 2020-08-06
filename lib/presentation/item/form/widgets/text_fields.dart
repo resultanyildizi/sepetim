@@ -38,7 +38,7 @@ class TitleTextField extends StatelessWidget {
           autocorrect: false,
           onChanged: (value) => context
               .bloc<ItemFormBloc>()
-              .add(ItemFormEvent.titleChanged(value)),
+              .add(ItemFormEvent.titleChanged(value.trim())),
           validator: (_) =>
               context.bloc<ItemFormBloc>().state.item.title.value.fold(
                     (f) => f.maybeMap(
@@ -89,7 +89,7 @@ class PriceTextField extends StatelessWidget {
             }
           },
           onFieldSubmitted: (value) {
-            if (value == '') {
+            if (value.trim() == '') {
               _textEditingController.text = '0.0';
               context
                   .bloc<ItemFormBloc>()

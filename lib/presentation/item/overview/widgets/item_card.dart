@@ -88,8 +88,8 @@ class ItemCard extends StatelessWidget {
             Text(
               item.title.getOrCrash().length <= 20
                   ? item.title.getOrCrash()
-                  : '${item.title.getOrCrash().substring(0, 20)}...',
-              style: robotoTextStyle(bold: true, fontSize: 18.0),
+                  : '${item.title.getOrCrash().substring(0, 17)}...',
+              style: robotoTextStyle(bold: true, fontSize: 16.0),
             ),
             Text(
               '${category.title.getOrCrash()}, ${group.title.getOrCrash()}',

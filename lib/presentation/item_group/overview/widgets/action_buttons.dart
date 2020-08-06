@@ -19,87 +19,62 @@ class ItemGroupActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ItemGroupActorBloc, ItemGroupActorState>(
-      listener: (context, state) {
-        state.map(
-          initial: (_) {},
-          deleteFailure: (f) {
-            ExtendedNavigator.of(context).popUntil(
-                (route) => route.settings.name == Routes.itemGroupOverviewPage);
-            f.groupFailure.maybeMap(
-              networkException: (_) => networkExceptionPopup(context),
-              orElse: () => serverErrorPopup(context),
-            );
-          },
-          actionInProgress: (_) {
-            actionPopup(context,
-                barrierDismissible: false,
-                backgroundColor: Colors.white,
-                content: Text('${translate(context, 'deleting')}...'));
-          },
-          deleteSuccess: (_) {
-            ExtendedNavigator.of(context).popUntil(
-                (route) => route.settings.name == Routes.itemGroupOverviewPage);
-          },
-        );
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          ClipOval(
-            child: Material(
-              color: Colors.white,
-              child: InkWell(
-                splashColor: Colors.white,
-                onTap: () {
-                  deletePopup(
-                    context,
-                    title:
-                        '${translate(context, 'delete_group_title')} ${group.title.getOrCrash()}',
-                    message: translate(context, 'delete_group_message'),
-                    action: () => context.bloc<ItemGroupActorBloc>().add(
-                          ItemGroupActorEvent.deleted(categoryId, group),
-                        ),
-                  );
-                },
-                child: SizedBox(
-                    width: 26,
-                    height: 26,
-                    child: Icon(
-                      Icons.delete_forever,
-                      size: 22,
-                      color: sepetimGrey,
-                    )),
-              ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        ClipOval(
+          child: Material(
+            color: Colors.white,
+            child: InkWell(
+              splashColor: Colors.white,
+              onTap: () {
+                deletePopup(
+                  context,
+                  title:
+                      '${translate(context, 'delete_group_title')} ${group.title.getOrCrash()}',
+                  message: translate(context, 'delete_group_message'),
+                  action: () => context.bloc<ItemGroupActorBloc>().add(
+                        ItemGroupActorEvent.deleted(categoryId, group),
+                      ),
+                );
+              },
+              child: SizedBox(
+                  width: 26,
+                  height: 26,
+                  child: Icon(
+                    Icons.delete_forever,
+                    size: 22,
+                    color: sepetimGrey,
+                  )),
             ),
           ),
-          ClipOval(
-            child: Material(
-              color: Colors.white, // button color
-              child: InkWell(
-                splashColor: Colors.white, // inkwell color
-                onTap: () {
-                  ExtendedNavigator.of(context).pushNamed(
-                    Routes.itemGroupForm,
-                    arguments: ItemGroupFormArguments(
-                      editedGroup: group,
-                      categoryId: categoryId,
-                    ),
-                  );
-                },
-                child: SizedBox(
-                    width: 26,
-                    height: 26,
-                    child: Icon(
-                      Icons.edit,
-                      size: 22,
-                      color: sepetimGrey,
-                    )),
-              ),
+        ),
+        ClipOval(
+          child: Material(
+            color: Colors.white, // button color
+            child: InkWell(
+              splashColor: Colors.white, // inkwell color
+              onTap: () {
+                ExtendedNavigator.of(context).pushNamed(
+                  Routes.itemGroupForm,
+                  arguments: ItemGroupFormArguments(
+                    editedGroup: group,
+                    categoryId: categoryId,
+                  ),
+                );
+              },
+              child: SizedBox(
+                  width: 26,
+                  height: 26,
+                  child: Icon(
+                    Icons.edit,
+                    size: 22,
+                    color: sepetimGrey,
+                  )),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

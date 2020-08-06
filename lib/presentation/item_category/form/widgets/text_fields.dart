@@ -34,7 +34,7 @@ class TitleTextField extends StatelessWidget {
         autocorrect: false,
         onChanged: (value) => context
             .bloc<ItemCategoryFormBloc>()
-            .add(ItemCategoryFormEvent.titleChanged(value)),
+            .add(ItemCategoryFormEvent.titleChanged(value.trim())),
         validator: (_) => context
             .bloc<ItemCategoryFormBloc>()
             .state

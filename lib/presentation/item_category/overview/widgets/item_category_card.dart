@@ -175,92 +175,65 @@ class ItemCategoryCard extends StatelessWidget {
   }
 
   Widget getIconButtons(BuildContext context) {
-    return BlocListener<ItemCategoryActorBloc, ItemCategoryActorState>(
-      listener: (context, state) {
-        state.map(
-          initial: (_) {},
-          deleteFailure: (failure) {
-            ExtendedNavigator.of(context).pop();
-
-            failure.categoryFailure.maybeMap(
-              networkException: (_) {
-                return networkExceptionPopup(context);
-              },
-              orElse: () => serverErrorPopup(context),
-            );
-          },
-          actionInProgress: (_) {
-            actionPopup(context,
-                barrierDismissible: false,
-                backgroundColor: Colors.white,
-                content: Text('${translate(context, 'deleting')}...'));
-          },
-          deleteSuccess: (_) {
-            ExtendedNavigator.of(context).popUntil((route) =>
-                route.settings.name == Routes.applicationContentPage);
-          },
-        );
-      },
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ClipOval(
-              child: Material(
-                color: sepetimGrey,
-                child: InkWell(
-                  splashColor: sepetimGrey,
-                  onTap: () {
-                    deletePopup(
-                      context,
-                      title:
-                          '${translate(context, 'delete_category_title')}  ${category.title.getOrCrash()}',
-                      action: () => context.bloc<ItemCategoryActorBloc>().add(
-                            ItemCategoryActorEvent.deleted(category),
-                          ),
-                      message: translate(context, 'delete_category_message'),
-                    );
-                  },
-                  child: SizedBox(
-                      width: 35,
-                      height: 35,
-                      child: Icon(
-                        Icons.delete_forever,
-                        size: 20,
-                        color: category.color.getOrCrash(),
-                      )),
-                ),
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          ClipOval(
+            child: Material(
+              color: sepetimGrey,
+              child: InkWell(
+                splashColor: sepetimGrey,
+                onTap: () {
+                  deletePopup(
+                    context,
+                    title:
+                        '${translate(context, 'delete_category_title')}  ${category.title.getOrCrash()}',
+                    action: () => context.bloc<ItemCategoryActorBloc>().add(
+                          ItemCategoryActorEvent.deleted(category),
+                        ),
+                    message: translate(context, 'delete_category_message'),
+                  );
+                },
+                child: SizedBox(
+                    width: 35,
+                    height: 35,
+                    child: Icon(
+                      Icons.delete_forever,
+                      size: 20,
+                      color: category.color.getOrCrash(),
+                    )),
               ),
             ),
-            const SizedBox(
-              width: 5.0,
-            ),
-            ClipOval(
-              child: Material(
-                color: sepetimGrey, // button color
-                child: InkWell(
-                  splashColor: Colors.white, // inkwell color
-                  onTap: () {
-                    ExtendedNavigator.of(context).pushNamed(
-                      Routes.itemCategoryForm,
-                      arguments: ItemCategoryFormArguments(
-                        editedCategory: category,
-                      ),
-                    );
-                  },
-                  child: SizedBox(
-                      width: 35,
-                      height: 35,
-                      child: Icon(
-                        Icons.edit,
-                        size: 20,
-                        color: category.color.getOrCrash(),
-                      )),
-                ),
+          ),
+          const SizedBox(
+            width: 5.0,
+          ),
+          ClipOval(
+            child: Material(
+              color: sepetimGrey, // button color
+              child: InkWell(
+                splashColor: Colors.white, // inkwell color
+                onTap: () {
+                  ExtendedNavigator.of(context).pushNamed(
+                    Routes.itemCategoryForm,
+                    arguments: ItemCategoryFormArguments(
+                      editedCategory: category,
+                    ),
+                  );
+                },
+                child: SizedBox(
+                    width: 35,
+                    height: 35,
+                    child: Icon(
+                      Icons.edit,
+                      size: 20,
+                      color: category.color.getOrCrash(),
+                    )),
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

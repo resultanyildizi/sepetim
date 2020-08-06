@@ -5,11 +5,13 @@ import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
+import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/default_floating_action_button.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/item_category/overview/widgets/item_category_card.dart';
 import 'package:Sepetim/presentation/item_category/overview/widgets/search_field.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
+import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -71,59 +73,86 @@ class ItemCategoryOverviewPage extends StatelessWidget {
               ),
             ),
             loadSuccess: (state) {
-              return Scaffold(
-                resizeToAvoidBottomPadding: false,
-                appBar: AppBar(
-                  title: Text(
-                    'Sepetim',
-                    style: robotoTextStyle(bold: true),
+              return BlocListener<ItemCategoryActorBloc,
+                  ItemCategoryActorState>(
+                listener: (context, state) {
+                  state.map(
+                    initial: (_) {},
+                    actionInProgress: (_) {
+                      actionPopup(
+                        context,
+                        backgroundColor: Colors.white,
+                        content: Text('${translate(context, 'deleting')}...'),
+                        barrierDismissible: false,
+                      );
+                    },
+                    deleteFailure: (failure) {
+                      ExtendedNavigator.of(context).pop();
+                      failure.categoryFailure.maybeMap(
+                        networkException: (_) => networkExceptionPopup(context),
+                        orElse: () => serverErrorPopup(context),
+                      );
+                    },
+                    deleteSuccess: (_) {
+                      ExtendedNavigator.of(context).popUntil((route) =>
+                          route.settings.name == Routes.applicationContentPage);
+                    },
+                  );
+                },
+                child: Scaffold(
+                  resizeToAvoidBottomPadding: false,
+                  appBar: AppBar(
+                    title: Text(
+                      'Sepetim',
+                      style: robotoTextStyle(bold: true),
+                    ),
                   ),
-                ),
-                body: DefaultPadding(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SearchField(
-                        controller: _controller,
-                      ),
-                      const SizedBox(
-                        height: 12.0,
-                      ),
-                      Text(
-                        translate(context, 'categories'),
-                        style: robotoTextStyle(bold: true, fontSize: 24.0),
-                      ),
-                      const SizedBox(
-                        height: 8.0,
-                      ),
-                      Expanded(
-                        child: GridView.builder(
-                          padding: const EdgeInsets.only(bottom: 5.0),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisSpacing: 8.0,
-                                  mainAxisSpacing: 8.0,
-                                  crossAxisCount: 2),
-                          itemBuilder: (context, index) {
-                            return ItemCategoryCard(
-                              key:
-                                  Key(state.categories[index].uid.getOrCrash()),
-                              category: state.categories[index],
-                            );
-                          },
-                          itemCount: state.categories.size,
+                  body: DefaultPadding(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SearchField(
+                          controller: _controller,
                         ),
-                      ),
-                    ],
+                        const SizedBox(
+                          height: 12.0,
+                        ),
+                        Text(
+                          translate(context, 'categories'),
+                          style: robotoTextStyle(bold: true, fontSize: 24.0),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Expanded(
+                          child: GridView.builder(
+                            padding: const EdgeInsets.only(bottom: 5.0),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisSpacing: 8.0,
+                                    mainAxisSpacing: 8.0,
+                                    crossAxisCount: 2),
+                            itemBuilder: (context, index) {
+                              return ItemCategoryCard(
+                                key: Key(
+                                    state.categories[index].uid.getOrCrash()),
+                                category: state.categories[index],
+                              );
+                            },
+                            itemCount: state.categories.size,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                floatingActionButton: DefaultFloatingActionButton(
-                  iconData: Icons.add,
-                  onPressed: () {
-                    ExtendedNavigator.of(context).pushNamed(
-                      Routes.itemCategoryForm,
-                    );
-                  },
+                  floatingActionButton: DefaultFloatingActionButton(
+                    iconData: Icons.add,
+                    onPressed: () {
+                      ExtendedNavigator.of(context).pushNamed(
+                        Routes.itemCategoryForm,
+                      );
+                    },
+                  ),
                 ),
               );
             },

@@ -36,9 +36,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
         yield e.initialOption.fold(
           () => state,
           (initialItem) => state.copyWith(
-            item: initialItem.copyWith(
-              lastEditTime: DateTime.now().toUtc(),
-            ),
+            item: initialItem,
             isEditing: true,
           ),
         );
@@ -48,6 +46,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
           item: state.item.copyWith(
             title: ShortTitle(e.title),
           ),
+          timeChangeScore: state.timeChangeScore + 1,
           itemFailureOrSuccessOption: none(),
         );
       },
@@ -56,6 +55,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
           item: state.item.copyWith(
             price: Price(e.price),
           ),
+          timeChangeScore: state.timeChangeScore + 1,
           itemFailureOrSuccessOption: none(),
         );
       },
@@ -64,6 +64,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
           item: state.item.copyWith(
             description: DescriptionBody(e.descriptionBody),
           ),
+          timeChangeScore: state.timeChangeScore + 1,
           itemFailureOrSuccessOption: none(),
         );
       },
@@ -115,6 +116,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
             return state.copyWith(
               temporaryImageFiles: tempImageFiles,
               isPictureRemoved: newIsPictureRemovedList,
+              timeChangeScore: state.timeChangeScore + 1,
             );
           },
         );
@@ -134,6 +136,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
         yield state.copyWith(
           isPictureRemoved: newIsPictureRemovedList,
           temporaryImageFiles: tempImageFiles,
+          timeChangeScore: state.timeChangeScore + 1,
         );
       },
       saved: (e) async* {
@@ -184,11 +187,28 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
               );
             }
           }
+
+          DateTime lastEditTime = state.item.lastEditTime;
+
+          if (state.timeChangeScore > 0) {
+            lastEditTime = DateTime.now().toUtc();
+          }
+
           failureOrSuccess = state.isEditing
-              ? await _itemRepository.update(e.categoryId, e.groupId,
-                  state.item.copyWith(imageUrls: List3(newImageUrls.toList())))
-              : await _itemRepository.create(e.categoryId, e.groupId,
-                  state.item.copyWith(imageUrls: List3(newImageUrls.toList())));
+              ? await _itemRepository.update(
+                  e.categoryId,
+                  e.groupId,
+                  state.item.copyWith(
+                      imageUrls: List3(newImageUrls.toList()),
+                      lastEditTime: lastEditTime),
+                )
+              : await _itemRepository.create(
+                  e.categoryId,
+                  e.groupId,
+                  state.item.copyWith(
+                      imageUrls: List3(newImageUrls.toList()),
+                      lastEditTime: lastEditTime),
+                );
         }
 
         yield state.copyWith(

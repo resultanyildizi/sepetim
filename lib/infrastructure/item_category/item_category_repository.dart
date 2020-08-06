@@ -111,7 +111,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       final groupDocumentSnapshots =
           await categoryDoc.groupCollection.getDocuments();
 
-      /*for (final doc in groupDocumentSnapshots.documents) {
+      for (final doc in groupDocumentSnapshots.documents) {
         final failureOrSuccess = await _itemGroupRepository.delete(
             categoryId, ItemGroupDto.fromFirestore(doc).toDomain());
         failureOrSuccess.fold(
@@ -120,7 +120,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
           },
           (_) {},
         );
-      }*/
+      }
 
       await categoryDoc.delete();
 
@@ -223,6 +223,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
           connectivityResult != ConnectivityResult.wifi) {
         return left(const ItemCategoryFailure.networkException());
       }
+
       final categoryCoverImageUrl = category.coverImageUrl.getOrCrash();
       if (categoryCoverImageUrl != ImageUrl.defaultUrl().getOrCrash()) {
         final coverImageStorage =
@@ -231,7 +232,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
         await coverImageStorage.delete();
       }
       return right(ImageUrl.defaultUrl());
-    } catch (e) {
+    } on PlatformException catch (_) {
       return left(const ItemCategoryFailure.unexpected());
     }
   }
@@ -256,7 +257,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
           .then((snapshot) => snapshot.documents.length);
 
       return right(NotNegativeIntegerNumber(groupCount));
-    } catch (e) {
+    } on PlatformException catch (_) {
       return left(const ItemCategoryFailure.unexpected());
     }
   }

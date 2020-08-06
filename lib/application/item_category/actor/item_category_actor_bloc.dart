@@ -4,7 +4,6 @@ import 'package:Sepetim/domain/item_category/i_category_repository.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_category/item_category_failure.dart';
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -30,9 +29,10 @@ class ItemCategoryActorBloc
     yield const ItemCategoryActorState.actionInProgress();
     final possibleFailure =
         await _itemCategoryRepository.delete(event.category);
-    possibleFailure.fold(
+    await Future.delayed(const Duration(milliseconds: 100));
+    yield possibleFailure.fold(
       (f) => ItemCategoryActorState.deleteFailure(f),
-      (_) => const ItemCategoryActorState.deleteSuccess(),
+      (r) => const ItemCategoryActorState.deleteSuccess(),
     );
   }
 }

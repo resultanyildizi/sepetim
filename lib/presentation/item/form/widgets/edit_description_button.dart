@@ -1,5 +1,6 @@
 import 'package:Sepetim/application/item/form/item_form_bloc.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
+import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
@@ -38,7 +39,7 @@ class EditDescriptionButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  'Bir açıklama ekleyin',
+                  translate(context, 'edit_description'),
                   style: didactGothicTextStyle(
                       fontSize: 16, color: sepetimLightGrey),
                 ),

@@ -243,6 +243,26 @@ class ItemPage extends StatelessWidget {
                 ],
               ),
             ),
+            Expanded(
+              child: Align(
+                alignment: Alignment.bottomLeft,
+                child: RichText(
+                  text: TextSpan(
+                    style: didactGothicTextStyle(fontSize: 15.0),
+                    children: [
+                      TextSpan(
+                        text: '${translate(context, 'last_edited')}: ',
+                        style: didactGothicTextStyle(bold: true),
+                      ),
+                      TextSpan(
+                        text:
+                            state.item.lastEditTime.toString().substring(0, 16),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
@@ -321,10 +341,12 @@ class ItemPage extends StatelessWidget {
                 (route) => route.settings.name == Routes.itemOverviewPage);
           },
           actionInProgress: (_) {
-            actionPopup(context,
-                barrierDismissible: false,
-                backgroundColor: Colors.white,
-                content: Text('${translate(context, 'deleting')}...'));
+            actionPopup(
+              context,
+              backgroundColor: Colors.white,
+              content: Text('${translate(context, 'deleting')}...'),
+              barrierDismissible: false,
+            );
           },
         );
       },
