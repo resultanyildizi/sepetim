@@ -1,5 +1,6 @@
 import 'package:Sepetim/presentation/application_content/application_content_page.dart';
 import 'package:Sepetim/presentation/item/form/item_form.dart';
+import 'package:Sepetim/presentation/item/form/link_form/link_form.dart';
 import 'package:Sepetim/presentation/item/form/widgets/edit_description_page.dart';
 import 'package:Sepetim/presentation/item/overview/item_overview_page.dart';
 import 'package:Sepetim/presentation/item/overview/widgets/item_page.dart';
@@ -44,4 +45,7 @@ class $Router {
 
   @MaterialRoute()
   EditDescriptionPage editDescriptionPage;
+
+  @MaterialRoute()
+  LinkForm linkForm;
 }

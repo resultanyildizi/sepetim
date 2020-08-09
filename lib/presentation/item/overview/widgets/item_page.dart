@@ -6,6 +6,7 @@ import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
+import 'package:Sepetim/presentation/core/widgets/default_floating_action_button.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
@@ -81,6 +82,13 @@ class ItemPage extends StatelessWidget {
               ],
             ),
           ),
+          floatingActionButton: DefaultFloatingActionButton(
+              onPressed: () {
+                ExtendedNavigator.of(context).pushNamed(Routes.linkForm,
+                    arguments: LinkFormArguments(
+                        category: category, group: group, formBloc: formBloc));
+              },
+              iconData: Icons.public),
         ),
       ),
     );

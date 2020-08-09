@@ -25,6 +25,7 @@ import 'package:Sepetim/domain/item/item.dart';
 import 'package:Sepetim/presentation/item/overview/widgets/item_page.dart';
 import 'package:Sepetim/application/item/form/item_form_bloc.dart';
 import 'package:Sepetim/presentation/item/form/widgets/edit_description_page.dart';
+import 'package:Sepetim/presentation/item/form/link_form/link_form.dart';
 
 abstract class Routes {
   static const splashPage = '/';
@@ -38,6 +39,7 @@ abstract class Routes {
   static const itemForm = '/item-form';
   static const itemPage = '/item-page';
   static const editDescriptionPage = '/edit-description-page';
+  static const linkForm = '/link-form';
   static const all = {
     splashPage,
     signInPage,
@@ -50,6 +52,7 @@ abstract class Routes {
     itemForm,
     itemPage,
     editDescriptionPage,
+    linkForm,
   };
 }
 
@@ -188,6 +191,19 @@ class Router extends RouterBase {
               initialText: typedArgs.initialText),
           settings: settings,
         );
+      case Routes.linkForm:
+        if (hasInvalidArgs<LinkFormArguments>(args, isRequired: true)) {
+          return misTypedArgsRoute<LinkFormArguments>(args);
+        }
+        final typedArgs = args as LinkFormArguments;
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => LinkForm(
+              key: typedArgs.key,
+              category: typedArgs.category,
+              group: typedArgs.group,
+              formBloc: typedArgs.formBloc),
+          settings: settings,
+        );
       default:
         return unknownRoutePage(settings.name);
     }
@@ -286,6 +302,19 @@ class EditDescriptionPageArguments {
   final String initialText;
   EditDescriptionPageArguments(
       {this.key, @required this.itemFormBloc, @required this.initialText});
+}
+
+//LinkForm arguments holder class
+class LinkFormArguments {
+  final Key key;
+  final ItemCategory category;
+  final ItemGroup group;
+  final ItemFormBloc formBloc;
+  LinkFormArguments(
+      {this.key,
+      @required this.category,
+      @required this.group,
+      @required this.formBloc});
 }
 
 // *************************************************************************
@@ -399,5 +428,17 @@ extension RouterNavigationHelperMethods on ExtendedNavigatorState {
         Routes.editDescriptionPage,
         arguments: EditDescriptionPageArguments(
             key: key, itemFormBloc: itemFormBloc, initialText: initialText),
+      );
+
+  Future pushLinkForm({
+    Key key,
+    @required ItemCategory category,
+    @required ItemGroup group,
+    @required ItemFormBloc formBloc,
+  }) =>
+      pushNamed(
+        Routes.linkForm,
+        arguments: LinkFormArguments(
+            key: key, category: category, group: group, formBloc: formBloc),
       );
 }

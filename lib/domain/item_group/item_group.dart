@@ -12,11 +12,13 @@ abstract class ItemGroup implements _$ItemGroup {
   const factory ItemGroup({
     @required UniqueId uid,
     @required ShortTitle title,
+    @required DateTime creationTime,
   }) = _ItemGroup;
 
   factory ItemGroup.empty() => ItemGroup(
         uid: UniqueId(),
         title: ShortTitle(''),
+        creationTime: DateTime.now().toUtc(),
       );
 
   Option<ValueFailure<dynamic>> get failureOption {

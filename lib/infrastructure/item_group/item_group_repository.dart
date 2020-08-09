@@ -146,7 +146,7 @@ class ItemGroupRepository implements IItemGroupRepository {
       case OrderType.date:
         {
           orderedGroupSnapshots = categoryDoc.groupCollection
-              .orderBy('serverTimeStamp', descending: true)
+              .orderBy('creationTime', descending: true)
               .snapshots();
           break;
         }
@@ -193,7 +193,7 @@ class ItemGroupRepository implements IItemGroupRepository {
       case OrderType.date:
         {
           orderedGroupSnapshots = categoryDoc.groupCollection
-              .orderBy('serverTimeStamp', descending: true)
+              .orderBy('creationTime', descending: true)
               .snapshots();
           break;
         }

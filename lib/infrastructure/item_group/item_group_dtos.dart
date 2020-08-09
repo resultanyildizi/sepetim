@@ -12,6 +12,7 @@ abstract class ItemGroupDto implements _$ItemGroupDto {
   const factory ItemGroupDto({
     @JsonKey(ignore: true) String uid,
     @required String title,
+    @required int creationTime,
     @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
   }) = _ItemGroupDto;
 
@@ -20,6 +21,7 @@ abstract class ItemGroupDto implements _$ItemGroupDto {
       uid: group.uid.getOrCrash(),
       title: group.title.getOrCrash(),
       serverTimeStamp: FieldValue.serverTimestamp(),
+      creationTime: group.creationTime.millisecondsSinceEpoch,
     );
   }
 
@@ -27,6 +29,7 @@ abstract class ItemGroupDto implements _$ItemGroupDto {
     return ItemGroup(
       uid: UniqueId.fromUniqueString(uid),
       title: ShortTitle(title),
+      creationTime: DateTime.fromMillisecondsSinceEpoch(creationTime),
     );
   }
 

@@ -12,10 +12,14 @@ T _$identity<T>(T value) => value;
 class _$ItemGroupTearOff {
   const _$ItemGroupTearOff();
 
-  _ItemGroup call({@required UniqueId uid, @required ShortTitle title}) {
+  _ItemGroup call(
+      {@required UniqueId uid,
+      @required ShortTitle title,
+      @required DateTime creationTime}) {
     return _ItemGroup(
       uid: uid,
       title: title,
+      creationTime: creationTime,
     );
   }
 }
@@ -26,6 +30,7 @@ const $ItemGroup = _$ItemGroupTearOff();
 mixin _$ItemGroup {
   UniqueId get uid;
   ShortTitle get title;
+  DateTime get creationTime;
 
   $ItemGroupCopyWith<ItemGroup> get copyWith;
 }
@@ -33,7 +38,7 @@ mixin _$ItemGroup {
 abstract class $ItemGroupCopyWith<$Res> {
   factory $ItemGroupCopyWith(ItemGroup value, $Res Function(ItemGroup) then) =
       _$ItemGroupCopyWithImpl<$Res>;
-  $Res call({UniqueId uid, ShortTitle title});
+  $Res call({UniqueId uid, ShortTitle title, DateTime creationTime});
 }
 
 class _$ItemGroupCopyWithImpl<$Res> implements $ItemGroupCopyWith<$Res> {
@@ -47,10 +52,14 @@ class _$ItemGroupCopyWithImpl<$Res> implements $ItemGroupCopyWith<$Res> {
   $Res call({
     Object uid = freezed,
     Object title = freezed,
+    Object creationTime = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed ? _value.uid : uid as UniqueId,
       title: title == freezed ? _value.title : title as ShortTitle,
+      creationTime: creationTime == freezed
+          ? _value.creationTime
+          : creationTime as DateTime,
     ));
   }
 }
@@ -60,7 +69,7 @@ abstract class _$ItemGroupCopyWith<$Res> implements $ItemGroupCopyWith<$Res> {
           _ItemGroup value, $Res Function(_ItemGroup) then) =
       __$ItemGroupCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId uid, ShortTitle title});
+  $Res call({UniqueId uid, ShortTitle title, DateTime creationTime});
 }
 
 class __$ItemGroupCopyWithImpl<$Res> extends _$ItemGroupCopyWithImpl<$Res>
@@ -75,28 +84,36 @@ class __$ItemGroupCopyWithImpl<$Res> extends _$ItemGroupCopyWithImpl<$Res>
   $Res call({
     Object uid = freezed,
     Object title = freezed,
+    Object creationTime = freezed,
   }) {
     return _then(_ItemGroup(
       uid: uid == freezed ? _value.uid : uid as UniqueId,
       title: title == freezed ? _value.title : title as ShortTitle,
+      creationTime: creationTime == freezed
+          ? _value.creationTime
+          : creationTime as DateTime,
     ));
   }
 }
 
 class _$_ItemGroup extends _ItemGroup {
-  const _$_ItemGroup({@required this.uid, @required this.title})
+  const _$_ItemGroup(
+      {@required this.uid, @required this.title, @required this.creationTime})
       : assert(uid != null),
         assert(title != null),
+        assert(creationTime != null),
         super._();
 
   @override
   final UniqueId uid;
   @override
   final ShortTitle title;
+  @override
+  final DateTime creationTime;
 
   @override
   String toString() {
-    return 'ItemGroup(uid: $uid, title: $title)';
+    return 'ItemGroup(uid: $uid, title: $title, creationTime: $creationTime)';
   }
 
   @override
@@ -106,14 +123,18 @@ class _$_ItemGroup extends _ItemGroup {
             (identical(other.uid, uid) ||
                 const DeepCollectionEquality().equals(other.uid, uid)) &&
             (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)));
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.creationTime, creationTime) ||
+                const DeepCollectionEquality()
+                    .equals(other.creationTime, creationTime)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(uid) ^
-      const DeepCollectionEquality().hash(title);
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(creationTime);
 
   @override
   _$ItemGroupCopyWith<_ItemGroup> get copyWith =>
@@ -123,12 +144,16 @@ class _$_ItemGroup extends _ItemGroup {
 abstract class _ItemGroup extends ItemGroup {
   const _ItemGroup._() : super._();
   const factory _ItemGroup(
-      {@required UniqueId uid, @required ShortTitle title}) = _$_ItemGroup;
+      {@required UniqueId uid,
+      @required ShortTitle title,
+      @required DateTime creationTime}) = _$_ItemGroup;
 
   @override
   UniqueId get uid;
   @override
   ShortTitle get title;
+  @override
+  DateTime get creationTime;
   @override
   _$ItemGroupCopyWith<_ItemGroup> get copyWith;
 }

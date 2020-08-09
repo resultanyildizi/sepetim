@@ -16,18 +16,19 @@ abstract class ItemCategoryDto implements _$ItemCategoryDto {
     @required String title,
     @required int color,
     @required String coverImageUrl,
-    @ServerTimeStampConverter() FieldValue serverTimeStamp,
+    @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
     @required int creationTime,
   }) = _ItemCategoryDto;
 
   factory ItemCategoryDto.fromDomain(ItemCategory category) {
     return ItemCategoryDto(
-        uid: category.uid.getOrCrash(),
-        title: category.title.getOrCrash(),
-        color: category.color.getOrCrash().value,
-        coverImageUrl: category.coverImageUrl.getOrCrash(),
-        serverTimeStamp: FieldValue.serverTimestamp(),
-        creationTime: category.creationTime.millisecondsSinceEpoch);
+      uid: category.uid.getOrCrash(),
+      title: category.title.getOrCrash(),
+      color: category.color.getOrCrash().value,
+      coverImageUrl: category.coverImageUrl.getOrCrash(),
+      serverTimeStamp: FieldValue.serverTimestamp(),
+      creationTime: category.creationTime.millisecondsSinceEpoch,
+    );
   }
   ItemCategory toDomain() {
     return ItemCategory(

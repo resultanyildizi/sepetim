@@ -156,8 +156,24 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                 ),
               );
             },
-            loadFailure: (_) => Center(
-              child: Text(translate(context, 'please_report')),
+            loadFailure: (_) => Scaffold(
+              appBar: AppBar(
+                  title: Text(
+                'Sepetim',
+                style: robotoTextStyle(bold: true),
+              )),
+              body: Center(
+                child: Container(
+                  width: screenWidthByScalar(context, 0.8),
+                  child: Text(
+                    translate(context, 'please_report'),
+                  ),
+                ),
+              ),
+              floatingActionButton: DefaultFloatingActionButton(
+                onPressed: () {},
+                iconData: Icons.add,
+              ),
             ),
           );
         },

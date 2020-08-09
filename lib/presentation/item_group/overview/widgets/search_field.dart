@@ -1,19 +1,23 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:Sepetim/application/item_group/watcher/item_group_watcher_bloc.dart';
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
+import 'package:Sepetim/domain/item_group/item_group.dart';
+import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Sepetim/predefined_variables/colors.dart';
 
 class SearchField extends StatelessWidget {
   final TextEditingController controller;
   final UniqueId categoryId;
+  final ItemGroupWatcherBloc watcherBloc;
   const SearchField({
     Key key,
     @required this.controller,
     @required this.categoryId,
+    @required this.watcherBloc,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -48,15 +52,14 @@ class SearchField extends StatelessWidget {
           ),
           onChanged: (text) {
             if (text == '') {
-              context.bloc<ItemGroupWatcherBloc>().add(
-                  ItemGroupWatcherEvent.watchAllStarted(
-                      categoryId, OrderType.date));
+              watcherBloc.add(ItemGroupWatcherEvent.watchAllStarted(
+                  categoryId, OrderType.date));
             }
 
-            context.bloc<ItemGroupWatcherBloc>().add(
-                  ItemGroupWatcherEvent.watchAllByTitleStarted(
-                      categoryId, OrderType.date, text),
-                );
+            watcherBloc.add(
+              ItemGroupWatcherEvent.watchAllByTitleStarted(
+                  categoryId, OrderType.date, text),
+            );
           },
         ),
       ),

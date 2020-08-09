@@ -9,6 +9,7 @@ part of 'item_group_dtos.dart';
 _$_ItemGroupDto _$_$_ItemGroupDtoFromJson(Map<String, dynamic> json) {
   return _$_ItemGroupDto(
     title: json['title'] as String,
+    creationTime: json['creationTime'] as int,
     serverTimeStamp:
         const ServerTimeStampConverter().fromJson(json['serverTimeStamp']),
   );
@@ -17,6 +18,7 @@ _$_ItemGroupDto _$_$_ItemGroupDtoFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_ItemGroupDtoToJson(_$_ItemGroupDto instance) =>
     <String, dynamic>{
       'title': instance.title,
+      'creationTime': instance.creationTime,
       'serverTimeStamp':
           const ServerTimeStampConverter().toJson(instance.serverTimeStamp),
     };

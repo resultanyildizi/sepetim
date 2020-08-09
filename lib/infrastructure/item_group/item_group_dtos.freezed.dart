@@ -18,10 +18,12 @@ class _$ItemGroupDtoTearOff {
   _ItemGroupDto call(
       {@JsonKey(ignore: true) String uid,
       @required String title,
+      @required int creationTime,
       @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) {
     return _ItemGroupDto(
       uid: uid,
       title: title,
+      creationTime: creationTime,
       serverTimeStamp: serverTimeStamp,
     );
   }
@@ -34,6 +36,7 @@ mixin _$ItemGroupDto {
   @JsonKey(ignore: true)
   String get uid;
   String get title;
+  int get creationTime;
   @ServerTimeStampConverter()
   FieldValue get serverTimeStamp;
 
@@ -48,6 +51,7 @@ abstract class $ItemGroupDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(ignore: true) String uid,
       String title,
+      int creationTime,
       @ServerTimeStampConverter() FieldValue serverTimeStamp});
 }
 
@@ -62,11 +66,14 @@ class _$ItemGroupDtoCopyWithImpl<$Res> implements $ItemGroupDtoCopyWith<$Res> {
   $Res call({
     Object uid = freezed,
     Object title = freezed,
+    Object creationTime = freezed,
     Object serverTimeStamp = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed ? _value.uid : uid as String,
       title: title == freezed ? _value.title : title as String,
+      creationTime:
+          creationTime == freezed ? _value.creationTime : creationTime as int,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp as FieldValue,
@@ -83,6 +90,7 @@ abstract class _$ItemGroupDtoCopyWith<$Res>
   $Res call(
       {@JsonKey(ignore: true) String uid,
       String title,
+      int creationTime,
       @ServerTimeStampConverter() FieldValue serverTimeStamp});
 }
 
@@ -99,11 +107,14 @@ class __$ItemGroupDtoCopyWithImpl<$Res> extends _$ItemGroupDtoCopyWithImpl<$Res>
   $Res call({
     Object uid = freezed,
     Object title = freezed,
+    Object creationTime = freezed,
     Object serverTimeStamp = freezed,
   }) {
     return _then(_ItemGroupDto(
       uid: uid == freezed ? _value.uid : uid as String,
       title: title == freezed ? _value.title : title as String,
+      creationTime:
+          creationTime == freezed ? _value.creationTime : creationTime as int,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp as FieldValue,
@@ -116,8 +127,10 @@ class _$_ItemGroupDto extends _ItemGroupDto {
   const _$_ItemGroupDto(
       {@JsonKey(ignore: true) this.uid,
       @required this.title,
+      @required this.creationTime,
       @required @ServerTimeStampConverter() this.serverTimeStamp})
       : assert(title != null),
+        assert(creationTime != null),
         assert(serverTimeStamp != null),
         super._();
 
@@ -130,12 +143,14 @@ class _$_ItemGroupDto extends _ItemGroupDto {
   @override
   final String title;
   @override
+  final int creationTime;
+  @override
   @ServerTimeStampConverter()
   final FieldValue serverTimeStamp;
 
   @override
   String toString() {
-    return 'ItemGroupDto(uid: $uid, title: $title, serverTimeStamp: $serverTimeStamp)';
+    return 'ItemGroupDto(uid: $uid, title: $title, creationTime: $creationTime, serverTimeStamp: $serverTimeStamp)';
   }
 
   @override
@@ -146,6 +161,9 @@ class _$_ItemGroupDto extends _ItemGroupDto {
                 const DeepCollectionEquality().equals(other.uid, uid)) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.creationTime, creationTime) ||
+                const DeepCollectionEquality()
+                    .equals(other.creationTime, creationTime)) &&
             (identical(other.serverTimeStamp, serverTimeStamp) ||
                 const DeepCollectionEquality()
                     .equals(other.serverTimeStamp, serverTimeStamp)));
@@ -156,6 +174,7 @@ class _$_ItemGroupDto extends _ItemGroupDto {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(uid) ^
       const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(creationTime) ^
       const DeepCollectionEquality().hash(serverTimeStamp);
 
   @override
@@ -173,6 +192,7 @@ abstract class _ItemGroupDto extends ItemGroupDto {
   const factory _ItemGroupDto(
           {@JsonKey(ignore: true) String uid,
           @required String title,
+          @required int creationTime,
           @required @ServerTimeStampConverter() FieldValue serverTimeStamp}) =
       _$_ItemGroupDto;
 
@@ -184,6 +204,8 @@ abstract class _ItemGroupDto extends ItemGroupDto {
   String get uid;
   @override
   String get title;
+  @override
+  int get creationTime;
   @override
   @ServerTimeStampConverter()
   FieldValue get serverTimeStamp;
