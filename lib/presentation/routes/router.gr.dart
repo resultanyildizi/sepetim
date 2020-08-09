@@ -26,6 +26,7 @@ import 'package:Sepetim/presentation/item/overview/widgets/item_page.dart';
 import 'package:Sepetim/application/item/form/item_form_bloc.dart';
 import 'package:Sepetim/presentation/item/form/widgets/edit_description_page.dart';
 import 'package:Sepetim/presentation/item/form/link_form/link_form.dart';
+import 'package:Sepetim/application/item/actor/item_actor_bloc.dart';
 
 abstract class Routes {
   static const splashPage = '/';
@@ -201,7 +202,8 @@ class Router extends RouterBase {
               key: typedArgs.key,
               category: typedArgs.category,
               group: typedArgs.group,
-              formBloc: typedArgs.formBloc),
+              formBloc: typedArgs.formBloc,
+              actorBloc: typedArgs.actorBloc),
           settings: settings,
         );
       default:
@@ -310,11 +312,13 @@ class LinkFormArguments {
   final ItemCategory category;
   final ItemGroup group;
   final ItemFormBloc formBloc;
+  final ItemActorBloc actorBloc;
   LinkFormArguments(
       {this.key,
       @required this.category,
       @required this.group,
-      @required this.formBloc});
+      @required this.formBloc,
+      @required this.actorBloc});
 }
 
 // *************************************************************************
@@ -435,10 +439,15 @@ extension RouterNavigationHelperMethods on ExtendedNavigatorState {
     @required ItemCategory category,
     @required ItemGroup group,
     @required ItemFormBloc formBloc,
+    @required ItemActorBloc actorBloc,
   }) =>
       pushNamed(
         Routes.linkForm,
         arguments: LinkFormArguments(
-            key: key, category: category, group: group, formBloc: formBloc),
+            key: key,
+            category: category,
+            group: group,
+            formBloc: formBloc,
+            actorBloc: actorBloc),
       );
 }

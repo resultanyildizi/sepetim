@@ -8,6 +8,8 @@ import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/default_floating_action_button.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
+import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
+import 'package:Sepetim/presentation/item/form/misc/link_object_primitive.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
 import 'package:auto_route/auto_route.dart';
@@ -16,6 +18,8 @@ import 'package:flutter/material.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kt_dart/kt.dart';
+import 'package:Sepetim/presentation/item/form/misc/build_context_helper.dart';
 
 class ItemPage extends StatelessWidget {
   final ItemCategory category;
@@ -84,9 +88,20 @@ class ItemPage extends StatelessWidget {
           ),
           floatingActionButton: DefaultFloatingActionButton(
               onPressed: () {
-                ExtendedNavigator.of(context).pushNamed(Routes.linkForm,
-                    arguments: LinkFormArguments(
-                        category: category, group: group, formBloc: formBloc));
+                context.formLinks = state.item.linkObjects.value.fold(
+                    (_) => mutableListOf<LinkObjectPrimitive>(),
+                    (linkObjects) => linkObjects
+                        .map((u) => LinkObjectPrimitive.fromDomain(u))
+                        .toMutableList());
+                ExtendedNavigator.of(context).pushNamed(
+                  Routes.linkForm,
+                  arguments: LinkFormArguments(
+                    category: category,
+                    group: group,
+                    formBloc: formBloc,
+                    actorBloc: context.bloc<ItemActorBloc>(),
+                  ),
+                );
               },
               iconData: Icons.public),
         ),
@@ -335,7 +350,7 @@ class ItemPage extends StatelessWidget {
   Widget iconButtons(BuildContext context, ItemFormState state) {
     return BlocListener<ItemActorBloc, ItemActorState>(
       listener: (context, state) {
-        state.map(
+        state.maybeMap(
           initial: (_) {},
           deleteFailure: (f) {
             ExtendedNavigator.of(context).pop();
@@ -356,6 +371,7 @@ class ItemPage extends StatelessWidget {
               barrierDismissible: false,
             );
           },
+          orElse: () {},
         );
       },
       child: Padding(

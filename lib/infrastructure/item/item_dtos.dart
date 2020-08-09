@@ -7,7 +7,6 @@ import 'package:Sepetim/domain/item/item.dart';
 import 'package:Sepetim/domain/item/value_objects.dart';
 import 'package:kt_dart/kt.dart';
 part 'item_dtos.freezed.dart';
-part 'item_dtos.g.dart';
 
 @freezed
 abstract class ItemDto implements _$ItemDto {
@@ -73,6 +72,18 @@ abstract class ItemDto implements _$ItemDto {
   }
 }
 
+class ServerTimeStampConverter implements JsonConverter<FieldValue, Object> {
+  const ServerTimeStampConverter();
+
+  @override
+  FieldValue fromJson(Object json) {
+    return FieldValue.serverTimestamp();
+  }
+
+  @override
+  Object toJson(FieldValue fieldValue) => fieldValue;
+}
+
 @freezed
 abstract class LinkObjectDto implements _$LinkObjectDto {
   const LinkObjectDto._();
@@ -102,14 +113,51 @@ abstract class LinkObjectDto implements _$LinkObjectDto {
       _$LinkObjectDtoFromJson(json);
 }
 
-class ServerTimeStampConverter implements JsonConverter<FieldValue, Object> {
-  const ServerTimeStampConverter();
-
-  @override
-  FieldValue fromJson(Object json) {
-    return FieldValue.serverTimestamp();
-  }
-
-  @override
-  Object toJson(FieldValue fieldValue) => fieldValue;
+// JSON FILE
+_$_ItemDto _$_$_ItemDtoFromJson(Map<String, dynamic> json) {
+  return _$_ItemDto(
+    title: json['title'] as String,
+    price: (json['price'] as num)?.toDouble(),
+    description: json['description'] as String,
+    imageUrls: (json['imageUrls'] as List)?.map((e) => e as String)?.toList(),
+    selectedIndex: json['selectedIndex'] as int,
+    linkObjects: (json['linkObjects'] as List)
+        ?.map((e) => e == null
+            ? null
+            : LinkObjectDto.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    isFavorite: json['isFavorite'] as bool,
+    serverTimeStamp:
+        const ServerTimeStampConverter().fromJson(json['serverTimeStamp']),
+    lastEditTime: json['lastEditTime'] as int,
+  );
 }
+
+Map<String, dynamic> _$_$_ItemDtoToJson(_$_ItemDto instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+      'price': instance.price,
+      'description': instance.description,
+      'imageUrls': instance.imageUrls,
+      'selectedIndex': instance.selectedIndex,
+      'linkObjects': instance.linkObjects?.map((e) => e?.toJson())?.toList(),
+      'isFavorite': instance.isFavorite,
+      'serverTimeStamp':
+          const ServerTimeStampConverter().toJson(instance.serverTimeStamp),
+      'lastEditTime': instance.lastEditTime,
+    };
+
+_$_LinkObjectDto _$_$_LinkObjectDtoFromJson(Map<String, dynamic> json) {
+  return _$_LinkObjectDto(
+    uid: json['uid'] as String,
+    title: json['title'] as String,
+    link: json['link'] as String,
+  );
+}
+
+Map<String, dynamic> _$_$_LinkObjectDtoToJson(_$_LinkObjectDto instance) =>
+    <String, dynamic>{
+      'uid': instance.uid,
+      'title': instance.title,
+      'link': instance.link,
+    };

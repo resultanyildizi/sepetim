@@ -8,6 +8,7 @@ import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part 'item_actor_event.dart';
 part 'item_actor_state.dart';

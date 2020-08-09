@@ -22,4 +22,6 @@ abstract class ItemFormEvent with _$ItemFormEvent {
     UniqueId categoryId,
     UniqueId groupId,
   ) = _Saved;
+  const factory ItemFormEvent.linkObjectsChanged(
+      KtList<LinkObjectPrimitive> linkObjects) = _LinkObjectsChanged;
 }

@@ -68,6 +68,13 @@ class _$ItemFormEventTearOff {
       groupId,
     );
   }
+
+  _LinkObjectsChanged linkObjectsChanged(
+      KtList<LinkObjectPrimitive> linkObjects) {
+    return _LinkObjectsChanged(
+      linkObjects,
+    );
+  }
 }
 
 // ignore: unused_element
@@ -85,6 +92,8 @@ mixin _$ItemFormEvent {
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
+    @required
+        Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -97,6 +106,7 @@ mixin _$ItemFormEvent {
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
+    Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -110,6 +120,7 @@ mixin _$ItemFormEvent {
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
+    @required Result linkObjectsChanged(_LinkObjectsChanged value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -122,6 +133,7 @@ mixin _$ItemFormEvent {
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
+    Result linkObjectsChanged(_LinkObjectsChanged value),
     @required Result orElse(),
   });
 }
@@ -209,6 +221,8 @@ class _$_Initialized implements _Initialized {
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
+    @required
+        Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -219,6 +233,7 @@ class _$_Initialized implements _Initialized {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return initialized(initialOption);
   }
 
@@ -234,6 +249,7 @@ class _$_Initialized implements _Initialized {
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
+    Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -255,6 +271,7 @@ class _$_Initialized implements _Initialized {
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
+    @required Result linkObjectsChanged(_LinkObjectsChanged value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -265,6 +282,7 @@ class _$_Initialized implements _Initialized {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return initialized(this);
   }
 
@@ -280,6 +298,7 @@ class _$_Initialized implements _Initialized {
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
+    Result linkObjectsChanged(_LinkObjectsChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -363,6 +382,8 @@ class _$_TitleChanged implements _TitleChanged {
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
+    @required
+        Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -373,6 +394,7 @@ class _$_TitleChanged implements _TitleChanged {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return titleChanged(title);
   }
 
@@ -388,6 +410,7 @@ class _$_TitleChanged implements _TitleChanged {
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
+    Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -409,6 +432,7 @@ class _$_TitleChanged implements _TitleChanged {
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
+    @required Result linkObjectsChanged(_LinkObjectsChanged value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -419,6 +443,7 @@ class _$_TitleChanged implements _TitleChanged {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return titleChanged(this);
   }
 
@@ -434,6 +459,7 @@ class _$_TitleChanged implements _TitleChanged {
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
+    Result linkObjectsChanged(_LinkObjectsChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -517,6 +543,8 @@ class _$_PriceChanged implements _PriceChanged {
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
+    @required
+        Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -527,6 +555,7 @@ class _$_PriceChanged implements _PriceChanged {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return priceChanged(price);
   }
 
@@ -542,6 +571,7 @@ class _$_PriceChanged implements _PriceChanged {
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
+    Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -563,6 +593,7 @@ class _$_PriceChanged implements _PriceChanged {
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
+    @required Result linkObjectsChanged(_LinkObjectsChanged value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -573,6 +604,7 @@ class _$_PriceChanged implements _PriceChanged {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return priceChanged(this);
   }
 
@@ -588,6 +620,7 @@ class _$_PriceChanged implements _PriceChanged {
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
+    Result linkObjectsChanged(_LinkObjectsChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -676,6 +709,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
+    @required
+        Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -686,6 +721,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return descriptionChanged(descriptionBody);
   }
 
@@ -701,6 +737,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
+    Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -722,6 +759,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
+    @required Result linkObjectsChanged(_LinkObjectsChanged value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -732,6 +770,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return descriptionChanged(this);
   }
 
@@ -747,6 +786,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
+    Result linkObjectsChanged(_LinkObjectsChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -832,6 +872,8 @@ class _$_SelectedIndexChanged implements _SelectedIndexChanged {
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
+    @required
+        Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -842,6 +884,7 @@ class _$_SelectedIndexChanged implements _SelectedIndexChanged {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return selectedIndexChanged(index);
   }
 
@@ -857,6 +900,7 @@ class _$_SelectedIndexChanged implements _SelectedIndexChanged {
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
+    Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -878,6 +922,7 @@ class _$_SelectedIndexChanged implements _SelectedIndexChanged {
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
+    @required Result linkObjectsChanged(_LinkObjectsChanged value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -888,6 +933,7 @@ class _$_SelectedIndexChanged implements _SelectedIndexChanged {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return selectedIndexChanged(this);
   }
 
@@ -903,6 +949,7 @@ class _$_SelectedIndexChanged implements _SelectedIndexChanged {
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
+    Result linkObjectsChanged(_LinkObjectsChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -997,6 +1044,8 @@ class _$_IsFavoriteChanged implements _IsFavoriteChanged {
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
+    @required
+        Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1007,6 +1056,7 @@ class _$_IsFavoriteChanged implements _IsFavoriteChanged {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return isFavoriteChanged(categoryId, groupId);
   }
 
@@ -1022,6 +1072,7 @@ class _$_IsFavoriteChanged implements _IsFavoriteChanged {
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
+    Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1043,6 +1094,7 @@ class _$_IsFavoriteChanged implements _IsFavoriteChanged {
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
+    @required Result linkObjectsChanged(_LinkObjectsChanged value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1053,6 +1105,7 @@ class _$_IsFavoriteChanged implements _IsFavoriteChanged {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return isFavoriteChanged(this);
   }
 
@@ -1068,6 +1121,7 @@ class _$_IsFavoriteChanged implements _IsFavoriteChanged {
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
+    Result linkObjectsChanged(_LinkObjectsChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1164,6 +1218,8 @@ class _$_ImageChanged implements _ImageChanged {
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
+    @required
+        Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1174,6 +1230,7 @@ class _$_ImageChanged implements _ImageChanged {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return pictureChanged(index, imageSource);
   }
 
@@ -1189,6 +1246,7 @@ class _$_ImageChanged implements _ImageChanged {
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
+    Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1210,6 +1268,7 @@ class _$_ImageChanged implements _ImageChanged {
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
+    @required Result linkObjectsChanged(_LinkObjectsChanged value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1220,6 +1279,7 @@ class _$_ImageChanged implements _ImageChanged {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return pictureChanged(this);
   }
 
@@ -1235,6 +1295,7 @@ class _$_ImageChanged implements _ImageChanged {
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
+    Result linkObjectsChanged(_LinkObjectsChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1320,6 +1381,8 @@ class _$_PictureRemoved implements _PictureRemoved {
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
+    @required
+        Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1330,6 +1393,7 @@ class _$_PictureRemoved implements _PictureRemoved {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return pictureRemoved(index);
   }
 
@@ -1345,6 +1409,7 @@ class _$_PictureRemoved implements _PictureRemoved {
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
+    Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1366,6 +1431,7 @@ class _$_PictureRemoved implements _PictureRemoved {
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
+    @required Result linkObjectsChanged(_LinkObjectsChanged value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1376,6 +1442,7 @@ class _$_PictureRemoved implements _PictureRemoved {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return pictureRemoved(this);
   }
 
@@ -1391,6 +1458,7 @@ class _$_PictureRemoved implements _PictureRemoved {
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
+    Result linkObjectsChanged(_LinkObjectsChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1482,6 +1550,8 @@ class _$_Saved implements _Saved {
     @required Result pictureChanged(int index, ImageSource imageSource),
     @required Result pictureRemoved(int index),
     @required Result saved(UniqueId categoryId, UniqueId groupId),
+    @required
+        Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1492,6 +1562,7 @@ class _$_Saved implements _Saved {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return saved(categoryId, groupId);
   }
 
@@ -1507,6 +1578,7 @@ class _$_Saved implements _Saved {
     Result pictureChanged(int index, ImageSource imageSource),
     Result pictureRemoved(int index),
     Result saved(UniqueId categoryId, UniqueId groupId),
+    Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1528,6 +1600,7 @@ class _$_Saved implements _Saved {
     @required Result pictureChanged(_ImageChanged value),
     @required Result pictureRemoved(_PictureRemoved value),
     @required Result saved(_Saved value),
+    @required Result linkObjectsChanged(_LinkObjectsChanged value),
   }) {
     assert(initialized != null);
     assert(titleChanged != null);
@@ -1538,6 +1611,7 @@ class _$_Saved implements _Saved {
     assert(pictureChanged != null);
     assert(pictureRemoved != null);
     assert(saved != null);
+    assert(linkObjectsChanged != null);
     return saved(this);
   }
 
@@ -1553,6 +1627,7 @@ class _$_Saved implements _Saved {
     Result pictureChanged(_ImageChanged value),
     Result pictureRemoved(_PictureRemoved value),
     Result saved(_Saved value),
+    Result linkObjectsChanged(_LinkObjectsChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1569,6 +1644,171 @@ abstract class _Saved implements ItemFormEvent {
   UniqueId get categoryId;
   UniqueId get groupId;
   _$SavedCopyWith<_Saved> get copyWith;
+}
+
+abstract class _$LinkObjectsChangedCopyWith<$Res> {
+  factory _$LinkObjectsChangedCopyWith(
+          _LinkObjectsChanged value, $Res Function(_LinkObjectsChanged) then) =
+      __$LinkObjectsChangedCopyWithImpl<$Res>;
+  $Res call({KtList<LinkObjectPrimitive> linkObjects});
+}
+
+class __$LinkObjectsChangedCopyWithImpl<$Res>
+    extends _$ItemFormEventCopyWithImpl<$Res>
+    implements _$LinkObjectsChangedCopyWith<$Res> {
+  __$LinkObjectsChangedCopyWithImpl(
+      _LinkObjectsChanged _value, $Res Function(_LinkObjectsChanged) _then)
+      : super(_value, (v) => _then(v as _LinkObjectsChanged));
+
+  @override
+  _LinkObjectsChanged get _value => super._value as _LinkObjectsChanged;
+
+  @override
+  $Res call({
+    Object linkObjects = freezed,
+  }) {
+    return _then(_LinkObjectsChanged(
+      linkObjects == freezed
+          ? _value.linkObjects
+          : linkObjects as KtList<LinkObjectPrimitive>,
+    ));
+  }
+}
+
+class _$_LinkObjectsChanged implements _LinkObjectsChanged {
+  const _$_LinkObjectsChanged(this.linkObjects) : assert(linkObjects != null);
+
+  @override
+  final KtList<LinkObjectPrimitive> linkObjects;
+
+  @override
+  String toString() {
+    return 'ItemFormEvent.linkObjectsChanged(linkObjects: $linkObjects)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _LinkObjectsChanged &&
+            (identical(other.linkObjects, linkObjects) ||
+                const DeepCollectionEquality()
+                    .equals(other.linkObjects, linkObjects)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(linkObjects);
+
+  @override
+  _$LinkObjectsChangedCopyWith<_LinkObjectsChanged> get copyWith =>
+      __$LinkObjectsChangedCopyWithImpl<_LinkObjectsChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Option<Item> initialOption),
+    @required Result titleChanged(String title),
+    @required Result priceChanged(String price),
+    @required Result descriptionChanged(String descriptionBody),
+    @required Result selectedIndexChanged(int index),
+    @required Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
+    @required Result pictureChanged(int index, ImageSource imageSource),
+    @required Result pictureRemoved(int index),
+    @required Result saved(UniqueId categoryId, UniqueId groupId),
+    @required
+        Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
+  }) {
+    assert(initialized != null);
+    assert(titleChanged != null);
+    assert(priceChanged != null);
+    assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
+    assert(saved != null);
+    assert(linkObjectsChanged != null);
+    return linkObjectsChanged(linkObjects);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Option<Item> initialOption),
+    Result titleChanged(String title),
+    Result priceChanged(String price),
+    Result descriptionChanged(String descriptionBody),
+    Result selectedIndexChanged(int index),
+    Result isFavoriteChanged(UniqueId categoryId, UniqueId groupId),
+    Result pictureChanged(int index, ImageSource imageSource),
+    Result pictureRemoved(int index),
+    Result saved(UniqueId categoryId, UniqueId groupId),
+    Result linkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (linkObjectsChanged != null) {
+      return linkObjectsChanged(linkObjects);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(_Initialized value),
+    @required Result titleChanged(_TitleChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result selectedIndexChanged(_SelectedIndexChanged value),
+    @required Result isFavoriteChanged(_IsFavoriteChanged value),
+    @required Result pictureChanged(_ImageChanged value),
+    @required Result pictureRemoved(_PictureRemoved value),
+    @required Result saved(_Saved value),
+    @required Result linkObjectsChanged(_LinkObjectsChanged value),
+  }) {
+    assert(initialized != null);
+    assert(titleChanged != null);
+    assert(priceChanged != null);
+    assert(descriptionChanged != null);
+    assert(selectedIndexChanged != null);
+    assert(isFavoriteChanged != null);
+    assert(pictureChanged != null);
+    assert(pictureRemoved != null);
+    assert(saved != null);
+    assert(linkObjectsChanged != null);
+    return linkObjectsChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(_Initialized value),
+    Result titleChanged(_TitleChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result descriptionChanged(_DescriptionChanged value),
+    Result selectedIndexChanged(_SelectedIndexChanged value),
+    Result isFavoriteChanged(_IsFavoriteChanged value),
+    Result pictureChanged(_ImageChanged value),
+    Result pictureRemoved(_PictureRemoved value),
+    Result saved(_Saved value),
+    Result linkObjectsChanged(_LinkObjectsChanged value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (linkObjectsChanged != null) {
+      return linkObjectsChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LinkObjectsChanged implements ItemFormEvent {
+  const factory _LinkObjectsChanged(KtList<LinkObjectPrimitive> linkObjects) =
+      _$_LinkObjectsChanged;
+
+  KtList<LinkObjectPrimitive> get linkObjects;
+  _$LinkObjectsChangedCopyWith<_LinkObjectsChanged> get copyWith;
 }
 
 class _$ItemFormStateTearOff {

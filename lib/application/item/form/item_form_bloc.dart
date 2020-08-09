@@ -6,6 +6,8 @@ import 'package:Sepetim/domain/item/i_item_repository.dart';
 import 'package:Sepetim/domain/item/item.dart';
 import 'package:Sepetim/domain/item/item_failure.dart';
 import 'package:Sepetim/domain/item/value_objects.dart';
+import 'package:Sepetim/domain/link_object/link_object.dart';
+import 'package:Sepetim/presentation/item/form/misc/link_object_primitive.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -138,6 +140,13 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
           temporaryImageFiles: tempImageFiles,
           timeChangeScore: state.timeChangeScore + 1,
         );
+      },
+      linkObjectsChanged: (e) async* {
+        yield state.copyWith(
+            item: state.item.copyWith(
+                linkObjects: List5<LinkObject>(e.linkObjects
+                    .map((lnkObjPrm) => lnkObjPrm.toDomain())
+                    .toList())));
       },
       saved: (e) async* {
         Either<ItemFailure, Unit> failureOrSuccess;
