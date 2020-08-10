@@ -249,7 +249,11 @@ class ItemCategoryCard extends StatelessWidget {
       arguments: ItemGroupOverviewPageArguments(
         key: Key(category.uid.getOrCrash()),
         category: category,
-        watcherBloc: context.bloc<ItemGroupWatcherBloc>(),
+        watcherBloc: context.bloc<ItemGroupWatcherBloc>()
+          ..add(ItemGroupWatcherEvent.watchAllStarted(
+            category.uid,
+            OrderType.date,
+          )),
       ),
     );
   }

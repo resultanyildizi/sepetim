@@ -129,9 +129,3 @@ class LinkForm extends StatelessWidget {
     );
   }
 }
-
-/*context.formLinks = formBloc.state.item.linkObjects.value.fold(
-        (_) => mutableListOf<LinkObjectPrimitive>(),
-        (linkObjects) => linkObjects
-            .map((u) => LinkObjectPrimitive.fromDomain(u))
-            .toMutableList());*/
