@@ -72,27 +72,13 @@ class ItemGroupForm extends StatelessWidget {
                       translate(context, 'add_a_group'),
                       style: robotoTextStyle(bold: true, fontSize: 20.0),
                     ),
-                    SizedBox(
-                      height: screenHeightByScalar(
-                        context,
-                        scalarSmall: 0.02,
-                        scalarMedium: 0.02,
-                        scalarBig: 0.02,
-                      ),
-                    ),
+                    const SizedBox(height: 10),
                     Text(
                       translate(context, 'title'),
                       style: didactGothicTextStyle(bold: false, fontSize: 18.0),
                     ),
                     const TitleTextField(),
-                    SizedBox(
-                      height: screenHeightByScalar(
-                        context,
-                        scalarSmall: 0.02,
-                        scalarMedium: 0.02,
-                        scalarBig: 0.02,
-                      ),
-                    ),
+                    const SizedBox(height: 10),
                     Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,

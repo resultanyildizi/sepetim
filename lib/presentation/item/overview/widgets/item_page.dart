@@ -1,5 +1,14 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kt_dart/kt.dart';
+
 import 'package:Sepetim/application/item/actor/item_actor_bloc.dart';
 import 'package:Sepetim/application/item/form/item_form_bloc.dart';
+import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
+import 'package:Sepetim/domain/item_category/item_category.dart';
+import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
@@ -9,17 +18,10 @@ import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/default_floating_action_button.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
 import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
+import 'package:Sepetim/presentation/item/form/misc/build_context_helper.dart';
 import 'package:Sepetim/presentation/item/form/misc/link_object_primitive.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:Sepetim/domain/item_category/item_category.dart';
-import 'package:Sepetim/domain/item_group/item_group.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kt_dart/kt.dart';
-import 'package:Sepetim/presentation/item/form/misc/build_context_helper.dart';
 
 class ItemPage extends StatelessWidget {
   final ItemCategory category;

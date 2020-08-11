@@ -81,5 +81,10 @@
     "loading": "Yükleniyor",
     "error": "Hata",
     "deleting": "Siliniyor",
-    "edit_description": "Açıklamayı düzenleyin"
+    "edit_description": "Açıklamayı düzenleyin",
+    "links": "Bağlantılar",
+    "url": "Link",
+    "enter_a_url": "Bir link girin",
+    "invalid_url": "Geçersiz link. Link http:// ya da https:// ile başlamalı.",
+    "add_link": "Link ekle"
 }

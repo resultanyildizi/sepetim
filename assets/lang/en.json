@@ -81,5 +81,10 @@
     "loading": "Loading",
     "error": "Error",
     "deleting": "Deleting",
-    "edit_description": "Edit description"
+    "edit_description": "Edit description",
+    "links": "Links",
+    "url": "Url",
+    "enter_a_url": "Enter a url",
+    "invalid_url": "Invalid url. Url must start with http:// or https://",
+    "add_link": "Add link"
 }

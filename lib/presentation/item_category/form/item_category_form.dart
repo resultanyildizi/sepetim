@@ -83,50 +83,22 @@ class ItemCategoryForm extends StatelessWidget {
                       translate(context, 'add_a_category'),
                       style: robotoTextStyle(bold: true, fontSize: 20.0),
                     ),
-                    SizedBox(
-                      height: screenHeightByScalar(
-                        context,
-                        scalarSmall: 0.02,
-                        scalarMedium: 0.02,
-                        scalarBig: 0.02,
-                      ),
-                    ),
+                    const SizedBox(height: 10),
                     Text(
                       translate(context, 'title'),
                       style: didactGothicTextStyle(bold: false, fontSize: 18.0),
                     ),
                     const TitleTextField(),
-                    SizedBox(
-                      height: screenHeightByScalar(
-                        context,
-                        scalarSmall: 0.02,
-                        scalarMedium: 0.02,
-                        scalarBig: 0.02,
-                      ),
-                    ),
+                    const SizedBox(height: 10),
                     Text(
                       translate(context, 'colors'),
                       style: didactGothicTextStyle(bold: false, fontSize: 18.0),
                     ),
-                    SizedBox(
-                      height: screenHeightByScalar(
-                        context,
-                        scalarSmall: 0.02,
-                        scalarMedium: 0.02,
-                        scalarBig: 0.02,
-                      ),
-                    ),
+                    const SizedBox(height: 10),
                     const ColorPickerField(),
-                    SizedBox(
-                      height: screenHeightByScalar(
-                        context,
-                        scalarSmall: 0.02,
-                        scalarMedium: 0.02,
-                        scalarBig: 0.02,
-                      ),
-                    ),
+                    const SizedBox(height: 20),
                     Text(
-                      translate(context, 'colors'),
+                      translate(context, 'cover_picture'),
                       style: didactGothicTextStyle(bold: false, fontSize: 18.0),
                     ),
                     const CoverPictureField(),

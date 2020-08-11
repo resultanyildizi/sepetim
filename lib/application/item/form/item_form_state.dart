@@ -14,12 +14,13 @@ abstract class ItemFormState with _$ItemFormState {
   }) = _ItemFormState;
 
   factory ItemFormState.initial() => ItemFormState(
-      item: Item.empty(),
-      showErrorMessages: false,
-      isEditing: false,
-      isSaving: false,
-      itemFailureOrSuccessOption: none(),
-      temporaryImageFiles: <Option<File>>[none(), none(), none()].toList(),
-      isPictureRemoved: <bool>[false, false, false].toList(),
-      timeChangeScore: 0);
+        item: Item.empty(),
+        showErrorMessages: false,
+        isEditing: false,
+        isSaving: false,
+        itemFailureOrSuccessOption: none(),
+        temporaryImageFiles: <Option<File>>[none(), none(), none()].toList(),
+        isPictureRemoved: <bool>[false, false, false].toList(),
+        timeChangeScore: 0,
+      );
 }
