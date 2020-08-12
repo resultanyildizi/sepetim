@@ -12,6 +12,8 @@
     "invalid_email": "Geçersiz email",
     "weak_password": "Zayıf şifre",
     "or": "YA DA",
+    "yes": "Evet",
+    "no": "Hayır",
     "sign_in_google": "Google ile giriş yap",
     "without_log_in": "Üye olmadan devam et",
     "okay": "Tamam",
@@ -83,8 +85,14 @@
     "deleting": "Siliniyor",
     "edit_description": "Açıklamayı düzenleyin",
     "links": "Bağlantılar",
-    "url": "Link",
-    "enter_a_url": "Bir link girin",
-    "invalid_url": "Geçersiz link. Link http:// ya da https:// ile başlamalı.",
-    "add_link": "Link ekle"
+    "url": "Url",
+    "enter_a_url": "Bir url girin",
+    "invalid_url": "Geçersiz url. Url http:// ya da https:// ile başlamalı.",
+    "add_link": "Bağlantı ekle",
+    "discard_changes_title": "Değişikliklerden vazgeç",
+    "discard_changes_message": "Değişikliklerden vazgeçmek istediğinize emin misiniz?",
+    "link_adding_limit_title": "Bağlantı ekleme sınırı",
+    "link_adding_limit_message": "Üzgünüz, bir ürün için 5'ten fazla bağlantı eklemek mümkün değil.",
+    "delete_link_title": "Bağlantıyı sil",
+    "delete_link_message": "Bu bağlantıyı silmek istediğinizden emin misiniz?"
 }

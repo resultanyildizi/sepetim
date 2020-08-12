@@ -1,5 +1,7 @@
+import 'package:Sepetim/domain/item/item.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/kt.dart';
@@ -17,7 +19,6 @@ import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/default_floating_action_button.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
-import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
 import 'package:Sepetim/presentation/item/form/misc/build_context_helper.dart';
 import 'package:Sepetim/presentation/item/form/misc/link_object_primitive.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
@@ -95,6 +96,7 @@ class ItemPage extends StatelessWidget {
                     (linkObjects) => linkObjects
                         .map((u) => LinkObjectPrimitive.fromDomain(u))
                         .toMutableList());
+                formBloc.add(ItemFormEvent.initialized(some(state.item)));
                 ExtendedNavigator.of(context).pushNamed(
                   Routes.linkForm,
                   arguments: LinkFormArguments(

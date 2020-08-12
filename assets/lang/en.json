@@ -12,6 +12,8 @@
     "invalid_email": "Invalid email",
     "weak_password": "Weak password",
     "or": "OR",
+    "yes": "Yes",
+    "no": "No",
     "sign_in_google": "Sign in with Google",
     "without_log_in": "Continue without logging in",
     "okay": "Okay",
@@ -86,5 +88,11 @@
     "url": "Url",
     "enter_a_url": "Enter a url",
     "invalid_url": "Invalid url. Url must start with http:// or https://",
-    "add_link": "Add link"
+    "add_link": "Add link",
+    "discard_changes_title": "Discard changes",
+    "discard_changes_message": "Are you sure to discard the changes?",
+    "link_adding_limit_title": "Link adding limit",
+    "link_adding_limit_message": "Sorry, it's not possible to add more than 5 links for an item",
+    "delete_link_title": "Delete link",
+    "delete_link_message": "Are you sure to delete this link?"
 }

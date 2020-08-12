@@ -144,14 +144,18 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
       },
       linkObjectsChanged: (e) async* {
         yield state.copyWith(
-            item: state.item.copyWith(
-                linkObjects: List5<LinkObject>(e.linkObjects
-                    .map((lnkObjPrm) => lnkObjPrm.toDomain())
-                    .toList())));
+          item: state.item.copyWith(
+              linkObjects: List5<LinkObject>(e.linkObjects
+                  .map((lnkObjPrm) => lnkObjPrm.toDomain())
+                  .toList())),
+          timeChangeScore: state.timeChangeScore + 1,
+          itemFailureOrSuccessOption: none(),
+        );
       },
       saved: (e) async* {
         Either<ItemFailure, Unit> failureOrSuccess;
         final newImageUrls = state.item.imageUrls.getOrCrash().toMutableList();
+        DateTime lastEditTime = state.item.lastEditTime;
 
         yield state.copyWith(
           isSaving: true,
@@ -197,8 +201,6 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
               );
             }
           }
-
-          DateTime lastEditTime = state.item.lastEditTime;
 
           if (state.timeChangeScore > 0) {
             lastEditTime = DateTime.now().toUtc();

@@ -1,4 +1,5 @@
-import 'package:Sepetim/domain/core/enums.dart';
+import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
+import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,8 +9,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'package:Sepetim/application/item/actor/item_actor_bloc.dart';
 import 'package:Sepetim/application/item/form/item_form_bloc.dart';
-import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
+import 'package:Sepetim/domain/item/item.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/domain/link_object/value_objects.dart';
@@ -24,13 +25,13 @@ import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indica
 import 'package:Sepetim/presentation/item/form/link_form/widgets/text_fields.dart';
 import 'package:Sepetim/presentation/item/form/misc/build_context_helper.dart';
 import 'package:Sepetim/presentation/item/form/misc/link_object_primitive.dart';
+import 'package:dartz/dartz.dart' as dartz;
 
 class LinkForm extends StatefulWidget {
   final ItemCategory category;
   final ItemGroup group;
   final ItemFormBloc formBloc;
   final ItemActorBloc actorBloc;
-
   const LinkForm({
     Key key,
     @required this.category,
@@ -49,14 +50,65 @@ class _LinkFormState extends State<LinkForm> {
       TextEditingController();
   final TextEditingController urlTextEditingController =
       TextEditingController();
+  bool isItemChanged = false;
+  Item oldItem;
+
+  @override
+  void initState() {
+    oldItem = widget.formBloc.state.item.copyWith();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ItemFormBloc, ItemFormState>(
+    return BlocConsumer<ItemFormBloc, ItemFormState>(
       bloc: widget.formBloc,
+      listener: (context, state) {
+        state.itemFailureOrSuccessOption.fold(() => {}, (either) {
+          either.fold(
+            (_) {},
+            (r) {
+              isItemChanged = false;
+            },
+          );
+        });
+      },
       builder: (context, state) {
         return WillPopScope(
           onWillPop: () async {
-            return true;
+            bool willPop = false;
+            if (isItemChanged) {
+              actionPopup(context,
+                  backgroundColor: Colors.white,
+                  title: Text(
+                    translate(context, 'discard_changes_title'),
+                    style: didactGothicTextStyle(),
+                  ),
+                  content: Text(
+                    translate(context, 'discard_changes_message'),
+                  ),
+                  actions: [
+                    RoundedButton(
+                      text: translate(context, 'yes'),
+                      onPressed: () {
+                        widget.formBloc.add(
+                            ItemFormEvent.initialized(dartz.some(oldItem)));
+                        ExtendedNavigator.of(context).pop();
+                        ExtendedNavigator.of(context).pop();
+                      },
+                    ),
+                    RoundedButton(
+                      text: translate(context, 'no'),
+                      onPressed: () {
+                        ExtendedNavigator.of(context).pop();
+                        willPop = false;
+                      },
+                    ),
+                  ]);
+            } else {
+              willPop = true;
+            }
+            return willPop;
           },
           child: Scaffold(
             resizeToAvoidBottomPadding: false,
@@ -103,45 +155,7 @@ class _LinkFormState extends State<LinkForm> {
                       child: RoundedButton(
                         text: translate(context, 'add_link'),
                         onPressed: () {
-                          final title = ShortTitle(
-                              titleTextEditingController.text.trim());
-                          final link =
-                              Link(urlTextEditingController.text.trim());
-
-                          if (!state.item.linkObjects.isFull &&
-                              title.isValid &&
-                              link.isValid) {
-                            context.formLinks = context.formLinks.plusElement(
-                              LinkObjectPrimitive(
-                                uid: UniqueId(),
-                                title: title.getOrCrash(),
-                                link: link.getOrCrash(),
-                              ),
-                            );
-                            widget.formBloc.add(
-                                ItemFormEvent.linkObjectsChanged(
-                                    context.formLinks));
-                          } else {
-                            setState(() {
-                              showErrorMessages = true;
-                            });
-                            if (state.item.linkObjects.isFull) {
-                              actionPopup(
-                                context,
-                                title: Text('Link addition limit'),
-                                content: Text('You cant add more than 5 links'),
-                                barrierDismissible: true,
-                                actions: [
-                                  RoundedButton(
-                                    text: 'Cancel',
-                                    onPressed: () {
-                                      ExtendedNavigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              );
-                            }
-                          }
+                          addLinkObject(state, context);
                         },
                       ),
                     ),
@@ -152,8 +166,10 @@ class _LinkFormState extends State<LinkForm> {
                     const SizedBox(
                       height: 10.0,
                     ),
-                    Container(
-                      constraints: const BoxConstraints(maxHeight: 120),
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxHeight: MediaQuery.of(context).size.height - 475,
+                      ),
                       child: ListView.builder(
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
@@ -193,13 +209,13 @@ class _LinkFormState extends State<LinkForm> {
                               link.uid.getOrCrash(),
                             ),
                             onLongPress: () {
-                              final linkObjectPrimitive =
-                                  context.formLinks.elementAt(index);
-                              context.formLinks = context.formLinks
-                                  .minusElement(linkObjectPrimitive);
-                              widget.formBloc.add(
-                                  ItemFormEvent.linkObjectsChanged(
-                                      context.formLinks));
+                              deletePopup(
+                                context,
+                                title: translate(context, 'delete_link_title'),
+                                message:
+                                    translate(context, 'delete_link_message'),
+                                action: () => deleteLinkObject(context, index),
+                              );
                             },
                             onTap: () async {
                               final url = link.link.getOrCrash();
@@ -240,5 +256,57 @@ class _LinkFormState extends State<LinkForm> {
         );
       },
     );
+  }
+
+  void addLinkObject(ItemFormState state, BuildContext context) {
+    final title = ShortTitle(titleTextEditingController.text.trim());
+    final link = Link(urlTextEditingController.text.trim());
+
+    if (title.isValid && link.isValid) {
+      if (!state.item.linkObjects.isFull) {
+        context.formLinks = context.formLinks.plusElement(
+          LinkObjectPrimitive(
+            uid: UniqueId(),
+            title: title.getOrCrash(),
+            link: link.getOrCrash(),
+          ),
+        );
+        widget.formBloc
+            .add(ItemFormEvent.linkObjectsChanged(context.formLinks));
+        isItemChanged = true;
+      } else {
+        actionPopup(
+          context,
+          backgroundColor: Colors.white,
+          title: Text(
+            translate(context, 'link_adding_limit_title'),
+            style: didactGothicTextStyle(),
+          ),
+          content: Text(
+            translate(context, 'link_adding_limit_message'),
+          ),
+          barrierDismissible: true,
+          actions: [
+            RoundedButton(
+              text: translate(context, 'okay'),
+              onPressed: () {
+                ExtendedNavigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      }
+    } else {
+      setState(() {
+        showErrorMessages = true;
+      });
+    }
+  }
+
+  void deleteLinkObject(BuildContext context, int index) {
+    final linkObjectPrimitive = context.formLinks.elementAt(index);
+    context.formLinks = context.formLinks.minusElement(linkObjectPrimitive);
+    widget.formBloc.add(ItemFormEvent.linkObjectsChanged(context.formLinks));
+    isItemChanged = true;
   }
 }
