@@ -1,4 +1,3 @@
-import 'package:Sepetim/domain/item/item.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dartz/dartz.dart';
@@ -8,7 +7,6 @@ import 'package:kt_dart/kt.dart';
 
 import 'package:Sepetim/application/item/actor/item_actor_bloc.dart';
 import 'package:Sepetim/application/item/form/item_form_bloc.dart';
-import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/injection.dart';

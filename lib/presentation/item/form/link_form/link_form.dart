@@ -1,5 +1,4 @@
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
-import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -239,10 +238,12 @@ class _LinkFormState extends State<LinkForm> {
                           RoundedButton(
                             height: 35,
                             width: screenWidthByScalar(context, 1.0),
-                            text: 'Save',
+                            text: translate(context, 'save'),
                             onPressed: () {
-                              widget.formBloc.add(ItemFormEvent.saved(
-                                  widget.category.uid, widget.group.uid));
+                              widget.formBloc.add(
+                                ItemFormEvent.saved(
+                                    widget.category.uid, widget.group.uid),
+                              );
                             },
                           ),
                         ],

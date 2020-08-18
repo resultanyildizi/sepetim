@@ -1,5 +1,4 @@
 import 'package:Sepetim/predefined_variables/colors.dart';
-import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class SmallCircularProgressIndicator extends StatelessWidget {

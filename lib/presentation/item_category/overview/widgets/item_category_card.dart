@@ -1,7 +1,6 @@
 import 'package:Sepetim/application/item_group/watcher/item_group_watcher_bloc.dart';
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/injection.dart';
-import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,6 @@ import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
-import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
 
 class ItemCategoryCard extends StatelessWidget {
   final ItemCategory category;
