@@ -48,14 +48,9 @@ class SearchField extends StatelessWidget {
             ),
           ),
           onChanged: (text) {
-            if (text == '') {
-              watcherBloc.add(ItemGroupWatcherEvent.watchAllStarted(
-                  categoryId, OrderType.date));
-            }
-
             watcherBloc.add(
               ItemGroupWatcherEvent.watchAllByTitleStarted(
-                  categoryId, OrderType.date, text),
+                  categoryId, OrderType.date, text.trim()),
             );
           },
         ),

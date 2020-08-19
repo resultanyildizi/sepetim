@@ -73,6 +73,46 @@ class ItemGroupOverviewPage extends StatelessWidget {
                 iconData: Icons.add,
               ),
             ),
+            loading: (_) => Scaffold(
+              resizeToAvoidBottomPadding: false,
+              appBar: AppBar(
+                title: Text(
+                  'Sepetim',
+                  style: robotoTextStyle(bold: true),
+                ),
+              ),
+              body: DefaultPadding(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    SearchField(
+                      watcherBloc: watcherBloc,
+                      categoryId: category.uid,
+                      controller: _controller,
+                    ),
+                    const SizedBox(
+                      height: 12.0,
+                    ),
+                    Text(
+                      '${translate(context, 'groups')} - ${category.title.getOrCrash()}',
+                      style: robotoTextStyle(bold: true, fontSize: 24.0),
+                    ),
+                    const Expanded(
+                      child: Center(
+                        child: SizedBox(
+                            width: 30.0,
+                            height: 30.0,
+                            child: CircularProgressIndicator()),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              floatingActionButton: DefaultFloatingActionButton(
+                onPressed: () {},
+                iconData: Icons.add,
+              ),
+            ),
             loadSuccess: (state) {
               return BlocListener<ItemGroupActorBloc, ItemGroupActorState>(
                 listener: (context, state) {
@@ -159,10 +199,14 @@ class ItemGroupOverviewPage extends StatelessWidget {
                 'Sepetim',
                 style: robotoTextStyle(bold: true),
               )),
-              body: Center(
-                child: Container(
-                  width: screenWidthByScalar(context, 0.8),
-                  child: Text(translate(context, 'please_report')),
+              body: DefaultPadding(
+                child: Center(
+                  child: Container(
+                    width: screenWidthByScalar(context, 0.8),
+                    child: Text(
+                      translate(context, 'please_report'),
+                    ),
+                  ),
                 ),
               ),
               floatingActionButton: DefaultFloatingActionButton(

@@ -1,3 +1,4 @@
+import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dartz/dartz.dart';
@@ -26,33 +27,86 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.bloc<ItemFormBloc>().add(ItemFormEvent.initialized(some(item)));
-        ExtendedNavigator.of(context).pushNamed(
-          Routes.itemPage,
-          arguments: ItemPageArguments(
-            formBloc: context.bloc<ItemFormBloc>(),
-            category: category,
-            group: group,
+    return item.failureOption.fold(
+      () => GestureDetector(
+        onTap: () {
+          context
+              .bloc<ItemFormBloc>()
+              .add(ItemFormEvent.initialized(some(item)));
+          ExtendedNavigator.of(context).pushNamed(
+            Routes.itemPage,
+            arguments: ItemPageArguments(
+              formBloc: context.bloc<ItemFormBloc>(),
+              category: category,
+              group: group,
+            ),
+          );
+        },
+        child: Container(
+          height: 160,
+          padding: const EdgeInsets.symmetric(vertical: 12.0),
+          decoration: const BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: sepetimLightGrey,
+              ),
+            ),
           ),
-        );
-      },
-      child: Container(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              coverImage(),
+              informations(context),
+              isFavorite(),
+            ],
+          ),
+        ),
+      ),
+      (a) => Container(
         height: 160,
         padding: const EdgeInsets.symmetric(vertical: 12.0),
         decoration: const BoxDecoration(
-            border: Border(
-                bottom: BorderSide(
-          color: sepetimLightGrey,
-        ))),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            coverImage(),
-            informations(context),
-            isFavorite(),
-          ],
+          border: Border(
+            bottom: BorderSide(
+              color: sepetimLightGrey,
+            ),
+          ),
+        ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
+              vertical: 8.0,
+            ),
+            child: Container(
+              decoration: const BoxDecoration(
+                color: sepetimSmoothRed,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  bottomLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
+              ),
+              height: 120,
+              width: screenWidthByScalar(context, 1.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.error_outline, size: 40),
+                  const SizedBox(
+                    height: 3.0,
+                  ),
+                  Text(
+                    translate(context, 'something_went_wrong'),
+                    style: robotoTextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(height: 3.0),
+                  // TODO: Implement report function
+                  ErrorOutlineButton(onPressed: () {}),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );

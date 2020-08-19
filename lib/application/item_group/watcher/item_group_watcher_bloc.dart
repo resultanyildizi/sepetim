@@ -37,6 +37,7 @@ class ItemGroupWatcherBloc
   ) async* {
     yield* event.map(
       watchAllStarted: (e) async* {
+        yield const ItemGroupWatcherState.loading();
         groupStreamSubscription?.cancel();
         groupStreamSubscription = _groupRepository
             .watchAll(e.categoryId, e.orderType)

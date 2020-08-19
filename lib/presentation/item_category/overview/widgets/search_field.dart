@@ -45,7 +45,7 @@ class SearchField extends StatelessWidget {
           onChanged: (text) {
             context.bloc<ItemCategoryWatcherBloc>().add(
                 ItemCategoryWatcherEvent.watchAllByTitleStarted(
-                    OrderType.date, text));
+                    OrderType.date, text.trim()));
           },
         ),
       ),

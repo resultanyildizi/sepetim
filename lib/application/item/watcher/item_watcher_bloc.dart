@@ -32,6 +32,8 @@ class ItemWatcherBloc extends Bloc<ItemWatcherEvent, ItemWatcherState> {
   ) async* {
     yield* event.map(
       watchAllStarted: (e) async* {
+        yield const ItemWatcherState.loading();
+
         await _itemStreamSubscription?.cancel();
         _itemStreamSubscription = _itemRepository
             .watchAll(e.categoryId, e.groupId, e.orderType)

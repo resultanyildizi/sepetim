@@ -54,6 +54,75 @@ class ItemOverviewPage extends StatelessWidget {
                     groupId: group.uid,
                     controller: _controller,
                     watcherBloc: watcherBloc,
+                  ),
+                  const SizedBox(height: 12.0),
+                  Text(
+                    '${translate(context, 'items')} - ${group.title.getOrCrash()}',
+                    style: robotoTextStyle(bold: true, fontSize: 24.0),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        '${translate(context, 'items_count')}:...',
+                        style: robotoTextStyle(fontSize: 12.0),
+                      ),
+                      Text(
+                        '${translate(context, 'total_price')}:...',
+                        style: robotoTextStyle(fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            floatingActionButton: DefaultFloatingActionButton(
+              onPressed: () {},
+              iconData: Icons.add,
+            ),
+          ),
+          loading: (_) => Scaffold(
+            appBar: AppBar(
+              title: Text(
+                'Sepetim',
+                style: robotoTextStyle(bold: true),
+              ),
+            ),
+            body: DefaultPadding(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  SearchField(
+                    categoryId: category.uid,
+                    groupId: group.uid,
+                    controller: _controller,
+                    watcherBloc: watcherBloc,
+                  ),
+                  const SizedBox(height: 12.0),
+                  Text(
+                    '${translate(context, 'items')} - ${group.title.getOrCrash()}',
+                    style: robotoTextStyle(bold: true, fontSize: 24.0),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        '${translate(context, 'items_count')}:...',
+                        style: robotoTextStyle(fontSize: 12.0),
+                      ),
+                      Text(
+                        '${translate(context, 'total_price')}:...',
+                        style: robotoTextStyle(fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                  const Expanded(
+                    child: Center(
+                      child: SizedBox(
+                          width: 30.0,
+                          height: 30.0,
+                          child: CircularProgressIndicator()),
+                    ),
                   )
                 ],
               ),
@@ -152,8 +221,15 @@ class ItemOverviewPage extends StatelessWidget {
                 style: robotoTextStyle(bold: true),
               ),
             ),
-            body: const Center(
-              child: Text('Load failure'),
+            body: DefaultPadding(
+              child: Center(
+                child: Container(
+                  width: screenWidthByScalar(context, 0.8),
+                  child: Text(
+                    translate(context, 'please_report'),
+                  ),
+                ),
+              ),
             ),
             floatingActionButton: DefaultFloatingActionButton(
               onPressed: () {},

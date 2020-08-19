@@ -30,7 +30,9 @@ double totalItemsPrice(KtList<Item> items) {
   double totalPrice = 0;
 
   items.forEach((item) {
-    totalPrice += item.price.getOrCrash();
+    if (item.failureOption.isNone()) {
+      totalPrice += item.price.getOrCrash();
+    }
   });
   return totalPrice;
 }

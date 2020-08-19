@@ -3,8 +3,10 @@ import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/injection.dart';
+import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
+import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
 import 'package:Sepetim/presentation/item/overview/widgets/item_horizontal_listview.dart';
 import 'package:Sepetim/presentation/item_group/overview/widgets/action_buttons.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
@@ -27,58 +29,88 @@ class ItemGroupCard extends StatelessWidget {
                 category.uid, group.uid, OrderType.date)),
         ),
       ],
-      child: BlocBuilder<ItemWatcherBloc, ItemWatcherState>(
-        builder: (context, state) => GestureDetector(
-          onTap: () {
-            ExtendedNavigator.of(context).pushNamed(
-              Routes.itemOverviewPage,
-              arguments: ItemOverviewPageArguments(
-                category: category,
-                group: group,
-                watcherBloc: context.bloc<ItemWatcherBloc>(),
-                key: Key(group.uid.getOrCrash()),
-              ),
-            );
-          },
-          child: Container(
-              height: 160,
-              margin: const EdgeInsets.fromLTRB(5, 0, 5, 24),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withAlpha(70),
-                      blurRadius: 4,
-                      offset: const Offset(0, 4),
-                    ),
-                  ]),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          group.title.getOrCrash().length <= 25
-                              ? group.title.getOrCrash()
-                              : '${group.title.getOrCrash().substring(0, 22)}...',
-                          style:
-                              didactGothicTextStyle(bold: true, fontSize: 20),
-                        ),
-                        Expanded(
-                          child: ItemGroupActionButtons(
-                            categoryId: category.uid,
-                            group: group,
-                          ),
-                        )
-                      ],
-                    ),
-                    Expanded(child: itemWatcherState(context, state)),
-                  ],
+      child: group.failureOption.fold(
+        () => BlocBuilder<ItemWatcherBloc, ItemWatcherState>(
+          builder: (context, state) => GestureDetector(
+            onTap: () {
+              ExtendedNavigator.of(context).pushNamed(
+                Routes.itemOverviewPage,
+                arguments: ItemOverviewPageArguments(
+                  category: category,
+                  group: group,
+                  watcherBloc: context.bloc<ItemWatcherBloc>(),
+                  key: Key(group.uid.getOrCrash()),
                 ),
-              )),
+              );
+            },
+            child: Container(
+                height: 160,
+                margin: const EdgeInsets.fromLTRB(5, 0, 5, 24),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withAlpha(70),
+                        blurRadius: 4,
+                        offset: const Offset(0, 4),
+                      ),
+                    ]),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            group.title.getOrCrash().length <= 25
+                                ? group.title.getOrCrash()
+                                : '${group.title.getOrCrash().substring(0, 22)}...',
+                            style:
+                                didactGothicTextStyle(bold: true, fontSize: 20),
+                          ),
+                          Expanded(
+                            child: ItemGroupActionButtons(
+                              categoryId: category.uid,
+                              group: group,
+                            ),
+                          )
+                        ],
+                      ),
+                      Expanded(child: itemWatcherState(context, state)),
+                    ],
+                  ),
+                )),
+          ),
+        ),
+        (a) => Container(
+          height: 160,
+          margin: const EdgeInsets.fromLTRB(5, 0, 5, 24),
+          decoration: BoxDecoration(
+              color: sepetimSmoothRed,
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withAlpha(70),
+                  blurRadius: 4,
+                  offset: const Offset(0, 4),
+                ),
+              ]),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.error_outline, size: 60),
+              const SizedBox(height: 3),
+              Text(
+                translate(context, 'something_went_wrong'),
+                style: robotoTextStyle(color: Colors.white),
+              ),
+              const SizedBox(height: 3),
+              // TODO: Implement report function
+              ErrorOutlineButton(onPressed: () {})
+            ],
+          ),
         ),
       ),
     );
@@ -103,8 +135,16 @@ class ItemGroupCard extends StatelessWidget {
           ],
         );
       },
-      loadFailure: (_) => const Center(
-        child: Text('Load Failure'),
+      loading: (_) => Column(children: <Widget>[
+        const Spacer(),
+        const LinearProgressIndicator(
+          backgroundColor: Colors.white,
+          minHeight: 2,
+          valueColor: AlwaysStoppedAnimation(sepetimYellow),
+        ),
+      ]),
+      loadFailure: (_) => Center(
+        child: Text(translate(context, 'please_report')),
       ),
     );
   }

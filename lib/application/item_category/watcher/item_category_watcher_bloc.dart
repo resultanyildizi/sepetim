@@ -36,6 +36,7 @@ class ItemCategoryWatcherBloc
   ) async* {
     yield* event.map(
       watchAllStarted: (e) async* {
+        yield const ItemCategoryWatcherState.loading();
         await _categoryStreamSubscription?.cancel();
         _categoryStreamSubscription = _categoryRepository
             .watchAll(e.orderType)

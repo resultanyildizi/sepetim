@@ -86,9 +86,9 @@ class PictureFields extends StatelessWidget {
               ItemFormEvent.pictureRemoved(index),
             );
       },
-      child: const Icon(
+      child: Icon(
         Icons.close,
-        color: sepetimLightGrey,
+        color: Colors.grey[400],
         size: 20,
       ),
     );
@@ -113,6 +113,21 @@ class PictureFields extends StatelessWidget {
             width: 90,
             height: 160,
             fit: BoxFit.cover,
+          ),
+          placeholder: (context, url) => Container(
+            color: Colors.white,
+            width: 90,
+            height: 160,
+            child: const Center(
+              child: SizedBox(
+                width: 20.0,
+                height: 20.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation(Color(0xFFEEEEEE)),
+                  strokeWidth: 2.0,
+                ),
+              ),
+            ),
           ),
           imageUrl: state.item.imageUrls.getOrCrash()[index].getOrCrash(),
           width: 90,

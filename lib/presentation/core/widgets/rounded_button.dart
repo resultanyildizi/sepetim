@@ -1,3 +1,4 @@
+import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 import 'package:Sepetim/predefined_variables/colors.dart' as app_colors;
@@ -86,6 +87,25 @@ class RoundedIconButton extends StatelessWidget {
               ),
             ],
           )),
+    );
+  }
+}
+
+class ErrorOutlineButton extends StatelessWidget {
+  final Function() onPressed;
+  const ErrorOutlineButton({
+    Key key,
+    @required this.onPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlineButton(
+      color: Colors.white,
+      borderSide: const BorderSide(color: Colors.white),
+      highlightedBorderColor: Colors.white,
+      onPressed: onPressed,
+      child: Text(translate(context, 'report_us')),
     );
   }
 }

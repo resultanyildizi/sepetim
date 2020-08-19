@@ -46,7 +46,7 @@
     "delete_category_message": "Are you sure to delete this category? It's groups and items will be deleted as well. This action can't be undone.",
     "delete": "Delete",
     "cancel": "Cancel",
-    "please_report": "Unexpected error has occured. Please report us by sending email to tanyildizi.resul@gmail.com",
+    "please_report": "An unexpected error has occured. Please report us by sending email to tanyildizi.resul@gmail.com",
     "search_for_category": "Search for a category",
     "categories": "Categories",
     "groups": "Groups",
@@ -94,5 +94,8 @@
     "link_adding_limit_title": "Link adding limit",
     "link_adding_limit_message": "Sorry, it's not possible to add more than 5 links for an item",
     "delete_link_title": "Delete link",
-    "delete_link_message": "Are you sure to delete this link?"
+    "delete_link_message": "Are you sure to delete this link?",
+    "something_went_wrong": "Oh! Something went wrong",
+    "oops_error": "Oops! Error",
+    "report_us": "Report us"
 }

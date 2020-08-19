@@ -544,6 +544,10 @@ class _$ItemWatcherStateTearOff {
     return const _Initial();
   }
 
+  _Loading loading() {
+    return const _Loading();
+  }
+
   _LoadSuccess loadSuccess(KtList<Item> items) {
     return _LoadSuccess(
       items,
@@ -564,12 +568,14 @@ mixin _$ItemWatcherState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result loading(),
     @required Result loadSuccess(KtList<Item> items),
     @required Result loadFailure(ItemFailure itemFailure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result loading(),
     Result loadSuccess(KtList<Item> items),
     Result loadFailure(ItemFailure itemFailure),
     @required Result orElse(),
@@ -577,12 +583,14 @@ mixin _$ItemWatcherState {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
+    @required Result loading(_Loading value),
     @required Result loadSuccess(_LoadSuccess value),
     @required Result loadFailure(_LoadFailure value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
+    Result loading(_Loading value),
     Result loadSuccess(_LoadSuccess value),
     Result loadFailure(_LoadFailure value),
     @required Result orElse(),
@@ -638,10 +646,12 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result loading(),
     @required Result loadSuccess(KtList<Item> items),
     @required Result loadFailure(ItemFailure itemFailure),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
     return initial();
@@ -651,6 +661,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result loading(),
     Result loadSuccess(KtList<Item> items),
     Result loadFailure(ItemFailure itemFailure),
     @required Result orElse(),
@@ -666,10 +677,12 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
+    @required Result loading(_Loading value),
     @required Result loadSuccess(_LoadSuccess value),
     @required Result loadFailure(_LoadFailure value),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
     return initial(this);
@@ -679,6 +692,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
+    Result loading(_Loading value),
     Result loadSuccess(_LoadSuccess value),
     Result loadFailure(_LoadFailure value),
     @required Result orElse(),
@@ -693,6 +707,103 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements ItemWatcherState {
   const factory _Initial() = _$_Initial;
+}
+
+abstract class _$LoadingCopyWith<$Res> {
+  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
+      __$LoadingCopyWithImpl<$Res>;
+}
+
+class __$LoadingCopyWithImpl<$Res> extends _$ItemWatcherStateCopyWithImpl<$Res>
+    implements _$LoadingCopyWith<$Res> {
+  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
+      : super(_value, (v) => _then(v as _Loading));
+
+  @override
+  _Loading get _value => super._value as _Loading;
+}
+
+class _$_Loading implements _Loading {
+  const _$_Loading();
+
+  @override
+  String toString() {
+    return 'ItemWatcherState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result loading(),
+    @required Result loadSuccess(KtList<Item> items),
+    @required Result loadFailure(ItemFailure itemFailure),
+  }) {
+    assert(initial != null);
+    assert(loading != null);
+    assert(loadSuccess != null);
+    assert(loadFailure != null);
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result loading(),
+    Result loadSuccess(KtList<Item> items),
+    Result loadFailure(ItemFailure itemFailure),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result loading(_Loading value),
+    @required Result loadSuccess(_LoadSuccess value),
+    @required Result loadFailure(_LoadFailure value),
+  }) {
+    assert(initial != null);
+    assert(loading != null);
+    assert(loadSuccess != null);
+    assert(loadFailure != null);
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result loading(_Loading value),
+    Result loadSuccess(_LoadSuccess value),
+    Result loadFailure(_LoadFailure value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loading implements ItemWatcherState {
+  const factory _Loading() = _$_Loading;
 }
 
 abstract class _$LoadSuccessCopyWith<$Res> {
@@ -753,10 +864,12 @@ class _$_LoadSuccess implements _LoadSuccess {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result loading(),
     @required Result loadSuccess(KtList<Item> items),
     @required Result loadFailure(ItemFailure itemFailure),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
     return loadSuccess(items);
@@ -766,6 +879,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result loading(),
     Result loadSuccess(KtList<Item> items),
     Result loadFailure(ItemFailure itemFailure),
     @required Result orElse(),
@@ -781,10 +895,12 @@ class _$_LoadSuccess implements _LoadSuccess {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
+    @required Result loading(_Loading value),
     @required Result loadSuccess(_LoadSuccess value),
     @required Result loadFailure(_LoadFailure value),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
     return loadSuccess(this);
@@ -794,6 +910,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
+    Result loading(_Loading value),
     Result loadSuccess(_LoadSuccess value),
     Result loadFailure(_LoadFailure value),
     @required Result orElse(),
@@ -884,10 +1001,12 @@ class _$_LoadFailure implements _LoadFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result loading(),
     @required Result loadSuccess(KtList<Item> items),
     @required Result loadFailure(ItemFailure itemFailure),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
     return loadFailure(itemFailure);
@@ -897,6 +1016,7 @@ class _$_LoadFailure implements _LoadFailure {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result loading(),
     Result loadSuccess(KtList<Item> items),
     Result loadFailure(ItemFailure itemFailure),
     @required Result orElse(),
@@ -912,10 +1032,12 @@ class _$_LoadFailure implements _LoadFailure {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
+    @required Result loading(_Loading value),
     @required Result loadSuccess(_LoadSuccess value),
     @required Result loadFailure(_LoadFailure value),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
     return loadFailure(this);
@@ -925,6 +1047,7 @@ class _$_LoadFailure implements _LoadFailure {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
+    Result loading(_Loading value),
     Result loadSuccess(_LoadSuccess value),
     Result loadFailure(_LoadFailure value),
     @required Result orElse(),
