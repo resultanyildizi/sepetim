@@ -7,7 +7,6 @@ RichText termsAndPrivacyPolicyWidgetEn(BuildContext context) {
     text: TextSpan(
       style: didactGothicTextStyle(
         fontSize: 14.0,
-        bold: false,
       ),
       children: [
         TextSpan(
@@ -21,7 +20,7 @@ RichText termsAndPrivacyPolicyWidgetEn(BuildContext context) {
             context,
             'terms_of_service',
           ),
-          style: TextStyle(color: Colors.blue),
+          style: const TextStyle(color: Colors.blue),
         ),
         TextSpan(
           text: translate(context, 'and'),
@@ -31,7 +30,7 @@ RichText termsAndPrivacyPolicyWidgetEn(BuildContext context) {
             context,
             'privacy_policy',
           ),
-          style: TextStyle(color: Colors.blue),
+          style: const TextStyle(color: Colors.blue),
         ),
         const TextSpan(text: '.'),
       ],
@@ -44,7 +43,6 @@ RichText termsAndPrivacyPolicyWidgetTr(BuildContext context) {
     text: TextSpan(
       style: didactGothicTextStyle(
         fontSize: 14.0,
-        bold: false,
       ),
       children: [
         TextSpan(
@@ -55,7 +53,7 @@ RichText termsAndPrivacyPolicyWidgetTr(BuildContext context) {
             context,
             'terms_of_service',
           ),
-          style: TextStyle(color: Colors.blue),
+          style: const TextStyle(color: Colors.blue),
         ),
         TextSpan(
           text: translate(context, 'and'),
@@ -65,7 +63,7 @@ RichText termsAndPrivacyPolicyWidgetTr(BuildContext context) {
             context,
             'privacy_policy',
           ),
-          style: TextStyle(color: Colors.blue),
+          style: const TextStyle(color: Colors.blue),
         ),
         TextSpan(
           text: translate(context, 'you_agree'),

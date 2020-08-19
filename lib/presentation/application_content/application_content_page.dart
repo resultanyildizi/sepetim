@@ -41,45 +41,45 @@ class ApplicationContentPage extends StatelessWidget {
                   currentIndex: state.selectedIndex,
                   items: [
                     BottomNavigationBarItem(
-                      activeIcon: Icon(
+                      activeIcon: const Icon(
                         Icons.home,
                         color: sepetimGrey,
                       ),
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.home,
                         color: sepetimLightGrey,
                       ),
                       title: Text(
                         translate(context, 'home'),
-                        style: didactGothicTextStyle(color: sepetimGrey),
+                        style: didactGothicTextStyle(),
                       ),
                     ),
                     BottomNavigationBarItem(
-                      activeIcon: Icon(
+                      activeIcon: const Icon(
                         Icons.favorite,
                         color: sepetimGrey,
                       ),
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.favorite,
                         color: sepetimLightGrey,
                       ),
                       title: Text(
                         translate(context, 'favorites'),
-                        style: didactGothicTextStyle(color: sepetimGrey),
+                        style: didactGothicTextStyle(),
                       ),
                     ),
                     BottomNavigationBarItem(
-                      activeIcon: Icon(
+                      activeIcon: const Icon(
                         Icons.settings,
                         color: sepetimGrey,
                       ),
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.settings,
                         color: sepetimLightGrey,
                       ),
                       title: Text(
                         translate(context, 'settings'),
-                        style: didactGothicTextStyle(color: sepetimGrey),
+                        style: didactGothicTextStyle(),
                       ),
                     )
                   ],

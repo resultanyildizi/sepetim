@@ -132,7 +132,7 @@ class _LinkFormState extends State<LinkForm> {
                     ),
                     Text(
                       translate(context, 'title'),
-                      style: didactGothicTextStyle(bold: false, fontSize: 18.0),
+                      style: didactGothicTextStyle(fontSize: 18.0),
                     ),
                     LinkTitleTextField(
                       textEdiginController: titleTextEditingController,
@@ -140,7 +140,7 @@ class _LinkFormState extends State<LinkForm> {
                     ),
                     Text(
                       translate(context, 'url'),
-                      style: didactGothicTextStyle(bold: false, fontSize: 18.0),
+                      style: didactGothicTextStyle(fontSize: 18.0),
                     ),
                     LinkUrlTextField(
                       textEdiginController: urlTextEditingController,
@@ -195,7 +195,7 @@ class _LinkFormState extends State<LinkForm> {
                               ),
                             ),
                             trailing: IconButton(
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.content_copy,
                                 color: sepetimGrey,
                               ),

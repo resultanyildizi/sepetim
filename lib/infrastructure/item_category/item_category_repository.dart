@@ -161,7 +161,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
             CropAspectRatioPreset.square,
           ],
           compressQuality: 20,
-          androidUiSettings: AndroidUiSettings(
+          androidUiSettings: const AndroidUiSettings(
             toolbarTitle: 'Sepetim',
             toolbarColor: sepetimYellow,
             toolbarWidgetColor: sepetimGrey,

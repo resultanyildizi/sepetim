@@ -39,14 +39,14 @@ class CircularItemView extends StatelessWidget {
         children: <Widget>[
           Container(
             margin: const EdgeInsets.only(top: 16),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
                   spreadRadius: 1,
                   blurRadius: 6,
-                  offset: const Offset(0, 2),
+                  offset: Offset(0, 2),
                 ),
               ],
             ),
@@ -54,8 +54,22 @@ class CircularItemView extends StatelessWidget {
               imageUrl: item.imageUrls
                   .getOrCrash()[item.selectedIndex.getOrCrash()]
                   .getOrCrash(),
-              placeholder: (context, url) =>
-                  CircleAvatar(backgroundColor: Colors.white, radius: 28),
+              errorWidget: (context, url, error) => const CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/default.png'),
+                  radius: 28.0),
+              placeholder: (context, url) => const CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: 28.0,
+                child: SizedBox(
+                  height: 10.0,
+                  width: 10.0,
+                  child: CircularProgressIndicator(
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Color(0xFFEEEEEE)),
+                    strokeWidth: 2.0,
+                  ),
+                ),
+              ),
               imageBuilder: (context, image) =>
                   CircleAvatar(backgroundImage: image, radius: 28),
             ),

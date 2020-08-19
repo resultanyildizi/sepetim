@@ -86,7 +86,7 @@ class PictureFields extends StatelessWidget {
               ItemFormEvent.pictureRemoved(index),
             );
       },
-      child: Icon(
+      child: const Icon(
         Icons.close,
         color: sepetimLightGrey,
         size: 20,

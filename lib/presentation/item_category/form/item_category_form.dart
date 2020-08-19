@@ -86,20 +86,20 @@ class ItemCategoryForm extends StatelessWidget {
                     const SizedBox(height: 10),
                     Text(
                       translate(context, 'title'),
-                      style: didactGothicTextStyle(bold: false, fontSize: 18.0),
+                      style: didactGothicTextStyle(fontSize: 18.0),
                     ),
                     const TitleTextField(),
                     const SizedBox(height: 10),
                     Text(
                       translate(context, 'colors'),
-                      style: didactGothicTextStyle(bold: false, fontSize: 18.0),
+                      style: didactGothicTextStyle(fontSize: 18.0),
                     ),
                     const SizedBox(height: 10),
                     const ColorPickerField(),
                     const SizedBox(height: 20),
                     Text(
                       translate(context, 'cover_picture'),
-                      style: didactGothicTextStyle(bold: false, fontSize: 18.0),
+                      style: didactGothicTextStyle(fontSize: 18.0),
                     ),
                     const CoverPictureField(),
                     Expanded(

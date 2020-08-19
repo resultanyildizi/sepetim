@@ -59,7 +59,6 @@ class ItemGroupCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Text(
                           group.title.getOrCrash().length <= 25

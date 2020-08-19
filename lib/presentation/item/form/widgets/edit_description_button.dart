@@ -28,7 +28,7 @@ class EditDescriptionButton extends StatelessWidget {
         );
       },
       child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             border: Border(
               bottom: BorderSide(color: sepetimLightGrey, width: 2),
             ),
@@ -43,7 +43,7 @@ class EditDescriptionButton extends StatelessWidget {
                   style: didactGothicTextStyle(
                       fontSize: 16, color: sepetimLightGrey),
                 ),
-                Icon(
+                const Icon(
                   Icons.arrow_forward_ios,
                   color: sepetimLightGrey,
                 )

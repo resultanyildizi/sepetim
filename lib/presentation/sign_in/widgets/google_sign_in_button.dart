@@ -21,7 +21,7 @@ class GoogleSignInButton extends StatelessWidget {
       elevation: 4.0,
       child: Row(
         children: <Widget>[
-          CircleAvatar(
+          const CircleAvatar(
             backgroundImage: app_images.googleLogo,
             radius: 16,
           ),

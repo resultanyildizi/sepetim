@@ -23,14 +23,12 @@ class TitleTextField extends StatelessWidget {
         controller: textEdiginController,
         cursorColor: sepetimGrey,
         textCapitalization: TextCapitalization.sentences,
-        maxLengthEnforced: true,
         style: Theme.of(context).textTheme.subtitle1,
         decoration: InputDecoration(
           counterStyle: robotoTextStyle(),
           labelText: translate(context, 'enter_a_title'),
         ),
         maxLength: ShortTitle.maxLength,
-        maxLines: 1,
         autocorrect: false,
         onChanged: (value) => context
             .bloc<ItemCategoryFormBloc>()

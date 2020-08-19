@@ -66,7 +66,7 @@ class CoverPictureField extends StatelessWidget {
                         context.bloc<ItemCategoryFormBloc>().add(
                             const ItemCategoryFormEvent.coverImageRemoved());
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.close,
                         color: sepetimLightGrey,
                         size: 15,

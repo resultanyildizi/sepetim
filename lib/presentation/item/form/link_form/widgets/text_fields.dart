@@ -22,14 +22,12 @@ class LinkTitleTextField extends StatelessWidget {
       controller: textEdiginController,
       cursorColor: sepetimGrey,
       textCapitalization: TextCapitalization.sentences,
-      maxLengthEnforced: true,
       style: Theme.of(context).textTheme.subtitle1,
       decoration: InputDecoration(
         counterStyle: robotoTextStyle(),
         labelText: translate(context, 'enter_a_title'),
       ),
       maxLength: ShortTitle.maxLength,
-      maxLines: 1,
       autocorrect: false,
       validator: (_) => ShortTitle(textEdiginController.text).value.fold(
             (f) => f.maybeMap(
@@ -60,13 +58,11 @@ class LinkUrlTextField extends StatelessWidget {
       controller: textEdiginController,
       cursorColor: sepetimGrey,
       textCapitalization: TextCapitalization.sentences,
-      maxLengthEnforced: true,
       style: Theme.of(context).textTheme.subtitle1,
       decoration: InputDecoration(
         counterStyle: robotoTextStyle(),
         labelText: translate(context, 'enter_a_url'),
       ),
-      maxLines: 1,
       autocorrect: false,
       validator: (_) => Link(textEdiginController.text).value.fold(
             (f) => f.maybeMap(

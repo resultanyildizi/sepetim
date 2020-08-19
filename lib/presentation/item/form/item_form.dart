@@ -97,8 +97,7 @@ class ItemForm extends StatelessWidget {
                                 const EdgeInsets.symmetric(horizontal: 22.0),
                             child: Text(
                               translate(context, 'title'),
-                              style: didactGothicTextStyle(
-                                  bold: false, fontSize: 18.0),
+                              style: didactGothicTextStyle(fontSize: 18.0),
                             ),
                           ),
                           const Padding(
@@ -111,8 +110,7 @@ class ItemForm extends StatelessWidget {
                                 const EdgeInsets.symmetric(horizontal: 22.0),
                             child: Text(
                               translate(context, 'price'),
-                              style: didactGothicTextStyle(
-                                  bold: false, fontSize: 18.0),
+                              style: didactGothicTextStyle(fontSize: 18.0),
                             ),
                           ),
                           const Padding(
@@ -125,8 +123,7 @@ class ItemForm extends StatelessWidget {
                                 const EdgeInsets.symmetric(horizontal: 22.0),
                             child: Text(
                               translate(context, 'description'),
-                              style: didactGothicTextStyle(
-                                  bold: false, fontSize: 18.0),
+                              style: didactGothicTextStyle(fontSize: 18.0),
                             ),
                           ),
                           const SizedBox(height: 10),
@@ -141,8 +138,7 @@ class ItemForm extends StatelessWidget {
                                 const EdgeInsets.symmetric(horizontal: 22.0),
                             child: Text(
                               translate(context, 'pictures'),
-                              style: didactGothicTextStyle(
-                                  bold: false, fontSize: 18.0),
+                              style: didactGothicTextStyle(fontSize: 18.0),
                             ),
                           ),
                           const Center(child: PictureFields()),

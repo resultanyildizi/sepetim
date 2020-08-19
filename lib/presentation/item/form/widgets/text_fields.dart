@@ -33,8 +33,6 @@ class TitleTextField extends StatelessWidget {
               labelText: translate(context, 'enter_a_title'),
               counterStyle: robotoTextStyle()),
           maxLength: ShortTitle.maxLength,
-          maxLengthEnforced: true,
-          maxLines: 1,
           autocorrect: false,
           onChanged: (value) => context
               .bloc<ItemFormBloc>()
@@ -78,9 +76,7 @@ class PriceTextField extends StatelessWidget {
           decoration: InputDecoration(
             labelText: translate(context, 'enter_a_price'),
           ),
-          maxLengthEnforced: true,
           maxLength: 100,
-          maxLines: 1,
           autocorrect: false,
           onTap: () {
             if (_textEditingController.text == '0.0' ||
@@ -140,7 +136,6 @@ class DescriptionBodyTextField extends StatelessWidget {
               labelText: translate(context, 'enter_a_description'),
               counterStyle: didactGothicTextStyle()),
           maxLength: DescriptionBody.maxLength,
-          maxLengthEnforced: true,
           autocorrect: false,
           minLines: 1,
           maxLines: 100,

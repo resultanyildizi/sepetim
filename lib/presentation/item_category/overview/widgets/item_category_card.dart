@@ -59,10 +59,9 @@ class ItemCategoryCard extends StatelessWidget {
                             : '${category.title.getOrCrash().substring(0, 17)}...',
                         style: didactGothicTextStyle(
                           bold: true,
-                          color: sepetimGrey,
                         ),
                       ),
-                      Divider(
+                      const Divider(
                         color: sepetimGrey,
                         height: 5.0,
                         thickness: 1.5,
@@ -99,7 +98,7 @@ class ItemCategoryCard extends StatelessWidget {
                       const SizedBox(
                         height: 4.0,
                       ),
-                      Divider(
+                      const Divider(
                         color: sepetimGrey,
                         height: 5.0,
                         thickness: 1.5,
@@ -111,7 +110,6 @@ class ItemCategoryCard extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 10.0),
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
                                   state.map(
@@ -127,7 +125,7 @@ class ItemCategoryCard extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    Icon(Icons.date_range,
+                                    const Icon(Icons.date_range,
                                         color: sepetimGrey, size: 12.0),
                                     const SizedBox(width: 4.0),
                                     Text(
@@ -158,10 +156,24 @@ class ItemCategoryCard extends StatelessWidget {
     return Center(
       child: CachedNetworkImage(
         imageUrl: category.coverImageUrl.getOrCrash(),
+        errorWidget: (context, url, error) => CircleAvatar(
+          backgroundImage: const AssetImage('assets/images/default.png'),
+          radius: screenHeightByScalar(context,
+              scalarSmall: 0.065, scalarMedium: 0.060, scalarBig: 0.056),
+        ),
         placeholder: (context, url) => CircleAvatar(
           backgroundColor: Colors.white,
           radius: screenHeightByScalar(context,
               scalarSmall: 0.065, scalarMedium: 0.060, scalarBig: 0.056),
+          child: SizedBox(
+            height: 25.0,
+            width: 25.0,
+            child: CircularProgressIndicator(
+              valueColor:
+                  AlwaysStoppedAnimation<Color>(category.color.getOrCrash()),
+              strokeWidth: 2.0,
+            ),
+          ),
         ),
         imageBuilder: (context, image) => CircleAvatar(
           backgroundImage: image,

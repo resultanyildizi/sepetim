@@ -28,9 +28,7 @@ class TitleTextField extends StatelessWidget {
           labelText: translate(context, 'enter_a_title'),
           counterStyle: robotoTextStyle(),
         ),
-        maxLengthEnforced: true,
         maxLength: ShortTitle.maxLength,
-        maxLines: 1,
         autocorrect: false,
         onChanged: (value) => context
             .bloc<ItemGroupFormBloc>()

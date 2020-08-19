@@ -30,6 +30,7 @@ class AppWidget extends StatelessWidget {
           Locale('en', 'US'),
           Locale.fromSubtags(languageCode: 'tr', countryCode: 'TR'),
         ],
+        // ignore: prefer_const_literals_to_create_immutables
         localizationsDelegates: [
           //* A class which loads the translations from JSON files
           AppLocalizations.delegate,

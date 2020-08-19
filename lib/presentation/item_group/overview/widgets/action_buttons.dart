@@ -36,7 +36,7 @@ class ItemGroupActionButtons extends StatelessWidget {
                       ),
                 );
               },
-              child: SizedBox(
+              child: const SizedBox(
                   width: 26,
                   height: 26,
                   child: Icon(
@@ -61,7 +61,7 @@ class ItemGroupActionButtons extends StatelessWidget {
                   ),
                 );
               },
-              child: SizedBox(
+              child: const SizedBox(
                   width: 26,
                   height: 26,
                   child: Icon(

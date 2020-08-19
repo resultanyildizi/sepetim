@@ -303,11 +303,11 @@ class ItemPage extends StatelessWidget {
           onTap: () => formBloc
               .add(ItemFormEvent.isFavoriteChanged(category.uid, group.uid)),
           child: state.item.isFavorite
-              ? Icon(
+              ? const Icon(
                   Icons.favorite,
                   color: Colors.redAccent,
                 )
-              : Icon(
+              : const Icon(
                   Icons.favorite_border,
                   color: sepetimLightGrey,
                 ),
@@ -325,21 +325,31 @@ class ItemPage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
                   spreadRadius: 1,
                   blurRadius: 6,
-                  offset: const Offset(0, 2),
+                  offset: Offset(0, 2),
                 ),
               ],
             ),
             child: CachedNetworkImage(
               imageUrl: state.item.imageUrls.getOrCrash()[index].getOrCrash(),
-              placeholder: (context, url) =>
-                  CircleAvatar(backgroundColor: Colors.white, radius: 16),
+              placeholder: (context, url) => const CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: 16,
+                child: SizedBox(
+                  width: 5.0,
+                  height: 5.0,
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation(Color(0xFFEEEEEE)),
+                    strokeWidth: 2.0,
+                  ),
+                ),
+              ),
               imageBuilder: (context, image) =>
                   CircleAvatar(backgroundImage: image, radius: 16),
             ),
@@ -403,7 +413,7 @@ class ItemPage extends StatelessWidget {
                       },
                     );
                   },
-                  child: SizedBox(
+                  child: const SizedBox(
                       width: 30,
                       height: 30,
                       child: Icon(
@@ -430,7 +440,7 @@ class ItemPage extends StatelessWidget {
                           editedItem: state.item,
                         ));
                   },
-                  child: SizedBox(
+                  child: const SizedBox(
                       width: 30,
                       height: 30,
                       child: Icon(

@@ -151,10 +151,9 @@ class ItemRepository extends IItemRepository {
       if (pickedFile != null) {
         final _croppedImage = await ImageCropper.cropImage(
           sourcePath: pickedFile.path,
-          cropStyle: CropStyle.rectangle,
           compressQuality: 85,
           aspectRatio: const CropAspectRatio(ratioX: 6, ratioY: 9),
-          androidUiSettings: AndroidUiSettings(
+          androidUiSettings: const AndroidUiSettings(
             toolbarTitle: 'Sepetim',
             toolbarColor: sepetimYellow,
             toolbarWidgetColor: sepetimGrey,

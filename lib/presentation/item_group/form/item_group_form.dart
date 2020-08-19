@@ -75,7 +75,7 @@ class ItemGroupForm extends StatelessWidget {
                     const SizedBox(height: 10),
                     Text(
                       translate(context, 'title'),
-                      style: didactGothicTextStyle(bold: false, fontSize: 18.0),
+                      style: didactGothicTextStyle(fontSize: 18.0),
                     ),
                     const TitleTextField(),
                     const SizedBox(height: 10),

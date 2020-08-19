@@ -41,7 +41,7 @@ class ItemCard extends StatelessWidget {
       child: Container(
         height: 160,
         padding: const EdgeInsets.symmetric(vertical: 12.0),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             border: Border(
                 bottom: BorderSide(
           color: sepetimLightGrey,
@@ -64,11 +64,11 @@ class ItemCard extends StatelessWidget {
       child: Container(
         width: 20,
         child: item.isFavorite
-            ? Icon(
+            ? const Icon(
                 Icons.favorite,
                 color: Colors.redAccent,
               )
-            : Icon(
+            : const Icon(
                 Icons.favorite_border,
                 color: sepetimLightGrey,
               ),
@@ -134,15 +134,15 @@ class ItemCard extends StatelessWidget {
           ],
         ),
         child: CachedNetworkImage(
+          imageUrl: item.imageUrls
+              .getOrCrash()[item.selectedIndex.getOrCrash()]
+              .getOrCrash(),
           errorWidget: (context, url, error) => Image.asset(
             'assets/images/default.png',
             width: 90,
             height: 160,
             fit: BoxFit.cover,
           ),
-          imageUrl: item.imageUrls
-              .getOrCrash()[item.selectedIndex.getOrCrash()]
-              .getOrCrash(),
           width: 90,
           height: 160,
           fit: BoxFit.cover,

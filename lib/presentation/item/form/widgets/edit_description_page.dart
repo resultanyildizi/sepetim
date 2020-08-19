@@ -35,7 +35,7 @@ class EditDescriptionPage extends StatelessWidget {
                     .add(ItemFormEvent.descriptionChanged(value.trim()));
                 ExtendedNavigator.of(context).pop();
               },
-              child: Icon(
+              child: const Icon(
                 Icons.check_box,
                 size: 30,
                 color: sepetimGrey,

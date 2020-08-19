@@ -14,21 +14,22 @@ final ThemeData sepetimLightTheme = ThemeData(
     textTheme: TextTheme(headline1: robotoTextStyle(bold: true)),
   ),
   textTheme: Typography.blackCupertino.copyWith(
-    bodyText1: robotoTextStyle(bold: true, color: app_color.sepetimGrey),
+    bodyText1: robotoTextStyle(
+      bold: true,
+    ),
     subtitle1: didactGothicTextStyle(),
   ),
   // textSelectionColor: app_color.sepetimGrey,
   // textSelectionHandleColor: app_color.sepetimGrey,
   inputDecorationTheme: InputDecorationTheme(
-    suffixStyle: TextStyle(color: app_color.sepetimLightGrey),
+    suffixStyle: const TextStyle(color: app_color.sepetimLightGrey),
     contentPadding: const EdgeInsets.symmetric(horizontal: 1.0),
     labelStyle: didactGothicTextStyle(
       fontSize: 16.0,
-      bold: false,
       color: app_color.sepetimLightGrey,
     ),
     focusColor: app_color.sepetimLightGrey,
-    enabledBorder: UnderlineInputBorder(
+    enabledBorder: const UnderlineInputBorder(
       borderSide: BorderSide(color: app_color.sepetimLightGrey),
     ),
   ),

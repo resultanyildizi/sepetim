@@ -36,8 +36,8 @@ Widget passwordFormField(BuildContext context) {
         labelText: translate(context, 'password'),
         suffixIcon: IconButton(
           icon: state.isVisible
-              ? Icon(Icons.visibility_off)
-              : Icon(Icons.visibility),
+              ? const Icon(Icons.visibility_off)
+              : const Icon(Icons.visibility),
           onPressed: () => context.bloc<PasswordVisibilityBloc>().add(
                 const PasswordVisibilityEvent.visibilityChanged(),
               ),

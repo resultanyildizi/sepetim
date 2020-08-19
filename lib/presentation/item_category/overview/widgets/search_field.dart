@@ -18,12 +18,10 @@ class SearchField extends StatelessWidget {
       child: SizedBox(
         height: 35,
         child: TextFormField(
-          autofocus: false,
           controller: controller,
           cursorColor: sepetimGrey,
           textCapitalization: TextCapitalization.sentences,
           style: Theme.of(context).textTheme.subtitle1,
-          maxLines: 1,
           autocorrect: false,
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
@@ -39,7 +37,7 @@ class SearchField extends StatelessWidget {
             filled: true,
             hintStyle: didactGothicTextStyle(fontSize: 16.0),
             hintText: translate(context, 'search_for_category'),
-            prefixIcon: Icon(
+            prefixIcon: const Icon(
               Icons.search,
               color: sepetimGrey,
             ),
