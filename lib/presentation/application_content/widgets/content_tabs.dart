@@ -1,4 +1,4 @@
-import 'package:Sepetim/presentation/item_category/overview/item_category_overview_page.dart';
+import 'package:Sepetim/presentation/home/item_category/overview/item_category_overview_page.dart';
 import 'package:flutter/material.dart';
 
 final List<Widget> contentTabs = [

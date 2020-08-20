@@ -1,11 +1,11 @@
 import 'package:Sepetim/predefined_variables/colors.dart';
+import 'package:Sepetim/presentation/home/item/form/widgets/text_fields.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:Sepetim/application/item/form/item_form_bloc.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
-import 'package:Sepetim/presentation/item/form/widgets/text_fields.dart';
 
 class EditDescriptionPage extends StatelessWidget {
   final ItemFormBloc itemFormBloc;

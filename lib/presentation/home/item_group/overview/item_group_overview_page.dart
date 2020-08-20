@@ -1,4 +1,6 @@
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
+import 'package:Sepetim/presentation/home/item_group/overview/widgets/item_group_card.dart';
+import 'package:Sepetim/presentation/home/item_group/overview/widgets/search_field.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +14,6 @@ import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/default_floating_action_button.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
-import 'package:Sepetim/presentation/item_group/overview/widgets/item_group_card.dart';
-import 'package:Sepetim/presentation/item_group/overview/widgets/search_field.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 
 class ItemGroupOverviewPage extends StatelessWidget {

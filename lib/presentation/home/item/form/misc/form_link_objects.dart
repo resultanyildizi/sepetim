@@ -1,4 +1,4 @@
-import 'package:Sepetim/presentation/item/form/misc/link_object_primitive.dart';
+import 'package:Sepetim/presentation/home/item/form/misc/link_object_primitive.dart';
 import 'package:flutter/material.dart';
 import 'package:kt_dart/kt.dart';
 
