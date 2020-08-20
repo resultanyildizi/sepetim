@@ -1,6 +1,7 @@
 import 'package:Sepetim/domain/auth/user.dart';
 import 'package:Sepetim/domain/auth/value_objects.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
 import 'auth_failure.dart';
@@ -21,6 +22,10 @@ abstract class IAuthFacade {
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
 
   Future<Either<AuthFailure, Unit>> signInAnonymously();
+
+  Future<Either<AuthFailure, Unit>> deleteAccount({
+    @required FirebaseUser firebaseUser,
+  });
 
   Future<void> signOut();
 }

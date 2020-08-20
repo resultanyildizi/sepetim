@@ -1,7 +1,9 @@
 import 'package:Sepetim/domain/auth/sign_in_type.dart';
 import 'package:Sepetim/domain/auth/user.dart';
+import 'package:Sepetim/domain/auth/value_objects.dart';
 import 'package:Sepetim/domain/core/errors.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 extension FirebaseUserDoaminX on FirebaseUser {
@@ -9,6 +11,7 @@ extension FirebaseUserDoaminX on FirebaseUser {
     return User(
       id: UniqueId.fromUniqueString(uid),
       signInType: _getSignInType(),
+      emailOption: optionOf(email == "" ? null : email),
     );
   }
 

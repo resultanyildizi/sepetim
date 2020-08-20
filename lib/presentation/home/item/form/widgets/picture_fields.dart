@@ -1,8 +1,7 @@
 import 'package:Sepetim/domain/core/value_objects.dart';
-import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
-import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
+import 'package:Sepetim/presentation/core/widgets/buttons.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

@@ -56,15 +56,15 @@ class ApplicationContentPage extends StatelessWidget {
                     ),
                     BottomNavigationBarItem(
                       activeIcon: const Icon(
-                        Icons.favorite,
+                        Icons.person,
                         color: sepetimGrey,
                       ),
                       icon: const Icon(
-                        Icons.favorite,
+                        Icons.person,
                         color: sepetimLightGrey,
                       ),
                       title: Text(
-                        translate(context, 'favorites'),
+                        translate(context, 'account'),
                         style: didactGothicTextStyle(),
                       ),
                     ),
@@ -81,7 +81,7 @@ class ApplicationContentPage extends StatelessWidget {
                         translate(context, 'settings'),
                         style: didactGothicTextStyle(),
                       ),
-                    )
+                    ),
                   ],
                   onTap: (index) => context.bloc<BottomNavbarBloc>()
                     ..add(

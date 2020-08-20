@@ -28,12 +28,7 @@ abstract class IItemCategoryRepository {
   Future<Either<ItemCategoryFailure, ImageUrl>> removeCoverPictureFromServer(
     ItemCategory category,
   );
-  Future<Either<ItemCategoryFailure, NotNegativeIntegerNumber>> getGroupCount(
-    ItemCategory category,
-  );
-  Future<Either<ItemCategoryFailure, NotNegativeIntegerNumber>> getItemCount(
-    ItemCategory category,
-  );
+
   Stream<Either<ItemCategoryFailure, KtList<ItemCategory>>> watchAll(
     OrderType orderType,
   );

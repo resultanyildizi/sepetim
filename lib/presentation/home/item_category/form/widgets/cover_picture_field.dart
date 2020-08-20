@@ -2,7 +2,7 @@ import 'package:Sepetim/application/item_category/form/item_category_form_bloc.d
 import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
+import 'package:Sepetim/presentation/core/widgets/buttons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

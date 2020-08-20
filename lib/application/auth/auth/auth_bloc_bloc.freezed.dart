@@ -243,9 +243,11 @@ class _$AuthStateTearOff {
     return const _Initial();
   }
 
-  _Authenticated authenticated({@required SignInType signInType}) {
+  _Authenticated authenticated(
+      {@required SignInType signInType, @required User user}) {
     return _Authenticated(
       signInType: signInType,
+      user: user,
     );
   }
 
@@ -261,13 +263,13 @@ mixin _$AuthState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result authenticated(SignInType signInType),
+    @required Result authenticated(SignInType signInType, User user),
     @required Result unauthenticated(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result authenticated(SignInType signInType),
+    Result authenticated(SignInType signInType, User user),
     Result unauthenticated(),
     @required Result orElse(),
   });
@@ -333,7 +335,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result authenticated(SignInType signInType),
+    @required Result authenticated(SignInType signInType, User user),
     @required Result unauthenticated(),
   }) {
     assert(initial != null);
@@ -346,7 +348,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result authenticated(SignInType signInType),
+    Result authenticated(SignInType signInType, User user),
     Result unauthenticated(),
     @required Result orElse(),
   }) {
@@ -394,9 +396,10 @@ abstract class _$AuthenticatedCopyWith<$Res> {
   factory _$AuthenticatedCopyWith(
           _Authenticated value, $Res Function(_Authenticated) then) =
       __$AuthenticatedCopyWithImpl<$Res>;
-  $Res call({SignInType signInType});
+  $Res call({SignInType signInType, User user});
 
   $SignInTypeCopyWith<$Res> get signInType;
+  $UserCopyWith<$Res> get user;
 }
 
 class __$AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
@@ -411,10 +414,12 @@ class __$AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object signInType = freezed,
+    Object user = freezed,
   }) {
     return _then(_Authenticated(
       signInType:
           signInType == freezed ? _value.signInType : signInType as SignInType,
+      user: user == freezed ? _value.user : user as User,
     ));
   }
 
@@ -427,18 +432,31 @@ class __$AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
       return _then(_value.copyWith(signInType: value));
     });
   }
+
+  @override
+  $UserCopyWith<$Res> get user {
+    if (_value.user == null) {
+      return null;
+    }
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
 }
 
 class _$_Authenticated implements _Authenticated {
-  const _$_Authenticated({@required this.signInType})
-      : assert(signInType != null);
+  const _$_Authenticated({@required this.signInType, @required this.user})
+      : assert(signInType != null),
+        assert(user != null);
 
   @override
   final SignInType signInType;
+  @override
+  final User user;
 
   @override
   String toString() {
-    return 'AuthState.authenticated(signInType: $signInType)';
+    return 'AuthState.authenticated(signInType: $signInType, user: $user)';
   }
 
   @override
@@ -447,12 +465,16 @@ class _$_Authenticated implements _Authenticated {
         (other is _Authenticated &&
             (identical(other.signInType, signInType) ||
                 const DeepCollectionEquality()
-                    .equals(other.signInType, signInType)));
+                    .equals(other.signInType, signInType)) &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(signInType);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(signInType) ^
+      const DeepCollectionEquality().hash(user);
 
   @override
   _$AuthenticatedCopyWith<_Authenticated> get copyWith =>
@@ -462,26 +484,26 @@ class _$_Authenticated implements _Authenticated {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result authenticated(SignInType signInType),
+    @required Result authenticated(SignInType signInType, User user),
     @required Result unauthenticated(),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
-    return authenticated(signInType);
+    return authenticated(signInType, user);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result authenticated(SignInType signInType),
+    Result authenticated(SignInType signInType, User user),
     Result unauthenticated(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (authenticated != null) {
-      return authenticated(signInType);
+      return authenticated(signInType, user);
     }
     return orElse();
   }
@@ -516,10 +538,12 @@ class _$_Authenticated implements _Authenticated {
 }
 
 abstract class _Authenticated implements AuthState {
-  const factory _Authenticated({@required SignInType signInType}) =
-      _$_Authenticated;
+  const factory _Authenticated(
+      {@required SignInType signInType,
+      @required User user}) = _$_Authenticated;
 
   SignInType get signInType;
+  User get user;
   _$AuthenticatedCopyWith<_Authenticated> get copyWith;
 }
 
@@ -559,7 +583,7 @@ class _$_Unauthenticated implements _Unauthenticated {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result authenticated(SignInType signInType),
+    @required Result authenticated(SignInType signInType, User user),
     @required Result unauthenticated(),
   }) {
     assert(initial != null);
@@ -572,7 +596,7 @@ class _$_Unauthenticated implements _Unauthenticated {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result authenticated(SignInType signInType),
+    Result authenticated(SignInType signInType, User user),
     Result unauthenticated(),
     @required Result orElse(),
   }) {

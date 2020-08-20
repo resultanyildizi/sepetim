@@ -97,5 +97,14 @@
     "delete_link_message": "Bu bağlantıyı silmek istediğinizden emin misiniz?",
     "something_went_wrong": "Ah! Bir sorunla karşılaşıldı",
     "oops_error": "Hay aksi! Hata",
-    "report_issue": "Hata bildirin"
+    "report_issue": "Hata bildirin",
+    "account": "Hesap",
+    "not_signed_in": "Giriş yapılmadı",
+    "sign_out": "Çıkış yap",
+    "change_email": "Email değiştir",
+    "change_password": "Şifre değiştir",
+    "delete_account": "Hesabı sil",
+    "contact_us": "Bize ulaş",
+    "share_app": "Uygulamayı paylaş",
+    "register": "Kayıt ol"
 }

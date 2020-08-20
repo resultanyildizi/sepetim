@@ -2,7 +2,7 @@ import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
-import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
+import 'package:Sepetim/presentation/core/widgets/buttons.dart';
 import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';

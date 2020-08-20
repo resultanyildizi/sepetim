@@ -7,5 +7,5 @@ abstract class BottomNavbarState with _$BottomNavbarState {
   }) = _BottomNavbarState;
 
   factory BottomNavbarState.initial() =>
-      const BottomNavbarState(selectedIndex: 2);
+      const BottomNavbarState(selectedIndex: 0);
 }

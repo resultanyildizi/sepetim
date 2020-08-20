@@ -6,7 +6,7 @@ import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
-import 'package:Sepetim/presentation/core/widgets/rounded_button.dart';
+import 'package:Sepetim/presentation/core/widgets/buttons.dart';
 import 'package:Sepetim/presentation/home/item/overview/widgets/item_horizontal_listview.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/action_buttons.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
@@ -135,6 +135,7 @@ class ItemGroupCard extends StatelessWidget {
           ],
         );
       },
+      // ignore: prefer_const_literals_to_create_immutables
       loading: (_) => Column(children: <Widget>[
         const Spacer(),
         const LinearProgressIndicator(

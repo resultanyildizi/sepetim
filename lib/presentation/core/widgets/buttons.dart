@@ -1,7 +1,8 @@
-import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 import 'package:Sepetim/predefined_variables/colors.dart' as app_colors;
+import 'package:Sepetim/predefined_variables/colors.dart';
+import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 
 class RoundedButton extends StatelessWidget {
@@ -106,6 +107,44 @@ class ErrorOutlineButton extends StatelessWidget {
       highlightedBorderColor: Colors.white,
       onPressed: onPressed,
       child: Text(translate(context, 'report_us')),
+    );
+  }
+}
+
+class FlatRectangleButton extends StatelessWidget {
+  final Function() onPressed;
+  final Widget child;
+  final Color color;
+  const FlatRectangleButton({
+    Key key,
+    @required this.onPressed,
+    @required this.child,
+    @required this.color,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(color: color),
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              child,
+              Icon(
+                Icons.arrow_forward_ios,
+                color: color,
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

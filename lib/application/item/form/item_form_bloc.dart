@@ -7,7 +7,7 @@ import 'package:Sepetim/domain/item/item.dart';
 import 'package:Sepetim/domain/item/item_failure.dart';
 import 'package:Sepetim/domain/item/value_objects.dart';
 import 'package:Sepetim/domain/link_object/link_object.dart';
-import 'package:Sepetim/presentation/item/form/misc/link_object_primitive.dart';
+import 'package:Sepetim/presentation/home/item/form/misc/link_object_primitive.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

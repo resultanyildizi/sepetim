@@ -238,65 +238,6 @@ class ItemCategoryRepository implements IItemCategoryRepository {
   }
 
   @override
-  Future<Either<ItemCategoryFailure, NotNegativeIntegerNumber>> getGroupCount(
-      ItemCategory category) async {
-    try {
-      final connectivityResult = await Connectivity().checkConnectivity();
-
-      if (connectivityResult != ConnectivityResult.mobile &&
-          connectivityResult != ConnectivityResult.wifi) {
-        return left(const ItemCategoryFailure.networkException());
-      }
-      final userDoc = await _firestore.userDocument();
-      final categoryUid = category.uid.getOrCrash();
-
-      final groupCount = await userDoc.categoryCollection
-          .document(categoryUid)
-          .groupCollection
-          .getDocuments()
-          .then((snapshot) => snapshot.documents.length);
-
-      return right(NotNegativeIntegerNumber(groupCount));
-    } on PlatformException catch (_) {
-      return left(const ItemCategoryFailure.unexpected());
-    }
-  }
-
-  @override
-  Future<Either<ItemCategoryFailure, NotNegativeIntegerNumber>> getItemCount(
-      ItemCategory category) async {
-    try {
-      final connectivityResult = await Connectivity().checkConnectivity();
-
-      if (connectivityResult != ConnectivityResult.mobile &&
-          connectivityResult != ConnectivityResult.wifi) {
-        return left(const ItemCategoryFailure.networkException());
-      }
-      final userDoc = await _firestore.userDocument();
-      final categoryUid = category.uid.getOrCrash();
-
-      final groupsQuerySnapshot = await userDoc.categoryCollection
-          .document(categoryUid)
-          .groupCollection
-          .getDocuments();
-      final groupDocuments = groupsQuerySnapshot.documents
-          .map((groupDocument) => groupDocument.reference);
-
-      var itemCount = 0;
-
-      for (final groupDocument in groupDocuments) {
-        itemCount += await groupDocument.itemCollection
-            .getDocuments()
-            .then((snapshot) => snapshot.documents.length);
-      }
-
-      return right(NotNegativeIntegerNumber(itemCount));
-    } catch (e) {
-      return left(const ItemCategoryFailure.unexpected());
-    }
-  }
-
-  @override
   Stream<Either<ItemCategoryFailure, KtList<ItemCategory>>> watchAll(
       OrderType orderType) async* {
     final userDoc = await _firestore.userDocument();

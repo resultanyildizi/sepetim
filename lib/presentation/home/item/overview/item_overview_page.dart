@@ -137,7 +137,7 @@ class ItemOverviewPage extends StatelessWidget {
               onWillPop: () async {
                 watcherBloc.add(ItemWatcherEvent.watchAllStarted(
                     category.uid, group.uid, OrderType.date));
-                await Future.delayed(const Duration(milliseconds: 50));
+                await Future.delayed(const Duration(milliseconds: 50)); // ???
                 return true;
               },
               child: Scaffold(
@@ -179,7 +179,7 @@ class ItemOverviewPage extends StatelessWidget {
                                 style: robotoTextStyle(fontSize: 12.0),
                               ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
