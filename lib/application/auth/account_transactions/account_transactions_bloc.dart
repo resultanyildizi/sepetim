@@ -28,15 +28,42 @@ class AccountTransactionsBloc
   Stream<AccountTransactionsState> mapEventToState(
     AccountTransactionsEvent event,
   ) async* {
-    yield state.copyWith(
-      isProgressing: true,
-      authFailureOrUnitOption: none(),
-    );
-    final failureOrSuccess = await _iAuthFacade.deleteAccount();
+    yield* event.map(
+      resetState: (e) async* {
+        yield state.copyWith(
+          isProgressing: false,
+          showErrorMessages: false,
+          authFailureOrUnitOption: none(),
+        );
+      },
+      accountDeleted: (e) async* {
+        yield state.copyWith(
+          isProgressing: true,
+          authFailureOrUnitOption: none(),
+        );
+        final failureOrSuccess = await _iAuthFacade.deleteAccount();
 
-    yield state.copyWith(
-      isProgressing: false,
-      authFailureOrUnitOption: some(failureOrSuccess),
+        yield state.copyWith(
+          isProgressing: false,
+          showErrorMessages: true,
+          authFailureOrUnitOption: some(failureOrSuccess),
+        );
+      },
+      currentPasswordVerified: (e) async* {
+        yield state.copyWith(
+          isProgressing: true,
+          authFailureOrUnitOption: none(),
+        );
+
+        final failureOrSuccess =
+            await _iAuthFacade.verifyUsersCurrentPassword(password: e.password);
+
+        yield state.copyWith(
+          isProgressing: false,
+          showErrorMessages: true,
+          authFailureOrUnitOption: some(failureOrSuccess),
+        );
+      },
     );
   }
 }

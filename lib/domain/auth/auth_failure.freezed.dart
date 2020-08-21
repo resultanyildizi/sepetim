@@ -12,24 +12,32 @@ T _$identity<T>(T value) => value;
 class _$AuthFailureTearOff {
   const _$AuthFailureTearOff();
 
-  CancelledByUser cancelledByUser() {
-    return const CancelledByUser();
+  _CancelledByUser cancelledByUser() {
+    return const _CancelledByUser();
   }
 
-  ServerError serverError() {
-    return const ServerError();
+  _ServerError serverError() {
+    return const _ServerError();
   }
 
-  EmailAlreadyInUse emailAlreadyInUse() {
-    return const EmailAlreadyInUse();
+  _EmailAlreadyInUse emailAlreadyInUse() {
+    return const _EmailAlreadyInUse();
   }
 
-  InvalidEmailAndPasswordCombination invalidEmailAndPasswordCombination() {
-    return const InvalidEmailAndPasswordCombination();
+  _InvalidEmailAndPasswordCombination invalidEmailAndPasswordCombination() {
+    return const _InvalidEmailAndPasswordCombination();
   }
 
-  NetworkException networkException() {
-    return const NetworkException();
+  _NetworkException networkException() {
+    return const _NetworkException();
+  }
+
+  _WrongPassword wrongPassword() {
+    return const _WrongPassword();
+  }
+
+  _TooManyRequests tooManyRequests() {
+    return const _TooManyRequests();
   }
 }
 
@@ -44,6 +52,8 @@ mixin _$AuthFailure {
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -52,26 +62,32 @@ mixin _$AuthFailure {
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
     Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result cancelledByUser(CancelledByUser value),
-    @required Result serverError(ServerError value),
-    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required
         Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
-    @required Result networkException(NetworkException value),
+            _InvalidEmailAndPasswordCombination value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result cancelledByUser(CancelledByUser value),
-    Result serverError(ServerError value),
-    Result emailAlreadyInUse(EmailAlreadyInUse value),
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
-    Result networkException(NetworkException value),
+        _InvalidEmailAndPasswordCombination value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
     @required Result orElse(),
   });
 }
@@ -90,25 +106,25 @@ class _$AuthFailureCopyWithImpl<$Res> implements $AuthFailureCopyWith<$Res> {
   final $Res Function(AuthFailure) _then;
 }
 
-abstract class $CancelledByUserCopyWith<$Res> {
-  factory $CancelledByUserCopyWith(
-          CancelledByUser value, $Res Function(CancelledByUser) then) =
-      _$CancelledByUserCopyWithImpl<$Res>;
+abstract class _$CancelledByUserCopyWith<$Res> {
+  factory _$CancelledByUserCopyWith(
+          _CancelledByUser value, $Res Function(_CancelledByUser) then) =
+      __$CancelledByUserCopyWithImpl<$Res>;
 }
 
-class _$CancelledByUserCopyWithImpl<$Res>
+class __$CancelledByUserCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
-    implements $CancelledByUserCopyWith<$Res> {
-  _$CancelledByUserCopyWithImpl(
-      CancelledByUser _value, $Res Function(CancelledByUser) _then)
-      : super(_value, (v) => _then(v as CancelledByUser));
+    implements _$CancelledByUserCopyWith<$Res> {
+  __$CancelledByUserCopyWithImpl(
+      _CancelledByUser _value, $Res Function(_CancelledByUser) _then)
+      : super(_value, (v) => _then(v as _CancelledByUser));
 
   @override
-  CancelledByUser get _value => super._value as CancelledByUser;
+  _CancelledByUser get _value => super._value as _CancelledByUser;
 }
 
-class _$CancelledByUser implements CancelledByUser {
-  const _$CancelledByUser();
+class _$_CancelledByUser implements _CancelledByUser {
+  const _$_CancelledByUser();
 
   @override
   String toString() {
@@ -117,7 +133,7 @@ class _$CancelledByUser implements CancelledByUser {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is CancelledByUser);
+    return identical(this, other) || (other is _CancelledByUser);
   }
 
   @override
@@ -131,12 +147,16 @@ class _$CancelledByUser implements CancelledByUser {
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
     return cancelledByUser();
   }
 
@@ -148,6 +168,8 @@ class _$CancelledByUser implements CancelledByUser {
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
     Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -160,31 +182,37 @@ class _$CancelledByUser implements CancelledByUser {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result cancelledByUser(CancelledByUser value),
-    @required Result serverError(ServerError value),
-    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required
         Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
-    @required Result networkException(NetworkException value),
+            _InvalidEmailAndPasswordCombination value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
     return cancelledByUser(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result cancelledByUser(CancelledByUser value),
-    Result serverError(ServerError value),
-    Result emailAlreadyInUse(EmailAlreadyInUse value),
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
-    Result networkException(NetworkException value),
+        _InvalidEmailAndPasswordCombination value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -195,28 +223,28 @@ class _$CancelledByUser implements CancelledByUser {
   }
 }
 
-abstract class CancelledByUser implements AuthFailure {
-  const factory CancelledByUser() = _$CancelledByUser;
+abstract class _CancelledByUser implements AuthFailure {
+  const factory _CancelledByUser() = _$_CancelledByUser;
 }
 
-abstract class $ServerErrorCopyWith<$Res> {
-  factory $ServerErrorCopyWith(
-          ServerError value, $Res Function(ServerError) then) =
-      _$ServerErrorCopyWithImpl<$Res>;
+abstract class _$ServerErrorCopyWith<$Res> {
+  factory _$ServerErrorCopyWith(
+          _ServerError value, $Res Function(_ServerError) then) =
+      __$ServerErrorCopyWithImpl<$Res>;
 }
 
-class _$ServerErrorCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
-    implements $ServerErrorCopyWith<$Res> {
-  _$ServerErrorCopyWithImpl(
-      ServerError _value, $Res Function(ServerError) _then)
-      : super(_value, (v) => _then(v as ServerError));
+class __$ServerErrorCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$ServerErrorCopyWith<$Res> {
+  __$ServerErrorCopyWithImpl(
+      _ServerError _value, $Res Function(_ServerError) _then)
+      : super(_value, (v) => _then(v as _ServerError));
 
   @override
-  ServerError get _value => super._value as ServerError;
+  _ServerError get _value => super._value as _ServerError;
 }
 
-class _$ServerError implements ServerError {
-  const _$ServerError();
+class _$_ServerError implements _ServerError {
+  const _$_ServerError();
 
   @override
   String toString() {
@@ -225,7 +253,7 @@ class _$ServerError implements ServerError {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ServerError);
+    return identical(this, other) || (other is _ServerError);
   }
 
   @override
@@ -239,12 +267,16 @@ class _$ServerError implements ServerError {
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
     return serverError();
   }
 
@@ -256,6 +288,8 @@ class _$ServerError implements ServerError {
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
     Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -268,31 +302,37 @@ class _$ServerError implements ServerError {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result cancelledByUser(CancelledByUser value),
-    @required Result serverError(ServerError value),
-    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required
         Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
-    @required Result networkException(NetworkException value),
+            _InvalidEmailAndPasswordCombination value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
     return serverError(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result cancelledByUser(CancelledByUser value),
-    Result serverError(ServerError value),
-    Result emailAlreadyInUse(EmailAlreadyInUse value),
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
-    Result networkException(NetworkException value),
+        _InvalidEmailAndPasswordCombination value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -303,29 +343,29 @@ class _$ServerError implements ServerError {
   }
 }
 
-abstract class ServerError implements AuthFailure {
-  const factory ServerError() = _$ServerError;
+abstract class _ServerError implements AuthFailure {
+  const factory _ServerError() = _$_ServerError;
 }
 
-abstract class $EmailAlreadyInUseCopyWith<$Res> {
-  factory $EmailAlreadyInUseCopyWith(
-          EmailAlreadyInUse value, $Res Function(EmailAlreadyInUse) then) =
-      _$EmailAlreadyInUseCopyWithImpl<$Res>;
+abstract class _$EmailAlreadyInUseCopyWith<$Res> {
+  factory _$EmailAlreadyInUseCopyWith(
+          _EmailAlreadyInUse value, $Res Function(_EmailAlreadyInUse) then) =
+      __$EmailAlreadyInUseCopyWithImpl<$Res>;
 }
 
-class _$EmailAlreadyInUseCopyWithImpl<$Res>
+class __$EmailAlreadyInUseCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
-    implements $EmailAlreadyInUseCopyWith<$Res> {
-  _$EmailAlreadyInUseCopyWithImpl(
-      EmailAlreadyInUse _value, $Res Function(EmailAlreadyInUse) _then)
-      : super(_value, (v) => _then(v as EmailAlreadyInUse));
+    implements _$EmailAlreadyInUseCopyWith<$Res> {
+  __$EmailAlreadyInUseCopyWithImpl(
+      _EmailAlreadyInUse _value, $Res Function(_EmailAlreadyInUse) _then)
+      : super(_value, (v) => _then(v as _EmailAlreadyInUse));
 
   @override
-  EmailAlreadyInUse get _value => super._value as EmailAlreadyInUse;
+  _EmailAlreadyInUse get _value => super._value as _EmailAlreadyInUse;
 }
 
-class _$EmailAlreadyInUse implements EmailAlreadyInUse {
-  const _$EmailAlreadyInUse();
+class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
+  const _$_EmailAlreadyInUse();
 
   @override
   String toString() {
@@ -334,7 +374,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is EmailAlreadyInUse);
+    return identical(this, other) || (other is _EmailAlreadyInUse);
   }
 
   @override
@@ -348,12 +388,16 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
     return emailAlreadyInUse();
   }
 
@@ -365,6 +409,8 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
     Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -377,31 +423,37 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result cancelledByUser(CancelledByUser value),
-    @required Result serverError(ServerError value),
-    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required
         Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
-    @required Result networkException(NetworkException value),
+            _InvalidEmailAndPasswordCombination value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
     return emailAlreadyInUse(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result cancelledByUser(CancelledByUser value),
-    Result serverError(ServerError value),
-    Result emailAlreadyInUse(EmailAlreadyInUse value),
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
-    Result networkException(NetworkException value),
+        _InvalidEmailAndPasswordCombination value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -412,33 +464,33 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
   }
 }
 
-abstract class EmailAlreadyInUse implements AuthFailure {
-  const factory EmailAlreadyInUse() = _$EmailAlreadyInUse;
+abstract class _EmailAlreadyInUse implements AuthFailure {
+  const factory _EmailAlreadyInUse() = _$_EmailAlreadyInUse;
 }
 
-abstract class $InvalidEmailAndPasswordCombinationCopyWith<$Res> {
-  factory $InvalidEmailAndPasswordCombinationCopyWith(
-          InvalidEmailAndPasswordCombination value,
-          $Res Function(InvalidEmailAndPasswordCombination) then) =
-      _$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>;
+abstract class _$InvalidEmailAndPasswordCombinationCopyWith<$Res> {
+  factory _$InvalidEmailAndPasswordCombinationCopyWith(
+          _InvalidEmailAndPasswordCombination value,
+          $Res Function(_InvalidEmailAndPasswordCombination) then) =
+      __$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>;
 }
 
-class _$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>
+class __$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
-    implements $InvalidEmailAndPasswordCombinationCopyWith<$Res> {
-  _$InvalidEmailAndPasswordCombinationCopyWithImpl(
-      InvalidEmailAndPasswordCombination _value,
-      $Res Function(InvalidEmailAndPasswordCombination) _then)
-      : super(_value, (v) => _then(v as InvalidEmailAndPasswordCombination));
+    implements _$InvalidEmailAndPasswordCombinationCopyWith<$Res> {
+  __$InvalidEmailAndPasswordCombinationCopyWithImpl(
+      _InvalidEmailAndPasswordCombination _value,
+      $Res Function(_InvalidEmailAndPasswordCombination) _then)
+      : super(_value, (v) => _then(v as _InvalidEmailAndPasswordCombination));
 
   @override
-  InvalidEmailAndPasswordCombination get _value =>
-      super._value as InvalidEmailAndPasswordCombination;
+  _InvalidEmailAndPasswordCombination get _value =>
+      super._value as _InvalidEmailAndPasswordCombination;
 }
 
-class _$InvalidEmailAndPasswordCombination
-    implements InvalidEmailAndPasswordCombination {
-  const _$InvalidEmailAndPasswordCombination();
+class _$_InvalidEmailAndPasswordCombination
+    implements _InvalidEmailAndPasswordCombination {
+  const _$_InvalidEmailAndPasswordCombination();
 
   @override
   String toString() {
@@ -448,7 +500,7 @@ class _$InvalidEmailAndPasswordCombination
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is InvalidEmailAndPasswordCombination);
+        (other is _InvalidEmailAndPasswordCombination);
   }
 
   @override
@@ -462,12 +514,16 @@ class _$InvalidEmailAndPasswordCombination
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
     return invalidEmailAndPasswordCombination();
   }
 
@@ -479,6 +535,8 @@ class _$InvalidEmailAndPasswordCombination
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
     Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -491,31 +549,37 @@ class _$InvalidEmailAndPasswordCombination
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result cancelledByUser(CancelledByUser value),
-    @required Result serverError(ServerError value),
-    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required
         Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
-    @required Result networkException(NetworkException value),
+            _InvalidEmailAndPasswordCombination value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
     return invalidEmailAndPasswordCombination(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result cancelledByUser(CancelledByUser value),
-    Result serverError(ServerError value),
-    Result emailAlreadyInUse(EmailAlreadyInUse value),
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
-    Result networkException(NetworkException value),
+        _InvalidEmailAndPasswordCombination value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -526,30 +590,30 @@ class _$InvalidEmailAndPasswordCombination
   }
 }
 
-abstract class InvalidEmailAndPasswordCombination implements AuthFailure {
-  const factory InvalidEmailAndPasswordCombination() =
-      _$InvalidEmailAndPasswordCombination;
+abstract class _InvalidEmailAndPasswordCombination implements AuthFailure {
+  const factory _InvalidEmailAndPasswordCombination() =
+      _$_InvalidEmailAndPasswordCombination;
 }
 
-abstract class $NetworkExceptionCopyWith<$Res> {
-  factory $NetworkExceptionCopyWith(
-          NetworkException value, $Res Function(NetworkException) then) =
-      _$NetworkExceptionCopyWithImpl<$Res>;
+abstract class _$NetworkExceptionCopyWith<$Res> {
+  factory _$NetworkExceptionCopyWith(
+          _NetworkException value, $Res Function(_NetworkException) then) =
+      __$NetworkExceptionCopyWithImpl<$Res>;
 }
 
-class _$NetworkExceptionCopyWithImpl<$Res>
+class __$NetworkExceptionCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
-    implements $NetworkExceptionCopyWith<$Res> {
-  _$NetworkExceptionCopyWithImpl(
-      NetworkException _value, $Res Function(NetworkException) _then)
-      : super(_value, (v) => _then(v as NetworkException));
+    implements _$NetworkExceptionCopyWith<$Res> {
+  __$NetworkExceptionCopyWithImpl(
+      _NetworkException _value, $Res Function(_NetworkException) _then)
+      : super(_value, (v) => _then(v as _NetworkException));
 
   @override
-  NetworkException get _value => super._value as NetworkException;
+  _NetworkException get _value => super._value as _NetworkException;
 }
 
-class _$NetworkException implements NetworkException {
-  const _$NetworkException();
+class _$_NetworkException implements _NetworkException {
+  const _$_NetworkException();
 
   @override
   String toString() {
@@ -558,7 +622,7 @@ class _$NetworkException implements NetworkException {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is NetworkException);
+    return identical(this, other) || (other is _NetworkException);
   }
 
   @override
@@ -572,12 +636,16 @@ class _$NetworkException implements NetworkException {
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
     return networkException();
   }
 
@@ -589,6 +657,8 @@ class _$NetworkException implements NetworkException {
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
     Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -601,31 +671,37 @@ class _$NetworkException implements NetworkException {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result cancelledByUser(CancelledByUser value),
-    @required Result serverError(ServerError value),
-    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required
         Result invalidEmailAndPasswordCombination(
-            InvalidEmailAndPasswordCombination value),
-    @required Result networkException(NetworkException value),
+            _InvalidEmailAndPasswordCombination value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
     return networkException(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result cancelledByUser(CancelledByUser value),
-    Result serverError(ServerError value),
-    Result emailAlreadyInUse(EmailAlreadyInUse value),
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
-        InvalidEmailAndPasswordCombination value),
-    Result networkException(NetworkException value),
+        _InvalidEmailAndPasswordCombination value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -636,6 +712,247 @@ class _$NetworkException implements NetworkException {
   }
 }
 
-abstract class NetworkException implements AuthFailure {
-  const factory NetworkException() = _$NetworkException;
+abstract class _NetworkException implements AuthFailure {
+  const factory _NetworkException() = _$_NetworkException;
+}
+
+abstract class _$WrongPasswordCopyWith<$Res> {
+  factory _$WrongPasswordCopyWith(
+          _WrongPassword value, $Res Function(_WrongPassword) then) =
+      __$WrongPasswordCopyWithImpl<$Res>;
+}
+
+class __$WrongPasswordCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$WrongPasswordCopyWith<$Res> {
+  __$WrongPasswordCopyWithImpl(
+      _WrongPassword _value, $Res Function(_WrongPassword) _then)
+      : super(_value, (v) => _then(v as _WrongPassword));
+
+  @override
+  _WrongPassword get _value => super._value as _WrongPassword;
+}
+
+class _$_WrongPassword implements _WrongPassword {
+  const _$_WrongPassword();
+
+  @override
+  String toString() {
+    return 'AuthFailure.wrongPassword()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _WrongPassword);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result invalidEmailAndPasswordCombination(),
+    @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    return wrongPassword();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result invalidEmailAndPasswordCombination(),
+    Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (wrongPassword != null) {
+      return wrongPassword();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    return wrongPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (wrongPassword != null) {
+      return wrongPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WrongPassword implements AuthFailure {
+  const factory _WrongPassword() = _$_WrongPassword;
+}
+
+abstract class _$TooManyRequestsCopyWith<$Res> {
+  factory _$TooManyRequestsCopyWith(
+          _TooManyRequests value, $Res Function(_TooManyRequests) then) =
+      __$TooManyRequestsCopyWithImpl<$Res>;
+}
+
+class __$TooManyRequestsCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$TooManyRequestsCopyWith<$Res> {
+  __$TooManyRequestsCopyWithImpl(
+      _TooManyRequests _value, $Res Function(_TooManyRequests) _then)
+      : super(_value, (v) => _then(v as _TooManyRequests));
+
+  @override
+  _TooManyRequests get _value => super._value as _TooManyRequests;
+}
+
+class _$_TooManyRequests implements _TooManyRequests {
+  const _$_TooManyRequests();
+
+  @override
+  String toString() {
+    return 'AuthFailure.tooManyRequests()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _TooManyRequests);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result invalidEmailAndPasswordCombination(),
+    @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    return tooManyRequests();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result invalidEmailAndPasswordCombination(),
+    Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (tooManyRequests != null) {
+      return tooManyRequests();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    return tooManyRequests(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (tooManyRequests != null) {
+      return tooManyRequests(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TooManyRequests implements AuthFailure {
+  const factory _TooManyRequests() = _$_TooManyRequests;
 }

@@ -23,13 +23,13 @@ class SignInForm extends StatelessWidget {
           (either) {
             either.fold(
               (f) {
-                f.map(
-                  cancelledByUser: (_) => null,
+                f.maybeMap(
                   serverError: (_) => serverErrorPopup(context),
                   emailAlreadyInUse: (_) => emailAlreadyInUsePopup(context),
                   invalidEmailAndPasswordCombination: (_) =>
                       invalidEmailAndPasswordCombinationPopup(context),
                   networkException: (_) => networkExceptionPopup(context),
+                  orElse: () {},
                 );
               },
               (_) {

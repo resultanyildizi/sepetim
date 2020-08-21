@@ -95,3 +95,25 @@ Future invalidEmailAndPasswordCombinationPopup(BuildContext context) {
     ],
   );
 }
+
+Future tooManyRequestsPopup(BuildContext context) {
+  // TODO: translate
+  return actionPopup(
+    context,
+    backgroundColor: Colors.white,
+    title: Text(
+      'Oops! You made too many requests',
+      style: robotoTextStyle(),
+    ),
+    content: Text('You have to wait for a while to do this process.'),
+    actions: <Widget>[
+      RoundedButton(
+        width: screenWidthByScalar(context, 1.0),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        text: translate(context, 'okay'),
+      )
+    ],
+  );
+}

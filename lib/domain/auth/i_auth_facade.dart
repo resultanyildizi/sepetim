@@ -25,5 +25,9 @@ abstract class IAuthFacade {
 
   Future<Either<AuthFailure, Unit>> deleteAccount();
 
+  Future<Either<AuthFailure, Unit>> verifyUsersCurrentPassword({
+    @required String password,
+  });
+
   Future<void> signOut();
 }
