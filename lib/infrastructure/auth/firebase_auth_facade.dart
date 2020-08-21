@@ -143,9 +143,7 @@ class FirebaseAuthFacade extends IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> deleteAccount({
-    @required FirebaseUser firebaseUser,
-  }) async {
+  Future<Either<AuthFailure, Unit>> deleteAccount() async {
     try {
       final connectivityResult = await Connectivity().checkConnectivity();
 
@@ -153,8 +151,8 @@ class FirebaseAuthFacade extends IAuthFacade {
           connectivityResult != ConnectivityResult.wifi) {
         return left(const AuthFailure.networkException());
       }
-
-      await firebaseUser.delete();
+      final _firebaseUser = await _firebaseAuth.currentUser();
+      await _firebaseUser.delete();
 
       return right(unit);
     } on PlatformException catch (_) {

@@ -106,5 +106,7 @@
     "delete_account": "Hesabı sil",
     "contact_us": "Bize ulaş",
     "share_app": "Uygulamayı paylaş",
-    "register": "Kayıt ol"
+    "register": "Kayıt ol",
+    "delete_account_title": "Hesabınızı kalıcı olarak silmek istediğinizden emin misiniz?",
+    "delete_account_message": "Eğer hesabınızı silerseniz, verileriniz de birlikte silinecektir. Bu işlem geri alınamaz."
 }

@@ -35,15 +35,14 @@ class VerifyAnonymousLoginPage extends StatelessWidget {
                 either.fold(
                   (f) {
                     f.maybeMap(
-                      serverError: (_) async => serverErrorPopup(context),
-                      networkException: (_) async =>
-                          networkExceptionPopup(context),
+                      serverError: (_) => serverErrorPopup(context),
+                      networkException: (_) => networkExceptionPopup(context),
                       orElse: () {},
                     );
                   },
                   (_) {
-                    ExtendedNavigator.of(context)
-                        .pushReplacementNamed(Routes.applicationContentPage);
+                    ExtendedNavigator.of(context).pushNamedAndRemoveUntil(
+                        Routes.applicationContentPage, (route) => false);
                     context
                         .bloc<AuthBloc>()
                         .add(const AuthEvent.authCheckRequested());

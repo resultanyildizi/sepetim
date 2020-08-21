@@ -106,5 +106,7 @@
     "delete_account": "Delete account",
     "contact_us": "Contact us",
     "share_app": "Share app",
-    "register": "Register"
+    "register": "Register",
+    "delete_account_title": "Are you sure to delete your account permanently?",
+    "delete_account_message": "If you delete your account, your data will be deleted as well. This action can't be undone."
 }

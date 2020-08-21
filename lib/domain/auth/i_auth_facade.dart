@@ -23,9 +23,7 @@ abstract class IAuthFacade {
 
   Future<Either<AuthFailure, Unit>> signInAnonymously();
 
-  Future<Either<AuthFailure, Unit>> deleteAccount({
-    @required FirebaseUser firebaseUser,
-  });
+  Future<Either<AuthFailure, Unit>> deleteAccount();
 
   Future<void> signOut();
 }

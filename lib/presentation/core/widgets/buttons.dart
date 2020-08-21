@@ -123,16 +123,17 @@ class FlatRectangleButton extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onPressed,
       child: Container(
+        height: 40.0,
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(color: color),
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[

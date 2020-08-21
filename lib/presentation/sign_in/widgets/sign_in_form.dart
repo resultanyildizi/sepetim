@@ -25,12 +25,11 @@ class SignInForm extends StatelessWidget {
               (f) {
                 f.map(
                   cancelledByUser: (_) => null,
-                  serverError: (_) async => serverErrorPopup(context),
-                  emailAlreadyInUse: (_) async =>
-                      emailAlreadyInUsePopup(context),
-                  invalidEmailAndPasswordCombination: (_) async =>
+                  serverError: (_) => serverErrorPopup(context),
+                  emailAlreadyInUse: (_) => emailAlreadyInUsePopup(context),
+                  invalidEmailAndPasswordCombination: (_) =>
                       invalidEmailAndPasswordCombinationPopup(context),
-                  networkException: (_) async => networkExceptionPopup(context),
+                  networkException: (_) => networkExceptionPopup(context),
                 );
               },
               (_) {
@@ -132,7 +131,7 @@ class SignInForm extends StatelessWidget {
                       width: screenWidthByScalar(context, 1.0),
                       onPressed: () {
                         ExtendedNavigator.of(context)
-                            .pushNamed(Routes.verifyAnonymousLoginPage);
+                            .pushVerifyAnonymousLoginPage();
                         FocusScope.of(context).unfocus();
                       },
                       text: translate(context, 'without_log_in'),

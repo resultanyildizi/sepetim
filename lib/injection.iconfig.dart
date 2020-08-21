@@ -16,6 +16,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:Sepetim/application/item_category/selector/item_category_selector_bloc.dart';
 import 'package:Sepetim/application/auth/password_visibility/password_visibility_bloc.dart';
 import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:Sepetim/application/auth/account_transactions/account_transactions_bloc.dart';
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/infrastructure/item/item_repository.dart';
 import 'package:Sepetim/domain/item/i_item_repository.dart';
@@ -52,6 +53,8 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerFactory<ItemCategorySelectorBloc>(() => ItemCategorySelectorBloc());
   g.registerFactory<PasswordVisibilityBloc>(() => PasswordVisibilityBloc());
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<IAuthFacade>()));
+  g.registerFactory<AccountTransactionsBloc>(
+      () => AccountTransactionsBloc(g<IAuthFacade>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<IAuthFacade>()));
   g.registerLazySingleton<IItemRepository>(() => ItemRepository(
         g<Firestore>(),
