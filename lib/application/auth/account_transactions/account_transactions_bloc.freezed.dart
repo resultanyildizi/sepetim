@@ -12,7 +12,7 @@ T _$identity<T>(T value) => value;
 class _$AccountTransactionsEventTearOff {
   const _$AccountTransactionsEventTearOff();
 
-  _ResetState resetState() {
+  _ResetState stateReset() {
     return const _ResetState();
   }
 
@@ -25,6 +25,16 @@ class _$AccountTransactionsEventTearOff {
       password,
     );
   }
+
+  _ChangePassword passwordChanged(String password) {
+    return _ChangePassword(
+      password,
+    );
+  }
+
+  _PasswordUpdated passwordUpdated() {
+    return const _PasswordUpdated();
+  }
 }
 
 // ignore: unused_element
@@ -33,28 +43,36 @@ const $AccountTransactionsEvent = _$AccountTransactionsEventTearOff();
 mixin _$AccountTransactionsEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result resetState(),
+    @required Result stateReset(),
     @required Result accountDeleted(),
     @required Result currentPasswordVerified(String password),
+    @required Result passwordChanged(String password),
+    @required Result passwordUpdated(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result resetState(),
+    Result stateReset(),
     Result accountDeleted(),
     Result currentPasswordVerified(String password),
+    Result passwordChanged(String password),
+    Result passwordUpdated(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result resetState(_ResetState value),
+    @required Result stateReset(_ResetState value),
     @required Result accountDeleted(_AccountDeleted value),
     @required Result currentPasswordVerified(_CurrentPasswordVerified value),
+    @required Result passwordChanged(_ChangePassword value),
+    @required Result passwordUpdated(_PasswordUpdated value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result resetState(_ResetState value),
+    Result stateReset(_ResetState value),
     Result accountDeleted(_AccountDeleted value),
     Result currentPasswordVerified(_CurrentPasswordVerified value),
+    Result passwordChanged(_ChangePassword value),
+    Result passwordUpdated(_PasswordUpdated value),
     @required Result orElse(),
   });
 }
@@ -96,7 +114,7 @@ class _$_ResetState implements _ResetState {
 
   @override
   String toString() {
-    return 'AccountTransactionsEvent.resetState()';
+    return 'AccountTransactionsEvent.stateReset()';
   }
 
   @override
@@ -110,27 +128,33 @@ class _$_ResetState implements _ResetState {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result resetState(),
+    @required Result stateReset(),
     @required Result accountDeleted(),
     @required Result currentPasswordVerified(String password),
+    @required Result passwordChanged(String password),
+    @required Result passwordUpdated(),
   }) {
-    assert(resetState != null);
+    assert(stateReset != null);
     assert(accountDeleted != null);
     assert(currentPasswordVerified != null);
-    return resetState();
+    assert(passwordChanged != null);
+    assert(passwordUpdated != null);
+    return stateReset();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result resetState(),
+    Result stateReset(),
     Result accountDeleted(),
     Result currentPasswordVerified(String password),
+    Result passwordChanged(String password),
+    Result passwordUpdated(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (resetState != null) {
-      return resetState();
+    if (stateReset != null) {
+      return stateReset();
     }
     return orElse();
   }
@@ -138,27 +162,33 @@ class _$_ResetState implements _ResetState {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result resetState(_ResetState value),
+    @required Result stateReset(_ResetState value),
     @required Result accountDeleted(_AccountDeleted value),
     @required Result currentPasswordVerified(_CurrentPasswordVerified value),
+    @required Result passwordChanged(_ChangePassword value),
+    @required Result passwordUpdated(_PasswordUpdated value),
   }) {
-    assert(resetState != null);
+    assert(stateReset != null);
     assert(accountDeleted != null);
     assert(currentPasswordVerified != null);
-    return resetState(this);
+    assert(passwordChanged != null);
+    assert(passwordUpdated != null);
+    return stateReset(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result resetState(_ResetState value),
+    Result stateReset(_ResetState value),
     Result accountDeleted(_AccountDeleted value),
     Result currentPasswordVerified(_CurrentPasswordVerified value),
+    Result passwordChanged(_ChangePassword value),
+    Result passwordUpdated(_PasswordUpdated value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (resetState != null) {
-      return resetState(this);
+    if (stateReset != null) {
+      return stateReset(this);
     }
     return orElse();
   }
@@ -204,22 +234,28 @@ class _$_AccountDeleted implements _AccountDeleted {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result resetState(),
+    @required Result stateReset(),
     @required Result accountDeleted(),
     @required Result currentPasswordVerified(String password),
+    @required Result passwordChanged(String password),
+    @required Result passwordUpdated(),
   }) {
-    assert(resetState != null);
+    assert(stateReset != null);
     assert(accountDeleted != null);
     assert(currentPasswordVerified != null);
+    assert(passwordChanged != null);
+    assert(passwordUpdated != null);
     return accountDeleted();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result resetState(),
+    Result stateReset(),
     Result accountDeleted(),
     Result currentPasswordVerified(String password),
+    Result passwordChanged(String password),
+    Result passwordUpdated(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -232,22 +268,28 @@ class _$_AccountDeleted implements _AccountDeleted {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result resetState(_ResetState value),
+    @required Result stateReset(_ResetState value),
     @required Result accountDeleted(_AccountDeleted value),
     @required Result currentPasswordVerified(_CurrentPasswordVerified value),
+    @required Result passwordChanged(_ChangePassword value),
+    @required Result passwordUpdated(_PasswordUpdated value),
   }) {
-    assert(resetState != null);
+    assert(stateReset != null);
     assert(accountDeleted != null);
     assert(currentPasswordVerified != null);
+    assert(passwordChanged != null);
+    assert(passwordUpdated != null);
     return accountDeleted(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result resetState(_ResetState value),
+    Result stateReset(_ResetState value),
     Result accountDeleted(_AccountDeleted value),
     Result currentPasswordVerified(_CurrentPasswordVerified value),
+    Result passwordChanged(_ChangePassword value),
+    Result passwordUpdated(_PasswordUpdated value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -322,22 +364,28 @@ class _$_CurrentPasswordVerified implements _CurrentPasswordVerified {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result resetState(),
+    @required Result stateReset(),
     @required Result accountDeleted(),
     @required Result currentPasswordVerified(String password),
+    @required Result passwordChanged(String password),
+    @required Result passwordUpdated(),
   }) {
-    assert(resetState != null);
+    assert(stateReset != null);
     assert(accountDeleted != null);
     assert(currentPasswordVerified != null);
+    assert(passwordChanged != null);
+    assert(passwordUpdated != null);
     return currentPasswordVerified(password);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result resetState(),
+    Result stateReset(),
     Result accountDeleted(),
     Result currentPasswordVerified(String password),
+    Result passwordChanged(String password),
+    Result passwordUpdated(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -350,22 +398,28 @@ class _$_CurrentPasswordVerified implements _CurrentPasswordVerified {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result resetState(_ResetState value),
+    @required Result stateReset(_ResetState value),
     @required Result accountDeleted(_AccountDeleted value),
     @required Result currentPasswordVerified(_CurrentPasswordVerified value),
+    @required Result passwordChanged(_ChangePassword value),
+    @required Result passwordUpdated(_PasswordUpdated value),
   }) {
-    assert(resetState != null);
+    assert(stateReset != null);
     assert(accountDeleted != null);
     assert(currentPasswordVerified != null);
+    assert(passwordChanged != null);
+    assert(passwordUpdated != null);
     return currentPasswordVerified(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result resetState(_ResetState value),
+    Result stateReset(_ResetState value),
     Result accountDeleted(_AccountDeleted value),
     Result currentPasswordVerified(_CurrentPasswordVerified value),
+    Result passwordChanged(_ChangePassword value),
+    Result passwordUpdated(_PasswordUpdated value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -384,21 +438,260 @@ abstract class _CurrentPasswordVerified implements AccountTransactionsEvent {
   _$CurrentPasswordVerifiedCopyWith<_CurrentPasswordVerified> get copyWith;
 }
 
+abstract class _$ChangePasswordCopyWith<$Res> {
+  factory _$ChangePasswordCopyWith(
+          _ChangePassword value, $Res Function(_ChangePassword) then) =
+      __$ChangePasswordCopyWithImpl<$Res>;
+  $Res call({String password});
+}
+
+class __$ChangePasswordCopyWithImpl<$Res>
+    extends _$AccountTransactionsEventCopyWithImpl<$Res>
+    implements _$ChangePasswordCopyWith<$Res> {
+  __$ChangePasswordCopyWithImpl(
+      _ChangePassword _value, $Res Function(_ChangePassword) _then)
+      : super(_value, (v) => _then(v as _ChangePassword));
+
+  @override
+  _ChangePassword get _value => super._value as _ChangePassword;
+
+  @override
+  $Res call({
+    Object password = freezed,
+  }) {
+    return _then(_ChangePassword(
+      password == freezed ? _value.password : password as String,
+    ));
+  }
+}
+
+class _$_ChangePassword implements _ChangePassword {
+  const _$_ChangePassword(this.password) : assert(password != null);
+
+  @override
+  final String password;
+
+  @override
+  String toString() {
+    return 'AccountTransactionsEvent.passwordChanged(password: $password)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ChangePassword &&
+            (identical(other.password, password) ||
+                const DeepCollectionEquality()
+                    .equals(other.password, password)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(password);
+
+  @override
+  _$ChangePasswordCopyWith<_ChangePassword> get copyWith =>
+      __$ChangePasswordCopyWithImpl<_ChangePassword>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result stateReset(),
+    @required Result accountDeleted(),
+    @required Result currentPasswordVerified(String password),
+    @required Result passwordChanged(String password),
+    @required Result passwordUpdated(),
+  }) {
+    assert(stateReset != null);
+    assert(accountDeleted != null);
+    assert(currentPasswordVerified != null);
+    assert(passwordChanged != null);
+    assert(passwordUpdated != null);
+    return passwordChanged(password);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result stateReset(),
+    Result accountDeleted(),
+    Result currentPasswordVerified(String password),
+    Result passwordChanged(String password),
+    Result passwordUpdated(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (passwordChanged != null) {
+      return passwordChanged(password);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result stateReset(_ResetState value),
+    @required Result accountDeleted(_AccountDeleted value),
+    @required Result currentPasswordVerified(_CurrentPasswordVerified value),
+    @required Result passwordChanged(_ChangePassword value),
+    @required Result passwordUpdated(_PasswordUpdated value),
+  }) {
+    assert(stateReset != null);
+    assert(accountDeleted != null);
+    assert(currentPasswordVerified != null);
+    assert(passwordChanged != null);
+    assert(passwordUpdated != null);
+    return passwordChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result stateReset(_ResetState value),
+    Result accountDeleted(_AccountDeleted value),
+    Result currentPasswordVerified(_CurrentPasswordVerified value),
+    Result passwordChanged(_ChangePassword value),
+    Result passwordUpdated(_PasswordUpdated value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (passwordChanged != null) {
+      return passwordChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangePassword implements AccountTransactionsEvent {
+  const factory _ChangePassword(String password) = _$_ChangePassword;
+
+  String get password;
+  _$ChangePasswordCopyWith<_ChangePassword> get copyWith;
+}
+
+abstract class _$PasswordUpdatedCopyWith<$Res> {
+  factory _$PasswordUpdatedCopyWith(
+          _PasswordUpdated value, $Res Function(_PasswordUpdated) then) =
+      __$PasswordUpdatedCopyWithImpl<$Res>;
+}
+
+class __$PasswordUpdatedCopyWithImpl<$Res>
+    extends _$AccountTransactionsEventCopyWithImpl<$Res>
+    implements _$PasswordUpdatedCopyWith<$Res> {
+  __$PasswordUpdatedCopyWithImpl(
+      _PasswordUpdated _value, $Res Function(_PasswordUpdated) _then)
+      : super(_value, (v) => _then(v as _PasswordUpdated));
+
+  @override
+  _PasswordUpdated get _value => super._value as _PasswordUpdated;
+}
+
+class _$_PasswordUpdated implements _PasswordUpdated {
+  const _$_PasswordUpdated();
+
+  @override
+  String toString() {
+    return 'AccountTransactionsEvent.passwordUpdated()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _PasswordUpdated);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result stateReset(),
+    @required Result accountDeleted(),
+    @required Result currentPasswordVerified(String password),
+    @required Result passwordChanged(String password),
+    @required Result passwordUpdated(),
+  }) {
+    assert(stateReset != null);
+    assert(accountDeleted != null);
+    assert(currentPasswordVerified != null);
+    assert(passwordChanged != null);
+    assert(passwordUpdated != null);
+    return passwordUpdated();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result stateReset(),
+    Result accountDeleted(),
+    Result currentPasswordVerified(String password),
+    Result passwordChanged(String password),
+    Result passwordUpdated(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (passwordUpdated != null) {
+      return passwordUpdated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result stateReset(_ResetState value),
+    @required Result accountDeleted(_AccountDeleted value),
+    @required Result currentPasswordVerified(_CurrentPasswordVerified value),
+    @required Result passwordChanged(_ChangePassword value),
+    @required Result passwordUpdated(_PasswordUpdated value),
+  }) {
+    assert(stateReset != null);
+    assert(accountDeleted != null);
+    assert(currentPasswordVerified != null);
+    assert(passwordChanged != null);
+    assert(passwordUpdated != null);
+    return passwordUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result stateReset(_ResetState value),
+    Result accountDeleted(_AccountDeleted value),
+    Result currentPasswordVerified(_CurrentPasswordVerified value),
+    Result passwordChanged(_ChangePassword value),
+    Result passwordUpdated(_PasswordUpdated value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (passwordUpdated != null) {
+      return passwordUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PasswordUpdated implements AccountTransactionsEvent {
+  const factory _PasswordUpdated() = _$_PasswordUpdated;
+}
+
 class _$AccountTransactionsStateTearOff {
   const _$AccountTransactionsStateTearOff();
 
   _AccountTransactionsState call(
       {@required Password password,
-      @required Password confirmPassword,
       @required Option<Either<AuthFailure, Unit>> authFailureOrUnitOption,
       @required bool isProgressing,
-      @required bool showErrorMessages}) {
+      @required bool showErrorMessages,
+      @required bool isPasswordVerified,
+      @required bool isPasswordUpdated}) {
     return _AccountTransactionsState(
       password: password,
-      confirmPassword: confirmPassword,
       authFailureOrUnitOption: authFailureOrUnitOption,
       isProgressing: isProgressing,
       showErrorMessages: showErrorMessages,
+      isPasswordVerified: isPasswordVerified,
+      isPasswordUpdated: isPasswordUpdated,
     );
   }
 }
@@ -408,10 +701,11 @@ const $AccountTransactionsState = _$AccountTransactionsStateTearOff();
 
 mixin _$AccountTransactionsState {
   Password get password;
-  Password get confirmPassword;
   Option<Either<AuthFailure, Unit>> get authFailureOrUnitOption;
   bool get isProgressing;
   bool get showErrorMessages;
+  bool get isPasswordVerified;
+  bool get isPasswordUpdated;
 
   $AccountTransactionsStateCopyWith<AccountTransactionsState> get copyWith;
 }
@@ -422,10 +716,11 @@ abstract class $AccountTransactionsStateCopyWith<$Res> {
       _$AccountTransactionsStateCopyWithImpl<$Res>;
   $Res call(
       {Password password,
-      Password confirmPassword,
       Option<Either<AuthFailure, Unit>> authFailureOrUnitOption,
       bool isProgressing,
-      bool showErrorMessages});
+      bool showErrorMessages,
+      bool isPasswordVerified,
+      bool isPasswordUpdated});
 }
 
 class _$AccountTransactionsStateCopyWithImpl<$Res>
@@ -439,16 +734,14 @@ class _$AccountTransactionsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object password = freezed,
-    Object confirmPassword = freezed,
     Object authFailureOrUnitOption = freezed,
     Object isProgressing = freezed,
     Object showErrorMessages = freezed,
+    Object isPasswordVerified = freezed,
+    Object isPasswordUpdated = freezed,
   }) {
     return _then(_value.copyWith(
       password: password == freezed ? _value.password : password as Password,
-      confirmPassword: confirmPassword == freezed
-          ? _value.confirmPassword
-          : confirmPassword as Password,
       authFailureOrUnitOption: authFailureOrUnitOption == freezed
           ? _value.authFailureOrUnitOption
           : authFailureOrUnitOption as Option<Either<AuthFailure, Unit>>,
@@ -458,6 +751,12 @@ class _$AccountTransactionsStateCopyWithImpl<$Res>
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
+      isPasswordVerified: isPasswordVerified == freezed
+          ? _value.isPasswordVerified
+          : isPasswordVerified as bool,
+      isPasswordUpdated: isPasswordUpdated == freezed
+          ? _value.isPasswordUpdated
+          : isPasswordUpdated as bool,
     ));
   }
 }
@@ -470,10 +769,11 @@ abstract class _$AccountTransactionsStateCopyWith<$Res>
   @override
   $Res call(
       {Password password,
-      Password confirmPassword,
       Option<Either<AuthFailure, Unit>> authFailureOrUnitOption,
       bool isProgressing,
-      bool showErrorMessages});
+      bool showErrorMessages,
+      bool isPasswordVerified,
+      bool isPasswordUpdated});
 }
 
 class __$AccountTransactionsStateCopyWithImpl<$Res>
@@ -490,16 +790,14 @@ class __$AccountTransactionsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object password = freezed,
-    Object confirmPassword = freezed,
     Object authFailureOrUnitOption = freezed,
     Object isProgressing = freezed,
     Object showErrorMessages = freezed,
+    Object isPasswordVerified = freezed,
+    Object isPasswordUpdated = freezed,
   }) {
     return _then(_AccountTransactionsState(
       password: password == freezed ? _value.password : password as Password,
-      confirmPassword: confirmPassword == freezed
-          ? _value.confirmPassword
-          : confirmPassword as Password,
       authFailureOrUnitOption: authFailureOrUnitOption == freezed
           ? _value.authFailureOrUnitOption
           : authFailureOrUnitOption as Option<Either<AuthFailure, Unit>>,
@@ -509,6 +807,12 @@ class __$AccountTransactionsStateCopyWithImpl<$Res>
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
+      isPasswordVerified: isPasswordVerified == freezed
+          ? _value.isPasswordVerified
+          : isPasswordVerified as bool,
+      isPasswordUpdated: isPasswordUpdated == freezed
+          ? _value.isPasswordUpdated
+          : isPasswordUpdated as bool,
     ));
   }
 }
@@ -516,30 +820,34 @@ class __$AccountTransactionsStateCopyWithImpl<$Res>
 class _$_AccountTransactionsState implements _AccountTransactionsState {
   const _$_AccountTransactionsState(
       {@required this.password,
-      @required this.confirmPassword,
       @required this.authFailureOrUnitOption,
       @required this.isProgressing,
-      @required this.showErrorMessages})
+      @required this.showErrorMessages,
+      @required this.isPasswordVerified,
+      @required this.isPasswordUpdated})
       : assert(password != null),
-        assert(confirmPassword != null),
         assert(authFailureOrUnitOption != null),
         assert(isProgressing != null),
-        assert(showErrorMessages != null);
+        assert(showErrorMessages != null),
+        assert(isPasswordVerified != null),
+        assert(isPasswordUpdated != null);
 
   @override
   final Password password;
-  @override
-  final Password confirmPassword;
   @override
   final Option<Either<AuthFailure, Unit>> authFailureOrUnitOption;
   @override
   final bool isProgressing;
   @override
   final bool showErrorMessages;
+  @override
+  final bool isPasswordVerified;
+  @override
+  final bool isPasswordUpdated;
 
   @override
   String toString() {
-    return 'AccountTransactionsState(password: $password, confirmPassword: $confirmPassword, authFailureOrUnitOption: $authFailureOrUnitOption, isProgressing: $isProgressing, showErrorMessages: $showErrorMessages)';
+    return 'AccountTransactionsState(password: $password, authFailureOrUnitOption: $authFailureOrUnitOption, isProgressing: $isProgressing, showErrorMessages: $showErrorMessages, isPasswordVerified: $isPasswordVerified, isPasswordUpdated: $isPasswordUpdated)';
   }
 
   @override
@@ -549,9 +857,6 @@ class _$_AccountTransactionsState implements _AccountTransactionsState {
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
                     .equals(other.password, password)) &&
-            (identical(other.confirmPassword, confirmPassword) ||
-                const DeepCollectionEquality()
-                    .equals(other.confirmPassword, confirmPassword)) &&
             (identical(
                     other.authFailureOrUnitOption, authFailureOrUnitOption) ||
                 const DeepCollectionEquality().equals(
@@ -561,17 +866,24 @@ class _$_AccountTransactionsState implements _AccountTransactionsState {
                     .equals(other.isProgressing, isProgressing)) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
-                    .equals(other.showErrorMessages, showErrorMessages)));
+                    .equals(other.showErrorMessages, showErrorMessages)) &&
+            (identical(other.isPasswordVerified, isPasswordVerified) ||
+                const DeepCollectionEquality()
+                    .equals(other.isPasswordVerified, isPasswordVerified)) &&
+            (identical(other.isPasswordUpdated, isPasswordUpdated) ||
+                const DeepCollectionEquality()
+                    .equals(other.isPasswordUpdated, isPasswordUpdated)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(password) ^
-      const DeepCollectionEquality().hash(confirmPassword) ^
       const DeepCollectionEquality().hash(authFailureOrUnitOption) ^
       const DeepCollectionEquality().hash(isProgressing) ^
-      const DeepCollectionEquality().hash(showErrorMessages);
+      const DeepCollectionEquality().hash(showErrorMessages) ^
+      const DeepCollectionEquality().hash(isPasswordVerified) ^
+      const DeepCollectionEquality().hash(isPasswordUpdated);
 
   @override
   _$AccountTransactionsStateCopyWith<_AccountTransactionsState> get copyWith =>
@@ -582,21 +894,24 @@ class _$_AccountTransactionsState implements _AccountTransactionsState {
 abstract class _AccountTransactionsState implements AccountTransactionsState {
   const factory _AccountTransactionsState(
       {@required Password password,
-      @required Password confirmPassword,
       @required Option<Either<AuthFailure, Unit>> authFailureOrUnitOption,
       @required bool isProgressing,
-      @required bool showErrorMessages}) = _$_AccountTransactionsState;
+      @required bool showErrorMessages,
+      @required bool isPasswordVerified,
+      @required bool isPasswordUpdated}) = _$_AccountTransactionsState;
 
   @override
   Password get password;
-  @override
-  Password get confirmPassword;
   @override
   Option<Either<AuthFailure, Unit>> get authFailureOrUnitOption;
   @override
   bool get isProgressing;
   @override
   bool get showErrorMessages;
+  @override
+  bool get isPasswordVerified;
+  @override
+  bool get isPasswordUpdated;
   @override
   _$AccountTransactionsStateCopyWith<_AccountTransactionsState> get copyWith;
 }

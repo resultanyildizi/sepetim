@@ -29,5 +29,9 @@ abstract class IAuthFacade {
     @required String password,
   });
 
+  Future<Either<AuthFailure, Unit>> updatePassword({
+    @required Password password,
+  });
+
   Future<void> signOut();
 }

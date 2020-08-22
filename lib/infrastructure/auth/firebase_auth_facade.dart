@@ -190,6 +190,29 @@ class FirebaseAuthFacade extends IAuthFacade {
   }
 
   @override
+  Future<Either<AuthFailure, Unit>> updatePassword({
+    Password password,
+  }) async {
+    try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const AuthFailure.networkException());
+      }
+
+      final _firebaseUser = await _firebaseAuth.currentUser();
+      final passwordString = password.getOrCrash();
+
+      await _firebaseUser.updatePassword(passwordString);
+
+      return right(unit);
+    } on PlatformException catch (e) {
+      return left(const AuthFailure.serverError());
+    }
+  }
+
+  @override
   Future<void> signOut() {
     return Future.wait([
       _googleSignIn.signOut(),

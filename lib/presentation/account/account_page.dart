@@ -4,11 +4,12 @@ import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
+import 'package:Sepetim/presentation/account/widgets/action_popups.dart';
+import 'package:Sepetim/presentation/account/widgets/buttons.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/buttons.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
-import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
 import 'package:auto_route/auto_route.dart';
@@ -46,33 +47,76 @@ class AccountPage extends StatelessWidget {
                       either.fold(
                         (failure) {
                           failure.maybeMap(
-                              serverError: (_) {
-                                ExtendedNavigator.of(context).popUntil(
-                                    (route) =>
-                                        route.settings.name ==
-                                        Routes.applicationContentPage);
-                                return serverErrorPopup(context);
-                              },
-                              networkException: (_) {
-                                ExtendedNavigator.of(context).popUntil(
-                                    (route) =>
-                                        route.settings.name ==
-                                        Routes.applicationContentPage);
-                                return networkExceptionPopup(context);
-                              },
-                              tooManyRequests: (_) {
-                                ExtendedNavigator.of(context).popUntil(
-                                    (route) =>
-                                        route.settings.name ==
-                                        Routes.applicationContentPage);
-                                return tooManyRequestsPopup(context);
-                              },
-                              orElse: () {});
+                            serverError: (_) {
+                              ExtendedNavigator.of(context).popUntil((route) =>
+                                  route.settings.name ==
+                                  Routes.applicationContentPage);
+                              return serverErrorPopup(context);
+                            },
+                            networkException: (_) {
+                              ExtendedNavigator.of(context).popUntil((route) =>
+                                  route.settings.name ==
+                                  Routes.applicationContentPage);
+                              return networkExceptionPopup(context);
+                            },
+                            tooManyRequests: (_) {
+                              ExtendedNavigator.of(context).popUntil((route) =>
+                                  route.settings.name ==
+                                  Routes.applicationContentPage);
+                              return tooManyRequestsPopup(context);
+                            },
+                            orElse: () {},
+                          );
                         },
                         (_) {
-                          /*
-                          ExtendedNavigator.of(context)
-                              .pushReplacementNamed(Routes.splashPage);*/
+                          if (state.isPasswordVerified) {
+                            ExtendedNavigator.of(context).popUntil((route) =>
+                                route.settings.name ==
+                                Routes.applicationContentPage);
+                            changePasswordPopup(context,
+                                context.bloc<AccountTransactionsBloc>());
+                          }
+                          if (state.isPasswordUpdated) {
+                            ExtendedNavigator.of(context).popUntil((route) =>
+                                route.settings.name ==
+                                Routes.applicationContentPage);
+                            actionPopup(
+                              context,
+                              backgroundColor: Colors.white,
+                              title: Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  const Icon(
+                                    Icons.check_box,
+                                    color: Colors.lightGreen,
+                                  ),
+                                  const SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  Text(
+                                    translate(context, 'successful'),
+                                    style: didactGothicTextStyle(),
+                                  ),
+                                ],
+                              ),
+                              content: Text(
+                                translate(
+                                    context, 'password_changed_successfully'),
+                                style: didactGothicTextStyle(),
+                              ),
+                              actions: [
+                                RoundedButton(
+                                  text: translate(context, 'okay'),
+                                  onPressed: () =>
+                                      ExtendedNavigator.of(context).popUntil(
+                                    (route) =>
+                                        route.settings.name ==
+                                        Routes.applicationContentPage,
+                                  ),
+                                )
+                              ],
+                            );
+                          }
                         },
                       );
                     },
@@ -154,24 +198,6 @@ class AccountPage extends StatelessWidget {
                             const SizedBox(
                               height: 15.0,
                             ),
-                            FlatRectangleButton(
-                              onPressed: () {
-                                context
-                                    .bloc<AuthBloc>()
-                                    .add(const AuthEvent.signedOut());
-                              },
-                              color: Colors.grey,
-                              child: Text(
-                                translate(context, 'change_email'),
-                                style: didactGothicTextStyle(
-                                    fontSize: 16.0,
-                                    bold: true,
-                                    color: Colors.grey),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 15.0,
-                            ),
                           ],
                         ),
                         signedInAnonymously: (_) => Column(
@@ -197,28 +223,7 @@ class AccountPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      FlatRectangleButton(
-                        onPressed: () {
-                          deletePopup(context,
-                              title: translate(context, 'delete_account_title'),
-                              message:
-                                  translate(context, 'delete_account_message'),
-                              action: () {
-                            context.bloc<AccountTransactionsBloc>().add(
-                                const AccountTransactionsEvent
-                                    .accountDeleted());
-                            context
-                                .bloc<AuthBloc>()
-                                .add(const AuthEvent.authCheckRequested());
-                          });
-                        },
-                        color: Colors.grey,
-                        child: Text(
-                          translate(context, 'delete_account'),
-                          style: didactGothicTextStyle(
-                              fontSize: 16.0, bold: true, color: Colors.grey),
-                        ),
-                      ),
+                      deleteAccountButton(context),
                     ],
                   )),
                 ),
@@ -241,149 +246,5 @@ class AccountPage extends StatelessWidget {
         },
       ),
     );
-  }
-
-  FlatRectangleButton signOutButton(BuildContext context) {
-    return FlatRectangleButton(
-      onPressed: () {
-        context.bloc<AuthBloc>().add(const AuthEvent.signedOut());
-      },
-      color: Colors.grey,
-      child: Text(
-        translate(context, 'sign_out'),
-        style: didactGothicTextStyle(
-            fontSize: 16.0, bold: true, color: Colors.grey),
-      ),
-    );
-  }
-
-  Widget changePasswordButton(
-    BuildContext context,
-  ) {
-    String validatorText = "";
-    final _textController = TextEditingController();
-
-    return FlatRectangleButton(
-      onPressed: () {
-        context
-            .bloc<AccountTransactionsBloc>()
-            .add(const AccountTransactionsEvent.resetState());
-        _textController.text = "";
-        verifyPasswordPopup(context, validatorText, _textController);
-      },
-      color: Colors.grey,
-      child: Text(
-        translate(context, 'change_password'),
-        style: didactGothicTextStyle(
-            fontSize: 16.0, bold: true, color: Colors.grey),
-      ),
-    );
-  }
-
-  Future verifyPasswordPopup(
-    BuildContext context,
-    String validatorText,
-    TextEditingController _textController,
-  ) {
-    // TODO: translate
-
-    return actionPopup(context,
-        backgroundColor: Colors.white,
-        barrierDismissible: true,
-        title: Text(
-          "Şifreni doğrula",
-          style: robotoTextStyle(),
-        ),
-        content:
-            BlocConsumer<AccountTransactionsBloc, AccountTransactionsState>(
-          bloc: context.bloc<AccountTransactionsBloc>(),
-          listener: (context, state) {
-            state.authFailureOrUnitOption.fold(
-              () => validatorText = '',
-              (either) {
-                either.fold(
-                  (f) {
-                    f.maybeMap(
-                      wrongPassword: (_) => validatorText = 'Wrong password',
-                      orElse: () => null,
-                    );
-                  },
-                  (_) {
-                    ExtendedNavigator.of(context).pop();
-                    changePasswordPopup(context);
-                  },
-                );
-              },
-            );
-          },
-          builder: (context, state) {
-            return Container(
-              height: 130.0,
-              child: Column(
-                children: [
-                  Text('Doğrulamak için lütfen şuanki şifrenizi giriniz'),
-                  const SizedBox(height: 5.0),
-                  Form(
-                    autovalidate: state.showErrorMessages,
-                    child: TextFormField(
-                      controller: _textController,
-                      decoration: InputDecoration(labelText: 'Şimdiki şifre'),
-                      autofocus: true,
-                      obscureText: true,
-                      validator: (_) => validatorText,
-                    ),
-                  ),
-                  const Spacer(),
-                  if (state.isProgressing) ...[
-                    const LinearProgressIndicator(
-                      backgroundColor: Colors.white,
-                      minHeight: 1,
-                      valueColor:
-                          AlwaysStoppedAnimation<Color>(sepetimLightGrey),
-                    ),
-                  ],
-                ],
-              ),
-            );
-          },
-        ),
-        actions: [
-          RoundedButton(
-            onPressed: () {
-              ExtendedNavigator.of(context).pop();
-            },
-            text: translate(context, 'cancel'),
-          ),
-          RoundedButton(
-            onPressed: () {
-              if (_textController.text.trim() != "") {
-                context.bloc<AccountTransactionsBloc>().add(
-                    AccountTransactionsEvent.currentPasswordVerified(
-                        _textController.text.trim()));
-              }
-            },
-            text: 'Doğrula',
-          )
-        ]);
-  }
-
-  Future changePasswordPopup(BuildContext context) {
-    return actionPopup(context,
-        backgroundColor: Colors.white,
-        title: Text('Change password'),
-        content: Column(
-          children: [
-            Text('Type your new password'),
-            const SizedBox(height: 5.0),
-            Form(
-              autovalidate: true,
-              child: TextFormField(
-                decoration: InputDecoration(labelText: 'New password'),
-                autofocus: true,
-                obscureText: true,
-              ),
-            )
-          ],
-        ));
   }
 }

@@ -102,10 +102,12 @@ Future tooManyRequestsPopup(BuildContext context) {
     context,
     backgroundColor: Colors.white,
     title: Text(
-      'Oops! You made too many requests',
+      translate(context, 'too_many_requests_title'),
       style: robotoTextStyle(),
     ),
-    content: Text('You have to wait for a while to do this process.'),
+    content: Text(
+      translate(context, 'too_many_requests_message'),
+    ),
     actions: <Widget>[
       RoundedButton(
         width: screenWidthByScalar(context, 1.0),

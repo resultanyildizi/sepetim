@@ -108,5 +108,17 @@
     "share_app": "Uygulamayı paylaş",
     "register": "Kayıt ol",
     "delete_account_title": "Hesabınızı kalıcı olarak silmek istediğinizden emin misiniz?",
-    "delete_account_message": "Eğer hesabınızı silerseniz, verileriniz de birlikte silinecektir. Bu işlem geri alınamaz."
+    "delete_account_message": "Eğer hesabınızı silerseniz, verileriniz de birlikte silinecektir. Bu işlem geri alınamaz.",
+    "too_many_requests_title": "Üzgünüz, çok fazla talepte bulundunuz.",
+    "too_many_requests_message": "Yeniden şifrenizi yeniden sorgulayabilmek için bir süre beklemelisiniz.",
+    "verify_your_password": "Şifrenizi doğrulayın",
+    "wrong_password": "Yanlış şifre",
+    "enter_current_password": "Doğrulamak için mevcut şifrenizi girin",
+    "current_password": "Mevcut şifreniz",
+    "new_password": "Yeni şifre",
+    "verify": "Doğrula",
+    "change_your_password": "Şifrenizi değiştirin",
+    "enter_new_password": "Yeni bir şifre girin",
+    "successful": "Başarılı",
+    "password_changed_successfully": "Şifre başarıyla değiştirildi"
 }

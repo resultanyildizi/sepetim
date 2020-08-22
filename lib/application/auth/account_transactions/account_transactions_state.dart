@@ -4,17 +4,19 @@ part of 'account_transactions_bloc.dart';
 abstract class AccountTransactionsState with _$AccountTransactionsState {
   const factory AccountTransactionsState({
     @required Password password,
-    @required Password confirmPassword,
     @required Option<Either<AuthFailure, Unit>> authFailureOrUnitOption,
     @required bool isProgressing,
     @required bool showErrorMessages,
+    @required bool isPasswordVerified,
+    @required bool isPasswordUpdated,
   }) = _AccountTransactionsState;
 
   factory AccountTransactionsState.initial() => _AccountTransactionsState(
         password: Password(''),
-        confirmPassword: Password(''),
         authFailureOrUnitOption: none(),
         isProgressing: false,
         showErrorMessages: false,
+        isPasswordVerified: false,
+        isPasswordUpdated: false,
       );
 }

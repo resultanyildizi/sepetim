@@ -29,10 +29,12 @@ class AccountTransactionsBloc
     AccountTransactionsEvent event,
   ) async* {
     yield* event.map(
-      resetState: (e) async* {
+      stateReset: (e) async* {
         yield state.copyWith(
           isProgressing: false,
           showErrorMessages: false,
+          isPasswordVerified: false,
+          isPasswordUpdated: false,
           authFailureOrUnitOption: none(),
         );
       },
@@ -46,12 +48,16 @@ class AccountTransactionsBloc
         yield state.copyWith(
           isProgressing: false,
           showErrorMessages: true,
+          isPasswordVerified: false,
+          isPasswordUpdated: false,
           authFailureOrUnitOption: some(failureOrSuccess),
         );
       },
       currentPasswordVerified: (e) async* {
         yield state.copyWith(
           isProgressing: true,
+          isPasswordVerified: false,
+          isPasswordUpdated: false,
           authFailureOrUnitOption: none(),
         );
 
@@ -61,6 +67,37 @@ class AccountTransactionsBloc
         yield state.copyWith(
           isProgressing: false,
           showErrorMessages: true,
+          isPasswordVerified: true,
+          authFailureOrUnitOption: some(failureOrSuccess),
+        );
+      },
+      passwordChanged: (e) async* {
+        yield state.copyWith(
+          password: Password(e.password),
+          isPasswordVerified: true,
+          isPasswordUpdated: false,
+          authFailureOrUnitOption: none(),
+        );
+      },
+      passwordUpdated: (e) async* {
+        Either<AuthFailure, Unit> failureOrSuccess;
+        yield state.copyWith(
+          isProgressing: true,
+          showErrorMessages: false,
+          isPasswordVerified: false,
+          isPasswordUpdated: false,
+          authFailureOrUnitOption: none(),
+        );
+
+        if (state.password.isValid) {
+          failureOrSuccess =
+              await _iAuthFacade.updatePassword(password: state.password);
+        }
+
+        yield state.copyWith(
+          isProgressing: false,
+          showErrorMessages: true,
+          isPasswordUpdated: true,
           authFailureOrUnitOption: some(failureOrSuccess),
         );
       },
