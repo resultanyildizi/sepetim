@@ -81,7 +81,7 @@ class CircularItemView extends StatelessWidget {
             Text(
               item.title.getOrCrash().length <= 12
                   ? item.title.getOrCrash()
-                  : '${item.title.getOrCrash().substring(0, 10)}...',
+                  : '${item.title.fittedString(maxPlainLength: 10, maxEmojiLength: 4)}...',
               style: robotoTextStyle(fontSize: 12),
             ),
           ],
