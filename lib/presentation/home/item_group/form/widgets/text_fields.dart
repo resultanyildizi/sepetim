@@ -1,3 +1,5 @@
+import 'dart:convert' show utf8;
+
 import 'package:Sepetim/application/item_group/form/item_group_form_bloc.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
@@ -27,6 +29,10 @@ class TitleTextField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: translate(context, 'enter_a_title'),
           counterStyle: robotoTextStyle(),
+          counterText: utf8
+              .decode(utf8.encode(textEdiginController.text))
+              .length
+              .toString(),
         ),
         maxLength: ShortTitle.maxLength,
         autocorrect: false,

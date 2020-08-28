@@ -59,7 +59,10 @@ class ItemCategoryCard extends StatelessWidget {
                         Text(
                           category.title.getOrCrash().length <= 20
                               ? category.title.getOrCrash()
-                              : '${category.title.getOrCrash().substring(0, 17)}...',
+                              : '${category.title.fittedString(
+                                  maxPlainLength: 17,
+                                  maxEmojiLength: 7,
+                                )}...',
                           style: didactGothicTextStyle(
                             bold: true,
                           ),

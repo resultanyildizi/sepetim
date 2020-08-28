@@ -143,7 +143,7 @@ class ItemCard extends StatelessWidget {
             Text(
               item.title.getOrCrash().length <= 20
                   ? item.title.getOrCrash()
-                  : '${item.title.getOrCrash().substring(0, 17)}...',
+                  : '${item.title.fittedString(maxPlainLength: 17, maxEmojiLength: 7)}...',
               style: robotoTextStyle(bold: true, fontSize: 16.0),
             ),
             Text(

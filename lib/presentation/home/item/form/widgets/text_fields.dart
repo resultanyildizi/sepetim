@@ -1,3 +1,5 @@
+import 'dart:convert' show utf8;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,8 +32,13 @@ class TitleTextField extends StatelessWidget {
           textCapitalization: TextCapitalization.sentences,
           style: Theme.of(context).textTheme.subtitle1,
           decoration: InputDecoration(
-              labelText: translate(context, 'enter_a_title'),
-              counterStyle: robotoTextStyle()),
+            labelText: translate(context, 'enter_a_title'),
+            counterStyle: robotoTextStyle(),
+            counterText: utf8
+                .decode(utf8.encode(_textEditingController.text))
+                .length
+                .toString(),
+          ),
           maxLength: ShortTitle.maxLength,
           autocorrect: false,
           onChanged: (value) => context

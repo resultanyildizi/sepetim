@@ -5,7 +5,9 @@ import 'package:Sepetim/domain/link_object/value_validators.dart';
 import 'package:Sepetim/predefined_variables/links.dart';
 import 'package:dartz/dartz.dart';
 import 'package:kt_dart/kt.dart';
+import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
+import 'package:characters/characters.dart';
 
 class UniqueId extends ValueObject<String> {
   @override
@@ -41,6 +43,20 @@ class ShortTitle extends ValueObject<String> {
           .flatMap((input) => validateMaxStringLength(input, maxLength))
           .flatMap((input) => validateSingleLine(input)),
     );
+  }
+
+  String fittedString({
+    @required int maxPlainLength,
+    @required int maxEmojiLength,
+  }) {
+    if (getOrCrash().length != getOrCrash().characters.length) {
+      return getOrCrash()
+          .characters
+          .skipLast(getOrCrash().characters.length - maxEmojiLength)
+          .string;
+    } else {
+      return getOrCrash().substring(0, maxPlainLength);
+    }
   }
 
   const ShortTitle._(this.value);

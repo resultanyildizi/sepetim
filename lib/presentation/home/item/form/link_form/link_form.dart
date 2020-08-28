@@ -135,7 +135,7 @@ class _LinkFormState extends State<LinkForm> {
                       style: didactGothicTextStyle(fontSize: 18.0),
                     ),
                     LinkTitleTextField(
-                      textEdiginController: titleTextEditingController,
+                      textEditingController: titleTextEditingController,
                       formBloc: widget.formBloc,
                     ),
                     Text(
