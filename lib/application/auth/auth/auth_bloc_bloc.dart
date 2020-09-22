@@ -1,11 +1,9 @@
 import 'dart:async';
 
-import 'package:Sepetim/domain/auth/auth_failure.dart';
 import 'package:Sepetim/domain/auth/i_auth_facade.dart';
 import 'package:Sepetim/domain/auth/sign_in_type.dart';
 import 'package:Sepetim/domain/auth/user.dart';
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -32,11 +30,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         await Future.delayed(const Duration(milliseconds: 500));
         final userOption = await _iAuthFacade.getSignedUser();
         yield userOption.fold(
-          () => const AuthState.unauthenticated(),
-          (user) => AuthState.authenticated(
-            user: user,
-            signInType: user.signInType,
-          ),
+          () {
+            return const AuthState.unauthenticated();
+          },
+          (user) {
+            return AuthState.authenticated(
+              user: user,
+              signInType: user.signInType,
+            );
+          },
         );
       },
       signedOut: (e) async* {

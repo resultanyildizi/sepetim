@@ -684,7 +684,8 @@ class _$AccountTransactionsStateTearOff {
       @required bool isProgressing,
       @required bool showErrorMessages,
       @required bool isPasswordVerified,
-      @required bool isPasswordUpdated}) {
+      @required bool isPasswordUpdated,
+      @required bool isAccountDeleted}) {
     return _AccountTransactionsState(
       password: password,
       authFailureOrUnitOption: authFailureOrUnitOption,
@@ -692,6 +693,7 @@ class _$AccountTransactionsStateTearOff {
       showErrorMessages: showErrorMessages,
       isPasswordVerified: isPasswordVerified,
       isPasswordUpdated: isPasswordUpdated,
+      isAccountDeleted: isAccountDeleted,
     );
   }
 }
@@ -706,6 +708,7 @@ mixin _$AccountTransactionsState {
   bool get showErrorMessages;
   bool get isPasswordVerified;
   bool get isPasswordUpdated;
+  bool get isAccountDeleted;
 
   $AccountTransactionsStateCopyWith<AccountTransactionsState> get copyWith;
 }
@@ -720,7 +723,8 @@ abstract class $AccountTransactionsStateCopyWith<$Res> {
       bool isProgressing,
       bool showErrorMessages,
       bool isPasswordVerified,
-      bool isPasswordUpdated});
+      bool isPasswordUpdated,
+      bool isAccountDeleted});
 }
 
 class _$AccountTransactionsStateCopyWithImpl<$Res>
@@ -739,6 +743,7 @@ class _$AccountTransactionsStateCopyWithImpl<$Res>
     Object showErrorMessages = freezed,
     Object isPasswordVerified = freezed,
     Object isPasswordUpdated = freezed,
+    Object isAccountDeleted = freezed,
   }) {
     return _then(_value.copyWith(
       password: password == freezed ? _value.password : password as Password,
@@ -757,6 +762,9 @@ class _$AccountTransactionsStateCopyWithImpl<$Res>
       isPasswordUpdated: isPasswordUpdated == freezed
           ? _value.isPasswordUpdated
           : isPasswordUpdated as bool,
+      isAccountDeleted: isAccountDeleted == freezed
+          ? _value.isAccountDeleted
+          : isAccountDeleted as bool,
     ));
   }
 }
@@ -773,7 +781,8 @@ abstract class _$AccountTransactionsStateCopyWith<$Res>
       bool isProgressing,
       bool showErrorMessages,
       bool isPasswordVerified,
-      bool isPasswordUpdated});
+      bool isPasswordUpdated,
+      bool isAccountDeleted});
 }
 
 class __$AccountTransactionsStateCopyWithImpl<$Res>
@@ -795,6 +804,7 @@ class __$AccountTransactionsStateCopyWithImpl<$Res>
     Object showErrorMessages = freezed,
     Object isPasswordVerified = freezed,
     Object isPasswordUpdated = freezed,
+    Object isAccountDeleted = freezed,
   }) {
     return _then(_AccountTransactionsState(
       password: password == freezed ? _value.password : password as Password,
@@ -813,6 +823,9 @@ class __$AccountTransactionsStateCopyWithImpl<$Res>
       isPasswordUpdated: isPasswordUpdated == freezed
           ? _value.isPasswordUpdated
           : isPasswordUpdated as bool,
+      isAccountDeleted: isAccountDeleted == freezed
+          ? _value.isAccountDeleted
+          : isAccountDeleted as bool,
     ));
   }
 }
@@ -824,13 +837,15 @@ class _$_AccountTransactionsState implements _AccountTransactionsState {
       @required this.isProgressing,
       @required this.showErrorMessages,
       @required this.isPasswordVerified,
-      @required this.isPasswordUpdated})
+      @required this.isPasswordUpdated,
+      @required this.isAccountDeleted})
       : assert(password != null),
         assert(authFailureOrUnitOption != null),
         assert(isProgressing != null),
         assert(showErrorMessages != null),
         assert(isPasswordVerified != null),
-        assert(isPasswordUpdated != null);
+        assert(isPasswordUpdated != null),
+        assert(isAccountDeleted != null);
 
   @override
   final Password password;
@@ -844,10 +859,12 @@ class _$_AccountTransactionsState implements _AccountTransactionsState {
   final bool isPasswordVerified;
   @override
   final bool isPasswordUpdated;
+  @override
+  final bool isAccountDeleted;
 
   @override
   String toString() {
-    return 'AccountTransactionsState(password: $password, authFailureOrUnitOption: $authFailureOrUnitOption, isProgressing: $isProgressing, showErrorMessages: $showErrorMessages, isPasswordVerified: $isPasswordVerified, isPasswordUpdated: $isPasswordUpdated)';
+    return 'AccountTransactionsState(password: $password, authFailureOrUnitOption: $authFailureOrUnitOption, isProgressing: $isProgressing, showErrorMessages: $showErrorMessages, isPasswordVerified: $isPasswordVerified, isPasswordUpdated: $isPasswordUpdated, isAccountDeleted: $isAccountDeleted)';
   }
 
   @override
@@ -872,7 +889,10 @@ class _$_AccountTransactionsState implements _AccountTransactionsState {
                     .equals(other.isPasswordVerified, isPasswordVerified)) &&
             (identical(other.isPasswordUpdated, isPasswordUpdated) ||
                 const DeepCollectionEquality()
-                    .equals(other.isPasswordUpdated, isPasswordUpdated)));
+                    .equals(other.isPasswordUpdated, isPasswordUpdated)) &&
+            (identical(other.isAccountDeleted, isAccountDeleted) ||
+                const DeepCollectionEquality()
+                    .equals(other.isAccountDeleted, isAccountDeleted)));
   }
 
   @override
@@ -883,7 +903,8 @@ class _$_AccountTransactionsState implements _AccountTransactionsState {
       const DeepCollectionEquality().hash(isProgressing) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isPasswordVerified) ^
-      const DeepCollectionEquality().hash(isPasswordUpdated);
+      const DeepCollectionEquality().hash(isPasswordUpdated) ^
+      const DeepCollectionEquality().hash(isAccountDeleted);
 
   @override
   _$AccountTransactionsStateCopyWith<_AccountTransactionsState> get copyWith =>
@@ -898,7 +919,8 @@ abstract class _AccountTransactionsState implements AccountTransactionsState {
       @required bool isProgressing,
       @required bool showErrorMessages,
       @required bool isPasswordVerified,
-      @required bool isPasswordUpdated}) = _$_AccountTransactionsState;
+      @required bool isPasswordUpdated,
+      @required bool isAccountDeleted}) = _$_AccountTransactionsState;
 
   @override
   Password get password;
@@ -912,6 +934,8 @@ abstract class _AccountTransactionsState implements AccountTransactionsState {
   bool get isPasswordVerified;
   @override
   bool get isPasswordUpdated;
+  @override
+  bool get isAccountDeleted;
   @override
   _$AccountTransactionsStateCopyWith<_AccountTransactionsState> get copyWith;
 }

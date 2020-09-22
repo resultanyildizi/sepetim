@@ -69,6 +69,11 @@ class AccountPage extends StatelessWidget {
                           );
                         },
                         (_) {
+                          if (state.isAccountDeleted) {
+                            context
+                                .bloc<AuthBloc>()
+                                .add(const AuthEvent.authCheckRequested());
+                          }
                           if (state.isPasswordVerified) {
                             ExtendedNavigator.of(context).popUntil((route) =>
                                 route.settings.name ==

@@ -35,18 +35,21 @@ class AccountTransactionsBloc
           showErrorMessages: false,
           isPasswordVerified: false,
           isPasswordUpdated: false,
+          isAccountDeleted: false,
           authFailureOrUnitOption: none(),
         );
       },
       accountDeleted: (e) async* {
         yield state.copyWith(
           isProgressing: true,
+          isAccountDeleted: false,
           authFailureOrUnitOption: none(),
         );
         final failureOrSuccess = await _iAuthFacade.deleteAccount();
 
         yield state.copyWith(
           isProgressing: false,
+          isAccountDeleted: true,
           showErrorMessages: true,
           isPasswordVerified: false,
           isPasswordUpdated: false,
@@ -56,6 +59,7 @@ class AccountTransactionsBloc
       currentPasswordVerified: (e) async* {
         yield state.copyWith(
           isProgressing: true,
+          isAccountDeleted: false,
           isPasswordVerified: false,
           isPasswordUpdated: false,
           authFailureOrUnitOption: none(),
@@ -83,6 +87,7 @@ class AccountTransactionsBloc
         Either<AuthFailure, Unit> failureOrSuccess;
         yield state.copyWith(
           isProgressing: true,
+          isAccountDeleted: false,
           showErrorMessages: false,
           isPasswordVerified: false,
           isPasswordUpdated: false,

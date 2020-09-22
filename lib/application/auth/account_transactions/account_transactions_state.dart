@@ -9,6 +9,7 @@ abstract class AccountTransactionsState with _$AccountTransactionsState {
     @required bool showErrorMessages,
     @required bool isPasswordVerified,
     @required bool isPasswordUpdated,
+    @required bool isAccountDeleted,
   }) = _AccountTransactionsState;
 
   factory AccountTransactionsState.initial() => _AccountTransactionsState(
@@ -18,5 +19,6 @@ abstract class AccountTransactionsState with _$AccountTransactionsState {
         showErrorMessages: false,
         isPasswordVerified: false,
         isPasswordUpdated: false,
+        isAccountDeleted: false,
       );
 }

@@ -152,7 +152,14 @@ class FirebaseAuthFacade extends IAuthFacade {
         return left(const AuthFailure.networkException());
       }
       final _firebaseUser = await _firebaseAuth.currentUser();
-      await _firebaseUser.delete();
+      if (_firebaseUser != null) {
+        await Future.wait([
+          _firebaseUser.delete(),
+          _googleSignIn.signOut(),
+        ]);
+      } else {
+        return left(const AuthFailure.serverError());
+      }
 
       return right(unit);
     } on PlatformException catch (_) {

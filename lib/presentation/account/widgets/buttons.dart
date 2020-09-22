@@ -47,14 +47,16 @@ FlatRectangleButton changePasswordButton(
 FlatRectangleButton deleteAccountButton(BuildContext context) {
   return FlatRectangleButton(
     onPressed: () {
-      deletePopup(context,
-          title: translate(context, 'delete_account_title'),
-          message: translate(context, 'delete_account_message'), action: () {
-        context
-            .bloc<AccountTransactionsBloc>()
-            .add(const AccountTransactionsEvent.accountDeleted());
-        context.bloc<AuthBloc>().add(const AuthEvent.authCheckRequested());
-      });
+      deletePopup(
+        context,
+        title: translate(context, 'delete_account_title'),
+        message: translate(context, 'delete_account_message'),
+        action: () {
+          context
+              .bloc<AccountTransactionsBloc>()
+              .add(const AccountTransactionsEvent.accountDeleted());
+        },
+      );
     },
     color: Colors.grey,
     child: Text(
