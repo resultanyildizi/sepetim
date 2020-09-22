@@ -12,8 +12,9 @@ Widget emailFormField(BuildContext context) {
     style: Theme.of(context).textTheme.subtitle1,
     decoration: InputDecoration(labelText: translate(context, 'email')),
     autocorrect: false,
-    onChanged: (value) =>
-        context.bloc<SignInFormBloc>().add(SignInFormEvent.emailChanged(value)),
+    onChanged: (value) => context
+        .bloc<SignInFormBloc>()
+        .add(SignInFormEvent.emailChanged(value.trim())),
     validator: (_) =>
         context.bloc<SignInFormBloc>().state.emailAddress.value.fold(
               (f) => f.maybeMap(

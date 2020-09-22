@@ -126,13 +126,22 @@ class FirebaseAuthFacade extends IAuthFacade {
 
       final googleAuthentication = await googleUser.authentication;
 
-      final authCredential = GoogleAuthProvider.getCredential(
-        idToken: googleAuthentication.idToken,
-        accessToken: googleAuthentication.accessToken,
-      );
+      final emailList = await _firebaseAuth.fetchSignInMethodsForEmail(
+          email: googleUser.email);
 
-      await _firebaseAuth.signInWithCredential(authCredential);
-      return right(unit);
+      if (emailList != null &&
+          emailList.isNotEmpty &&
+          emailList[0] != 'google.com') {
+        await _googleSignIn.signOut();
+        return left(const AuthFailure.emailAlreadyInUse());
+      } else {
+        final authCredential = GoogleAuthProvider.getCredential(
+          idToken: googleAuthentication.idToken,
+          accessToken: googleAuthentication.accessToken,
+        );
+        await _firebaseAuth.signInWithCredential(authCredential);
+        return right(unit);
+      }
     } on PlatformException catch (e) {
       if (e.code == 'network_error') {
         return left(const AuthFailure.networkException());
