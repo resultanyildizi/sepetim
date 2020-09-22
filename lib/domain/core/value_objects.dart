@@ -46,17 +46,19 @@ class ShortTitle extends ValueObject<String> {
   }
 
   String fittedString({
-    @required int maxPlainLength,
-    @required int maxEmojiLength,
+    @required int maxLength,
   }) {
-    if (getOrCrash().length != getOrCrash().characters.length) {
-      return getOrCrash()
-          .characters
-          .skipLast(getOrCrash().characters.length - maxEmojiLength)
-          .string;
-    } else {
-      return getOrCrash().substring(0, maxPlainLength);
+    final asCharacter = getOrCrash().characters.take(maxLength);
+    int normalCharCount = 0;
+    for (int i = 0; i < asCharacter.length; i++) {
+      if (asCharacter.elementAt(i).length == 1) {
+        normalCharCount++;
+      }
     }
+
+    final charToTake = ((maxLength - normalCharCount) ~/ 2) + normalCharCount;
+    final suffix = charToTake < getOrCrash().characters.length ? '...' : '';
+    return getOrCrash().characters.take(charToTake).string + suffix;
   }
 
   const ShortTitle._(this.value);

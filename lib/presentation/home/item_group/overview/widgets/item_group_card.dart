@@ -64,9 +64,7 @@ class ItemGroupCard extends StatelessWidget {
                       Row(
                         children: <Widget>[
                           Text(
-                            group.title.getOrCrash().length <= 25
-                                ? group.title.getOrCrash()
-                                : '${group.title.fittedString(maxPlainLength: 22, maxEmojiLength: 10)}...',
+                            group.title.fittedString(maxLength: 22),
                             style:
                                 didactGothicTextStyle(bold: true, fontSize: 20),
                           ),

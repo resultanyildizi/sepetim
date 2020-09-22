@@ -57,12 +57,9 @@ class ItemCategoryCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          category.title.getOrCrash().length <= 20
-                              ? category.title.getOrCrash()
-                              : '${category.title.fittedString(
-                                  maxPlainLength: 17,
-                                  maxEmojiLength: 7,
-                                )}...',
+                          category.title.fittedString(
+                            maxLength: 14,
+                          ),
                           style: didactGothicTextStyle(
                             bold: true,
                           ),

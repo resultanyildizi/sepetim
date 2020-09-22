@@ -217,7 +217,6 @@ class _LinkFormState extends State<LinkForm> {
                                   ),
                                   borderRadius: 5,
                                   isDismissible: true,
-                                  blockBackgroundInteraction: true,
                                   duration: const Duration(seconds: 2),
                                   messageText: Text(
                                     translate(context, 'link_copied'),

@@ -141,9 +141,7 @@ class ItemCard extends StatelessWidget {
               height: 4.0,
             ),
             Text(
-              item.title.getOrCrash().length <= 20
-                  ? item.title.getOrCrash()
-                  : '${item.title.fittedString(maxPlainLength: 17, maxEmojiLength: 7)}...',
+              item.title.fittedString(maxLength: 14),
               style: robotoTextStyle(bold: true, fontSize: 16.0),
             ),
             Text(
@@ -159,7 +157,7 @@ class ItemCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   Text(
-                    '${translate(context, 'last_edited')}: ${item.lastEditTime.toString().substring(0, 16)}',
+                    '${translate(context, 'last_edited')}:\n${item.lastEditTime.toString().substring(0, 16)}',
                     style: didactGothicTextStyle(),
                   ),
                 ],
