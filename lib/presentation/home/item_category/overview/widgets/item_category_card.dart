@@ -178,9 +178,7 @@ class ItemCategoryCard extends StatelessWidget {
               const SizedBox(
                 height: 3.0,
               ),
-              ErrorOutlineButton(
-                onPressed: () {},
-              ),
+              ErrorOutlineButton(onPressed: () {})
             ],
           ),
         ),

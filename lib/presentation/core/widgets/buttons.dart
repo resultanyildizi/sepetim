@@ -106,7 +106,7 @@ class ErrorOutlineButton extends StatelessWidget {
       borderSide: const BorderSide(color: Colors.white),
       highlightedBorderColor: Colors.white,
       onPressed: onPressed,
-      child: Text(translate(context, 'report_us')),
+      child: Text(translate(context, 'report_issue')),
     );
   }
 }
@@ -124,6 +124,7 @@ class FlatRectangleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      borderRadius: BorderRadius.circular(5),
       onTap: onPressed,
       child: Container(
         height: 40.0,

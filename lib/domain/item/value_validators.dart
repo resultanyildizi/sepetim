@@ -6,7 +6,7 @@ Either<ValueFailure<double>, double> validatePrice(String input) {
 
   if (price == null) {
     return left(const ValueFailure.invalidPrice(failedValue: -1));
-  } else if (price >= 0.0) {
+  } else if ((price >= 0.00001 || price == 0) && price < 1e13) {
     return right(price);
   } else {
     return left(ValueFailure.invalidPrice(failedValue: price));

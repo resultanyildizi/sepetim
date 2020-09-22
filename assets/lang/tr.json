@@ -121,5 +121,8 @@
   "enter_new_password": "Yeni bir şifre girin",
   "successful": "Başarılı",
   "password_changed_successfully": "Şifre başarıyla değiştirildi",
-  "link_copied": "Link panoya kopyalandı."
+  "link_copied": "Link panoya kopyalandı.",
+  "trillion": "Trilyon",
+  "billion": "Milyar",
+  "million": "Milyon"
 }

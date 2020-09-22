@@ -149,7 +149,7 @@ class ItemCard extends StatelessWidget {
               style: didactGothicTextStyle(),
             ),
             Text(
-              '${translate(context, 'price')}: ${item.price.getOrCrash().toString()}₺',
+              '${translate(context, 'price')}: ${item.price.fittedPrice(context)} ₺',
               style: didactGothicTextStyle(),
             ),
             Expanded(

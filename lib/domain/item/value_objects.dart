@@ -2,7 +2,9 @@ import 'package:Sepetim/domain/core/failures.dart';
 import 'package:Sepetim/domain/core/value_object.dart';
 import 'package:Sepetim/domain/core/value_validators.dart';
 import 'package:Sepetim/domain/item/value_validators.dart';
+import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 
 class DescriptionBody extends ValueObject<String> {
   @override
@@ -25,6 +27,28 @@ class Price extends ValueObject<double> {
   factory Price(String input) {
     assert(input != null);
     return Price._(validatePrice(input));
+  }
+
+  String fittedPrice(BuildContext context) {
+    double price = getOrCrash();
+    String suffix = '';
+
+    if (price >= 1e6) {
+      if (price >= 1e9) {
+        if (price >= 1e12) {
+          price /= 1e12;
+          suffix = translate(context, 'trillion');
+        } else {
+          price /= 1e9;
+          suffix = translate(context, 'billion');
+        }
+      } else {
+        price /= 1e6;
+        suffix = translate(context, 'million');
+      }
+    }
+
+    return '${price.toStringAsFixed(price.truncateToDouble() == price ? 0 : 2)} $suffix';
   }
 
   Price._(this.value);
