@@ -155,6 +155,8 @@ class _LinkFormState extends State<LinkForm> {
                         text: translate(context, 'add_link'),
                         onPressed: () {
                           addLinkObject(state, context);
+                          titleTextEditingController.text = "";
+                          urlTextEditingController.text = "";
                         },
                       ),
                     ),
