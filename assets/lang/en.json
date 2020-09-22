@@ -120,5 +120,6 @@
   "change_your_password": "Change your password",
   "enter_new_password": "Enter a new password",
   "successful": "Successful",
-  "password_changed_successfully": "Password changed successfully"
+  "password_changed_successfully": "Password changed successfully",
+  "link_copied": "The link has been copied to the clipboard"
 }

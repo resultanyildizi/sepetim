@@ -120,5 +120,6 @@
   "change_your_password": "Şifrenizi değiştirin",
   "enter_new_password": "Yeni bir şifre girin",
   "successful": "Başarılı",
-  "password_changed_successfully": "Şifre başarıyla değiştirildi"
+  "password_changed_successfully": "Şifre başarıyla değiştirildi",
+  "link_copied": "Link panoya kopyalandı."
 }

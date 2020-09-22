@@ -2,6 +2,7 @@ import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/home/item/form/link_form/widgets/text_fields.dart';
 import 'package:Sepetim/presentation/home/item/form/misc/link_object_primitive.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -204,6 +205,33 @@ class _LinkFormState extends State<LinkForm> {
                               onPressed: () {
                                 Clipboard.setData(ClipboardData(
                                     text: link.link.getOrCrash()));
+                                Flushbar(
+                                  flushbarStyle: FlushbarStyle.FLOATING,
+                                  dismissDirection:
+                                      FlushbarDismissDirection.HORIZONTAL,
+                                  flushbarPosition: FlushbarPosition.BOTTOM,
+                                  margin: const EdgeInsets.only(
+                                    bottom: 70,
+                                    left: 8,
+                                    right: 8,
+                                  ),
+                                  borderRadius: 5,
+                                  isDismissible: true,
+                                  blockBackgroundInteraction: true,
+                                  duration: const Duration(seconds: 2),
+                                  messageText: Text(
+                                    translate(context, 'link_copied'),
+                                    style: robotoTextStyle(
+                                      color: sepetimYellow,
+                                      bold: true,
+                                    ),
+                                  ),
+                                  backgroundColor: sepetimGrey,
+                                  icon: const Icon(
+                                    Icons.info_outline,
+                                    color: sepetimYellow,
+                                  ),
+                                ).show(context);
                               },
                             ),
                             key: Key(
