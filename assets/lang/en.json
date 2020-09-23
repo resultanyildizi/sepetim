@@ -124,5 +124,13 @@
   "link_copied": "The link has been copied to the clipboard",
   "trillion": "Trillion",
   "billion": "Billion",
-  "million": "Million"
+  "million": "Million",
+  "forgot_password": "Forgot password?",
+  "reset_password": "Reset password",
+  "user_not_found_title": "Account not found",
+  "user_not_found_message": "There is no user account with the entered email address.",
+  "user_not_using_email_provider_title": "Invalid provider",
+  "user_not_using_email_provider_message": "This email address doesn't belong to an email provider meaning the user didn't register with email and password.",
+  "send_link": "Send reset password link",
+  "enter_email_to_get_link": "Enter your registered email address to get a password reset link."
 }

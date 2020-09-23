@@ -15,9 +15,11 @@ class SaveButton extends StatelessWidget {
         'save',
       ),
       onPressed: () {
-        context
-            .bloc<ItemCategoryFormBloc>()
-            .add(const ItemCategoryFormEvent.saved());
+        if (!context.bloc<ItemCategoryFormBloc>().state.isSaving) {
+          context
+              .bloc<ItemCategoryFormBloc>()
+              .add(const ItemCategoryFormEvent.saved());
+        }
       },
     );
   }

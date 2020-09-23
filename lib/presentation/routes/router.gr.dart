@@ -27,6 +27,7 @@ import 'package:Sepetim/application/item/form/item_form_bloc.dart';
 import 'package:Sepetim/presentation/home/item/form/widgets/edit_description_page.dart';
 import 'package:Sepetim/presentation/home/item/form/link_form/link_form.dart';
 import 'package:Sepetim/application/item/actor/item_actor_bloc.dart';
+import 'package:Sepetim/presentation/sign_in/reset_password_page.dart';
 
 abstract class Routes {
   static const splashPage = '/';
@@ -41,6 +42,7 @@ abstract class Routes {
   static const itemPage = '/item-page';
   static const editDescriptionPage = '/edit-description-page';
   static const linkForm = '/link-form';
+  static const resetPasswordPage = '/reset-password-page';
   static const all = {
     splashPage,
     signInPage,
@@ -54,6 +56,7 @@ abstract class Routes {
     itemPage,
     editDescriptionPage,
     linkForm,
+    resetPasswordPage,
   };
 }
 
@@ -204,6 +207,11 @@ class Router extends RouterBase {
               group: typedArgs.group,
               formBloc: typedArgs.formBloc,
               actorBloc: typedArgs.actorBloc),
+          settings: settings,
+        );
+      case Routes.resetPasswordPage:
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => ResetPasswordPage(),
           settings: settings,
         );
       default:
@@ -450,4 +458,6 @@ extension RouterNavigationHelperMethods on ExtendedNavigatorState {
             formBloc: formBloc,
             actorBloc: actorBloc),
       );
+
+  Future pushResetPasswordPage() => pushNamed(Routes.resetPasswordPage);
 }

@@ -126,12 +126,12 @@ class FirebaseAuthFacade extends IAuthFacade {
 
       final googleAuthentication = await googleUser.authentication;
 
-      final emailList = await _firebaseAuth.fetchSignInMethodsForEmail(
+      final providerList = await _firebaseAuth.fetchSignInMethodsForEmail(
           email: googleUser.email);
 
-      if (emailList != null &&
-          emailList.isNotEmpty &&
-          emailList[0] != 'google.com') {
+      if (providerList != null &&
+          providerList.isNotEmpty &&
+          providerList[0] != 'google.com') {
         await _googleSignIn.signOut();
         return left(const AuthFailure.emailAlreadyInUse());
       } else {
@@ -172,6 +172,44 @@ class FirebaseAuthFacade extends IAuthFacade {
 
       return right(unit);
     } on PlatformException catch (_) {
+      return left(const AuthFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> sendResetPasswordLink({
+    @required EmailAddress emailAddress,
+    @required String languageCode,
+  }) async {
+    try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const AuthFailure.networkException());
+      }
+
+      final providerList = await _firebaseAuth.fetchSignInMethodsForEmail(
+          email: emailAddress.getOrCrash());
+
+      if (providerList == null ||
+          (providerList != null && providerList.isEmpty)) {
+        return left(const AuthFailure.userNotFound());
+      } else {
+        if (providerList[0] != 'password') {
+          return left(const AuthFailure.userNotUsingEmailProvider());
+        }
+      }
+      await _firebaseAuth.setLanguageCode(languageCode);
+      await _firebaseAuth.sendPasswordResetEmail(
+        email: emailAddress.getOrCrash(),
+      );
+      return right(unit);
+    } on PlatformException catch (e) {
+      if (e.code == "ERROR_USER_NOT_FOUND") {
+        return left(const AuthFailure.userNotFound());
+      }
+      print(e.code);
       return left(const AuthFailure.serverError());
     }
   }

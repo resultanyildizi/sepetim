@@ -39,6 +39,14 @@ class _$AuthFailureTearOff {
   _TooManyRequests tooManyRequests() {
     return const _TooManyRequests();
   }
+
+  _UserNotFound userNotFound() {
+    return const _UserNotFound();
+  }
+
+  _UserNotUsingEmailProvider userNotUsingEmailProvider() {
+    return const _UserNotUsingEmailProvider();
+  }
 }
 
 // ignore: unused_element
@@ -54,6 +62,8 @@ mixin _$AuthFailure {
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result userNotUsingEmailProvider(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -64,6 +74,8 @@ mixin _$AuthFailure {
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
+    Result userNotFound(),
+    Result userNotUsingEmailProvider(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -77,6 +89,9 @@ mixin _$AuthFailure {
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -88,6 +103,8 @@ mixin _$AuthFailure {
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required Result orElse(),
   });
 }
@@ -149,6 +166,8 @@ class _$_CancelledByUser implements _CancelledByUser {
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result userNotUsingEmailProvider(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -157,6 +176,8 @@ class _$_CancelledByUser implements _CancelledByUser {
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return cancelledByUser();
   }
 
@@ -170,6 +191,8 @@ class _$_CancelledByUser implements _CancelledByUser {
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
+    Result userNotFound(),
+    Result userNotUsingEmailProvider(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -191,6 +214,9 @@ class _$_CancelledByUser implements _CancelledByUser {
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -199,6 +225,8 @@ class _$_CancelledByUser implements _CancelledByUser {
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return cancelledByUser(this);
   }
 
@@ -213,6 +241,8 @@ class _$_CancelledByUser implements _CancelledByUser {
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -269,6 +299,8 @@ class _$_ServerError implements _ServerError {
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result userNotUsingEmailProvider(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -277,6 +309,8 @@ class _$_ServerError implements _ServerError {
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return serverError();
   }
 
@@ -290,6 +324,8 @@ class _$_ServerError implements _ServerError {
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
+    Result userNotFound(),
+    Result userNotUsingEmailProvider(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -311,6 +347,9 @@ class _$_ServerError implements _ServerError {
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -319,6 +358,8 @@ class _$_ServerError implements _ServerError {
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return serverError(this);
   }
 
@@ -333,6 +374,8 @@ class _$_ServerError implements _ServerError {
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -390,6 +433,8 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result userNotUsingEmailProvider(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -398,6 +443,8 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return emailAlreadyInUse();
   }
 
@@ -411,6 +458,8 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
+    Result userNotFound(),
+    Result userNotUsingEmailProvider(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -432,6 +481,9 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -440,6 +492,8 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return emailAlreadyInUse(this);
   }
 
@@ -454,6 +508,8 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -516,6 +572,8 @@ class _$_InvalidEmailAndPasswordCombination
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result userNotUsingEmailProvider(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -524,6 +582,8 @@ class _$_InvalidEmailAndPasswordCombination
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return invalidEmailAndPasswordCombination();
   }
 
@@ -537,6 +597,8 @@ class _$_InvalidEmailAndPasswordCombination
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
+    Result userNotFound(),
+    Result userNotUsingEmailProvider(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -558,6 +620,9 @@ class _$_InvalidEmailAndPasswordCombination
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -566,6 +631,8 @@ class _$_InvalidEmailAndPasswordCombination
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return invalidEmailAndPasswordCombination(this);
   }
 
@@ -580,6 +647,8 @@ class _$_InvalidEmailAndPasswordCombination
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -638,6 +707,8 @@ class _$_NetworkException implements _NetworkException {
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result userNotUsingEmailProvider(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -646,6 +717,8 @@ class _$_NetworkException implements _NetworkException {
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return networkException();
   }
 
@@ -659,6 +732,8 @@ class _$_NetworkException implements _NetworkException {
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
+    Result userNotFound(),
+    Result userNotUsingEmailProvider(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -680,6 +755,9 @@ class _$_NetworkException implements _NetworkException {
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -688,6 +766,8 @@ class _$_NetworkException implements _NetworkException {
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return networkException(this);
   }
 
@@ -702,6 +782,8 @@ class _$_NetworkException implements _NetworkException {
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -758,6 +840,8 @@ class _$_WrongPassword implements _WrongPassword {
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result userNotUsingEmailProvider(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -766,6 +850,8 @@ class _$_WrongPassword implements _WrongPassword {
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return wrongPassword();
   }
 
@@ -779,6 +865,8 @@ class _$_WrongPassword implements _WrongPassword {
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
+    Result userNotFound(),
+    Result userNotUsingEmailProvider(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -800,6 +888,9 @@ class _$_WrongPassword implements _WrongPassword {
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -808,6 +899,8 @@ class _$_WrongPassword implements _WrongPassword {
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return wrongPassword(this);
   }
 
@@ -822,6 +915,8 @@ class _$_WrongPassword implements _WrongPassword {
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -879,6 +974,8 @@ class _$_TooManyRequests implements _TooManyRequests {
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result userNotUsingEmailProvider(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -887,6 +984,8 @@ class _$_TooManyRequests implements _TooManyRequests {
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return tooManyRequests();
   }
 
@@ -900,6 +999,8 @@ class _$_TooManyRequests implements _TooManyRequests {
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
+    Result userNotFound(),
+    Result userNotUsingEmailProvider(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -921,6 +1022,9 @@ class _$_TooManyRequests implements _TooManyRequests {
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -929,6 +1033,8 @@ class _$_TooManyRequests implements _TooManyRequests {
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
     return tooManyRequests(this);
   }
 
@@ -943,6 +1049,8 @@ class _$_TooManyRequests implements _TooManyRequests {
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -955,4 +1063,272 @@ class _$_TooManyRequests implements _TooManyRequests {
 
 abstract class _TooManyRequests implements AuthFailure {
   const factory _TooManyRequests() = _$_TooManyRequests;
+}
+
+abstract class _$UserNotFoundCopyWith<$Res> {
+  factory _$UserNotFoundCopyWith(
+          _UserNotFound value, $Res Function(_UserNotFound) then) =
+      __$UserNotFoundCopyWithImpl<$Res>;
+}
+
+class __$UserNotFoundCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$UserNotFoundCopyWith<$Res> {
+  __$UserNotFoundCopyWithImpl(
+      _UserNotFound _value, $Res Function(_UserNotFound) _then)
+      : super(_value, (v) => _then(v as _UserNotFound));
+
+  @override
+  _UserNotFound get _value => super._value as _UserNotFound;
+}
+
+class _$_UserNotFound implements _UserNotFound {
+  const _$_UserNotFound();
+
+  @override
+  String toString() {
+    return 'AuthFailure.userNotFound()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _UserNotFound);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result invalidEmailAndPasswordCombination(),
+    @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result userNotUsingEmailProvider(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
+    return userNotFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result invalidEmailAndPasswordCombination(),
+    Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
+    Result userNotFound(),
+    Result userNotUsingEmailProvider(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (userNotFound != null) {
+      return userNotFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
+    return userNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (userNotFound != null) {
+      return userNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserNotFound implements AuthFailure {
+  const factory _UserNotFound() = _$_UserNotFound;
+}
+
+abstract class _$UserNotUsingEmailProviderCopyWith<$Res> {
+  factory _$UserNotUsingEmailProviderCopyWith(_UserNotUsingEmailProvider value,
+          $Res Function(_UserNotUsingEmailProvider) then) =
+      __$UserNotUsingEmailProviderCopyWithImpl<$Res>;
+}
+
+class __$UserNotUsingEmailProviderCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$UserNotUsingEmailProviderCopyWith<$Res> {
+  __$UserNotUsingEmailProviderCopyWithImpl(_UserNotUsingEmailProvider _value,
+      $Res Function(_UserNotUsingEmailProvider) _then)
+      : super(_value, (v) => _then(v as _UserNotUsingEmailProvider));
+
+  @override
+  _UserNotUsingEmailProvider get _value =>
+      super._value as _UserNotUsingEmailProvider;
+}
+
+class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
+  const _$_UserNotUsingEmailProvider();
+
+  @override
+  String toString() {
+    return 'AuthFailure.userNotUsingEmailProvider()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _UserNotUsingEmailProvider);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result invalidEmailAndPasswordCombination(),
+    @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result userNotUsingEmailProvider(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
+    return userNotUsingEmailProvider();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result invalidEmailAndPasswordCombination(),
+    Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
+    Result userNotFound(),
+    Result userNotUsingEmailProvider(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (userNotUsingEmailProvider != null) {
+      return userNotUsingEmailProvider();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(userNotUsingEmailProvider != null);
+    return userNotUsingEmailProvider(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (userNotUsingEmailProvider != null) {
+      return userNotUsingEmailProvider(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserNotUsingEmailProvider implements AuthFailure {
+  const factory _UserNotUsingEmailProvider() = _$_UserNotUsingEmailProvider;
 }

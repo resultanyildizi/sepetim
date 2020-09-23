@@ -97,7 +97,6 @@ Future invalidEmailAndPasswordCombinationPopup(BuildContext context) {
 }
 
 Future tooManyRequestsPopup(BuildContext context) {
-  // TODO: translate
   return actionPopup(
     context,
     backgroundColor: Colors.white,
@@ -107,6 +106,52 @@ Future tooManyRequestsPopup(BuildContext context) {
     ),
     content: Text(
       translate(context, 'too_many_requests_message'),
+    ),
+    actions: <Widget>[
+      RoundedButton(
+        width: screenWidthByScalar(context, 1.0),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        text: translate(context, 'okay'),
+      )
+    ],
+  );
+}
+
+Future userNotFound(BuildContext context) {
+  return actionPopup(
+    context,
+    backgroundColor: Colors.white,
+    title: Text(
+      translate(context, 'user_not_found_title'),
+      style: robotoTextStyle(),
+    ),
+    content: Text(
+      translate(context, 'user_not_found_message'),
+    ),
+    actions: <Widget>[
+      RoundedButton(
+        width: screenWidthByScalar(context, 1.0),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        text: translate(context, 'okay'),
+      )
+    ],
+  );
+}
+
+Future userNotUsingEmailProvider(BuildContext context) {
+  return actionPopup(
+    context,
+    backgroundColor: Colors.white,
+    title: Text(
+      translate(context, 'user_not_using_email_provider_title'),
+      style: robotoTextStyle(),
+    ),
+    content: Text(
+      translate(context, 'user_not_using_email_provider_message'),
     ),
     actions: <Widget>[
       RoundedButton(

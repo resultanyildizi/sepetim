@@ -1,3 +1,4 @@
+import 'package:Sepetim/domain/auth/value_objects.dart';
 import 'package:Sepetim/domain/auth/value_validators.dart';
 import 'package:Sepetim/domain/core/failures.dart';
 import 'package:Sepetim/domain/core/value_validators.dart';
@@ -6,24 +7,49 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
+  final validEmails = <String>[
+    'deneme@gmail.com',
+    'mkyong@yahoo.com',
+    'mkyong-100@yahoo.com',
+    'mkyong.100@yahoo.com',
+    'mkyong111@mkyong.com',
+    'mkyong-100@mkyong.net',
+    'mkyong.100@mkyong.com.au',
+    'mkyong@1.com',
+    'mkyong@gmail.com.com',
+    'mkyong+100@gmail.com',
+    'mkyong-100@yahoo-test.com',
+  ];
+  final invalidEmails = <String>[
+    'mkyong',
+    'mkyong@.com.my',
+    'mkyong123@gmail.a',
+    'mkyong123@.com',
+    'mkyong123@.com.com',
+    '.mkyong@mkyong.com',
+    'mkyong()*@gmail.com',
+    'mkyong@%*.com',
+    'mkyong..2002@gmail.com',
+    'mkyong.@gmail.com',
+    'mkyong@mkyong@gmail.com',
+    'mkyong@gmail.com.1a',
+  ];
   group('validateEmail', () {
-    test('should return valid email when email is valid', () {
-      const validEmail = 'deneme@gmail.com';
+    validEmails.forEach((email) {
+      test('for email $email: should return email itself', () {
+        final result = validateEmail(email);
 
-      final result = validateEmail(validEmail);
-
-      expect(result, equals(right(validEmail)));
+        expect(result, equals(right(email)));
+      });
     });
 
-    test('should return ValueFailure when email is invalid', () {
-      const invalidEmail = 'deneme@gmailcom';
+    invalidEmails.forEach((email) {
+      test('for email $email : should return ValueFailure', () {
+        final result = validateEmail(email);
 
-      final result = validateEmail(invalidEmail);
-
-      expect(
-          result,
-          equals(left(
-              const ValueFailure.invalidEmail(failedValue: invalidEmail))));
+        expect(result,
+            equals(left(ValueFailure.invalidEmail(failedValue: email))));
+      });
     });
   });
 
@@ -238,39 +264,6 @@ void main() {
       final result = validateLink(validLink);
 
       expect(result, equals(right(validLink)));
-    });
-
-    test('should return valueFailure when link is invalid', () {
-      const invalidLink = 'sadfasdfasd';
-
-      final result = validateLink(invalidLink);
-
-      expect(
-          result,
-          equals(
-              left(const ValueFailure.invalidUrl(failedValue: invalidLink))));
-    });
-
-    test('should return valueFailure when link is invalid', () {
-      const invalidLink = 'htt://www.google.com';
-
-      final result = validateLink(invalidLink);
-
-      expect(
-          result,
-          equals(
-              left(const ValueFailure.invalidUrl(failedValue: invalidLink))));
-    });
-
-    test('should return valueFailure when link is invalid', () {
-      const invalidLink = '://www.google.com';
-
-      final result = validateLink(invalidLink);
-
-      expect(
-          result,
-          equals(
-              left(const ValueFailure.invalidUrl(failedValue: invalidLink))));
     });
   });
 }

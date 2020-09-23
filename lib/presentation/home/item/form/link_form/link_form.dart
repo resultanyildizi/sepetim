@@ -269,10 +269,12 @@ class _LinkFormState extends State<LinkForm> {
                             width: screenWidthByScalar(context, 1.0),
                             text: translate(context, 'save'),
                             onPressed: () {
-                              widget.formBloc.add(
-                                ItemFormEvent.saved(
-                                    widget.category.uid, widget.group.uid),
-                              );
+                              if (!state.isSaving) {
+                                widget.formBloc.add(
+                                  ItemFormEvent.saved(
+                                      widget.category.uid, widget.group.uid),
+                                );
+                              }
                             },
                           ),
                         ],

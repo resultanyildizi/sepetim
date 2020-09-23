@@ -7,6 +7,7 @@ import 'package:Sepetim/presentation/home/item/overview/widgets/item_page.dart';
 import 'package:Sepetim/presentation/home/item_category/form/item_category_form.dart';
 import 'package:Sepetim/presentation/home/item_group/form/item_group_form.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/item_group_overview_page.dart';
+import 'package:Sepetim/presentation/sign_in/reset_password_page.dart';
 import 'package:Sepetim/presentation/sign_in/sign_in_page.dart';
 import 'package:Sepetim/presentation/splash/splash_page.dart';
 import 'package:auto_route/auto_route_annotations.dart';
@@ -48,4 +49,7 @@ class $Router {
 
   @MaterialRoute()
   LinkForm linkForm;
+
+  @MaterialRoute()
+  ResetPasswordPage resetPasswordPage;
 }

@@ -1,7 +1,6 @@
 import 'package:Sepetim/domain/auth/user.dart';
 import 'package:Sepetim/domain/auth/value_objects.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
 import 'auth_failure.dart';
@@ -31,6 +30,11 @@ abstract class IAuthFacade {
 
   Future<Either<AuthFailure, Unit>> updatePassword({
     @required Password password,
+  });
+
+  Future<Either<AuthFailure, Unit>> sendResetPasswordLink({
+    @required EmailAddress emailAddress,
+    @required String languageCode,
   });
 
   Future<void> signOut();

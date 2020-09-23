@@ -19,9 +19,11 @@ class SaveButton extends StatelessWidget {
         'save',
       ),
       onPressed: () {
-        context
-            .bloc<ItemGroupFormBloc>()
-            .add(ItemGroupFormEvent.saved(categoryId));
+        if (!context.bloc<ItemGroupFormBloc>().state.isSaving) {
+          context
+              .bloc<ItemGroupFormBloc>()
+              .add(ItemGroupFormEvent.saved(categoryId));
+        }
       },
     );
   }

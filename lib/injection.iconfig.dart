@@ -15,6 +15,7 @@ import 'package:Sepetim/domain/auth/i_auth_facade.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:Sepetim/application/item_category/selector/item_category_selector_bloc.dart';
 import 'package:Sepetim/application/auth/password_visibility/password_visibility_bloc.dart';
+import 'package:Sepetim/application/auth/reset_password_form/reset_password_form_bloc.dart';
 import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:Sepetim/application/auth/account_transactions/account_transactions_bloc.dart';
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
@@ -52,6 +53,8 @@ void $initGetIt(GetIt g, {String environment}) {
       () => imagePickerInjectableModule.imagePicker);
   g.registerFactory<ItemCategorySelectorBloc>(() => ItemCategorySelectorBloc());
   g.registerFactory<PasswordVisibilityBloc>(() => PasswordVisibilityBloc());
+  g.registerFactory<ResetPasswordFormBloc>(
+      () => ResetPasswordFormBloc(g<IAuthFacade>()));
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<IAuthFacade>()));
   g.registerFactory<AccountTransactionsBloc>(
       () => AccountTransactionsBloc(g<IAuthFacade>()));

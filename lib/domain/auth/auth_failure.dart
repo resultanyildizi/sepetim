@@ -12,4 +12,7 @@ abstract class AuthFailure with _$AuthFailure {
   const factory AuthFailure.networkException() = _NetworkException;
   const factory AuthFailure.wrongPassword() = _WrongPassword;
   const factory AuthFailure.tooManyRequests() = _TooManyRequests;
+  const factory AuthFailure.userNotFound() = _UserNotFound;
+  const factory AuthFailure.userNotUsingEmailProvider() =
+      _UserNotUsingEmailProvider;
 }

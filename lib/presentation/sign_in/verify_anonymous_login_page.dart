@@ -20,7 +20,12 @@ class VerifyAnonymousLoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          translate(context, 'without_log_in'),
+          style: robotoTextStyle(bold: true),
+        ),
+      ),
       body: MultiBlocProvider(
         providers: [
           BlocProvider(

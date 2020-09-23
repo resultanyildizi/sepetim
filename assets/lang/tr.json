@@ -124,5 +124,13 @@
   "link_copied": "Link panoya kopyalandı.",
   "trillion": "Trilyon",
   "billion": "Milyar",
-  "million": "Milyon"
+  "million": "Milyon",
+  "forgot_password": "Şifremi unuttum",
+  "reset_password": "Şifreni yenile",
+  "user_not_found_title": "Hesap bulunamadı",
+  "user_not_found_message": "Girilen mail adresine sahip kullanıcı hesabı yok.",
+  "user_not_using_email_provider_title": "Geçersiz sağlayıcı",
+  "user_not_using_email_provider_message": "Bu email adresi email sağlayıcısına ait değildir. Yani kullanıcı email adresi ve şifre kullanarak kayıt olmamıştır.",
+  "send_link": "Şifre yenileme linki gönder",
+  "enter_email_to_get_link": "Şifre yenileme linki almak için kayıtlı email adresinizi giriniz."
 }

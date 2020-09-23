@@ -1,6 +1,7 @@
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
+import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
 import 'package:Sepetim/presentation/core/widgets/buttons.dart';
 import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
@@ -50,23 +51,27 @@ class SignInForm extends StatelessWidget {
             children: <Widget>[
               const SizedBox(height: 8.0),
               emailFormField(context),
-              SizedBox(
-                height: screenHeightByScalar(
-                  context,
-                  scalarSmall: 0.005,
-                  scalarMedium: 0.01,
-                  scalarBig: 0.01,
-                ),
-              ),
+              const SizedBox(height: 8),
               passwordFormField(context),
-              SizedBox(
-                height: screenHeightByScalar(
-                  context,
-                  scalarSmall: 0.005,
-                  scalarMedium: 0.01,
-                  scalarBig: 0.01,
-                ),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  const Spacer(),
+                  InkWell(
+                    focusColor: Colors.blue,
+                    radius: 10,
+                    onTap: () {
+                      ExtendedNavigator.of(context)
+                          .pushNamed(Routes.resetPasswordPage);
+                    },
+                    child: Text(
+                      translate(context, 'forgot_password'),
+                      style: didactGothicTextStyle(color: Colors.blue),
+                    ),
+                  ),
+                ],
               ),
+              const SizedBox(height: 6),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Row(
