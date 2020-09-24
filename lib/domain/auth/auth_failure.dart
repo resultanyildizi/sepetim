@@ -13,6 +13,7 @@ abstract class AuthFailure with _$AuthFailure {
   const factory AuthFailure.userNotFound() = _UserNotFound;
   const factory AuthFailure.accountAlreadyExists() = _AccountAlreadyExists;
   const factory AuthFailure.accountAlreadyLinked() = _AccountAlreadyLinked;
+  const factory AuthFailure.invalidCredential() = _InvalidCredential;
   const factory AuthFailure.userNotUsingEmailProvider() =
       _UserNotUsingEmailProvider;
   const factory AuthFailure.invalidEmailAndPasswordCombination() =

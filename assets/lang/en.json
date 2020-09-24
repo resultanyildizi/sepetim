@@ -137,5 +137,7 @@
   "not_registered_with_google_title": "Not registered as google account",
   "not_registered_with_google_message": "There is already an account with that email address but not registered as a google account.",
   "account_already_exists_title": "Account already in use",
-  "account_already_exists_message": "You can't link your anonymous account with an account which is already in use."
+  "account_already_exists_message": "You can't link your anonymous account with an account which is already in use.",
+  "invalid_credential_title": "Invalid credential",
+  "invalid_credential_message": "The credentials used to log in cannot be used to perform the requested action. (Removing the account from your phone and signing back in can help.)"
 }

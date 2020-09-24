@@ -48,6 +48,10 @@ class _$AuthFailureTearOff {
     return const _AccountAlreadyLinked();
   }
 
+  _InvalidCredential invalidCredential() {
+    return const _InvalidCredential();
+  }
+
   _UserNotUsingEmailProvider userNotUsingEmailProvider() {
     return const _UserNotUsingEmailProvider();
   }
@@ -72,6 +76,7 @@ mixin _$AuthFailure {
     @required Result userNotFound(),
     @required Result accountAlreadyExists(),
     @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
     @required Result userNotUsingEmailProvider(),
     @required Result invalidEmailAndPasswordCombination(),
   });
@@ -86,6 +91,7 @@ mixin _$AuthFailure {
     Result userNotFound(),
     Result accountAlreadyExists(),
     Result accountAlreadyLinked(),
+    Result invalidCredential(),
     Result userNotUsingEmailProvider(),
     Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
@@ -101,6 +107,7 @@ mixin _$AuthFailure {
     @required Result userNotFound(_UserNotFound value),
     @required Result accountAlreadyExists(_AccountAlreadyExists value),
     @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required
@@ -118,6 +125,7 @@ mixin _$AuthFailure {
     Result userNotFound(_UserNotFound value),
     Result accountAlreadyExists(_AccountAlreadyExists value),
     Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     Result invalidEmailAndPasswordCombination(
         _InvalidEmailAndPasswordCombination value),
@@ -184,6 +192,7 @@ class _$_CancelledByUser implements _CancelledByUser {
     @required Result userNotFound(),
     @required Result accountAlreadyExists(),
     @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
     @required Result userNotUsingEmailProvider(),
     @required Result invalidEmailAndPasswordCombination(),
   }) {
@@ -196,6 +205,7 @@ class _$_CancelledByUser implements _CancelledByUser {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return cancelledByUser();
@@ -213,6 +223,7 @@ class _$_CancelledByUser implements _CancelledByUser {
     Result userNotFound(),
     Result accountAlreadyExists(),
     Result accountAlreadyLinked(),
+    Result invalidCredential(),
     Result userNotUsingEmailProvider(),
     Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
@@ -236,6 +247,7 @@ class _$_CancelledByUser implements _CancelledByUser {
     @required Result userNotFound(_UserNotFound value),
     @required Result accountAlreadyExists(_AccountAlreadyExists value),
     @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required
@@ -251,6 +263,7 @@ class _$_CancelledByUser implements _CancelledByUser {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return cancelledByUser(this);
@@ -268,6 +281,7 @@ class _$_CancelledByUser implements _CancelledByUser {
     Result userNotFound(_UserNotFound value),
     Result accountAlreadyExists(_AccountAlreadyExists value),
     Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     Result invalidEmailAndPasswordCombination(
         _InvalidEmailAndPasswordCombination value),
@@ -329,6 +343,7 @@ class _$_ServerError implements _ServerError {
     @required Result userNotFound(),
     @required Result accountAlreadyExists(),
     @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
     @required Result userNotUsingEmailProvider(),
     @required Result invalidEmailAndPasswordCombination(),
   }) {
@@ -341,6 +356,7 @@ class _$_ServerError implements _ServerError {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return serverError();
@@ -358,6 +374,7 @@ class _$_ServerError implements _ServerError {
     Result userNotFound(),
     Result accountAlreadyExists(),
     Result accountAlreadyLinked(),
+    Result invalidCredential(),
     Result userNotUsingEmailProvider(),
     Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
@@ -381,6 +398,7 @@ class _$_ServerError implements _ServerError {
     @required Result userNotFound(_UserNotFound value),
     @required Result accountAlreadyExists(_AccountAlreadyExists value),
     @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required
@@ -396,6 +414,7 @@ class _$_ServerError implements _ServerError {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return serverError(this);
@@ -413,6 +432,7 @@ class _$_ServerError implements _ServerError {
     Result userNotFound(_UserNotFound value),
     Result accountAlreadyExists(_AccountAlreadyExists value),
     Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     Result invalidEmailAndPasswordCombination(
         _InvalidEmailAndPasswordCombination value),
@@ -475,6 +495,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     @required Result userNotFound(),
     @required Result accountAlreadyExists(),
     @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
     @required Result userNotUsingEmailProvider(),
     @required Result invalidEmailAndPasswordCombination(),
   }) {
@@ -487,6 +508,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return emailAlreadyInUse();
@@ -504,6 +526,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     Result userNotFound(),
     Result accountAlreadyExists(),
     Result accountAlreadyLinked(),
+    Result invalidCredential(),
     Result userNotUsingEmailProvider(),
     Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
@@ -527,6 +550,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     @required Result userNotFound(_UserNotFound value),
     @required Result accountAlreadyExists(_AccountAlreadyExists value),
     @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required
@@ -542,6 +566,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return emailAlreadyInUse(this);
@@ -559,6 +584,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     Result userNotFound(_UserNotFound value),
     Result accountAlreadyExists(_AccountAlreadyExists value),
     Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     Result invalidEmailAndPasswordCombination(
         _InvalidEmailAndPasswordCombination value),
@@ -621,6 +647,7 @@ class _$_NetworkException implements _NetworkException {
     @required Result userNotFound(),
     @required Result accountAlreadyExists(),
     @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
     @required Result userNotUsingEmailProvider(),
     @required Result invalidEmailAndPasswordCombination(),
   }) {
@@ -633,6 +660,7 @@ class _$_NetworkException implements _NetworkException {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return networkException();
@@ -650,6 +678,7 @@ class _$_NetworkException implements _NetworkException {
     Result userNotFound(),
     Result accountAlreadyExists(),
     Result accountAlreadyLinked(),
+    Result invalidCredential(),
     Result userNotUsingEmailProvider(),
     Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
@@ -673,6 +702,7 @@ class _$_NetworkException implements _NetworkException {
     @required Result userNotFound(_UserNotFound value),
     @required Result accountAlreadyExists(_AccountAlreadyExists value),
     @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required
@@ -688,6 +718,7 @@ class _$_NetworkException implements _NetworkException {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return networkException(this);
@@ -705,6 +736,7 @@ class _$_NetworkException implements _NetworkException {
     Result userNotFound(_UserNotFound value),
     Result accountAlreadyExists(_AccountAlreadyExists value),
     Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     Result invalidEmailAndPasswordCombination(
         _InvalidEmailAndPasswordCombination value),
@@ -766,6 +798,7 @@ class _$_WrongPassword implements _WrongPassword {
     @required Result userNotFound(),
     @required Result accountAlreadyExists(),
     @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
     @required Result userNotUsingEmailProvider(),
     @required Result invalidEmailAndPasswordCombination(),
   }) {
@@ -778,6 +811,7 @@ class _$_WrongPassword implements _WrongPassword {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return wrongPassword();
@@ -795,6 +829,7 @@ class _$_WrongPassword implements _WrongPassword {
     Result userNotFound(),
     Result accountAlreadyExists(),
     Result accountAlreadyLinked(),
+    Result invalidCredential(),
     Result userNotUsingEmailProvider(),
     Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
@@ -818,6 +853,7 @@ class _$_WrongPassword implements _WrongPassword {
     @required Result userNotFound(_UserNotFound value),
     @required Result accountAlreadyExists(_AccountAlreadyExists value),
     @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required
@@ -833,6 +869,7 @@ class _$_WrongPassword implements _WrongPassword {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return wrongPassword(this);
@@ -850,6 +887,7 @@ class _$_WrongPassword implements _WrongPassword {
     Result userNotFound(_UserNotFound value),
     Result accountAlreadyExists(_AccountAlreadyExists value),
     Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     Result invalidEmailAndPasswordCombination(
         _InvalidEmailAndPasswordCombination value),
@@ -912,6 +950,7 @@ class _$_TooManyRequests implements _TooManyRequests {
     @required Result userNotFound(),
     @required Result accountAlreadyExists(),
     @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
     @required Result userNotUsingEmailProvider(),
     @required Result invalidEmailAndPasswordCombination(),
   }) {
@@ -924,6 +963,7 @@ class _$_TooManyRequests implements _TooManyRequests {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return tooManyRequests();
@@ -941,6 +981,7 @@ class _$_TooManyRequests implements _TooManyRequests {
     Result userNotFound(),
     Result accountAlreadyExists(),
     Result accountAlreadyLinked(),
+    Result invalidCredential(),
     Result userNotUsingEmailProvider(),
     Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
@@ -964,6 +1005,7 @@ class _$_TooManyRequests implements _TooManyRequests {
     @required Result userNotFound(_UserNotFound value),
     @required Result accountAlreadyExists(_AccountAlreadyExists value),
     @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required
@@ -979,6 +1021,7 @@ class _$_TooManyRequests implements _TooManyRequests {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return tooManyRequests(this);
@@ -996,6 +1039,7 @@ class _$_TooManyRequests implements _TooManyRequests {
     Result userNotFound(_UserNotFound value),
     Result accountAlreadyExists(_AccountAlreadyExists value),
     Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     Result invalidEmailAndPasswordCombination(
         _InvalidEmailAndPasswordCombination value),
@@ -1057,6 +1101,7 @@ class _$_UserNotFound implements _UserNotFound {
     @required Result userNotFound(),
     @required Result accountAlreadyExists(),
     @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
     @required Result userNotUsingEmailProvider(),
     @required Result invalidEmailAndPasswordCombination(),
   }) {
@@ -1069,6 +1114,7 @@ class _$_UserNotFound implements _UserNotFound {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return userNotFound();
@@ -1086,6 +1132,7 @@ class _$_UserNotFound implements _UserNotFound {
     Result userNotFound(),
     Result accountAlreadyExists(),
     Result accountAlreadyLinked(),
+    Result invalidCredential(),
     Result userNotUsingEmailProvider(),
     Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
@@ -1109,6 +1156,7 @@ class _$_UserNotFound implements _UserNotFound {
     @required Result userNotFound(_UserNotFound value),
     @required Result accountAlreadyExists(_AccountAlreadyExists value),
     @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required
@@ -1124,6 +1172,7 @@ class _$_UserNotFound implements _UserNotFound {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return userNotFound(this);
@@ -1141,6 +1190,7 @@ class _$_UserNotFound implements _UserNotFound {
     Result userNotFound(_UserNotFound value),
     Result accountAlreadyExists(_AccountAlreadyExists value),
     Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     Result invalidEmailAndPasswordCombination(
         _InvalidEmailAndPasswordCombination value),
@@ -1203,6 +1253,7 @@ class _$_AccountAlreadyExists implements _AccountAlreadyExists {
     @required Result userNotFound(),
     @required Result accountAlreadyExists(),
     @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
     @required Result userNotUsingEmailProvider(),
     @required Result invalidEmailAndPasswordCombination(),
   }) {
@@ -1215,6 +1266,7 @@ class _$_AccountAlreadyExists implements _AccountAlreadyExists {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return accountAlreadyExists();
@@ -1232,6 +1284,7 @@ class _$_AccountAlreadyExists implements _AccountAlreadyExists {
     Result userNotFound(),
     Result accountAlreadyExists(),
     Result accountAlreadyLinked(),
+    Result invalidCredential(),
     Result userNotUsingEmailProvider(),
     Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
@@ -1255,6 +1308,7 @@ class _$_AccountAlreadyExists implements _AccountAlreadyExists {
     @required Result userNotFound(_UserNotFound value),
     @required Result accountAlreadyExists(_AccountAlreadyExists value),
     @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required
@@ -1270,6 +1324,7 @@ class _$_AccountAlreadyExists implements _AccountAlreadyExists {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return accountAlreadyExists(this);
@@ -1287,6 +1342,7 @@ class _$_AccountAlreadyExists implements _AccountAlreadyExists {
     Result userNotFound(_UserNotFound value),
     Result accountAlreadyExists(_AccountAlreadyExists value),
     Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     Result invalidEmailAndPasswordCombination(
         _InvalidEmailAndPasswordCombination value),
@@ -1349,6 +1405,7 @@ class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
     @required Result userNotFound(),
     @required Result accountAlreadyExists(),
     @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
     @required Result userNotUsingEmailProvider(),
     @required Result invalidEmailAndPasswordCombination(),
   }) {
@@ -1361,6 +1418,7 @@ class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return accountAlreadyLinked();
@@ -1378,6 +1436,7 @@ class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
     Result userNotFound(),
     Result accountAlreadyExists(),
     Result accountAlreadyLinked(),
+    Result invalidCredential(),
     Result userNotUsingEmailProvider(),
     Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
@@ -1401,6 +1460,7 @@ class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
     @required Result userNotFound(_UserNotFound value),
     @required Result accountAlreadyExists(_AccountAlreadyExists value),
     @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required
@@ -1416,6 +1476,7 @@ class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return accountAlreadyLinked(this);
@@ -1433,6 +1494,7 @@ class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
     Result userNotFound(_UserNotFound value),
     Result accountAlreadyExists(_AccountAlreadyExists value),
     Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     Result invalidEmailAndPasswordCombination(
         _InvalidEmailAndPasswordCombination value),
@@ -1448,6 +1510,158 @@ class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
 
 abstract class _AccountAlreadyLinked implements AuthFailure {
   const factory _AccountAlreadyLinked() = _$_AccountAlreadyLinked;
+}
+
+abstract class _$InvalidCredentialCopyWith<$Res> {
+  factory _$InvalidCredentialCopyWith(
+          _InvalidCredential value, $Res Function(_InvalidCredential) then) =
+      __$InvalidCredentialCopyWithImpl<$Res>;
+}
+
+class __$InvalidCredentialCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$InvalidCredentialCopyWith<$Res> {
+  __$InvalidCredentialCopyWithImpl(
+      _InvalidCredential _value, $Res Function(_InvalidCredential) _then)
+      : super(_value, (v) => _then(v as _InvalidCredential));
+
+  @override
+  _InvalidCredential get _value => super._value as _InvalidCredential;
+}
+
+class _$_InvalidCredential implements _InvalidCredential {
+  const _$_InvalidCredential();
+
+  @override
+  String toString() {
+    return 'AuthFailure.invalidCredential()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _InvalidCredential);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
+    @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
+    assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    return invalidCredential();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
+    Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
+    Result invalidCredential(),
+    Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidCredential != null) {
+      return invalidCredential();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
+    assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    return invalidCredential(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidCredential != null) {
+      return invalidCredential(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidCredential implements AuthFailure {
+  const factory _InvalidCredential() = _$_InvalidCredential;
 }
 
 abstract class _$UserNotUsingEmailProviderCopyWith<$Res> {
@@ -1496,6 +1710,7 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
     @required Result userNotFound(),
     @required Result accountAlreadyExists(),
     @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
     @required Result userNotUsingEmailProvider(),
     @required Result invalidEmailAndPasswordCombination(),
   }) {
@@ -1508,6 +1723,7 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return userNotUsingEmailProvider();
@@ -1525,6 +1741,7 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
     Result userNotFound(),
     Result accountAlreadyExists(),
     Result accountAlreadyLinked(),
+    Result invalidCredential(),
     Result userNotUsingEmailProvider(),
     Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
@@ -1548,6 +1765,7 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
     @required Result userNotFound(_UserNotFound value),
     @required Result accountAlreadyExists(_AccountAlreadyExists value),
     @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required
@@ -1563,6 +1781,7 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return userNotUsingEmailProvider(this);
@@ -1580,6 +1799,7 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
     Result userNotFound(_UserNotFound value),
     Result accountAlreadyExists(_AccountAlreadyExists value),
     Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     Result invalidEmailAndPasswordCombination(
         _InvalidEmailAndPasswordCombination value),
@@ -1647,6 +1867,7 @@ class _$_InvalidEmailAndPasswordCombination
     @required Result userNotFound(),
     @required Result accountAlreadyExists(),
     @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
     @required Result userNotUsingEmailProvider(),
     @required Result invalidEmailAndPasswordCombination(),
   }) {
@@ -1659,6 +1880,7 @@ class _$_InvalidEmailAndPasswordCombination
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return invalidEmailAndPasswordCombination();
@@ -1676,6 +1898,7 @@ class _$_InvalidEmailAndPasswordCombination
     Result userNotFound(),
     Result accountAlreadyExists(),
     Result accountAlreadyLinked(),
+    Result invalidCredential(),
     Result userNotUsingEmailProvider(),
     Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
@@ -1699,6 +1922,7 @@ class _$_InvalidEmailAndPasswordCombination
     @required Result userNotFound(_UserNotFound value),
     @required Result accountAlreadyExists(_AccountAlreadyExists value),
     @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     @required
@@ -1714,6 +1938,7 @@ class _$_InvalidEmailAndPasswordCombination
     assert(userNotFound != null);
     assert(accountAlreadyExists != null);
     assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
     assert(userNotUsingEmailProvider != null);
     assert(invalidEmailAndPasswordCombination != null);
     return invalidEmailAndPasswordCombination(this);
@@ -1731,6 +1956,7 @@ class _$_InvalidEmailAndPasswordCombination
     Result userNotFound(_UserNotFound value),
     Result accountAlreadyExists(_AccountAlreadyExists value),
     Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
     Result invalidEmailAndPasswordCombination(
         _InvalidEmailAndPasswordCombination value),

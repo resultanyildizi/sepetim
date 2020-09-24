@@ -26,6 +26,7 @@ class LinkAccountForm extends StatelessWidget {
               networkException: (_) => networkExceptionPopup(context),
               accountAlreadyExists: (_) => accountAlreadyExistsPopup(context),
               accountAlreadyLinked: (_) => serverErrorPopup(context),
+              invalidCredential: (_) => invalidCredentialPopup(context),
               orElse: () {},
             ),
             (_) {

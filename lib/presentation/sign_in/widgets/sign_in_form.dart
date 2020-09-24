@@ -28,10 +28,11 @@ class SignInForm extends StatelessWidget {
                   serverError: (_) => serverErrorPopup(context),
                   emailAlreadyInUse: (_) => emailAlreadyInUsePopup(context),
                   accountAlreadyExists: (_) =>
-                      accountAlreadyExistsPopup(context),
+                      notRegisteredWithGooglePopup(context),
                   invalidEmailAndPasswordCombination: (_) =>
                       invalidEmailAndPasswordCombinationPopup(context),
                   networkException: (_) => networkExceptionPopup(context),
+                  invalidCredential: (_) => invalidCredentialPopup(context),
                   orElse: () {},
                 );
               },

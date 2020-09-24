@@ -143,8 +143,11 @@ class FirebaseAuthFacade extends IAuthFacade {
         return right(unit);
       }
     } on PlatformException catch (e) {
+      await _googleSignIn.signOut();
       if (e.code == 'network_error') {
         return left(const AuthFailure.networkException());
+      } else if (e.code == 'ERROR_INVALID_CREDENTIAL') {
+        return left(const AuthFailure.invalidCredential());
       } else {
         return left(const AuthFailure.serverError());
       }
@@ -217,15 +220,14 @@ class FirebaseAuthFacade extends IAuthFacade {
       return right(unit);
     } on PlatformException catch (e) {
       if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
-        print('email in use');
         await _googleSignIn.signOut();
         return left(const AuthFailure.emailAlreadyInUse());
       } else if (e.code == 'ERROR_CREDENTIAL_ALREADY_IN_USE') {
-        print('account in use');
-        await _googleSignIn.signOut();
         return left(const AuthFailure.accountAlreadyExists());
       } else if (e.code == 'ERROR_PROVIDER_ALREADY_LINKED') {
         return left(const AuthFailure.accountAlreadyLinked());
+      } else if (e.code == 'ERROR_INVALID_CREDENTIAL') {
+        return left(const AuthFailure.invalidCredential());
       } else {
         return left(const AuthFailure.serverError());
       }
@@ -290,7 +292,6 @@ class FirebaseAuthFacade extends IAuthFacade {
       if (e.code == "ERROR_USER_NOT_FOUND") {
         return left(const AuthFailure.userNotFound());
       }
-      print(e.code);
       return left(const AuthFailure.serverError());
     }
   }

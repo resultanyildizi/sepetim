@@ -24,9 +24,9 @@ class ResetPasswordPage extends StatelessWidget {
               (failure) => failure.maybeMap(
                   serverError: (_) => serverErrorPopup(context),
                   networkException: (_) => networkExceptionPopup(context),
-                  userNotFound: (_) => userNotFound(context),
+                  userNotFound: (_) => userNotFoundPopup(context),
                   userNotUsingEmailProvider: (_) =>
-                      userNotUsingEmailProvider(context),
+                      userNotUsingEmailProviderPopup(context),
                   orElse: () {}),
               (_) => () {},
             ),

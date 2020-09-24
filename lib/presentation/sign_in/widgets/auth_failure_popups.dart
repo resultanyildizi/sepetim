@@ -119,7 +119,7 @@ Future tooManyRequestsPopup(BuildContext context) {
   );
 }
 
-Future userNotFound(BuildContext context) {
+Future userNotFoundPopup(BuildContext context) {
   return actionPopup(
     context,
     backgroundColor: Colors.white,
@@ -142,7 +142,7 @@ Future userNotFound(BuildContext context) {
   );
 }
 
-Future userNotUsingEmailProvider(BuildContext context) {
+Future userNotUsingEmailProviderPopup(BuildContext context) {
   return actionPopup(
     context,
     backgroundColor: Colors.white,
@@ -188,7 +188,7 @@ Future accountAlreadyExistsPopup(BuildContext context) {
   );
 }
 
-Future notRegisteredWithGoogle(BuildContext context) {
+Future notRegisteredWithGooglePopup(BuildContext context) {
   return actionPopup(
     context,
     backgroundColor: Colors.white,
@@ -198,6 +198,29 @@ Future notRegisteredWithGoogle(BuildContext context) {
     ),
     content: Text(
       translate(context, 'not_registered_with_google_message'),
+    ),
+    actions: <Widget>[
+      RoundedButton(
+        width: screenWidthByScalar(context, 1.0),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        text: translate(context, 'okay'),
+      )
+    ],
+  );
+}
+
+Future invalidCredentialPopup(BuildContext context) {
+  return actionPopup(
+    context,
+    backgroundColor: Colors.white,
+    title: Text(
+      translate(context, 'invalid_credential_title'),
+      style: robotoTextStyle(),
+    ),
+    content: Text(
+      translate(context, 'invalid_credential_message'),
     ),
     actions: <Widget>[
       RoundedButton(
