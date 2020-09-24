@@ -114,6 +114,43 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
           authFailureOrSuccessOption: some(failureOrSuccess),
         );
       },
+      linkWithEmailAndPasswordPressed: (e) async* {
+        Either<AuthFailure, Unit> failureOrSuccess;
+
+        final isEmailValid = state.emailAddress.isValid;
+        final isPasswordValid = state.password.isValid;
+
+        if (isEmailValid && isPasswordValid) {
+          yield state.copyWith(
+            isSubmitting: true,
+            authFailureOrSuccessOption: none(),
+          );
+          failureOrSuccess = await _authFacade.linkWithEmailAndPassword(
+            emailAddress: state.emailAddress,
+            password: state.password,
+          );
+        }
+
+        yield state.copyWith(
+          showErrorMessages: true,
+          isSubmitting: false,
+          authFailureOrSuccessOption: optionOf(failureOrSuccess),
+        );
+      },
+      linkWithGoogleProviderPressed: (e) async* {
+        yield state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        );
+
+        final failureOrSuccess = await _authFacade.linkWithGoogleProvider();
+
+        yield state.copyWith(
+          showErrorMessages: true,
+          isSubmitting: false,
+          authFailureOrSuccessOption: optionOf(failureOrSuccess),
+        );
+      },
     );
   }
 }

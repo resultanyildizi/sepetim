@@ -15,6 +15,7 @@
   "yes": "Yes",
   "no": "No",
   "sign_in_google": "Sign in with Google",
+  "register_with_google": "Register with google",
   "without_log_in": "Continue without logging in",
   "okay": "Okay",
   "server_error_title": "You're offline",
@@ -132,5 +133,9 @@
   "user_not_using_email_provider_title": "Invalid provider",
   "user_not_using_email_provider_message": "This email address doesn't belong to an email provider meaning the user didn't register with email and password.",
   "send_link": "Send reset password link",
-  "enter_email_to_get_link": "Enter your registered email address to get a password reset link."
+  "enter_email_to_get_link": "Enter your registered email address to get a password reset link.",
+  "not_registered_with_google_title": "Not registered as google account",
+  "not_registered_with_google_message": "There is already an account with that email address but not registered as a google account.",
+  "account_already_exists_title": "Account already in use",
+  "account_already_exists_message": "You can't link your anonymous account with an account which is already in use."
 }

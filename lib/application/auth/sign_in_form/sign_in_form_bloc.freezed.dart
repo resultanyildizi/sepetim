@@ -36,6 +36,14 @@ class _$SignInFormEventTearOff {
     return const SignInWithGooglePressed();
   }
 
+  LinkWithEmailAndPasswordPressed linkWithEmailAndPasswordPressed() {
+    return const LinkWithEmailAndPasswordPressed();
+  }
+
+  LinkWithGoogleProviderPressed linkWithGoogleProviderPressed() {
+    return const LinkWithGoogleProviderPressed();
+  }
+
   SignInAnonymously signInAnonymously() {
     return const SignInAnonymously();
   }
@@ -52,6 +60,8 @@ mixin _$SignInFormEvent {
     @required Result registerWithEmailAndPasswordPressed(),
     @required Result signInWithEmailAndPasswordPressed(),
     @required Result signInWithGooglePressed(),
+    @required Result linkWithEmailAndPasswordPressed(),
+    @required Result linkWithGoogleProviderPressed(),
     @required Result signInAnonymously(),
   });
   @optionalTypeArgs
@@ -61,6 +71,8 @@ mixin _$SignInFormEvent {
     Result registerWithEmailAndPasswordPressed(),
     Result signInWithEmailAndPasswordPressed(),
     Result signInWithGooglePressed(),
+    Result linkWithEmailAndPasswordPressed(),
+    Result linkWithGoogleProviderPressed(),
     Result signInAnonymously(),
     @required Result orElse(),
   });
@@ -75,6 +87,12 @@ mixin _$SignInFormEvent {
         Result signInWithEmailAndPasswordPressed(
             SignInWithEmailAndPasswordPressed value),
     @required Result signInWithGooglePressed(SignInWithGooglePressed value),
+    @required
+        Result linkWithEmailAndPasswordPressed(
+            LinkWithEmailAndPasswordPressed value),
+    @required
+        Result linkWithGoogleProviderPressed(
+            LinkWithGoogleProviderPressed value),
     @required Result signInAnonymously(SignInAnonymously value),
   });
   @optionalTypeArgs
@@ -86,6 +104,9 @@ mixin _$SignInFormEvent {
     Result signInWithEmailAndPasswordPressed(
         SignInWithEmailAndPasswordPressed value),
     Result signInWithGooglePressed(SignInWithGooglePressed value),
+    Result linkWithEmailAndPasswordPressed(
+        LinkWithEmailAndPasswordPressed value),
+    Result linkWithGoogleProviderPressed(LinkWithGoogleProviderPressed value),
     Result signInAnonymously(SignInAnonymously value),
     @required Result orElse(),
   });
@@ -176,6 +197,8 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
     @required Result registerWithEmailAndPasswordPressed(),
     @required Result signInWithEmailAndPasswordPressed(),
     @required Result signInWithGooglePressed(),
+    @required Result linkWithEmailAndPasswordPressed(),
+    @required Result linkWithGoogleProviderPressed(),
     @required Result signInAnonymously(),
   }) {
     assert(emailChanged != null);
@@ -183,6 +206,8 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
     assert(signInAnonymously != null);
     return emailChanged(email);
   }
@@ -195,6 +220,8 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
     Result registerWithEmailAndPasswordPressed(),
     Result signInWithEmailAndPasswordPressed(),
     Result signInWithGooglePressed(),
+    Result linkWithEmailAndPasswordPressed(),
+    Result linkWithGoogleProviderPressed(),
     Result signInAnonymously(),
     @required Result orElse(),
   }) {
@@ -217,6 +244,12 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
         Result signInWithEmailAndPasswordPressed(
             SignInWithEmailAndPasswordPressed value),
     @required Result signInWithGooglePressed(SignInWithGooglePressed value),
+    @required
+        Result linkWithEmailAndPasswordPressed(
+            LinkWithEmailAndPasswordPressed value),
+    @required
+        Result linkWithGoogleProviderPressed(
+            LinkWithGoogleProviderPressed value),
     @required Result signInAnonymously(SignInAnonymously value),
   }) {
     assert(emailChanged != null);
@@ -224,6 +257,8 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
     assert(signInAnonymously != null);
     return emailChanged(this);
   }
@@ -238,6 +273,9 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
     Result signInWithEmailAndPasswordPressed(
         SignInWithEmailAndPasswordPressed value),
     Result signInWithGooglePressed(SignInWithGooglePressed value),
+    Result linkWithEmailAndPasswordPressed(
+        LinkWithEmailAndPasswordPressed value),
+    Result linkWithGoogleProviderPressed(LinkWithGoogleProviderPressed value),
     Result signInAnonymously(SignInAnonymously value),
     @required Result orElse(),
   }) {
@@ -329,6 +367,8 @@ class _$PasswordChanged
     @required Result registerWithEmailAndPasswordPressed(),
     @required Result signInWithEmailAndPasswordPressed(),
     @required Result signInWithGooglePressed(),
+    @required Result linkWithEmailAndPasswordPressed(),
+    @required Result linkWithGoogleProviderPressed(),
     @required Result signInAnonymously(),
   }) {
     assert(emailChanged != null);
@@ -336,6 +376,8 @@ class _$PasswordChanged
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
     assert(signInAnonymously != null);
     return passwordChanged(password);
   }
@@ -348,6 +390,8 @@ class _$PasswordChanged
     Result registerWithEmailAndPasswordPressed(),
     Result signInWithEmailAndPasswordPressed(),
     Result signInWithGooglePressed(),
+    Result linkWithEmailAndPasswordPressed(),
+    Result linkWithGoogleProviderPressed(),
     Result signInAnonymously(),
     @required Result orElse(),
   }) {
@@ -370,6 +414,12 @@ class _$PasswordChanged
         Result signInWithEmailAndPasswordPressed(
             SignInWithEmailAndPasswordPressed value),
     @required Result signInWithGooglePressed(SignInWithGooglePressed value),
+    @required
+        Result linkWithEmailAndPasswordPressed(
+            LinkWithEmailAndPasswordPressed value),
+    @required
+        Result linkWithGoogleProviderPressed(
+            LinkWithGoogleProviderPressed value),
     @required Result signInAnonymously(SignInAnonymously value),
   }) {
     assert(emailChanged != null);
@@ -377,6 +427,8 @@ class _$PasswordChanged
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
     assert(signInAnonymously != null);
     return passwordChanged(this);
   }
@@ -391,6 +443,9 @@ class _$PasswordChanged
     Result signInWithEmailAndPasswordPressed(
         SignInWithEmailAndPasswordPressed value),
     Result signInWithGooglePressed(SignInWithGooglePressed value),
+    Result linkWithEmailAndPasswordPressed(
+        LinkWithEmailAndPasswordPressed value),
+    Result linkWithGoogleProviderPressed(LinkWithGoogleProviderPressed value),
     Result signInAnonymously(SignInAnonymously value),
     @required Result orElse(),
   }) {
@@ -464,6 +519,8 @@ class _$RegisterWithEmailAndPasswordPressed
     @required Result registerWithEmailAndPasswordPressed(),
     @required Result signInWithEmailAndPasswordPressed(),
     @required Result signInWithGooglePressed(),
+    @required Result linkWithEmailAndPasswordPressed(),
+    @required Result linkWithGoogleProviderPressed(),
     @required Result signInAnonymously(),
   }) {
     assert(emailChanged != null);
@@ -471,6 +528,8 @@ class _$RegisterWithEmailAndPasswordPressed
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
     assert(signInAnonymously != null);
     return registerWithEmailAndPasswordPressed();
   }
@@ -483,6 +542,8 @@ class _$RegisterWithEmailAndPasswordPressed
     Result registerWithEmailAndPasswordPressed(),
     Result signInWithEmailAndPasswordPressed(),
     Result signInWithGooglePressed(),
+    Result linkWithEmailAndPasswordPressed(),
+    Result linkWithGoogleProviderPressed(),
     Result signInAnonymously(),
     @required Result orElse(),
   }) {
@@ -505,6 +566,12 @@ class _$RegisterWithEmailAndPasswordPressed
         Result signInWithEmailAndPasswordPressed(
             SignInWithEmailAndPasswordPressed value),
     @required Result signInWithGooglePressed(SignInWithGooglePressed value),
+    @required
+        Result linkWithEmailAndPasswordPressed(
+            LinkWithEmailAndPasswordPressed value),
+    @required
+        Result linkWithGoogleProviderPressed(
+            LinkWithGoogleProviderPressed value),
     @required Result signInAnonymously(SignInAnonymously value),
   }) {
     assert(emailChanged != null);
@@ -512,6 +579,8 @@ class _$RegisterWithEmailAndPasswordPressed
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
     assert(signInAnonymously != null);
     return registerWithEmailAndPasswordPressed(this);
   }
@@ -526,6 +595,9 @@ class _$RegisterWithEmailAndPasswordPressed
     Result signInWithEmailAndPasswordPressed(
         SignInWithEmailAndPasswordPressed value),
     Result signInWithGooglePressed(SignInWithGooglePressed value),
+    Result linkWithEmailAndPasswordPressed(
+        LinkWithEmailAndPasswordPressed value),
+    Result linkWithGoogleProviderPressed(LinkWithGoogleProviderPressed value),
     Result signInAnonymously(SignInAnonymously value),
     @required Result orElse(),
   }) {
@@ -597,6 +669,8 @@ class _$SignInWithEmailAndPasswordPressed
     @required Result registerWithEmailAndPasswordPressed(),
     @required Result signInWithEmailAndPasswordPressed(),
     @required Result signInWithGooglePressed(),
+    @required Result linkWithEmailAndPasswordPressed(),
+    @required Result linkWithGoogleProviderPressed(),
     @required Result signInAnonymously(),
   }) {
     assert(emailChanged != null);
@@ -604,6 +678,8 @@ class _$SignInWithEmailAndPasswordPressed
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
     assert(signInAnonymously != null);
     return signInWithEmailAndPasswordPressed();
   }
@@ -616,6 +692,8 @@ class _$SignInWithEmailAndPasswordPressed
     Result registerWithEmailAndPasswordPressed(),
     Result signInWithEmailAndPasswordPressed(),
     Result signInWithGooglePressed(),
+    Result linkWithEmailAndPasswordPressed(),
+    Result linkWithGoogleProviderPressed(),
     Result signInAnonymously(),
     @required Result orElse(),
   }) {
@@ -638,6 +716,12 @@ class _$SignInWithEmailAndPasswordPressed
         Result signInWithEmailAndPasswordPressed(
             SignInWithEmailAndPasswordPressed value),
     @required Result signInWithGooglePressed(SignInWithGooglePressed value),
+    @required
+        Result linkWithEmailAndPasswordPressed(
+            LinkWithEmailAndPasswordPressed value),
+    @required
+        Result linkWithGoogleProviderPressed(
+            LinkWithGoogleProviderPressed value),
     @required Result signInAnonymously(SignInAnonymously value),
   }) {
     assert(emailChanged != null);
@@ -645,6 +729,8 @@ class _$SignInWithEmailAndPasswordPressed
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
     assert(signInAnonymously != null);
     return signInWithEmailAndPasswordPressed(this);
   }
@@ -659,6 +745,9 @@ class _$SignInWithEmailAndPasswordPressed
     Result signInWithEmailAndPasswordPressed(
         SignInWithEmailAndPasswordPressed value),
     Result signInWithGooglePressed(SignInWithGooglePressed value),
+    Result linkWithEmailAndPasswordPressed(
+        LinkWithEmailAndPasswordPressed value),
+    Result linkWithGoogleProviderPressed(LinkWithGoogleProviderPressed value),
     Result signInAnonymously(SignInAnonymously value),
     @required Result orElse(),
   }) {
@@ -726,6 +815,8 @@ class _$SignInWithGooglePressed
     @required Result registerWithEmailAndPasswordPressed(),
     @required Result signInWithEmailAndPasswordPressed(),
     @required Result signInWithGooglePressed(),
+    @required Result linkWithEmailAndPasswordPressed(),
+    @required Result linkWithGoogleProviderPressed(),
     @required Result signInAnonymously(),
   }) {
     assert(emailChanged != null);
@@ -733,6 +824,8 @@ class _$SignInWithGooglePressed
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
     assert(signInAnonymously != null);
     return signInWithGooglePressed();
   }
@@ -745,6 +838,8 @@ class _$SignInWithGooglePressed
     Result registerWithEmailAndPasswordPressed(),
     Result signInWithEmailAndPasswordPressed(),
     Result signInWithGooglePressed(),
+    Result linkWithEmailAndPasswordPressed(),
+    Result linkWithGoogleProviderPressed(),
     Result signInAnonymously(),
     @required Result orElse(),
   }) {
@@ -767,6 +862,12 @@ class _$SignInWithGooglePressed
         Result signInWithEmailAndPasswordPressed(
             SignInWithEmailAndPasswordPressed value),
     @required Result signInWithGooglePressed(SignInWithGooglePressed value),
+    @required
+        Result linkWithEmailAndPasswordPressed(
+            LinkWithEmailAndPasswordPressed value),
+    @required
+        Result linkWithGoogleProviderPressed(
+            LinkWithGoogleProviderPressed value),
     @required Result signInAnonymously(SignInAnonymously value),
   }) {
     assert(emailChanged != null);
@@ -774,6 +875,8 @@ class _$SignInWithGooglePressed
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
     assert(signInAnonymously != null);
     return signInWithGooglePressed(this);
   }
@@ -788,6 +891,9 @@ class _$SignInWithGooglePressed
     Result signInWithEmailAndPasswordPressed(
         SignInWithEmailAndPasswordPressed value),
     Result signInWithGooglePressed(SignInWithGooglePressed value),
+    Result linkWithEmailAndPasswordPressed(
+        LinkWithEmailAndPasswordPressed value),
+    Result linkWithGoogleProviderPressed(LinkWithGoogleProviderPressed value),
     Result signInAnonymously(SignInAnonymously value),
     @required Result orElse(),
   }) {
@@ -801,6 +907,304 @@ class _$SignInWithGooglePressed
 
 abstract class SignInWithGooglePressed implements SignInFormEvent {
   const factory SignInWithGooglePressed() = _$SignInWithGooglePressed;
+}
+
+abstract class $LinkWithEmailAndPasswordPressedCopyWith<$Res> {
+  factory $LinkWithEmailAndPasswordPressedCopyWith(
+          LinkWithEmailAndPasswordPressed value,
+          $Res Function(LinkWithEmailAndPasswordPressed) then) =
+      _$LinkWithEmailAndPasswordPressedCopyWithImpl<$Res>;
+}
+
+class _$LinkWithEmailAndPasswordPressedCopyWithImpl<$Res>
+    extends _$SignInFormEventCopyWithImpl<$Res>
+    implements $LinkWithEmailAndPasswordPressedCopyWith<$Res> {
+  _$LinkWithEmailAndPasswordPressedCopyWithImpl(
+      LinkWithEmailAndPasswordPressed _value,
+      $Res Function(LinkWithEmailAndPasswordPressed) _then)
+      : super(_value, (v) => _then(v as LinkWithEmailAndPasswordPressed));
+
+  @override
+  LinkWithEmailAndPasswordPressed get _value =>
+      super._value as LinkWithEmailAndPasswordPressed;
+}
+
+class _$LinkWithEmailAndPasswordPressed
+    with DiagnosticableTreeMixin
+    implements LinkWithEmailAndPasswordPressed {
+  const _$LinkWithEmailAndPasswordPressed();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SignInFormEvent.linkWithEmailAndPasswordPressed()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'SignInFormEvent.linkWithEmailAndPasswordPressed'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is LinkWithEmailAndPasswordPressed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result emailChanged(String email),
+    @required Result passwordChanged(String password),
+    @required Result registerWithEmailAndPasswordPressed(),
+    @required Result signInWithEmailAndPasswordPressed(),
+    @required Result signInWithGooglePressed(),
+    @required Result linkWithEmailAndPasswordPressed(),
+    @required Result linkWithGoogleProviderPressed(),
+    @required Result signInAnonymously(),
+  }) {
+    assert(emailChanged != null);
+    assert(passwordChanged != null);
+    assert(registerWithEmailAndPasswordPressed != null);
+    assert(signInWithEmailAndPasswordPressed != null);
+    assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
+    assert(signInAnonymously != null);
+    return linkWithEmailAndPasswordPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result emailChanged(String email),
+    Result passwordChanged(String password),
+    Result registerWithEmailAndPasswordPressed(),
+    Result signInWithEmailAndPasswordPressed(),
+    Result signInWithGooglePressed(),
+    Result linkWithEmailAndPasswordPressed(),
+    Result linkWithGoogleProviderPressed(),
+    Result signInAnonymously(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (linkWithEmailAndPasswordPressed != null) {
+      return linkWithEmailAndPasswordPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result emailChanged(EmailChanged value),
+    @required Result passwordChanged(PasswordChanged value),
+    @required
+        Result registerWithEmailAndPasswordPressed(
+            RegisterWithEmailAndPasswordPressed value),
+    @required
+        Result signInWithEmailAndPasswordPressed(
+            SignInWithEmailAndPasswordPressed value),
+    @required Result signInWithGooglePressed(SignInWithGooglePressed value),
+    @required
+        Result linkWithEmailAndPasswordPressed(
+            LinkWithEmailAndPasswordPressed value),
+    @required
+        Result linkWithGoogleProviderPressed(
+            LinkWithGoogleProviderPressed value),
+    @required Result signInAnonymously(SignInAnonymously value),
+  }) {
+    assert(emailChanged != null);
+    assert(passwordChanged != null);
+    assert(registerWithEmailAndPasswordPressed != null);
+    assert(signInWithEmailAndPasswordPressed != null);
+    assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
+    assert(signInAnonymously != null);
+    return linkWithEmailAndPasswordPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result emailChanged(EmailChanged value),
+    Result passwordChanged(PasswordChanged value),
+    Result registerWithEmailAndPasswordPressed(
+        RegisterWithEmailAndPasswordPressed value),
+    Result signInWithEmailAndPasswordPressed(
+        SignInWithEmailAndPasswordPressed value),
+    Result signInWithGooglePressed(SignInWithGooglePressed value),
+    Result linkWithEmailAndPasswordPressed(
+        LinkWithEmailAndPasswordPressed value),
+    Result linkWithGoogleProviderPressed(LinkWithGoogleProviderPressed value),
+    Result signInAnonymously(SignInAnonymously value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (linkWithEmailAndPasswordPressed != null) {
+      return linkWithEmailAndPasswordPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LinkWithEmailAndPasswordPressed implements SignInFormEvent {
+  const factory LinkWithEmailAndPasswordPressed() =
+      _$LinkWithEmailAndPasswordPressed;
+}
+
+abstract class $LinkWithGoogleProviderPressedCopyWith<$Res> {
+  factory $LinkWithGoogleProviderPressedCopyWith(
+          LinkWithGoogleProviderPressed value,
+          $Res Function(LinkWithGoogleProviderPressed) then) =
+      _$LinkWithGoogleProviderPressedCopyWithImpl<$Res>;
+}
+
+class _$LinkWithGoogleProviderPressedCopyWithImpl<$Res>
+    extends _$SignInFormEventCopyWithImpl<$Res>
+    implements $LinkWithGoogleProviderPressedCopyWith<$Res> {
+  _$LinkWithGoogleProviderPressedCopyWithImpl(
+      LinkWithGoogleProviderPressed _value,
+      $Res Function(LinkWithGoogleProviderPressed) _then)
+      : super(_value, (v) => _then(v as LinkWithGoogleProviderPressed));
+
+  @override
+  LinkWithGoogleProviderPressed get _value =>
+      super._value as LinkWithGoogleProviderPressed;
+}
+
+class _$LinkWithGoogleProviderPressed
+    with DiagnosticableTreeMixin
+    implements LinkWithGoogleProviderPressed {
+  const _$LinkWithGoogleProviderPressed();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SignInFormEvent.linkWithGoogleProviderPressed()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'SignInFormEvent.linkWithGoogleProviderPressed'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is LinkWithGoogleProviderPressed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result emailChanged(String email),
+    @required Result passwordChanged(String password),
+    @required Result registerWithEmailAndPasswordPressed(),
+    @required Result signInWithEmailAndPasswordPressed(),
+    @required Result signInWithGooglePressed(),
+    @required Result linkWithEmailAndPasswordPressed(),
+    @required Result linkWithGoogleProviderPressed(),
+    @required Result signInAnonymously(),
+  }) {
+    assert(emailChanged != null);
+    assert(passwordChanged != null);
+    assert(registerWithEmailAndPasswordPressed != null);
+    assert(signInWithEmailAndPasswordPressed != null);
+    assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
+    assert(signInAnonymously != null);
+    return linkWithGoogleProviderPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result emailChanged(String email),
+    Result passwordChanged(String password),
+    Result registerWithEmailAndPasswordPressed(),
+    Result signInWithEmailAndPasswordPressed(),
+    Result signInWithGooglePressed(),
+    Result linkWithEmailAndPasswordPressed(),
+    Result linkWithGoogleProviderPressed(),
+    Result signInAnonymously(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (linkWithGoogleProviderPressed != null) {
+      return linkWithGoogleProviderPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result emailChanged(EmailChanged value),
+    @required Result passwordChanged(PasswordChanged value),
+    @required
+        Result registerWithEmailAndPasswordPressed(
+            RegisterWithEmailAndPasswordPressed value),
+    @required
+        Result signInWithEmailAndPasswordPressed(
+            SignInWithEmailAndPasswordPressed value),
+    @required Result signInWithGooglePressed(SignInWithGooglePressed value),
+    @required
+        Result linkWithEmailAndPasswordPressed(
+            LinkWithEmailAndPasswordPressed value),
+    @required
+        Result linkWithGoogleProviderPressed(
+            LinkWithGoogleProviderPressed value),
+    @required Result signInAnonymously(SignInAnonymously value),
+  }) {
+    assert(emailChanged != null);
+    assert(passwordChanged != null);
+    assert(registerWithEmailAndPasswordPressed != null);
+    assert(signInWithEmailAndPasswordPressed != null);
+    assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
+    assert(signInAnonymously != null);
+    return linkWithGoogleProviderPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result emailChanged(EmailChanged value),
+    Result passwordChanged(PasswordChanged value),
+    Result registerWithEmailAndPasswordPressed(
+        RegisterWithEmailAndPasswordPressed value),
+    Result signInWithEmailAndPasswordPressed(
+        SignInWithEmailAndPasswordPressed value),
+    Result signInWithGooglePressed(SignInWithGooglePressed value),
+    Result linkWithEmailAndPasswordPressed(
+        LinkWithEmailAndPasswordPressed value),
+    Result linkWithGoogleProviderPressed(LinkWithGoogleProviderPressed value),
+    Result signInAnonymously(SignInAnonymously value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (linkWithGoogleProviderPressed != null) {
+      return linkWithGoogleProviderPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LinkWithGoogleProviderPressed implements SignInFormEvent {
+  const factory LinkWithGoogleProviderPressed() =
+      _$LinkWithGoogleProviderPressed;
 }
 
 abstract class $SignInAnonymouslyCopyWith<$Res> {
@@ -853,6 +1257,8 @@ class _$SignInAnonymously
     @required Result registerWithEmailAndPasswordPressed(),
     @required Result signInWithEmailAndPasswordPressed(),
     @required Result signInWithGooglePressed(),
+    @required Result linkWithEmailAndPasswordPressed(),
+    @required Result linkWithGoogleProviderPressed(),
     @required Result signInAnonymously(),
   }) {
     assert(emailChanged != null);
@@ -860,6 +1266,8 @@ class _$SignInAnonymously
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
     assert(signInAnonymously != null);
     return signInAnonymously();
   }
@@ -872,6 +1280,8 @@ class _$SignInAnonymously
     Result registerWithEmailAndPasswordPressed(),
     Result signInWithEmailAndPasswordPressed(),
     Result signInWithGooglePressed(),
+    Result linkWithEmailAndPasswordPressed(),
+    Result linkWithGoogleProviderPressed(),
     Result signInAnonymously(),
     @required Result orElse(),
   }) {
@@ -894,6 +1304,12 @@ class _$SignInAnonymously
         Result signInWithEmailAndPasswordPressed(
             SignInWithEmailAndPasswordPressed value),
     @required Result signInWithGooglePressed(SignInWithGooglePressed value),
+    @required
+        Result linkWithEmailAndPasswordPressed(
+            LinkWithEmailAndPasswordPressed value),
+    @required
+        Result linkWithGoogleProviderPressed(
+            LinkWithGoogleProviderPressed value),
     @required Result signInAnonymously(SignInAnonymously value),
   }) {
     assert(emailChanged != null);
@@ -901,6 +1317,8 @@ class _$SignInAnonymously
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
+    assert(linkWithEmailAndPasswordPressed != null);
+    assert(linkWithGoogleProviderPressed != null);
     assert(signInAnonymously != null);
     return signInAnonymously(this);
   }
@@ -915,6 +1333,9 @@ class _$SignInAnonymously
     Result signInWithEmailAndPasswordPressed(
         SignInWithEmailAndPasswordPressed value),
     Result signInWithGooglePressed(SignInWithGooglePressed value),
+    Result linkWithEmailAndPasswordPressed(
+        LinkWithEmailAndPasswordPressed value),
+    Result linkWithGoogleProviderPressed(LinkWithGoogleProviderPressed value),
     Result signInAnonymously(SignInAnonymously value),
     @required Result orElse(),
   }) {

@@ -33,11 +33,12 @@ class ResetPasswordFormBloc
       },
       resetLinkSent: (e) async* {
         Either<AuthFailure, Unit> failureOrUnit;
-        yield state.copyWith(
-          isSending: true,
-          authFailureOrUnitOption: none(),
-        );
+
         if (state.emailAddress.isValid) {
+          yield state.copyWith(
+            isSending: true,
+            authFailureOrUnitOption: none(),
+          );
           failureOrUnit = await _authFacade.sendResetPasswordLink(
               emailAddress: state.emailAddress, languageCode: e.languageCode);
         }

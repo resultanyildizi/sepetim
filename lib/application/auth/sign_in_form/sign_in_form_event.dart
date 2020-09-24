@@ -11,5 +11,10 @@ abstract class SignInFormEvent with _$SignInFormEvent {
       SignInWithEmailAndPasswordPressed;
   const factory SignInFormEvent.signInWithGooglePressed() =
       SignInWithGooglePressed;
+  const factory SignInFormEvent.linkWithEmailAndPasswordPressed() =
+      LinkWithEmailAndPasswordPressed;
+  const factory SignInFormEvent.linkWithGoogleProviderPressed() =
+      LinkWithGoogleProviderPressed;
+
   const factory SignInFormEvent.signInAnonymously() = SignInAnonymously;
 }

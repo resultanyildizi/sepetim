@@ -164,3 +164,49 @@ Future userNotUsingEmailProvider(BuildContext context) {
     ],
   );
 }
+
+Future accountAlreadyExistsPopup(BuildContext context) {
+  return actionPopup(
+    context,
+    backgroundColor: Colors.white,
+    title: Text(
+      translate(context, 'account_already_exists_title'),
+      style: robotoTextStyle(),
+    ),
+    content: Text(
+      translate(context, 'account_already_exists_message'),
+    ),
+    actions: <Widget>[
+      RoundedButton(
+        width: screenWidthByScalar(context, 1.0),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        text: translate(context, 'okay'),
+      )
+    ],
+  );
+}
+
+Future notRegisteredWithGoogle(BuildContext context) {
+  return actionPopup(
+    context,
+    backgroundColor: Colors.white,
+    title: Text(
+      translate(context, 'not_registered_with_google_title'),
+      style: robotoTextStyle(),
+    ),
+    content: Text(
+      translate(context, 'not_registered_with_google_message'),
+    ),
+    actions: <Widget>[
+      RoundedButton(
+        width: screenWidthByScalar(context, 1.0),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        text: translate(context, 'okay'),
+      )
+    ],
+  );
+}

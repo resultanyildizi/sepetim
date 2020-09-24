@@ -24,10 +24,6 @@ class _$AuthFailureTearOff {
     return const _EmailAlreadyInUse();
   }
 
-  _InvalidEmailAndPasswordCombination invalidEmailAndPasswordCombination() {
-    return const _InvalidEmailAndPasswordCombination();
-  }
-
   _NetworkException networkException() {
     return const _NetworkException();
   }
@@ -44,8 +40,20 @@ class _$AuthFailureTearOff {
     return const _UserNotFound();
   }
 
+  _AccountAlreadyExists accountAlreadyExists() {
+    return const _AccountAlreadyExists();
+  }
+
+  _AccountAlreadyLinked accountAlreadyLinked() {
+    return const _AccountAlreadyLinked();
+  }
+
   _UserNotUsingEmailProvider userNotUsingEmailProvider() {
     return const _UserNotUsingEmailProvider();
+  }
+
+  _InvalidEmailAndPasswordCombination invalidEmailAndPasswordCombination() {
+    return const _InvalidEmailAndPasswordCombination();
   }
 }
 
@@ -58,24 +66,28 @@ mixin _$AuthFailure {
     @required Result cancelledByUser(),
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
-    @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
     @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
     @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
     Result emailAlreadyInUse(),
-    Result invalidEmailAndPasswordCombination(),
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
     Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
     Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -83,28 +95,32 @@ mixin _$AuthFailure {
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            _InvalidEmailAndPasswordCombination value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
     @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        _InvalidEmailAndPasswordCombination value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
     Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
     @required Result orElse(),
   });
 }
@@ -162,22 +178,26 @@ class _$_CancelledByUser implements _CancelledByUser {
     @required Result cancelledByUser(),
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
-    @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
     @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
     @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return cancelledByUser();
   }
 
@@ -187,12 +207,14 @@ class _$_CancelledByUser implements _CancelledByUser {
     Result cancelledByUser(),
     Result serverError(),
     Result emailAlreadyInUse(),
-    Result invalidEmailAndPasswordCombination(),
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
     Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
     Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -208,25 +230,29 @@ class _$_CancelledByUser implements _CancelledByUser {
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            _InvalidEmailAndPasswordCombination value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
     @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return cancelledByUser(this);
   }
 
@@ -236,13 +262,15 @@ class _$_CancelledByUser implements _CancelledByUser {
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        _InvalidEmailAndPasswordCombination value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
     Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -295,22 +323,26 @@ class _$_ServerError implements _ServerError {
     @required Result cancelledByUser(),
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
-    @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
     @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
     @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return serverError();
   }
 
@@ -320,12 +352,14 @@ class _$_ServerError implements _ServerError {
     Result cancelledByUser(),
     Result serverError(),
     Result emailAlreadyInUse(),
-    Result invalidEmailAndPasswordCombination(),
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
     Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
     Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -341,25 +375,29 @@ class _$_ServerError implements _ServerError {
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            _InvalidEmailAndPasswordCombination value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
     @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return serverError(this);
   }
 
@@ -369,13 +407,15 @@ class _$_ServerError implements _ServerError {
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        _InvalidEmailAndPasswordCombination value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
     Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -429,22 +469,26 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     @required Result cancelledByUser(),
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
-    @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
     @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
     @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return emailAlreadyInUse();
   }
 
@@ -454,12 +498,14 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     Result cancelledByUser(),
     Result serverError(),
     Result emailAlreadyInUse(),
-    Result invalidEmailAndPasswordCombination(),
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
     Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
     Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -475,25 +521,29 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            _InvalidEmailAndPasswordCombination value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
     @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return emailAlreadyInUse(this);
   }
 
@@ -503,13 +553,15 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        _InvalidEmailAndPasswordCombination value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
     Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -522,146 +574,6 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
 
 abstract class _EmailAlreadyInUse implements AuthFailure {
   const factory _EmailAlreadyInUse() = _$_EmailAlreadyInUse;
-}
-
-abstract class _$InvalidEmailAndPasswordCombinationCopyWith<$Res> {
-  factory _$InvalidEmailAndPasswordCombinationCopyWith(
-          _InvalidEmailAndPasswordCombination value,
-          $Res Function(_InvalidEmailAndPasswordCombination) then) =
-      __$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>;
-}
-
-class __$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
-    implements _$InvalidEmailAndPasswordCombinationCopyWith<$Res> {
-  __$InvalidEmailAndPasswordCombinationCopyWithImpl(
-      _InvalidEmailAndPasswordCombination _value,
-      $Res Function(_InvalidEmailAndPasswordCombination) _then)
-      : super(_value, (v) => _then(v as _InvalidEmailAndPasswordCombination));
-
-  @override
-  _InvalidEmailAndPasswordCombination get _value =>
-      super._value as _InvalidEmailAndPasswordCombination;
-}
-
-class _$_InvalidEmailAndPasswordCombination
-    implements _InvalidEmailAndPasswordCombination {
-  const _$_InvalidEmailAndPasswordCombination();
-
-  @override
-  String toString() {
-    return 'AuthFailure.invalidEmailAndPasswordCombination()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _InvalidEmailAndPasswordCombination);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result cancelledByUser(),
-    @required Result serverError(),
-    @required Result emailAlreadyInUse(),
-    @required Result invalidEmailAndPasswordCombination(),
-    @required Result networkException(),
-    @required Result wrongPassword(),
-    @required Result tooManyRequests(),
-    @required Result userNotFound(),
-    @required Result userNotUsingEmailProvider(),
-  }) {
-    assert(cancelledByUser != null);
-    assert(serverError != null);
-    assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
-    assert(networkException != null);
-    assert(wrongPassword != null);
-    assert(tooManyRequests != null);
-    assert(userNotFound != null);
-    assert(userNotUsingEmailProvider != null);
-    return invalidEmailAndPasswordCombination();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result cancelledByUser(),
-    Result serverError(),
-    Result emailAlreadyInUse(),
-    Result invalidEmailAndPasswordCombination(),
-    Result networkException(),
-    Result wrongPassword(),
-    Result tooManyRequests(),
-    Result userNotFound(),
-    Result userNotUsingEmailProvider(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (invalidEmailAndPasswordCombination != null) {
-      return invalidEmailAndPasswordCombination();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result cancelledByUser(_CancelledByUser value),
-    @required Result serverError(_ServerError value),
-    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            _InvalidEmailAndPasswordCombination value),
-    @required Result networkException(_NetworkException value),
-    @required Result wrongPassword(_WrongPassword value),
-    @required Result tooManyRequests(_TooManyRequests value),
-    @required Result userNotFound(_UserNotFound value),
-    @required
-        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
-  }) {
-    assert(cancelledByUser != null);
-    assert(serverError != null);
-    assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
-    assert(networkException != null);
-    assert(wrongPassword != null);
-    assert(tooManyRequests != null);
-    assert(userNotFound != null);
-    assert(userNotUsingEmailProvider != null);
-    return invalidEmailAndPasswordCombination(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result cancelledByUser(_CancelledByUser value),
-    Result serverError(_ServerError value),
-    Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        _InvalidEmailAndPasswordCombination value),
-    Result networkException(_NetworkException value),
-    Result wrongPassword(_WrongPassword value),
-    Result tooManyRequests(_TooManyRequests value),
-    Result userNotFound(_UserNotFound value),
-    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (invalidEmailAndPasswordCombination != null) {
-      return invalidEmailAndPasswordCombination(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _InvalidEmailAndPasswordCombination implements AuthFailure {
-  const factory _InvalidEmailAndPasswordCombination() =
-      _$_InvalidEmailAndPasswordCombination;
 }
 
 abstract class _$NetworkExceptionCopyWith<$Res> {
@@ -703,22 +615,26 @@ class _$_NetworkException implements _NetworkException {
     @required Result cancelledByUser(),
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
-    @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
     @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
     @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return networkException();
   }
 
@@ -728,12 +644,14 @@ class _$_NetworkException implements _NetworkException {
     Result cancelledByUser(),
     Result serverError(),
     Result emailAlreadyInUse(),
-    Result invalidEmailAndPasswordCombination(),
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
     Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
     Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -749,25 +667,29 @@ class _$_NetworkException implements _NetworkException {
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            _InvalidEmailAndPasswordCombination value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
     @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return networkException(this);
   }
 
@@ -777,13 +699,15 @@ class _$_NetworkException implements _NetworkException {
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        _InvalidEmailAndPasswordCombination value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
     Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -836,22 +760,26 @@ class _$_WrongPassword implements _WrongPassword {
     @required Result cancelledByUser(),
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
-    @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
     @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
     @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return wrongPassword();
   }
 
@@ -861,12 +789,14 @@ class _$_WrongPassword implements _WrongPassword {
     Result cancelledByUser(),
     Result serverError(),
     Result emailAlreadyInUse(),
-    Result invalidEmailAndPasswordCombination(),
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
     Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
     Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -882,25 +812,29 @@ class _$_WrongPassword implements _WrongPassword {
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            _InvalidEmailAndPasswordCombination value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
     @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return wrongPassword(this);
   }
 
@@ -910,13 +844,15 @@ class _$_WrongPassword implements _WrongPassword {
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        _InvalidEmailAndPasswordCombination value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
     Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -970,22 +906,26 @@ class _$_TooManyRequests implements _TooManyRequests {
     @required Result cancelledByUser(),
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
-    @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
     @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
     @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return tooManyRequests();
   }
 
@@ -995,12 +935,14 @@ class _$_TooManyRequests implements _TooManyRequests {
     Result cancelledByUser(),
     Result serverError(),
     Result emailAlreadyInUse(),
-    Result invalidEmailAndPasswordCombination(),
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
     Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
     Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1016,25 +958,29 @@ class _$_TooManyRequests implements _TooManyRequests {
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            _InvalidEmailAndPasswordCombination value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
     @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return tooManyRequests(this);
   }
 
@@ -1044,13 +990,15 @@ class _$_TooManyRequests implements _TooManyRequests {
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        _InvalidEmailAndPasswordCombination value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
     Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1103,22 +1051,26 @@ class _$_UserNotFound implements _UserNotFound {
     @required Result cancelledByUser(),
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
-    @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
     @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
     @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return userNotFound();
   }
 
@@ -1128,12 +1080,14 @@ class _$_UserNotFound implements _UserNotFound {
     Result cancelledByUser(),
     Result serverError(),
     Result emailAlreadyInUse(),
-    Result invalidEmailAndPasswordCombination(),
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
     Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
     Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1149,25 +1103,29 @@ class _$_UserNotFound implements _UserNotFound {
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            _InvalidEmailAndPasswordCombination value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
     @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return userNotFound(this);
   }
 
@@ -1177,13 +1135,15 @@ class _$_UserNotFound implements _UserNotFound {
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        _InvalidEmailAndPasswordCombination value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
     Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1196,6 +1156,298 @@ class _$_UserNotFound implements _UserNotFound {
 
 abstract class _UserNotFound implements AuthFailure {
   const factory _UserNotFound() = _$_UserNotFound;
+}
+
+abstract class _$AccountAlreadyExistsCopyWith<$Res> {
+  factory _$AccountAlreadyExistsCopyWith(_AccountAlreadyExists value,
+          $Res Function(_AccountAlreadyExists) then) =
+      __$AccountAlreadyExistsCopyWithImpl<$Res>;
+}
+
+class __$AccountAlreadyExistsCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$AccountAlreadyExistsCopyWith<$Res> {
+  __$AccountAlreadyExistsCopyWithImpl(
+      _AccountAlreadyExists _value, $Res Function(_AccountAlreadyExists) _then)
+      : super(_value, (v) => _then(v as _AccountAlreadyExists));
+
+  @override
+  _AccountAlreadyExists get _value => super._value as _AccountAlreadyExists;
+}
+
+class _$_AccountAlreadyExists implements _AccountAlreadyExists {
+  const _$_AccountAlreadyExists();
+
+  @override
+  String toString() {
+    return 'AuthFailure.accountAlreadyExists()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _AccountAlreadyExists);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
+    @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
+    assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    return accountAlreadyExists();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
+    Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
+    Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (accountAlreadyExists != null) {
+      return accountAlreadyExists();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
+    assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    return accountAlreadyExists(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (accountAlreadyExists != null) {
+      return accountAlreadyExists(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AccountAlreadyExists implements AuthFailure {
+  const factory _AccountAlreadyExists() = _$_AccountAlreadyExists;
+}
+
+abstract class _$AccountAlreadyLinkedCopyWith<$Res> {
+  factory _$AccountAlreadyLinkedCopyWith(_AccountAlreadyLinked value,
+          $Res Function(_AccountAlreadyLinked) then) =
+      __$AccountAlreadyLinkedCopyWithImpl<$Res>;
+}
+
+class __$AccountAlreadyLinkedCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$AccountAlreadyLinkedCopyWith<$Res> {
+  __$AccountAlreadyLinkedCopyWithImpl(
+      _AccountAlreadyLinked _value, $Res Function(_AccountAlreadyLinked) _then)
+      : super(_value, (v) => _then(v as _AccountAlreadyLinked));
+
+  @override
+  _AccountAlreadyLinked get _value => super._value as _AccountAlreadyLinked;
+}
+
+class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
+  const _$_AccountAlreadyLinked();
+
+  @override
+  String toString() {
+    return 'AuthFailure.accountAlreadyLinked()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _AccountAlreadyLinked);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
+    @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
+    assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    return accountAlreadyLinked();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
+    Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
+    Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (accountAlreadyLinked != null) {
+      return accountAlreadyLinked();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
+    assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    return accountAlreadyLinked(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (accountAlreadyLinked != null) {
+      return accountAlreadyLinked(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AccountAlreadyLinked implements AuthFailure {
+  const factory _AccountAlreadyLinked() = _$_AccountAlreadyLinked;
 }
 
 abstract class _$UserNotUsingEmailProviderCopyWith<$Res> {
@@ -1238,22 +1490,26 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
     @required Result cancelledByUser(),
     @required Result serverError(),
     @required Result emailAlreadyInUse(),
-    @required Result invalidEmailAndPasswordCombination(),
     @required Result networkException(),
     @required Result wrongPassword(),
     @required Result tooManyRequests(),
     @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
     @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return userNotUsingEmailProvider();
   }
 
@@ -1263,12 +1519,14 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
     Result cancelledByUser(),
     Result serverError(),
     Result emailAlreadyInUse(),
-    Result invalidEmailAndPasswordCombination(),
     Result networkException(),
     Result wrongPassword(),
     Result tooManyRequests(),
     Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
     Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1284,25 +1542,29 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    @required
-        Result invalidEmailAndPasswordCombination(
-            _InvalidEmailAndPasswordCombination value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
     @required Result tooManyRequests(_TooManyRequests value),
     @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
     @required
         Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
-    assert(invalidEmailAndPasswordCombination != null);
     assert(networkException != null);
     assert(wrongPassword != null);
     assert(tooManyRequests != null);
     assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
     assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
     return userNotUsingEmailProvider(this);
   }
 
@@ -1312,13 +1574,15 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
-    Result invalidEmailAndPasswordCombination(
-        _InvalidEmailAndPasswordCombination value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
     Result tooManyRequests(_TooManyRequests value),
     Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
     Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1331,4 +1595,156 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
 
 abstract class _UserNotUsingEmailProvider implements AuthFailure {
   const factory _UserNotUsingEmailProvider() = _$_UserNotUsingEmailProvider;
+}
+
+abstract class _$InvalidEmailAndPasswordCombinationCopyWith<$Res> {
+  factory _$InvalidEmailAndPasswordCombinationCopyWith(
+          _InvalidEmailAndPasswordCombination value,
+          $Res Function(_InvalidEmailAndPasswordCombination) then) =
+      __$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>;
+}
+
+class __$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$InvalidEmailAndPasswordCombinationCopyWith<$Res> {
+  __$InvalidEmailAndPasswordCombinationCopyWithImpl(
+      _InvalidEmailAndPasswordCombination _value,
+      $Res Function(_InvalidEmailAndPasswordCombination) _then)
+      : super(_value, (v) => _then(v as _InvalidEmailAndPasswordCombination));
+
+  @override
+  _InvalidEmailAndPasswordCombination get _value =>
+      super._value as _InvalidEmailAndPasswordCombination;
+}
+
+class _$_InvalidEmailAndPasswordCombination
+    implements _InvalidEmailAndPasswordCombination {
+  const _$_InvalidEmailAndPasswordCombination();
+
+  @override
+  String toString() {
+    return 'AuthFailure.invalidEmailAndPasswordCombination()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _InvalidEmailAndPasswordCombination);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
+    @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
+    assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    return invalidEmailAndPasswordCombination();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
+    Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
+    Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidEmailAndPasswordCombination != null) {
+      return invalidEmailAndPasswordCombination();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
+    assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    return invalidEmailAndPasswordCombination(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidEmailAndPasswordCombination != null) {
+      return invalidEmailAndPasswordCombination(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidEmailAndPasswordCombination implements AuthFailure {
+  const factory _InvalidEmailAndPasswordCombination() =
+      _$_InvalidEmailAndPasswordCombination;
 }

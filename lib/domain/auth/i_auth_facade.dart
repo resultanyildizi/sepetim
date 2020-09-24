@@ -22,6 +22,13 @@ abstract class IAuthFacade {
 
   Future<Either<AuthFailure, Unit>> signInAnonymously();
 
+  Future<Either<AuthFailure, Unit>> linkWithEmailAndPassword({
+    @required EmailAddress emailAddress,
+    @required Password password,
+  });
+
+  Future<Either<AuthFailure, Unit>> linkWithGoogleProvider();
+
   Future<Either<AuthFailure, Unit>> deleteAccount();
 
   Future<Either<AuthFailure, Unit>> verifyUsersCurrentPassword({

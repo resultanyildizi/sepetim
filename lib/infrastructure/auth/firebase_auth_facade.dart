@@ -133,7 +133,7 @@ class FirebaseAuthFacade extends IAuthFacade {
           providerList.isNotEmpty &&
           providerList[0] != 'google.com') {
         await _googleSignIn.signOut();
-        return left(const AuthFailure.emailAlreadyInUse());
+        return left(const AuthFailure.accountAlreadyExists());
       } else {
         final authCredential = GoogleAuthProvider.getCredential(
           idToken: googleAuthentication.idToken,
@@ -145,6 +145,87 @@ class FirebaseAuthFacade extends IAuthFacade {
     } on PlatformException catch (e) {
       if (e.code == 'network_error') {
         return left(const AuthFailure.networkException());
+      } else {
+        return left(const AuthFailure.serverError());
+      }
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> linkWithEmailAndPassword({
+    @required EmailAddress emailAddress,
+    @required Password password,
+  }) async {
+    try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const AuthFailure.networkException());
+      }
+
+      final emailAddressString = emailAddress.getOrCrash();
+      final passwordString = password.getOrCrash();
+
+      final emailProviderCredential = EmailAuthProvider.getCredential(
+        email: emailAddressString,
+        password: passwordString,
+      );
+
+      final _firebaseUser = await _firebaseAuth.currentUser();
+      if (_firebaseUser.isAnonymous) {
+        await _firebaseUser.linkWithCredential(emailProviderCredential);
+      }
+      return right(unit);
+    } on PlatformException catch (e) {
+      if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
+        return left(const AuthFailure.emailAlreadyInUse());
+      } else if (e.code == 'ERROR_CREDENTIAL_ALREADY_IN_USE') {
+        return left(const AuthFailure.accountAlreadyExists());
+      } else if (e.code == 'ERROR_PROVIDER_ALREADY_LINKED') {
+        return left(const AuthFailure.accountAlreadyLinked());
+      } else {
+        return left(const AuthFailure.serverError());
+      }
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> linkWithGoogleProvider() async {
+    try {
+      final connectivityResult = await Connectivity().checkConnectivity();
+      if (connectivityResult != ConnectivityResult.mobile &&
+          connectivityResult != ConnectivityResult.wifi) {
+        return left(const AuthFailure.networkException());
+      }
+
+      final googleUser = await _googleSignIn.signIn();
+
+      if (googleUser == null) {
+        return left(const AuthFailure.cancelledByUser());
+      }
+
+      final googleAuthentication = await googleUser.authentication;
+
+      final googleProviderCredential = GoogleAuthProvider.getCredential(
+          idToken: googleAuthentication.idToken,
+          accessToken: googleAuthentication.accessToken);
+
+      final _firebaseUser = await _firebaseAuth.currentUser();
+      if (_firebaseUser.isAnonymous) {
+        await _firebaseUser.linkWithCredential(googleProviderCredential);
+      }
+      return right(unit);
+    } on PlatformException catch (e) {
+      if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
+        print('email in use');
+        await _googleSignIn.signOut();
+        return left(const AuthFailure.emailAlreadyInUse());
+      } else if (e.code == 'ERROR_CREDENTIAL_ALREADY_IN_USE') {
+        print('account in use');
+        await _googleSignIn.signOut();
+        return left(const AuthFailure.accountAlreadyExists());
+      } else if (e.code == 'ERROR_PROVIDER_ALREADY_LINKED') {
+        return left(const AuthFailure.accountAlreadyLinked());
       } else {
         return left(const AuthFailure.serverError());
       }

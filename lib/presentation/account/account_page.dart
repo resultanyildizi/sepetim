@@ -207,21 +207,7 @@ class AccountPage extends StatelessWidget {
                         ),
                         signedInAnonymously: (_) => Column(
                           children: [
-                            FlatRectangleButton(
-                              onPressed: () {
-                                context
-                                    .bloc<AuthBloc>()
-                                    .add(const AuthEvent.signedOut());
-                              },
-                              color: Colors.grey,
-                              child: Text(
-                                translate(context, 'register'),
-                                style: didactGothicTextStyle(
-                                    fontSize: 16.0,
-                                    bold: true,
-                                    color: Colors.grey),
-                              ),
-                            ),
+                            registerButton(context),
                             const SizedBox(
                               height: 15.0,
                             ),

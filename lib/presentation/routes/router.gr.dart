@@ -28,6 +28,7 @@ import 'package:Sepetim/presentation/home/item/form/widgets/edit_description_pag
 import 'package:Sepetim/presentation/home/item/form/link_form/link_form.dart';
 import 'package:Sepetim/application/item/actor/item_actor_bloc.dart';
 import 'package:Sepetim/presentation/sign_in/reset_password_page.dart';
+import 'package:Sepetim/presentation/account/link_account_page.dart';
 
 abstract class Routes {
   static const splashPage = '/';
@@ -43,6 +44,7 @@ abstract class Routes {
   static const editDescriptionPage = '/edit-description-page';
   static const linkForm = '/link-form';
   static const resetPasswordPage = '/reset-password-page';
+  static const linkAccountPage = '/link-account-page';
   static const all = {
     splashPage,
     signInPage,
@@ -57,6 +59,7 @@ abstract class Routes {
     editDescriptionPage,
     linkForm,
     resetPasswordPage,
+    linkAccountPage,
   };
 }
 
@@ -214,6 +217,16 @@ class Router extends RouterBase {
           builder: (context) => ResetPasswordPage(),
           settings: settings,
         );
+      case Routes.linkAccountPage:
+        if (hasInvalidArgs<LinkAccountPageArguments>(args)) {
+          return misTypedArgsRoute<LinkAccountPageArguments>(args);
+        }
+        final typedArgs =
+            args as LinkAccountPageArguments ?? LinkAccountPageArguments();
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => LinkAccountPage(key: typedArgs.key),
+          settings: settings,
+        );
       default:
         return unknownRoutePage(settings.name);
     }
@@ -327,6 +340,12 @@ class LinkFormArguments {
       @required this.group,
       @required this.formBloc,
       @required this.actorBloc});
+}
+
+//LinkAccountPage arguments holder class
+class LinkAccountPageArguments {
+  final Key key;
+  LinkAccountPageArguments({this.key});
 }
 
 // *************************************************************************
@@ -460,4 +479,12 @@ extension RouterNavigationHelperMethods on ExtendedNavigatorState {
       );
 
   Future pushResetPasswordPage() => pushNamed(Routes.resetPasswordPage);
+
+  Future pushLinkAccountPage({
+    Key key,
+  }) =>
+      pushNamed(
+        Routes.linkAccountPage,
+        arguments: LinkAccountPageArguments(key: key),
+      );
 }

@@ -27,6 +27,8 @@ class SignInForm extends StatelessWidget {
                 f.maybeMap(
                   serverError: (_) => serverErrorPopup(context),
                   emailAlreadyInUse: (_) => emailAlreadyInUsePopup(context),
+                  accountAlreadyExists: (_) =>
+                      accountAlreadyExistsPopup(context),
                   invalidEmailAndPasswordCombination: (_) =>
                       invalidEmailAndPasswordCombinationPopup(context),
                   networkException: (_) => networkExceptionPopup(context),

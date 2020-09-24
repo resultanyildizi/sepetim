@@ -15,6 +15,7 @@
   "yes": "Evet",
   "no": "Hayır",
   "sign_in_google": "Google ile giriş yap",
+  "register_with_google": "Google ile kayıt ol",
   "without_log_in": "Üye olmadan devam et",
   "okay": "Tamam",
   "server_error_title": "Çevrimdışısınız",
@@ -132,5 +133,9 @@
   "user_not_using_email_provider_title": "Geçersiz sağlayıcı",
   "user_not_using_email_provider_message": "Bu email adresi email sağlayıcısına ait değildir. Yani kullanıcı email adresi ve şifre kullanarak kayıt olmamıştır.",
   "send_link": "Şifre yenileme linki gönder",
-  "enter_email_to_get_link": "Şifre yenileme linki almak için kayıtlı email adresinizi giriniz."
+  "enter_email_to_get_link": "Şifre yenileme linki almak için kayıtlı email adresinizi giriniz.",
+  "not_registered_with_google_title": "Google hesabı olarak kayıtlı değil",
+  "not_registered_with_google_message": "Bu e-posta adresine sahip bir hesap zaten var, ancak bir google hesabı olarak kaydedilmemiş.",
+  "account_already_exists_title": "Hesap zaten kullanımda",
+  "account_already_exists_message": "Geçici hesabınızı zaten kullanımda olan bir hesapla bağlayamazsınız."
 }

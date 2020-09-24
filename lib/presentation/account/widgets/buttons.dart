@@ -5,6 +5,8 @@ import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/account/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/buttons.dart';
+import 'package:Sepetim/presentation/routes/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -61,6 +63,20 @@ FlatRectangleButton deleteAccountButton(BuildContext context) {
     color: Colors.grey,
     child: Text(
       translate(context, 'delete_account'),
+      style:
+          didactGothicTextStyle(fontSize: 16.0, bold: true, color: Colors.grey),
+    ),
+  );
+}
+
+FlatRectangleButton registerButton(BuildContext context) {
+  return FlatRectangleButton(
+    onPressed: () {
+      ExtendedNavigator.of(context).pushNamed(Routes.linkAccountPage);
+    },
+    color: Colors.grey,
+    child: Text(
+      translate(context, 'register'),
       style:
           didactGothicTextStyle(fontSize: 16.0, bold: true, color: Colors.grey),
     ),

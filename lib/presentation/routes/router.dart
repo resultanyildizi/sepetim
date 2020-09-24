@@ -1,3 +1,4 @@
+import 'package:Sepetim/presentation/account/link_account_page.dart';
 import 'package:Sepetim/presentation/application_content/application_content_page.dart';
 import 'package:Sepetim/presentation/home/item/form/item_form.dart';
 import 'package:Sepetim/presentation/home/item/form/link_form/link_form.dart';
@@ -52,4 +53,7 @@ class $Router {
 
   @MaterialRoute()
   ResetPasswordPage resetPasswordPage;
+
+  @MaterialRoute()
+  LinkAccountPage linkAccountPage;
 }
