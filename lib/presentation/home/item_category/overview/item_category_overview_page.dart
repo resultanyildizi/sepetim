@@ -18,6 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ItemCategoryOverviewPage extends StatelessWidget {
+  const ItemCategoryOverviewPage({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _controller = TextEditingController();
