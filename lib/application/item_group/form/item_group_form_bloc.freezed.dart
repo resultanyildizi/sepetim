@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_group_form_bloc.dart';
 
@@ -9,21 +9,25 @@ part of 'item_group_form_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemGroupFormEventTearOff {
   const _$ItemGroupFormEventTearOff();
 
+// ignore: unused_element
   _Initialized initialized(Option<ItemGroup> initalOption) {
     return _Initialized(
       initalOption,
     );
   }
 
+// ignore: unused_element
   _TitleChanged titleChanged(String title) {
     return _TitleChanged(
       title,
     );
   }
 
+// ignore: unused_element
   _Saved saved(UniqueId categoryId) {
     return _Saved(
       categoryId,
@@ -31,9 +35,11 @@ class _$ItemGroupFormEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemGroupFormEvent = _$ItemGroupFormEventTearOff();
 
+/// @nodoc
 mixin _$ItemGroupFormEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -63,12 +69,14 @@ mixin _$ItemGroupFormEvent {
   });
 }
 
+/// @nodoc
 abstract class $ItemGroupFormEventCopyWith<$Res> {
   factory $ItemGroupFormEventCopyWith(
           ItemGroupFormEvent value, $Res Function(ItemGroupFormEvent) then) =
       _$ItemGroupFormEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ItemGroupFormEventCopyWithImpl<$Res>
     implements $ItemGroupFormEventCopyWith<$Res> {
   _$ItemGroupFormEventCopyWithImpl(this._value, this._then);
@@ -78,6 +86,7 @@ class _$ItemGroupFormEventCopyWithImpl<$Res>
   final $Res Function(ItemGroupFormEvent) _then;
 }
 
+/// @nodoc
 abstract class _$InitializedCopyWith<$Res> {
   factory _$InitializedCopyWith(
           _Initialized value, $Res Function(_Initialized) then) =
@@ -85,6 +94,7 @@ abstract class _$InitializedCopyWith<$Res> {
   $Res call({Option<ItemGroup> initalOption});
 }
 
+/// @nodoc
 class __$InitializedCopyWithImpl<$Res>
     extends _$ItemGroupFormEventCopyWithImpl<$Res>
     implements _$InitializedCopyWith<$Res> {
@@ -107,6 +117,7 @@ class __$InitializedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Initialized implements _Initialized {
   const _$_Initialized(this.initalOption) : assert(initalOption != null);
 
@@ -199,6 +210,7 @@ abstract class _Initialized implements ItemGroupFormEvent {
   _$InitializedCopyWith<_Initialized> get copyWith;
 }
 
+/// @nodoc
 abstract class _$TitleChangedCopyWith<$Res> {
   factory _$TitleChangedCopyWith(
           _TitleChanged value, $Res Function(_TitleChanged) then) =
@@ -206,6 +218,7 @@ abstract class _$TitleChangedCopyWith<$Res> {
   $Res call({String title});
 }
 
+/// @nodoc
 class __$TitleChangedCopyWithImpl<$Res>
     extends _$ItemGroupFormEventCopyWithImpl<$Res>
     implements _$TitleChangedCopyWith<$Res> {
@@ -226,6 +239,7 @@ class __$TitleChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_TitleChanged implements _TitleChanged {
   const _$_TitleChanged(this.title) : assert(title != null);
 
@@ -317,12 +331,14 @@ abstract class _TitleChanged implements ItemGroupFormEvent {
   _$TitleChangedCopyWith<_TitleChanged> get copyWith;
 }
 
+/// @nodoc
 abstract class _$SavedCopyWith<$Res> {
   factory _$SavedCopyWith(_Saved value, $Res Function(_Saved) then) =
       __$SavedCopyWithImpl<$Res>;
   $Res call({UniqueId categoryId});
 }
 
+/// @nodoc
 class __$SavedCopyWithImpl<$Res> extends _$ItemGroupFormEventCopyWithImpl<$Res>
     implements _$SavedCopyWith<$Res> {
   __$SavedCopyWithImpl(_Saved _value, $Res Function(_Saved) _then)
@@ -341,6 +357,7 @@ class __$SavedCopyWithImpl<$Res> extends _$ItemGroupFormEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Saved implements _Saved {
   const _$_Saved(this.categoryId) : assert(categoryId != null);
 
@@ -433,9 +450,11 @@ abstract class _Saved implements ItemGroupFormEvent {
   _$SavedCopyWith<_Saved> get copyWith;
 }
 
+/// @nodoc
 class _$ItemGroupFormStateTearOff {
   const _$ItemGroupFormStateTearOff();
 
+// ignore: unused_element
   _ItemGroupFormState call(
       {@required
           ItemGroup group,
@@ -457,9 +476,11 @@ class _$ItemGroupFormStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemGroupFormState = _$ItemGroupFormStateTearOff();
 
+/// @nodoc
 mixin _$ItemGroupFormState {
   ItemGroup get group;
   bool get showErrorMessages;
@@ -470,6 +491,7 @@ mixin _$ItemGroupFormState {
   $ItemGroupFormStateCopyWith<ItemGroupFormState> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemGroupFormStateCopyWith<$Res> {
   factory $ItemGroupFormStateCopyWith(
           ItemGroupFormState value, $Res Function(ItemGroupFormState) then) =
@@ -484,6 +506,7 @@ abstract class $ItemGroupFormStateCopyWith<$Res> {
   $ItemGroupCopyWith<$Res> get group;
 }
 
+/// @nodoc
 class _$ItemGroupFormStateCopyWithImpl<$Res>
     implements $ItemGroupFormStateCopyWith<$Res> {
   _$ItemGroupFormStateCopyWithImpl(this._value, this._then);
@@ -525,6 +548,7 @@ class _$ItemGroupFormStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$ItemGroupFormStateCopyWith<$Res>
     implements $ItemGroupFormStateCopyWith<$Res> {
   factory _$ItemGroupFormStateCopyWith(
@@ -542,6 +566,7 @@ abstract class _$ItemGroupFormStateCopyWith<$Res>
   $ItemGroupCopyWith<$Res> get group;
 }
 
+/// @nodoc
 class __$ItemGroupFormStateCopyWithImpl<$Res>
     extends _$ItemGroupFormStateCopyWithImpl<$Res>
     implements _$ItemGroupFormStateCopyWith<$Res> {
@@ -575,6 +600,7 @@ class __$ItemGroupFormStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ItemGroupFormState implements _ItemGroupFormState {
   const _$_ItemGroupFormState(
       {@required this.group,

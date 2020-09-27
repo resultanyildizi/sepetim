@@ -21,14 +21,11 @@ class ItemCategoryWatcherBloc
     extends Bloc<ItemCategoryWatcherEvent, ItemCategoryWatcherState> {
   final IItemCategoryRepository _categoryRepository;
 
-  ItemCategoryWatcherBloc(this._categoryRepository);
+  ItemCategoryWatcherBloc(this._categoryRepository)
+      : super(const ItemCategoryWatcherState.initial());
 
   StreamSubscription<Either<ItemCategoryFailure, KtList<ItemCategory>>>
       _categoryStreamSubscription;
-
-  @override
-  ItemCategoryWatcherState get initialState =>
-      const ItemCategoryWatcherState.initial();
 
   @override
   Stream<ItemCategoryWatcherState> mapEventToState(

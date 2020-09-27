@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_group_actor_bloc.dart';
 
@@ -9,9 +9,11 @@ part of 'item_group_actor_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemGroupActorEventTearOff {
   const _$ItemGroupActorEventTearOff();
 
+// ignore: unused_element
   _ItemGroupActorEvent deleted(UniqueId categoryId, ItemGroup group) {
     return _ItemGroupActorEvent(
       categoryId,
@@ -20,9 +22,11 @@ class _$ItemGroupActorEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemGroupActorEvent = _$ItemGroupActorEventTearOff();
 
+/// @nodoc
 mixin _$ItemGroupActorEvent {
   UniqueId get categoryId;
   ItemGroup get group;
@@ -49,6 +53,7 @@ mixin _$ItemGroupActorEvent {
   $ItemGroupActorEventCopyWith<ItemGroupActorEvent> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemGroupActorEventCopyWith<$Res> {
   factory $ItemGroupActorEventCopyWith(
           ItemGroupActorEvent value, $Res Function(ItemGroupActorEvent) then) =
@@ -58,6 +63,7 @@ abstract class $ItemGroupActorEventCopyWith<$Res> {
   $ItemGroupCopyWith<$Res> get group;
 }
 
+/// @nodoc
 class _$ItemGroupActorEventCopyWithImpl<$Res>
     implements $ItemGroupActorEventCopyWith<$Res> {
   _$ItemGroupActorEventCopyWithImpl(this._value, this._then);
@@ -89,6 +95,7 @@ class _$ItemGroupActorEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$ItemGroupActorEventCopyWith<$Res>
     implements $ItemGroupActorEventCopyWith<$Res> {
   factory _$ItemGroupActorEventCopyWith(_ItemGroupActorEvent value,
@@ -101,6 +108,7 @@ abstract class _$ItemGroupActorEventCopyWith<$Res>
   $ItemGroupCopyWith<$Res> get group;
 }
 
+/// @nodoc
 class __$ItemGroupActorEventCopyWithImpl<$Res>
     extends _$ItemGroupActorEventCopyWithImpl<$Res>
     implements _$ItemGroupActorEventCopyWith<$Res> {
@@ -123,6 +131,7 @@ class __$ItemGroupActorEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ItemGroupActorEvent implements _ItemGroupActorEvent {
   const _$_ItemGroupActorEvent(this.categoryId, this.group)
       : assert(categoryId != null),
@@ -217,21 +226,26 @@ abstract class _ItemGroupActorEvent implements ItemGroupActorEvent {
   _$ItemGroupActorEventCopyWith<_ItemGroupActorEvent> get copyWith;
 }
 
+/// @nodoc
 class _$ItemGroupActorStateTearOff {
   const _$ItemGroupActorStateTearOff();
 
+// ignore: unused_element
   _Initial initial() {
     return const _Initial();
   }
 
+// ignore: unused_element
   _ActionInProgress actionInProgress() {
     return const _ActionInProgress();
   }
 
+// ignore: unused_element
   _DeleteSuccess deleteSuccess() {
     return const _DeleteSuccess();
   }
 
+// ignore: unused_element
   _DeleteFailure deleteFailure(ItemGroupFailure groupFailure) {
     return _DeleteFailure(
       groupFailure,
@@ -239,9 +253,11 @@ class _$ItemGroupActorStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemGroupActorState = _$ItemGroupActorStateTearOff();
 
+/// @nodoc
 mixin _$ItemGroupActorState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -275,12 +291,14 @@ mixin _$ItemGroupActorState {
   });
 }
 
+/// @nodoc
 abstract class $ItemGroupActorStateCopyWith<$Res> {
   factory $ItemGroupActorStateCopyWith(
           ItemGroupActorState value, $Res Function(ItemGroupActorState) then) =
       _$ItemGroupActorStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ItemGroupActorStateCopyWithImpl<$Res>
     implements $ItemGroupActorStateCopyWith<$Res> {
   _$ItemGroupActorStateCopyWithImpl(this._value, this._then);
@@ -290,11 +308,13 @@ class _$ItemGroupActorStateCopyWithImpl<$Res>
   final $Res Function(ItemGroupActorState) _then;
 }
 
+/// @nodoc
 abstract class _$InitialCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InitialCopyWithImpl<$Res>
     extends _$ItemGroupActorStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
@@ -305,6 +325,7 @@ class __$InitialCopyWithImpl<$Res>
   _Initial get _value => super._value as _Initial;
 }
 
+/// @nodoc
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -388,12 +409,14 @@ abstract class _Initial implements ItemGroupActorState {
   const factory _Initial() = _$_Initial;
 }
 
+/// @nodoc
 abstract class _$ActionInProgressCopyWith<$Res> {
   factory _$ActionInProgressCopyWith(
           _ActionInProgress value, $Res Function(_ActionInProgress) then) =
       __$ActionInProgressCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$ActionInProgressCopyWithImpl<$Res>
     extends _$ItemGroupActorStateCopyWithImpl<$Res>
     implements _$ActionInProgressCopyWith<$Res> {
@@ -405,6 +428,7 @@ class __$ActionInProgressCopyWithImpl<$Res>
   _ActionInProgress get _value => super._value as _ActionInProgress;
 }
 
+/// @nodoc
 class _$_ActionInProgress implements _ActionInProgress {
   const _$_ActionInProgress();
 
@@ -488,12 +512,14 @@ abstract class _ActionInProgress implements ItemGroupActorState {
   const factory _ActionInProgress() = _$_ActionInProgress;
 }
 
+/// @nodoc
 abstract class _$DeleteSuccessCopyWith<$Res> {
   factory _$DeleteSuccessCopyWith(
           _DeleteSuccess value, $Res Function(_DeleteSuccess) then) =
       __$DeleteSuccessCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$DeleteSuccessCopyWithImpl<$Res>
     extends _$ItemGroupActorStateCopyWithImpl<$Res>
     implements _$DeleteSuccessCopyWith<$Res> {
@@ -505,6 +531,7 @@ class __$DeleteSuccessCopyWithImpl<$Res>
   _DeleteSuccess get _value => super._value as _DeleteSuccess;
 }
 
+/// @nodoc
 class _$_DeleteSuccess implements _DeleteSuccess {
   const _$_DeleteSuccess();
 
@@ -588,6 +615,7 @@ abstract class _DeleteSuccess implements ItemGroupActorState {
   const factory _DeleteSuccess() = _$_DeleteSuccess;
 }
 
+/// @nodoc
 abstract class _$DeleteFailureCopyWith<$Res> {
   factory _$DeleteFailureCopyWith(
           _DeleteFailure value, $Res Function(_DeleteFailure) then) =
@@ -597,6 +625,7 @@ abstract class _$DeleteFailureCopyWith<$Res> {
   $ItemGroupFailureCopyWith<$Res> get groupFailure;
 }
 
+/// @nodoc
 class __$DeleteFailureCopyWithImpl<$Res>
     extends _$ItemGroupActorStateCopyWithImpl<$Res>
     implements _$DeleteFailureCopyWith<$Res> {
@@ -629,6 +658,7 @@ class __$DeleteFailureCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_DeleteFailure implements _DeleteFailure {
   const _$_DeleteFailure(this.groupFailure) : assert(groupFailure != null);
 

@@ -33,7 +33,7 @@ class ItemCard extends StatelessWidget {
           context
               .bloc<ItemFormBloc>()
               .add(ItemFormEvent.initialized(some(item)));
-          ExtendedNavigator.of(context).pushNamed(
+          ExtendedNavigator.of(context).push(
             Routes.itemPage,
             arguments: ItemPageArguments(
               formBloc: context.bloc<ItemFormBloc>(),

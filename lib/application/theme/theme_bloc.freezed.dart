@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'theme_bloc.dart';
 
@@ -9,13 +9,16 @@ part of 'theme_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ThemeEventTearOff {
   const _$ThemeEventTearOff();
 
-  _ThemeRead themRead() {
+// ignore: unused_element
+  _ThemeRead themeRead() {
     return const _ThemeRead();
   }
 
+// ignore: unused_element
   _ThemeChanged themeChanged({@required AppTheme theme}) {
     return _ThemeChanged(
       theme: theme,
@@ -23,40 +26,44 @@ class _$ThemeEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ThemeEvent = _$ThemeEventTearOff();
 
+/// @nodoc
 mixin _$ThemeEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result themRead(),
+    @required Result themeRead(),
     @required Result themeChanged(AppTheme theme),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result themRead(),
+    Result themeRead(),
     Result themeChanged(AppTheme theme),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result themRead(_ThemeRead value),
+    @required Result themeRead(_ThemeRead value),
     @required Result themeChanged(_ThemeChanged value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result themRead(_ThemeRead value),
+    Result themeRead(_ThemeRead value),
     Result themeChanged(_ThemeChanged value),
     @required Result orElse(),
   });
 }
 
+/// @nodoc
 abstract class $ThemeEventCopyWith<$Res> {
   factory $ThemeEventCopyWith(
           ThemeEvent value, $Res Function(ThemeEvent) then) =
       _$ThemeEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ThemeEventCopyWithImpl<$Res> implements $ThemeEventCopyWith<$Res> {
   _$ThemeEventCopyWithImpl(this._value, this._then);
 
@@ -65,12 +72,14 @@ class _$ThemeEventCopyWithImpl<$Res> implements $ThemeEventCopyWith<$Res> {
   final $Res Function(ThemeEvent) _then;
 }
 
+/// @nodoc
 abstract class _$ThemeReadCopyWith<$Res> {
   factory _$ThemeReadCopyWith(
           _ThemeRead value, $Res Function(_ThemeRead) then) =
       __$ThemeReadCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$ThemeReadCopyWithImpl<$Res> extends _$ThemeEventCopyWithImpl<$Res>
     implements _$ThemeReadCopyWith<$Res> {
   __$ThemeReadCopyWithImpl(_ThemeRead _value, $Res Function(_ThemeRead) _then)
@@ -80,12 +89,13 @@ class __$ThemeReadCopyWithImpl<$Res> extends _$ThemeEventCopyWithImpl<$Res>
   _ThemeRead get _value => super._value as _ThemeRead;
 }
 
+/// @nodoc
 class _$_ThemeRead implements _ThemeRead {
   const _$_ThemeRead();
 
   @override
   String toString() {
-    return 'ThemeEvent.themRead()';
+    return 'ThemeEvent.themeRead()';
   }
 
   @override
@@ -99,24 +109,24 @@ class _$_ThemeRead implements _ThemeRead {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result themRead(),
+    @required Result themeRead(),
     @required Result themeChanged(AppTheme theme),
   }) {
-    assert(themRead != null);
+    assert(themeRead != null);
     assert(themeChanged != null);
-    return themRead();
+    return themeRead();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result themRead(),
+    Result themeRead(),
     Result themeChanged(AppTheme theme),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (themRead != null) {
-      return themRead();
+    if (themeRead != null) {
+      return themeRead();
     }
     return orElse();
   }
@@ -124,24 +134,24 @@ class _$_ThemeRead implements _ThemeRead {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result themRead(_ThemeRead value),
+    @required Result themeRead(_ThemeRead value),
     @required Result themeChanged(_ThemeChanged value),
   }) {
-    assert(themRead != null);
+    assert(themeRead != null);
     assert(themeChanged != null);
-    return themRead(this);
+    return themeRead(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result themRead(_ThemeRead value),
+    Result themeRead(_ThemeRead value),
     Result themeChanged(_ThemeChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (themRead != null) {
-      return themRead(this);
+    if (themeRead != null) {
+      return themeRead(this);
     }
     return orElse();
   }
@@ -151,6 +161,7 @@ abstract class _ThemeRead implements ThemeEvent {
   const factory _ThemeRead() = _$_ThemeRead;
 }
 
+/// @nodoc
 abstract class _$ThemeChangedCopyWith<$Res> {
   factory _$ThemeChangedCopyWith(
           _ThemeChanged value, $Res Function(_ThemeChanged) then) =
@@ -158,6 +169,7 @@ abstract class _$ThemeChangedCopyWith<$Res> {
   $Res call({AppTheme theme});
 }
 
+/// @nodoc
 class __$ThemeChangedCopyWithImpl<$Res> extends _$ThemeEventCopyWithImpl<$Res>
     implements _$ThemeChangedCopyWith<$Res> {
   __$ThemeChangedCopyWithImpl(
@@ -177,6 +189,7 @@ class __$ThemeChangedCopyWithImpl<$Res> extends _$ThemeEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ThemeChanged implements _ThemeChanged {
   const _$_ThemeChanged({@required this.theme}) : assert(theme != null);
 
@@ -207,10 +220,10 @@ class _$_ThemeChanged implements _ThemeChanged {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result themRead(),
+    @required Result themeRead(),
     @required Result themeChanged(AppTheme theme),
   }) {
-    assert(themRead != null);
+    assert(themeRead != null);
     assert(themeChanged != null);
     return themeChanged(theme);
   }
@@ -218,7 +231,7 @@ class _$_ThemeChanged implements _ThemeChanged {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result themRead(),
+    Result themeRead(),
     Result themeChanged(AppTheme theme),
     @required Result orElse(),
   }) {
@@ -232,10 +245,10 @@ class _$_ThemeChanged implements _ThemeChanged {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result themRead(_ThemeRead value),
+    @required Result themeRead(_ThemeRead value),
     @required Result themeChanged(_ThemeChanged value),
   }) {
-    assert(themRead != null);
+    assert(themeRead != null);
     assert(themeChanged != null);
     return themeChanged(this);
   }
@@ -243,7 +256,7 @@ class _$_ThemeChanged implements _ThemeChanged {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result themRead(_ThemeRead value),
+    Result themeRead(_ThemeRead value),
     Result themeChanged(_ThemeChanged value),
     @required Result orElse(),
   }) {
@@ -262,9 +275,11 @@ abstract class _ThemeChanged implements ThemeEvent {
   _$ThemeChangedCopyWith<_ThemeChanged> get copyWith;
 }
 
+/// @nodoc
 class _$ThemeStateTearOff {
   const _$ThemeStateTearOff();
 
+// ignore: unused_element
   _ThemeState call({@required AppTheme theme}) {
     return _ThemeState(
       theme: theme,
@@ -272,15 +287,18 @@ class _$ThemeStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ThemeState = _$ThemeStateTearOff();
 
+/// @nodoc
 mixin _$ThemeState {
   AppTheme get theme;
 
   $ThemeStateCopyWith<ThemeState> get copyWith;
 }
 
+/// @nodoc
 abstract class $ThemeStateCopyWith<$Res> {
   factory $ThemeStateCopyWith(
           ThemeState value, $Res Function(ThemeState) then) =
@@ -288,6 +306,7 @@ abstract class $ThemeStateCopyWith<$Res> {
   $Res call({AppTheme theme});
 }
 
+/// @nodoc
 class _$ThemeStateCopyWithImpl<$Res> implements $ThemeStateCopyWith<$Res> {
   _$ThemeStateCopyWithImpl(this._value, this._then);
 
@@ -305,6 +324,7 @@ class _$ThemeStateCopyWithImpl<$Res> implements $ThemeStateCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$ThemeStateCopyWith<$Res> implements $ThemeStateCopyWith<$Res> {
   factory _$ThemeStateCopyWith(
           _ThemeState value, $Res Function(_ThemeState) then) =
@@ -313,6 +333,7 @@ abstract class _$ThemeStateCopyWith<$Res> implements $ThemeStateCopyWith<$Res> {
   $Res call({AppTheme theme});
 }
 
+/// @nodoc
 class __$ThemeStateCopyWithImpl<$Res> extends _$ThemeStateCopyWithImpl<$Res>
     implements _$ThemeStateCopyWith<$Res> {
   __$ThemeStateCopyWithImpl(
@@ -332,6 +353,7 @@ class __$ThemeStateCopyWithImpl<$Res> extends _$ThemeStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ThemeState implements _ThemeState {
   const _$_ThemeState({@required this.theme}) : assert(theme != null);
 

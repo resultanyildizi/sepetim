@@ -47,7 +47,7 @@ Widget themesButton(
   BuildContext context,
 ) {
   return FlatRectangleButton(
-    onPressed: () => ExtendedNavigator.of(context).pushNamed(Routes.themesPage),
+    onPressed: () => ExtendedNavigator.of(context).push(Routes.themesPage),
     child: Text(
       translate(context, 'themes'),
       style: Theme.of(context).textTheme.bodyText2,

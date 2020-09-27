@@ -36,7 +36,7 @@ abstract class ItemGroupDto implements _$ItemGroupDto {
   factory ItemGroupDto.fromJson(Map<String, dynamic> json) =>
       _$ItemGroupDtoFromJson(json);
   factory ItemGroupDto.fromFirestore(DocumentSnapshot doc) =>
-      ItemGroupDto.fromJson(doc.data).copyWith(uid: doc.documentID);
+      ItemGroupDto.fromJson(doc.data()).copyWith(uid: doc.id);
 }
 
 class ServerTimeStampConverter implements JsonConverter<FieldValue, Object> {

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:rxdart/rxdart.dart';
@@ -18,7 +18,7 @@ import 'package:Sepetim/infrastructure/item_group/item_group_dtos.dart';
 
 @LazySingleton(as: IItemGroupRepository)
 class ItemGroupRepository implements IItemGroupRepository {
-  final Firestore _firestore;
+  final FirebaseFirestore _firestore;
   final IItemRepository _itemRepository;
 
   ItemGroupRepository(
@@ -39,15 +39,15 @@ class ItemGroupRepository implements IItemGroupRepository {
 
       final userDoc = await _firestore.userDocument();
       final categoryDoc =
-          userDoc.categoryCollection.document(categoryId.getOrCrash());
+          userDoc.categoryCollection.doc(categoryId.getOrCrash());
 
       final groupDto = ItemGroupDto.fromDomain(group);
 
       await categoryDoc.groupCollection
-          .document(groupDto.uid)
-          .setData(groupDto.toJson());
+          .doc(groupDto.uid)
+          .set(groupDto.toJson());
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemGroupFailure.insufficientPermission());
       } else {
@@ -69,15 +69,15 @@ class ItemGroupRepository implements IItemGroupRepository {
 
       final userDoc = await _firestore.userDocument();
       final categoryDoc =
-          userDoc.categoryCollection.document(categoryId.getOrCrash());
+          userDoc.categoryCollection.doc(categoryId.getOrCrash());
 
       final groupDto = ItemGroupDto.fromDomain(group);
 
       await categoryDoc.groupCollection
-          .document(groupDto.uid)
-          .updateData(groupDto.toJson());
+          .doc(groupDto.uid)
+          .update(groupDto.toJson());
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemGroupFailure.insufficientPermission());
       } else if (e.message.contains('NOT_FOUND')) {
@@ -101,14 +101,12 @@ class ItemGroupRepository implements IItemGroupRepository {
       final groupId = group.uid;
       final userDoc = await _firestore.userDocument();
       final categoryDoc =
-          userDoc.categoryCollection.document(categoryId.getOrCrash());
-      final groupDoc =
-          categoryDoc.groupCollection.document(groupId.getOrCrash());
+          userDoc.categoryCollection.doc(categoryId.getOrCrash());
+      final groupDoc = categoryDoc.groupCollection.doc(groupId.getOrCrash());
 
-      final itemDocumentSnapshots =
-          await groupDoc.itemCollection.getDocuments();
+      final itemDocumentSnapshots = await groupDoc.itemCollection.get();
 
-      for (final doc in itemDocumentSnapshots.documents) {
+      for (final doc in itemDocumentSnapshots.docs) {
         final failureOrSuccess = await _itemRepository.delete(
             categoryId, groupId, ItemDto.fromFirestore(doc).toDomain());
 
@@ -122,7 +120,7 @@ class ItemGroupRepository implements IItemGroupRepository {
 
       await groupDoc.delete();
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemGroupFailure.insufficientPermission());
       } else if (e.message.contains('NOT_FOUND')) {
@@ -137,8 +135,7 @@ class ItemGroupRepository implements IItemGroupRepository {
   Stream<Either<ItemGroupFailure, KtList<ItemGroup>>> watchAll(
       UniqueId categoryId, OrderType orderType) async* {
     final userDoc = await _firestore.userDocument();
-    final categoryDoc =
-        userDoc.categoryCollection.document(categoryId.getOrCrash());
+    final categoryDoc = userDoc.categoryCollection.doc(categoryId.getOrCrash());
 
     Stream<QuerySnapshot> orderedGroupSnapshots;
 
@@ -165,11 +162,12 @@ class ItemGroupRepository implements IItemGroupRepository {
 
     yield* orderedGroupSnapshots
         .map((snapshot) => right<ItemGroupFailure, KtList<ItemGroup>>(snapshot
-            .documents
+            .docs
             .map((doc) => ItemGroupDto.fromFirestore(doc).toDomain())
             .toImmutableList()))
         .onErrorReturnWith((e) {
-      if (e is PlatformException && e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseAuthException &&
+          e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemGroupFailure.insufficientPermission());
       } else {
         return left(const ItemGroupFailure.unexpected());
@@ -184,8 +182,7 @@ class ItemGroupRepository implements IItemGroupRepository {
     String title,
   ) async* {
     final userDoc = await _firestore.userDocument();
-    final categoryDoc =
-        userDoc.categoryCollection.document(categoryId.getOrCrash());
+    final categoryDoc = userDoc.categoryCollection.doc(categoryId.getOrCrash());
 
     Stream<QuerySnapshot> orderedGroupSnapshots;
 
@@ -211,7 +208,7 @@ class ItemGroupRepository implements IItemGroupRepository {
     }
 
     yield* orderedGroupSnapshots
-        .map((snapshot) => snapshot.documents
+        .map((snapshot) => snapshot.docs
             .map((doc) => ItemGroupDto.fromFirestore(doc).toDomain()))
         .map((groups) => right<ItemGroupFailure, KtList<ItemGroup>>(groups
             .where((group) => group.title
@@ -220,7 +217,8 @@ class ItemGroupRepository implements IItemGroupRepository {
                 .startsWith(title.toLowerCase()))
             .toImmutableList()))
         .onErrorReturnWith((e) {
-      if (e is PlatformException && e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseAuthException &&
+          e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemGroupFailure.insufficientPermission());
       } else {
         return left(const ItemGroupFailure.unexpected());

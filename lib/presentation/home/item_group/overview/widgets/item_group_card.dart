@@ -33,7 +33,7 @@ class ItemGroupCard extends StatelessWidget {
         () => BlocBuilder<ItemWatcherBloc, ItemWatcherState>(
           builder: (context, state) => GestureDetector(
             onTap: () {
-              ExtendedNavigator.of(context).pushNamed(
+              ExtendedNavigator.of(context).push(
                 Routes.itemOverviewPage,
                 arguments: ItemOverviewPageArguments(
                   category: category,

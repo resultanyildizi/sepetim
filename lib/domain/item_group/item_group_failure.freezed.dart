@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_group_failure.dart';
 
@@ -9,29 +9,36 @@ part of 'item_group_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemGroupFailureTearOff {
   const _$ItemGroupFailureTearOff();
 
+// ignore: unused_element
   _Unexpected unexpected() {
     return const _Unexpected();
   }
 
+// ignore: unused_element
   _InsufficientPermission insufficientPermission() {
     return const _InsufficientPermission();
   }
 
+// ignore: unused_element
   _UnableToUpdate unableToUpdate() {
     return const _UnableToUpdate();
   }
 
+// ignore: unused_element
   _NetworkException networkException() {
     return const _NetworkException();
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemGroupFailure = _$ItemGroupFailureTearOff();
 
+/// @nodoc
 mixin _$ItemGroupFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -65,12 +72,14 @@ mixin _$ItemGroupFailure {
   });
 }
 
+/// @nodoc
 abstract class $ItemGroupFailureCopyWith<$Res> {
   factory $ItemGroupFailureCopyWith(
           ItemGroupFailure value, $Res Function(ItemGroupFailure) then) =
       _$ItemGroupFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ItemGroupFailureCopyWithImpl<$Res>
     implements $ItemGroupFailureCopyWith<$Res> {
   _$ItemGroupFailureCopyWithImpl(this._value, this._then);
@@ -80,12 +89,14 @@ class _$ItemGroupFailureCopyWithImpl<$Res>
   final $Res Function(ItemGroupFailure) _then;
 }
 
+/// @nodoc
 abstract class _$UnexpectedCopyWith<$Res> {
   factory _$UnexpectedCopyWith(
           _Unexpected value, $Res Function(_Unexpected) then) =
       __$UnexpectedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$UnexpectedCopyWithImpl<$Res>
     extends _$ItemGroupFailureCopyWithImpl<$Res>
     implements _$UnexpectedCopyWith<$Res> {
@@ -97,6 +108,7 @@ class __$UnexpectedCopyWithImpl<$Res>
   _Unexpected get _value => super._value as _Unexpected;
 }
 
+/// @nodoc
 class _$_Unexpected implements _Unexpected {
   const _$_Unexpected();
 
@@ -180,12 +192,14 @@ abstract class _Unexpected implements ItemGroupFailure {
   const factory _Unexpected() = _$_Unexpected;
 }
 
+/// @nodoc
 abstract class _$InsufficientPermissionCopyWith<$Res> {
   factory _$InsufficientPermissionCopyWith(_InsufficientPermission value,
           $Res Function(_InsufficientPermission) then) =
       __$InsufficientPermissionCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InsufficientPermissionCopyWithImpl<$Res>
     extends _$ItemGroupFailureCopyWithImpl<$Res>
     implements _$InsufficientPermissionCopyWith<$Res> {
@@ -197,6 +211,7 @@ class __$InsufficientPermissionCopyWithImpl<$Res>
   _InsufficientPermission get _value => super._value as _InsufficientPermission;
 }
 
+/// @nodoc
 class _$_InsufficientPermission implements _InsufficientPermission {
   const _$_InsufficientPermission();
 
@@ -280,12 +295,14 @@ abstract class _InsufficientPermission implements ItemGroupFailure {
   const factory _InsufficientPermission() = _$_InsufficientPermission;
 }
 
+/// @nodoc
 abstract class _$UnableToUpdateCopyWith<$Res> {
   factory _$UnableToUpdateCopyWith(
           _UnableToUpdate value, $Res Function(_UnableToUpdate) then) =
       __$UnableToUpdateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$UnableToUpdateCopyWithImpl<$Res>
     extends _$ItemGroupFailureCopyWithImpl<$Res>
     implements _$UnableToUpdateCopyWith<$Res> {
@@ -297,6 +314,7 @@ class __$UnableToUpdateCopyWithImpl<$Res>
   _UnableToUpdate get _value => super._value as _UnableToUpdate;
 }
 
+/// @nodoc
 class _$_UnableToUpdate implements _UnableToUpdate {
   const _$_UnableToUpdate();
 
@@ -380,12 +398,14 @@ abstract class _UnableToUpdate implements ItemGroupFailure {
   const factory _UnableToUpdate() = _$_UnableToUpdate;
 }
 
+/// @nodoc
 abstract class _$NetworkExceptionCopyWith<$Res> {
   factory _$NetworkExceptionCopyWith(
           _NetworkException value, $Res Function(_NetworkException) then) =
       __$NetworkExceptionCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$NetworkExceptionCopyWithImpl<$Res>
     extends _$ItemGroupFailureCopyWithImpl<$Res>
     implements _$NetworkExceptionCopyWith<$Res> {
@@ -397,6 +417,7 @@ class __$NetworkExceptionCopyWithImpl<$Res>
   _NetworkException get _value => super._value as _NetworkException;
 }
 
+/// @nodoc
 class _$_NetworkException implements _NetworkException {
   const _$_NetworkException();
 

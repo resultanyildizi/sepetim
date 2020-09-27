@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_group_watcher_bloc.dart';
 
@@ -9,9 +9,11 @@ part of 'item_group_watcher_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemGroupWatcherEventTearOff {
   const _$ItemGroupWatcherEventTearOff();
 
+// ignore: unused_element
   _WatchAll watchAllStarted(UniqueId categoryId, OrderType orderType) {
     return _WatchAll(
       categoryId,
@@ -19,6 +21,7 @@ class _$ItemGroupWatcherEventTearOff {
     );
   }
 
+// ignore: unused_element
   _WatchAllByTitle watchAllByTitleStarted(
       UniqueId categoryId, OrderType orderType, String title) {
     return _WatchAllByTitle(
@@ -28,6 +31,7 @@ class _$ItemGroupWatcherEventTearOff {
     );
   }
 
+// ignore: unused_element
   _GroupsReceived groupsReceived(
       Either<ItemGroupFailure, KtList<ItemGroup>> failureOrGroups) {
     return _GroupsReceived(
@@ -36,9 +40,11 @@ class _$ItemGroupWatcherEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemGroupWatcherEvent = _$ItemGroupWatcherEventTearOff();
 
+/// @nodoc
 mixin _$ItemGroupWatcherEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -74,12 +80,14 @@ mixin _$ItemGroupWatcherEvent {
   });
 }
 
+/// @nodoc
 abstract class $ItemGroupWatcherEventCopyWith<$Res> {
   factory $ItemGroupWatcherEventCopyWith(ItemGroupWatcherEvent value,
           $Res Function(ItemGroupWatcherEvent) then) =
       _$ItemGroupWatcherEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ItemGroupWatcherEventCopyWithImpl<$Res>
     implements $ItemGroupWatcherEventCopyWith<$Res> {
   _$ItemGroupWatcherEventCopyWithImpl(this._value, this._then);
@@ -89,12 +97,14 @@ class _$ItemGroupWatcherEventCopyWithImpl<$Res>
   final $Res Function(ItemGroupWatcherEvent) _then;
 }
 
+/// @nodoc
 abstract class _$WatchAllCopyWith<$Res> {
   factory _$WatchAllCopyWith(_WatchAll value, $Res Function(_WatchAll) then) =
       __$WatchAllCopyWithImpl<$Res>;
   $Res call({UniqueId categoryId, OrderType orderType});
 }
 
+/// @nodoc
 class __$WatchAllCopyWithImpl<$Res>
     extends _$ItemGroupWatcherEventCopyWithImpl<$Res>
     implements _$WatchAllCopyWith<$Res> {
@@ -116,6 +126,7 @@ class __$WatchAllCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_WatchAll implements _WatchAll {
   const _$_WatchAll(this.categoryId, this.orderType)
       : assert(categoryId != null),
@@ -225,6 +236,7 @@ abstract class _WatchAll implements ItemGroupWatcherEvent {
   _$WatchAllCopyWith<_WatchAll> get copyWith;
 }
 
+/// @nodoc
 abstract class _$WatchAllByTitleCopyWith<$Res> {
   factory _$WatchAllByTitleCopyWith(
           _WatchAllByTitle value, $Res Function(_WatchAllByTitle) then) =
@@ -232,6 +244,7 @@ abstract class _$WatchAllByTitleCopyWith<$Res> {
   $Res call({UniqueId categoryId, OrderType orderType, String title});
 }
 
+/// @nodoc
 class __$WatchAllByTitleCopyWithImpl<$Res>
     extends _$ItemGroupWatcherEventCopyWithImpl<$Res>
     implements _$WatchAllByTitleCopyWith<$Res> {
@@ -256,6 +269,7 @@ class __$WatchAllByTitleCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_WatchAllByTitle implements _WatchAllByTitle {
   const _$_WatchAllByTitle(this.categoryId, this.orderType, this.title)
       : assert(categoryId != null),
@@ -373,6 +387,7 @@ abstract class _WatchAllByTitle implements ItemGroupWatcherEvent {
   _$WatchAllByTitleCopyWith<_WatchAllByTitle> get copyWith;
 }
 
+/// @nodoc
 abstract class _$GroupsReceivedCopyWith<$Res> {
   factory _$GroupsReceivedCopyWith(
           _GroupsReceived value, $Res Function(_GroupsReceived) then) =
@@ -380,6 +395,7 @@ abstract class _$GroupsReceivedCopyWith<$Res> {
   $Res call({Either<ItemGroupFailure, KtList<ItemGroup>> failureOrGroups});
 }
 
+/// @nodoc
 class __$GroupsReceivedCopyWithImpl<$Res>
     extends _$ItemGroupWatcherEventCopyWithImpl<$Res>
     implements _$GroupsReceivedCopyWith<$Res> {
@@ -402,6 +418,7 @@ class __$GroupsReceivedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_GroupsReceived implements _GroupsReceived {
   const _$_GroupsReceived(this.failureOrGroups)
       : assert(failureOrGroups != null);
@@ -504,31 +521,38 @@ abstract class _GroupsReceived implements ItemGroupWatcherEvent {
   _$GroupsReceivedCopyWith<_GroupsReceived> get copyWith;
 }
 
+/// @nodoc
 class _$ItemGroupWatcherStateTearOff {
   const _$ItemGroupWatcherStateTearOff();
 
+// ignore: unused_element
   _Initial initial() {
     return const _Initial();
   }
 
+// ignore: unused_element
   _Loading loading() {
     return const _Loading();
   }
 
+// ignore: unused_element
   _LoadSuccess loadSuccess(KtList<ItemGroup> groups) {
     return _LoadSuccess(
       groups,
     );
   }
 
+// ignore: unused_element
   _LoadFailure loadFailure() {
     return const _LoadFailure();
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemGroupWatcherState = _$ItemGroupWatcherStateTearOff();
 
+/// @nodoc
 mixin _$ItemGroupWatcherState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -562,12 +586,14 @@ mixin _$ItemGroupWatcherState {
   });
 }
 
+/// @nodoc
 abstract class $ItemGroupWatcherStateCopyWith<$Res> {
   factory $ItemGroupWatcherStateCopyWith(ItemGroupWatcherState value,
           $Res Function(ItemGroupWatcherState) then) =
       _$ItemGroupWatcherStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ItemGroupWatcherStateCopyWithImpl<$Res>
     implements $ItemGroupWatcherStateCopyWith<$Res> {
   _$ItemGroupWatcherStateCopyWithImpl(this._value, this._then);
@@ -577,11 +603,13 @@ class _$ItemGroupWatcherStateCopyWithImpl<$Res>
   final $Res Function(ItemGroupWatcherState) _then;
 }
 
+/// @nodoc
 abstract class _$InitialCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InitialCopyWithImpl<$Res>
     extends _$ItemGroupWatcherStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
@@ -592,6 +620,7 @@ class __$InitialCopyWithImpl<$Res>
   _Initial get _value => super._value as _Initial;
 }
 
+/// @nodoc
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -675,11 +704,13 @@ abstract class _Initial implements ItemGroupWatcherState {
   const factory _Initial() = _$_Initial;
 }
 
+/// @nodoc
 abstract class _$LoadingCopyWith<$Res> {
   factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
       __$LoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$LoadingCopyWithImpl<$Res>
     extends _$ItemGroupWatcherStateCopyWithImpl<$Res>
     implements _$LoadingCopyWith<$Res> {
@@ -690,6 +721,7 @@ class __$LoadingCopyWithImpl<$Res>
   _Loading get _value => super._value as _Loading;
 }
 
+/// @nodoc
 class _$_Loading implements _Loading {
   const _$_Loading();
 
@@ -773,6 +805,7 @@ abstract class _Loading implements ItemGroupWatcherState {
   const factory _Loading() = _$_Loading;
 }
 
+/// @nodoc
 abstract class _$LoadSuccessCopyWith<$Res> {
   factory _$LoadSuccessCopyWith(
           _LoadSuccess value, $Res Function(_LoadSuccess) then) =
@@ -780,6 +813,7 @@ abstract class _$LoadSuccessCopyWith<$Res> {
   $Res call({KtList<ItemGroup> groups});
 }
 
+/// @nodoc
 class __$LoadSuccessCopyWithImpl<$Res>
     extends _$ItemGroupWatcherStateCopyWithImpl<$Res>
     implements _$LoadSuccessCopyWith<$Res> {
@@ -800,6 +834,7 @@ class __$LoadSuccessCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LoadSuccess implements _LoadSuccess {
   const _$_LoadSuccess(this.groups) : assert(groups != null);
 
@@ -897,12 +932,14 @@ abstract class _LoadSuccess implements ItemGroupWatcherState {
   _$LoadSuccessCopyWith<_LoadSuccess> get copyWith;
 }
 
+/// @nodoc
 abstract class _$LoadFailureCopyWith<$Res> {
   factory _$LoadFailureCopyWith(
           _LoadFailure value, $Res Function(_LoadFailure) then) =
       __$LoadFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$LoadFailureCopyWithImpl<$Res>
     extends _$ItemGroupWatcherStateCopyWithImpl<$Res>
     implements _$LoadFailureCopyWith<$Res> {
@@ -914,6 +951,7 @@ class __$LoadFailureCopyWithImpl<$Res>
   _LoadFailure get _value => super._value as _LoadFailure;
 }
 
+/// @nodoc
 class _$_LoadFailure implements _LoadFailure {
   const _$_LoadFailure();
 

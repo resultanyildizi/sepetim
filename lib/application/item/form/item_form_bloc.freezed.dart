@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_form_bloc.dart';
 
@@ -9,39 +9,46 @@ part of 'item_form_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemFormEventTearOff {
   const _$ItemFormEventTearOff();
 
+// ignore: unused_element
   _Initialized initialized(Option<Item> initialOption) {
     return _Initialized(
       initialOption,
     );
   }
 
+// ignore: unused_element
   _TitleChanged titleChanged(String title) {
     return _TitleChanged(
       title,
     );
   }
 
+// ignore: unused_element
   _PriceChanged priceChanged(String price) {
     return _PriceChanged(
       price,
     );
   }
 
+// ignore: unused_element
   _DescriptionChanged descriptionChanged(String descriptionBody) {
     return _DescriptionChanged(
       descriptionBody,
     );
   }
 
+// ignore: unused_element
   _SelectedIndexChanged selectedIndexChanged(int index) {
     return _SelectedIndexChanged(
       index,
     );
   }
 
+// ignore: unused_element
   _IsFavoriteChanged isFavoriteChanged(UniqueId categoryId, UniqueId groupId) {
     return _IsFavoriteChanged(
       categoryId,
@@ -49,6 +56,7 @@ class _$ItemFormEventTearOff {
     );
   }
 
+// ignore: unused_element
   _ImageChanged pictureChanged(int index, ImageSource imageSource) {
     return _ImageChanged(
       index,
@@ -56,12 +64,14 @@ class _$ItemFormEventTearOff {
     );
   }
 
+// ignore: unused_element
   _PictureRemoved pictureRemoved(int index) {
     return _PictureRemoved(
       index,
     );
   }
 
+// ignore: unused_element
   _Saved saved(UniqueId categoryId, UniqueId groupId) {
     return _Saved(
       categoryId,
@@ -69,6 +79,7 @@ class _$ItemFormEventTearOff {
     );
   }
 
+// ignore: unused_element
   _LinkObjectsChanged linkObjectsChanged(
       KtList<LinkObjectPrimitive> linkObjects) {
     return _LinkObjectsChanged(
@@ -77,9 +88,11 @@ class _$ItemFormEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemFormEvent = _$ItemFormEventTearOff();
 
+/// @nodoc
 mixin _$ItemFormEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -138,12 +151,14 @@ mixin _$ItemFormEvent {
   });
 }
 
+/// @nodoc
 abstract class $ItemFormEventCopyWith<$Res> {
   factory $ItemFormEventCopyWith(
           ItemFormEvent value, $Res Function(ItemFormEvent) then) =
       _$ItemFormEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ItemFormEventCopyWithImpl<$Res>
     implements $ItemFormEventCopyWith<$Res> {
   _$ItemFormEventCopyWithImpl(this._value, this._then);
@@ -153,6 +168,7 @@ class _$ItemFormEventCopyWithImpl<$Res>
   final $Res Function(ItemFormEvent) _then;
 }
 
+/// @nodoc
 abstract class _$InitializedCopyWith<$Res> {
   factory _$InitializedCopyWith(
           _Initialized value, $Res Function(_Initialized) then) =
@@ -160,6 +176,7 @@ abstract class _$InitializedCopyWith<$Res> {
   $Res call({Option<Item> initialOption});
 }
 
+/// @nodoc
 class __$InitializedCopyWithImpl<$Res> extends _$ItemFormEventCopyWithImpl<$Res>
     implements _$InitializedCopyWith<$Res> {
   __$InitializedCopyWithImpl(
@@ -181,6 +198,7 @@ class __$InitializedCopyWithImpl<$Res> extends _$ItemFormEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Initialized implements _Initialized {
   const _$_Initialized(this.initialOption) : assert(initialOption != null);
 
@@ -316,6 +334,7 @@ abstract class _Initialized implements ItemFormEvent {
   _$InitializedCopyWith<_Initialized> get copyWith;
 }
 
+/// @nodoc
 abstract class _$TitleChangedCopyWith<$Res> {
   factory _$TitleChangedCopyWith(
           _TitleChanged value, $Res Function(_TitleChanged) then) =
@@ -323,6 +342,7 @@ abstract class _$TitleChangedCopyWith<$Res> {
   $Res call({String title});
 }
 
+/// @nodoc
 class __$TitleChangedCopyWithImpl<$Res>
     extends _$ItemFormEventCopyWithImpl<$Res>
     implements _$TitleChangedCopyWith<$Res> {
@@ -343,6 +363,7 @@ class __$TitleChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_TitleChanged implements _TitleChanged {
   const _$_TitleChanged(this.title) : assert(title != null);
 
@@ -477,6 +498,7 @@ abstract class _TitleChanged implements ItemFormEvent {
   _$TitleChangedCopyWith<_TitleChanged> get copyWith;
 }
 
+/// @nodoc
 abstract class _$PriceChangedCopyWith<$Res> {
   factory _$PriceChangedCopyWith(
           _PriceChanged value, $Res Function(_PriceChanged) then) =
@@ -484,6 +506,7 @@ abstract class _$PriceChangedCopyWith<$Res> {
   $Res call({String price});
 }
 
+/// @nodoc
 class __$PriceChangedCopyWithImpl<$Res>
     extends _$ItemFormEventCopyWithImpl<$Res>
     implements _$PriceChangedCopyWith<$Res> {
@@ -504,6 +527,7 @@ class __$PriceChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_PriceChanged implements _PriceChanged {
   const _$_PriceChanged(this.price) : assert(price != null);
 
@@ -638,6 +662,7 @@ abstract class _PriceChanged implements ItemFormEvent {
   _$PriceChangedCopyWith<_PriceChanged> get copyWith;
 }
 
+/// @nodoc
 abstract class _$DescriptionChangedCopyWith<$Res> {
   factory _$DescriptionChangedCopyWith(
           _DescriptionChanged value, $Res Function(_DescriptionChanged) then) =
@@ -645,6 +670,7 @@ abstract class _$DescriptionChangedCopyWith<$Res> {
   $Res call({String descriptionBody});
 }
 
+/// @nodoc
 class __$DescriptionChangedCopyWithImpl<$Res>
     extends _$ItemFormEventCopyWithImpl<$Res>
     implements _$DescriptionChangedCopyWith<$Res> {
@@ -667,6 +693,7 @@ class __$DescriptionChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_DescriptionChanged implements _DescriptionChanged {
   const _$_DescriptionChanged(this.descriptionBody)
       : assert(descriptionBody != null);
@@ -805,6 +832,7 @@ abstract class _DescriptionChanged implements ItemFormEvent {
   _$DescriptionChangedCopyWith<_DescriptionChanged> get copyWith;
 }
 
+/// @nodoc
 abstract class _$SelectedIndexChangedCopyWith<$Res> {
   factory _$SelectedIndexChangedCopyWith(_SelectedIndexChanged value,
           $Res Function(_SelectedIndexChanged) then) =
@@ -812,6 +840,7 @@ abstract class _$SelectedIndexChangedCopyWith<$Res> {
   $Res call({int index});
 }
 
+/// @nodoc
 class __$SelectedIndexChangedCopyWithImpl<$Res>
     extends _$ItemFormEventCopyWithImpl<$Res>
     implements _$SelectedIndexChangedCopyWith<$Res> {
@@ -832,6 +861,7 @@ class __$SelectedIndexChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_SelectedIndexChanged implements _SelectedIndexChanged {
   const _$_SelectedIndexChanged(this.index) : assert(index != null);
 
@@ -967,6 +997,7 @@ abstract class _SelectedIndexChanged implements ItemFormEvent {
   _$SelectedIndexChangedCopyWith<_SelectedIndexChanged> get copyWith;
 }
 
+/// @nodoc
 abstract class _$IsFavoriteChangedCopyWith<$Res> {
   factory _$IsFavoriteChangedCopyWith(
           _IsFavoriteChanged value, $Res Function(_IsFavoriteChanged) then) =
@@ -974,6 +1005,7 @@ abstract class _$IsFavoriteChangedCopyWith<$Res> {
   $Res call({UniqueId categoryId, UniqueId groupId});
 }
 
+/// @nodoc
 class __$IsFavoriteChangedCopyWithImpl<$Res>
     extends _$ItemFormEventCopyWithImpl<$Res>
     implements _$IsFavoriteChangedCopyWith<$Res> {
@@ -996,6 +1028,7 @@ class __$IsFavoriteChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_IsFavoriteChanged implements _IsFavoriteChanged {
   const _$_IsFavoriteChanged(this.categoryId, this.groupId)
       : assert(categoryId != null),
@@ -1141,6 +1174,7 @@ abstract class _IsFavoriteChanged implements ItemFormEvent {
   _$IsFavoriteChangedCopyWith<_IsFavoriteChanged> get copyWith;
 }
 
+/// @nodoc
 abstract class _$ImageChangedCopyWith<$Res> {
   factory _$ImageChangedCopyWith(
           _ImageChanged value, $Res Function(_ImageChanged) then) =
@@ -1148,6 +1182,7 @@ abstract class _$ImageChangedCopyWith<$Res> {
   $Res call({int index, ImageSource imageSource});
 }
 
+/// @nodoc
 class __$ImageChangedCopyWithImpl<$Res>
     extends _$ItemFormEventCopyWithImpl<$Res>
     implements _$ImageChangedCopyWith<$Res> {
@@ -1170,6 +1205,7 @@ class __$ImageChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ImageChanged implements _ImageChanged {
   const _$_ImageChanged(this.index, this.imageSource)
       : assert(index != null),
@@ -1315,6 +1351,7 @@ abstract class _ImageChanged implements ItemFormEvent {
   _$ImageChangedCopyWith<_ImageChanged> get copyWith;
 }
 
+/// @nodoc
 abstract class _$PictureRemovedCopyWith<$Res> {
   factory _$PictureRemovedCopyWith(
           _PictureRemoved value, $Res Function(_PictureRemoved) then) =
@@ -1322,6 +1359,7 @@ abstract class _$PictureRemovedCopyWith<$Res> {
   $Res call({int index});
 }
 
+/// @nodoc
 class __$PictureRemovedCopyWithImpl<$Res>
     extends _$ItemFormEventCopyWithImpl<$Res>
     implements _$PictureRemovedCopyWith<$Res> {
@@ -1342,6 +1380,7 @@ class __$PictureRemovedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_PictureRemoved implements _PictureRemoved {
   const _$_PictureRemoved(this.index) : assert(index != null);
 
@@ -1476,12 +1515,14 @@ abstract class _PictureRemoved implements ItemFormEvent {
   _$PictureRemovedCopyWith<_PictureRemoved> get copyWith;
 }
 
+/// @nodoc
 abstract class _$SavedCopyWith<$Res> {
   factory _$SavedCopyWith(_Saved value, $Res Function(_Saved) then) =
       __$SavedCopyWithImpl<$Res>;
   $Res call({UniqueId categoryId, UniqueId groupId});
 }
 
+/// @nodoc
 class __$SavedCopyWithImpl<$Res> extends _$ItemFormEventCopyWithImpl<$Res>
     implements _$SavedCopyWith<$Res> {
   __$SavedCopyWithImpl(_Saved _value, $Res Function(_Saved) _then)
@@ -1502,6 +1543,7 @@ class __$SavedCopyWithImpl<$Res> extends _$ItemFormEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Saved implements _Saved {
   const _$_Saved(this.categoryId, this.groupId)
       : assert(categoryId != null),
@@ -1646,6 +1688,7 @@ abstract class _Saved implements ItemFormEvent {
   _$SavedCopyWith<_Saved> get copyWith;
 }
 
+/// @nodoc
 abstract class _$LinkObjectsChangedCopyWith<$Res> {
   factory _$LinkObjectsChangedCopyWith(
           _LinkObjectsChanged value, $Res Function(_LinkObjectsChanged) then) =
@@ -1653,6 +1696,7 @@ abstract class _$LinkObjectsChangedCopyWith<$Res> {
   $Res call({KtList<LinkObjectPrimitive> linkObjects});
 }
 
+/// @nodoc
 class __$LinkObjectsChangedCopyWithImpl<$Res>
     extends _$ItemFormEventCopyWithImpl<$Res>
     implements _$LinkObjectsChangedCopyWith<$Res> {
@@ -1675,6 +1719,7 @@ class __$LinkObjectsChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LinkObjectsChanged implements _LinkObjectsChanged {
   const _$_LinkObjectsChanged(this.linkObjects) : assert(linkObjects != null);
 
@@ -1811,9 +1856,11 @@ abstract class _LinkObjectsChanged implements ItemFormEvent {
   _$LinkObjectsChangedCopyWith<_LinkObjectsChanged> get copyWith;
 }
 
+/// @nodoc
 class _$ItemFormStateTearOff {
   const _$ItemFormStateTearOff();
 
+// ignore: unused_element
   _ItemFormState call(
       {@required Item item,
       @required bool showErrorMessages,
@@ -1836,9 +1883,11 @@ class _$ItemFormStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemFormState = _$ItemFormStateTearOff();
 
+/// @nodoc
 mixin _$ItemFormState {
   Item get item;
   bool get showErrorMessages;
@@ -1852,6 +1901,7 @@ mixin _$ItemFormState {
   $ItemFormStateCopyWith<ItemFormState> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemFormStateCopyWith<$Res> {
   factory $ItemFormStateCopyWith(
           ItemFormState value, $Res Function(ItemFormState) then) =
@@ -1869,6 +1919,7 @@ abstract class $ItemFormStateCopyWith<$Res> {
   $ItemCopyWith<$Res> get item;
 }
 
+/// @nodoc
 class _$ItemFormStateCopyWithImpl<$Res>
     implements $ItemFormStateCopyWith<$Res> {
   _$ItemFormStateCopyWithImpl(this._value, this._then);
@@ -1921,6 +1972,7 @@ class _$ItemFormStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$ItemFormStateCopyWith<$Res>
     implements $ItemFormStateCopyWith<$Res> {
   factory _$ItemFormStateCopyWith(
@@ -1941,6 +1993,7 @@ abstract class _$ItemFormStateCopyWith<$Res>
   $ItemCopyWith<$Res> get item;
 }
 
+/// @nodoc
 class __$ItemFormStateCopyWithImpl<$Res>
     extends _$ItemFormStateCopyWithImpl<$Res>
     implements _$ItemFormStateCopyWith<$Res> {
@@ -1985,6 +2038,7 @@ class __$ItemFormStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ItemFormState implements _ItemFormState {
   const _$_ItemFormState(
       {@required this.item,

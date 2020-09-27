@@ -59,7 +59,7 @@ FlatRectangleButton deleteAccountButton(BuildContext context) {
 FlatRectangleButton registerButton(BuildContext context) {
   return FlatRectangleButton(
     onPressed: () {
-      ExtendedNavigator.of(context).pushNamed(Routes.linkAccountPage);
+      ExtendedNavigator.of(context).push(Routes.linkAccountPage);
     },
     child: Text(translate(context, 'register'),
         style: Theme.of(context).textTheme.bodyText2),

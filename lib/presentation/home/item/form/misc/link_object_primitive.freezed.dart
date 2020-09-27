@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'link_object_primitive.dart';
 
@@ -9,9 +9,11 @@ part of 'link_object_primitive.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$LinkObjectPrimitiveTearOff {
   const _$LinkObjectPrimitiveTearOff();
 
+// ignore: unused_element
   _LinkObjectPrimitive call(
       {@required UniqueId uid, @required String title, @required String link}) {
     return _LinkObjectPrimitive(
@@ -22,9 +24,11 @@ class _$LinkObjectPrimitiveTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $LinkObjectPrimitive = _$LinkObjectPrimitiveTearOff();
 
+/// @nodoc
 mixin _$LinkObjectPrimitive {
   UniqueId get uid;
   String get title;
@@ -33,6 +37,7 @@ mixin _$LinkObjectPrimitive {
   $LinkObjectPrimitiveCopyWith<LinkObjectPrimitive> get copyWith;
 }
 
+/// @nodoc
 abstract class $LinkObjectPrimitiveCopyWith<$Res> {
   factory $LinkObjectPrimitiveCopyWith(
           LinkObjectPrimitive value, $Res Function(LinkObjectPrimitive) then) =
@@ -40,6 +45,7 @@ abstract class $LinkObjectPrimitiveCopyWith<$Res> {
   $Res call({UniqueId uid, String title, String link});
 }
 
+/// @nodoc
 class _$LinkObjectPrimitiveCopyWithImpl<$Res>
     implements $LinkObjectPrimitiveCopyWith<$Res> {
   _$LinkObjectPrimitiveCopyWithImpl(this._value, this._then);
@@ -62,6 +68,7 @@ class _$LinkObjectPrimitiveCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$LinkObjectPrimitiveCopyWith<$Res>
     implements $LinkObjectPrimitiveCopyWith<$Res> {
   factory _$LinkObjectPrimitiveCopyWith(_LinkObjectPrimitive value,
@@ -71,6 +78,7 @@ abstract class _$LinkObjectPrimitiveCopyWith<$Res>
   $Res call({UniqueId uid, String title, String link});
 }
 
+/// @nodoc
 class __$LinkObjectPrimitiveCopyWithImpl<$Res>
     extends _$LinkObjectPrimitiveCopyWithImpl<$Res>
     implements _$LinkObjectPrimitiveCopyWith<$Res> {
@@ -95,6 +103,7 @@ class __$LinkObjectPrimitiveCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LinkObjectPrimitive extends _LinkObjectPrimitive {
   const _$_LinkObjectPrimitive(
       {@required this.uid, @required this.title, @required this.link})

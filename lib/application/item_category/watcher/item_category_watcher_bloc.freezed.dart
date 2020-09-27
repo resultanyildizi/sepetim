@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_category_watcher_bloc.dart';
 
@@ -9,15 +9,18 @@ part of 'item_category_watcher_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemCategoryWatcherEventTearOff {
   const _$ItemCategoryWatcherEventTearOff();
 
+// ignore: unused_element
   _WatchAllStarted watchAllStarted(OrderType orderType) {
     return _WatchAllStarted(
       orderType,
     );
   }
 
+// ignore: unused_element
   _WatchAllByTitleStarted watchAllByTitleStarted(
       OrderType orderType, String title) {
     return _WatchAllByTitleStarted(
@@ -26,6 +29,7 @@ class _$ItemCategoryWatcherEventTearOff {
     );
   }
 
+// ignore: unused_element
   _CategoriesReceived categoriesReceived(
       Either<ItemCategoryFailure, KtList<ItemCategory>> failureOrCategories) {
     return _CategoriesReceived(
@@ -34,9 +38,11 @@ class _$ItemCategoryWatcherEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemCategoryWatcherEvent = _$ItemCategoryWatcherEventTearOff();
 
+/// @nodoc
 mixin _$ItemCategoryWatcherEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -70,12 +76,14 @@ mixin _$ItemCategoryWatcherEvent {
   });
 }
 
+/// @nodoc
 abstract class $ItemCategoryWatcherEventCopyWith<$Res> {
   factory $ItemCategoryWatcherEventCopyWith(ItemCategoryWatcherEvent value,
           $Res Function(ItemCategoryWatcherEvent) then) =
       _$ItemCategoryWatcherEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ItemCategoryWatcherEventCopyWithImpl<$Res>
     implements $ItemCategoryWatcherEventCopyWith<$Res> {
   _$ItemCategoryWatcherEventCopyWithImpl(this._value, this._then);
@@ -85,6 +93,7 @@ class _$ItemCategoryWatcherEventCopyWithImpl<$Res>
   final $Res Function(ItemCategoryWatcherEvent) _then;
 }
 
+/// @nodoc
 abstract class _$WatchAllStartedCopyWith<$Res> {
   factory _$WatchAllStartedCopyWith(
           _WatchAllStarted value, $Res Function(_WatchAllStarted) then) =
@@ -92,6 +101,7 @@ abstract class _$WatchAllStartedCopyWith<$Res> {
   $Res call({OrderType orderType});
 }
 
+/// @nodoc
 class __$WatchAllStartedCopyWithImpl<$Res>
     extends _$ItemCategoryWatcherEventCopyWithImpl<$Res>
     implements _$WatchAllStartedCopyWith<$Res> {
@@ -112,6 +122,7 @@ class __$WatchAllStartedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_WatchAllStarted implements _WatchAllStarted {
   const _$_WatchAllStarted(this.orderType) : assert(orderType != null);
 
@@ -208,6 +219,7 @@ abstract class _WatchAllStarted implements ItemCategoryWatcherEvent {
   _$WatchAllStartedCopyWith<_WatchAllStarted> get copyWith;
 }
 
+/// @nodoc
 abstract class _$WatchAllByTitleStartedCopyWith<$Res> {
   factory _$WatchAllByTitleStartedCopyWith(_WatchAllByTitleStarted value,
           $Res Function(_WatchAllByTitleStarted) then) =
@@ -215,6 +227,7 @@ abstract class _$WatchAllByTitleStartedCopyWith<$Res> {
   $Res call({OrderType orderType, String title});
 }
 
+/// @nodoc
 class __$WatchAllByTitleStartedCopyWithImpl<$Res>
     extends _$ItemCategoryWatcherEventCopyWithImpl<$Res>
     implements _$WatchAllByTitleStartedCopyWith<$Res> {
@@ -237,6 +250,7 @@ class __$WatchAllByTitleStartedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_WatchAllByTitleStarted implements _WatchAllByTitleStarted {
   const _$_WatchAllByTitleStarted(this.orderType, this.title)
       : assert(orderType != null),
@@ -344,6 +358,7 @@ abstract class _WatchAllByTitleStarted implements ItemCategoryWatcherEvent {
   _$WatchAllByTitleStartedCopyWith<_WatchAllByTitleStarted> get copyWith;
 }
 
+/// @nodoc
 abstract class _$CategoriesReceivedCopyWith<$Res> {
   factory _$CategoriesReceivedCopyWith(
           _CategoriesReceived value, $Res Function(_CategoriesReceived) then) =
@@ -352,6 +367,7 @@ abstract class _$CategoriesReceivedCopyWith<$Res> {
       {Either<ItemCategoryFailure, KtList<ItemCategory>> failureOrCategories});
 }
 
+/// @nodoc
 class __$CategoriesReceivedCopyWithImpl<$Res>
     extends _$ItemCategoryWatcherEventCopyWithImpl<$Res>
     implements _$CategoriesReceivedCopyWith<$Res> {
@@ -375,6 +391,7 @@ class __$CategoriesReceivedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_CategoriesReceived implements _CategoriesReceived {
   const _$_CategoriesReceived(this.failureOrCategories)
       : assert(failureOrCategories != null);
@@ -475,23 +492,28 @@ abstract class _CategoriesReceived implements ItemCategoryWatcherEvent {
   _$CategoriesReceivedCopyWith<_CategoriesReceived> get copyWith;
 }
 
+/// @nodoc
 class _$ItemCategoryWatcherStateTearOff {
   const _$ItemCategoryWatcherStateTearOff();
 
+// ignore: unused_element
   _Initial initial() {
     return const _Initial();
   }
 
+// ignore: unused_element
   _Loading loading() {
     return const _Loading();
   }
 
+// ignore: unused_element
   _LoadSuccess loadSuccess(KtList<ItemCategory> categories) {
     return _LoadSuccess(
       categories,
     );
   }
 
+// ignore: unused_element
   _LoadFailure loadFailure(ItemCategoryFailure categoryFailure) {
     return _LoadFailure(
       categoryFailure,
@@ -499,9 +521,11 @@ class _$ItemCategoryWatcherStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemCategoryWatcherState = _$ItemCategoryWatcherStateTearOff();
 
+/// @nodoc
 mixin _$ItemCategoryWatcherState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -535,12 +559,14 @@ mixin _$ItemCategoryWatcherState {
   });
 }
 
+/// @nodoc
 abstract class $ItemCategoryWatcherStateCopyWith<$Res> {
   factory $ItemCategoryWatcherStateCopyWith(ItemCategoryWatcherState value,
           $Res Function(ItemCategoryWatcherState) then) =
       _$ItemCategoryWatcherStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ItemCategoryWatcherStateCopyWithImpl<$Res>
     implements $ItemCategoryWatcherStateCopyWith<$Res> {
   _$ItemCategoryWatcherStateCopyWithImpl(this._value, this._then);
@@ -550,11 +576,13 @@ class _$ItemCategoryWatcherStateCopyWithImpl<$Res>
   final $Res Function(ItemCategoryWatcherState) _then;
 }
 
+/// @nodoc
 abstract class _$InitialCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InitialCopyWithImpl<$Res>
     extends _$ItemCategoryWatcherStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
@@ -565,6 +593,7 @@ class __$InitialCopyWithImpl<$Res>
   _Initial get _value => super._value as _Initial;
 }
 
+/// @nodoc
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -648,11 +677,13 @@ abstract class _Initial implements ItemCategoryWatcherState {
   const factory _Initial() = _$_Initial;
 }
 
+/// @nodoc
 abstract class _$LoadingCopyWith<$Res> {
   factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
       __$LoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$LoadingCopyWithImpl<$Res>
     extends _$ItemCategoryWatcherStateCopyWithImpl<$Res>
     implements _$LoadingCopyWith<$Res> {
@@ -663,6 +694,7 @@ class __$LoadingCopyWithImpl<$Res>
   _Loading get _value => super._value as _Loading;
 }
 
+/// @nodoc
 class _$_Loading implements _Loading {
   const _$_Loading();
 
@@ -746,6 +778,7 @@ abstract class _Loading implements ItemCategoryWatcherState {
   const factory _Loading() = _$_Loading;
 }
 
+/// @nodoc
 abstract class _$LoadSuccessCopyWith<$Res> {
   factory _$LoadSuccessCopyWith(
           _LoadSuccess value, $Res Function(_LoadSuccess) then) =
@@ -753,6 +786,7 @@ abstract class _$LoadSuccessCopyWith<$Res> {
   $Res call({KtList<ItemCategory> categories});
 }
 
+/// @nodoc
 class __$LoadSuccessCopyWithImpl<$Res>
     extends _$ItemCategoryWatcherStateCopyWithImpl<$Res>
     implements _$LoadSuccessCopyWith<$Res> {
@@ -775,6 +809,7 @@ class __$LoadSuccessCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LoadSuccess implements _LoadSuccess {
   const _$_LoadSuccess(this.categories) : assert(categories != null);
 
@@ -873,6 +908,7 @@ abstract class _LoadSuccess implements ItemCategoryWatcherState {
   _$LoadSuccessCopyWith<_LoadSuccess> get copyWith;
 }
 
+/// @nodoc
 abstract class _$LoadFailureCopyWith<$Res> {
   factory _$LoadFailureCopyWith(
           _LoadFailure value, $Res Function(_LoadFailure) then) =
@@ -882,6 +918,7 @@ abstract class _$LoadFailureCopyWith<$Res> {
   $ItemCategoryFailureCopyWith<$Res> get categoryFailure;
 }
 
+/// @nodoc
 class __$LoadFailureCopyWithImpl<$Res>
     extends _$ItemCategoryWatcherStateCopyWithImpl<$Res>
     implements _$LoadFailureCopyWith<$Res> {
@@ -914,6 +951,7 @@ class __$LoadFailureCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LoadFailure implements _LoadFailure {
   const _$_LoadFailure(this.categoryFailure) : assert(categoryFailure != null);
 

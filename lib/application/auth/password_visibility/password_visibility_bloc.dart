@@ -13,9 +13,7 @@ part 'password_visibility_bloc.freezed.dart';
 @injectable
 class PasswordVisibilityBloc
     extends Bloc<PasswordVisibilityEvent, PasswordVisibilityState> {
-  @override
-  PasswordVisibilityState get initialState => PasswordVisibilityState.initial();
-
+  PasswordVisibilityBloc() : super(PasswordVisibilityState.initial());
   @override
   Stream<PasswordVisibilityState> mapEventToState(
     PasswordVisibilityEvent event,

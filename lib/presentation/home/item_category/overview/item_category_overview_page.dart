@@ -187,7 +187,7 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                   floatingActionButton: DefaultFloatingActionButton(
                     iconData: Icons.add,
                     onPressed: () {
-                      ExtendedNavigator.of(context).pushNamed(
+                      ExtendedNavigator.of(context).push(
                         Routes.itemCategoryForm,
                       );
                     },

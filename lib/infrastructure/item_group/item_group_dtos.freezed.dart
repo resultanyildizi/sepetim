@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_group_dtos.dart';
 
@@ -12,9 +12,11 @@ ItemGroupDto _$ItemGroupDtoFromJson(Map<String, dynamic> json) {
   return _ItemGroupDto.fromJson(json);
 }
 
+/// @nodoc
 class _$ItemGroupDtoTearOff {
   const _$ItemGroupDtoTearOff();
 
+// ignore: unused_element
   _ItemGroupDto call(
       {@JsonKey(ignore: true) String uid,
       @required String title,
@@ -27,11 +29,18 @@ class _$ItemGroupDtoTearOff {
       serverTimeStamp: serverTimeStamp,
     );
   }
+
+// ignore: unused_element
+  ItemGroupDto fromJson(Map<String, Object> json) {
+    return ItemGroupDto.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemGroupDto = _$ItemGroupDtoTearOff();
 
+/// @nodoc
 mixin _$ItemGroupDto {
   @JsonKey(ignore: true)
   String get uid;
@@ -44,6 +53,7 @@ mixin _$ItemGroupDto {
   $ItemGroupDtoCopyWith<ItemGroupDto> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemGroupDtoCopyWith<$Res> {
   factory $ItemGroupDtoCopyWith(
           ItemGroupDto value, $Res Function(ItemGroupDto) then) =
@@ -55,6 +65,7 @@ abstract class $ItemGroupDtoCopyWith<$Res> {
       @ServerTimeStampConverter() FieldValue serverTimeStamp});
 }
 
+/// @nodoc
 class _$ItemGroupDtoCopyWithImpl<$Res> implements $ItemGroupDtoCopyWith<$Res> {
   _$ItemGroupDtoCopyWithImpl(this._value, this._then);
 
@@ -81,6 +92,7 @@ class _$ItemGroupDtoCopyWithImpl<$Res> implements $ItemGroupDtoCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$ItemGroupDtoCopyWith<$Res>
     implements $ItemGroupDtoCopyWith<$Res> {
   factory _$ItemGroupDtoCopyWith(
@@ -94,6 +106,7 @@ abstract class _$ItemGroupDtoCopyWith<$Res>
       @ServerTimeStampConverter() FieldValue serverTimeStamp});
 }
 
+/// @nodoc
 class __$ItemGroupDtoCopyWithImpl<$Res> extends _$ItemGroupDtoCopyWithImpl<$Res>
     implements _$ItemGroupDtoCopyWith<$Res> {
   __$ItemGroupDtoCopyWithImpl(
@@ -123,6 +136,8 @@ class __$ItemGroupDtoCopyWithImpl<$Res> extends _$ItemGroupDtoCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_ItemGroupDto extends _ItemGroupDto {
   const _$_ItemGroupDto(
       {@JsonKey(ignore: true) this.uid,

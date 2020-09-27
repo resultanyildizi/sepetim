@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'link_object.dart';
 
@@ -9,9 +9,11 @@ part of 'link_object.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$LinkObjectTearOff {
   const _$LinkObjectTearOff();
 
+// ignore: unused_element
   _LinkObject call(
       {@required UniqueId uid,
       @required ShortTitle title,
@@ -24,9 +26,11 @@ class _$LinkObjectTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $LinkObject = _$LinkObjectTearOff();
 
+/// @nodoc
 mixin _$LinkObject {
   UniqueId get uid;
   ShortTitle get title;
@@ -35,6 +39,7 @@ mixin _$LinkObject {
   $LinkObjectCopyWith<LinkObject> get copyWith;
 }
 
+/// @nodoc
 abstract class $LinkObjectCopyWith<$Res> {
   factory $LinkObjectCopyWith(
           LinkObject value, $Res Function(LinkObject) then) =
@@ -42,6 +47,7 @@ abstract class $LinkObjectCopyWith<$Res> {
   $Res call({UniqueId uid, ShortTitle title, Link link});
 }
 
+/// @nodoc
 class _$LinkObjectCopyWithImpl<$Res> implements $LinkObjectCopyWith<$Res> {
   _$LinkObjectCopyWithImpl(this._value, this._then);
 
@@ -63,6 +69,7 @@ class _$LinkObjectCopyWithImpl<$Res> implements $LinkObjectCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$LinkObjectCopyWith<$Res> implements $LinkObjectCopyWith<$Res> {
   factory _$LinkObjectCopyWith(
           _LinkObject value, $Res Function(_LinkObject) then) =
@@ -71,6 +78,7 @@ abstract class _$LinkObjectCopyWith<$Res> implements $LinkObjectCopyWith<$Res> {
   $Res call({UniqueId uid, ShortTitle title, Link link});
 }
 
+/// @nodoc
 class __$LinkObjectCopyWithImpl<$Res> extends _$LinkObjectCopyWithImpl<$Res>
     implements _$LinkObjectCopyWith<$Res> {
   __$LinkObjectCopyWithImpl(
@@ -94,6 +102,7 @@ class __$LinkObjectCopyWithImpl<$Res> extends _$LinkObjectCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LinkObject extends _LinkObject {
   const _$_LinkObject(
       {@required this.uid, @required this.title, @required this.link})

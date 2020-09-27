@@ -18,10 +18,8 @@ part 'item_group_form_bloc.freezed.dart';
 class ItemGroupFormBloc extends Bloc<ItemGroupFormEvent, ItemGroupFormState> {
   final IItemGroupRepository _groupRepository;
 
-  ItemGroupFormBloc(this._groupRepository);
-
-  @override
-  ItemGroupFormState get initialState => ItemGroupFormState.initial();
+  ItemGroupFormBloc(this._groupRepository)
+      : super(ItemGroupFormState.initial());
 
   @override
   Stream<ItemGroupFormState> mapEventToState(

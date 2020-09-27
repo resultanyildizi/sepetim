@@ -16,9 +16,8 @@ part 'reset_password_form_bloc.freezed.dart';
 class ResetPasswordFormBloc
     extends Bloc<ResetPasswordFormEvent, ResetPasswordFormState> {
   final IAuthFacade _authFacade;
-  ResetPasswordFormBloc(this._authFacade);
-  @override
-  ResetPasswordFormState get initialState => ResetPasswordFormState.initial();
+  ResetPasswordFormBloc(this._authFacade)
+      : super(ResetPasswordFormState.initial());
 
   @override
   Stream<ResetPasswordFormState> mapEventToState(

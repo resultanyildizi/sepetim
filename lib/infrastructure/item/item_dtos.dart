@@ -68,7 +68,7 @@ abstract class ItemDto implements _$ItemDto {
       _$ItemDtoFromJson(json);
 
   factory ItemDto.fromFirestore(DocumentSnapshot doc) {
-    return ItemDto.fromJson(doc.data).copyWith(uid: doc.documentID);
+    return ItemDto.fromJson(doc.data()).copyWith(uid: doc.id);
   }
 }
 

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_category_form_bloc.dart';
 
@@ -9,45 +9,54 @@ part of 'item_category_form_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemCategoryFormEventTearOff {
   const _$ItemCategoryFormEventTearOff();
 
+// ignore: unused_element
   _Initialized initialized(Option<ItemCategory> initialOption) {
     return _Initialized(
       initialOption,
     );
   }
 
+// ignore: unused_element
   _TitleChanged titleChanged(String title) {
     return _TitleChanged(
       title,
     );
   }
 
+// ignore: unused_element
   _ColorChanged colorChanged(Color color) {
     return _ColorChanged(
       color,
     );
   }
 
+// ignore: unused_element
   _CoverImageChanged coverImageChanged(ImageSource imageSource) {
     return _CoverImageChanged(
       imageSource,
     );
   }
 
+// ignore: unused_element
   _CoverImageRemoved coverImageRemoved() {
     return const _CoverImageRemoved();
   }
 
+// ignore: unused_element
   _Saved saved() {
     return const _Saved();
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemCategoryFormEvent = _$ItemCategoryFormEventTearOff();
 
+/// @nodoc
 mixin _$ItemCategoryFormEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -89,12 +98,14 @@ mixin _$ItemCategoryFormEvent {
   });
 }
 
+/// @nodoc
 abstract class $ItemCategoryFormEventCopyWith<$Res> {
   factory $ItemCategoryFormEventCopyWith(ItemCategoryFormEvent value,
           $Res Function(ItemCategoryFormEvent) then) =
       _$ItemCategoryFormEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ItemCategoryFormEventCopyWithImpl<$Res>
     implements $ItemCategoryFormEventCopyWith<$Res> {
   _$ItemCategoryFormEventCopyWithImpl(this._value, this._then);
@@ -104,6 +115,7 @@ class _$ItemCategoryFormEventCopyWithImpl<$Res>
   final $Res Function(ItemCategoryFormEvent) _then;
 }
 
+/// @nodoc
 abstract class _$InitializedCopyWith<$Res> {
   factory _$InitializedCopyWith(
           _Initialized value, $Res Function(_Initialized) then) =
@@ -111,6 +123,7 @@ abstract class _$InitializedCopyWith<$Res> {
   $Res call({Option<ItemCategory> initialOption});
 }
 
+/// @nodoc
 class __$InitializedCopyWithImpl<$Res>
     extends _$ItemCategoryFormEventCopyWithImpl<$Res>
     implements _$InitializedCopyWith<$Res> {
@@ -133,6 +146,7 @@ class __$InitializedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Initialized with DiagnosticableTreeMixin implements _Initialized {
   const _$_Initialized(this.initialOption) : assert(initialOption != null);
 
@@ -252,6 +266,7 @@ abstract class _Initialized implements ItemCategoryFormEvent {
   _$InitializedCopyWith<_Initialized> get copyWith;
 }
 
+/// @nodoc
 abstract class _$TitleChangedCopyWith<$Res> {
   factory _$TitleChangedCopyWith(
           _TitleChanged value, $Res Function(_TitleChanged) then) =
@@ -259,6 +274,7 @@ abstract class _$TitleChangedCopyWith<$Res> {
   $Res call({String title});
 }
 
+/// @nodoc
 class __$TitleChangedCopyWithImpl<$Res>
     extends _$ItemCategoryFormEventCopyWithImpl<$Res>
     implements _$TitleChangedCopyWith<$Res> {
@@ -279,6 +295,7 @@ class __$TitleChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_TitleChanged with DiagnosticableTreeMixin implements _TitleChanged {
   const _$_TitleChanged(this.title) : assert(title != null);
 
@@ -396,6 +413,7 @@ abstract class _TitleChanged implements ItemCategoryFormEvent {
   _$TitleChangedCopyWith<_TitleChanged> get copyWith;
 }
 
+/// @nodoc
 abstract class _$ColorChangedCopyWith<$Res> {
   factory _$ColorChangedCopyWith(
           _ColorChanged value, $Res Function(_ColorChanged) then) =
@@ -403,6 +421,7 @@ abstract class _$ColorChangedCopyWith<$Res> {
   $Res call({Color color});
 }
 
+/// @nodoc
 class __$ColorChangedCopyWithImpl<$Res>
     extends _$ItemCategoryFormEventCopyWithImpl<$Res>
     implements _$ColorChangedCopyWith<$Res> {
@@ -423,6 +442,7 @@ class __$ColorChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ColorChanged with DiagnosticableTreeMixin implements _ColorChanged {
   const _$_ColorChanged(this.color) : assert(color != null);
 
@@ -540,6 +560,7 @@ abstract class _ColorChanged implements ItemCategoryFormEvent {
   _$ColorChangedCopyWith<_ColorChanged> get copyWith;
 }
 
+/// @nodoc
 abstract class _$CoverImageChangedCopyWith<$Res> {
   factory _$CoverImageChangedCopyWith(
           _CoverImageChanged value, $Res Function(_CoverImageChanged) then) =
@@ -547,6 +568,7 @@ abstract class _$CoverImageChangedCopyWith<$Res> {
   $Res call({ImageSource imageSource});
 }
 
+/// @nodoc
 class __$CoverImageChangedCopyWithImpl<$Res>
     extends _$ItemCategoryFormEventCopyWithImpl<$Res>
     implements _$CoverImageChangedCopyWith<$Res> {
@@ -567,6 +589,7 @@ class __$CoverImageChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_CoverImageChanged
     with DiagnosticableTreeMixin
     implements _CoverImageChanged {
@@ -689,12 +712,14 @@ abstract class _CoverImageChanged implements ItemCategoryFormEvent {
   _$CoverImageChangedCopyWith<_CoverImageChanged> get copyWith;
 }
 
+/// @nodoc
 abstract class _$CoverImageRemovedCopyWith<$Res> {
   factory _$CoverImageRemovedCopyWith(
           _CoverImageRemoved value, $Res Function(_CoverImageRemoved) then) =
       __$CoverImageRemovedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$CoverImageRemovedCopyWithImpl<$Res>
     extends _$ItemCategoryFormEventCopyWithImpl<$Res>
     implements _$CoverImageRemovedCopyWith<$Res> {
@@ -706,6 +731,7 @@ class __$CoverImageRemovedCopyWithImpl<$Res>
   _CoverImageRemoved get _value => super._value as _CoverImageRemoved;
 }
 
+/// @nodoc
 class _$_CoverImageRemoved
     with DiagnosticableTreeMixin
     implements _CoverImageRemoved {
@@ -811,11 +837,13 @@ abstract class _CoverImageRemoved implements ItemCategoryFormEvent {
   const factory _CoverImageRemoved() = _$_CoverImageRemoved;
 }
 
+/// @nodoc
 abstract class _$SavedCopyWith<$Res> {
   factory _$SavedCopyWith(_Saved value, $Res Function(_Saved) then) =
       __$SavedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$SavedCopyWithImpl<$Res>
     extends _$ItemCategoryFormEventCopyWithImpl<$Res>
     implements _$SavedCopyWith<$Res> {
@@ -826,6 +854,7 @@ class __$SavedCopyWithImpl<$Res>
   _Saved get _value => super._value as _Saved;
 }
 
+/// @nodoc
 class _$_Saved with DiagnosticableTreeMixin implements _Saved {
   const _$_Saved();
 
@@ -927,9 +956,11 @@ abstract class _Saved implements ItemCategoryFormEvent {
   const factory _Saved() = _$_Saved;
 }
 
+/// @nodoc
 class _$ItemCategoryFormStateTearOff {
   const _$ItemCategoryFormStateTearOff();
 
+// ignore: unused_element
   _ItemCategoryFormState call(
       {@required
           ItemCategory category,
@@ -958,9 +989,11 @@ class _$ItemCategoryFormStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemCategoryFormState = _$ItemCategoryFormStateTearOff();
 
+/// @nodoc
 mixin _$ItemCategoryFormState {
   ItemCategory get category;
   bool get showErrorMessages;
@@ -973,6 +1006,7 @@ mixin _$ItemCategoryFormState {
   $ItemCategoryFormStateCopyWith<ItemCategoryFormState> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemCategoryFormStateCopyWith<$Res> {
   factory $ItemCategoryFormStateCopyWith(ItemCategoryFormState value,
           $Res Function(ItemCategoryFormState) then) =
@@ -989,6 +1023,7 @@ abstract class $ItemCategoryFormStateCopyWith<$Res> {
   $ItemCategoryCopyWith<$Res> get category;
 }
 
+/// @nodoc
 class _$ItemCategoryFormStateCopyWithImpl<$Res>
     implements $ItemCategoryFormStateCopyWith<$Res> {
   _$ItemCategoryFormStateCopyWithImpl(this._value, this._then);
@@ -1039,6 +1074,7 @@ class _$ItemCategoryFormStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$ItemCategoryFormStateCopyWith<$Res>
     implements $ItemCategoryFormStateCopyWith<$Res> {
   factory _$ItemCategoryFormStateCopyWith(_ItemCategoryFormState value,
@@ -1058,6 +1094,7 @@ abstract class _$ItemCategoryFormStateCopyWith<$Res>
   $ItemCategoryCopyWith<$Res> get category;
 }
 
+/// @nodoc
 class __$ItemCategoryFormStateCopyWithImpl<$Res>
     extends _$ItemCategoryFormStateCopyWithImpl<$Res>
     implements _$ItemCategoryFormStateCopyWith<$Res> {
@@ -1100,6 +1137,7 @@ class __$ItemCategoryFormStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ItemCategoryFormState
     with DiagnosticableTreeMixin
     implements _ItemCategoryFormState {

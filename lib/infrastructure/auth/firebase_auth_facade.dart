@@ -1,9 +1,9 @@
 import 'package:Sepetim/domain/auth/auth_failure.dart';
+import 'package:Sepetim/domain/auth/domain_user.dart';
 import 'package:Sepetim/domain/auth/i_auth_facade.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:Sepetim/domain/auth/value_objects.dart';
-import 'package:Sepetim/domain/auth/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -19,8 +19,8 @@ class FirebaseAuthFacade extends IAuthFacade {
   // That class depend on FirebaseAuth and GoogleSignIn classes so we need to apply dependency injection
   FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn);
   @override
-  Future<Option<User>> getSignedUser() async {
-    final _firebaseUser = await _firebaseAuth.currentUser();
+  Future<Option<DomainUser>> getSignedUser() async {
+    final _firebaseUser = _firebaseAuth.currentUser;
     return optionOf(_firebaseUser?.toDomain());
   }
 
@@ -44,7 +44,7 @@ class FirebaseAuthFacade extends IAuthFacade {
         password: passwordString,
       );
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'ERROR_NETWORK_REQUEST_FAILED') {
         return left(const AuthFailure.networkException());
       } else if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
@@ -67,7 +67,7 @@ class FirebaseAuthFacade extends IAuthFacade {
 
       await _firebaseAuth.signInAnonymously();
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'ERROR_NETWORK_REQUEST_FAILED') {
         return left(const AuthFailure.networkException());
       } else {
@@ -97,7 +97,7 @@ class FirebaseAuthFacade extends IAuthFacade {
       );
 
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'ERROR_NETWORK_REQUEST_FAILED') {
         return left(const AuthFailure.networkException());
       } else if (e.code == 'ERROR_USER_NOT_FOUND' ||
@@ -126,8 +126,8 @@ class FirebaseAuthFacade extends IAuthFacade {
 
       final googleAuthentication = await googleUser.authentication;
 
-      final providerList = await _firebaseAuth.fetchSignInMethodsForEmail(
-          email: googleUser.email);
+      final providerList =
+          await _firebaseAuth.fetchSignInMethodsForEmail(googleUser.email);
 
       if (providerList != null &&
           providerList.isNotEmpty &&
@@ -142,7 +142,7 @@ class FirebaseAuthFacade extends IAuthFacade {
         await _firebaseAuth.signInWithCredential(authCredential);
         return right(unit);
       }
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       await _googleSignIn.signOut();
       if (e.code == 'network_error') {
         return left(const AuthFailure.networkException());
@@ -174,12 +174,12 @@ class FirebaseAuthFacade extends IAuthFacade {
         password: passwordString,
       );
 
-      final _firebaseUser = await _firebaseAuth.currentUser();
+      final _firebaseUser = _firebaseAuth.currentUser;
       if (_firebaseUser.isAnonymous) {
         await _firebaseUser.linkWithCredential(emailProviderCredential);
       }
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
         return left(const AuthFailure.emailAlreadyInUse());
       } else if (e.code == 'ERROR_CREDENTIAL_ALREADY_IN_USE') {
@@ -209,16 +209,16 @@ class FirebaseAuthFacade extends IAuthFacade {
 
       final googleAuthentication = await googleUser.authentication;
 
-      final googleProviderCredential = GoogleAuthProvider.getCredential(
+      final googleProviderCredential = GoogleAuthProvider.credential(
           idToken: googleAuthentication.idToken,
           accessToken: googleAuthentication.accessToken);
 
-      final _firebaseUser = await _firebaseAuth.currentUser();
+      final _firebaseUser = _firebaseAuth.currentUser;
       if (_firebaseUser.isAnonymous) {
         await _firebaseUser.linkWithCredential(googleProviderCredential);
       }
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
         await _googleSignIn.signOut();
         return left(const AuthFailure.emailAlreadyInUse());
@@ -243,7 +243,7 @@ class FirebaseAuthFacade extends IAuthFacade {
           connectivityResult != ConnectivityResult.wifi) {
         return left(const AuthFailure.networkException());
       }
-      final _firebaseUser = await _firebaseAuth.currentUser();
+      final _firebaseUser = _firebaseAuth.currentUser;
       if (_firebaseUser != null) {
         await Future.wait([
           _firebaseUser.delete(),
@@ -254,7 +254,7 @@ class FirebaseAuthFacade extends IAuthFacade {
       }
 
       return right(unit);
-    } on PlatformException catch (_) {
+    } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
     }
   }
@@ -272,8 +272,8 @@ class FirebaseAuthFacade extends IAuthFacade {
         return left(const AuthFailure.networkException());
       }
 
-      final providerList = await _firebaseAuth.fetchSignInMethodsForEmail(
-          email: emailAddress.getOrCrash());
+      final providerList = await _firebaseAuth
+          .fetchSignInMethodsForEmail(emailAddress.getOrCrash());
 
       if (providerList == null ||
           (providerList != null && providerList.isEmpty)) {
@@ -288,7 +288,7 @@ class FirebaseAuthFacade extends IAuthFacade {
         email: emailAddress.getOrCrash(),
       );
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == "ERROR_USER_NOT_FOUND") {
         return left(const AuthFailure.userNotFound());
       }
@@ -307,14 +307,14 @@ class FirebaseAuthFacade extends IAuthFacade {
           connectivityResult != ConnectivityResult.wifi) {
         return left(const AuthFailure.networkException());
       }
-      final _firebaseUser = await _firebaseAuth.currentUser();
-      final credential = EmailAuthProvider.getCredential(
+      final _firebaseUser = _firebaseAuth.currentUser;
+      final credential = EmailAuthProvider.credential(
         email: _firebaseUser.email,
         password: password,
       );
       await _firebaseUser.reauthenticateWithCredential(credential);
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'ERROR_WRONG_PASSWORD') {
         return left(const AuthFailure.wrongPassword());
       } else if (e.code == 'ERROR_TOO_MANY_REQUESTS') {
@@ -337,13 +337,13 @@ class FirebaseAuthFacade extends IAuthFacade {
         return left(const AuthFailure.networkException());
       }
 
-      final _firebaseUser = await _firebaseAuth.currentUser();
+      final _firebaseUser = _firebaseAuth.currentUser;
       final passwordString = password.getOrCrash();
 
       await _firebaseUser.updatePassword(passwordString);
 
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
     }
   }

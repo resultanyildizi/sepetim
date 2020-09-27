@@ -38,7 +38,7 @@ class SignInForm extends StatelessWidget {
               },
               (_) {
                 ExtendedNavigator.of(context)
-                    .pushReplacementNamed(Routes.applicationContentPage);
+                    .replace(Routes.applicationContentPage);
                 context
                     .bloc<AuthBloc>()
                     .add(const AuthEvent.authCheckRequested());
@@ -65,7 +65,7 @@ class SignInForm extends StatelessWidget {
                     radius: 10,
                     onTap: () {
                       ExtendedNavigator.of(context)
-                          .pushNamed(Routes.resetPasswordPage);
+                          .push(Routes.resetPasswordPage);
                     },
                     child: Text(
                       translate(context, 'forgot_password'),

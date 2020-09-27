@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'reset_password_form_bloc.dart';
 
@@ -9,9 +9,11 @@ part of 'reset_password_form_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ResetPasswordFormStateTearOff {
   const _$ResetPasswordFormStateTearOff();
 
+// ignore: unused_element
   _ResetPasswordFormState call(
       {@required EmailAddress emailAddress,
       @required Option<Either<AuthFailure, Unit>> authFailureOrUnitOption,
@@ -30,9 +32,11 @@ class _$ResetPasswordFormStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ResetPasswordFormState = _$ResetPasswordFormStateTearOff();
 
+/// @nodoc
 mixin _$ResetPasswordFormState {
   EmailAddress get emailAddress;
   Option<Either<AuthFailure, Unit>> get authFailureOrUnitOption;
@@ -44,6 +48,7 @@ mixin _$ResetPasswordFormState {
   $ResetPasswordFormStateCopyWith<ResetPasswordFormState> get copyWith;
 }
 
+/// @nodoc
 abstract class $ResetPasswordFormStateCopyWith<$Res> {
   factory $ResetPasswordFormStateCopyWith(ResetPasswordFormState value,
           $Res Function(ResetPasswordFormState) then) =
@@ -57,6 +62,7 @@ abstract class $ResetPasswordFormStateCopyWith<$Res> {
       bool isSuccessful});
 }
 
+/// @nodoc
 class _$ResetPasswordFormStateCopyWithImpl<$Res>
     implements $ResetPasswordFormStateCopyWith<$Res> {
   _$ResetPasswordFormStateCopyWithImpl(this._value, this._then);
@@ -92,6 +98,7 @@ class _$ResetPasswordFormStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$ResetPasswordFormStateCopyWith<$Res>
     implements $ResetPasswordFormStateCopyWith<$Res> {
   factory _$ResetPasswordFormStateCopyWith(_ResetPasswordFormState value,
@@ -107,6 +114,7 @@ abstract class _$ResetPasswordFormStateCopyWith<$Res>
       bool isSuccessful});
 }
 
+/// @nodoc
 class __$ResetPasswordFormStateCopyWithImpl<$Res>
     extends _$ResetPasswordFormStateCopyWithImpl<$Res>
     implements _$ResetPasswordFormStateCopyWith<$Res> {
@@ -144,6 +152,7 @@ class __$ResetPasswordFormStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ResetPasswordFormState implements _ResetPasswordFormState {
   const _$_ResetPasswordFormState(
       {@required this.emailAddress,
@@ -242,15 +251,18 @@ abstract class _ResetPasswordFormState implements ResetPasswordFormState {
   _$ResetPasswordFormStateCopyWith<_ResetPasswordFormState> get copyWith;
 }
 
+/// @nodoc
 class _$ResetPasswordFormEventTearOff {
   const _$ResetPasswordFormEventTearOff();
 
+// ignore: unused_element
   EmailChanged emailChanged({String emailAddress}) {
     return EmailChanged(
       emailAddress: emailAddress,
     );
   }
 
+// ignore: unused_element
   ResetLinkSent resetLinkSent({String languageCode}) {
     return ResetLinkSent(
       languageCode: languageCode,
@@ -258,9 +270,11 @@ class _$ResetPasswordFormEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ResetPasswordFormEvent = _$ResetPasswordFormEventTearOff();
 
+/// @nodoc
 mixin _$ResetPasswordFormEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -286,12 +300,14 @@ mixin _$ResetPasswordFormEvent {
   });
 }
 
+/// @nodoc
 abstract class $ResetPasswordFormEventCopyWith<$Res> {
   factory $ResetPasswordFormEventCopyWith(ResetPasswordFormEvent value,
           $Res Function(ResetPasswordFormEvent) then) =
       _$ResetPasswordFormEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ResetPasswordFormEventCopyWithImpl<$Res>
     implements $ResetPasswordFormEventCopyWith<$Res> {
   _$ResetPasswordFormEventCopyWithImpl(this._value, this._then);
@@ -301,6 +317,7 @@ class _$ResetPasswordFormEventCopyWithImpl<$Res>
   final $Res Function(ResetPasswordFormEvent) _then;
 }
 
+/// @nodoc
 abstract class $EmailChangedCopyWith<$Res> {
   factory $EmailChangedCopyWith(
           EmailChanged value, $Res Function(EmailChanged) then) =
@@ -308,6 +325,7 @@ abstract class $EmailChangedCopyWith<$Res> {
   $Res call({String emailAddress});
 }
 
+/// @nodoc
 class _$EmailChangedCopyWithImpl<$Res>
     extends _$ResetPasswordFormEventCopyWithImpl<$Res>
     implements $EmailChangedCopyWith<$Res> {
@@ -330,6 +348,7 @@ class _$EmailChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$EmailChanged implements EmailChanged {
   const _$EmailChanged({this.emailAddress});
 
@@ -416,6 +435,7 @@ abstract class EmailChanged implements ResetPasswordFormEvent {
   $EmailChangedCopyWith<EmailChanged> get copyWith;
 }
 
+/// @nodoc
 abstract class $ResetLinkSentCopyWith<$Res> {
   factory $ResetLinkSentCopyWith(
           ResetLinkSent value, $Res Function(ResetLinkSent) then) =
@@ -423,6 +443,7 @@ abstract class $ResetLinkSentCopyWith<$Res> {
   $Res call({String languageCode});
 }
 
+/// @nodoc
 class _$ResetLinkSentCopyWithImpl<$Res>
     extends _$ResetPasswordFormEventCopyWithImpl<$Res>
     implements $ResetLinkSentCopyWith<$Res> {
@@ -445,6 +466,7 @@ class _$ResetLinkSentCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$ResetLinkSent implements ResetLinkSent {
   const _$ResetLinkSent({this.languageCode});
 

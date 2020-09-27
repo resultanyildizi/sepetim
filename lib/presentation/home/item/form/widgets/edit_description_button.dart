@@ -14,7 +14,7 @@ class EditDescriptionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlatRectangleButton(
-        onPressed: () => ExtendedNavigator.of(context).pushNamed(
+        onPressed: () => ExtendedNavigator.of(context).push(
               Routes.editDescriptionPage,
               arguments: EditDescriptionPageArguments(
                 itemFormBloc: context.bloc<ItemFormBloc>(),

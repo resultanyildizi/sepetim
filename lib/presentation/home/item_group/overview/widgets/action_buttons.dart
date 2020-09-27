@@ -57,7 +57,7 @@ class ItemGroupActionButtons extends StatelessWidget {
             child: InkWell(
               splashColor: Theme.of(context).scaffoldBackgroundColor,
               onTap: () {
-                ExtendedNavigator.of(context).pushNamed(
+                ExtendedNavigator.of(context).push(
                   Routes.itemGroupForm,
                   arguments: ItemGroupFormArguments(
                     editedGroup: group,

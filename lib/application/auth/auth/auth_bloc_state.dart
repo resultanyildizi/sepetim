@@ -5,7 +5,7 @@ abstract class AuthState with _$AuthState {
   const factory AuthState.initial() = _Initial;
   const factory AuthState.authenticated({
     @required SignInType signInType,
-    @required User user,
+    @required DomainUser user,
   }) = _Authenticated;
   const factory AuthState.unauthenticated() = _Unauthenticated;
 }

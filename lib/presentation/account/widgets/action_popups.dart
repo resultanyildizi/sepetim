@@ -21,8 +21,8 @@ Future changePasswordPopup(
       style: Theme.of(context).textTheme.headline3,
     ),
     content: BlocBuilder<AccountTransactionsBloc, AccountTransactionsState>(
-      bloc: bloc,
-      condition: (p, c) => p.password != c.password,
+      cubit: bloc,
+      buildWhen: (p, c) => p.password != c.password,
       builder: (context, state) => Container(
         height: 100.0,
         child: Column(
@@ -95,7 +95,7 @@ Future verifyPasswordPopup(
         style: Theme.of(context).textTheme.headline3,
       ),
       content: BlocConsumer<AccountTransactionsBloc, AccountTransactionsState>(
-        bloc: context.bloc<AccountTransactionsBloc>(),
+        cubit: context.bloc<AccountTransactionsBloc>(),
         listener: (context, state) {
           state.authFailureOrUnitOption.fold(
             () => null,

@@ -21,11 +21,10 @@ part 'item_watcher_state.dart';
 class ItemWatcherBloc extends Bloc<ItemWatcherEvent, ItemWatcherState> {
   final IItemRepository _itemRepository;
 
-  ItemWatcherBloc(this._itemRepository);
+  ItemWatcherBloc(this._itemRepository)
+      : super(const ItemWatcherState.initial());
 
   StreamSubscription<Either<ItemFailure, KtList<Item>>> _itemStreamSubscription;
-  @override
-  ItemWatcherState get initialState => const ItemWatcherState.initial();
   @override
   Stream<ItemWatcherState> mapEventToState(
     ItemWatcherEvent event,

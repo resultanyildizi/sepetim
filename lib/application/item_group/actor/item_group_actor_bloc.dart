@@ -18,10 +18,9 @@ class ItemGroupActorBloc
     extends Bloc<ItemGroupActorEvent, ItemGroupActorState> {
   final IItemGroupRepository _groupRepository;
 
-  ItemGroupActorBloc(this._groupRepository);
+  ItemGroupActorBloc(this._groupRepository)
+      : super(const ItemGroupActorState.initial());
 
-  @override
-  ItemGroupActorState get initialState => const ItemGroupActorState.initial();
   @override
   Stream<ItemGroupActorState> mapEventToState(
     ItemGroupActorEvent event,

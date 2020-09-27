@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_actor_bloc.dart';
 
@@ -9,9 +9,11 @@ part of 'item_actor_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemActorEventTearOff {
   const _$ItemActorEventTearOff();
 
+// ignore: unused_element
   _Deleted deleted(UniqueId categoryId, UniqueId groupId, Item item) {
     return _Deleted(
       categoryId,
@@ -21,9 +23,11 @@ class _$ItemActorEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemActorEvent = _$ItemActorEventTearOff();
 
+/// @nodoc
 mixin _$ItemActorEvent {
   UniqueId get categoryId;
   UniqueId get groupId;
@@ -51,6 +55,7 @@ mixin _$ItemActorEvent {
   $ItemActorEventCopyWith<ItemActorEvent> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemActorEventCopyWith<$Res> {
   factory $ItemActorEventCopyWith(
           ItemActorEvent value, $Res Function(ItemActorEvent) then) =
@@ -60,6 +65,7 @@ abstract class $ItemActorEventCopyWith<$Res> {
   $ItemCopyWith<$Res> get item;
 }
 
+/// @nodoc
 class _$ItemActorEventCopyWithImpl<$Res>
     implements $ItemActorEventCopyWith<$Res> {
   _$ItemActorEventCopyWithImpl(this._value, this._then);
@@ -93,6 +99,7 @@ class _$ItemActorEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$DeletedCopyWith<$Res>
     implements $ItemActorEventCopyWith<$Res> {
   factory _$DeletedCopyWith(_Deleted value, $Res Function(_Deleted) then) =
@@ -104,6 +111,7 @@ abstract class _$DeletedCopyWith<$Res>
   $ItemCopyWith<$Res> get item;
 }
 
+/// @nodoc
 class __$DeletedCopyWithImpl<$Res> extends _$ItemActorEventCopyWithImpl<$Res>
     implements _$DeletedCopyWith<$Res> {
   __$DeletedCopyWithImpl(_Deleted _value, $Res Function(_Deleted) _then)
@@ -126,6 +134,7 @@ class __$DeletedCopyWithImpl<$Res> extends _$ItemActorEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Deleted implements _Deleted {
   const _$_Deleted(this.categoryId, this.groupId, this.item)
       : assert(categoryId != null),
@@ -228,21 +237,26 @@ abstract class _Deleted implements ItemActorEvent {
   _$DeletedCopyWith<_Deleted> get copyWith;
 }
 
+/// @nodoc
 class _$ItemActorStateTearOff {
   const _$ItemActorStateTearOff();
 
+// ignore: unused_element
   _Initial initial() {
     return const _Initial();
   }
 
+// ignore: unused_element
   _ActionInProgress actionInProgress() {
     return const _ActionInProgress();
   }
 
+// ignore: unused_element
   _DeleteSuccess deleteSuccess() {
     return const _DeleteSuccess();
   }
 
+// ignore: unused_element
   _DeleteFailure deleteFailure(ItemFailure failure) {
     return _DeleteFailure(
       failure,
@@ -250,9 +264,11 @@ class _$ItemActorStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemActorState = _$ItemActorStateTearOff();
 
+/// @nodoc
 mixin _$ItemActorState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -286,12 +302,14 @@ mixin _$ItemActorState {
   });
 }
 
+/// @nodoc
 abstract class $ItemActorStateCopyWith<$Res> {
   factory $ItemActorStateCopyWith(
           ItemActorState value, $Res Function(ItemActorState) then) =
       _$ItemActorStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ItemActorStateCopyWithImpl<$Res>
     implements $ItemActorStateCopyWith<$Res> {
   _$ItemActorStateCopyWithImpl(this._value, this._then);
@@ -301,11 +319,13 @@ class _$ItemActorStateCopyWithImpl<$Res>
   final $Res Function(ItemActorState) _then;
 }
 
+/// @nodoc
 abstract class _$InitialCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InitialCopyWithImpl<$Res> extends _$ItemActorStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
@@ -315,6 +335,7 @@ class __$InitialCopyWithImpl<$Res> extends _$ItemActorStateCopyWithImpl<$Res>
   _Initial get _value => super._value as _Initial;
 }
 
+/// @nodoc
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -398,12 +419,14 @@ abstract class _Initial implements ItemActorState {
   const factory _Initial() = _$_Initial;
 }
 
+/// @nodoc
 abstract class _$ActionInProgressCopyWith<$Res> {
   factory _$ActionInProgressCopyWith(
           _ActionInProgress value, $Res Function(_ActionInProgress) then) =
       __$ActionInProgressCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$ActionInProgressCopyWithImpl<$Res>
     extends _$ItemActorStateCopyWithImpl<$Res>
     implements _$ActionInProgressCopyWith<$Res> {
@@ -415,6 +438,7 @@ class __$ActionInProgressCopyWithImpl<$Res>
   _ActionInProgress get _value => super._value as _ActionInProgress;
 }
 
+/// @nodoc
 class _$_ActionInProgress implements _ActionInProgress {
   const _$_ActionInProgress();
 
@@ -498,12 +522,14 @@ abstract class _ActionInProgress implements ItemActorState {
   const factory _ActionInProgress() = _$_ActionInProgress;
 }
 
+/// @nodoc
 abstract class _$DeleteSuccessCopyWith<$Res> {
   factory _$DeleteSuccessCopyWith(
           _DeleteSuccess value, $Res Function(_DeleteSuccess) then) =
       __$DeleteSuccessCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$DeleteSuccessCopyWithImpl<$Res>
     extends _$ItemActorStateCopyWithImpl<$Res>
     implements _$DeleteSuccessCopyWith<$Res> {
@@ -515,6 +541,7 @@ class __$DeleteSuccessCopyWithImpl<$Res>
   _DeleteSuccess get _value => super._value as _DeleteSuccess;
 }
 
+/// @nodoc
 class _$_DeleteSuccess implements _DeleteSuccess {
   const _$_DeleteSuccess();
 
@@ -598,6 +625,7 @@ abstract class _DeleteSuccess implements ItemActorState {
   const factory _DeleteSuccess() = _$_DeleteSuccess;
 }
 
+/// @nodoc
 abstract class _$DeleteFailureCopyWith<$Res> {
   factory _$DeleteFailureCopyWith(
           _DeleteFailure value, $Res Function(_DeleteFailure) then) =
@@ -607,6 +635,7 @@ abstract class _$DeleteFailureCopyWith<$Res> {
   $ItemFailureCopyWith<$Res> get failure;
 }
 
+/// @nodoc
 class __$DeleteFailureCopyWithImpl<$Res>
     extends _$ItemActorStateCopyWithImpl<$Res>
     implements _$DeleteFailureCopyWith<$Res> {
@@ -637,6 +666,7 @@ class __$DeleteFailureCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_DeleteFailure implements _DeleteFailure {
   const _$_DeleteFailure(this.failure) : assert(failure != null);
 

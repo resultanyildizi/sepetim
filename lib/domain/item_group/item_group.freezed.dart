@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_group.dart';
 
@@ -9,9 +9,11 @@ part of 'item_group.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemGroupTearOff {
   const _$ItemGroupTearOff();
 
+// ignore: unused_element
   _ItemGroup call(
       {@required UniqueId uid,
       @required ShortTitle title,
@@ -24,9 +26,11 @@ class _$ItemGroupTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemGroup = _$ItemGroupTearOff();
 
+/// @nodoc
 mixin _$ItemGroup {
   UniqueId get uid;
   ShortTitle get title;
@@ -35,12 +39,14 @@ mixin _$ItemGroup {
   $ItemGroupCopyWith<ItemGroup> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemGroupCopyWith<$Res> {
   factory $ItemGroupCopyWith(ItemGroup value, $Res Function(ItemGroup) then) =
       _$ItemGroupCopyWithImpl<$Res>;
   $Res call({UniqueId uid, ShortTitle title, DateTime creationTime});
 }
 
+/// @nodoc
 class _$ItemGroupCopyWithImpl<$Res> implements $ItemGroupCopyWith<$Res> {
   _$ItemGroupCopyWithImpl(this._value, this._then);
 
@@ -64,6 +70,7 @@ class _$ItemGroupCopyWithImpl<$Res> implements $ItemGroupCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$ItemGroupCopyWith<$Res> implements $ItemGroupCopyWith<$Res> {
   factory _$ItemGroupCopyWith(
           _ItemGroup value, $Res Function(_ItemGroup) then) =
@@ -72,6 +79,7 @@ abstract class _$ItemGroupCopyWith<$Res> implements $ItemGroupCopyWith<$Res> {
   $Res call({UniqueId uid, ShortTitle title, DateTime creationTime});
 }
 
+/// @nodoc
 class __$ItemGroupCopyWithImpl<$Res> extends _$ItemGroupCopyWithImpl<$Res>
     implements _$ItemGroupCopyWith<$Res> {
   __$ItemGroupCopyWithImpl(_ItemGroup _value, $Res Function(_ItemGroup) _then)
@@ -96,6 +104,7 @@ class __$ItemGroupCopyWithImpl<$Res> extends _$ItemGroupCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ItemGroup extends _ItemGroup {
   const _$_ItemGroup(
       {@required this.uid, @required this.title, @required this.creationTime})

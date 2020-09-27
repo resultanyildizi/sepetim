@@ -22,11 +22,8 @@ class ItemGroupWatcherBloc
     extends Bloc<ItemGroupWatcherEvent, ItemGroupWatcherState> {
   final IItemGroupRepository _groupRepository;
 
-  ItemGroupWatcherBloc(this._groupRepository);
-
-  @override
-  ItemGroupWatcherState get initialState =>
-      const ItemGroupWatcherState.initial();
+  ItemGroupWatcherBloc(this._groupRepository)
+      : super(const ItemGroupWatcherState.initial());
 
   StreamSubscription<Either<ItemGroupFailure, KtList<ItemGroup>>>
       groupStreamSubscription;

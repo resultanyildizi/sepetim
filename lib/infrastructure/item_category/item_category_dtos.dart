@@ -43,7 +43,7 @@ abstract class ItemCategoryDto implements _$ItemCategoryDto {
       _$ItemCategoryDtoFromJson(json);
 
   factory ItemCategoryDto.fromFirestore(DocumentSnapshot doc) =>
-      ItemCategoryDto.fromJson(doc.data).copyWith(uid: doc.documentID);
+      ItemCategoryDto.fromJson(doc.data()).copyWith(uid: doc.id);
 }
 
 class ServerTimeStampConverter implements JsonConverter<FieldValue, Object> {

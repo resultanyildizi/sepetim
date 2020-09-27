@@ -25,10 +25,8 @@ part 'item_form_state.dart';
 class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
   final IItemRepository _itemRepository;
 
-  ItemFormBloc(this._itemRepository);
+  ItemFormBloc(this._itemRepository) : super(ItemFormState.initial());
 
-  @override
-  ItemFormState get initialState => ItemFormState.initial();
   @override
   Stream<ItemFormState> mapEventToState(
     ItemFormEvent event,

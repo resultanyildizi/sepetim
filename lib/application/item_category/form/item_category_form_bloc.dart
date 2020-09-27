@@ -26,10 +26,8 @@ class ItemCategoryFormBloc
     extends Bloc<ItemCategoryFormEvent, ItemCategoryFormState> {
   final IItemCategoryRepository _categoryRepository;
 
-  ItemCategoryFormBloc(this._categoryRepository);
-
-  @override
-  ItemCategoryFormState get initialState => ItemCategoryFormState.initial();
+  ItemCategoryFormBloc(this._categoryRepository)
+      : super(ItemCategoryFormState.initial());
 
   @override
   Stream<ItemCategoryFormState> mapEventToState(

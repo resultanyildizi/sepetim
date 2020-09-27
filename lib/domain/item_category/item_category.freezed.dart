@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_category.dart';
 
@@ -9,9 +9,11 @@ part of 'item_category.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemCategoryTearOff {
   const _$ItemCategoryTearOff();
 
+// ignore: unused_element
   _ItemCategory call(
       {@required UniqueId uid,
       @required ShortTitle title,
@@ -28,9 +30,11 @@ class _$ItemCategoryTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemCategory = _$ItemCategoryTearOff();
 
+/// @nodoc
 mixin _$ItemCategory {
   UniqueId get uid;
   ShortTitle get title;
@@ -41,6 +45,7 @@ mixin _$ItemCategory {
   $ItemCategoryCopyWith<ItemCategory> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemCategoryCopyWith<$Res> {
   factory $ItemCategoryCopyWith(
           ItemCategory value, $Res Function(ItemCategory) then) =
@@ -53,6 +58,7 @@ abstract class $ItemCategoryCopyWith<$Res> {
       DateTime creationTime});
 }
 
+/// @nodoc
 class _$ItemCategoryCopyWithImpl<$Res> implements $ItemCategoryCopyWith<$Res> {
   _$ItemCategoryCopyWithImpl(this._value, this._then);
 
@@ -82,6 +88,7 @@ class _$ItemCategoryCopyWithImpl<$Res> implements $ItemCategoryCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$ItemCategoryCopyWith<$Res>
     implements $ItemCategoryCopyWith<$Res> {
   factory _$ItemCategoryCopyWith(
@@ -96,6 +103,7 @@ abstract class _$ItemCategoryCopyWith<$Res>
       DateTime creationTime});
 }
 
+/// @nodoc
 class __$ItemCategoryCopyWithImpl<$Res> extends _$ItemCategoryCopyWithImpl<$Res>
     implements _$ItemCategoryCopyWith<$Res> {
   __$ItemCategoryCopyWithImpl(
@@ -127,6 +135,7 @@ class __$ItemCategoryCopyWithImpl<$Res> extends _$ItemCategoryCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ItemCategory extends _ItemCategory with DiagnosticableTreeMixin {
   const _$_ItemCategory(
       {@required this.uid,

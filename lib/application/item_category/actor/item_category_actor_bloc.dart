@@ -17,11 +17,9 @@ class ItemCategoryActorBloc
     extends Bloc<ItemCategoryActorEvent, ItemCategoryActorState> {
   final IItemCategoryRepository _itemCategoryRepository;
 
-  ItemCategoryActorBloc(this._itemCategoryRepository);
+  ItemCategoryActorBloc(this._itemCategoryRepository)
+      : super(const ItemCategoryActorState.initial());
 
-  @override
-  ItemCategoryActorState get initialState =>
-      const ItemCategoryActorState.initial();
   @override
   Stream<ItemCategoryActorState> mapEventToState(
     ItemCategoryActorEvent event,

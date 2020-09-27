@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'account_transactions_bloc.dart';
 
@@ -9,37 +9,45 @@ part of 'account_transactions_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AccountTransactionsEventTearOff {
   const _$AccountTransactionsEventTearOff();
 
+// ignore: unused_element
   _ResetState stateReset() {
     return const _ResetState();
   }
 
+// ignore: unused_element
   _AccountDeleted accountDeleted() {
     return const _AccountDeleted();
   }
 
+// ignore: unused_element
   _CurrentPasswordVerified currentPasswordVerified(String password) {
     return _CurrentPasswordVerified(
       password,
     );
   }
 
+// ignore: unused_element
   _ChangePassword passwordChanged(String password) {
     return _ChangePassword(
       password,
     );
   }
 
+// ignore: unused_element
   _PasswordUpdated passwordUpdated() {
     return const _PasswordUpdated();
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AccountTransactionsEvent = _$AccountTransactionsEventTearOff();
 
+/// @nodoc
 mixin _$AccountTransactionsEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -77,12 +85,14 @@ mixin _$AccountTransactionsEvent {
   });
 }
 
+/// @nodoc
 abstract class $AccountTransactionsEventCopyWith<$Res> {
   factory $AccountTransactionsEventCopyWith(AccountTransactionsEvent value,
           $Res Function(AccountTransactionsEvent) then) =
       _$AccountTransactionsEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$AccountTransactionsEventCopyWithImpl<$Res>
     implements $AccountTransactionsEventCopyWith<$Res> {
   _$AccountTransactionsEventCopyWithImpl(this._value, this._then);
@@ -92,12 +102,14 @@ class _$AccountTransactionsEventCopyWithImpl<$Res>
   final $Res Function(AccountTransactionsEvent) _then;
 }
 
+/// @nodoc
 abstract class _$ResetStateCopyWith<$Res> {
   factory _$ResetStateCopyWith(
           _ResetState value, $Res Function(_ResetState) then) =
       __$ResetStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$ResetStateCopyWithImpl<$Res>
     extends _$AccountTransactionsEventCopyWithImpl<$Res>
     implements _$ResetStateCopyWith<$Res> {
@@ -109,6 +121,7 @@ class __$ResetStateCopyWithImpl<$Res>
   _ResetState get _value => super._value as _ResetState;
 }
 
+/// @nodoc
 class _$_ResetState implements _ResetState {
   const _$_ResetState();
 
@@ -198,12 +211,14 @@ abstract class _ResetState implements AccountTransactionsEvent {
   const factory _ResetState() = _$_ResetState;
 }
 
+/// @nodoc
 abstract class _$AccountDeletedCopyWith<$Res> {
   factory _$AccountDeletedCopyWith(
           _AccountDeleted value, $Res Function(_AccountDeleted) then) =
       __$AccountDeletedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$AccountDeletedCopyWithImpl<$Res>
     extends _$AccountTransactionsEventCopyWithImpl<$Res>
     implements _$AccountDeletedCopyWith<$Res> {
@@ -215,6 +230,7 @@ class __$AccountDeletedCopyWithImpl<$Res>
   _AccountDeleted get _value => super._value as _AccountDeleted;
 }
 
+/// @nodoc
 class _$_AccountDeleted implements _AccountDeleted {
   const _$_AccountDeleted();
 
@@ -304,6 +320,7 @@ abstract class _AccountDeleted implements AccountTransactionsEvent {
   const factory _AccountDeleted() = _$_AccountDeleted;
 }
 
+/// @nodoc
 abstract class _$CurrentPasswordVerifiedCopyWith<$Res> {
   factory _$CurrentPasswordVerifiedCopyWith(_CurrentPasswordVerified value,
           $Res Function(_CurrentPasswordVerified) then) =
@@ -311,6 +328,7 @@ abstract class _$CurrentPasswordVerifiedCopyWith<$Res> {
   $Res call({String password});
 }
 
+/// @nodoc
 class __$CurrentPasswordVerifiedCopyWithImpl<$Res>
     extends _$AccountTransactionsEventCopyWithImpl<$Res>
     implements _$CurrentPasswordVerifiedCopyWith<$Res> {
@@ -332,6 +350,7 @@ class __$CurrentPasswordVerifiedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_CurrentPasswordVerified implements _CurrentPasswordVerified {
   const _$_CurrentPasswordVerified(this.password) : assert(password != null);
 
@@ -438,6 +457,7 @@ abstract class _CurrentPasswordVerified implements AccountTransactionsEvent {
   _$CurrentPasswordVerifiedCopyWith<_CurrentPasswordVerified> get copyWith;
 }
 
+/// @nodoc
 abstract class _$ChangePasswordCopyWith<$Res> {
   factory _$ChangePasswordCopyWith(
           _ChangePassword value, $Res Function(_ChangePassword) then) =
@@ -445,6 +465,7 @@ abstract class _$ChangePasswordCopyWith<$Res> {
   $Res call({String password});
 }
 
+/// @nodoc
 class __$ChangePasswordCopyWithImpl<$Res>
     extends _$AccountTransactionsEventCopyWithImpl<$Res>
     implements _$ChangePasswordCopyWith<$Res> {
@@ -465,6 +486,7 @@ class __$ChangePasswordCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ChangePassword implements _ChangePassword {
   const _$_ChangePassword(this.password) : assert(password != null);
 
@@ -569,12 +591,14 @@ abstract class _ChangePassword implements AccountTransactionsEvent {
   _$ChangePasswordCopyWith<_ChangePassword> get copyWith;
 }
 
+/// @nodoc
 abstract class _$PasswordUpdatedCopyWith<$Res> {
   factory _$PasswordUpdatedCopyWith(
           _PasswordUpdated value, $Res Function(_PasswordUpdated) then) =
       __$PasswordUpdatedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$PasswordUpdatedCopyWithImpl<$Res>
     extends _$AccountTransactionsEventCopyWithImpl<$Res>
     implements _$PasswordUpdatedCopyWith<$Res> {
@@ -586,6 +610,7 @@ class __$PasswordUpdatedCopyWithImpl<$Res>
   _PasswordUpdated get _value => super._value as _PasswordUpdated;
 }
 
+/// @nodoc
 class _$_PasswordUpdated implements _PasswordUpdated {
   const _$_PasswordUpdated();
 
@@ -675,9 +700,11 @@ abstract class _PasswordUpdated implements AccountTransactionsEvent {
   const factory _PasswordUpdated() = _$_PasswordUpdated;
 }
 
+/// @nodoc
 class _$AccountTransactionsStateTearOff {
   const _$AccountTransactionsStateTearOff();
 
+// ignore: unused_element
   _AccountTransactionsState call(
       {@required Password password,
       @required Option<Either<AuthFailure, Unit>> authFailureOrUnitOption,
@@ -698,9 +725,11 @@ class _$AccountTransactionsStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AccountTransactionsState = _$AccountTransactionsStateTearOff();
 
+/// @nodoc
 mixin _$AccountTransactionsState {
   Password get password;
   Option<Either<AuthFailure, Unit>> get authFailureOrUnitOption;
@@ -713,6 +742,7 @@ mixin _$AccountTransactionsState {
   $AccountTransactionsStateCopyWith<AccountTransactionsState> get copyWith;
 }
 
+/// @nodoc
 abstract class $AccountTransactionsStateCopyWith<$Res> {
   factory $AccountTransactionsStateCopyWith(AccountTransactionsState value,
           $Res Function(AccountTransactionsState) then) =
@@ -727,6 +757,7 @@ abstract class $AccountTransactionsStateCopyWith<$Res> {
       bool isAccountDeleted});
 }
 
+/// @nodoc
 class _$AccountTransactionsStateCopyWithImpl<$Res>
     implements $AccountTransactionsStateCopyWith<$Res> {
   _$AccountTransactionsStateCopyWithImpl(this._value, this._then);
@@ -769,6 +800,7 @@ class _$AccountTransactionsStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$AccountTransactionsStateCopyWith<$Res>
     implements $AccountTransactionsStateCopyWith<$Res> {
   factory _$AccountTransactionsStateCopyWith(_AccountTransactionsState value,
@@ -785,6 +817,7 @@ abstract class _$AccountTransactionsStateCopyWith<$Res>
       bool isAccountDeleted});
 }
 
+/// @nodoc
 class __$AccountTransactionsStateCopyWithImpl<$Res>
     extends _$AccountTransactionsStateCopyWithImpl<$Res>
     implements _$AccountTransactionsStateCopyWith<$Res> {
@@ -830,6 +863,7 @@ class __$AccountTransactionsStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AccountTransactionsState implements _AccountTransactionsState {
   const _$_AccountTransactionsState(
       {@required this.password,

@@ -12,8 +12,8 @@ part 'bottom_navbar_bloc.freezed.dart';
 
 @injectable
 class BottomNavbarBloc extends Bloc<BottomNavbarEvent, BottomNavbarState> {
-  @override
-  BottomNavbarState get initialState => BottomNavbarState.initial();
+  BottomNavbarBloc() : super(BottomNavbarState.initial());
+
   @override
   Stream<BottomNavbarState> mapEventToState(
     BottomNavbarEvent event,

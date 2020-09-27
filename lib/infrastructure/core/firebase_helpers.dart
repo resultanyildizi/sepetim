@@ -4,14 +4,14 @@ import 'package:Sepetim/injection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
-extension FirestoreX on Firestore {
+extension FirestoreX on FirebaseFirestore {
   Future<DocumentReference> userDocument() async {
     final userOption = await getIt<IAuthFacade>().getSignedUser();
     final user = userOption.getOrElse(() => throw NotAuthenticatedError());
 
-    return Firestore.instance
+    return FirebaseFirestore.instance
         .collection('users')
-        .document(user.id.getOrCrash());
+        .doc(user.id.getOrCrash());
   }
 }
 

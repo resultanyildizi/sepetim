@@ -274,7 +274,7 @@ class ItemCategoryCard extends StatelessWidget {
               child: InkWell(
                 splashColor: Colors.white, // inkwell color
                 onTap: () {
-                  ExtendedNavigator.of(context).pushNamed(
+                  ExtendedNavigator.of(context).push(
                     Routes.itemCategoryForm,
                     arguments: ItemCategoryFormArguments(
                       editedCategory: category,
@@ -303,7 +303,7 @@ class ItemCategoryCard extends StatelessWidget {
   }
 
   void goToNextPage(BuildContext context) {
-    ExtendedNavigator.of(context).pushNamed(
+    ExtendedNavigator.of(context).push(
       Routes.itemGroupOverviewPage,
       arguments: ItemGroupOverviewPageArguments(
         key: Key(category.uid.getOrCrash()),

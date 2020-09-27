@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_category_selector_bloc.dart';
 
@@ -9,9 +9,11 @@ part of 'item_category_selector_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemCategorySelectorEventTearOff {
   const _$ItemCategorySelectorEventTearOff();
 
+// ignore: unused_element
   _SelectedChanged selectedChanged(ItemCategory category) {
     return _SelectedChanged(
       category,
@@ -19,9 +21,11 @@ class _$ItemCategorySelectorEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemCategorySelectorEvent = _$ItemCategorySelectorEventTearOff();
 
+/// @nodoc
 mixin _$ItemCategorySelectorEvent {
   ItemCategory get category;
 
@@ -47,6 +51,7 @@ mixin _$ItemCategorySelectorEvent {
   $ItemCategorySelectorEventCopyWith<ItemCategorySelectorEvent> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemCategorySelectorEventCopyWith<$Res> {
   factory $ItemCategorySelectorEventCopyWith(ItemCategorySelectorEvent value,
           $Res Function(ItemCategorySelectorEvent) then) =
@@ -56,6 +61,7 @@ abstract class $ItemCategorySelectorEventCopyWith<$Res> {
   $ItemCategoryCopyWith<$Res> get category;
 }
 
+/// @nodoc
 class _$ItemCategorySelectorEventCopyWithImpl<$Res>
     implements $ItemCategorySelectorEventCopyWith<$Res> {
   _$ItemCategorySelectorEventCopyWithImpl(this._value, this._then);
@@ -85,6 +91,7 @@ class _$ItemCategorySelectorEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$SelectedChangedCopyWith<$Res>
     implements $ItemCategorySelectorEventCopyWith<$Res> {
   factory _$SelectedChangedCopyWith(
@@ -97,6 +104,7 @@ abstract class _$SelectedChangedCopyWith<$Res>
   $ItemCategoryCopyWith<$Res> get category;
 }
 
+/// @nodoc
 class __$SelectedChangedCopyWithImpl<$Res>
     extends _$ItemCategorySelectorEventCopyWithImpl<$Res>
     implements _$SelectedChangedCopyWith<$Res> {
@@ -117,6 +125,7 @@ class __$SelectedChangedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_SelectedChanged implements _SelectedChanged {
   const _$_SelectedChanged(this.category) : assert(category != null);
 
@@ -199,9 +208,11 @@ abstract class _SelectedChanged implements ItemCategorySelectorEvent {
   _$SelectedChangedCopyWith<_SelectedChanged> get copyWith;
 }
 
+/// @nodoc
 class _$ItemCategorySelectorStateTearOff {
   const _$ItemCategorySelectorStateTearOff();
 
+// ignore: unused_element
   _ItemCategorySelectorState call(
       {@required Option<ItemCategory> selectedCategory}) {
     return _ItemCategorySelectorState(
@@ -210,15 +221,18 @@ class _$ItemCategorySelectorStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemCategorySelectorState = _$ItemCategorySelectorStateTearOff();
 
+/// @nodoc
 mixin _$ItemCategorySelectorState {
   Option<ItemCategory> get selectedCategory;
 
   $ItemCategorySelectorStateCopyWith<ItemCategorySelectorState> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemCategorySelectorStateCopyWith<$Res> {
   factory $ItemCategorySelectorStateCopyWith(ItemCategorySelectorState value,
           $Res Function(ItemCategorySelectorState) then) =
@@ -226,6 +240,7 @@ abstract class $ItemCategorySelectorStateCopyWith<$Res> {
   $Res call({Option<ItemCategory> selectedCategory});
 }
 
+/// @nodoc
 class _$ItemCategorySelectorStateCopyWithImpl<$Res>
     implements $ItemCategorySelectorStateCopyWith<$Res> {
   _$ItemCategorySelectorStateCopyWithImpl(this._value, this._then);
@@ -246,6 +261,7 @@ class _$ItemCategorySelectorStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$ItemCategorySelectorStateCopyWith<$Res>
     implements $ItemCategorySelectorStateCopyWith<$Res> {
   factory _$ItemCategorySelectorStateCopyWith(_ItemCategorySelectorState value,
@@ -255,6 +271,7 @@ abstract class _$ItemCategorySelectorStateCopyWith<$Res>
   $Res call({Option<ItemCategory> selectedCategory});
 }
 
+/// @nodoc
 class __$ItemCategorySelectorStateCopyWithImpl<$Res>
     extends _$ItemCategorySelectorStateCopyWithImpl<$Res>
     implements _$ItemCategorySelectorStateCopyWith<$Res> {
@@ -278,6 +295,7 @@ class __$ItemCategorySelectorStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ItemCategorySelectorState implements _ItemCategorySelectorState {
   const _$_ItemCategorySelectorState({@required this.selectedCategory})
       : assert(selectedCategory != null);

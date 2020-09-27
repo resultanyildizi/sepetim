@@ -45,7 +45,7 @@ class VerifyAnonymousLoginPage extends StatelessWidget {
                     );
                   },
                   (_) {
-                    ExtendedNavigator.of(context).pushNamedAndRemoveUntil(
+                    ExtendedNavigator.of(context).pushAndRemoveUntil(
                         Routes.applicationContentPage, (route) => false);
                     context
                         .bloc<AuthBloc>()

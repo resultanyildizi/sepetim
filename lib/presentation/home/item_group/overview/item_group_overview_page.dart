@@ -35,7 +35,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
         )
       ],
       child: BlocBuilder<ItemGroupWatcherBloc, ItemGroupWatcherState>(
-        bloc: watcherBloc,
+        cubit: watcherBloc,
         builder: (context, state) {
           return state.map(
             initial: (_) => Scaffold(
@@ -177,7 +177,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
                   ),
                   floatingActionButton: DefaultFloatingActionButton(
                     onPressed: () {
-                      ExtendedNavigator.of(context).pushNamed(
+                      ExtendedNavigator.of(context).push(
                         Routes.itemGroupForm,
                         arguments:
                             ItemGroupFormArguments(categoryId: category.uid),

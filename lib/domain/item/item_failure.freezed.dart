@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_failure.dart';
 
@@ -9,33 +9,41 @@ part of 'item_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ItemFailureTearOff {
   const _$ItemFailureTearOff();
 
+// ignore: unused_element
   _Unexpected unexpected() {
     return const _Unexpected();
   }
 
+// ignore: unused_element
   _InsufficientPermission insufficientPermission() {
     return const _InsufficientPermission();
   }
 
+// ignore: unused_element
   _UnableToUpdate unableToUpdate() {
     return const _UnableToUpdate();
   }
 
+// ignore: unused_element
   _ImageLoadCanceled imageLoadCanceled() {
     return const _ImageLoadCanceled();
   }
 
+// ignore: unused_element
   _NetworkExcepiton networkException() {
     return const _NetworkExcepiton();
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemFailure = _$ItemFailureTearOff();
 
+/// @nodoc
 mixin _$ItemFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -73,12 +81,14 @@ mixin _$ItemFailure {
   });
 }
 
+/// @nodoc
 abstract class $ItemFailureCopyWith<$Res> {
   factory $ItemFailureCopyWith(
           ItemFailure value, $Res Function(ItemFailure) then) =
       _$ItemFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ItemFailureCopyWithImpl<$Res> implements $ItemFailureCopyWith<$Res> {
   _$ItemFailureCopyWithImpl(this._value, this._then);
 
@@ -87,12 +97,14 @@ class _$ItemFailureCopyWithImpl<$Res> implements $ItemFailureCopyWith<$Res> {
   final $Res Function(ItemFailure) _then;
 }
 
+/// @nodoc
 abstract class _$UnexpectedCopyWith<$Res> {
   factory _$UnexpectedCopyWith(
           _Unexpected value, $Res Function(_Unexpected) then) =
       __$UnexpectedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$UnexpectedCopyWithImpl<$Res> extends _$ItemFailureCopyWithImpl<$Res>
     implements _$UnexpectedCopyWith<$Res> {
   __$UnexpectedCopyWithImpl(
@@ -103,6 +115,7 @@ class __$UnexpectedCopyWithImpl<$Res> extends _$ItemFailureCopyWithImpl<$Res>
   _Unexpected get _value => super._value as _Unexpected;
 }
 
+/// @nodoc
 class _$_Unexpected implements _Unexpected {
   const _$_Unexpected();
 
@@ -192,12 +205,14 @@ abstract class _Unexpected implements ItemFailure {
   const factory _Unexpected() = _$_Unexpected;
 }
 
+/// @nodoc
 abstract class _$InsufficientPermissionCopyWith<$Res> {
   factory _$InsufficientPermissionCopyWith(_InsufficientPermission value,
           $Res Function(_InsufficientPermission) then) =
       __$InsufficientPermissionCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InsufficientPermissionCopyWithImpl<$Res>
     extends _$ItemFailureCopyWithImpl<$Res>
     implements _$InsufficientPermissionCopyWith<$Res> {
@@ -209,6 +224,7 @@ class __$InsufficientPermissionCopyWithImpl<$Res>
   _InsufficientPermission get _value => super._value as _InsufficientPermission;
 }
 
+/// @nodoc
 class _$_InsufficientPermission implements _InsufficientPermission {
   const _$_InsufficientPermission();
 
@@ -298,12 +314,14 @@ abstract class _InsufficientPermission implements ItemFailure {
   const factory _InsufficientPermission() = _$_InsufficientPermission;
 }
 
+/// @nodoc
 abstract class _$UnableToUpdateCopyWith<$Res> {
   factory _$UnableToUpdateCopyWith(
           _UnableToUpdate value, $Res Function(_UnableToUpdate) then) =
       __$UnableToUpdateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$UnableToUpdateCopyWithImpl<$Res>
     extends _$ItemFailureCopyWithImpl<$Res>
     implements _$UnableToUpdateCopyWith<$Res> {
@@ -315,6 +333,7 @@ class __$UnableToUpdateCopyWithImpl<$Res>
   _UnableToUpdate get _value => super._value as _UnableToUpdate;
 }
 
+/// @nodoc
 class _$_UnableToUpdate implements _UnableToUpdate {
   const _$_UnableToUpdate();
 
@@ -404,12 +423,14 @@ abstract class _UnableToUpdate implements ItemFailure {
   const factory _UnableToUpdate() = _$_UnableToUpdate;
 }
 
+/// @nodoc
 abstract class _$ImageLoadCanceledCopyWith<$Res> {
   factory _$ImageLoadCanceledCopyWith(
           _ImageLoadCanceled value, $Res Function(_ImageLoadCanceled) then) =
       __$ImageLoadCanceledCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$ImageLoadCanceledCopyWithImpl<$Res>
     extends _$ItemFailureCopyWithImpl<$Res>
     implements _$ImageLoadCanceledCopyWith<$Res> {
@@ -421,6 +442,7 @@ class __$ImageLoadCanceledCopyWithImpl<$Res>
   _ImageLoadCanceled get _value => super._value as _ImageLoadCanceled;
 }
 
+/// @nodoc
 class _$_ImageLoadCanceled implements _ImageLoadCanceled {
   const _$_ImageLoadCanceled();
 
@@ -510,12 +532,14 @@ abstract class _ImageLoadCanceled implements ItemFailure {
   const factory _ImageLoadCanceled() = _$_ImageLoadCanceled;
 }
 
+/// @nodoc
 abstract class _$NetworkExcepitonCopyWith<$Res> {
   factory _$NetworkExcepitonCopyWith(
           _NetworkExcepiton value, $Res Function(_NetworkExcepiton) then) =
       __$NetworkExcepitonCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$NetworkExcepitonCopyWithImpl<$Res>
     extends _$ItemFailureCopyWithImpl<$Res>
     implements _$NetworkExcepitonCopyWith<$Res> {
@@ -527,6 +551,7 @@ class __$NetworkExcepitonCopyWithImpl<$Res>
   _NetworkExcepiton get _value => super._value as _NetworkExcepiton;
 }
 
+/// @nodoc
 class _$_NetworkExcepiton implements _NetworkExcepiton {
   const _$_NetworkExcepiton();
 

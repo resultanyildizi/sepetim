@@ -4,8 +4,8 @@ import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -25,7 +25,7 @@ import 'package:rxdart/rxdart.dart';
 
 @LazySingleton(as: IItemRepository)
 class ItemRepository extends IItemRepository {
-  final Firestore _firestore;
+  final FirebaseFirestore _firestore;
   final FirebaseStorage _firebaseStorage;
   final ImagePicker _imagePicker;
 
@@ -48,17 +48,14 @@ class ItemRepository extends IItemRepository {
 
       final userDoc = await _firestore.userDocument();
       final categoryDoc =
-          userDoc.categoryCollection.document(categoryId.getOrCrash());
-      final groupDoc =
-          categoryDoc.groupCollection.document(groupId.getOrCrash());
+          userDoc.categoryCollection.doc(categoryId.getOrCrash());
+      final groupDoc = categoryDoc.groupCollection.doc(groupId.getOrCrash());
 
       final itemDto = ItemDto.fromDomain(item);
 
-      await groupDoc.itemCollection
-          .document(itemDto.uid)
-          .setData(itemDto.toJson());
+      await groupDoc.itemCollection.doc(itemDto.uid).set(itemDto.toJson());
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemFailure.insufficientPermission());
       } else {
@@ -80,17 +77,14 @@ class ItemRepository extends IItemRepository {
 
       final userDoc = await _firestore.userDocument();
       final categoryDoc =
-          userDoc.categoryCollection.document(categoryId.getOrCrash());
-      final groupDoc =
-          categoryDoc.groupCollection.document(groupId.getOrCrash());
+          userDoc.categoryCollection.doc(categoryId.getOrCrash());
+      final groupDoc = categoryDoc.groupCollection.doc(groupId.getOrCrash());
 
       final itemDto = ItemDto.fromDomain(item);
 
-      await groupDoc.itemCollection
-          .document(itemDto.uid)
-          .updateData(itemDto.toJson());
+      await groupDoc.itemCollection.doc(itemDto.uid).update(itemDto.toJson());
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemFailure.insufficientPermission());
       } else if (e.message.contains('NOT_FOUND')) {
@@ -114,13 +108,12 @@ class ItemRepository extends IItemRepository {
 
       final userDoc = await _firestore.userDocument();
       final categoryDoc =
-          userDoc.categoryCollection.document(categoryId.getOrCrash());
-      final groupDoc =
-          categoryDoc.groupCollection.document(groupId.getOrCrash());
+          userDoc.categoryCollection.doc(categoryId.getOrCrash());
+      final groupDoc = categoryDoc.groupCollection.doc(groupId.getOrCrash());
 
       final itemId = item.uid.getOrCrash();
 
-      await groupDoc.itemCollection.document(itemId).delete();
+      await groupDoc.itemCollection.doc(itemId).delete();
 
       final removeFailureOrSuccess = await removeAllPicturesFromServer(item);
 
@@ -128,7 +121,7 @@ class ItemRepository extends IItemRepository {
         (f) => left(f),
         (_) => right(unit),
       );
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemFailure.insufficientPermission());
       } else if (e.message.contains('NOT_FOUND')) {
@@ -205,7 +198,7 @@ class ItemRepository extends IItemRepository {
       final itemPictureDownloadUrl = await itemPictureStorage.getDownloadURL();
 
       return right(ImageUrl(itemPictureDownloadUrl.toString()));
-    } on PlatformException catch (_) {
+    } on FirebaseAuthException catch (_) {
       return left(const ItemFailure.unexpected());
     }
   }
@@ -231,7 +224,7 @@ class ItemRepository extends IItemRepository {
         await imagePictureStorage.delete();
       }
       return right(ImageUrl.defaultUrl());
-    } on PlatformException catch (_) {
+    } on FirebaseAuthException catch (_) {
       return left(const ItemFailure.unexpected());
     }
   }
@@ -253,7 +246,7 @@ class ItemRepository extends IItemRepository {
           .map((imageUrl) => removePictureFromServer(imageUrl, item));
 
       return right(unit);
-    } on PlatformException catch (_) {
+    } on FirebaseAuthException catch (_) {
       return left(const ItemFailure.unexpected());
     }
   }
@@ -262,9 +255,8 @@ class ItemRepository extends IItemRepository {
   Stream<Either<ItemFailure, KtList<Item>>> watchAll(
       UniqueId categoryId, UniqueId groupId, OrderType orderType) async* {
     final userDoc = await _firestore.userDocument();
-    final categoryDoc =
-        userDoc.categoryCollection.document(categoryId.getOrCrash());
-    final groupDoc = categoryDoc.groupCollection.document(groupId.getOrCrash());
+    final categoryDoc = userDoc.categoryCollection.doc(categoryId.getOrCrash());
+    final groupDoc = categoryDoc.groupCollection.doc(groupId.getOrCrash());
 
     Stream<QuerySnapshot> orderedItemSnapshots;
 
@@ -290,11 +282,12 @@ class ItemRepository extends IItemRepository {
     }
 
     yield* orderedItemSnapshots
-        .map((snapshot) => right<ItemFailure, KtList<Item>>(snapshot.documents
+        .map((snapshot) => right<ItemFailure, KtList<Item>>(snapshot.docs
             .map((doc) => ItemDto.fromFirestore(doc).toDomain())
             .toImmutableList()))
         .onErrorReturnWith((e) {
-      if (e is PlatformException && e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseAuthException &&
+          e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemFailure.insufficientPermission());
       } else {
         return left(const ItemFailure.unexpected());
@@ -306,9 +299,8 @@ class ItemRepository extends IItemRepository {
   Stream<Either<ItemFailure, KtList<Item>>> watchAllByTitle(UniqueId categoryId,
       UniqueId groupId, OrderType orderType, String title) async* {
     final userDoc = await _firestore.userDocument();
-    final categoryDoc =
-        userDoc.categoryCollection.document(categoryId.getOrCrash());
-    final groupDoc = categoryDoc.groupCollection.document(groupId.getOrCrash());
+    final categoryDoc = userDoc.categoryCollection.doc(categoryId.getOrCrash());
+    final groupDoc = categoryDoc.groupCollection.doc(groupId.getOrCrash());
 
     Stream<QuerySnapshot> orderedItemSnapshots;
 
@@ -333,8 +325,8 @@ class ItemRepository extends IItemRepository {
         }
     }
     yield* orderedItemSnapshots
-        .map((snapshot) => snapshot.documents
-            .map((doc) => ItemDto.fromFirestore(doc).toDomain()))
+        .map((snapshot) =>
+            snapshot.docs.map((doc) => ItemDto.fromFirestore(doc).toDomain()))
         .map((items) => right<ItemFailure, KtList<Item>>(items
             .where((item) => item.title
                 .getOrCrash()
@@ -342,7 +334,8 @@ class ItemRepository extends IItemRepository {
                 .startsWith(title.toLowerCase()))
             .toImmutableList()))
         .onErrorReturnWith((e) {
-      if (e is PlatformException && e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseAuthException &&
+          e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemFailure.insufficientPermission());
       } else {
         return left(const ItemFailure.unexpected());

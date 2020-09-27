@@ -37,7 +37,7 @@ class ItemOverviewPage extends StatelessWidget {
         ),
       ],
       child: BlocBuilder<ItemWatcherBloc, ItemWatcherState>(
-        bloc: watcherBloc,
+        cubit: watcherBloc,
         builder: (context, state) => state.map(
           initial: (_) => Scaffold(
             appBar: AppBar(
@@ -217,7 +217,7 @@ class ItemOverviewPage extends StatelessWidget {
                 floatingActionButton: DefaultFloatingActionButton(
                   iconData: Icons.add,
                   onPressed: () {
-                    ExtendedNavigator.of(context).pushNamed(
+                    ExtendedNavigator.of(context).push(
                       Routes.itemForm,
                       arguments: ItemFormArguments(
                         category: category,

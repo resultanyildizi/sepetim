@@ -4,9 +4,9 @@ import 'package:Sepetim/infrastructure/item_group/item_group_dtos.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
@@ -26,7 +26,7 @@ import 'package:Sepetim/predefined_variables/colors.dart';
 
 @LazySingleton(as: IItemCategoryRepository)
 class ItemCategoryRepository implements IItemCategoryRepository {
-  final Firestore _firestore;
+  final FirebaseFirestore _firestore;
   final ImagePicker _imagePicker;
   final FirebaseStorage _firebaseStorage;
   final IItemGroupRepository _itemGroupRepository;
@@ -52,10 +52,10 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       final categoryDto = ItemCategoryDto.fromDomain(category);
 
       await userDoc.categoryCollection
-          .document(categoryDto.uid)
-          .setData(categoryDto.toJson());
+          .doc(categoryDto.uid)
+          .set(categoryDto.toJson());
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemCategoryFailure.insufficientPermission());
       } else {
@@ -79,10 +79,10 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       final categoryDto = ItemCategoryDto.fromDomain(category);
 
       await userDoc.categoryCollection
-          .document(categoryDto.uid)
-          .updateData(categoryDto.toJson());
+          .doc(categoryDto.uid)
+          .update(categoryDto.toJson());
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemCategoryFailure.insufficientPermission());
       } else if (e.message.contains('NOT_FOUND')) {
@@ -106,12 +106,11 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       final categoryId = category.uid;
       final userDoc = await _firestore.userDocument();
       final categoryDoc =
-          userDoc.categoryCollection.document(categoryId.getOrCrash());
+          userDoc.categoryCollection.doc(categoryId.getOrCrash());
 
-      final groupDocumentSnapshots =
-          await categoryDoc.groupCollection.getDocuments();
+      final groupDocumentSnapshots = await categoryDoc.groupCollection.get();
 
-      for (final doc in groupDocumentSnapshots.documents) {
+      for (final doc in groupDocumentSnapshots.docs) {
         final failureOrSuccess = await _itemGroupRepository.delete(
             categoryId, ItemGroupDto.fromFirestore(doc).toDomain());
         failureOrSuccess.fold(
@@ -131,7 +130,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
         (f) => left(f),
         (_) => right(unit),
       );
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemCategoryFailure.insufficientPermission());
       } else if (e.message.contains('NOT_FOUND')) {
@@ -208,7 +207,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       final coverImageDownloadUrl = await coverImageStorage.getDownloadURL();
 
       return right(ImageUrl(coverImageDownloadUrl.toString()));
-    } on PlatformException catch (_) {
+    } on FirebaseAuthException catch (_) {
       return left(const ItemCategoryFailure.unexpected());
     }
   }
@@ -232,7 +231,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
         await coverImageStorage.delete();
       }
       return right(ImageUrl.defaultUrl());
-    } on PlatformException catch (_) {
+    } on FirebaseAuthException catch (_) {
       return left(const ItemCategoryFailure.unexpected());
     }
   }
@@ -267,11 +266,12 @@ class ItemCategoryRepository implements IItemCategoryRepository {
 
     yield* orderedCategorySnapshots
         .map((snapshot) => right<ItemCategoryFailure, KtList<ItemCategory>>(
-            snapshot.documents
+            snapshot.docs
                 .map((doc) => ItemCategoryDto.fromFirestore(doc).toDomain())
                 .toImmutableList()))
         .onErrorReturnWith((e) {
-      if (e is PlatformException && e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseAuthException &&
+          e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemCategoryFailure.insufficientPermission());
       } else {
         return left(const ItemCategoryFailure.unexpected());
@@ -308,7 +308,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
     }
 
     yield* orderedCategorySnapshots
-        .map((snapshot) => snapshot.documents
+        .map((snapshot) => snapshot.docs
             .map((doc) => ItemCategoryDto.fromFirestore(doc).toDomain()))
         .map((categories) => right<ItemCategoryFailure, KtList<ItemCategory>>(
             categories
@@ -318,7 +318,8 @@ class ItemCategoryRepository implements IItemCategoryRepository {
                     .startsWith(title.toLowerCase()))
                 .toImmutableList()))
         .onErrorReturnWith((e) {
-      if (e is PlatformException && e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseAuthException &&
+          e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemCategoryFailure.insufficientPermission());
       } else {
         return left(const ItemCategoryFailure.unexpected());

@@ -7,8 +7,8 @@
 import 'package:Sepetim/application/content/bottom_navbar/bottom_navbar_bloc.dart';
 import 'package:Sepetim/infrastructure/core/firebase_injectable_module.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:Sepetim/infrastructure/auth/firebase_auth_facade.dart';
 import 'package:Sepetim/domain/auth/i_auth_facade.dart';
@@ -45,9 +45,10 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerFactory<BottomNavbarBloc>(() => BottomNavbarBloc());
   g.registerLazySingleton<FirebaseAuth>(
       () => firebaseInjectableModule.fireBaseAuth);
+  g.registerLazySingleton<FirebaseFirestore>(
+      () => firebaseInjectableModule.firestore);
   g.registerLazySingleton<FirebaseStorage>(
       () => firebaseInjectableModule.firebaseStorage);
-  g.registerLazySingleton<Firestore>(() => firebaseInjectableModule.firestore);
   g.registerLazySingleton<GoogleSignIn>(
       () => firebaseInjectableModule.googleSignIn);
   g.registerLazySingleton<IAuthFacade>(
@@ -65,7 +66,7 @@ void $initGetIt(GetIt g, {String environment}) {
       () => AccountTransactionsBloc(g<IAuthFacade>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<IAuthFacade>()));
   g.registerLazySingleton<IItemRepository>(() => ItemRepository(
-        g<Firestore>(),
+        g<FirebaseFirestore>(),
         g<FirebaseStorage>(),
         g<ImagePicker>(),
       ));
@@ -74,7 +75,7 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerFactory<ItemWatcherBloc>(
       () => ItemWatcherBloc(g<IItemRepository>()));
   g.registerLazySingleton<IItemGroupRepository>(
-      () => ItemGroupRepository(g<Firestore>(), g<IItemRepository>()));
+      () => ItemGroupRepository(g<FirebaseFirestore>(), g<IItemRepository>()));
   g.registerFactory<ItemGroupActorBloc>(
       () => ItemGroupActorBloc(g<IItemGroupRepository>()));
   g.registerFactory<ItemGroupFormBloc>(
@@ -82,7 +83,7 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerFactory<ItemGroupWatcherBloc>(
       () => ItemGroupWatcherBloc(g<IItemGroupRepository>()));
   g.registerLazySingleton<IItemCategoryRepository>(() => ItemCategoryRepository(
-        g<Firestore>(),
+        g<FirebaseFirestore>(),
         g<ImagePicker>(),
         g<FirebaseStorage>(),
         g<IItemGroupRepository>(),

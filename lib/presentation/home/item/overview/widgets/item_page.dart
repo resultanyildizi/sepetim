@@ -38,7 +38,7 @@ class ItemPage extends StatelessWidget {
     return BlocProvider<ItemActorBloc>(
       create: (context) => getIt<ItemActorBloc>(),
       child: BlocConsumer<ItemFormBloc, ItemFormState>(
-        bloc: formBloc,
+        cubit: formBloc,
         listener: (context, state) {
           state.itemFailureOrSuccessOption.fold(
             () {},
@@ -98,7 +98,7 @@ class ItemPage extends StatelessWidget {
                         .map((u) => LinkObjectPrimitive.fromDomain(u))
                         .toMutableList());
                 formBloc.add(ItemFormEvent.initialized(some(state.item)));
-                ExtendedNavigator.of(context).pushNamed(
+                ExtendedNavigator.of(context).push(
                   Routes.linkForm,
                   arguments: LinkFormArguments(
                     category: category,
@@ -458,7 +458,7 @@ class ItemPage extends StatelessWidget {
                 child: InkWell(
                   splashColor: sepetimYellow, // inkwell color
                   onTap: () {
-                    ExtendedNavigator.of(context).pushNamed(Routes.itemForm,
+                    ExtendedNavigator.of(context).push(Routes.itemForm,
                         arguments: ItemFormArguments(
                           category: category,
                           group: group,

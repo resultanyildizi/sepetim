@@ -18,11 +18,8 @@ class AccountTransactionsBloc
     extends Bloc<AccountTransactionsEvent, AccountTransactionsState> {
   final IAuthFacade _iAuthFacade;
 
-  AccountTransactionsBloc(this._iAuthFacade);
-
-  @override
-  AccountTransactionsState get initialState =>
-      AccountTransactionsState.initial();
+  AccountTransactionsBloc(this._iAuthFacade)
+      : super(AccountTransactionsState.initial());
 
   @override
   Stream<AccountTransactionsState> mapEventToState(

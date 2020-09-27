@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'bottom_navbar_bloc.dart';
 
@@ -9,9 +9,11 @@ part of 'bottom_navbar_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$BottomNavbarEventTearOff {
   const _$BottomNavbarEventTearOff();
 
+// ignore: unused_element
   _BottomNavbarEvent indexChanged({@required int index}) {
     return _BottomNavbarEvent(
       index: index,
@@ -19,9 +21,11 @@ class _$BottomNavbarEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BottomNavbarEvent = _$BottomNavbarEventTearOff();
 
+/// @nodoc
 mixin _$BottomNavbarEvent {
   int get index;
 
@@ -47,6 +51,7 @@ mixin _$BottomNavbarEvent {
   $BottomNavbarEventCopyWith<BottomNavbarEvent> get copyWith;
 }
 
+/// @nodoc
 abstract class $BottomNavbarEventCopyWith<$Res> {
   factory $BottomNavbarEventCopyWith(
           BottomNavbarEvent value, $Res Function(BottomNavbarEvent) then) =
@@ -54,6 +59,7 @@ abstract class $BottomNavbarEventCopyWith<$Res> {
   $Res call({int index});
 }
 
+/// @nodoc
 class _$BottomNavbarEventCopyWithImpl<$Res>
     implements $BottomNavbarEventCopyWith<$Res> {
   _$BottomNavbarEventCopyWithImpl(this._value, this._then);
@@ -72,6 +78,7 @@ class _$BottomNavbarEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$BottomNavbarEventCopyWith<$Res>
     implements $BottomNavbarEventCopyWith<$Res> {
   factory _$BottomNavbarEventCopyWith(
@@ -81,6 +88,7 @@ abstract class _$BottomNavbarEventCopyWith<$Res>
   $Res call({int index});
 }
 
+/// @nodoc
 class __$BottomNavbarEventCopyWithImpl<$Res>
     extends _$BottomNavbarEventCopyWithImpl<$Res>
     implements _$BottomNavbarEventCopyWith<$Res> {
@@ -101,6 +109,7 @@ class __$BottomNavbarEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_BottomNavbarEvent implements _BottomNavbarEvent {
   const _$_BottomNavbarEvent({@required this.index}) : assert(index != null);
 
@@ -183,9 +192,11 @@ abstract class _BottomNavbarEvent implements BottomNavbarEvent {
   _$BottomNavbarEventCopyWith<_BottomNavbarEvent> get copyWith;
 }
 
+/// @nodoc
 class _$BottomNavbarStateTearOff {
   const _$BottomNavbarStateTearOff();
 
+// ignore: unused_element
   _BottomNavbarState call({@required int selectedIndex}) {
     return _BottomNavbarState(
       selectedIndex: selectedIndex,
@@ -193,15 +204,18 @@ class _$BottomNavbarStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BottomNavbarState = _$BottomNavbarStateTearOff();
 
+/// @nodoc
 mixin _$BottomNavbarState {
   int get selectedIndex;
 
   $BottomNavbarStateCopyWith<BottomNavbarState> get copyWith;
 }
 
+/// @nodoc
 abstract class $BottomNavbarStateCopyWith<$Res> {
   factory $BottomNavbarStateCopyWith(
           BottomNavbarState value, $Res Function(BottomNavbarState) then) =
@@ -209,6 +223,7 @@ abstract class $BottomNavbarStateCopyWith<$Res> {
   $Res call({int selectedIndex});
 }
 
+/// @nodoc
 class _$BottomNavbarStateCopyWithImpl<$Res>
     implements $BottomNavbarStateCopyWith<$Res> {
   _$BottomNavbarStateCopyWithImpl(this._value, this._then);
@@ -229,6 +244,7 @@ class _$BottomNavbarStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$BottomNavbarStateCopyWith<$Res>
     implements $BottomNavbarStateCopyWith<$Res> {
   factory _$BottomNavbarStateCopyWith(
@@ -238,6 +254,7 @@ abstract class _$BottomNavbarStateCopyWith<$Res>
   $Res call({int selectedIndex});
 }
 
+/// @nodoc
 class __$BottomNavbarStateCopyWithImpl<$Res>
     extends _$BottomNavbarStateCopyWithImpl<$Res>
     implements _$BottomNavbarStateCopyWith<$Res> {
@@ -260,6 +277,7 @@ class __$BottomNavbarStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_BottomNavbarState implements _BottomNavbarState {
   const _$_BottomNavbarState({@required this.selectedIndex})
       : assert(selectedIndex != null);

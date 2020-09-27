@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:Sepetim/domain/auth/domain_user.dart';
 import 'package:Sepetim/domain/auth/i_auth_facade.dart';
 import 'package:Sepetim/domain/auth/sign_in_type.dart';
-import 'package:Sepetim/domain/auth/user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -16,10 +16,7 @@ part 'auth_bloc_bloc.freezed.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthFacade _iAuthFacade;
 
-  AuthBloc(this._iAuthFacade);
-
-  @override
-  AuthState get initialState => const AuthState.initial();
+  AuthBloc(this._iAuthFacade) : super(const AuthState.initial());
 
   @override
   Stream<AuthState> mapEventToState(

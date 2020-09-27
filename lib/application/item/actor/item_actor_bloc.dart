@@ -17,10 +17,8 @@ part 'item_actor_bloc.freezed.dart';
 class ItemActorBloc extends Bloc<ItemActorEvent, ItemActorState> {
   final IItemRepository _itemRepository;
 
-  ItemActorBloc(this._itemRepository);
+  ItemActorBloc(this._itemRepository) : super(const ItemActorState.initial());
 
-  @override
-  ItemActorState get initialState => const ItemActorState.initial();
   @override
   Stream<ItemActorState> mapEventToState(
     ItemActorEvent event,

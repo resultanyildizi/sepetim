@@ -129,7 +129,7 @@ class DescriptionBodyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ItemFormBloc, ItemFormState>(
-      bloc: itemFormBloc,
+      cubit: itemFormBloc,
       listener: (context, state) {},
       buildWhen: (p, c) => p.item.description != c.item.description,
       builder: (BuildContext context, ItemFormState state) {

@@ -4,50 +4,52 @@
 // AutoRouteGenerator
 // **************************************************************************
 
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:Sepetim/presentation/splash/splash_page.dart';
-import 'package:Sepetim/presentation/sign_in/sign_in_page.dart';
-import 'package:Sepetim/presentation/sign_in/verify_anonymous_login_page.dart';
-import 'package:Sepetim/presentation/application_content/application_content_page.dart';
-import 'package:Sepetim/presentation/home/item_category/form/item_category_form.dart';
-import 'package:Sepetim/domain/item_category/item_category.dart';
-import 'package:Sepetim/presentation/home/item_group/overview/item_group_overview_page.dart';
-import 'package:Sepetim/application/item_group/watcher/item_group_watcher_bloc.dart';
-import 'package:Sepetim/presentation/home/item_group/form/item_group_form.dart';
-import 'package:Sepetim/domain/item_group/item_group.dart';
-import 'package:Sepetim/domain/core/value_objects.dart';
-import 'package:Sepetim/presentation/home/item/overview/item_overview_page.dart';
-import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
-import 'package:Sepetim/presentation/home/item/form/item_form.dart';
-import 'package:Sepetim/domain/item/item.dart';
-import 'package:Sepetim/presentation/home/item/overview/widgets/item_page.dart';
-import 'package:Sepetim/application/item/form/item_form_bloc.dart';
-import 'package:Sepetim/presentation/home/item/form/widgets/edit_description_page.dart';
-import 'package:Sepetim/presentation/home/item/form/link_form/link_form.dart';
-import 'package:Sepetim/application/item/actor/item_actor_bloc.dart';
-import 'package:Sepetim/presentation/sign_in/reset_password_page.dart';
-import 'package:Sepetim/presentation/account/link_account_page.dart';
-import 'package:Sepetim/presentation/settings/themes/themes_page.dart';
+// ignore_for_file: public_member_api_docs
 
-abstract class Routes {
-  static const splashPage = '/';
-  static const signInPage = '/sign-in-page';
-  static const verifyAnonymousLoginPage = '/verify-anonymous-login-page';
-  static const applicationContentPage = '/application-content-page';
-  static const itemCategoryForm = '/item-category-form';
-  static const itemGroupOverviewPage = '/item-group-overview-page';
-  static const itemGroupForm = '/item-group-form';
-  static const itemOverviewPage = '/item-overview-page';
-  static const itemForm = '/item-form';
-  static const itemPage = '/item-page';
-  static const editDescriptionPage = '/edit-description-page';
-  static const linkForm = '/link-form';
-  static const resetPasswordPage = '/reset-password-page';
-  static const linkAccountPage = '/link-account-page';
-  static const themesPage = '/themes-page';
-  static const all = {
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+
+import '../../application/item/actor/item_actor_bloc.dart';
+import '../../application/item/form/item_form_bloc.dart';
+import '../../application/item/watcher/item_watcher_bloc.dart';
+import '../../application/item_group/watcher/item_group_watcher_bloc.dart';
+import '../../domain/core/value_objects.dart';
+import '../../domain/item/item.dart';
+import '../../domain/item_category/item_category.dart';
+import '../../domain/item_group/item_group.dart';
+import '../account/link_account_page.dart';
+import '../application_content/application_content_page.dart';
+import '../home/item/form/item_form.dart';
+import '../home/item/form/link_form/link_form.dart';
+import '../home/item/form/widgets/edit_description_page.dart';
+import '../home/item/overview/item_overview_page.dart';
+import '../home/item/overview/widgets/item_page.dart';
+import '../home/item_category/form/item_category_form.dart';
+import '../home/item_group/form/item_group_form.dart';
+import '../home/item_group/overview/item_group_overview_page.dart';
+import '../settings/themes/themes_page.dart';
+import '../sign_in/reset_password_page.dart';
+import '../sign_in/sign_in_page.dart';
+import '../sign_in/verify_anonymous_login_page.dart';
+import '../splash/splash_page.dart';
+
+class Routes {
+  static const String splashPage = '/';
+  static const String signInPage = '/sign-in-page';
+  static const String verifyAnonymousLoginPage = '/verify-anonymous-login-page';
+  static const String applicationContentPage = '/application-content-page';
+  static const String itemCategoryForm = '/item-category-form';
+  static const String itemGroupOverviewPage = '/item-group-overview-page';
+  static const String itemGroupForm = '/item-group-form';
+  static const String itemOverviewPage = '/item-overview-page';
+  static const String itemForm = '/item-form';
+  static const String itemPage = '/item-page';
+  static const String editDescriptionPage = '/edit-description-page';
+  static const String linkForm = '/link-form';
+  static const String resetPasswordPage = '/reset-password-page';
+  static const String linkAccountPage = '/link-account-page';
+  static const String themesPage = '/themes-page';
+  static const all = <String>{
     splashPage,
     signInPage,
     verifyAnonymousLoginPage,
@@ -68,209 +70,303 @@ abstract class Routes {
 
 class Router extends RouterBase {
   @override
-  Set<String> get allRoutes => Routes.all;
-
-  @Deprecated('call ExtendedNavigator.ofRouter<Router>() directly')
-  static ExtendedNavigatorState get navigator =>
-      ExtendedNavigator.ofRouter<Router>();
-
+  List<RouteDef> get routes => _routes;
+  final _routes = <RouteDef>[
+    RouteDef(Routes.splashPage, page: SplashPage),
+    RouteDef(Routes.signInPage, page: SignInPage),
+    RouteDef(Routes.verifyAnonymousLoginPage, page: VerifyAnonymousLoginPage),
+    RouteDef(Routes.applicationContentPage, page: ApplicationContentPage),
+    RouteDef(Routes.itemCategoryForm, page: ItemCategoryForm),
+    RouteDef(Routes.itemGroupOverviewPage, page: ItemGroupOverviewPage),
+    RouteDef(Routes.itemGroupForm, page: ItemGroupForm),
+    RouteDef(Routes.itemOverviewPage, page: ItemOverviewPage),
+    RouteDef(Routes.itemForm, page: ItemForm),
+    RouteDef(Routes.itemPage, page: ItemPage),
+    RouteDef(Routes.editDescriptionPage, page: EditDescriptionPage),
+    RouteDef(Routes.linkForm, page: LinkForm),
+    RouteDef(Routes.resetPasswordPage, page: ResetPasswordPage),
+    RouteDef(Routes.linkAccountPage, page: LinkAccountPage),
+    RouteDef(Routes.themesPage, page: ThemesPage),
+  ];
   @override
-  Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    final args = settings.arguments;
-    switch (settings.name) {
-      case Routes.splashPage:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => SplashPage(),
-          settings: settings,
-        );
-      case Routes.signInPage:
-        if (hasInvalidArgs<SignInPageArguments>(args)) {
-          return misTypedArgsRoute<SignInPageArguments>(args);
-        }
-        final typedArgs = args as SignInPageArguments ?? SignInPageArguments();
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => SignInPage(key: typedArgs.key),
-          settings: settings,
-        );
-      case Routes.verifyAnonymousLoginPage:
-        if (hasInvalidArgs<VerifyAnonymousLoginPageArguments>(args)) {
-          return misTypedArgsRoute<VerifyAnonymousLoginPageArguments>(args);
-        }
-        final typedArgs = args as VerifyAnonymousLoginPageArguments ??
-            VerifyAnonymousLoginPageArguments();
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => VerifyAnonymousLoginPage(key: typedArgs.key),
-          settings: settings,
-        );
-      case Routes.applicationContentPage:
-        if (hasInvalidArgs<ApplicationContentPageArguments>(args)) {
-          return misTypedArgsRoute<ApplicationContentPageArguments>(args);
-        }
-        final typedArgs = args as ApplicationContentPageArguments ??
-            ApplicationContentPageArguments();
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => ApplicationContentPage(key: typedArgs.key),
-          settings: settings,
-        );
-      case Routes.itemCategoryForm:
-        if (hasInvalidArgs<ItemCategoryFormArguments>(args)) {
-          return misTypedArgsRoute<ItemCategoryFormArguments>(args);
-        }
-        final typedArgs =
-            args as ItemCategoryFormArguments ?? ItemCategoryFormArguments();
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => ItemCategoryForm(
-              key: typedArgs.key, editedCategory: typedArgs.editedCategory),
-          settings: settings,
-        );
-      case Routes.itemGroupOverviewPage:
-        if (hasInvalidArgs<ItemGroupOverviewPageArguments>(args,
-            isRequired: true)) {
-          return misTypedArgsRoute<ItemGroupOverviewPageArguments>(args);
-        }
-        final typedArgs = args as ItemGroupOverviewPageArguments;
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => ItemGroupOverviewPage(
-              key: typedArgs.key,
-              category: typedArgs.category,
-              watcherBloc: typedArgs.watcherBloc),
-          settings: settings,
-        );
-      case Routes.itemGroupForm:
-        if (hasInvalidArgs<ItemGroupFormArguments>(args)) {
-          return misTypedArgsRoute<ItemGroupFormArguments>(args);
-        }
-        final typedArgs =
-            args as ItemGroupFormArguments ?? ItemGroupFormArguments();
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => ItemGroupForm(
-              key: typedArgs.key,
-              editedGroup: typedArgs.editedGroup,
-              categoryId: typedArgs.categoryId),
-          settings: settings,
-        );
-      case Routes.itemOverviewPage:
-        if (hasInvalidArgs<ItemOverviewPageArguments>(args, isRequired: true)) {
-          return misTypedArgsRoute<ItemOverviewPageArguments>(args);
-        }
-        final typedArgs = args as ItemOverviewPageArguments;
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => ItemOverviewPage(
-              key: typedArgs.key,
-              category: typedArgs.category,
-              group: typedArgs.group,
-              watcherBloc: typedArgs.watcherBloc),
-          settings: settings,
-        );
-      case Routes.itemForm:
-        if (hasInvalidArgs<ItemFormArguments>(args, isRequired: true)) {
-          return misTypedArgsRoute<ItemFormArguments>(args);
-        }
-        final typedArgs = args as ItemFormArguments;
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => ItemForm(
-              key: typedArgs.key,
-              category: typedArgs.category,
-              group: typedArgs.group,
-              editedItem: typedArgs.editedItem),
-          settings: settings,
-        );
-      case Routes.itemPage:
-        if (hasInvalidArgs<ItemPageArguments>(args, isRequired: true)) {
-          return misTypedArgsRoute<ItemPageArguments>(args);
-        }
-        final typedArgs = args as ItemPageArguments;
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => ItemPage(
-              key: typedArgs.key,
-              category: typedArgs.category,
-              group: typedArgs.group,
-              formBloc: typedArgs.formBloc),
-          settings: settings,
-        );
-      case Routes.editDescriptionPage:
-        if (hasInvalidArgs<EditDescriptionPageArguments>(args,
-            isRequired: true)) {
-          return misTypedArgsRoute<EditDescriptionPageArguments>(args);
-        }
-        final typedArgs = args as EditDescriptionPageArguments;
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => EditDescriptionPage(
-              key: typedArgs.key,
-              itemFormBloc: typedArgs.itemFormBloc,
-              initialText: typedArgs.initialText),
-          settings: settings,
-        );
-      case Routes.linkForm:
-        if (hasInvalidArgs<LinkFormArguments>(args, isRequired: true)) {
-          return misTypedArgsRoute<LinkFormArguments>(args);
-        }
-        final typedArgs = args as LinkFormArguments;
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => LinkForm(
-              key: typedArgs.key,
-              category: typedArgs.category,
-              group: typedArgs.group,
-              formBloc: typedArgs.formBloc,
-              actorBloc: typedArgs.actorBloc),
-          settings: settings,
-        );
-      case Routes.resetPasswordPage:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => ResetPasswordPage(),
-          settings: settings,
-        );
-      case Routes.linkAccountPage:
-        if (hasInvalidArgs<LinkAccountPageArguments>(args)) {
-          return misTypedArgsRoute<LinkAccountPageArguments>(args);
-        }
-        final typedArgs =
-            args as LinkAccountPageArguments ?? LinkAccountPageArguments();
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => LinkAccountPage(key: typedArgs.key),
-          settings: settings,
-        );
-      case Routes.themesPage:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => ThemesPage(),
-          settings: settings,
-        );
-      default:
-        return unknownRoutePage(settings.name);
-    }
-  }
+  Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
+  final _pagesMap = <Type, AutoRouteFactory>{
+    SplashPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => SplashPage(),
+        settings: data,
+      );
+    },
+    SignInPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const SignInPage(),
+        settings: data,
+      );
+    },
+    VerifyAnonymousLoginPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const VerifyAnonymousLoginPage(),
+        settings: data,
+      );
+    },
+    ApplicationContentPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const ApplicationContentPage(),
+        settings: data,
+      );
+    },
+    ItemCategoryForm: (data) {
+      final args = data.getArgs<ItemCategoryFormArguments>(
+        orElse: () => ItemCategoryFormArguments(),
+      );
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ItemCategoryForm(
+          key: args.key,
+          editedCategory: args.editedCategory,
+        ),
+        settings: data,
+      );
+    },
+    ItemGroupOverviewPage: (data) {
+      final args = data.getArgs<ItemGroupOverviewPageArguments>(nullOk: false);
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ItemGroupOverviewPage(
+          key: args.key,
+          category: args.category,
+          watcherBloc: args.watcherBloc,
+        ),
+        settings: data,
+      );
+    },
+    ItemGroupForm: (data) {
+      final args = data.getArgs<ItemGroupFormArguments>(
+        orElse: () => ItemGroupFormArguments(),
+      );
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ItemGroupForm(
+          key: args.key,
+          editedGroup: args.editedGroup,
+          categoryId: args.categoryId,
+        ),
+        settings: data,
+      );
+    },
+    ItemOverviewPage: (data) {
+      final args = data.getArgs<ItemOverviewPageArguments>(nullOk: false);
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ItemOverviewPage(
+          key: args.key,
+          category: args.category,
+          group: args.group,
+          watcherBloc: args.watcherBloc,
+        ),
+        settings: data,
+      );
+    },
+    ItemForm: (data) {
+      final args = data.getArgs<ItemFormArguments>(nullOk: false);
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ItemForm(
+          key: args.key,
+          category: args.category,
+          group: args.group,
+          editedItem: args.editedItem,
+        ),
+        settings: data,
+      );
+    },
+    ItemPage: (data) {
+      final args = data.getArgs<ItemPageArguments>(nullOk: false);
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ItemPage(
+          key: args.key,
+          category: args.category,
+          group: args.group,
+          formBloc: args.formBloc,
+        ),
+        settings: data,
+      );
+    },
+    EditDescriptionPage: (data) {
+      final args = data.getArgs<EditDescriptionPageArguments>(nullOk: false);
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => EditDescriptionPage(
+          key: args.key,
+          itemFormBloc: args.itemFormBloc,
+          initialText: args.initialText,
+        ),
+        settings: data,
+      );
+    },
+    LinkForm: (data) {
+      final args = data.getArgs<LinkFormArguments>(nullOk: false);
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => LinkForm(
+          key: args.key,
+          category: args.category,
+          group: args.group,
+          formBloc: args.formBloc,
+          actorBloc: args.actorBloc,
+        ),
+        settings: data,
+      );
+    },
+    ResetPasswordPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ResetPasswordPage(),
+        settings: data,
+      );
+    },
+    LinkAccountPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const LinkAccountPage(),
+        settings: data,
+      );
+    },
+    ThemesPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ThemesPage(),
+        settings: data,
+      );
+    },
+  };
 }
 
-// *************************************************************************
-// Arguments holder classes
-// **************************************************************************
+/// ************************************************************************
+/// Navigation helper methods extension
+/// *************************************************************************
 
-//SignInPage arguments holder class
-class SignInPageArguments {
-  final Key key;
-  SignInPageArguments({this.key});
+extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
+  Future<dynamic> pushSplashPage() => push<dynamic>(Routes.splashPage);
+
+  Future<dynamic> pushSignInPage() => push<dynamic>(Routes.signInPage);
+
+  Future<dynamic> pushVerifyAnonymousLoginPage() =>
+      push<dynamic>(Routes.verifyAnonymousLoginPage);
+
+  Future<dynamic> pushApplicationContentPage() =>
+      push<dynamic>(Routes.applicationContentPage);
+
+  Future<dynamic> pushItemCategoryForm({
+    Key key,
+    ItemCategory editedCategory,
+  }) =>
+      push<dynamic>(
+        Routes.itemCategoryForm,
+        arguments:
+            ItemCategoryFormArguments(key: key, editedCategory: editedCategory),
+      );
+
+  Future<dynamic> pushItemGroupOverviewPage({
+    Key key,
+    @required ItemCategory category,
+    @required ItemGroupWatcherBloc watcherBloc,
+  }) =>
+      push<dynamic>(
+        Routes.itemGroupOverviewPage,
+        arguments: ItemGroupOverviewPageArguments(
+            key: key, category: category, watcherBloc: watcherBloc),
+      );
+
+  Future<dynamic> pushItemGroupForm({
+    Key key,
+    ItemGroup editedGroup,
+    UniqueId categoryId,
+  }) =>
+      push<dynamic>(
+        Routes.itemGroupForm,
+        arguments: ItemGroupFormArguments(
+            key: key, editedGroup: editedGroup, categoryId: categoryId),
+      );
+
+  Future<dynamic> pushItemOverviewPage({
+    Key key,
+    @required ItemCategory category,
+    @required ItemGroup group,
+    @required ItemWatcherBloc watcherBloc,
+  }) =>
+      push<dynamic>(
+        Routes.itemOverviewPage,
+        arguments: ItemOverviewPageArguments(
+            key: key,
+            category: category,
+            group: group,
+            watcherBloc: watcherBloc),
+      );
+
+  Future<dynamic> pushItemForm({
+    Key key,
+    @required ItemCategory category,
+    @required ItemGroup group,
+    @required Item editedItem,
+  }) =>
+      push<dynamic>(
+        Routes.itemForm,
+        arguments: ItemFormArguments(
+            key: key, category: category, group: group, editedItem: editedItem),
+      );
+
+  Future<dynamic> pushItemPage({
+    Key key,
+    @required ItemCategory category,
+    @required ItemGroup group,
+    @required ItemFormBloc formBloc,
+  }) =>
+      push<dynamic>(
+        Routes.itemPage,
+        arguments: ItemPageArguments(
+            key: key, category: category, group: group, formBloc: formBloc),
+      );
+
+  Future<dynamic> pushEditDescriptionPage({
+    Key key,
+    @required ItemFormBloc itemFormBloc,
+    @required String initialText,
+  }) =>
+      push<dynamic>(
+        Routes.editDescriptionPage,
+        arguments: EditDescriptionPageArguments(
+            key: key, itemFormBloc: itemFormBloc, initialText: initialText),
+      );
+
+  Future<dynamic> pushLinkForm({
+    Key key,
+    @required ItemCategory category,
+    @required ItemGroup group,
+    @required ItemFormBloc formBloc,
+    @required ItemActorBloc actorBloc,
+  }) =>
+      push<dynamic>(
+        Routes.linkForm,
+        arguments: LinkFormArguments(
+            key: key,
+            category: category,
+            group: group,
+            formBloc: formBloc,
+            actorBloc: actorBloc),
+      );
+
+  Future<dynamic> pushResetPasswordPage() =>
+      push<dynamic>(Routes.resetPasswordPage);
+
+  Future<dynamic> pushLinkAccountPage() =>
+      push<dynamic>(Routes.linkAccountPage);
+
+  Future<dynamic> pushThemesPage() => push<dynamic>(Routes.themesPage);
 }
 
-//VerifyAnonymousLoginPage arguments holder class
-class VerifyAnonymousLoginPageArguments {
-  final Key key;
-  VerifyAnonymousLoginPageArguments({this.key});
-}
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
 
-//ApplicationContentPage arguments holder class
-class ApplicationContentPageArguments {
-  final Key key;
-  ApplicationContentPageArguments({this.key});
-}
-
-//ItemCategoryForm arguments holder class
+/// ItemCategoryForm arguments holder class
 class ItemCategoryFormArguments {
   final Key key;
   final ItemCategory editedCategory;
   ItemCategoryFormArguments({this.key, this.editedCategory});
 }
 
-//ItemGroupOverviewPage arguments holder class
+/// ItemGroupOverviewPage arguments holder class
 class ItemGroupOverviewPageArguments {
   final Key key;
   final ItemCategory category;
@@ -279,7 +375,7 @@ class ItemGroupOverviewPageArguments {
       {this.key, @required this.category, @required this.watcherBloc});
 }
 
-//ItemGroupForm arguments holder class
+/// ItemGroupForm arguments holder class
 class ItemGroupFormArguments {
   final Key key;
   final ItemGroup editedGroup;
@@ -287,7 +383,7 @@ class ItemGroupFormArguments {
   ItemGroupFormArguments({this.key, this.editedGroup, this.categoryId});
 }
 
-//ItemOverviewPage arguments holder class
+/// ItemOverviewPage arguments holder class
 class ItemOverviewPageArguments {
   final Key key;
   final ItemCategory category;
@@ -300,7 +396,7 @@ class ItemOverviewPageArguments {
       @required this.watcherBloc});
 }
 
-//ItemForm arguments holder class
+/// ItemForm arguments holder class
 class ItemFormArguments {
   final Key key;
   final ItemCategory category;
@@ -313,7 +409,7 @@ class ItemFormArguments {
       @required this.editedItem});
 }
 
-//ItemPage arguments holder class
+/// ItemPage arguments holder class
 class ItemPageArguments {
   final Key key;
   final ItemCategory category;
@@ -326,7 +422,7 @@ class ItemPageArguments {
       @required this.formBloc});
 }
 
-//EditDescriptionPage arguments holder class
+/// EditDescriptionPage arguments holder class
 class EditDescriptionPageArguments {
   final Key key;
   final ItemFormBloc itemFormBloc;
@@ -335,7 +431,7 @@ class EditDescriptionPageArguments {
       {this.key, @required this.itemFormBloc, @required this.initialText});
 }
 
-//LinkForm arguments holder class
+/// LinkForm arguments holder class
 class LinkFormArguments {
   final Key key;
   final ItemCategory category;
@@ -348,153 +444,4 @@ class LinkFormArguments {
       @required this.group,
       @required this.formBloc,
       @required this.actorBloc});
-}
-
-//LinkAccountPage arguments holder class
-class LinkAccountPageArguments {
-  final Key key;
-  LinkAccountPageArguments({this.key});
-}
-
-// *************************************************************************
-// Navigation helper methods extension
-// **************************************************************************
-
-extension RouterNavigationHelperMethods on ExtendedNavigatorState {
-  Future pushSplashPage() => pushNamed(Routes.splashPage);
-
-  Future pushSignInPage({
-    Key key,
-  }) =>
-      pushNamed(
-        Routes.signInPage,
-        arguments: SignInPageArguments(key: key),
-      );
-
-  Future pushVerifyAnonymousLoginPage({
-    Key key,
-  }) =>
-      pushNamed(
-        Routes.verifyAnonymousLoginPage,
-        arguments: VerifyAnonymousLoginPageArguments(key: key),
-      );
-
-  Future pushApplicationContentPage({
-    Key key,
-  }) =>
-      pushNamed(
-        Routes.applicationContentPage,
-        arguments: ApplicationContentPageArguments(key: key),
-      );
-
-  Future pushItemCategoryForm({
-    Key key,
-    ItemCategory editedCategory,
-  }) =>
-      pushNamed(
-        Routes.itemCategoryForm,
-        arguments:
-            ItemCategoryFormArguments(key: key, editedCategory: editedCategory),
-      );
-
-  Future pushItemGroupOverviewPage({
-    Key key,
-    @required ItemCategory category,
-    @required ItemGroupWatcherBloc watcherBloc,
-  }) =>
-      pushNamed(
-        Routes.itemGroupOverviewPage,
-        arguments: ItemGroupOverviewPageArguments(
-            key: key, category: category, watcherBloc: watcherBloc),
-      );
-
-  Future pushItemGroupForm({
-    Key key,
-    ItemGroup editedGroup,
-    UniqueId categoryId,
-  }) =>
-      pushNamed(
-        Routes.itemGroupForm,
-        arguments: ItemGroupFormArguments(
-            key: key, editedGroup: editedGroup, categoryId: categoryId),
-      );
-
-  Future pushItemOverviewPage({
-    Key key,
-    @required ItemCategory category,
-    @required ItemGroup group,
-    @required ItemWatcherBloc watcherBloc,
-  }) =>
-      pushNamed(
-        Routes.itemOverviewPage,
-        arguments: ItemOverviewPageArguments(
-            key: key,
-            category: category,
-            group: group,
-            watcherBloc: watcherBloc),
-      );
-
-  Future pushItemForm({
-    Key key,
-    @required ItemCategory category,
-    @required ItemGroup group,
-    @required Item editedItem,
-  }) =>
-      pushNamed(
-        Routes.itemForm,
-        arguments: ItemFormArguments(
-            key: key, category: category, group: group, editedItem: editedItem),
-      );
-
-  Future pushItemPage({
-    Key key,
-    @required ItemCategory category,
-    @required ItemGroup group,
-    @required ItemFormBloc formBloc,
-  }) =>
-      pushNamed(
-        Routes.itemPage,
-        arguments: ItemPageArguments(
-            key: key, category: category, group: group, formBloc: formBloc),
-      );
-
-  Future pushEditDescriptionPage({
-    Key key,
-    @required ItemFormBloc itemFormBloc,
-    @required String initialText,
-  }) =>
-      pushNamed(
-        Routes.editDescriptionPage,
-        arguments: EditDescriptionPageArguments(
-            key: key, itemFormBloc: itemFormBloc, initialText: initialText),
-      );
-
-  Future pushLinkForm({
-    Key key,
-    @required ItemCategory category,
-    @required ItemGroup group,
-    @required ItemFormBloc formBloc,
-    @required ItemActorBloc actorBloc,
-  }) =>
-      pushNamed(
-        Routes.linkForm,
-        arguments: LinkFormArguments(
-            key: key,
-            category: category,
-            group: group,
-            formBloc: formBloc,
-            actorBloc: actorBloc),
-      );
-
-  Future pushResetPasswordPage() => pushNamed(Routes.resetPasswordPage);
-
-  Future pushLinkAccountPage({
-    Key key,
-  }) =>
-      pushNamed(
-        Routes.linkAccountPage,
-        arguments: LinkAccountPageArguments(key: key),
-      );
-
-  Future pushThemesPage() => pushNamed(Routes.themesPage);
 }

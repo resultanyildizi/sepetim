@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'auth_failure.dart';
 
@@ -9,61 +9,76 @@ part of 'auth_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AuthFailureTearOff {
   const _$AuthFailureTearOff();
 
+// ignore: unused_element
   _CancelledByUser cancelledByUser() {
     return const _CancelledByUser();
   }
 
+// ignore: unused_element
   _ServerError serverError() {
     return const _ServerError();
   }
 
+// ignore: unused_element
   _EmailAlreadyInUse emailAlreadyInUse() {
     return const _EmailAlreadyInUse();
   }
 
+// ignore: unused_element
   _NetworkException networkException() {
     return const _NetworkException();
   }
 
+// ignore: unused_element
   _WrongPassword wrongPassword() {
     return const _WrongPassword();
   }
 
+// ignore: unused_element
   _TooManyRequests tooManyRequests() {
     return const _TooManyRequests();
   }
 
+// ignore: unused_element
   _UserNotFound userNotFound() {
     return const _UserNotFound();
   }
 
+// ignore: unused_element
   _AccountAlreadyExists accountAlreadyExists() {
     return const _AccountAlreadyExists();
   }
 
+// ignore: unused_element
   _AccountAlreadyLinked accountAlreadyLinked() {
     return const _AccountAlreadyLinked();
   }
 
+// ignore: unused_element
   _InvalidCredential invalidCredential() {
     return const _InvalidCredential();
   }
 
+// ignore: unused_element
   _UserNotUsingEmailProvider userNotUsingEmailProvider() {
     return const _UserNotUsingEmailProvider();
   }
 
+// ignore: unused_element
   _InvalidEmailAndPasswordCombination invalidEmailAndPasswordCombination() {
     return const _InvalidEmailAndPasswordCombination();
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AuthFailure = _$AuthFailureTearOff();
 
+/// @nodoc
 mixin _$AuthFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -133,12 +148,14 @@ mixin _$AuthFailure {
   });
 }
 
+/// @nodoc
 abstract class $AuthFailureCopyWith<$Res> {
   factory $AuthFailureCopyWith(
           AuthFailure value, $Res Function(AuthFailure) then) =
       _$AuthFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$AuthFailureCopyWithImpl<$Res> implements $AuthFailureCopyWith<$Res> {
   _$AuthFailureCopyWithImpl(this._value, this._then);
 
@@ -147,12 +164,14 @@ class _$AuthFailureCopyWithImpl<$Res> implements $AuthFailureCopyWith<$Res> {
   final $Res Function(AuthFailure) _then;
 }
 
+/// @nodoc
 abstract class _$CancelledByUserCopyWith<$Res> {
   factory _$CancelledByUserCopyWith(
           _CancelledByUser value, $Res Function(_CancelledByUser) then) =
       __$CancelledByUserCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$CancelledByUserCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
     implements _$CancelledByUserCopyWith<$Res> {
@@ -164,6 +183,7 @@ class __$CancelledByUserCopyWithImpl<$Res>
   _CancelledByUser get _value => super._value as _CancelledByUser;
 }
 
+/// @nodoc
 class _$_CancelledByUser implements _CancelledByUser {
   const _$_CancelledByUser();
 
@@ -299,12 +319,14 @@ abstract class _CancelledByUser implements AuthFailure {
   const factory _CancelledByUser() = _$_CancelledByUser;
 }
 
+/// @nodoc
 abstract class _$ServerErrorCopyWith<$Res> {
   factory _$ServerErrorCopyWith(
           _ServerError value, $Res Function(_ServerError) then) =
       __$ServerErrorCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$ServerErrorCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
     implements _$ServerErrorCopyWith<$Res> {
   __$ServerErrorCopyWithImpl(
@@ -315,6 +337,7 @@ class __$ServerErrorCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
   _ServerError get _value => super._value as _ServerError;
 }
 
+/// @nodoc
 class _$_ServerError implements _ServerError {
   const _$_ServerError();
 
@@ -450,12 +473,14 @@ abstract class _ServerError implements AuthFailure {
   const factory _ServerError() = _$_ServerError;
 }
 
+/// @nodoc
 abstract class _$EmailAlreadyInUseCopyWith<$Res> {
   factory _$EmailAlreadyInUseCopyWith(
           _EmailAlreadyInUse value, $Res Function(_EmailAlreadyInUse) then) =
       __$EmailAlreadyInUseCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$EmailAlreadyInUseCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
     implements _$EmailAlreadyInUseCopyWith<$Res> {
@@ -467,6 +492,7 @@ class __$EmailAlreadyInUseCopyWithImpl<$Res>
   _EmailAlreadyInUse get _value => super._value as _EmailAlreadyInUse;
 }
 
+/// @nodoc
 class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
   const _$_EmailAlreadyInUse();
 
@@ -602,12 +628,14 @@ abstract class _EmailAlreadyInUse implements AuthFailure {
   const factory _EmailAlreadyInUse() = _$_EmailAlreadyInUse;
 }
 
+/// @nodoc
 abstract class _$NetworkExceptionCopyWith<$Res> {
   factory _$NetworkExceptionCopyWith(
           _NetworkException value, $Res Function(_NetworkException) then) =
       __$NetworkExceptionCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$NetworkExceptionCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
     implements _$NetworkExceptionCopyWith<$Res> {
@@ -619,6 +647,7 @@ class __$NetworkExceptionCopyWithImpl<$Res>
   _NetworkException get _value => super._value as _NetworkException;
 }
 
+/// @nodoc
 class _$_NetworkException implements _NetworkException {
   const _$_NetworkException();
 
@@ -754,12 +783,14 @@ abstract class _NetworkException implements AuthFailure {
   const factory _NetworkException() = _$_NetworkException;
 }
 
+/// @nodoc
 abstract class _$WrongPasswordCopyWith<$Res> {
   factory _$WrongPasswordCopyWith(
           _WrongPassword value, $Res Function(_WrongPassword) then) =
       __$WrongPasswordCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$WrongPasswordCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
     implements _$WrongPasswordCopyWith<$Res> {
   __$WrongPasswordCopyWithImpl(
@@ -770,6 +801,7 @@ class __$WrongPasswordCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
   _WrongPassword get _value => super._value as _WrongPassword;
 }
 
+/// @nodoc
 class _$_WrongPassword implements _WrongPassword {
   const _$_WrongPassword();
 
@@ -905,12 +937,14 @@ abstract class _WrongPassword implements AuthFailure {
   const factory _WrongPassword() = _$_WrongPassword;
 }
 
+/// @nodoc
 abstract class _$TooManyRequestsCopyWith<$Res> {
   factory _$TooManyRequestsCopyWith(
           _TooManyRequests value, $Res Function(_TooManyRequests) then) =
       __$TooManyRequestsCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$TooManyRequestsCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
     implements _$TooManyRequestsCopyWith<$Res> {
@@ -922,6 +956,7 @@ class __$TooManyRequestsCopyWithImpl<$Res>
   _TooManyRequests get _value => super._value as _TooManyRequests;
 }
 
+/// @nodoc
 class _$_TooManyRequests implements _TooManyRequests {
   const _$_TooManyRequests();
 
@@ -1057,12 +1092,14 @@ abstract class _TooManyRequests implements AuthFailure {
   const factory _TooManyRequests() = _$_TooManyRequests;
 }
 
+/// @nodoc
 abstract class _$UserNotFoundCopyWith<$Res> {
   factory _$UserNotFoundCopyWith(
           _UserNotFound value, $Res Function(_UserNotFound) then) =
       __$UserNotFoundCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$UserNotFoundCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
     implements _$UserNotFoundCopyWith<$Res> {
   __$UserNotFoundCopyWithImpl(
@@ -1073,6 +1110,7 @@ class __$UserNotFoundCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
   _UserNotFound get _value => super._value as _UserNotFound;
 }
 
+/// @nodoc
 class _$_UserNotFound implements _UserNotFound {
   const _$_UserNotFound();
 
@@ -1208,12 +1246,14 @@ abstract class _UserNotFound implements AuthFailure {
   const factory _UserNotFound() = _$_UserNotFound;
 }
 
+/// @nodoc
 abstract class _$AccountAlreadyExistsCopyWith<$Res> {
   factory _$AccountAlreadyExistsCopyWith(_AccountAlreadyExists value,
           $Res Function(_AccountAlreadyExists) then) =
       __$AccountAlreadyExistsCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$AccountAlreadyExistsCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
     implements _$AccountAlreadyExistsCopyWith<$Res> {
@@ -1225,6 +1265,7 @@ class __$AccountAlreadyExistsCopyWithImpl<$Res>
   _AccountAlreadyExists get _value => super._value as _AccountAlreadyExists;
 }
 
+/// @nodoc
 class _$_AccountAlreadyExists implements _AccountAlreadyExists {
   const _$_AccountAlreadyExists();
 
@@ -1360,12 +1401,14 @@ abstract class _AccountAlreadyExists implements AuthFailure {
   const factory _AccountAlreadyExists() = _$_AccountAlreadyExists;
 }
 
+/// @nodoc
 abstract class _$AccountAlreadyLinkedCopyWith<$Res> {
   factory _$AccountAlreadyLinkedCopyWith(_AccountAlreadyLinked value,
           $Res Function(_AccountAlreadyLinked) then) =
       __$AccountAlreadyLinkedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$AccountAlreadyLinkedCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
     implements _$AccountAlreadyLinkedCopyWith<$Res> {
@@ -1377,6 +1420,7 @@ class __$AccountAlreadyLinkedCopyWithImpl<$Res>
   _AccountAlreadyLinked get _value => super._value as _AccountAlreadyLinked;
 }
 
+/// @nodoc
 class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
   const _$_AccountAlreadyLinked();
 
@@ -1512,12 +1556,14 @@ abstract class _AccountAlreadyLinked implements AuthFailure {
   const factory _AccountAlreadyLinked() = _$_AccountAlreadyLinked;
 }
 
+/// @nodoc
 abstract class _$InvalidCredentialCopyWith<$Res> {
   factory _$InvalidCredentialCopyWith(
           _InvalidCredential value, $Res Function(_InvalidCredential) then) =
       __$InvalidCredentialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InvalidCredentialCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
     implements _$InvalidCredentialCopyWith<$Res> {
@@ -1529,6 +1575,7 @@ class __$InvalidCredentialCopyWithImpl<$Res>
   _InvalidCredential get _value => super._value as _InvalidCredential;
 }
 
+/// @nodoc
 class _$_InvalidCredential implements _InvalidCredential {
   const _$_InvalidCredential();
 
@@ -1664,12 +1711,14 @@ abstract class _InvalidCredential implements AuthFailure {
   const factory _InvalidCredential() = _$_InvalidCredential;
 }
 
+/// @nodoc
 abstract class _$UserNotUsingEmailProviderCopyWith<$Res> {
   factory _$UserNotUsingEmailProviderCopyWith(_UserNotUsingEmailProvider value,
           $Res Function(_UserNotUsingEmailProvider) then) =
       __$UserNotUsingEmailProviderCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$UserNotUsingEmailProviderCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
     implements _$UserNotUsingEmailProviderCopyWith<$Res> {
@@ -1682,6 +1731,7 @@ class __$UserNotUsingEmailProviderCopyWithImpl<$Res>
       super._value as _UserNotUsingEmailProvider;
 }
 
+/// @nodoc
 class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
   const _$_UserNotUsingEmailProvider();
 
@@ -1817,6 +1867,7 @@ abstract class _UserNotUsingEmailProvider implements AuthFailure {
   const factory _UserNotUsingEmailProvider() = _$_UserNotUsingEmailProvider;
 }
 
+/// @nodoc
 abstract class _$InvalidEmailAndPasswordCombinationCopyWith<$Res> {
   factory _$InvalidEmailAndPasswordCombinationCopyWith(
           _InvalidEmailAndPasswordCombination value,
@@ -1824,6 +1875,7 @@ abstract class _$InvalidEmailAndPasswordCombinationCopyWith<$Res> {
       __$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
     implements _$InvalidEmailAndPasswordCombinationCopyWith<$Res> {
@@ -1837,6 +1889,7 @@ class __$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>
       super._value as _InvalidEmailAndPasswordCombination;
 }
 
+/// @nodoc
 class _$_InvalidEmailAndPasswordCombination
     implements _InvalidEmailAndPasswordCombination {
   const _$_InvalidEmailAndPasswordCombination();

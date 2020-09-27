@@ -15,49 +15,21 @@ import 'package:Sepetim/presentation/splash/splash_page.dart';
 import 'package:auto_route/auto_route_annotations.dart';
 import 'package:Sepetim/presentation/sign_in/verify_anonymous_login_page.dart';
 
-@MaterialAutoRouter(generateNavigationHelperExtension: true)
-class $Router {
-  @MaterialRoute(initial: true)
-  SplashPage splashPage;
-  @MaterialRoute()
-  SignInPage signInPage;
-
-  @MaterialRoute()
-  VerifyAnonymousLoginPage verifyAnonymousLoginPage;
-
-  @MaterialRoute()
-  ApplicationContentPage applicationContentPage;
-
-  @MaterialRoute()
-  ItemCategoryForm itemCategoryForm;
-
-  @MaterialRoute()
-  ItemGroupOverviewPage itemGroupOverviewPage;
-
-  @MaterialRoute()
-  ItemGroupForm itemGroupForm;
-
-  @MaterialRoute()
-  ItemOverviewPage itemOverviewPage;
-
-  @MaterialRoute()
-  ItemForm itemForm;
-
-  @MaterialRoute()
-  ItemPage itemPage;
-
-  @MaterialRoute()
-  EditDescriptionPage editDescriptionPage;
-
-  @MaterialRoute()
-  LinkForm linkForm;
-
-  @MaterialRoute()
-  ResetPasswordPage resetPasswordPage;
-
-  @MaterialRoute()
-  LinkAccountPage linkAccountPage;
-
-  @MaterialRoute()
-  ThemesPage themesPage;
-}
+@MaterialAutoRouter(routes: <AutoRoute>[
+  MaterialRoute(page: SplashPage, initial: true),
+  MaterialRoute(page: SignInPage),
+  MaterialRoute(page: VerifyAnonymousLoginPage),
+  MaterialRoute(page: ApplicationContentPage),
+  MaterialRoute(page: ItemCategoryForm),
+  MaterialRoute(page: ItemGroupOverviewPage),
+  MaterialRoute(page: ItemGroupForm),
+  MaterialRoute(page: ItemOverviewPage),
+  MaterialRoute(page: ItemForm),
+  MaterialRoute(page: ItemPage),
+  MaterialRoute(page: EditDescriptionPage),
+  MaterialRoute(page: LinkForm),
+  MaterialRoute(page: ResetPasswordPage),
+  MaterialRoute(page: LinkAccountPage),
+  MaterialRoute(page: ThemesPage),
+], generateNavigationHelperExtension: true)
+class $Router {}

@@ -15,9 +15,8 @@ part 'item_category_selector_bloc.freezed.dart';
 @injectable
 class ItemCategorySelectorBloc
     extends Bloc<ItemCategorySelectorEvent, ItemCategorySelectorState> {
-  @override
-  ItemCategorySelectorState get initialState =>
-      ItemCategorySelectorState.initial();
+  ItemCategorySelectorBloc() : super(ItemCategorySelectorState.initial());
+
   @override
   Stream<ItemCategorySelectorState> mapEventToState(
     ItemCategorySelectorEvent event,

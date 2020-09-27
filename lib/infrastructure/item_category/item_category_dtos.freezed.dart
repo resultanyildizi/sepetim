@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_category_dtos.dart';
 
@@ -12,9 +12,11 @@ ItemCategoryDto _$ItemCategoryDtoFromJson(Map<String, dynamic> json) {
   return _ItemCategoryDto.fromJson(json);
 }
 
+/// @nodoc
 class _$ItemCategoryDtoTearOff {
   const _$ItemCategoryDtoTearOff();
 
+// ignore: unused_element
   _ItemCategoryDto call(
       {@JsonKey(ignore: true) String uid,
       @required String title,
@@ -31,11 +33,18 @@ class _$ItemCategoryDtoTearOff {
       creationTime: creationTime,
     );
   }
+
+// ignore: unused_element
+  ItemCategoryDto fromJson(Map<String, Object> json) {
+    return ItemCategoryDto.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemCategoryDto = _$ItemCategoryDtoTearOff();
 
+/// @nodoc
 mixin _$ItemCategoryDto {
   @JsonKey(ignore: true)
   String get uid;
@@ -50,6 +59,7 @@ mixin _$ItemCategoryDto {
   $ItemCategoryDtoCopyWith<ItemCategoryDto> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemCategoryDtoCopyWith<$Res> {
   factory $ItemCategoryDtoCopyWith(
           ItemCategoryDto value, $Res Function(ItemCategoryDto) then) =
@@ -63,6 +73,7 @@ abstract class $ItemCategoryDtoCopyWith<$Res> {
       int creationTime});
 }
 
+/// @nodoc
 class _$ItemCategoryDtoCopyWithImpl<$Res>
     implements $ItemCategoryDtoCopyWith<$Res> {
   _$ItemCategoryDtoCopyWithImpl(this._value, this._then);
@@ -96,6 +107,7 @@ class _$ItemCategoryDtoCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$ItemCategoryDtoCopyWith<$Res>
     implements $ItemCategoryDtoCopyWith<$Res> {
   factory _$ItemCategoryDtoCopyWith(
@@ -111,6 +123,7 @@ abstract class _$ItemCategoryDtoCopyWith<$Res>
       int creationTime});
 }
 
+/// @nodoc
 class __$ItemCategoryDtoCopyWithImpl<$Res>
     extends _$ItemCategoryDtoCopyWithImpl<$Res>
     implements _$ItemCategoryDtoCopyWith<$Res> {
@@ -147,6 +160,8 @@ class __$ItemCategoryDtoCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_ItemCategoryDto extends _ItemCategoryDto {
   const _$_ItemCategoryDto(
       {@JsonKey(ignore: true) this.uid,

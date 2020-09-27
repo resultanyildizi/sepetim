@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'sign_in_type.dart';
 
@@ -9,25 +9,31 @@ part of 'sign_in_type.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$SignInTypeTearOff {
   const _$SignInTypeTearOff();
 
+// ignore: unused_element
   SignedInWithGoogle signedInWithGoogle() {
     return const SignedInWithGoogle();
   }
 
+// ignore: unused_element
   SignedInWithEmailAndPassword signedInWithEmailAndPassword() {
     return const SignedInWithEmailAndPassword();
   }
 
+// ignore: unused_element
   SignedInAnonymously signedInAnonymously() {
     return const SignedInAnonymously();
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $SignInType = _$SignInTypeTearOff();
 
+/// @nodoc
 mixin _$SignInType {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -58,12 +64,14 @@ mixin _$SignInType {
   });
 }
 
+/// @nodoc
 abstract class $SignInTypeCopyWith<$Res> {
   factory $SignInTypeCopyWith(
           SignInType value, $Res Function(SignInType) then) =
       _$SignInTypeCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$SignInTypeCopyWithImpl<$Res> implements $SignInTypeCopyWith<$Res> {
   _$SignInTypeCopyWithImpl(this._value, this._then);
 
@@ -72,12 +80,14 @@ class _$SignInTypeCopyWithImpl<$Res> implements $SignInTypeCopyWith<$Res> {
   final $Res Function(SignInType) _then;
 }
 
+/// @nodoc
 abstract class $SignedInWithGoogleCopyWith<$Res> {
   factory $SignedInWithGoogleCopyWith(
           SignedInWithGoogle value, $Res Function(SignedInWithGoogle) then) =
       _$SignedInWithGoogleCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$SignedInWithGoogleCopyWithImpl<$Res>
     extends _$SignInTypeCopyWithImpl<$Res>
     implements $SignedInWithGoogleCopyWith<$Res> {
@@ -89,6 +99,7 @@ class _$SignedInWithGoogleCopyWithImpl<$Res>
   SignedInWithGoogle get _value => super._value as SignedInWithGoogle;
 }
 
+/// @nodoc
 class _$SignedInWithGoogle implements SignedInWithGoogle {
   const _$SignedInWithGoogle();
 
@@ -167,6 +178,7 @@ abstract class SignedInWithGoogle implements SignInType {
   const factory SignedInWithGoogle() = _$SignedInWithGoogle;
 }
 
+/// @nodoc
 abstract class $SignedInWithEmailAndPasswordCopyWith<$Res> {
   factory $SignedInWithEmailAndPasswordCopyWith(
           SignedInWithEmailAndPassword value,
@@ -174,6 +186,7 @@ abstract class $SignedInWithEmailAndPasswordCopyWith<$Res> {
       _$SignedInWithEmailAndPasswordCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$SignedInWithEmailAndPasswordCopyWithImpl<$Res>
     extends _$SignInTypeCopyWithImpl<$Res>
     implements $SignedInWithEmailAndPasswordCopyWith<$Res> {
@@ -187,6 +200,7 @@ class _$SignedInWithEmailAndPasswordCopyWithImpl<$Res>
       super._value as SignedInWithEmailAndPassword;
 }
 
+/// @nodoc
 class _$SignedInWithEmailAndPassword implements SignedInWithEmailAndPassword {
   const _$SignedInWithEmailAndPassword();
 
@@ -265,12 +279,14 @@ abstract class SignedInWithEmailAndPassword implements SignInType {
   const factory SignedInWithEmailAndPassword() = _$SignedInWithEmailAndPassword;
 }
 
+/// @nodoc
 abstract class $SignedInAnonymouslyCopyWith<$Res> {
   factory $SignedInAnonymouslyCopyWith(
           SignedInAnonymously value, $Res Function(SignedInAnonymously) then) =
       _$SignedInAnonymouslyCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$SignedInAnonymouslyCopyWithImpl<$Res>
     extends _$SignInTypeCopyWithImpl<$Res>
     implements $SignedInAnonymouslyCopyWith<$Res> {
@@ -282,6 +298,7 @@ class _$SignedInAnonymouslyCopyWithImpl<$Res>
   SignedInAnonymously get _value => super._value as SignedInAnonymously;
 }
 
+/// @nodoc
 class _$SignedInAnonymously implements SignedInAnonymously {
   const _$SignedInAnonymously();
 

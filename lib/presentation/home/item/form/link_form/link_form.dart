@@ -62,7 +62,7 @@ class _LinkFormState extends State<LinkForm> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ItemFormBloc, ItemFormState>(
-      bloc: widget.formBloc,
+      cubit: widget.formBloc,
       listener: (context, state) {
         state.itemFailureOrSuccessOption.fold(() => {}, (either) {
           either.fold(

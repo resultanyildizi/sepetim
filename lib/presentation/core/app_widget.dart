@@ -19,7 +19,7 @@ class AppWidget extends StatelessWidget {
       providers: [
         BlocProvider(
             create: (context) =>
-                getIt<ThemeBloc>()..add(const ThemeEvent.themRead())),
+                getIt<ThemeBloc>()..add(const ThemeEvent.themeRead())),
         BlocProvider(
           create: (context) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),

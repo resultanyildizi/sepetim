@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'item_dtos.dart';
 
@@ -12,9 +12,11 @@ ItemDto _$ItemDtoFromJson(Map<String, dynamic> json) {
   return _ItemDto.fromJson(json);
 }
 
+/// @nodoc
 class _$ItemDtoTearOff {
   const _$ItemDtoTearOff();
 
+// ignore: unused_element
   _ItemDto call(
       {@JsonKey(ignore: true) String uid,
       @required String title,
@@ -39,11 +41,18 @@ class _$ItemDtoTearOff {
       lastEditTime: lastEditTime,
     );
   }
+
+// ignore: unused_element
+  ItemDto fromJson(Map<String, Object> json) {
+    return ItemDto.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ItemDto = _$ItemDtoTearOff();
 
+/// @nodoc
 mixin _$ItemDto {
   @JsonKey(ignore: true)
   String get uid;
@@ -62,6 +71,7 @@ mixin _$ItemDto {
   $ItemDtoCopyWith<ItemDto> get copyWith;
 }
 
+/// @nodoc
 abstract class $ItemDtoCopyWith<$Res> {
   factory $ItemDtoCopyWith(ItemDto value, $Res Function(ItemDto) then) =
       _$ItemDtoCopyWithImpl<$Res>;
@@ -78,6 +88,7 @@ abstract class $ItemDtoCopyWith<$Res> {
       int lastEditTime});
 }
 
+/// @nodoc
 class _$ItemDtoCopyWithImpl<$Res> implements $ItemDtoCopyWith<$Res> {
   _$ItemDtoCopyWithImpl(this._value, this._then);
 
@@ -123,6 +134,7 @@ class _$ItemDtoCopyWithImpl<$Res> implements $ItemDtoCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$ItemDtoCopyWith<$Res> implements $ItemDtoCopyWith<$Res> {
   factory _$ItemDtoCopyWith(_ItemDto value, $Res Function(_ItemDto) then) =
       __$ItemDtoCopyWithImpl<$Res>;
@@ -140,6 +152,7 @@ abstract class _$ItemDtoCopyWith<$Res> implements $ItemDtoCopyWith<$Res> {
       int lastEditTime});
 }
 
+/// @nodoc
 class __$ItemDtoCopyWithImpl<$Res> extends _$ItemDtoCopyWithImpl<$Res>
     implements _$ItemDtoCopyWith<$Res> {
   __$ItemDtoCopyWithImpl(_ItemDto _value, $Res Function(_ItemDto) _then)
@@ -187,6 +200,8 @@ class __$ItemDtoCopyWithImpl<$Res> extends _$ItemDtoCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_ItemDto extends _ItemDto {
   const _$_ItemDto(
       {@JsonKey(ignore: true) this.uid,
@@ -344,9 +359,11 @@ LinkObjectDto _$LinkObjectDtoFromJson(Map<String, dynamic> json) {
   return _LinkObjectDto.fromJson(json);
 }
 
+/// @nodoc
 class _$LinkObjectDtoTearOff {
   const _$LinkObjectDtoTearOff();
 
+// ignore: unused_element
   _LinkObjectDto call(
       {@required String uid, @required String title, @required String link}) {
     return _LinkObjectDto(
@@ -355,11 +372,18 @@ class _$LinkObjectDtoTearOff {
       link: link,
     );
   }
+
+// ignore: unused_element
+  LinkObjectDto fromJson(Map<String, Object> json) {
+    return LinkObjectDto.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $LinkObjectDto = _$LinkObjectDtoTearOff();
 
+/// @nodoc
 mixin _$LinkObjectDto {
   String get uid;
   String get title;
@@ -369,6 +393,7 @@ mixin _$LinkObjectDto {
   $LinkObjectDtoCopyWith<LinkObjectDto> get copyWith;
 }
 
+/// @nodoc
 abstract class $LinkObjectDtoCopyWith<$Res> {
   factory $LinkObjectDtoCopyWith(
           LinkObjectDto value, $Res Function(LinkObjectDto) then) =
@@ -376,6 +401,7 @@ abstract class $LinkObjectDtoCopyWith<$Res> {
   $Res call({String uid, String title, String link});
 }
 
+/// @nodoc
 class _$LinkObjectDtoCopyWithImpl<$Res>
     implements $LinkObjectDtoCopyWith<$Res> {
   _$LinkObjectDtoCopyWithImpl(this._value, this._then);
@@ -398,6 +424,7 @@ class _$LinkObjectDtoCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$LinkObjectDtoCopyWith<$Res>
     implements $LinkObjectDtoCopyWith<$Res> {
   factory _$LinkObjectDtoCopyWith(
@@ -407,6 +434,7 @@ abstract class _$LinkObjectDtoCopyWith<$Res>
   $Res call({String uid, String title, String link});
 }
 
+/// @nodoc
 class __$LinkObjectDtoCopyWithImpl<$Res>
     extends _$LinkObjectDtoCopyWithImpl<$Res>
     implements _$LinkObjectDtoCopyWith<$Res> {
@@ -432,6 +460,8 @@ class __$LinkObjectDtoCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_LinkObjectDto extends _LinkObjectDto {
   const _$_LinkObjectDto(
       {@required this.uid, @required this.title, @required this.link})

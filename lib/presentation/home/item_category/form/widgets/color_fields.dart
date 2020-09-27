@@ -12,7 +12,7 @@ class ColorPickerField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ItemCategoryFormBloc, ItemCategoryFormState>(
-      condition: (p, c) => p.category.color != c.category.color,
+      buildWhen: (p, c) => p.category.color != c.category.color,
       builder: (context, state) {
         return Container(
           height: screenHeightByScalar(context,
