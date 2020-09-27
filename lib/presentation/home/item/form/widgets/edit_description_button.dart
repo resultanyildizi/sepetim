@@ -26,7 +26,6 @@ class EditDescriptionButton extends StatelessWidget {
                     .getOrCrash(),
               ),
             ),
-        color: sepetimLightGrey,
         child: Text(
           translate(context, 'edit_description'),
           style: didactGothicTextStyle(fontSize: 16.0, color: sepetimLightGrey),

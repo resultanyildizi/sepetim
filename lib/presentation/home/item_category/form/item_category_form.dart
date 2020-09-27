@@ -34,12 +34,8 @@ class ItemCategoryForm extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomPadding: false,
         appBar: AppBar(
-          title: Text(
-            'Sepetim',
-            style: robotoTextStyle(
-              bold: true,
-            ),
-          ),
+          title: Text('Sepetim',
+              style: Theme.of(context).appBarTheme.textTheme.headline1),
         ),
         body: BlocConsumer<ItemCategoryFormBloc, ItemCategoryFormState>(
           listener: (context, state) {
@@ -81,26 +77,29 @@ class ItemCategoryForm extends StatelessWidget {
                   children: [
                     Text(
                       translate(context, 'add_a_category'),
-                      style: robotoTextStyle(bold: true, fontSize: 20.0),
+                      style: Theme.of(context).textTheme.headline2,
                     ),
                     const SizedBox(height: 10),
-                    Text(
-                      translate(context, 'title'),
-                      style: didactGothicTextStyle(fontSize: 18.0),
-                    ),
+                    Text(translate(context, 'title'),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(fontSize: 18.0)),
                     const TitleTextField(),
                     const SizedBox(height: 10),
-                    Text(
-                      translate(context, 'colors'),
-                      style: didactGothicTextStyle(fontSize: 18.0),
-                    ),
+                    Text(translate(context, 'colors'),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(fontSize: 18.0)),
                     const SizedBox(height: 10),
                     const ColorPickerField(),
                     const SizedBox(height: 20),
-                    Text(
-                      translate(context, 'cover_picture'),
-                      style: didactGothicTextStyle(fontSize: 18.0),
-                    ),
+                    Text(translate(context, 'cover_picture'),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(fontSize: 18.0)),
                     const CoverPictureField(),
                     Expanded(
                       child: Column(

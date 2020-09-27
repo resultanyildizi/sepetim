@@ -58,7 +58,10 @@ class ItemPage extends StatelessWidget {
         },
         builder: (context, state) => Scaffold(
           appBar: AppBar(
-            title: Text('Sepetim', style: robotoTextStyle(bold: true)),
+            title: Text(
+              'Sepetim',
+              style: Theme.of(context).appBarTheme.textTheme.headline1,
+            ),
             actions: <Widget>[
               iconButtons(context, state),
             ],
@@ -71,7 +74,7 @@ class ItemPage extends StatelessWidget {
                   padding:
                       const EdgeInsets.only(top: 16.0, left: 22.0, right: 22.0),
                   child: Text(state.item.title.getOrCrash(),
-                      style: robotoTextStyle(bold: true, fontSize: 24.0)),
+                      style: Theme.of(context).textTheme.headline1),
                 ),
                 const SizedBox(
                   height: 10.0,
@@ -117,7 +120,7 @@ class ItemPage extends StatelessWidget {
       children: <Widget>[
         const DividerDefault(),
         Text(translate(context, 'description'),
-            style: robotoTextStyle(bold: true, fontSize: 24.0)),
+            style: Theme.of(context).textTheme.headline1),
         const SizedBox(
           height: 10.0,
         ),
@@ -228,11 +231,17 @@ class ItemPage extends StatelessWidget {
             ),
             RichText(
               text: TextSpan(
-                style: didactGothicTextStyle(fontSize: 15.0),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontSize: 14.0),
                 children: [
                   TextSpan(
                     text: '${translate(context, 'category')}: ',
-                    style: didactGothicTextStyle(bold: true),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1
+                        .copyWith(fontSize: 14.0, fontWeight: FontWeight.bold),
                   ),
                   TextSpan(
                     text: category.title.getOrCrash(),
@@ -242,11 +251,17 @@ class ItemPage extends StatelessWidget {
             ),
             RichText(
               text: TextSpan(
-                style: didactGothicTextStyle(fontSize: 15.0),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontSize: 14.0),
                 children: [
                   TextSpan(
                     text: '${translate(context, 'group')}: ',
-                    style: didactGothicTextStyle(bold: true),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1
+                        .copyWith(fontSize: 14.0, fontWeight: FontWeight.bold),
                   ),
                   TextSpan(
                     text: group.title.getOrCrash(),
@@ -256,11 +271,17 @@ class ItemPage extends StatelessWidget {
             ),
             RichText(
               text: TextSpan(
-                style: didactGothicTextStyle(fontSize: 15.0),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontSize: 14.0),
                 children: [
                   TextSpan(
                     text: '${translate(context, 'price')}: ',
-                    style: didactGothicTextStyle(bold: true),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1
+                        .copyWith(fontSize: 14.0, fontWeight: FontWeight.bold),
                   ),
                   TextSpan(
                     text: '${state.item.price.getOrCrash().toString()}₺',
@@ -273,11 +294,15 @@ class ItemPage extends StatelessWidget {
                 alignment: Alignment.bottomLeft,
                 child: RichText(
                   text: TextSpan(
-                    style: didactGothicTextStyle(fontSize: 15.0),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1
+                        .copyWith(fontSize: 14.0),
                     children: [
                       TextSpan(
                         text: '${translate(context, 'last_edited')}: ',
-                        style: didactGothicTextStyle(bold: true),
+                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                            fontSize: 14.0, fontWeight: FontWeight.bold),
                       ),
                       TextSpan(
                         text:

@@ -1,11 +1,11 @@
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:Sepetim/presentation/core/widgets/logo.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Sepetim/predefined_variables/colors.dart' as app_colors;
+import 'package:Sepetim/predefined_variables/images.dart' as app_images;
 
 class SplashPage extends StatelessWidget {
   @override
@@ -21,11 +21,16 @@ class SplashPage extends StatelessWidget {
         );
       },
       child: Scaffold(
-        backgroundColor: app_colors.sepetimYellow,
-        body: LogoCenter(
-          height: screenWidthByScalar(context, 0.3),
-        ),
-      ),
+          backgroundColor: app_colors.sepetimYellow,
+          body: Padding(
+            padding: const EdgeInsets.only(right: 32.0),
+            child: Center(
+              child: Container(
+                height: screenWidthByScalar(context, 0.3),
+                child: app_images.logoGrey,
+              ),
+            ),
+          )),
     );
   }
 }

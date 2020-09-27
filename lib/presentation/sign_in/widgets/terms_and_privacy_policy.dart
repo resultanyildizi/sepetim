@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 RichText termsAndPrivacyPolicyWidgetEn(BuildContext context) {
   return RichText(
     text: TextSpan(
-      style: didactGothicTextStyle(
-        fontSize: 14.0,
-      ),
+      style: Theme.of(context).textTheme.subtitle1,
       children: [
         TextSpan(
           text: translate(context, 'by_signing_up'),
@@ -41,9 +39,7 @@ RichText termsAndPrivacyPolicyWidgetEn(BuildContext context) {
 RichText termsAndPrivacyPolicyWidgetTr(BuildContext context) {
   return RichText(
     text: TextSpan(
-      style: didactGothicTextStyle(
-        fontSize: 14.0,
-      ),
+      style: Theme.of(context).textTheme.subtitle1,
       children: [
         TextSpan(
           text: translate(context, 'by_signing_up'),

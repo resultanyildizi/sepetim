@@ -47,7 +47,7 @@ class ItemGroupCard extends StatelessWidget {
                 height: 160,
                 margin: const EdgeInsets.fromLTRB(5, 0, 5, 24),
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).scaffoldBackgroundColor,
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(
@@ -63,11 +63,8 @@ class ItemGroupCard extends StatelessWidget {
                     children: <Widget>[
                       Row(
                         children: <Widget>[
-                          Text(
-                            group.title.fittedString(maxLength: 22),
-                            style:
-                                didactGothicTextStyle(bold: true, fontSize: 20),
-                          ),
+                          Text(group.title.fittedString(maxLength: 22),
+                              style: Theme.of(context).textTheme.headline2),
                           Expanded(
                             child: ItemGroupActionButtons(
                               categoryId: category.uid,
@@ -129,17 +126,20 @@ class ItemGroupCard extends StatelessWidget {
             ),
             Text(
                 '${translate(context, 'items_count')}: ${state.items.size} - ${translate(context, 'total_price')}: ${totalItemsPrice(state.items)}₺',
-                style: robotoTextStyle(color: Colors.grey, fontSize: 12)),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText2
+                    .copyWith(fontSize: 12.0))
           ],
         );
       },
       // ignore: prefer_const_literals_to_create_immutables
       loading: (_) => Column(children: <Widget>[
         const Spacer(),
-        const LinearProgressIndicator(
-          backgroundColor: Colors.white,
+        LinearProgressIndicator(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           minHeight: 2,
-          valueColor: AlwaysStoppedAnimation(sepetimYellow),
+          valueColor: const AlwaysStoppedAnimation(sepetimYellow),
         ),
       ]),
       loadFailure: (_) => Center(

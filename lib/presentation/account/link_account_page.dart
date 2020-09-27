@@ -29,7 +29,7 @@ class LinkAccountPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             'Sepetim',
-            style: robotoTextStyle(bold: true),
+            style: Theme.of(context).appBarTheme.textTheme.headline1,
           ),
         ),
         body: DefaultPadding(
@@ -38,7 +38,7 @@ class LinkAccountPage extends StatelessWidget {
             children: <Widget>[
               Text(
                 translate(context, 'sign_up'),
-                style: robotoTextStyle(fontSize: 20.0, bold: true),
+                style: Theme.of(context).textTheme.headline2,
               ),
               const SizedBox(
                 height: 4.0,

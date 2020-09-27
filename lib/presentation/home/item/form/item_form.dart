@@ -47,7 +47,7 @@ class ItemForm extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             'Sepetim',
-            style: robotoTextStyle(bold: true),
+            style: Theme.of(context).appBarTheme.textTheme.headline1,
           ),
         ),
         body: BlocConsumer<ItemFormBloc, ItemFormState>(
@@ -87,8 +87,7 @@ class ItemForm extends StatelessWidget {
                                 top: 16.0, left: 22.0, right: 22.0),
                             child: Text(
                               translate(context, 'add_an_item'),
-                              style:
-                                  robotoTextStyle(bold: true, fontSize: 20.0),
+                              style: Theme.of(context).textTheme.headline2,
                             ),
                           ),
                           const SizedBox(height: 10),
@@ -97,7 +96,10 @@ class ItemForm extends StatelessWidget {
                                 const EdgeInsets.symmetric(horizontal: 22.0),
                             child: Text(
                               translate(context, 'title'),
-                              style: didactGothicTextStyle(fontSize: 18.0),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  .copyWith(fontSize: 18.0),
                             ),
                           ),
                           const Padding(
@@ -110,7 +112,10 @@ class ItemForm extends StatelessWidget {
                                 const EdgeInsets.symmetric(horizontal: 22.0),
                             child: Text(
                               translate(context, 'price'),
-                              style: didactGothicTextStyle(fontSize: 18.0),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  .copyWith(fontSize: 18.0),
                             ),
                           ),
                           const Padding(
@@ -123,7 +128,10 @@ class ItemForm extends StatelessWidget {
                                 const EdgeInsets.symmetric(horizontal: 22.0),
                             child: Text(
                               translate(context, 'description'),
-                              style: didactGothicTextStyle(fontSize: 18.0),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  .copyWith(fontSize: 18.0),
                             ),
                           ),
                           const SizedBox(height: 10),
@@ -138,7 +146,10 @@ class ItemForm extends StatelessWidget {
                                 const EdgeInsets.symmetric(horizontal: 22.0),
                             child: Text(
                               translate(context, 'pictures'),
-                              style: didactGothicTextStyle(fontSize: 18.0),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  .copyWith(fontSize: 18.0),
                             ),
                           ),
                           const Center(child: PictureFields()),

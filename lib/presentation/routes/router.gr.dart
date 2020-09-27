@@ -29,6 +29,7 @@ import 'package:Sepetim/presentation/home/item/form/link_form/link_form.dart';
 import 'package:Sepetim/application/item/actor/item_actor_bloc.dart';
 import 'package:Sepetim/presentation/sign_in/reset_password_page.dart';
 import 'package:Sepetim/presentation/account/link_account_page.dart';
+import 'package:Sepetim/presentation/settings/themes/themes_page.dart';
 
 abstract class Routes {
   static const splashPage = '/';
@@ -45,6 +46,7 @@ abstract class Routes {
   static const linkForm = '/link-form';
   static const resetPasswordPage = '/reset-password-page';
   static const linkAccountPage = '/link-account-page';
+  static const themesPage = '/themes-page';
   static const all = {
     splashPage,
     signInPage,
@@ -60,6 +62,7 @@ abstract class Routes {
     linkForm,
     resetPasswordPage,
     linkAccountPage,
+    themesPage,
   };
 }
 
@@ -225,6 +228,11 @@ class Router extends RouterBase {
             args as LinkAccountPageArguments ?? LinkAccountPageArguments();
         return MaterialPageRoute<dynamic>(
           builder: (context) => LinkAccountPage(key: typedArgs.key),
+          settings: settings,
+        );
+      case Routes.themesPage:
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => ThemesPage(),
           settings: settings,
         );
       default:
@@ -487,4 +495,6 @@ extension RouterNavigationHelperMethods on ExtendedNavigatorState {
         Routes.linkAccountPage,
         arguments: LinkAccountPageArguments(key: key),
       );
+
+  Future pushThemesPage() => pushNamed(Routes.themesPage);
 }

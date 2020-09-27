@@ -142,15 +142,21 @@ class ItemCard extends StatelessWidget {
             ),
             Text(
               item.title.fittedString(maxLength: 14),
-              style: robotoTextStyle(bold: true, fontSize: 16.0),
+              style: Theme.of(context).textTheme.headline4,
             ),
             Text(
               '${category.title.getOrCrash()}, ${group.title.getOrCrash()}',
-              style: didactGothicTextStyle(),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1
+                  .copyWith(fontSize: 14.0),
             ),
             Text(
               '${translate(context, 'price')}: ${item.price.fittedPrice(context)} ₺',
-              style: didactGothicTextStyle(),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1
+                  .copyWith(fontSize: 14.0),
             ),
             Expanded(
               child: Row(
@@ -158,7 +164,10 @@ class ItemCard extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     '${translate(context, 'last_edited')}:\n${item.lastEditTime.toString().substring(0, 16)}',
-                    style: didactGothicTextStyle(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1
+                        .copyWith(fontSize: 14.0),
                   ),
                 ],
               ),

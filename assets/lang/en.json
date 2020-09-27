@@ -139,5 +139,10 @@
   "account_already_exists_title": "Account already in use",
   "account_already_exists_message": "You can't link your anonymous account with an account which is already in use.",
   "invalid_credential_title": "Invalid credential",
-  "invalid_credential_message": "The credentials used to log in cannot be used to perform the requested action. (Removing the account from your phone and signing back in can help.)"
+  "invalid_credential_message": "The credentials used to log in cannot be used to perform the requested action. (Removing the account from your phone and signing back in can help.)",
+  "light_theme": "Light theme",
+  "dark_theme": "Dark theme",
+  "themes": "Themes",
+  "terms_of_service_btn": "Terms of Service",
+  "privacy_policy_btn": "Privacy Policy"
 }

@@ -79,13 +79,14 @@ class _LinkFormState extends State<LinkForm> {
             bool willPop = false;
             if (isItemChanged) {
               actionPopup(context,
-                  backgroundColor: Colors.white,
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                   title: Text(
                     translate(context, 'discard_changes_title'),
-                    style: didactGothicTextStyle(),
+                    style: Theme.of(context).textTheme.headline3,
                   ),
                   content: Text(
                     translate(context, 'discard_changes_message'),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                   actions: [
                     RoundedButton(
@@ -115,7 +116,7 @@ class _LinkFormState extends State<LinkForm> {
             appBar: AppBar(
               title: Text(
                 'Sepetim',
-                style: robotoTextStyle(bold: true),
+                style: Theme.of(context).appBarTheme.textTheme.headline1,
               ),
             ),
             body: DefaultPadding(
@@ -126,14 +127,17 @@ class _LinkFormState extends State<LinkForm> {
                   children: <Widget>[
                     Text(
                       translate(context, 'add_link'),
-                      style: robotoTextStyle(bold: true, fontSize: 20.0),
+                      style: Theme.of(context).textTheme.headline2,
                     ),
                     const SizedBox(
                       height: 6.0,
                     ),
                     Text(
                       translate(context, 'title'),
-                      style: didactGothicTextStyle(fontSize: 18.0),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1
+                          .copyWith(fontSize: 18.0),
                     ),
                     LinkTitleTextField(
                       textEditingController: titleTextEditingController,
@@ -141,7 +145,10 @@ class _LinkFormState extends State<LinkForm> {
                     ),
                     Text(
                       translate(context, 'url'),
-                      style: didactGothicTextStyle(fontSize: 18.0),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1
+                          .copyWith(fontSize: 18.0),
                     ),
                     LinkUrlTextField(
                       textEdiginController: urlTextEditingController,
@@ -163,7 +170,7 @@ class _LinkFormState extends State<LinkForm> {
                     ),
                     Text(
                       translate(context, 'links'),
-                      style: robotoTextStyle(bold: true, fontSize: 20.0),
+                      style: Theme.of(context).textTheme.headline2,
                     ),
                     const SizedBox(
                       height: 10.0,
@@ -184,23 +191,27 @@ class _LinkFormState extends State<LinkForm> {
                               link.link.getOrCrash().length <= 30
                                   ? link.link.getOrCrash()
                                   : '${link.link.getOrCrash().substring(0, 30)}...',
-                              style: didactGothicTextStyle(
-                                fontSize: 12,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  .copyWith(fontSize: 12.0),
                             ),
                             title: Text(
                               link.title.getOrCrash().length <= 20
                                   ? link.title.getOrCrash()
                                   : '${link.title.getOrCrash().substring(0, 20)}...',
-                              style: didactGothicTextStyle(
-                                fontSize: 18.0,
-                                bold: true,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  .copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.0,
+                                  ),
                             ),
                             trailing: IconButton(
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.content_copy,
-                                color: sepetimGrey,
+                                color: Theme.of(context).iconTheme.color,
                               ),
                               onPressed: () {
                                 Clipboard.setData(ClipboardData(

@@ -30,7 +30,7 @@ class TitleTextField extends StatelessWidget {
           controller: _textEditingController,
           cursorColor: sepetimGrey,
           textCapitalization: TextCapitalization.sentences,
-          style: Theme.of(context).textTheme.subtitle1,
+          style: Theme.of(context).textTheme.subtitle2,
           decoration: InputDecoration(
             labelText: translate(context, 'enter_a_title'),
             counterStyle: robotoTextStyle(),
@@ -79,7 +79,7 @@ class PriceTextField extends StatelessWidget {
           keyboardType: TextInputType.number,
           controller: _textEditingController,
           cursorColor: sepetimGrey,
-          style: Theme.of(context).textTheme.subtitle1,
+          style: Theme.of(context).textTheme.subtitle2,
           decoration: InputDecoration(
             labelText: translate(context, 'enter_a_price'),
           ),

@@ -45,7 +45,7 @@ class ItemCategoryOverviewPage extends StatelessWidget {
               appBar: AppBar(
                 title: Text(
                   'Sepetim',
-                  style: robotoTextStyle(bold: true),
+                  style: Theme.of(context).appBarTheme.textTheme.headline1,
                 ),
               ),
               body: DefaultPadding(
@@ -60,7 +60,7 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                     ),
                     Text(
                       translate(context, 'categories'),
-                      style: robotoTextStyle(bold: true, fontSize: 24.0),
+                      style: Theme.of(context).textTheme.headline1,
                     ),
                     Expanded(
                       child: Center(child: Container()),
@@ -78,7 +78,7 @@ class ItemCategoryOverviewPage extends StatelessWidget {
               appBar: AppBar(
                 title: Text(
                   'Sepetim',
-                  style: robotoTextStyle(bold: true),
+                  style: Theme.of(context).appBarTheme.textTheme.headline1,
                 ),
               ),
               body: DefaultPadding(
@@ -93,7 +93,7 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                     ),
                     Text(
                       translate(context, 'categories'),
-                      style: robotoTextStyle(bold: true, fontSize: 24.0),
+                      style: Theme.of(context).textTheme.headline1,
                     ),
                     const Expanded(
                       child: Center(
@@ -143,7 +143,7 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                   appBar: AppBar(
                     title: Text(
                       'Sepetim',
-                      style: robotoTextStyle(bold: true),
+                      style: Theme.of(context).appBarTheme.textTheme.headline1,
                     ),
                   ),
                   body: DefaultPadding(
@@ -158,7 +158,7 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                         ),
                         Text(
                           translate(context, 'categories'),
-                          style: robotoTextStyle(bold: true, fontSize: 24.0),
+                          style: Theme.of(context).textTheme.headline1,
                         ),
                         const SizedBox(
                           height: 8.0,
@@ -197,16 +197,18 @@ class ItemCategoryOverviewPage extends StatelessWidget {
             },
             loadFailure: (_) => Scaffold(
               appBar: AppBar(
-                  title: Text(
-                'Sepetim',
-                style: robotoTextStyle(bold: true),
-              )),
+                title: Text(
+                  'Sepetim',
+                  style: Theme.of(context).appBarTheme.textTheme.headline1,
+                ),
+              ),
               body: DefaultPadding(
                 child: Center(
                   child: Container(
                     width: screenWidthByScalar(context, 0.8),
                     child: Text(
                       translate(context, 'please_report'),
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
                 ),

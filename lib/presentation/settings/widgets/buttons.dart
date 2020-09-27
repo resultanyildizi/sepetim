@@ -1,78 +1,69 @@
-import 'package:Sepetim/predefined_variables/text_styles.dart';
+import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/buttons.dart';
+import 'package:Sepetim/presentation/routes/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-Widget contactUsButton({@required Function() onPressed}) {
+Widget contactUsButton(
+  BuildContext context, {
+  @required Function() onPressed,
+}) {
   return FlatRectangleButton(
     onPressed: onPressed,
-    color: Colors.grey,
     child: Text(
-      'Contact us',
-      style: didactGothicTextStyle(
-        fontSize: 16.0,
-        bold: true,
-        color: Colors.grey,
-      ),
+      translate(context, 'contact_us'),
+      style: Theme.of(context).textTheme.bodyText2,
     ),
   );
 }
 
-Widget termsOfServiceButton({@required Function() onPressed}) {
+Widget termsOfServiceButton(
+  BuildContext context, {
+  @required Function() onPressed,
+}) {
   return FlatRectangleButton(
     onPressed: onPressed,
-    color: Colors.grey,
     child: Text(
-      'Terms of Service',
-      style: didactGothicTextStyle(
-        fontSize: 16.0,
-        bold: true,
-        color: Colors.grey,
-      ),
+      translate(context, 'terms_of_service_btn'),
+      style: Theme.of(context).textTheme.bodyText2,
     ),
   );
 }
 
-Widget privacyPolicyButton({@required Function() onPressed}) {
+Widget privacyPolicyButton(
+  BuildContext context, {
+  @required Function() onPressed,
+}) {
   return FlatRectangleButton(
     onPressed: onPressed,
-    color: Colors.grey,
     child: Text(
-      'Privacy Policy',
-      style: didactGothicTextStyle(
-        fontSize: 16.0,
-        bold: true,
-        color: Colors.grey,
-      ),
+      translate(context, 'privacy_policy_btn'),
+      style: Theme.of(context).textTheme.bodyText2,
     ),
   );
 }
 
-Widget themesButton({@required Function() onPressed}) {
+Widget themesButton(
+  BuildContext context,
+) {
   return FlatRectangleButton(
-    onPressed: onPressed,
-    color: Colors.grey,
+    onPressed: () => ExtendedNavigator.of(context).pushNamed(Routes.themesPage),
     child: Text(
-      'Themes',
-      style: didactGothicTextStyle(
-        fontSize: 16.0,
-        bold: true,
-        color: Colors.grey,
-      ),
+      translate(context, 'themes'),
+      style: Theme.of(context).textTheme.bodyText2,
     ),
   );
 }
 
-Widget shareAppButton({@required Function() onPressed}) {
+Widget shareAppButton(
+  BuildContext context, {
+  @required Function() onPressed,
+}) {
   return FlatRectangleButton(
     onPressed: onPressed,
-    color: Colors.grey,
     child: Text(
-      'Share App',
-      style: didactGothicTextStyle(
-        fontSize: 16.0,
-        bold: true,
-        color: Colors.grey,
-      ),
+      translate(context, 'share_app'),
+      style: Theme.of(context).textTheme.bodyText2,
     ),
   );
 }

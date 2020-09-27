@@ -43,7 +43,7 @@ class ItemOverviewPage extends StatelessWidget {
             appBar: AppBar(
               title: Text(
                 'Sepetim',
-                style: robotoTextStyle(bold: true),
+                style: Theme.of(context).appBarTheme.textTheme.headline1,
               ),
             ),
             body: DefaultPadding(
@@ -58,18 +58,24 @@ class ItemOverviewPage extends StatelessWidget {
                   const SizedBox(height: 12.0),
                   Text(
                     '${translate(context, 'items')} - ${group.title.getOrCrash()}',
-                    style: robotoTextStyle(bold: true, fontSize: 24.0),
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
                         '${translate(context, 'items_count')}:...',
-                        style: robotoTextStyle(fontSize: 12.0),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(fontSize: 12.0),
                       ),
                       Text(
                         '${translate(context, 'total_price')}:...',
-                        style: robotoTextStyle(fontSize: 12.0),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(fontSize: 12.0),
                       ),
                     ],
                   ),
@@ -85,7 +91,7 @@ class ItemOverviewPage extends StatelessWidget {
             appBar: AppBar(
               title: Text(
                 'Sepetim',
-                style: robotoTextStyle(bold: true),
+                style: Theme.of(context).appBarTheme.textTheme.headline1,
               ),
             ),
             body: DefaultPadding(
@@ -101,18 +107,24 @@ class ItemOverviewPage extends StatelessWidget {
                   const SizedBox(height: 12.0),
                   Text(
                     '${translate(context, 'items')} - ${group.title.getOrCrash()}',
-                    style: robotoTextStyle(bold: true, fontSize: 24.0),
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
                         '${translate(context, 'items_count')}:...',
-                        style: robotoTextStyle(fontSize: 12.0),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(fontSize: 12.0),
                       ),
                       Text(
                         '${translate(context, 'total_price')}:...',
-                        style: robotoTextStyle(fontSize: 12.0),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(fontSize: 12.0),
                       ),
                     ],
                   ),
@@ -144,9 +156,7 @@ class ItemOverviewPage extends StatelessWidget {
                 appBar: AppBar(
                   title: Text(
                     'Sepetim',
-                    style: robotoTextStyle(
-                      bold: true,
-                    ),
+                    style: Theme.of(context).appBarTheme.textTheme.headline1,
                   ),
                 ),
                 body: Column(
@@ -165,18 +175,24 @@ class ItemOverviewPage extends StatelessWidget {
                           const SizedBox(height: 12.0),
                           Text(
                             '${translate(context, 'items')} - ${group.title.getOrCrash()}',
-                            style: robotoTextStyle(bold: true, fontSize: 24.0),
+                            style: Theme.of(context).textTheme.headline1,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Text(
                                 '${translate(context, 'items_count')}: ${state.items.size}',
-                                style: robotoTextStyle(fontSize: 12.0),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1
+                                    .copyWith(fontSize: 12.0),
                               ),
                               Text(
                                 '${translate(context, 'total_price')}: ${totalItemsPrice(state.items)}₺',
-                                style: robotoTextStyle(fontSize: 12.0),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1
+                                    .copyWith(fontSize: 12.0),
                               ),
                             ],
                           ),
@@ -218,7 +234,7 @@ class ItemOverviewPage extends StatelessWidget {
             appBar: AppBar(
               title: Text(
                 'Sepetim',
-                style: robotoTextStyle(bold: true),
+                style: Theme.of(context).appBarTheme.textTheme.headline1,
               ),
             ),
             body: DefaultPadding(
@@ -227,6 +243,7 @@ class ItemOverviewPage extends StatelessWidget {
                   width: screenWidthByScalar(context, 0.8),
                   child: Text(
                     translate(context, 'please_report'),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
               ),

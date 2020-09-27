@@ -7,13 +7,14 @@ import 'package:flutter/material.dart';
 Future networkExceptionPopup(BuildContext context) {
   return actionPopup(
     context,
-    backgroundColor: Colors.white,
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     title: Text(
       translate(context, 'server_error_title'),
-      style: robotoTextStyle(),
+      style: Theme.of(context).textTheme.headline3,
     ),
     content: Text(
       translate(context, 'server_error_message'),
+      style: Theme.of(context).textTheme.bodyText1,
     ),
     actions: <Widget>[
       RoundedButton(
@@ -30,14 +31,11 @@ Future networkExceptionPopup(BuildContext context) {
 Future serverErrorPopup(BuildContext context) {
   return actionPopup(
     context,
-    backgroundColor: Colors.white,
-    title: Text(
-      translate(context, 'unexpected_server_error_title'),
-      style: robotoTextStyle(),
-    ),
-    content: Text(
-      translate(context, 'unexpected_server_error_message'),
-    ),
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Text(translate(context, 'unexpected_server_error_title'),
+        style: Theme.of(context).textTheme.headline3),
+    content: Text(translate(context, 'unexpected_server_error_message'),
+        style: Theme.of(context).textTheme.bodyText1),
     actions: <Widget>[
       RoundedButton(
         width: screenWidthByScalar(context, 1.0),
@@ -53,14 +51,11 @@ Future serverErrorPopup(BuildContext context) {
 Future emailAlreadyInUsePopup(BuildContext context) {
   return actionPopup(
     context,
-    backgroundColor: Colors.white,
-    title: Text(
-      translate(context, 'email_already_in_use_title'),
-      style: robotoTextStyle(),
-    ),
-    content: Text(
-      translate(context, 'email_already_in_use_message'),
-    ),
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Text(translate(context, 'email_already_in_use_title'),
+        style: Theme.of(context).textTheme.headline3),
+    content: Text(translate(context, 'email_already_in_use_message'),
+        style: Theme.of(context).textTheme.bodyText1),
     actions: <Widget>[
       RoundedButton(
         width: screenWidthByScalar(context, 1.0),
@@ -76,14 +71,13 @@ Future emailAlreadyInUsePopup(BuildContext context) {
 Future invalidEmailAndPasswordCombinationPopup(BuildContext context) {
   return actionPopup(
     context,
-    backgroundColor: Colors.white,
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     title: Text(
-      translate(context, 'invalid_email_and_password_combination_title'),
-      style: robotoTextStyle(),
-    ),
+        translate(context, 'invalid_email_and_password_combination_title'),
+        style: Theme.of(context).textTheme.headline3),
     content: Text(
-      translate(context, 'invalid_email_and_password_combination_message'),
-    ),
+        translate(context, 'invalid_email_and_password_combination_message'),
+        style: Theme.of(context).textTheme.bodyText1),
     actions: <Widget>[
       RoundedButton(
         width: screenWidthByScalar(context, 1.0),
@@ -99,14 +93,11 @@ Future invalidEmailAndPasswordCombinationPopup(BuildContext context) {
 Future tooManyRequestsPopup(BuildContext context) {
   return actionPopup(
     context,
-    backgroundColor: Colors.white,
-    title: Text(
-      translate(context, 'too_many_requests_title'),
-      style: robotoTextStyle(),
-    ),
-    content: Text(
-      translate(context, 'too_many_requests_message'),
-    ),
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Text(translate(context, 'too_many_requests_title'),
+        style: Theme.of(context).textTheme.headline3),
+    content: Text(translate(context, 'too_many_requests_message'),
+        style: Theme.of(context).textTheme.bodyText1),
     actions: <Widget>[
       RoundedButton(
         width: screenWidthByScalar(context, 1.0),
@@ -122,14 +113,11 @@ Future tooManyRequestsPopup(BuildContext context) {
 Future userNotFoundPopup(BuildContext context) {
   return actionPopup(
     context,
-    backgroundColor: Colors.white,
-    title: Text(
-      translate(context, 'user_not_found_title'),
-      style: robotoTextStyle(),
-    ),
-    content: Text(
-      translate(context, 'user_not_found_message'),
-    ),
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Text(translate(context, 'user_not_found_title'),
+        style: Theme.of(context).textTheme.headline3),
+    content: Text(translate(context, 'user_not_found_message'),
+        style: Theme.of(context).textTheme.bodyText1),
     actions: <Widget>[
       RoundedButton(
         width: screenWidthByScalar(context, 1.0),
@@ -145,14 +133,11 @@ Future userNotFoundPopup(BuildContext context) {
 Future userNotUsingEmailProviderPopup(BuildContext context) {
   return actionPopup(
     context,
-    backgroundColor: Colors.white,
-    title: Text(
-      translate(context, 'user_not_using_email_provider_title'),
-      style: robotoTextStyle(),
-    ),
-    content: Text(
-      translate(context, 'user_not_using_email_provider_message'),
-    ),
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Text(translate(context, 'user_not_using_email_provider_title'),
+        style: Theme.of(context).textTheme.headline3),
+    content: Text(translate(context, 'user_not_using_email_provider_message'),
+        style: Theme.of(context).textTheme.bodyText1),
     actions: <Widget>[
       RoundedButton(
         width: screenWidthByScalar(context, 1.0),
@@ -168,14 +153,11 @@ Future userNotUsingEmailProviderPopup(BuildContext context) {
 Future accountAlreadyExistsPopup(BuildContext context) {
   return actionPopup(
     context,
-    backgroundColor: Colors.white,
-    title: Text(
-      translate(context, 'account_already_exists_title'),
-      style: robotoTextStyle(),
-    ),
-    content: Text(
-      translate(context, 'account_already_exists_message'),
-    ),
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Text(translate(context, 'account_already_exists_title'),
+        style: Theme.of(context).textTheme.headline3),
+    content: Text(translate(context, 'account_already_exists_message'),
+        style: Theme.of(context).textTheme.bodyText1),
     actions: <Widget>[
       RoundedButton(
         width: screenWidthByScalar(context, 1.0),
@@ -191,14 +173,11 @@ Future accountAlreadyExistsPopup(BuildContext context) {
 Future notRegisteredWithGooglePopup(BuildContext context) {
   return actionPopup(
     context,
-    backgroundColor: Colors.white,
-    title: Text(
-      translate(context, 'not_registered_with_google_title'),
-      style: robotoTextStyle(),
-    ),
-    content: Text(
-      translate(context, 'not_registered_with_google_message'),
-    ),
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Text(translate(context, 'not_registered_with_google_title'),
+        style: Theme.of(context).textTheme.headline3),
+    content: Text(translate(context, 'not_registered_with_google_message'),
+        style: Theme.of(context).textTheme.bodyText1),
     actions: <Widget>[
       RoundedButton(
         width: screenWidthByScalar(context, 1.0),
@@ -214,14 +193,11 @@ Future notRegisteredWithGooglePopup(BuildContext context) {
 Future invalidCredentialPopup(BuildContext context) {
   return actionPopup(
     context,
-    backgroundColor: Colors.white,
-    title: Text(
-      translate(context, 'invalid_credential_title'),
-      style: robotoTextStyle(),
-    ),
-    content: Text(
-      translate(context, 'invalid_credential_message'),
-    ),
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Text(translate(context, 'invalid_credential_title'),
+        style: Theme.of(context).textTheme.headline3),
+    content: Text(translate(context, 'invalid_credential_message'),
+        style: Theme.of(context).textTheme.bodyText1),
     actions: <Widget>[
       RoundedButton(
         width: screenWidthByScalar(context, 1.0),

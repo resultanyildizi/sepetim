@@ -1,4 +1,5 @@
 import 'package:Sepetim/application/item_category/form/item_category_form_bloc.dart';
+import 'package:Sepetim/application/theme/theme_bloc.dart';
 import 'package:Sepetim/domain/item_category/value_objects.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
@@ -45,6 +46,13 @@ class ColorPickerField extends StatelessWidget {
                   child: Container(
                     width: screenWidthByScalar(context, 0.08),
                     height: screenWidthByScalar(context, 0.08),
+                    child: state.category.color.value.fold(
+                      (_) => null,
+                      (color) => color == itemColor
+                          ? const Icon(Icons.check,
+                              size: 16, color: sepetimGrey)
+                          : null,
+                    ),
                   ),
                 ),
               );

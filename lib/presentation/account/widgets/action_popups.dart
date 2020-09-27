@@ -1,9 +1,9 @@
 import 'package:Sepetim/application/auth/account_transactions/account_transactions_bloc.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/buttons.dart';
+import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,8 +15,11 @@ Future changePasswordPopup(
   final TextEditingController _textController = TextEditingController();
   return actionPopup(
     context,
-    backgroundColor: Colors.white,
-    title: Text(translate(context, 'change_your_password')),
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Text(
+      translate(context, 'change_your_password'),
+      style: Theme.of(context).textTheme.headline3,
+    ),
     content: BlocBuilder<AccountTransactionsBloc, AccountTransactionsState>(
       bloc: bloc,
       condition: (p, c) => p.password != c.password,
@@ -42,7 +45,7 @@ Future changePasswordPopup(
                     ),
                   );
                 },
-                validator: (_) => state.password.value.fold(
+                validator: (_) => bloc.state.password.value.fold(
                   (f) => f.maybeMap(
                     weakPassword: (_) => translate(context, 'weak_password'),
                     orElse: () => null,
@@ -53,10 +56,11 @@ Future changePasswordPopup(
             ),
             const Spacer(),
             if (state.isProgressing) ...[
-              const LinearProgressIndicator(
-                backgroundColor: Colors.white,
+              LinearProgressIndicator(
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 minHeight: 1,
-                valueColor: AlwaysStoppedAnimation<Color>(sepetimLightGrey),
+                valueColor:
+                    const AlwaysStoppedAnimation<Color>(sepetimLightYellow),
               ),
             ],
           ],
@@ -84,11 +88,11 @@ Future verifyPasswordPopup(
   String validatorText;
 
   return actionPopup(context,
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       barrierDismissible: true,
       title: Text(
         translate(context, 'verify_your_password'),
-        style: robotoTextStyle(),
+        style: Theme.of(context).textTheme.headline3,
       ),
       content: BlocConsumer<AccountTransactionsBloc, AccountTransactionsState>(
         bloc: context.bloc<AccountTransactionsBloc>(),
@@ -104,9 +108,7 @@ Future verifyPasswordPopup(
                     orElse: () => null,
                   );
                 },
-                (_) {
-                  // ExtendedNavigator.of(context).pop();
-                },
+                (_) {},
               );
             },
           );
@@ -115,6 +117,7 @@ Future verifyPasswordPopup(
           return Container(
             height: 100.0,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(translate(context, 'enter_current_password')),
                 const SizedBox(height: 5.0),
@@ -131,10 +134,11 @@ Future verifyPasswordPopup(
                 ),
                 const Spacer(),
                 if (state.isProgressing) ...[
-                  const LinearProgressIndicator(
-                    backgroundColor: Colors.white,
+                  LinearProgressIndicator(
+                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                     minHeight: 1,
-                    valueColor: AlwaysStoppedAnimation<Color>(sepetimLightGrey),
+                    valueColor:
+                        const AlwaysStoppedAnimation<Color>(sepetimLightYellow),
                   ),
                 ],
               ],
@@ -160,4 +164,39 @@ Future verifyPasswordPopup(
           text: translate(context, 'verify'),
         )
       ]);
+}
+
+Future successfulPopup(BuildContext context) {
+  return actionPopup(
+    context,
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        const Icon(
+          Icons.check_box,
+          color: Colors.lightGreen,
+        ),
+        const SizedBox(
+          width: 5.0,
+        ),
+        Text(
+          translate(context, 'successful'),
+          style: Theme.of(context).textTheme.headline3,
+        ),
+      ],
+    ),
+    content: Text(
+      translate(context, 'password_changed_successfully'),
+      style: Theme.of(context).textTheme.bodyText1,
+    ),
+    actions: [
+      RoundedButton(
+        text: translate(context, 'okay'),
+        onPressed: () => ExtendedNavigator.of(context).popUntil(
+          (route) => route.settings.name == Routes.applicationContentPage,
+        ),
+      )
+    ],
+  );
 }

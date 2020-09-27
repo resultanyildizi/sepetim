@@ -1,6 +1,4 @@
-import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/core/widgets/logo.dart';
 import 'package:Sepetim/presentation/settings/widgets/buttons.dart';
@@ -14,7 +12,7 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Sepetim',
-          style: robotoTextStyle(bold: true),
+          style: Theme.of(context).appBarTheme.textTheme.headline1,
         ),
       ),
       body: DefaultPadding(
@@ -48,34 +46,34 @@ class SettingsPage extends StatelessWidget {
             Center(
               child: Text(
                 'Sepetim - 1.0.0',
-                style: robotoTextStyle(),
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ),
             const SizedBox(height: 15.0),
             Text(
               translate(context, 'settings'),
-              style: robotoTextStyle(fontSize: 24.0, bold: true),
+              style: Theme.of(context).textTheme.headline1,
             ),
             const SizedBox(
               height: 15.0,
             ),
-            themesButton(onPressed: () {}),
+            themesButton(context),
             const SizedBox(
               height: 15.0,
             ),
-            contactUsButton(onPressed: () {}),
+            contactUsButton(context, onPressed: () {}),
             const SizedBox(
               height: 15.0,
             ),
-            shareAppButton(onPressed: () {}),
+            shareAppButton(context, onPressed: () {}),
             const SizedBox(
               height: 15.0,
             ),
-            termsOfServiceButton(onPressed: () {}),
+            termsOfServiceButton(context, onPressed: () {}),
             const SizedBox(
               height: 15.0,
             ),
-            privacyPolicyButton(onPressed: () {}),
+            privacyPolicyButton(context, onPressed: () {}),
           ],
         ),
       ),

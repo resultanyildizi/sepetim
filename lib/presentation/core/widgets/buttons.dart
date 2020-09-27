@@ -10,6 +10,7 @@ class RoundedButton extends StatelessWidget {
   final double height;
   final String text;
   final Color backgroundColor;
+  final Color textColor;
   final void Function() onPressed;
 
   const RoundedButton({
@@ -17,6 +18,7 @@ class RoundedButton extends StatelessWidget {
     this.width,
     this.height,
     this.backgroundColor,
+    this.textColor,
     @required this.text,
     @required this.onPressed,
   }) : super(key: key);
@@ -34,10 +36,15 @@ class RoundedButton extends StatelessWidget {
             ? Text(
                 text,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: textColor ??
+                      Theme.of(context).buttonTheme.colorScheme.secondary,
                   shadows: [
                     Shadow(
-                      color: app_colors.sepetimGrey.withOpacity(0.7),
+                      color: Theme.of(context)
+                          .buttonTheme
+                          .colorScheme
+                          .primary
+                          .withOpacity(0.7),
                       blurRadius: 8.0,
                     )
                   ],
@@ -114,12 +121,10 @@ class ErrorOutlineButton extends StatelessWidget {
 class FlatRectangleButton extends StatelessWidget {
   final Function() onPressed;
   final Widget child;
-  final Color color;
   const FlatRectangleButton({
     Key key,
     @required this.onPressed,
     @required this.child,
-    @required this.color,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -130,7 +135,7 @@ class FlatRectangleButton extends StatelessWidget {
         height: 40.0,
         decoration: BoxDecoration(
           border: Border(
-            bottom: BorderSide(color: color),
+            bottom: BorderSide(color: Theme.of(context).iconTheme.color),
           ),
         ),
         child: Padding(
@@ -141,7 +146,7 @@ class FlatRectangleButton extends StatelessWidget {
               child,
               Icon(
                 Icons.arrow_forward_ios,
-                color: color,
+                color: Theme.of(context).iconTheme.color,
               )
             ],
           ),

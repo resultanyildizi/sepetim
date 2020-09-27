@@ -80,7 +80,10 @@ class CircularItemView extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               item.title.fittedString(maxLength: 7),
-              style: robotoTextStyle(fontSize: 12),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1
+                  .copyWith(fontSize: 12.0),
             ),
           ],
         ),
@@ -113,7 +116,10 @@ class CircularItemView extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               translate(context, 'oops_error'),
-              style: robotoTextStyle(fontSize: 12),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1
+                  .copyWith(fontSize: 12.0),
             )
           ],
         ),

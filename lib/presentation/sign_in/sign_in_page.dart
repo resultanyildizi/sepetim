@@ -57,7 +57,7 @@ class SignInPage extends StatelessWidget {
                 ),
                 Text(
                   translate(context, 'sign_up'),
-                  style: robotoTextStyle(fontSize: 20.0, bold: true),
+                  style: Theme.of(context).textTheme.headline2,
                 ),
                 const SizedBox(
                   height: 4.0,

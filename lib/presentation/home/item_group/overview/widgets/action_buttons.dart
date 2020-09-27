@@ -1,4 +1,5 @@
 import 'package:Sepetim/application/item_group/actor/item_group_actor_bloc.dart';
+import 'package:Sepetim/application/theme/theme_bloc.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
@@ -22,9 +23,9 @@ class ItemGroupActionButtons extends StatelessWidget {
       children: <Widget>[
         ClipOval(
           child: Material(
-            color: Colors.white,
+            color: Theme.of(context).scaffoldBackgroundColor,
             child: InkWell(
-              splashColor: Colors.white,
+              splashColor: Theme.of(context).scaffoldBackgroundColor,
               onTap: () {
                 deletePopup(
                   context,
@@ -36,22 +37,25 @@ class ItemGroupActionButtons extends StatelessWidget {
                       ),
                 );
               },
-              child: const SizedBox(
+              child: SizedBox(
                   width: 26,
                   height: 26,
                   child: Icon(
                     Icons.delete_forever,
                     size: 22,
-                    color: sepetimGrey,
+                    color:
+                        context.bloc<ThemeBloc>().state.theme == AppTheme.light
+                            ? sepetimGrey
+                            : Colors.white,
                   )),
             ),
           ),
         ),
         ClipOval(
           child: Material(
-            color: Colors.white, // button color
+            color: Theme.of(context).scaffoldBackgroundColor,
             child: InkWell(
-              splashColor: Colors.white, // inkwell color
+              splashColor: Theme.of(context).scaffoldBackgroundColor,
               onTap: () {
                 ExtendedNavigator.of(context).pushNamed(
                   Routes.itemGroupForm,
@@ -61,13 +65,16 @@ class ItemGroupActionButtons extends StatelessWidget {
                   ),
                 );
               },
-              child: const SizedBox(
+              child: SizedBox(
                   width: 26,
                   height: 26,
                   child: Icon(
                     Icons.edit,
                     size: 22,
-                    color: sepetimGrey,
+                    color:
+                        context.bloc<ThemeBloc>().state.theme == AppTheme.light
+                            ? sepetimGrey
+                            : Colors.white,
                   )),
             ),
           ),

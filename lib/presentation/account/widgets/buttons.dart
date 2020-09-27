@@ -1,7 +1,6 @@
 import 'package:Sepetim/application/auth/account_transactions/account_transactions_bloc.dart';
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/account/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/buttons.dart';
@@ -15,12 +14,8 @@ FlatRectangleButton signOutButton(BuildContext context) {
     onPressed: () {
       context.bloc<AuthBloc>().add(const AuthEvent.signedOut());
     },
-    color: Colors.grey,
-    child: Text(
-      translate(context, 'sign_out'),
-      style:
-          didactGothicTextStyle(fontSize: 16.0, bold: true, color: Colors.grey),
-    ),
+    child: Text(translate(context, 'sign_out'),
+        style: Theme.of(context).textTheme.bodyText2),
   );
 }
 
@@ -37,12 +32,8 @@ FlatRectangleButton changePasswordButton(
       _textController.text = "";
       verifyPasswordPopup(context, _textController);
     },
-    color: Colors.grey,
-    child: Text(
-      translate(context, 'change_password'),
-      style:
-          didactGothicTextStyle(fontSize: 16.0, bold: true, color: Colors.grey),
-    ),
+    child: Text(translate(context, 'change_password'),
+        style: Theme.of(context).textTheme.bodyText2),
   );
 }
 
@@ -60,12 +51,8 @@ FlatRectangleButton deleteAccountButton(BuildContext context) {
         },
       );
     },
-    color: Colors.grey,
-    child: Text(
-      translate(context, 'delete_account'),
-      style:
-          didactGothicTextStyle(fontSize: 16.0, bold: true, color: Colors.grey),
-    ),
+    child: Text(translate(context, 'delete_account'),
+        style: Theme.of(context).textTheme.bodyText2),
   );
 }
 
@@ -74,11 +61,7 @@ FlatRectangleButton registerButton(BuildContext context) {
     onPressed: () {
       ExtendedNavigator.of(context).pushNamed(Routes.linkAccountPage);
     },
-    color: Colors.grey,
-    child: Text(
-      translate(context, 'register'),
-      style:
-          didactGothicTextStyle(fontSize: 16.0, bold: true, color: Colors.grey),
-    ),
+    child: Text(translate(context, 'register'),
+        style: Theme.of(context).textTheme.bodyText2),
   );
 }

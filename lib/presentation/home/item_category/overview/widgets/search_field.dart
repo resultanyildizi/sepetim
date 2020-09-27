@@ -21,7 +21,7 @@ class SearchField extends StatelessWidget {
           controller: controller,
           cursorColor: sepetimGrey,
           textCapitalization: TextCapitalization.sentences,
-          style: Theme.of(context).textTheme.subtitle1,
+          style: didactGothicTextStyle(fontSize: 16),
           autocorrect: false,
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(

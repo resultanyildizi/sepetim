@@ -12,11 +12,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:Sepetim/infrastructure/auth/firebase_auth_facade.dart';
 import 'package:Sepetim/domain/auth/i_auth_facade.dart';
+import 'package:Sepetim/infrastructure/theme/theme_repository.dart';
+import 'package:Sepetim/domain/theme/i_theme_repository.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:Sepetim/application/item_category/selector/item_category_selector_bloc.dart';
 import 'package:Sepetim/application/auth/password_visibility/password_visibility_bloc.dart';
 import 'package:Sepetim/application/auth/reset_password_form/reset_password_form_bloc.dart';
 import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:Sepetim/application/theme/theme_bloc.dart';
 import 'package:Sepetim/application/auth/account_transactions/account_transactions_bloc.dart';
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/infrastructure/item/item_repository.dart';
@@ -49,6 +52,7 @@ void $initGetIt(GetIt g, {String environment}) {
       () => firebaseInjectableModule.googleSignIn);
   g.registerLazySingleton<IAuthFacade>(
       () => FirebaseAuthFacade(g<FirebaseAuth>(), g<GoogleSignIn>()));
+  g.registerLazySingleton<IThemeRepository>(() => ThemeRepository());
   g.registerLazySingleton<ImagePicker>(
       () => imagePickerInjectableModule.imagePicker);
   g.registerFactory<ItemCategorySelectorBloc>(() => ItemCategorySelectorBloc());
@@ -56,6 +60,7 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerFactory<ResetPasswordFormBloc>(
       () => ResetPasswordFormBloc(g<IAuthFacade>()));
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<IAuthFacade>()));
+  g.registerFactory<ThemeBloc>(() => ThemeBloc(g<IThemeRepository>()));
   g.registerFactory<AccountTransactionsBloc>(
       () => AccountTransactionsBloc(g<IAuthFacade>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<IAuthFacade>()));

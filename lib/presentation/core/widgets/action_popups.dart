@@ -15,13 +15,11 @@ Future deletePopup(
   return actionPopup(
     context,
     backgroundColor: Colors.redAccent,
-    title: Text(
-      title,
-      style: robotoTextStyle(
-        color: Colors.black,
-        fontSize: 22.0,
-      ),
-    ),
+    title: Text(title,
+        style: Theme.of(context)
+            .textTheme
+            .headline3
+            .copyWith(color: Colors.black)),
     content: Text(
       message,
       style: didactGothicTextStyle(
@@ -36,6 +34,7 @@ Future deletePopup(
           ExtendedNavigator.of(context).pop();
         },
         backgroundColor: sepetimGrey,
+        textColor: Colors.white,
       ),
       RoundedButton(
         text: translate(context, 'delete'),
@@ -44,6 +43,7 @@ Future deletePopup(
           ExtendedNavigator.of(context).pop();
         },
         backgroundColor: sepetimGrey,
+        textColor: Colors.white,
       ),
     ],
   );

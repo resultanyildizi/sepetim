@@ -41,10 +41,8 @@ class ItemGroupOverviewPage extends StatelessWidget {
             initial: (_) => Scaffold(
               resizeToAvoidBottomPadding: false,
               appBar: AppBar(
-                title: Text(
-                  'Sepetim',
-                  style: robotoTextStyle(bold: true),
-                ),
+                title: Text('Sepetim',
+                    style: Theme.of(context).appBarTheme.textTheme.headline1),
               ),
               body: DefaultPadding(
                 child: Column(
@@ -60,7 +58,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
                     ),
                     Text(
                       '${translate(context, 'groups')} - ${category.title.getOrCrash()}',
-                      style: robotoTextStyle(bold: true, fontSize: 24.0),
+                      style: Theme.of(context).textTheme.headline1,
                     ),
                     Expanded(
                       child: Center(child: Container()),
@@ -76,10 +74,8 @@ class ItemGroupOverviewPage extends StatelessWidget {
             loading: (_) => Scaffold(
               resizeToAvoidBottomPadding: false,
               appBar: AppBar(
-                title: Text(
-                  'Sepetim',
-                  style: robotoTextStyle(bold: true),
-                ),
+                title: Text('Sepetim',
+                    style: Theme.of(context).appBarTheme.textTheme.headline1),
               ),
               body: DefaultPadding(
                 child: Column(
@@ -95,7 +91,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
                     ),
                     Text(
                       '${translate(context, 'groups')} - ${category.title.getOrCrash()}',
-                      style: robotoTextStyle(bold: true, fontSize: 24.0),
+                      style: Theme.of(context).textTheme.headline1,
                     ),
                     const Expanded(
                       child: Center(
@@ -141,10 +137,9 @@ class ItemGroupOverviewPage extends StatelessWidget {
                 child: Scaffold(
                   resizeToAvoidBottomPadding: false,
                   appBar: AppBar(
-                    title: Text(
-                      'Sepetim',
-                      style: robotoTextStyle(bold: true),
-                    ),
+                    title: Text('Sepetim',
+                        style:
+                            Theme.of(context).appBarTheme.textTheme.headline1),
                   ),
                   body: DefaultPadding(
                     child: Column(
@@ -160,7 +155,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
                         ),
                         Text(
                           '${translate(context, 'groups')} - ${category.title.getOrCrash()}',
-                          style: robotoTextStyle(bold: true, fontSize: 24.0),
+                          style: Theme.of(context).textTheme.headline1,
                         ),
                         const SizedBox(
                           height: 14.0,
@@ -195,16 +190,16 @@ class ItemGroupOverviewPage extends StatelessWidget {
             },
             loadFailure: (_) => Scaffold(
               appBar: AppBar(
-                  title: Text(
-                'Sepetim',
-                style: robotoTextStyle(bold: true),
-              )),
+                title: Text('Sepetim',
+                    style: Theme.of(context).appBarTheme.textTheme.headline1),
+              ),
               body: DefaultPadding(
                 child: Center(
                   child: Container(
                     width: screenWidthByScalar(context, 0.8),
                     child: Text(
                       translate(context, 'please_report'),
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
                 ),

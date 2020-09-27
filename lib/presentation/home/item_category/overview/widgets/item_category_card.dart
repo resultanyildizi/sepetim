@@ -1,5 +1,5 @@
-import 'package:Sepetim/presentation/core/widgets/buttons.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:Sepetim/presentation/core/widgets/buttons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,25 +75,40 @@ class ItemCategoryCard extends StatelessWidget {
                           height: 4.0,
                         ),
                         Expanded(
-                          child: Stack(
-                            children: <Widget>[
-                              AnimatedOpacity(
-                                duration: const Duration(milliseconds: 500),
-                                opacity: isSelected(state) ? 1 : 0,
-                                alwaysIncludeSemantics: true,
-                                child: Visibility(
-                                  visible: isSelected(state),
-                                  child: getIconButtons(context),
-                                ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(
+                                Icons.keyboard_arrow_left,
+                                color: Colors.grey[600],
+                                size: 18,
                               ),
-                              AnimatedOpacity(
-                                duration: const Duration(milliseconds: 500),
-                                opacity: isSelected(state) ? 0 : 1,
-                                alwaysIncludeSemantics: true,
-                                child: Visibility(
-                                  visible: !isSelected(state),
-                                  child: getNetworkImage(),
-                                ),
+                              Stack(
+                                children: <Widget>[
+                                  AnimatedOpacity(
+                                    duration: const Duration(milliseconds: 500),
+                                    opacity: isSelected(state) ? 1 : 0,
+                                    alwaysIncludeSemantics: true,
+                                    child: Visibility(
+                                      visible: isSelected(state),
+                                      child: getIconButtons(context),
+                                    ),
+                                  ),
+                                  AnimatedOpacity(
+                                    duration: const Duration(milliseconds: 500),
+                                    opacity: isSelected(state) ? 0 : 1,
+                                    alwaysIncludeSemantics: true,
+                                    child: Visibility(
+                                      visible: !isSelected(state),
+                                      child: getNetworkImage(),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.keyboard_arrow_right,
+                                color: Colors.grey[600],
+                                size: 18.0,
                               ),
                             ],
                           ),
@@ -196,7 +211,7 @@ class ItemCategoryCard extends StatelessWidget {
               scalarSmall: 0.065, scalarMedium: 0.060, scalarBig: 0.056),
         ),
         placeholder: (context, url) => CircleAvatar(
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           radius: screenHeightByScalar(context,
               scalarSmall: 0.065, scalarMedium: 0.060, scalarBig: 0.056),
           child: SizedBox(

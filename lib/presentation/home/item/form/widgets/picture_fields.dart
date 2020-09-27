@@ -171,12 +171,12 @@ Future imagePickerPopup(
 }) async {
   return actionPopup(
     context,
-    backgroundColor: Colors.white,
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     title: Column(
       children: <Widget>[
         Text(
           translate(context, 'upload_image'),
-          style: didactGothicTextStyle(),
+          style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 16.0),
         ),
         const SizedBox(
           height: 10,

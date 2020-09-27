@@ -38,17 +38,15 @@ class ResetPasswordPage extends StatelessWidget {
             appBar: AppBar(
               title: Text(
                 translate(context, 'reset_password'),
-                style: robotoTextStyle(bold: true),
+                style: Theme.of(context).appBarTheme.textTheme.headline1,
               ),
             ),
             body: DefaultPadding(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    translate(context, 'enter_email_to_get_link'),
-                    style: robotoTextStyle(bold: true),
-                  ),
+                  Text(translate(context, 'enter_email_to_get_link'),
+                      style: Theme.of(context).textTheme.bodyText1),
                   const SizedBox(height: 6),
                   Form(
                     autovalidate: state.showErrorMessages,
@@ -57,7 +55,7 @@ class ResetPasswordPage extends StatelessWidget {
                         TextFormField(
                           autofocus: true,
                           keyboardType: TextInputType.emailAddress,
-                          style: Theme.of(context).textTheme.subtitle1,
+                          style: Theme.of(context).textTheme.subtitle2,
                           cursorColor: sepetimGrey,
                           decoration: InputDecoration(
                               labelText: translate(context, 'email')),

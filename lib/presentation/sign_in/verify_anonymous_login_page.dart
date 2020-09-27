@@ -2,7 +2,6 @@ import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
 import 'package:Sepetim/presentation/core/widgets/buttons.dart';
@@ -23,7 +22,7 @@ class VerifyAnonymousLoginPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           translate(context, 'without_log_in'),
-          style: robotoTextStyle(bold: true),
+          style: Theme.of(context).appBarTheme.textTheme.headline1,
         ),
       ),
       body: MultiBlocProvider(
@@ -61,7 +60,10 @@ class VerifyAnonymousLoginPage extends StatelessWidget {
               children: <Widget>[
                 Text(
                   translate(context, 'verify_anonymous_login_text'),
-                  style: didactGothicTextStyle(bold: true, fontSize: 16.0),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      .copyWith(fontWeight: FontWeight.bold),
                 ),
                 Expanded(
                   child: Column(

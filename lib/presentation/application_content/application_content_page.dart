@@ -1,5 +1,6 @@
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/application/content/bottom_navbar/bottom_navbar_bloc.dart';
+import 'package:Sepetim/application/theme/theme_bloc.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
@@ -32,61 +33,87 @@ class ApplicationContentPage extends StatelessWidget {
           create: (context) => getIt<BottomNavbarBloc>(),
           child: BlocBuilder<BottomNavbarBloc, BottomNavbarState>(
             builder: (context, state) {
-              return Scaffold(
-                resizeToAvoidBottomPadding: false,
-                body: contentTabs[state.selectedIndex],
-                bottomNavigationBar: BottomNavigationBar(
-                  elevation: 5.0,
-                  backgroundColor: Colors.white,
-                  currentIndex: state.selectedIndex,
-                  items: [
-                    BottomNavigationBarItem(
-                      activeIcon: const Icon(
-                        Icons.home,
-                        color: sepetimGrey,
+              return BlocBuilder<ThemeBloc, ThemeState>(
+                builder: (context, themeState) => Scaffold(
+                  resizeToAvoidBottomPadding: false,
+                  body: contentTabs[state.selectedIndex],
+                  bottomNavigationBar: BottomNavigationBar(
+                    elevation: 5.0,
+                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                    currentIndex: state.selectedIndex,
+                    items: [
+                      BottomNavigationBarItem(
+                        activeIcon: Icon(
+                          Icons.home,
+                          color: context.bloc<ThemeBloc>().state.theme ==
+                                  AppTheme.light
+                              ? sepetimGrey
+                              : Colors.white,
+                        ),
+                        icon: Icon(
+                          Icons.home,
+                          color: context.bloc<ThemeBloc>().state.theme ==
+                                  AppTheme.light
+                              ? sepetimLightGrey
+                              : sepetimGrey,
+                        ),
+                        title: Text(
+                          translate(context, 'home'),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontSize: 14.0),
+                        ),
                       ),
-                      icon: const Icon(
-                        Icons.home,
-                        color: sepetimLightGrey,
+                      BottomNavigationBarItem(
+                        activeIcon: Icon(
+                          Icons.person,
+                          color: themeState.theme == AppTheme.light
+                              ? sepetimGrey
+                              : Colors.white,
+                        ),
+                        icon: Icon(
+                          Icons.person,
+                          color: context.bloc<ThemeBloc>().state.theme ==
+                                  AppTheme.light
+                              ? sepetimLightGrey
+                              : sepetimGrey,
+                        ),
+                        title: Text(
+                          translate(context, 'account'),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontSize: 14.0),
+                        ),
                       ),
-                      title: Text(
-                        translate(context, 'home'),
-                        style: didactGothicTextStyle(),
+                      BottomNavigationBarItem(
+                        activeIcon: Icon(
+                          Icons.settings,
+                          color: themeState.theme == AppTheme.light
+                              ? sepetimGrey
+                              : Colors.white,
+                        ),
+                        icon: Icon(
+                          Icons.settings,
+                          color: themeState.theme == AppTheme.light
+                              ? sepetimLightGrey
+                              : sepetimGrey,
+                        ),
+                        title: Text(
+                          translate(context, 'settings'),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontSize: 14.0),
+                        ),
                       ),
-                    ),
-                    BottomNavigationBarItem(
-                      activeIcon: const Icon(
-                        Icons.person,
-                        color: sepetimGrey,
+                    ],
+                    onTap: (index) => context.bloc<BottomNavbarBloc>()
+                      ..add(
+                        BottomNavbarEvent.indexChanged(index: index),
                       ),
-                      icon: const Icon(
-                        Icons.person,
-                        color: sepetimLightGrey,
-                      ),
-                      title: Text(
-                        translate(context, 'account'),
-                        style: didactGothicTextStyle(),
-                      ),
-                    ),
-                    BottomNavigationBarItem(
-                      activeIcon: const Icon(
-                        Icons.settings,
-                        color: sepetimGrey,
-                      ),
-                      icon: const Icon(
-                        Icons.settings,
-                        color: sepetimLightGrey,
-                      ),
-                      title: Text(
-                        translate(context, 'settings'),
-                        style: didactGothicTextStyle(),
-                      ),
-                    ),
-                  ],
-                  onTap: (index) => context.bloc<BottomNavbarBloc>()
-                    ..add(
-                      BottomNavbarEvent.indexChanged(index: index),
-                    ),
+                  ),
                 ),
               );
             },

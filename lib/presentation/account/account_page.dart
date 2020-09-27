@@ -83,42 +83,7 @@ class AccountPage extends StatelessWidget {
                             ExtendedNavigator.of(context).popUntil((route) =>
                                 route.settings.name ==
                                 Routes.applicationContentPage);
-                            actionPopup(
-                              context,
-                              backgroundColor: Colors.white,
-                              title: Row(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  const Icon(
-                                    Icons.check_box,
-                                    color: Colors.lightGreen,
-                                  ),
-                                  const SizedBox(
-                                    width: 5.0,
-                                  ),
-                                  Text(
-                                    translate(context, 'successful'),
-                                    style: didactGothicTextStyle(),
-                                  ),
-                                ],
-                              ),
-                              content: Text(
-                                translate(
-                                    context, 'password_changed_successfully'),
-                                style: didactGothicTextStyle(),
-                              ),
-                              actions: [
-                                RoundedButton(
-                                  text: translate(context, 'okay'),
-                                  onPressed: () =>
-                                      ExtendedNavigator.of(context).popUntil(
-                                    (route) =>
-                                        route.settings.name ==
-                                        Routes.applicationContentPage,
-                                  ),
-                                )
-                              ],
-                            );
+                            successfulPopup(context);
                           }
                         },
                       );
@@ -129,7 +94,7 @@ class AccountPage extends StatelessWidget {
                   appBar: AppBar(
                     title: Text(
                       'Sepetim',
-                      style: robotoTextStyle(bold: true),
+                      style: Theme.of(context).appBarTheme.textTheme.headline1,
                     ),
                   ),
                   body: DefaultPadding(
@@ -161,13 +126,17 @@ class AccountPage extends StatelessWidget {
                           state.user.emailOption.fold(
                             () => Text(
                               translate(context, 'not_signed_in'),
-                              style: didactGothicTextStyle(
-                                  bold: true, fontSize: 16.0),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  .copyWith(fontWeight: FontWeight.bold),
                             ),
                             (email) => Text(
                               email,
-                              style: didactGothicTextStyle(
-                                  bold: true, fontSize: 16.0),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  .copyWith(fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
@@ -177,7 +146,7 @@ class AccountPage extends StatelessWidget {
                       ),
                       Text(
                         translate(context, 'account'),
-                        style: robotoTextStyle(fontSize: 24.0, bold: true),
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                       const SizedBox(
                         height: 15.0,

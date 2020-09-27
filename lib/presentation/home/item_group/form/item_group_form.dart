@@ -38,10 +38,8 @@ class ItemGroupForm extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomPadding: false,
         appBar: AppBar(
-          title: Text(
-            'Sepetim',
-            style: robotoTextStyle(bold: true),
-          ),
+          title: Text('Sepetim',
+              style: Theme.of(context).appBarTheme.textTheme.headline1),
         ),
         body: BlocConsumer<ItemGroupFormBloc, ItemGroupFormState>(
           listener: (context, state) {
@@ -70,12 +68,15 @@ class ItemGroupForm extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       translate(context, 'add_a_group'),
-                      style: robotoTextStyle(bold: true, fontSize: 20.0),
+                      style: Theme.of(context).textTheme.headline2,
                     ),
                     const SizedBox(height: 10),
                     Text(
                       translate(context, 'title'),
-                      style: didactGothicTextStyle(fontSize: 18.0),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1
+                          .copyWith(fontSize: 18.0),
                     ),
                     const TitleTextField(),
                     const SizedBox(height: 10),

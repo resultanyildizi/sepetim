@@ -9,7 +9,7 @@ Widget emailFormField(BuildContext context) {
   return TextFormField(
     cursorColor: sepetimGrey,
     keyboardType: TextInputType.emailAddress,
-    style: Theme.of(context).textTheme.subtitle1,
+    style: Theme.of(context).textTheme.subtitle2,
     decoration: InputDecoration(labelText: translate(context, 'email')),
     autocorrect: false,
     onChanged: (value) => context
@@ -32,7 +32,7 @@ Widget passwordFormField(BuildContext context) {
       obscureText: !state.isVisible,
       cursorColor: sepetimGrey,
       keyboardType: TextInputType.visiblePassword,
-      style: Theme.of(context).textTheme.subtitle1,
+      style: Theme.of(context).textTheme.subtitle2,
       decoration: InputDecoration(
         labelText: translate(context, 'password'),
         suffixIcon: IconButton(

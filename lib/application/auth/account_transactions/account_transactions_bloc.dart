@@ -103,7 +103,7 @@ class AccountTransactionsBloc
           isProgressing: false,
           showErrorMessages: true,
           isPasswordUpdated: true,
-          authFailureOrUnitOption: some(failureOrSuccess),
+          authFailureOrUnitOption: optionOf(failureOrSuccess),
         );
       },
     );
