@@ -141,7 +141,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         final failureOrSuccess = await _authFacade.linkWithGoogleProvider();
 
         yield state.copyWith(
-          showErrorMessages: true,
           isSubmitting: false,
           authFailureOrSuccessOption: optionOf(failureOrSuccess),
         );

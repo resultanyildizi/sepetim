@@ -128,39 +128,39 @@ class ItemCategoryCard extends StatelessWidget {
                           builder: (context, state) => Padding(
                             padding: const EdgeInsets.only(left: 10.0),
                             child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(
-                                    state.map(
-                                        initial: (_) =>
-                                            '${translate(context, 'groups_count')}:...',
-                                        loading: (_) =>
-                                            '${translate(context, 'groups_count')}:...',
-                                        loadSuccess: (state) =>
-                                            '${translate(context, 'groups_count')}: ${state.groups.size}',
-                                        loadFailure: (_) =>
-                                            translate(context, 'error')),
-                                    style: robotoTextStyle(
-                                        fontSize: 10.0, bold: true),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      const Icon(Icons.date_range,
-                                          color: sepetimGrey, size: 12.0),
-                                      const SizedBox(width: 4.0),
-                                      Text(
-                                        category.creationTime
-                                            .toString()
-                                            .substring(0, 16),
-                                        style: robotoTextStyle(
-                                            fontSize: 10.0, bold: true),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
-                                ]),
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  state.map(
+                                      initial: (_) =>
+                                          '${translate(context, 'groups_count')}:...',
+                                      loading: (_) =>
+                                          '${translate(context, 'groups_count')}:...',
+                                      loadSuccess: (state) =>
+                                          '${translate(context, 'groups_count')}: ${state.groups.size}',
+                                      loadFailure: (_) =>
+                                          translate(context, 'error')),
+                                  style: robotoTextStyle(
+                                      fontSize: 10.0, bold: true),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    const Icon(Icons.date_range,
+                                        color: sepetimGrey, size: 12.0),
+                                    const SizedBox(width: 4.0),
+                                    Text(
+                                      category.creationTime
+                                          .toString()
+                                          .substring(0, 16),
+                                      style: robotoTextStyle(
+                                          fontSize: 10.0, bold: true),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -207,13 +207,11 @@ class ItemCategoryCard extends StatelessWidget {
         imageUrl: category.coverImageUrl.getOrCrash(),
         errorWidget: (context, url, error) => CircleAvatar(
           backgroundImage: const AssetImage('assets/images/default.png'),
-          radius: screenHeightByScalar(context,
-              scalarSmall: 0.065, scalarMedium: 0.060, scalarBig: 0.056),
+          radius: screenWidthByScalar(context, 0.11),
         ),
         placeholder: (context, url) => CircleAvatar(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          radius: screenHeightByScalar(context,
-              scalarSmall: 0.065, scalarMedium: 0.060, scalarBig: 0.056),
+          radius: screenWidthByScalar(context, 0.11),
           child: SizedBox(
             height: 25.0,
             width: 25.0,
@@ -226,8 +224,7 @@ class ItemCategoryCard extends StatelessWidget {
         ),
         imageBuilder: (context, image) => CircleAvatar(
           backgroundImage: image,
-          radius: screenHeightByScalar(context,
-              scalarSmall: 0.065, scalarMedium: 0.060, scalarBig: 0.056),
+          radius: screenWidthByScalar(context, 0.11),
         ),
       ),
     );
@@ -255,13 +252,14 @@ class ItemCategoryCard extends StatelessWidget {
                   );
                 },
                 child: SizedBox(
-                    width: 35,
-                    height: 35,
-                    child: Icon(
-                      Icons.delete_forever,
-                      size: 20,
-                      color: category.color.getOrCrash(),
-                    )),
+                  width: 35,
+                  height: 35,
+                  child: Icon(
+                    Icons.delete_forever,
+                    size: 20,
+                    color: category.color.getOrCrash(),
+                  ),
+                ),
               ),
             ),
           ),
@@ -282,13 +280,14 @@ class ItemCategoryCard extends StatelessWidget {
                   );
                 },
                 child: SizedBox(
-                    width: 35,
-                    height: 35,
-                    child: Icon(
-                      Icons.edit,
-                      size: 20,
-                      color: category.color.getOrCrash(),
-                    )),
+                  width: 35,
+                  height: 35,
+                  child: Icon(
+                    Icons.edit,
+                    size: 20,
+                    color: category.color.getOrCrash(),
+                  ),
+                ),
               ),
             ),
           )
@@ -309,10 +308,12 @@ class ItemCategoryCard extends StatelessWidget {
         key: Key(category.uid.getOrCrash()),
         category: category,
         watcherBloc: context.bloc<ItemGroupWatcherBloc>()
-          ..add(ItemGroupWatcherEvent.watchAllStarted(
-            category.uid,
-            OrderType.date,
-          )),
+          ..add(
+            ItemGroupWatcherEvent.watchAllStarted(
+              category.uid,
+              OrderType.date,
+            ),
+          ),
       ),
     );
   }

@@ -3,7 +3,7 @@ import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:flutter/material.dart';
 
 final sepetimLightTheme = ThemeData(
-  brightness: Brightness.dark,
+  brightness: Brightness.light,
   accentColor: app_color.sepetimYellow,
   primaryColor: app_color.sepetimYellow,
   scaffoldBackgroundColor: Colors.white,
@@ -41,7 +41,7 @@ final sepetimLightTheme = ThemeData(
 );
 
 final sepetimDarkTheme = ThemeData(
-  brightness: Brightness.dark,
+  brightness: Brightness.light,
   accentColor: app_color.sepetimYellow,
   primaryColor: app_color.sepetimYellow,
   scaffoldBackgroundColor: Colors.grey[850],
