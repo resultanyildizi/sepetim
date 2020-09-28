@@ -15,9 +15,12 @@ import 'package:image_picker/image_picker.dart';
 import 'application/auth/account_transactions/account_transactions_bloc.dart';
 import 'application/auth/auth/auth_bloc_bloc.dart';
 import 'application/content/bottom_navbar/bottom_navbar_bloc.dart';
+import 'infrastructure/dynamic_links/dynamic_link_repository.dart';
+import 'application/dynamic_links/dynamic_links_bloc.dart';
 import 'infrastructure/auth/firebase_auth_facade.dart';
 import 'infrastructure/core/firebase_injectable_module.dart';
 import 'domain/auth/i_auth_facade.dart';
+import 'domain/dynamic_links/i_dynamic_links_repository.dart';
 import 'domain/item_category/i_category_repository.dart';
 import 'domain/item_group/i_group_repository.dart';
 import 'domain/item/i_item_repository.dart';
@@ -60,6 +63,7 @@ GetIt $initGetIt(
   gh.lazySingleton<GoogleSignIn>(() => firebaseInjectableModule.googleSignIn);
   gh.lazySingleton<IAuthFacade>(
       () => FirebaseAuthFacade(get<FirebaseAuth>(), get<GoogleSignIn>()));
+  gh.lazySingleton<IDynamicLinksRepository>(() => DynamicLinkRepository());
   gh.lazySingleton<IThemeRepository>(() => ThemeRepository());
   gh.lazySingleton<ImagePicker>(() => imagePickerInjectableModule.imagePicker);
   gh.factory<ItemCategorySelectorBloc>(() => ItemCategorySelectorBloc());
@@ -71,6 +75,8 @@ GetIt $initGetIt(
   gh.factory<AccountTransactionsBloc>(
       () => AccountTransactionsBloc(get<IAuthFacade>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IAuthFacade>()));
+  gh.factory<DynamicLinksBloc>(
+      () => DynamicLinksBloc(get<IDynamicLinksRepository>()));
   gh.lazySingleton<IItemRepository>(() => ItemRepository(
         get<FirebaseFirestore>(),
         get<FirebaseStorage>(),

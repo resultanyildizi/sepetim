@@ -19,7 +19,10 @@ class ThemesPage extends StatelessWidget {
                     )
               },
               trailing: theme.key == context.bloc<ThemeBloc>().state.theme
-                  ? const Icon(Icons.check_box)
+                  ? Icon(
+                      Icons.check_box,
+                      color: Theme.of(context).iconTheme.color,
+                    )
                   : null,
             ))
         .toList();

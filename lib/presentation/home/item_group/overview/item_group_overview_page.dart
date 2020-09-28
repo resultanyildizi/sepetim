@@ -116,7 +116,8 @@ class ItemGroupOverviewPage extends StatelessWidget {
                     initial: (_) {},
                     actionInProgress: (_) => actionPopup(
                       context,
-                      backgroundColor: Colors.white,
+                      backgroundColor:
+                          Theme.of(context).scaffoldBackgroundColor,
                       content: Text('${translate(context, 'deleting')}...'),
                       barrierDismissible: false,
                     ),

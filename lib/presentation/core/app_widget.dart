@@ -1,5 +1,6 @@
 import 'package:Sepetim/app_localization.dart';
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
+import 'package:Sepetim/application/dynamic_links/dynamic_links_bloc.dart';
 import 'package:Sepetim/application/theme/theme_bloc.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
@@ -24,6 +25,7 @@ class AppWidget extends StatelessWidget {
           create: (context) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         ),
+        BlocProvider(create: (context) => getIt<DynamicLinksBloc>()),
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) => MaterialApp(

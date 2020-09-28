@@ -1,8 +1,11 @@
+import 'package:Sepetim/application/dynamic_links/dynamic_links_bloc.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/buttons.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Widget contactUsButton(
   BuildContext context, {
@@ -56,9 +59,9 @@ Widget themesButton(
 }
 
 Widget shareAppButton(
-  BuildContext context, {
-  @required Function() onPressed,
-}) {
+  BuildContext context,
+  Function() onPressed,
+) {
   return FlatRectangleButton(
     onPressed: onPressed,
     child: Text(
