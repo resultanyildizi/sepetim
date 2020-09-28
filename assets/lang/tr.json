@@ -146,5 +146,6 @@
   "terms_of_service_btn": "Hizmet Şartlarımız",
   "privacy_policy_btn": "Gizlilik Politikamız",
   "checkout_sepetim": "Sepetim uygulamasını incele",
-  "link_description": "Sepetim, alışverişlerinizi düzenlemenin modern yolu."
+  "link_description": "Sepetim, alışverişlerinizi düzenlemenin modern yolu.",
+  "dynamic_link": "https://sepetimapp.page.link/tr"
 }

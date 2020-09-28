@@ -1,5 +1,4 @@
 import 'package:Sepetim/application/dynamic_links/dynamic_links_bloc.dart';
-import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/core/widgets/logo.dart';
@@ -12,97 +11,74 @@ class SettingsPage extends StatelessWidget {
   const SettingsPage({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return BlocListener<DynamicLinksBloc, DynamicLinksState>(
-      listener: (context, state) async {
-        if (state.dynamicLinkUrl != null && state.dynamicLinkUrl != '') {
-          final RenderBox box = context.findAncestorRenderObjectOfType();
-          final subject = translate(context, 'checkout_sepetim');
-          final dynamicLinkUrl = state.dynamicLinkUrl;
-
-          await Share.share('$subject $dynamicLinkUrl',
-              subject: subject,
-              sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
-        }
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Sepetim',
-            style: Theme.of(context).appBarTheme.textTheme.headline1,
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Sepetim',
+          style: Theme.of(context).appBarTheme.textTheme.headline1,
         ),
-        body: SingleChildScrollView(
-          child: DefaultPadding(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: screenHeightByScalar(
-                    context,
-                    scalarSmall: 0.02,
-                    scalarMedium: 0.03,
-                    scalarBig: 0.03,
-                  ),
-                ),
-                LogoCenter(
-                  height: screenHeightByScalar(
-                    context,
-                    scalarSmall: 0.12,
-                    scalarMedium: 0.12,
-                    scalarBig: 0.14,
-                  ),
-                ),
-                SizedBox(
-                  height: screenHeightByScalar(
-                    context,
-                    scalarSmall: 0.02,
-                    scalarMedium: 0.04,
-                    scalarBig: 0.04,
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    'Sepetim - 1.0.0',
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                ),
-                const SizedBox(height: 15.0),
-                Text(
-                  translate(context, 'settings'),
-                  style: Theme.of(context).textTheme.headline1,
-                ),
-                const SizedBox(
-                  height: 15.0,
-                ),
-                themesButton(context),
-                const SizedBox(
-                  height: 15.0,
-                ),
-                contactUsButton(context, onPressed: () {}),
-                const SizedBox(
-                  height: 15.0,
-                ),
-                shareAppButton(
+      ),
+      body: SingleChildScrollView(
+        child: DefaultPadding(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: screenHeightByScalar(
                   context,
-                  () {
-                    final description = translate(context, 'link_description');
-                    context.bloc<DynamicLinksBloc>().add(
-                          DynamicLinksEvent.dynamicLinkCreated(
-                            linkDescription: description,
-                          ),
-                        );
-                  },
+                  scalarSmall: 0.02,
+                  scalarMedium: 0.03,
+                  scalarBig: 0.03,
                 ),
-                const SizedBox(
-                  height: 15.0,
+              ),
+              LogoCenter(
+                height: screenHeightByScalar(
+                  context,
+                  scalarSmall: 0.12,
+                  scalarMedium: 0.12,
+                  scalarBig: 0.14,
                 ),
-                termsOfServiceButton(context, onPressed: () {}),
-                const SizedBox(
-                  height: 15.0,
+              ),
+              SizedBox(
+                height: screenHeightByScalar(
+                  context,
+                  scalarSmall: 0.02,
+                  scalarMedium: 0.04,
+                  scalarBig: 0.04,
                 ),
-                privacyPolicyButton(context, onPressed: () {}),
-              ],
-            ),
+              ),
+              Center(
+                child: Text(
+                  'Sepetim - 1.0.0',
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ),
+              const SizedBox(height: 15.0),
+              Text(
+                translate(context, 'settings'),
+                style: Theme.of(context).textTheme.headline1,
+              ),
+              const SizedBox(
+                height: 15.0,
+              ),
+              themesButton(context),
+              const SizedBox(
+                height: 15.0,
+              ),
+              contactUsButton(context, onPressed: () {}),
+              const SizedBox(
+                height: 15.0,
+              ),
+              shareAppButton(context),
+              const SizedBox(
+                height: 15.0,
+              ),
+              termsOfServiceButton(context, onPressed: () {}),
+              const SizedBox(
+                height: 15.0,
+              ),
+              privacyPolicyButton(context, onPressed: () {}),
+            ],
           ),
         ),
       ),

@@ -9,6 +9,8 @@ part 'dynamic_links_event.dart';
 part 'dynamic_links_state.dart';
 part 'dynamic_links_bloc.freezed.dart';
 
+//* Not in use for now
+
 @injectable
 class DynamicLinksBloc extends Bloc<DynamicLinksEvent, DynamicLinksState> {
   final IDynamicLinksRepository _dynamicLinksRepository;
@@ -19,12 +21,14 @@ class DynamicLinksBloc extends Bloc<DynamicLinksEvent, DynamicLinksState> {
   Stream<DynamicLinksState> mapEventToState(
     DynamicLinksEvent event,
   ) async* {
-    final _dynamicLinkUrl = await _dynamicLinksRepository.createDynamicLink(
-      linkDescription: event.linkDescription,
-    );
-
-    yield state.copyWith(
-      dynamicLinkUrl: _dynamicLinkUrl,
-    );
+    if (state.dynamicLinkUrl == '') {
+      final _dynamicLinkUrl = await _dynamicLinksRepository.createDynamicLink(
+          linkDescription: event.linkDescription);
+      yield state.copyWith(
+        dynamicLinkUrl: _dynamicLinkUrl,
+      );
+    } else {
+      yield state.copyWith();
+    }
   }
 }

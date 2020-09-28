@@ -60,10 +60,20 @@ Widget themesButton(
 
 Widget shareAppButton(
   BuildContext context,
-  Function() onPressed,
 ) {
   return FlatRectangleButton(
-    onPressed: onPressed,
+    onPressed: () async {
+      final linkUrl = translate(context, 'dynamic_link');
+      if (linkUrl != null && linkUrl != '') {
+        final RenderBox box = context.findAncestorRenderObjectOfType();
+        final subject = translate(context, 'checkout_sepetim');
+        final dynamicLinkUrl = linkUrl;
+
+        await Share.share('$subject $dynamicLinkUrl',
+            subject: subject,
+            sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+      }
+    },
     child: Text(
       translate(context, 'share_app'),
       style: Theme.of(context).textTheme.bodyText2,

@@ -25,7 +25,6 @@ class AppWidget extends StatelessWidget {
           create: (context) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         ),
-        BlocProvider(create: (context) => getIt<DynamicLinksBloc>()),
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) => MaterialApp(

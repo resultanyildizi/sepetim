@@ -146,5 +146,6 @@
   "terms_of_service_btn": "Terms of Service",
   "privacy_policy_btn": "Privacy Policy",
   "checkout_sepetim": "Checkout Sepetim app",
-  "link_description": "Sepetim, the modern way to organize your shopping."
+  "link_description": "Sepetim, the modern way to organize your shopping.",
+  "dynamic_link": "https://sepetimapp.page.link/en"
 }
