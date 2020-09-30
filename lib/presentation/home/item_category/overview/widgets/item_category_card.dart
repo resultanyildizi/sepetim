@@ -9,7 +9,6 @@ import 'package:Sepetim/application/item_category/selector/item_category_selecto
 import 'package:Sepetim/application/item_group/watcher/item_group_watcher_bloc.dart';
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
-import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
@@ -25,177 +24,156 @@ class ItemCategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<ItemGroupWatcherBloc>(
-          create: (context) => getIt<ItemGroupWatcherBloc>()
-            ..add(ItemGroupWatcherEvent.watchAllStarted(
-                category.uid, OrderType.date)),
-        )
-      ],
-      child: category.failureOption.fold(
-        () => GestureDetector(
-          onHorizontalDragEnd: (details) {
-            context
-                .bloc<ItemCategorySelectorBloc>()
-                .add(ItemCategorySelectorEvent.selectedChanged(category));
-          },
-          child:
-              BlocBuilder<ItemCategorySelectorBloc, ItemCategorySelectorState>(
-            builder: (context, state) {
-              return GestureDetector(
-                onTap: () => goToNextPage(context),
-                child: Card(
-                  elevation: 4.0,
-                  color: category.color.getOrCrash(),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          category.title.fittedString(
-                            maxLength: 14,
-                          ),
-                          style: didactGothicTextStyle(
-                            bold: true,
-                          ),
+    return category.failureOption.fold(
+      () => GestureDetector(
+        onHorizontalDragEnd: (details) {
+          context
+              .bloc<ItemCategorySelectorBloc>()
+              .add(ItemCategorySelectorEvent.selectedChanged(category));
+        },
+        child: BlocBuilder<ItemCategorySelectorBloc, ItemCategorySelectorState>(
+          builder: (context, state) {
+            return GestureDetector(
+              onTap: () => goToNextPage(context),
+              child: Card(
+                elevation: 4.0,
+                color: category.color.getOrCrash(),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        category.title.fittedString(
+                          maxLength: 14,
                         ),
-                        const Divider(
-                          color: sepetimGrey,
-                          height: 5.0,
-                          thickness: 1.5,
-                          indent: 10.0,
-                          endIndent: 10.0,
+                        style: didactGothicTextStyle(
+                          bold: true,
                         ),
-                        const SizedBox(
-                          height: 4.0,
-                        ),
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(
-                                Icons.keyboard_arrow_left,
-                                color: Colors.grey[600],
-                                size: 18,
-                              ),
-                              Stack(
-                                children: <Widget>[
-                                  AnimatedOpacity(
-                                    duration: const Duration(milliseconds: 500),
-                                    opacity: isSelected(state) ? 1 : 0,
-                                    alwaysIncludeSemantics: true,
-                                    child: Visibility(
-                                      visible: isSelected(state),
-                                      child: getIconButtons(context),
-                                    ),
+                      ),
+                      const Divider(
+                        color: sepetimGrey,
+                        height: 5.0,
+                        thickness: 1.5,
+                        indent: 10.0,
+                        endIndent: 10.0,
+                      ),
+                      const SizedBox(
+                        height: 4.0,
+                      ),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(
+                              Icons.keyboard_arrow_left,
+                              color: Colors.grey[600],
+                              size: 18,
+                            ),
+                            Stack(
+                              children: <Widget>[
+                                AnimatedOpacity(
+                                  duration: const Duration(milliseconds: 500),
+                                  opacity: isSelected(state) ? 1 : 0,
+                                  alwaysIncludeSemantics: true,
+                                  child: Visibility(
+                                    visible: isSelected(state),
+                                    child: getIconButtons(context),
                                   ),
-                                  AnimatedOpacity(
-                                    duration: const Duration(milliseconds: 500),
-                                    opacity: isSelected(state) ? 0 : 1,
-                                    alwaysIncludeSemantics: true,
-                                    child: Visibility(
-                                      visible: !isSelected(state),
-                                      child: getNetworkImage(),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Icon(
-                                Icons.keyboard_arrow_right,
-                                color: Colors.grey[600],
-                                size: 18.0,
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 4.0,
-                        ),
-                        const Divider(
-                          color: sepetimGrey,
-                          height: 5.0,
-                          thickness: 1.5,
-                          indent: 10.0,
-                          endIndent: 10.0,
-                        ),
-                        BlocBuilder<ItemGroupWatcherBloc,
-                            ItemGroupWatcherState>(
-                          builder: (context, state) => Padding(
-                            padding: const EdgeInsets.only(left: 10.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  state.map(
-                                      initial: (_) =>
-                                          '${translate(context, 'groups_count')}:...',
-                                      loading: (_) =>
-                                          '${translate(context, 'groups_count')}:...',
-                                      loadSuccess: (state) =>
-                                          '${translate(context, 'groups_count')}: ${state.groups.size}',
-                                      loadFailure: (_) =>
-                                          translate(context, 'error')),
-                                  style: robotoTextStyle(
-                                      fontSize: 10.0, bold: true),
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    const Icon(Icons.date_range,
-                                        color: sepetimGrey, size: 12.0),
-                                    const SizedBox(width: 4.0),
-                                    Text(
-                                      category.creationTime
-                                          .toString()
-                                          .substring(0, 16),
-                                      style: robotoTextStyle(
-                                          fontSize: 10.0, bold: true),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ],
+                                AnimatedOpacity(
+                                  duration: const Duration(milliseconds: 500),
+                                  opacity: isSelected(state) ? 0 : 1,
+                                  alwaysIncludeSemantics: true,
+                                  child: Visibility(
+                                    visible: !isSelected(state),
+                                    child: getNetworkImage(),
+                                  ),
                                 ),
                               ],
                             ),
-                          ),
+                            Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.grey[600],
+                              size: 18.0,
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      const SizedBox(
+                        height: 4.0,
+                      ),
+                      const Divider(
+                        color: sepetimGrey,
+                        height: 5.0,
+                        thickness: 1.5,
+                        indent: 10.0,
+                        endIndent: 10.0,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              '${translate(context, 'groups_count')}: ${category.groupCount.getOrCrash()}',
+                              style:
+                                  robotoTextStyle(fontSize: 10.0, bold: true),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                const Icon(Icons.date_range,
+                                    color: sepetimGrey, size: 12.0),
+                                const SizedBox(width: 4.0),
+                                Text(
+                                  category.creationTime
+                                      .toString()
+                                      .substring(0, 16),
+                                  style: robotoTextStyle(
+                                      fontSize: 10.0, bold: true),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
-        // TODO: Implement report us button
-        (failure) => Card(
-          elevation: 4.0,
-          color: sepetimSmoothRed,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.error_outline, size: 60),
-              const SizedBox(
-                height: 3.0,
-              ),
-              Text(
-                translate(context, 'something_went_wrong'),
-                style: robotoTextStyle(color: Colors.white),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 3.0,
-              ),
-              ErrorOutlineButton(onPressed: () {})
-            ],
-          ),
+      ),
+      // TODO: Implement report us button
+      (failure) => Card(
+        elevation: 4.0,
+        color: sepetimSmoothRed,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.error_outline, size: 60),
+            const SizedBox(
+              height: 3.0,
+            ),
+            Text(
+              translate(context, 'something_went_wrong'),
+              style: robotoTextStyle(color: Colors.white),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 3.0,
+            ),
+            ErrorOutlineButton(onPressed: () {})
+          ],
         ),
       ),
     );
@@ -307,13 +285,6 @@ class ItemCategoryCard extends StatelessWidget {
       arguments: ItemGroupOverviewPageArguments(
         key: Key(category.uid.getOrCrash()),
         category: category,
-        watcherBloc: context.bloc<ItemGroupWatcherBloc>()
-          ..add(
-            ItemGroupWatcherEvent.watchAllStarted(
-              category.uid,
-              OrderType.date,
-            ),
-          ),
       ),
     );
   }

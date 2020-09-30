@@ -18,6 +18,7 @@ abstract class ItemCategoryDto implements _$ItemCategoryDto {
     @required String coverImageUrl,
     @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
     @required int creationTime,
+    @required int groupCount,
   }) = _ItemCategoryDto;
 
   factory ItemCategoryDto.fromDomain(ItemCategory category) {
@@ -28,15 +29,18 @@ abstract class ItemCategoryDto implements _$ItemCategoryDto {
       coverImageUrl: category.coverImageUrl.getOrCrash(),
       serverTimeStamp: FieldValue.serverTimestamp(),
       creationTime: category.creationTime.millisecondsSinceEpoch,
+      groupCount: category.groupCount.getOrCrash(),
     );
   }
   ItemCategory toDomain() {
     return ItemCategory(
-        uid: UniqueId.fromUniqueString(uid),
-        title: ShortTitle(title),
-        color: ItemCategoryColor(Color(color)),
-        coverImageUrl: ImageUrl(coverImageUrl),
-        creationTime: DateTime.fromMillisecondsSinceEpoch(creationTime));
+      uid: UniqueId.fromUniqueString(uid),
+      title: ShortTitle(title),
+      color: ItemCategoryColor(Color(color)),
+      coverImageUrl: ImageUrl(coverImageUrl),
+      creationTime: DateTime.fromMillisecondsSinceEpoch(creationTime),
+      groupCount: NotNegativeIntegerNumber(groupCount),
+    );
   }
 
   factory ItemCategoryDto.fromJson(Map<String, dynamic> json) =>

@@ -1,3 +1,5 @@
+import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
+import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/item_group_card.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/search_field.dart';
@@ -11,18 +13,15 @@ import 'package:Sepetim/application/item_group/watcher/item_group_watcher_bloc.d
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/default_floating_action_button.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 
 class ItemGroupOverviewPage extends StatelessWidget {
   final ItemCategory category;
-  final ItemGroupWatcherBloc watcherBloc;
   const ItemGroupOverviewPage({
     Key key,
     @required this.category,
-    @required this.watcherBloc,
   }) : super(key: key);
 
   @override
@@ -30,12 +29,20 @@ class ItemGroupOverviewPage extends StatelessWidget {
     final _controller = TextEditingController();
     return MultiBlocProvider(
       providers: [
+        BlocProvider<ItemGroupWatcherBloc>(
+          create: (context) => getIt<ItemGroupWatcherBloc>()
+            ..add(
+              ItemGroupWatcherEvent.watchAllStarted(
+                category.uid,
+                OrderType.date,
+              ),
+            ),
+        ),
         BlocProvider<ItemGroupActorBloc>(
           create: (context) => getIt<ItemGroupActorBloc>(),
         )
       ],
       child: BlocBuilder<ItemGroupWatcherBloc, ItemGroupWatcherState>(
-        cubit: watcherBloc,
         builder: (context, state) {
           return state.map(
             initial: (_) => Scaffold(
@@ -49,7 +56,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SearchField(
-                      watcherBloc: watcherBloc,
+                      watcherBloc: context.bloc<ItemGroupWatcherBloc>(),
                       categoryId: category.uid,
                       controller: _controller,
                     ),
@@ -67,7 +74,9 @@ class ItemGroupOverviewPage extends StatelessWidget {
                 ),
               ),
               floatingActionButton: DefaultFloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  print('hello');
+                },
                 iconData: Icons.add,
               ),
             ),
@@ -82,7 +91,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SearchField(
-                      watcherBloc: watcherBloc,
+                      watcherBloc: context.bloc<ItemGroupWatcherBloc>(),
                       categoryId: category.uid,
                       controller: _controller,
                     ),
@@ -147,7 +156,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         SearchField(
-                          watcherBloc: watcherBloc,
+                          watcherBloc: context.bloc<ItemGroupWatcherBloc>(),
                           categoryId: category.uid,
                           controller: _controller,
                         ),

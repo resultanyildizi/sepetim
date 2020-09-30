@@ -14,6 +14,7 @@ _$_ItemCategoryDto _$_$_ItemCategoryDtoFromJson(Map<String, dynamic> json) {
     serverTimeStamp:
         const ServerTimeStampConverter().fromJson(json['serverTimeStamp']),
     creationTime: json['creationTime'] as int,
+    groupCount: json['groupCount'] as int,
   );
 }
 
@@ -25,4 +26,5 @@ Map<String, dynamic> _$_$_ItemCategoryDtoToJson(_$_ItemCategoryDto instance) =>
       'serverTimeStamp':
           const ServerTimeStampConverter().toJson(instance.serverTimeStamp),
       'creationTime': instance.creationTime,
+      'groupCount': instance.groupCount,
     };

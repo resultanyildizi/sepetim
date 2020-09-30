@@ -5,7 +5,6 @@ import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:Sepetim/domain/auth/value_objects.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -135,7 +134,7 @@ class FirebaseAuthFacade extends IAuthFacade {
         await _googleSignIn.signOut();
         return left(const AuthFailure.accountAlreadyExists());
       } else {
-        final authCredential = GoogleAuthProvider.getCredential(
+        final authCredential = GoogleAuthProvider.credential(
           idToken: googleAuthentication.idToken,
           accessToken: googleAuthentication.accessToken,
         );
@@ -169,7 +168,7 @@ class FirebaseAuthFacade extends IAuthFacade {
       final emailAddressString = emailAddress.getOrCrash();
       final passwordString = password.getOrCrash();
 
-      final emailProviderCredential = EmailAuthProvider.getCredential(
+      final emailProviderCredential = EmailAuthProvider.credential(
         email: emailAddressString,
         password: passwordString,
       );

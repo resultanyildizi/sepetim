@@ -17,6 +17,7 @@ abstract class ItemCategory implements _$ItemCategory {
     @required ItemCategoryColor color,
     @required ImageUrl coverImageUrl,
     @required DateTime creationTime,
+    @required NotNegativeIntegerNumber groupCount,
   }) = _ItemCategory;
 
   factory ItemCategory.empty() => ItemCategory(
@@ -24,12 +25,14 @@ abstract class ItemCategory implements _$ItemCategory {
       title: ShortTitle(''),
       color: ItemCategoryColor(ItemCategoryColor.predefinedColors[0]),
       coverImageUrl: ImageUrl.defaultUrl(),
-      creationTime: DateTime.now().toUtc());
+      creationTime: DateTime.now().toUtc(),
+      groupCount: NotNegativeIntegerNumber(0));
 
   Option<ValueFailure<dynamic>> get failureOption {
     return title.failureOrUnit
         .andThen(color.failureOrUnit)
         .andThen(coverImageUrl.failureOrUnit)
+        .andThen(groupCount.failureOrUnit)
         .fold((f) => some(f), (_) => none());
   }
 }

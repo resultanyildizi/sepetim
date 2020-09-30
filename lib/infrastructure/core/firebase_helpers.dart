@@ -34,5 +34,5 @@ extension FirebaseStorageX on FirebaseStorage {
 
 extension StorageReferenceX on StorageReference {
   StorageReference get categoryCovers => child('category_covers');
-  StorageReference get imagePictures => child('image_pictures');
+  StorageReference get imagePictures => child('item_pictures');
 }

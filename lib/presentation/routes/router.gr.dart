@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 import '../../application/item/actor/item_actor_bloc.dart';
 import '../../application/item/form/item_form_bloc.dart';
 import '../../application/item/watcher/item_watcher_bloc.dart';
-import '../../application/item_group/watcher/item_group_watcher_bloc.dart';
 import '../../domain/core/value_objects.dart';
 import '../../domain/item/item.dart';
 import '../../domain/item_category/item_category.dart';
@@ -133,7 +132,6 @@ class Router extends RouterBase {
         builder: (context) => ItemGroupOverviewPage(
           key: args.key,
           category: args.category,
-          watcherBloc: args.watcherBloc,
         ),
         settings: data,
       );
@@ -260,12 +258,10 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushItemGroupOverviewPage({
     Key key,
     @required ItemCategory category,
-    @required ItemGroupWatcherBloc watcherBloc,
   }) =>
       push<dynamic>(
         Routes.itemGroupOverviewPage,
-        arguments: ItemGroupOverviewPageArguments(
-            key: key, category: category, watcherBloc: watcherBloc),
+        arguments: ItemGroupOverviewPageArguments(key: key, category: category),
       );
 
   Future<dynamic> pushItemGroupForm({
@@ -370,9 +366,7 @@ class ItemCategoryFormArguments {
 class ItemGroupOverviewPageArguments {
   final Key key;
   final ItemCategory category;
-  final ItemGroupWatcherBloc watcherBloc;
-  ItemGroupOverviewPageArguments(
-      {this.key, @required this.category, @required this.watcherBloc});
+  ItemGroupOverviewPageArguments({this.key, @required this.category});
 }
 
 /// ItemGroupForm arguments holder class

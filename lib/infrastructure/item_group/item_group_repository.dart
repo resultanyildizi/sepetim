@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:rxdart/rxdart.dart';
@@ -46,13 +48,34 @@ class ItemGroupRepository implements IItemGroupRepository {
       await categoryDoc.groupCollection
           .doc(groupDto.uid)
           .set(groupDto.toJson());
-      return right(unit);
+
+      final increaseGroupCountFunc = CloudFunctions.instance
+          .getHttpsCallable(functionName: 'increaseGroupCount');
+
+      final result = await increaseGroupCountFunc.call(<String, Object>{
+        'userId': userDoc.id,
+        'categoryId': categoryId.getOrCrash(),
+        'operation': 'increase',
+      });
+
+      if (result != null &&
+          result.data != null &&
+          result.data["type"] == "success") {
+        return right(unit);
+      } else {
+        throw PlatformException(
+            code: "FUNCTIONS_ERROR",
+            message:
+                "Error occured when cloud function running. Invalid result returned");
+      }
     } on FirebaseAuthException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemGroupFailure.insufficientPermission());
       } else {
         return left(const ItemGroupFailure.unexpected());
       }
+    } on PlatformException catch (_) {
+      return left(const ItemGroupFailure.unexpected());
     }
   }
 
