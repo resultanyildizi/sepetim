@@ -6,5 +6,5 @@ $CommitMessage = $args[0]
 if ($null -eq $CommitMessage || $CommitMessage -eq "") {
     throw "Invalid commit message."
 }
-git add . && git commit  -am $CommitMessage && git push &&
+(git add . && git commit  -am $CommitMessage && git push) |
 flutter build apk --release && Copy-Item ($SourcePath + $FileName) $DestinationPath && Start-Process "chrome.exe" $GoogleDriveFolderUrl 
