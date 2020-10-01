@@ -8,6 +8,7 @@ import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/default_floating_action_button.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
+import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
 import 'package:Sepetim/presentation/home/item_category/overview/widgets/item_category_card.dart';
 import 'package:Sepetim/presentation/home/item_category/overview/widgets/search_field.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
@@ -122,7 +123,16 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                         context,
                         backgroundColor:
                             Theme.of(context).scaffoldBackgroundColor,
-                        content: Text('${translate(context, 'deleting')}...'),
+                        content: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              '${translate(context, 'deleting')}...',
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                            SmallCircularProgressIndicator(),
+                          ],
+                        ),
                         barrierDismissible: false,
                       );
                     },

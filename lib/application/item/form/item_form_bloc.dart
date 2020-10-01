@@ -185,7 +185,10 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
               final oldImageUrl = state.item.imageUrls.getOrCrash()[i];
               final serverFailureOrLoadedImageUrl =
                   await _itemRepository.loadPictureToServer(
-                      state.item, tempImageOption.getOrElse(() => null));
+                      e.categoryId,
+                      e.groupId,
+                      state.item,
+                      tempImageOption.getOrElse(() => null));
               serverFailureOrLoadedImageUrl.fold(
                 (f) {
                   failureOrSuccess = left(f);

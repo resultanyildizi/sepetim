@@ -123,31 +123,38 @@ class ItemGroupRepository implements IItemGroupRepository {
       }
       final groupId = group.uid;
       final userDoc = await _firestore.userDocument();
-      final categoryDoc =
-          userDoc.categoryCollection.doc(categoryId.getOrCrash());
-      final groupDoc = categoryDoc.groupCollection.doc(groupId.getOrCrash());
 
-      final itemDocumentSnapshots = await groupDoc.itemCollection.get();
+      final deleteItemFunction =
+          CloudFunctions.instance.getHttpsCallable(functionName: "clearData");
 
-      for (final doc in itemDocumentSnapshots.docs) {
-        final failureOrSuccess = await _itemRepository.delete(
-            categoryId, groupId, ItemDto.fromFirestore(doc).toDomain());
+      final result = await deleteItemFunction.call(<String, String>{
+        "userId": userDoc.id,
+        "categoryId": categoryId.getOrCrash(),
+        "groupId": groupId.getOrCrash(),
+      });
 
-        failureOrSuccess.fold(
-          (f) {
-            return left(const ItemGroupFailure.unexpected());
-          },
-          (_) {},
+      if (result != null &&
+          result.data != null &&
+          result.data["type"] == "success") {
+        return right(unit);
+      } else {
+        throw PlatformException(
+          code: result.data["code"].toString(),
+          message: "Error occured when cloud function running. Error was: " +
+              result.data["message"].toString(),
         );
       }
-
-      await groupDoc.delete();
-      return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemGroupFailure.insufficientPermission());
       } else if (e.message.contains('NOT_FOUND')) {
         return left(const ItemGroupFailure.unableToUpdate());
+      } else {
+        return left(const ItemGroupFailure.unexpected());
+      }
+    } on PlatformException catch (e) {
+      if (e.code == "ERROR_INSUFFICIENT_PERMISSION") {
+        return left(const ItemGroupFailure.insufficientPermission());
       } else {
         return left(const ItemGroupFailure.unexpected());
       }

@@ -1,3 +1,4 @@
+import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
 import 'package:Sepetim/presentation/home/item/form/misc/link_object_primitive.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -404,7 +405,16 @@ class ItemPage extends StatelessWidget {
             actionPopup(
               context,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              content: Text('${translate(context, 'deleting')}...'),
+              content: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    '${translate(context, 'deleting')}...',
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  SmallCircularProgressIndicator(),
+                ],
+              ),
               barrierDismissible: false,
             );
           },

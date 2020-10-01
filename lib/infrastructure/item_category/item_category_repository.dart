@@ -2,11 +2,13 @@ import 'dart:io';
 
 import 'package:Sepetim/infrastructure/item_group/item_group_dtos.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
@@ -105,36 +107,37 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       }
       final categoryId = category.uid;
       final userDoc = await _firestore.userDocument();
-      final categoryDoc =
-          userDoc.categoryCollection.doc(categoryId.getOrCrash());
 
-      final groupDocumentSnapshots = await categoryDoc.groupCollection.get();
+      final deleteItemFunction =
+          CloudFunctions.instance.getHttpsCallable(functionName: "clearData");
 
-      for (final doc in groupDocumentSnapshots.docs) {
-        final failureOrSuccess = await _itemGroupRepository.delete(
-            categoryId, ItemGroupDto.fromFirestore(doc).toDomain());
-        failureOrSuccess.fold(
-          (f) {
-            return left(const ItemCategoryFailure.unexpected());
-          },
-          (_) {},
+      final result = await deleteItemFunction.call(<String, String>{
+        "userId": userDoc.id,
+        "categoryId": categoryId.getOrCrash(),
+      });
+
+      if (result != null &&
+          result.data != null &&
+          result.data["type"] == "success") {
+        return right(unit);
+      } else {
+        throw PlatformException(
+          code: result.data["code"].toString(),
+          message: "Error occured when cloud function running. Error was: " +
+              result.data["message"].toString(),
         );
       }
-
-      await categoryDoc.delete();
-
-      final removeFailureOrSuccess =
-          await removeCoverPictureFromServer(category);
-
-      return removeFailureOrSuccess.fold(
-        (f) => left(f),
-        (_) => right(unit),
-      );
     } on FirebaseAuthException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemCategoryFailure.insufficientPermission());
       } else if (e.message.contains('NOT_FOUND')) {
         return left(const ItemCategoryFailure.unableToUpdate());
+      } else {
+        return left(const ItemCategoryFailure.unexpected());
+      }
+    } on PlatformException catch (e) {
+      if (e.code == "ERROR_INSUFFICIENT_PERMISSION") {
+        return left(const ItemCategoryFailure.insufficientPermission());
       } else {
         return left(const ItemCategoryFailure.unexpected());
       }
@@ -197,7 +200,8 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       final userStorage = await _firebaseStorage.userStorage();
       final categoryUid = category.uid.getOrCrash();
 
-      final coverImageStorage = userStorage.categoryCovers
+      final coverImageStorage = userStorage
+          .child(categoryUid)
           .child(categoryUid + p.extension(imageFile.path));
 
       final uploadTask = coverImageStorage.putFile(imageFile);

@@ -1,6 +1,7 @@
 import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
+import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/item_group_card.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/search_field.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
@@ -127,7 +128,16 @@ class ItemGroupOverviewPage extends StatelessWidget {
                       context,
                       backgroundColor:
                           Theme.of(context).scaffoldBackgroundColor,
-                      content: Text('${translate(context, 'deleting')}...'),
+                      content: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            '${translate(context, 'deleting')}...',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          SmallCircularProgressIndicator(),
+                        ],
+                      ),
                       barrierDismissible: false,
                     ),
                     deleteFailure: (failure) {

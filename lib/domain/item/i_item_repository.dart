@@ -29,6 +29,8 @@ abstract class IItemRepository {
     ImageSource imageSource,
   );
   Future<Either<ItemFailure, ImageUrl>> loadPictureToServer(
+    UniqueId categoryId,
+    UniqueId groupId,
     Item item,
     File imageFile,
   );

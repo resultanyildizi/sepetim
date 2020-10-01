@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -97,7 +98,10 @@ class ItemRepository extends IItemRepository {
 
   @override
   Future<Either<ItemFailure, Unit>> delete(
-      UniqueId categoryId, UniqueId groupId, Item item) async {
+    UniqueId categoryId,
+    UniqueId groupId,
+    Item item,
+  ) async {
     try {
       final connectivityResult = await Connectivity().checkConnectivity();
 
@@ -107,25 +111,39 @@ class ItemRepository extends IItemRepository {
       }
 
       final userDoc = await _firestore.userDocument();
-      final categoryDoc =
-          userDoc.categoryCollection.doc(categoryId.getOrCrash());
-      final groupDoc = categoryDoc.groupCollection.doc(groupId.getOrCrash());
 
-      final itemId = item.uid.getOrCrash();
+      final deleteItemFunction =
+          CloudFunctions.instance.getHttpsCallable(functionName: "clearData");
 
-      await groupDoc.itemCollection.doc(itemId).delete();
+      final result = await deleteItemFunction.call(<String, String>{
+        "userId": userDoc.id,
+        "categoryId": categoryId.getOrCrash(),
+        "groupId": groupId.getOrCrash(),
+        "itemId": item.uid.getOrCrash(),
+      });
 
-      final removeFailureOrSuccess = await removeAllPicturesFromServer(item);
-
-      return removeFailureOrSuccess.fold(
-        (f) => left(f),
-        (_) => right(unit),
-      );
+      if (result != null &&
+          result.data != null &&
+          result.data["type"] == "success") {
+        return right(unit);
+      } else {
+        throw PlatformException(
+          code: result.data["code"].toString(),
+          message: "Error occured when cloud function running. Error was: " +
+              result.data["message"].toString(),
+        );
+      }
     } on FirebaseAuthException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const ItemFailure.insufficientPermission());
       } else if (e.message.contains('NOT_FOUND')) {
         return left(const ItemFailure.unableToUpdate());
+      } else {
+        return left(const ItemFailure.unexpected());
+      }
+    } on PlatformException catch (e) {
+      if (e.code == "ERROR_INSUFFICIENT_PERMISSION") {
+        return left(const ItemFailure.insufficientPermission());
       } else {
         return left(const ItemFailure.unexpected());
       }
@@ -173,6 +191,8 @@ class ItemRepository extends IItemRepository {
 
   @override
   Future<Either<ItemFailure, ImageUrl>> loadPictureToServer(
+    UniqueId categoryId,
+    UniqueId groupId,
     Item item,
     File imageFile,
   ) async {
@@ -187,7 +207,9 @@ class ItemRepository extends IItemRepository {
       final itemId = item.uid.getOrCrash();
       final imageId = UniqueId().getOrCrash();
 
-      final itemPictureStorage = userStorage.imagePictures
+      final itemPictureStorage = userStorage
+          .child(categoryId.getOrCrash())
+          .child(groupId.getOrCrash())
           .child(itemId)
           .child(imageId + extension(imageFile.path));
 
