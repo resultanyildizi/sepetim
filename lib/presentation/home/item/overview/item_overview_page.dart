@@ -187,7 +187,7 @@ class ItemOverviewPage extends StatelessWidget {
                                     .copyWith(fontSize: 12.0),
                               ),
                               Text(
-                                '${translate(context, 'total_price')}: ${totalItemsPrice(state.items)}₺',
+                                '${translate(context, 'total_price')}: ${totalItemsPrice(state.items).fittedPrice(context)} ₺',
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyText1

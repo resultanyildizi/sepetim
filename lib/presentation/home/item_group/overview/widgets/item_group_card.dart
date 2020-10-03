@@ -125,7 +125,7 @@ class ItemGroupCard extends StatelessWidget {
               ),
             ),
             Text(
-                '${translate(context, 'items_count')}: ${state.items.size} - ${translate(context, 'total_price')}: ${totalItemsPrice(state.items)}₺',
+                '${translate(context, 'items_count')}: ${state.items.size} - ${translate(context, 'total_price')}: ${totalItemsPrice(state.items).fittedPrice(context)} ₺',
                 style: Theme.of(context)
                     .textTheme
                     .bodyText2
@@ -133,7 +133,6 @@ class ItemGroupCard extends StatelessWidget {
           ],
         );
       },
-      // ignore: prefer_const_literals_to_create_immutables
       loading: (_) => Column(children: <Widget>[
         const Spacer(),
         LinearProgressIndicator(

@@ -296,7 +296,7 @@ class ItemPage extends StatelessWidget {
                         .copyWith(fontSize: 14.0, fontWeight: FontWeight.bold),
                   ),
                   TextSpan(
-                    text: '${state.item.price.getOrCrash().toString()}₺',
+                    text: '${state.item.price.fittedPrice(context)} ₺',
                   )
                 ],
               ),

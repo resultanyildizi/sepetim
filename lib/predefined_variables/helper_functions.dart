@@ -1,5 +1,6 @@
 import 'package:Sepetim/app_localization.dart';
 import 'package:Sepetim/domain/item/item.dart';
+import 'package:Sepetim/domain/item/value_objects.dart';
 import 'package:flutter/material.dart';
 import 'package:kt_dart/kt.dart';
 
@@ -26,7 +27,7 @@ String translate(BuildContext context, String key) {
   return AppLocalizations.of(context).translate(key);
 }
 
-double totalItemsPrice(KtList<Item> items) {
+Price totalItemsPrice(KtList<Item> items) {
   double totalPrice = 0;
 
   items.forEach((item) {
@@ -34,5 +35,5 @@ double totalItemsPrice(KtList<Item> items) {
       totalPrice += item.price.getOrCrash();
     }
   });
-  return totalPrice;
+  return Price(totalPrice.toString());
 }
