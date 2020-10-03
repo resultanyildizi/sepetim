@@ -4,7 +4,7 @@ const firebase_tools = require("firebase-tools");
 
 admin.initializeApp();
 
-exports.increaseGroupCount = functions.https.onCall(async (data, context) => {
+exports.changeGroupCount = functions.https.onCall(async (data, context) => {
   try {
     const userId = data["userId"];
     const categoryId = data["categoryId"];

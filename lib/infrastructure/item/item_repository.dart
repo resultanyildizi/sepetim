@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:Sepetim/infrastructure/core/cloud_function_caller.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
@@ -112,27 +113,17 @@ class ItemRepository extends IItemRepository {
 
       final userDoc = await _firestore.userDocument();
 
-      final deleteItemFunction =
-          CloudFunctions.instance.getHttpsCallable(functionName: "clearData");
+      await callCloudFunction(
+        functionName: "clearData",
+        data: <String, String>{
+          "userId": userDoc.id,
+          "categoryId": categoryId.getOrCrash(),
+          "groupId": groupId.getOrCrash(),
+          "itemId": item.uid.getOrCrash(),
+        },
+      );
 
-      final result = await deleteItemFunction.call(<String, String>{
-        "userId": userDoc.id,
-        "categoryId": categoryId.getOrCrash(),
-        "groupId": groupId.getOrCrash(),
-        "itemId": item.uid.getOrCrash(),
-      });
-
-      if (result != null &&
-          result.data != null &&
-          result.data["type"] == "success") {
-        return right(unit);
-      } else {
-        throw PlatformException(
-          code: result.data["code"].toString(),
-          message: "Error occured when cloud function running. Error was: " +
-              result.data["message"].toString(),
-        );
-      }
+      return right(unit);
     } on FirebaseException catch (e) {
       if (e.code == "permission-denied") {
         return left(const ItemFailure.insufficientPermission());

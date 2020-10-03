@@ -224,9 +224,9 @@ class _LinkFormState extends State<LinkForm> {
                                   ).then(
                                     (_) async {
                                       await Fluttertoast.showToast(
-                                        msg: "Copied",
+                                        msg: translate(context, 'link_copied'),
                                         toastLength: Toast.LENGTH_SHORT,
-                                        gravity: ToastGravity.SNACKBAR,
+                                        gravity: ToastGravity.CENTER,
                                         backgroundColor: Colors.grey[900],
                                         textColor: Colors.white,
                                         fontSize: 16.0,
