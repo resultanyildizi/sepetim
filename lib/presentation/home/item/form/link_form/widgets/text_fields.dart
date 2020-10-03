@@ -1,5 +1,3 @@
-import 'dart:convert' show utf8;
-
 import 'package:Sepetim/domain/link_object/value_objects.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +6,7 @@ import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LinkTitleTextField extends StatelessWidget {
   final ItemFormBloc formBloc;
@@ -27,6 +26,7 @@ class LinkTitleTextField extends StatelessWidget {
       style: Theme.of(context).textTheme.subtitle1,
       decoration: InputDecoration(
         labelText: translate(context, 'enter_a_title'),
+        counterStyle: robotoTextStyle(),
       ),
       maxLength: ShortTitle.maxLength,
       autocorrect: false,
