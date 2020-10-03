@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kt_dart/kt.dart';
 
 import 'package:Sepetim/application/item/actor/item_actor_bloc.dart';
@@ -194,8 +195,16 @@ class ItemPage extends StatelessWidget {
             height: 30,
             padding: const EdgeInsets.only(bottom: 3),
             child: FlatButton(
-              onPressed: () {
+              onPressed: () async {
                 formBloc.add(ItemFormEvent.saved(category.uid, group.uid));
+                await Fluttertoast.showToast(
+                  msg: "Cover picture changed",
+                  backgroundColor: Colors.grey[900],
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  textColor: Colors.white,
+                  fontSize: 16.0,
+                );
               },
               color: Colors.black.withOpacity(0.3),
               child: Text(translate(context, 'set_as_cover'),
