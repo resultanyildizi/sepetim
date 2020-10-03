@@ -99,6 +99,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
             tempImageFiles[e.index] = none();
             return state.copyWith(
               temporaryImageFiles: tempImageFiles,
+              itemFailureOrSuccessOption: none(),
             );
           },
           (imageFile) {
@@ -117,6 +118,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
               temporaryImageFiles: tempImageFiles,
               isPictureRemoved: newIsPictureRemovedList,
               timeChangeScore: state.timeChangeScore + 1,
+              itemFailureOrSuccessOption: none(),
             );
           },
         );
@@ -137,6 +139,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
           isPictureRemoved: newIsPictureRemovedList,
           temporaryImageFiles: tempImageFiles,
           timeChangeScore: state.timeChangeScore + 1,
+          itemFailureOrSuccessOption: none(),
         );
       },
       linkObjectsChanged: (e) async* {
@@ -170,7 +173,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
 
               failureOrImageUrl.fold(
                 (f) {
-                  failureOrSuccess = left(f);
+                  failureOrSuccess ??= left(f);
                 },
                 (imageUrl) {
                   newImageUrls[i] = imageUrl;
@@ -185,18 +188,18 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
               final oldImageUrl = state.item.imageUrls.getOrCrash()[i];
               final serverFailureOrLoadedImageUrl =
                   await _itemRepository.loadPictureToServer(
-                      e.categoryId,
-                      e.groupId,
-                      state.item,
-                      tempImageOption.getOrElse(() => null));
+                e.categoryId,
+                e.groupId,
+                state.item,
+                tempImageOption.getOrElse(() => null),
+                oldImageUrl,
+              );
               serverFailureOrLoadedImageUrl.fold(
                 (f) {
-                  failureOrSuccess = left(f);
+                  failureOrSuccess ??= left(f);
                 },
                 (imageUrl) async {
                   newImageUrls[i] = imageUrl;
-                  await _itemRepository.removePictureFromServer(
-                      oldImageUrl, state.item);
                 },
               );
             }
@@ -206,7 +209,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
             lastEditTime = DateTime.now().toUtc();
           }
 
-          failureOrSuccess = state.isEditing
+          failureOrSuccess ??= state.isEditing
               ? await _itemRepository.update(
                   e.categoryId,
                   e.groupId,

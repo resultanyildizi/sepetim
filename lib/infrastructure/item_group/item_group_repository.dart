@@ -15,7 +15,6 @@ import 'package:Sepetim/domain/item_group/i_group_repository.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/domain/item_group/item_group_failure.dart';
 import 'package:Sepetim/infrastructure/core/firebase_helpers.dart';
-import 'package:Sepetim/infrastructure/item/item_dtos.dart';
 import 'package:Sepetim/infrastructure/item_group/item_group_dtos.dart';
 
 @LazySingleton(as: IItemGroupRepository)
@@ -68,8 +67,8 @@ class ItemGroupRepository implements IItemGroupRepository {
             message:
                 "Error occured when cloud function running. Invalid result returned");
       }
-    } on FirebaseAuthException catch (e) {
-      if (e.message.contains('PERMISSION_DENIED')) {
+    } on FirebaseException catch (e) {
+      if (e.code == 'permission-denied') {
         return left(const ItemGroupFailure.insufficientPermission());
       } else {
         return left(const ItemGroupFailure.unexpected());
@@ -100,10 +99,10 @@ class ItemGroupRepository implements IItemGroupRepository {
           .doc(groupDto.uid)
           .update(groupDto.toJson());
       return right(unit);
-    } on FirebaseAuthException catch (e) {
-      if (e.message.contains('PERMISSION_DENIED')) {
+    } on FirebaseException catch (e) {
+      if (e.code == 'permission-denied') {
         return left(const ItemGroupFailure.insufficientPermission());
-      } else if (e.message.contains('NOT_FOUND')) {
+      } else if (e.code == 'not-found') {
         return left(const ItemGroupFailure.unableToUpdate());
       } else {
         return left(const ItemGroupFailure.unexpected());
@@ -144,10 +143,10 @@ class ItemGroupRepository implements IItemGroupRepository {
               result.data["message"].toString(),
         );
       }
-    } on FirebaseAuthException catch (e) {
-      if (e.message.contains('PERMISSION_DENIED')) {
+    } on FirebaseException catch (e) {
+      if (e.code == 'permission-denied') {
         return left(const ItemGroupFailure.insufficientPermission());
-      } else if (e.message.contains('NOT_FOUND')) {
+      } else if (e.code == 'not-found') {
         return left(const ItemGroupFailure.unableToUpdate());
       } else {
         return left(const ItemGroupFailure.unexpected());
@@ -196,8 +195,7 @@ class ItemGroupRepository implements IItemGroupRepository {
             .map((doc) => ItemGroupDto.fromFirestore(doc).toDomain())
             .toImmutableList()))
         .onErrorReturnWith((e) {
-      if (e is FirebaseAuthException &&
-          e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseException && e.code == 'permission-denied') {
         return left(const ItemGroupFailure.insufficientPermission());
       } else {
         return left(const ItemGroupFailure.unexpected());
@@ -247,8 +245,7 @@ class ItemGroupRepository implements IItemGroupRepository {
                 .startsWith(title.toLowerCase()))
             .toImmutableList()))
         .onErrorReturnWith((e) {
-      if (e is FirebaseAuthException &&
-          e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseException && e.code == 'permission-denied') {
         return left(const ItemGroupFailure.insufficientPermission());
       } else {
         return left(const ItemGroupFailure.unexpected());

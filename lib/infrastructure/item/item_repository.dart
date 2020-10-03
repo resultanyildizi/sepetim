@@ -56,8 +56,8 @@ class ItemRepository extends IItemRepository {
 
       await groupDoc.itemCollection.doc(itemDto.uid).set(itemDto.toJson());
       return right(unit);
-    } on FirebaseAuthException catch (e) {
-      if (e.message.contains('PERMISSION_DENIED')) {
+    } on FirebaseException catch (e) {
+      if (e.code == 'permission-denied') {
         return left(const ItemFailure.insufficientPermission());
       } else {
         return left(const ItemFailure.unexpected());
@@ -85,10 +85,10 @@ class ItemRepository extends IItemRepository {
 
       await groupDoc.itemCollection.doc(itemDto.uid).update(itemDto.toJson());
       return right(unit);
-    } on FirebaseAuthException catch (e) {
-      if (e.message.contains('PERMISSION_DENIED')) {
+    } on FirebaseException catch (e) {
+      if (e.code == 'permission-denied') {
         return left(const ItemFailure.insufficientPermission());
-      } else if (e.message.contains('NOT_FOUND')) {
+      } else if (e.code == 'not-found') {
         return left(const ItemFailure.unableToUpdate());
       } else {
         return left(const ItemFailure.unexpected());
@@ -133,10 +133,10 @@ class ItemRepository extends IItemRepository {
               result.data["message"].toString(),
         );
       }
-    } on FirebaseAuthException catch (e) {
-      if (e.message.contains('PERMISSION_DENIED')) {
+    } on FirebaseException catch (e) {
+      if (e.code == "permission-denied") {
         return left(const ItemFailure.insufficientPermission());
-      } else if (e.message.contains('NOT_FOUND')) {
+      } else if (e.code == "not-found") {
         return left(const ItemFailure.unableToUpdate());
       } else {
         return left(const ItemFailure.unexpected());
@@ -195,6 +195,7 @@ class ItemRepository extends IItemRepository {
     UniqueId groupId,
     Item item,
     File imageFile,
+    ImageUrl oldImageUrl,
   ) async {
     try {
       final connectivityResult = await Connectivity().checkConnectivity();
@@ -205,13 +206,19 @@ class ItemRepository extends IItemRepository {
       }
       final userStorage = await _firebaseStorage.userStorage();
       final itemId = item.uid.getOrCrash();
-      final imageId = UniqueId().getOrCrash();
+      String imageId = UniqueId().getOrCrash() + extension(imageFile.path);
+
+      if (oldImageUrl.getOrCrash() != ImageUrl.defaultUrl().getOrCrash()) {
+        final imageRef = await _firebaseStorage
+            .getReferenceFromUrl(oldImageUrl.getOrCrash());
+        imageId = await imageRef.getName();
+      }
 
       final itemPictureStorage = userStorage
           .child(categoryId.getOrCrash())
           .child(groupId.getOrCrash())
           .child(itemId)
-          .child(imageId + extension(imageFile.path));
+          .child(imageId);
 
       final uploadTask = itemPictureStorage.putFile(imageFile);
 
@@ -220,8 +227,12 @@ class ItemRepository extends IItemRepository {
       final itemPictureDownloadUrl = await itemPictureStorage.getDownloadURL();
 
       return right(ImageUrl(itemPictureDownloadUrl.toString()));
-    } on FirebaseAuthException catch (_) {
-      return left(const ItemFailure.unexpected());
+    } on PlatformException catch (e) {
+      if (e.message.contains("permission")) {
+        return left(const ItemFailure.insufficientPermission());
+      } else {
+        return left(const ItemFailure.unexpected());
+      }
     }
   }
 
@@ -246,30 +257,12 @@ class ItemRepository extends IItemRepository {
         await imagePictureStorage.delete();
       }
       return right(ImageUrl.defaultUrl());
-    } on FirebaseAuthException catch (_) {
-      return left(const ItemFailure.unexpected());
-    }
-  }
-
-  @override
-  Future<Either<ItemFailure, Unit>> removeAllPicturesFromServer(
-    Item item,
-  ) async {
-    try {
-      final connectivityResult = await Connectivity().checkConnectivity();
-
-      if (connectivityResult != ConnectivityResult.mobile &&
-          connectivityResult != ConnectivityResult.wifi) {
-        return left(const ItemFailure.networkException());
+    } on PlatformException catch (e) {
+      if (e.message.contains("permission")) {
+        return left(const ItemFailure.insufficientPermission());
+      } else {
+        return left(const ItemFailure.unexpected());
       }
-
-      item.imageUrls
-          .getOrCrash()
-          .map((imageUrl) => removePictureFromServer(imageUrl, item));
-
-      return right(unit);
-    } on FirebaseAuthException catch (_) {
-      return left(const ItemFailure.unexpected());
     }
   }
 
@@ -308,8 +301,7 @@ class ItemRepository extends IItemRepository {
             .map((doc) => ItemDto.fromFirestore(doc).toDomain())
             .toImmutableList()))
         .onErrorReturnWith((e) {
-      if (e is FirebaseAuthException &&
-          e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseException && e.code == 'permission-denied') {
         return left(const ItemFailure.insufficientPermission());
       } else {
         return left(const ItemFailure.unexpected());
@@ -356,8 +348,7 @@ class ItemRepository extends IItemRepository {
                 .startsWith(title.toLowerCase()))
             .toImmutableList()))
         .onErrorReturnWith((e) {
-      if (e is FirebaseAuthException &&
-          e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseException && e.code == 'permission-denied') {
         return left(const ItemFailure.insufficientPermission());
       } else {
         return left(const ItemFailure.unexpected());

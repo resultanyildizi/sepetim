@@ -64,14 +64,17 @@ class _LinkFormState extends State<LinkForm> {
     return BlocConsumer<ItemFormBloc, ItemFormState>(
       cubit: widget.formBloc,
       listener: (context, state) {
-        state.itemFailureOrSuccessOption.fold(() => {}, (either) {
-          either.fold(
-            (_) {},
-            (r) {
-              isItemChanged = false;
-            },
-          );
-        });
+        state.itemFailureOrSuccessOption.fold(
+          () => {},
+          (either) {
+            either.fold(
+              (_) {},
+              (r) {
+                isItemChanged = false;
+              },
+            );
+          },
+        );
       },
       builder: (context, state) {
         return WillPopScope(
@@ -283,7 +286,9 @@ class _LinkFormState extends State<LinkForm> {
                               if (!state.isSaving) {
                                 widget.formBloc.add(
                                   ItemFormEvent.saved(
-                                      widget.category.uid, widget.group.uid),
+                                    widget.category.uid,
+                                    widget.group.uid,
+                                  ),
                                 );
                               }
                             },

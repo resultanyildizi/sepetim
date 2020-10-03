@@ -1,6 +1,7 @@
 import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
+import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/item_group_card.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/search_field.dart';
@@ -75,9 +76,7 @@ class ItemGroupOverviewPage extends StatelessWidget {
                 ),
               ),
               floatingActionButton: DefaultFloatingActionButton(
-                onPressed: () {
-                  print('hello');
-                },
+                onPressed: () {},
                 iconData: Icons.add,
               ),
             ),
@@ -143,6 +142,8 @@ class ItemGroupOverviewPage extends StatelessWidget {
                     deleteFailure: (failure) {
                       ExtendedNavigator.of(context).pop();
                       failure.groupFailure.maybeMap(
+                        insufficientPermission: (_) =>
+                            insufficientPermissionPopup(context),
                         networkException: (_) => networkExceptionPopup(context),
                         orElse: () => serverErrorPopup(context),
                       );

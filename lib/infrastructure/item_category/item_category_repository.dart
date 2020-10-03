@@ -31,13 +31,11 @@ class ItemCategoryRepository implements IItemCategoryRepository {
   final FirebaseFirestore _firestore;
   final ImagePicker _imagePicker;
   final FirebaseStorage _firebaseStorage;
-  final IItemGroupRepository _itemGroupRepository;
 
   ItemCategoryRepository(
     this._firestore,
     this._imagePicker,
     this._firebaseStorage,
-    this._itemGroupRepository,
   );
 
   @override
@@ -57,8 +55,8 @@ class ItemCategoryRepository implements IItemCategoryRepository {
           .doc(categoryDto.uid)
           .set(categoryDto.toJson());
       return right(unit);
-    } on FirebaseAuthException catch (e) {
-      if (e.message.contains('PERMISSION_DENIED')) {
+    } on FirebaseException catch (e) {
+      if (e.code == 'permission-denied') {
         return left(const ItemCategoryFailure.insufficientPermission());
       } else {
         return left(const ItemCategoryFailure.unexpected());
@@ -84,10 +82,10 @@ class ItemCategoryRepository implements IItemCategoryRepository {
           .doc(categoryDto.uid)
           .update(categoryDto.toJson());
       return right(unit);
-    } on FirebaseAuthException catch (e) {
-      if (e.message.contains('PERMISSION_DENIED')) {
+    } on FirebaseException catch (e) {
+      if (e.code == 'permission-denied') {
         return left(const ItemCategoryFailure.insufficientPermission());
-      } else if (e.message.contains('NOT_FOUND')) {
+      } else if (e.code == 'not-found') {
         return left(const ItemCategoryFailure.unableToUpdate());
       } else {
         return left(const ItemCategoryFailure.unexpected());
@@ -127,10 +125,10 @@ class ItemCategoryRepository implements IItemCategoryRepository {
               result.data["message"].toString(),
         );
       }
-    } on FirebaseAuthException catch (e) {
-      if (e.message.contains('PERMISSION_DENIED')) {
+    } on FirebaseException catch (e) {
+      if (e.code == 'permission-denied') {
         return left(const ItemCategoryFailure.insufficientPermission());
-      } else if (e.message.contains('NOT_FOUND')) {
+      } else if (e.code == 'not-found') {
         return left(const ItemCategoryFailure.unableToUpdate());
       } else {
         return left(const ItemCategoryFailure.unexpected());
@@ -211,8 +209,12 @@ class ItemCategoryRepository implements IItemCategoryRepository {
       final coverImageDownloadUrl = await coverImageStorage.getDownloadURL();
 
       return right(ImageUrl(coverImageDownloadUrl.toString()));
-    } on FirebaseAuthException catch (_) {
-      return left(const ItemCategoryFailure.unexpected());
+    } on PlatformException catch (e) {
+      if (e.message.contains("permission")) {
+        return left(const ItemCategoryFailure.insufficientPermission());
+      } else {
+        return left(const ItemCategoryFailure.unexpected());
+      }
     }
   }
 
@@ -235,8 +237,12 @@ class ItemCategoryRepository implements IItemCategoryRepository {
         await coverImageStorage.delete();
       }
       return right(ImageUrl.defaultUrl());
-    } on FirebaseAuthException catch (_) {
-      return left(const ItemCategoryFailure.unexpected());
+    } on PlatformException catch (e) {
+      if (e.message.contains("permission")) {
+        return left(const ItemCategoryFailure.insufficientPermission());
+      } else {
+        return left(const ItemCategoryFailure.unexpected());
+      }
     }
   }
 
@@ -274,8 +280,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
                 .map((doc) => ItemCategoryDto.fromFirestore(doc).toDomain())
                 .toImmutableList()))
         .onErrorReturnWith((e) {
-      if (e is FirebaseAuthException &&
-          e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseException && e.code == 'permission-denied') {
         return left(const ItemCategoryFailure.insufficientPermission());
       } else {
         return left(const ItemCategoryFailure.unexpected());
@@ -322,8 +327,7 @@ class ItemCategoryRepository implements IItemCategoryRepository {
                     .startsWith(title.toLowerCase()))
                 .toImmutableList()))
         .onErrorReturnWith((e) {
-      if (e is FirebaseAuthException &&
-          e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseException && e.code == 'permission-denied') {
         return left(const ItemCategoryFailure.insufficientPermission());
       } else {
         return left(const ItemCategoryFailure.unexpected());

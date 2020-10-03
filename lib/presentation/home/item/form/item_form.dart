@@ -5,6 +5,7 @@ import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
+import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';
 import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
 import 'package:Sepetim/presentation/home/item/form/widgets/edit_description_button.dart';
@@ -58,10 +59,11 @@ class ItemForm extends StatelessWidget {
               either.fold(
                 (failure) => failure.map(
                   unexpected: (_) => serverErrorPopup(context),
-                  insufficientPermission: (_) => serverErrorPopup(context),
+                  insufficientPermission: (_) =>
+                      insufficientPermissionPopup(context),
                   unableToUpdate: (_) => serverErrorPopup(context),
-                  imageLoadCanceled: (_) {},
                   networkException: (_) => networkExceptionPopup(context),
+                  imageLoadCanceled: (_) {},
                 ),
                 (_) {
                   ExtendedNavigator.of(context).popUntil((route) =>

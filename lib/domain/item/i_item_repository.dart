@@ -33,14 +33,13 @@ abstract class IItemRepository {
     UniqueId groupId,
     Item item,
     File imageFile,
+    ImageUrl oldImageUrl,
   );
   Future<Either<ItemFailure, ImageUrl>> removePictureFromServer(
     ImageUrl imageUrl,
     Item item,
   );
-  Future<Either<ItemFailure, Unit>> removeAllPicturesFromServer(
-    Item item,
-  );
+
   Stream<Either<ItemFailure, KtList<Item>>> watchAll(
     UniqueId categoryId,
     UniqueId groupId,

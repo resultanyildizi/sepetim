@@ -4,8 +4,8 @@ import 'package:Sepetim/application/item_category/watcher/item_category_watcher_
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
+import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/default_floating_action_button.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
@@ -139,6 +139,8 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                     deleteFailure: (failure) {
                       ExtendedNavigator.of(context).pop();
                       failure.categoryFailure.maybeMap(
+                        insufficientPermission: (_) =>
+                            insufficientPermissionPopup(context),
                         networkException: (_) => networkExceptionPopup(context),
                         orElse: () => serverErrorPopup(context),
                       );

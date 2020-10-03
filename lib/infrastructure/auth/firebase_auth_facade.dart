@@ -44,9 +44,7 @@ class FirebaseAuthFacade extends IAuthFacade {
       );
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'ERROR_NETWORK_REQUEST_FAILED') {
-        return left(const AuthFailure.networkException());
-      } else if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
+      if (e.code == 'emaıl-already-ın-use') {
         return left(const AuthFailure.emailAlreadyInUse());
       } else {
         return left(const AuthFailure.serverError());
@@ -66,12 +64,8 @@ class FirebaseAuthFacade extends IAuthFacade {
 
       await _firebaseAuth.signInAnonymously();
       return right(unit);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'ERROR_NETWORK_REQUEST_FAILED') {
-        return left(const AuthFailure.networkException());
-      } else {
-        return left(const AuthFailure.serverError());
-      }
+    } on FirebaseAuthException catch (_) {
+      return left(const AuthFailure.serverError());
     }
   }
 
@@ -97,10 +91,7 @@ class FirebaseAuthFacade extends IAuthFacade {
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'ERROR_NETWORK_REQUEST_FAILED') {
-        return left(const AuthFailure.networkException());
-      } else if (e.code == 'ERROR_USER_NOT_FOUND' ||
-          e.code == 'ERROR_WRONG_PASSWORD') {
+      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
       } else {
         return left(const AuthFailure.serverError());
@@ -143,9 +134,7 @@ class FirebaseAuthFacade extends IAuthFacade {
       }
     } on FirebaseAuthException catch (e) {
       await _googleSignIn.signOut();
-      if (e.code == 'network_error') {
-        return left(const AuthFailure.networkException());
-      } else if (e.code == 'ERROR_INVALID_CREDENTIAL') {
+      if (e.code == 'ınvalıd-credentıal') {
         return left(const AuthFailure.invalidCredential());
       } else {
         return left(const AuthFailure.serverError());
@@ -179,11 +168,11 @@ class FirebaseAuthFacade extends IAuthFacade {
       }
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
+      if (e.code == 'emaıl-already-ın-use') {
         return left(const AuthFailure.emailAlreadyInUse());
-      } else if (e.code == 'ERROR_CREDENTIAL_ALREADY_IN_USE') {
+      } else if (e.code == 'credentıal-already-ın-use') {
         return left(const AuthFailure.accountAlreadyExists());
-      } else if (e.code == 'ERROR_PROVIDER_ALREADY_LINKED') {
+      } else if (e.code == 'provıder-already-lınked') {
         return left(const AuthFailure.accountAlreadyLinked());
       } else {
         return left(const AuthFailure.serverError());
@@ -218,14 +207,14 @@ class FirebaseAuthFacade extends IAuthFacade {
       }
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
-        await _googleSignIn.signOut();
+      await _googleSignIn.signOut();
+      if (e.code == 'emaıl-already-ın-use') {
         return left(const AuthFailure.emailAlreadyInUse());
-      } else if (e.code == 'ERROR_CREDENTIAL_ALREADY_IN_USE') {
+      } else if (e.code == 'credentıal-already-ın-use') {
         return left(const AuthFailure.accountAlreadyExists());
-      } else if (e.code == 'ERROR_PROVIDER_ALREADY_LINKED') {
+      } else if (e.code == 'provıder-already-lınked') {
         return left(const AuthFailure.accountAlreadyLinked());
-      } else if (e.code == 'ERROR_INVALID_CREDENTIAL') {
+      } else if (e.code == 'ınvalıd-credentıal') {
         return left(const AuthFailure.invalidCredential());
       } else {
         return left(const AuthFailure.serverError());
@@ -249,13 +238,11 @@ class FirebaseAuthFacade extends IAuthFacade {
           _googleSignIn.signOut(),
         ]);
       } else {
-        print("user null");
         return left(const AuthFailure.serverError());
       }
 
       return right(unit);
-    } on FirebaseAuthException catch (e) {
-      print(e.message);
+    } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
     }
   }
@@ -290,7 +277,7 @@ class FirebaseAuthFacade extends IAuthFacade {
       );
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      if (e.code == "ERROR_USER_NOT_FOUND") {
+      if (e.code == "user-not-found") {
         return left(const AuthFailure.userNotFound());
       }
       return left(const AuthFailure.serverError());
@@ -316,9 +303,9 @@ class FirebaseAuthFacade extends IAuthFacade {
       await _firebaseUser.reauthenticateWithCredential(credential);
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'ERROR_WRONG_PASSWORD') {
+      if (e.code == 'wrong-password') {
         return left(const AuthFailure.wrongPassword());
-      } else if (e.code == 'ERROR_TOO_MANY_REQUESTS') {
+      } else if (e.code == 'too-many-requests') {
         return left(const AuthFailure.tooManyRequests());
       } else {
         return left(const AuthFailure.serverError());

@@ -48,3 +48,23 @@ Future deletePopup(
     ],
   );
 }
+
+Future insufficientPermissionPopup(BuildContext context) {
+  return actionPopup(
+    context,
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Text(translate(context, 'insufficient_permission_title'),
+        style: Theme.of(context).textTheme.headline3),
+    content: Text(translate(context, 'insufficient_permission_message'),
+        style: Theme.of(context).textTheme.bodyText1),
+    actions: <Widget>[
+      RoundedButton(
+        width: screenWidthByScalar(context, 1.0),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        text: translate(context, 'okay'),
+      )
+    ],
+  );
+}

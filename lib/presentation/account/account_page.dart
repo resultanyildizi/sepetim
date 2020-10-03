@@ -5,8 +5,6 @@ import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/account/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/account/widgets/buttons.dart';
-import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
-import 'package:Sepetim/presentation/core/widgets/buttons.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';

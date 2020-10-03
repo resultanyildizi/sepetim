@@ -12,7 +12,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:Sepetim/application/item/watcher/item_watcher_bloc.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
-import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/default_floating_action_button.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 

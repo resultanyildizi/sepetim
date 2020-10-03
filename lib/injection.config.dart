@@ -77,12 +77,23 @@ GetIt $initGetIt(
   gh.factory<AuthBloc>(() => AuthBloc(get<IAuthFacade>()));
   gh.factory<DynamicLinksBloc>(
       () => DynamicLinksBloc(get<IDynamicLinksRepository>()));
+  gh.lazySingleton<IItemCategoryRepository>(() => ItemCategoryRepository(
+        get<FirebaseFirestore>(),
+        get<ImagePicker>(),
+        get<FirebaseStorage>(),
+      ));
   gh.lazySingleton<IItemRepository>(() => ItemRepository(
         get<FirebaseFirestore>(),
         get<FirebaseStorage>(),
         get<ImagePicker>(),
       ));
   gh.factory<ItemActorBloc>(() => ItemActorBloc(get<IItemRepository>()));
+  gh.factory<ItemCategoryActorBloc>(
+      () => ItemCategoryActorBloc(get<IItemCategoryRepository>()));
+  gh.factory<ItemCategoryFormBloc>(
+      () => ItemCategoryFormBloc(get<IItemCategoryRepository>()));
+  gh.factory<ItemCategoryWatcherBloc>(
+      () => ItemCategoryWatcherBloc(get<IItemCategoryRepository>()));
   gh.factory<ItemFormBloc>(() => ItemFormBloc(get<IItemRepository>()));
   gh.factory<ItemWatcherBloc>(() => ItemWatcherBloc(get<IItemRepository>()));
   gh.lazySingleton<IItemGroupRepository>(() =>
@@ -93,18 +104,6 @@ GetIt $initGetIt(
       () => ItemGroupFormBloc(get<IItemGroupRepository>()));
   gh.factory<ItemGroupWatcherBloc>(
       () => ItemGroupWatcherBloc(get<IItemGroupRepository>()));
-  gh.lazySingleton<IItemCategoryRepository>(() => ItemCategoryRepository(
-        get<FirebaseFirestore>(),
-        get<ImagePicker>(),
-        get<FirebaseStorage>(),
-        get<IItemGroupRepository>(),
-      ));
-  gh.factory<ItemCategoryActorBloc>(
-      () => ItemCategoryActorBloc(get<IItemCategoryRepository>()));
-  gh.factory<ItemCategoryFormBloc>(
-      () => ItemCategoryFormBloc(get<IItemCategoryRepository>()));
-  gh.factory<ItemCategoryWatcherBloc>(
-      () => ItemCategoryWatcherBloc(get<IItemCategoryRepository>()));
   return get;
 }
 

@@ -49,6 +49,8 @@ class ItemPage extends StatelessWidget {
                   failure.maybeMap(
                     imageLoadCanceled: (_) {},
                     networkException: (_) => networkExceptionPopup(context),
+                    insufficientPermission: (_) =>
+                        insufficientPermissionPopup(context),
                     orElse: () => serverErrorPopup(context),
                   );
                 },

@@ -33,99 +33,96 @@ class ItemCategoryFormBloc
   Stream<ItemCategoryFormState> mapEventToState(
     ItemCategoryFormEvent event,
   ) async* {
-    yield* event.map(
-      initialized: (e) async* {
-        yield e.initialOption.fold(
-          () => state,
-          (initialCategory) => state.copyWith(
-            category: initialCategory,
-            isEditing: true,
-          ),
-        );
-      },
-      titleChanged: (e) async* {
-        yield state.copyWith(
-          category: state.category.copyWith(
-            title: ShortTitle(e.title),
-          ),
-          categoryFailureOrSuccessOption: none(),
-        );
-      },
-      colorChanged: (e) async* {
-        yield state.copyWith(
-          category: state.category.copyWith(
-            color: ItemCategoryColor(e.color),
-          ),
-          categoryFailureOrSuccessOption: none(),
-        );
-      },
-      coverImageChanged: (e) async* {
-        final failureOrImageFile =
-            await _categoryRepository.loadCoverPictureFromDevice(e.imageSource);
+    yield* event.map(initialized: (e) async* {
+      yield e.initialOption.fold(
+        () => state,
+        (initialCategory) => state.copyWith(
+          category: initialCategory,
+          isEditing: true,
+        ),
+      );
+    }, titleChanged: (e) async* {
+      yield state.copyWith(
+        category: state.category.copyWith(
+          title: ShortTitle(e.title),
+        ),
+        categoryFailureOrSuccessOption: none(),
+      );
+    }, colorChanged: (e) async* {
+      yield state.copyWith(
+        category: state.category.copyWith(
+          color: ItemCategoryColor(e.color),
+        ),
+        categoryFailureOrSuccessOption: none(),
+      );
+    }, coverImageChanged: (e) async* {
+      final failureOrImageFile =
+          await _categoryRepository.loadCoverPictureFromDevice(e.imageSource);
 
-        yield failureOrImageFile.fold(
-          (f) => state.copyWith(
-            temporaryImageFile: none(),
-          ),
-          (imageFile) => state.copyWith(
-            temporaryImageFile: some(imageFile),
-            isCoverRemoved: false,
-          ),
-        );
-      },
-      coverImageRemoved: (e) async* {
-        yield state.copyWith(
-          isCoverRemoved: true,
+      yield failureOrImageFile.fold(
+        (f) => state.copyWith(
           temporaryImageFile: none(),
-        );
-      },
-      saved: (e) async* {
-        Either<ItemCategoryFailure, Unit> failureOrSuccess;
-        ImageUrl categoryImageUrl = state.category.coverImageUrl;
-
-        yield state.copyWith(
-          isSaving: true,
           categoryFailureOrSuccessOption: none(),
-        );
+        ),
+        (imageFile) => state.copyWith(
+          temporaryImageFile: some(imageFile),
+          isCoverRemoved: false,
+          categoryFailureOrSuccessOption: none(),
+        ),
+      );
+    }, coverImageRemoved: (e) async* {
+      yield state.copyWith(
+        isCoverRemoved: true,
+        temporaryImageFile: none(),
+        categoryFailureOrSuccessOption: none(),
+      );
+    }, saved: (e) async* {
+      Either<ItemCategoryFailure, Unit> failureOrSuccess;
+      ImageUrl categoryImageUrl = state.category.coverImageUrl;
 
-        if (state.category.failureOption.isNone()) {
-          if (state.isCoverRemoved) {
-            final failureOrImageUrl = await _categoryRepository
-                .removeCoverPictureFromServer(state.category);
+      yield state.copyWith(
+        isSaving: true,
+        categoryFailureOrSuccessOption: none(),
+      );
 
-            failureOrImageUrl.fold(
-              (f) {
-                failureOrSuccess = left(f);
-              },
-              (imageUrl) {
-                categoryImageUrl = imageUrl;
-              },
-            );
-          }
-          if (state.temporaryImageFile.isSome()) {
-            final serverFailureOrLoadedImageUrl =
-                await _categoryRepository.loadCoverPictureToServer(
-                    state.category,
-                    state.temporaryImageFile.getOrElse(() => null));
-            serverFailureOrLoadedImageUrl.fold((f) {
-              failureOrSuccess = left(f);
-            }, (imageUrl) {
+      if (state.category.failureOption.isNone()) {
+        if (state.isCoverRemoved) {
+          final failureOrImageUrl = await _categoryRepository
+              .removeCoverPictureFromServer(state.category);
+
+          failureOrImageUrl.fold(
+            (f) {
+              failureOrSuccess ??= left(f);
+            },
+            (imageUrl) async {
               categoryImageUrl = imageUrl;
-            });
-          }
-          failureOrSuccess = state.isEditing
-              ? await _categoryRepository.update(
-                  state.category.copyWith(coverImageUrl: categoryImageUrl))
-              : await _categoryRepository.create(
-                  state.category.copyWith(coverImageUrl: categoryImageUrl));
+            },
+          );
+        } else if (state.temporaryImageFile.isSome()) {
+          final serverFailureOrLoadedImageUrl =
+              await _categoryRepository.loadCoverPictureToServer(state.category,
+                  state.temporaryImageFile.getOrElse(() => null));
+          serverFailureOrLoadedImageUrl.fold(
+            (f) {
+              failureOrSuccess ??= left(f);
+            },
+            (imageUrl) async {
+              categoryImageUrl = imageUrl;
+            },
+          );
         }
+        failureOrSuccess ??= state.isEditing
+            ? await _categoryRepository.update(
+                state.category.copyWith(coverImageUrl: categoryImageUrl))
+            : await _categoryRepository.create(
+                state.category.copyWith(coverImageUrl: categoryImageUrl));
 
         yield state.copyWith(
           isSaving: false,
           showErrorMessages: true,
           categoryFailureOrSuccessOption: optionOf(failureOrSuccess),
         );
-      },
-    );
+      }
+    });
   }
 }
