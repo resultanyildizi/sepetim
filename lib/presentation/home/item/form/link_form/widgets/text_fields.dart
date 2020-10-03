@@ -6,7 +6,6 @@ import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class LinkTitleTextField extends StatelessWidget {
   final ItemFormBloc formBloc;

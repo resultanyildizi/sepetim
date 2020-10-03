@@ -10,7 +10,6 @@ import 'package:rxdart/rxdart.dart';
 
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
-import 'package:Sepetim/domain/item/i_item_repository.dart';
 import 'package:Sepetim/domain/item_group/i_group_repository.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/domain/item_group/item_group_failure.dart';
@@ -20,11 +19,9 @@ import 'package:Sepetim/infrastructure/item_group/item_group_dtos.dart';
 @LazySingleton(as: IItemGroupRepository)
 class ItemGroupRepository implements IItemGroupRepository {
   final FirebaseFirestore _firestore;
-  final IItemRepository _itemRepository;
 
   ItemGroupRepository(
     this._firestore,
-    this._itemRepository,
   );
 
   @override

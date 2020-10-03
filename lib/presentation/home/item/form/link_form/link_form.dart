@@ -2,10 +2,10 @@ import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/home/item/form/link_form/widgets/text_fields.dart';
 import 'package:Sepetim/presentation/home/item/form/misc/link_object_primitive.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,7 +16,6 @@ import 'package:Sepetim/domain/item/item.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/domain/link_object/value_objects.dart';
-import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
@@ -51,6 +50,7 @@ class _LinkFormState extends State<LinkForm> {
   final TextEditingController urlTextEditingController =
       TextEditingController();
   bool isItemChanged = false;
+  bool isCopyAvaliable = true;
   Item oldItem;
 
   @override
@@ -214,35 +214,27 @@ class _LinkFormState extends State<LinkForm> {
                                 Icons.content_copy,
                                 color: Theme.of(context).iconTheme.color,
                               ),
-                              onPressed: () {
-                                Clipboard.setData(ClipboardData(
-                                    text: link.link.getOrCrash()));
-                                Flushbar(
-                                  flushbarStyle: FlushbarStyle.FLOATING,
-                                  dismissDirection:
-                                      FlushbarDismissDirection.HORIZONTAL,
-                                  flushbarPosition: FlushbarPosition.BOTTOM,
-                                  margin: const EdgeInsets.only(
-                                    bottom: 70,
-                                    left: 8,
-                                    right: 8,
-                                  ),
-                                  borderRadius: 5,
-                                  isDismissible: true,
-                                  duration: const Duration(seconds: 2),
-                                  messageText: Text(
-                                    translate(context, 'link_copied'),
-                                    style: robotoTextStyle(
-                                      color: sepetimYellow,
-                                      bold: true,
+                              onPressed: () async {
+                                if (isCopyAvaliable) {
+                                  isCopyAvaliable = false;
+                                  Clipboard.setData(
+                                    ClipboardData(
+                                      text: link.link.getOrCrash(),
                                     ),
-                                  ),
-                                  backgroundColor: sepetimGrey,
-                                  icon: const Icon(
-                                    Icons.info_outline,
-                                    color: sepetimYellow,
-                                  ),
-                                ).show(context);
+                                  ).then(
+                                    (_) async {
+                                      await Fluttertoast.showToast(
+                                        msg: "Copied",
+                                        toastLength: Toast.LENGTH_SHORT,
+                                        gravity: ToastGravity.SNACKBAR,
+                                        backgroundColor: Colors.grey[900],
+                                        textColor: Colors.white,
+                                        fontSize: 16.0,
+                                      );
+                                      isCopyAvaliable = true;
+                                    },
+                                  );
+                                }
                               },
                             ),
                             key: Key(

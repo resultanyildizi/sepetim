@@ -64,9 +64,17 @@ GetIt $initGetIt(
   gh.lazySingleton<IAuthFacade>(
       () => FirebaseAuthFacade(get<FirebaseAuth>(), get<GoogleSignIn>()));
   gh.lazySingleton<IDynamicLinksRepository>(() => DynamicLinkRepository());
+  gh.lazySingleton<IItemGroupRepository>(
+      () => ItemGroupRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IThemeRepository>(() => ThemeRepository());
   gh.lazySingleton<ImagePicker>(() => imagePickerInjectableModule.imagePicker);
   gh.factory<ItemCategorySelectorBloc>(() => ItemCategorySelectorBloc());
+  gh.factory<ItemGroupActorBloc>(
+      () => ItemGroupActorBloc(get<IItemGroupRepository>()));
+  gh.factory<ItemGroupFormBloc>(
+      () => ItemGroupFormBloc(get<IItemGroupRepository>()));
+  gh.factory<ItemGroupWatcherBloc>(
+      () => ItemGroupWatcherBloc(get<IItemGroupRepository>()));
   gh.factory<PasswordVisibilityBloc>(() => PasswordVisibilityBloc());
   gh.factory<ResetPasswordFormBloc>(
       () => ResetPasswordFormBloc(get<IAuthFacade>()));
@@ -96,14 +104,6 @@ GetIt $initGetIt(
       () => ItemCategoryWatcherBloc(get<IItemCategoryRepository>()));
   gh.factory<ItemFormBloc>(() => ItemFormBloc(get<IItemRepository>()));
   gh.factory<ItemWatcherBloc>(() => ItemWatcherBloc(get<IItemRepository>()));
-  gh.lazySingleton<IItemGroupRepository>(() =>
-      ItemGroupRepository(get<FirebaseFirestore>(), get<IItemRepository>()));
-  gh.factory<ItemGroupActorBloc>(
-      () => ItemGroupActorBloc(get<IItemGroupRepository>()));
-  gh.factory<ItemGroupFormBloc>(
-      () => ItemGroupFormBloc(get<IItemGroupRepository>()));
-  gh.factory<ItemGroupWatcherBloc>(
-      () => ItemGroupWatcherBloc(get<IItemGroupRepository>()));
   return get;
 }
 
