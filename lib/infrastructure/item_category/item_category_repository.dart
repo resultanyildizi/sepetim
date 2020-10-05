@@ -1,9 +1,7 @@
 import 'dart:io';
 
 import 'package:Sepetim/infrastructure/core/cloud_function_caller.dart';
-import 'package:Sepetim/infrastructure/item_group/item_group_dtos.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,7 +20,6 @@ import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/domain/item_category/i_category_repository.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/domain/item_category/item_category_failure.dart';
-import 'package:Sepetim/domain/item_group/i_group_repository.dart';
 import 'package:Sepetim/infrastructure/core/firebase_helpers.dart';
 import 'package:Sepetim/infrastructure/item_category/item_category_dtos.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';

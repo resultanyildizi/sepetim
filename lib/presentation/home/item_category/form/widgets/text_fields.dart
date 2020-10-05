@@ -1,3 +1,4 @@
+import 'dart:convert' show utf8;
 import 'package:Sepetim/application/item_category/form/item_category_form_bloc.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
@@ -5,7 +6,6 @@ import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'dart:convert' show utf8;
 
 class TitleTextField extends StatelessWidget {
   const TitleTextField({Key key}) : super(key: key);
@@ -34,7 +34,6 @@ class TitleTextField extends StatelessWidget {
           labelText: translate(context, 'enter_a_title'),
         ),
         maxLength: ShortTitle.maxLength,
-        maxLengthEnforced: true,
         autocorrect: false,
         onChanged: (value) => context
             .bloc<ItemCategoryFormBloc>()

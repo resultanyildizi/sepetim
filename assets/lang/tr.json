@@ -139,7 +139,7 @@
   "account_already_exists_title": "Hesap zaten kullanımda",
   "account_already_exists_message": "Geçici hesabınızı zaten kullanımda olan bir hesapla bağlayamazsınız.",
   "invalid_credential_title": "Geçersiz kimlik bilgileri",
-  "invalid_credential_message": "Oturum açmak için kullanılan kimlik bilgileri, istenen eylemi gerçekleştirmek için kullanılamıyor. (Hesabı telefonunuzdan kaldırıp tekrar oturum açmak yardımcı olabilir.)",
+  "invalid_credential_message": "Giriş yapmak için kullanılan kimlik bilgileri, istenen eylemi gerçekleştirmek için kullanılamıyor. (Google hesabınızı telefonunuzdan kaldırıp tekrar oturum açmanız yardımcı olabilir.)",
   "light_theme": "Açık tema",
   "dark_theme": "Karanlık tema",
   "themes": "Temalar",
@@ -151,5 +151,7 @@
   "insufficient_permission_title": "Yetersiz izin",
   "insufficient_permission_message": "Bu işlemi yürütme izniniz yok. Bu mesajı muhtemelen kullanım haklarına sahip olmadığınız bir hesap üzerinde işlem yapmaya çalıştığınız için görüyorsunuz.",
   "reset_password_link_sent": "Şifre yenileme linki başarıyla gönderildi. Lütfen mail kutunuzu kontrol edin.",
-  "cover_picture_changed": "Kapak resmi değiştirildi"
+  "cover_picture_changed": "Kapak resmi değiştirildi",
+  "delete_account_error_title": "Hesap silme hatası",
+  "delete_account_error_message": "Hesabınız silinirken bir hata oluştu. Hesabınızı silebilmek çıkış yapıp yeniden giriş yapmalısınız. Eğer bu sorununuzu çözmezse, lütfen bize ulaşın."
 }

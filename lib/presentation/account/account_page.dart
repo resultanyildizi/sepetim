@@ -49,6 +49,12 @@ class AccountPage extends StatelessWidget {
                                   Routes.applicationContentPage);
                               return serverErrorPopup(context);
                             },
+                            deleteAccountError: (_) {
+                              ExtendedNavigator.of(context).popUntil((route) =>
+                                  route.settings.name ==
+                                  Routes.applicationContentPage);
+                              return deleteAccountErrorPopup(context);
+                            },
                             networkException: (_) {
                               ExtendedNavigator.of(context).popUntil((route) =>
                                   route.settings.name ==

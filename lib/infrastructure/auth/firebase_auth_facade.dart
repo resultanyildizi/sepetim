@@ -238,12 +238,12 @@ class FirebaseAuthFacade extends IAuthFacade {
           _googleSignIn.signOut(),
         ]);
       } else {
-        return left(const AuthFailure.serverError());
+        return left(const AuthFailure.deleteAccountError());
       }
 
       return right(unit);
     } on FirebaseAuthException catch (_) {
-      return left(const AuthFailure.serverError());
+      return left(const AuthFailure.deleteAccountError());
     }
   }
 

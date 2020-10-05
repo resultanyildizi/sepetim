@@ -1,5 +1,4 @@
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:flutter/material.dart';
 
 RichText termsAndPrivacyPolicyWidgetEn(BuildContext context) {

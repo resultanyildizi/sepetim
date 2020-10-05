@@ -4,9 +4,7 @@ import 'package:Sepetim/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/presentation/account/widgets/link_account_form.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
-import 'package:Sepetim/presentation/core/widgets/logo.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

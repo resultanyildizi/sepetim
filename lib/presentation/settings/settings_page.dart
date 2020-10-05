@@ -1,11 +1,8 @@
-import 'package:Sepetim/application/dynamic_links/dynamic_links_bloc.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/core/widgets/logo.dart';
 import 'package:Sepetim/presentation/settings/widgets/buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:share/share.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key key}) : super(key: key);

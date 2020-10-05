@@ -1,13 +1,11 @@
 import 'package:Sepetim/infrastructure/core/cloud_function_caller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
-import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'package:Sepetim/domain/core/enums.dart';
@@ -63,7 +61,7 @@ class ItemGroupRepository implements IItemGroupRepository {
       } else {
         return left(const ItemGroupFailure.unexpected());
       }
-    } on PlatformException catch (e) {
+    } on PlatformException catch (_) {
       return left(const ItemGroupFailure.unexpected());
     }
   }

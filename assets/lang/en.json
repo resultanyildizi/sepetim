@@ -101,7 +101,7 @@
   "report_issue": "Report issue",
   "account": "Account",
   "not_signed_in": "Not signed in",
-  "sign_out": "Sign out",
+  "sign_out": "Log out",
   "change_email": "Change email",
   "change_password": "Change password",
   "delete_account": "Delete account",
@@ -151,5 +151,7 @@
   "insufficient_permission_title": "Insufficient permission",
   "insufficient_permission_message": "You do not have permission to execute the specified operation. You are probably seeing this message because you are trying to operate on an account for which you do not have usage rights.",
   "reset_password_link_sent": "Reset link sent successfully. Please check your mail box.",
-  "cover_picture_changed": "Cover picture changed"
+  "cover_picture_changed": "Cover picture changed",
+  "delete_account_error_title": "Delete account error",
+  "delete_account_error_message": "An error occurred while deleting your account. To delete your account, you must log out and log in again. If this doesn't resolve the problem, please contact us."
 }

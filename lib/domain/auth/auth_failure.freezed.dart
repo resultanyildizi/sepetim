@@ -24,6 +24,11 @@ class _$AuthFailureTearOff {
   }
 
 // ignore: unused_element
+  _DeleteAccountError deleteAccountError() {
+    return const _DeleteAccountError();
+  }
+
+// ignore: unused_element
   _EmailAlreadyInUse emailAlreadyInUse() {
     return const _EmailAlreadyInUse();
   }
@@ -84,6 +89,7 @@ mixin _$AuthFailure {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result serverError(),
+    @required Result deleteAccountError(),
     @required Result emailAlreadyInUse(),
     @required Result networkException(),
     @required Result wrongPassword(),
@@ -99,6 +105,7 @@ mixin _$AuthFailure {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
+    Result deleteAccountError(),
     Result emailAlreadyInUse(),
     Result networkException(),
     Result wrongPassword(),
@@ -115,6 +122,7 @@ mixin _$AuthFailure {
   Result map<Result extends Object>({
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
@@ -133,6 +141,7 @@ mixin _$AuthFailure {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
@@ -205,6 +214,7 @@ class _$_CancelledByUser implements _CancelledByUser {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result serverError(),
+    @required Result deleteAccountError(),
     @required Result emailAlreadyInUse(),
     @required Result networkException(),
     @required Result wrongPassword(),
@@ -218,6 +228,7 @@ class _$_CancelledByUser implements _CancelledByUser {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -236,6 +247,7 @@ class _$_CancelledByUser implements _CancelledByUser {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
+    Result deleteAccountError(),
     Result emailAlreadyInUse(),
     Result networkException(),
     Result wrongPassword(),
@@ -260,6 +272,7 @@ class _$_CancelledByUser implements _CancelledByUser {
   Result map<Result extends Object>({
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
@@ -276,6 +289,7 @@ class _$_CancelledByUser implements _CancelledByUser {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -294,6 +308,7 @@ class _$_CancelledByUser implements _CancelledByUser {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
@@ -359,6 +374,7 @@ class _$_ServerError implements _ServerError {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result serverError(),
+    @required Result deleteAccountError(),
     @required Result emailAlreadyInUse(),
     @required Result networkException(),
     @required Result wrongPassword(),
@@ -372,6 +388,7 @@ class _$_ServerError implements _ServerError {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -390,6 +407,7 @@ class _$_ServerError implements _ServerError {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
+    Result deleteAccountError(),
     Result emailAlreadyInUse(),
     Result networkException(),
     Result wrongPassword(),
@@ -414,6 +432,7 @@ class _$_ServerError implements _ServerError {
   Result map<Result extends Object>({
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
@@ -430,6 +449,7 @@ class _$_ServerError implements _ServerError {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -448,6 +468,7 @@ class _$_ServerError implements _ServerError {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
@@ -471,6 +492,167 @@ class _$_ServerError implements _ServerError {
 
 abstract class _ServerError implements AuthFailure {
   const factory _ServerError() = _$_ServerError;
+}
+
+/// @nodoc
+abstract class _$DeleteAccountErrorCopyWith<$Res> {
+  factory _$DeleteAccountErrorCopyWith(
+          _DeleteAccountError value, $Res Function(_DeleteAccountError) then) =
+      __$DeleteAccountErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$DeleteAccountErrorCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$DeleteAccountErrorCopyWith<$Res> {
+  __$DeleteAccountErrorCopyWithImpl(
+      _DeleteAccountError _value, $Res Function(_DeleteAccountError) _then)
+      : super(_value, (v) => _then(v as _DeleteAccountError));
+
+  @override
+  _DeleteAccountError get _value => super._value as _DeleteAccountError;
+}
+
+/// @nodoc
+class _$_DeleteAccountError implements _DeleteAccountError {
+  const _$_DeleteAccountError();
+
+  @override
+  String toString() {
+    return 'AuthFailure.deleteAccountError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _DeleteAccountError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result deleteAccountError(),
+    @required Result emailAlreadyInUse(),
+    @required Result networkException(),
+    @required Result wrongPassword(),
+    @required Result tooManyRequests(),
+    @required Result userNotFound(),
+    @required Result accountAlreadyExists(),
+    @required Result accountAlreadyLinked(),
+    @required Result invalidCredential(),
+    @required Result userNotUsingEmailProvider(),
+    @required Result invalidEmailAndPasswordCombination(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(deleteAccountError != null);
+    assert(emailAlreadyInUse != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
+    assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    return deleteAccountError();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result serverError(),
+    Result deleteAccountError(),
+    Result emailAlreadyInUse(),
+    Result networkException(),
+    Result wrongPassword(),
+    Result tooManyRequests(),
+    Result userNotFound(),
+    Result accountAlreadyExists(),
+    Result accountAlreadyLinked(),
+    Result invalidCredential(),
+    Result userNotUsingEmailProvider(),
+    Result invalidEmailAndPasswordCombination(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deleteAccountError != null) {
+      return deleteAccountError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(_CancelledByUser value),
+    @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
+    @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    @required Result networkException(_NetworkException value),
+    @required Result wrongPassword(_WrongPassword value),
+    @required Result tooManyRequests(_TooManyRequests value),
+    @required Result userNotFound(_UserNotFound value),
+    @required Result accountAlreadyExists(_AccountAlreadyExists value),
+    @required Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    @required Result invalidCredential(_InvalidCredential value),
+    @required
+        Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(deleteAccountError != null);
+    assert(emailAlreadyInUse != null);
+    assert(networkException != null);
+    assert(wrongPassword != null);
+    assert(tooManyRequests != null);
+    assert(userNotFound != null);
+    assert(accountAlreadyExists != null);
+    assert(accountAlreadyLinked != null);
+    assert(invalidCredential != null);
+    assert(userNotUsingEmailProvider != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    return deleteAccountError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(_CancelledByUser value),
+    Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
+    Result emailAlreadyInUse(_EmailAlreadyInUse value),
+    Result networkException(_NetworkException value),
+    Result wrongPassword(_WrongPassword value),
+    Result tooManyRequests(_TooManyRequests value),
+    Result userNotFound(_UserNotFound value),
+    Result accountAlreadyExists(_AccountAlreadyExists value),
+    Result accountAlreadyLinked(_AccountAlreadyLinked value),
+    Result invalidCredential(_InvalidCredential value),
+    Result userNotUsingEmailProvider(_UserNotUsingEmailProvider value),
+    Result invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deleteAccountError != null) {
+      return deleteAccountError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteAccountError implements AuthFailure {
+  const factory _DeleteAccountError() = _$_DeleteAccountError;
 }
 
 /// @nodoc
@@ -514,6 +696,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result serverError(),
+    @required Result deleteAccountError(),
     @required Result emailAlreadyInUse(),
     @required Result networkException(),
     @required Result wrongPassword(),
@@ -527,6 +710,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -545,6 +729,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
+    Result deleteAccountError(),
     Result emailAlreadyInUse(),
     Result networkException(),
     Result wrongPassword(),
@@ -569,6 +754,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
   Result map<Result extends Object>({
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
@@ -585,6 +771,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -603,6 +790,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
@@ -669,6 +857,7 @@ class _$_NetworkException implements _NetworkException {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result serverError(),
+    @required Result deleteAccountError(),
     @required Result emailAlreadyInUse(),
     @required Result networkException(),
     @required Result wrongPassword(),
@@ -682,6 +871,7 @@ class _$_NetworkException implements _NetworkException {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -700,6 +890,7 @@ class _$_NetworkException implements _NetworkException {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
+    Result deleteAccountError(),
     Result emailAlreadyInUse(),
     Result networkException(),
     Result wrongPassword(),
@@ -724,6 +915,7 @@ class _$_NetworkException implements _NetworkException {
   Result map<Result extends Object>({
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
@@ -740,6 +932,7 @@ class _$_NetworkException implements _NetworkException {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -758,6 +951,7 @@ class _$_NetworkException implements _NetworkException {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
@@ -823,6 +1017,7 @@ class _$_WrongPassword implements _WrongPassword {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result serverError(),
+    @required Result deleteAccountError(),
     @required Result emailAlreadyInUse(),
     @required Result networkException(),
     @required Result wrongPassword(),
@@ -836,6 +1031,7 @@ class _$_WrongPassword implements _WrongPassword {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -854,6 +1050,7 @@ class _$_WrongPassword implements _WrongPassword {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
+    Result deleteAccountError(),
     Result emailAlreadyInUse(),
     Result networkException(),
     Result wrongPassword(),
@@ -878,6 +1075,7 @@ class _$_WrongPassword implements _WrongPassword {
   Result map<Result extends Object>({
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
@@ -894,6 +1092,7 @@ class _$_WrongPassword implements _WrongPassword {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -912,6 +1111,7 @@ class _$_WrongPassword implements _WrongPassword {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
@@ -978,6 +1178,7 @@ class _$_TooManyRequests implements _TooManyRequests {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result serverError(),
+    @required Result deleteAccountError(),
     @required Result emailAlreadyInUse(),
     @required Result networkException(),
     @required Result wrongPassword(),
@@ -991,6 +1192,7 @@ class _$_TooManyRequests implements _TooManyRequests {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -1009,6 +1211,7 @@ class _$_TooManyRequests implements _TooManyRequests {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
+    Result deleteAccountError(),
     Result emailAlreadyInUse(),
     Result networkException(),
     Result wrongPassword(),
@@ -1033,6 +1236,7 @@ class _$_TooManyRequests implements _TooManyRequests {
   Result map<Result extends Object>({
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
@@ -1049,6 +1253,7 @@ class _$_TooManyRequests implements _TooManyRequests {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -1067,6 +1272,7 @@ class _$_TooManyRequests implements _TooManyRequests {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
@@ -1132,6 +1338,7 @@ class _$_UserNotFound implements _UserNotFound {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result serverError(),
+    @required Result deleteAccountError(),
     @required Result emailAlreadyInUse(),
     @required Result networkException(),
     @required Result wrongPassword(),
@@ -1145,6 +1352,7 @@ class _$_UserNotFound implements _UserNotFound {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -1163,6 +1371,7 @@ class _$_UserNotFound implements _UserNotFound {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
+    Result deleteAccountError(),
     Result emailAlreadyInUse(),
     Result networkException(),
     Result wrongPassword(),
@@ -1187,6 +1396,7 @@ class _$_UserNotFound implements _UserNotFound {
   Result map<Result extends Object>({
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
@@ -1203,6 +1413,7 @@ class _$_UserNotFound implements _UserNotFound {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -1221,6 +1432,7 @@ class _$_UserNotFound implements _UserNotFound {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
@@ -1287,6 +1499,7 @@ class _$_AccountAlreadyExists implements _AccountAlreadyExists {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result serverError(),
+    @required Result deleteAccountError(),
     @required Result emailAlreadyInUse(),
     @required Result networkException(),
     @required Result wrongPassword(),
@@ -1300,6 +1513,7 @@ class _$_AccountAlreadyExists implements _AccountAlreadyExists {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -1318,6 +1532,7 @@ class _$_AccountAlreadyExists implements _AccountAlreadyExists {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
+    Result deleteAccountError(),
     Result emailAlreadyInUse(),
     Result networkException(),
     Result wrongPassword(),
@@ -1342,6 +1557,7 @@ class _$_AccountAlreadyExists implements _AccountAlreadyExists {
   Result map<Result extends Object>({
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
@@ -1358,6 +1574,7 @@ class _$_AccountAlreadyExists implements _AccountAlreadyExists {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -1376,6 +1593,7 @@ class _$_AccountAlreadyExists implements _AccountAlreadyExists {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
@@ -1442,6 +1660,7 @@ class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result serverError(),
+    @required Result deleteAccountError(),
     @required Result emailAlreadyInUse(),
     @required Result networkException(),
     @required Result wrongPassword(),
@@ -1455,6 +1674,7 @@ class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -1473,6 +1693,7 @@ class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
+    Result deleteAccountError(),
     Result emailAlreadyInUse(),
     Result networkException(),
     Result wrongPassword(),
@@ -1497,6 +1718,7 @@ class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
   Result map<Result extends Object>({
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
@@ -1513,6 +1735,7 @@ class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -1531,6 +1754,7 @@ class _$_AccountAlreadyLinked implements _AccountAlreadyLinked {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
@@ -1597,6 +1821,7 @@ class _$_InvalidCredential implements _InvalidCredential {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result serverError(),
+    @required Result deleteAccountError(),
     @required Result emailAlreadyInUse(),
     @required Result networkException(),
     @required Result wrongPassword(),
@@ -1610,6 +1835,7 @@ class _$_InvalidCredential implements _InvalidCredential {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -1628,6 +1854,7 @@ class _$_InvalidCredential implements _InvalidCredential {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
+    Result deleteAccountError(),
     Result emailAlreadyInUse(),
     Result networkException(),
     Result wrongPassword(),
@@ -1652,6 +1879,7 @@ class _$_InvalidCredential implements _InvalidCredential {
   Result map<Result extends Object>({
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
@@ -1668,6 +1896,7 @@ class _$_InvalidCredential implements _InvalidCredential {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -1686,6 +1915,7 @@ class _$_InvalidCredential implements _InvalidCredential {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
@@ -1753,6 +1983,7 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result serverError(),
+    @required Result deleteAccountError(),
     @required Result emailAlreadyInUse(),
     @required Result networkException(),
     @required Result wrongPassword(),
@@ -1766,6 +1997,7 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -1784,6 +2016,7 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
+    Result deleteAccountError(),
     Result emailAlreadyInUse(),
     Result networkException(),
     Result wrongPassword(),
@@ -1808,6 +2041,7 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
   Result map<Result extends Object>({
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
@@ -1824,6 +2058,7 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -1842,6 +2077,7 @@ class _$_UserNotUsingEmailProvider implements _UserNotUsingEmailProvider {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),
@@ -1913,6 +2149,7 @@ class _$_InvalidEmailAndPasswordCombination
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result serverError(),
+    @required Result deleteAccountError(),
     @required Result emailAlreadyInUse(),
     @required Result networkException(),
     @required Result wrongPassword(),
@@ -1926,6 +2163,7 @@ class _$_InvalidEmailAndPasswordCombination
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -1944,6 +2182,7 @@ class _$_InvalidEmailAndPasswordCombination
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result serverError(),
+    Result deleteAccountError(),
     Result emailAlreadyInUse(),
     Result networkException(),
     Result wrongPassword(),
@@ -1968,6 +2207,7 @@ class _$_InvalidEmailAndPasswordCombination
   Result map<Result extends Object>({
     @required Result cancelledByUser(_CancelledByUser value),
     @required Result serverError(_ServerError value),
+    @required Result deleteAccountError(_DeleteAccountError value),
     @required Result emailAlreadyInUse(_EmailAlreadyInUse value),
     @required Result networkException(_NetworkException value),
     @required Result wrongPassword(_WrongPassword value),
@@ -1984,6 +2224,7 @@ class _$_InvalidEmailAndPasswordCombination
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
+    assert(deleteAccountError != null);
     assert(emailAlreadyInUse != null);
     assert(networkException != null);
     assert(wrongPassword != null);
@@ -2002,6 +2243,7 @@ class _$_InvalidEmailAndPasswordCombination
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(_CancelledByUser value),
     Result serverError(_ServerError value),
+    Result deleteAccountError(_DeleteAccountError value),
     Result emailAlreadyInUse(_EmailAlreadyInUse value),
     Result networkException(_NetworkException value),
     Result wrongPassword(_WrongPassword value),

@@ -4,7 +4,6 @@ import 'package:Sepetim/domain/theme/i_theme_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:package_info/package_info.dart';
 
 part 'theme_event.dart';
 part 'theme_state.dart';

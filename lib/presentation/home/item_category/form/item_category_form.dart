@@ -2,7 +2,6 @@ import 'package:Sepetim/application/item_category/form/item_category_form_bloc.d
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/core/widgets/divider_default.dart';

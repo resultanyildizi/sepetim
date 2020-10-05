@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:Sepetim/predefined_variables/colors.dart' as app_colors;
-import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 

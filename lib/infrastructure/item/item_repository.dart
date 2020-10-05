@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:Sepetim/infrastructure/core/cloud_function_caller.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';

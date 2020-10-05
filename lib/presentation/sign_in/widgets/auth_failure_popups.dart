@@ -1,8 +1,10 @@
+import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/buttons.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future networkExceptionPopup(BuildContext context) {
   return actionPopup(
@@ -44,6 +46,26 @@ Future serverErrorPopup(BuildContext context) {
         },
         text: translate(context, 'okay'),
       )
+    ],
+  );
+}
+
+Future deleteAccountErrorPopup(BuildContext context) {
+  return actionPopup(
+    context,
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Text(translate(context, 'delete_account_error_title'),
+        style: Theme.of(context).textTheme.headline3),
+    content: Text(translate(context, 'delete_account_error_message'),
+        style: Theme.of(context).textTheme.bodyText1),
+    actions: <Widget>[
+      RoundedButton(
+        width: screenWidthByScalar(context, 1.0),
+        onPressed: () {
+          context.bloc<AuthBloc>().add(const AuthEvent.signedOut());
+        },
+        text: translate(context, 'sign_out'),
+      ),
     ],
   );
 }
