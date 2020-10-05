@@ -193,12 +193,12 @@ class ItemPage extends StatelessWidget {
           ),
           Container(
             height: 30,
-            padding: const EdgeInsets.only(bottom: 3),
+            padding: const EdgeInsets.only(bottom: 3, left: 1, right: 1),
             child: FlatButton(
               onPressed: () async {
                 formBloc.add(ItemFormEvent.saved(category.uid, group.uid));
                 await Fluttertoast.showToast(
-                  msg: "Cover picture changed",
+                  msg: translate(context, 'cover_picture_changed'),
                   backgroundColor: Colors.grey[900],
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.BOTTOM,
@@ -388,7 +388,19 @@ class ItemPage extends StatelessWidget {
                 ),
               ),
               imageBuilder: (context, image) =>
-                  CircleAvatar(backgroundImage: image, radius: 16),
+                  state.item.selectedIndex.getOrCrash() == index
+                      ? CircleAvatar(
+                          backgroundColor: sepetimYellow,
+                          radius: 16,
+                          child: CircleAvatar(
+                            backgroundImage: image,
+                            radius: 14,
+                          ),
+                        )
+                      : CircleAvatar(
+                          backgroundImage: image,
+                          radius: 16,
+                        ),
             ),
           ),
         ],

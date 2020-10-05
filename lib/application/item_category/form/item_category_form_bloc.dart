@@ -116,13 +116,12 @@ class ItemCategoryFormBloc
                 state.category.copyWith(coverImageUrl: categoryImageUrl))
             : await _categoryRepository.create(
                 state.category.copyWith(coverImageUrl: categoryImageUrl));
-
-        yield state.copyWith(
-          isSaving: false,
-          showErrorMessages: true,
-          categoryFailureOrSuccessOption: optionOf(failureOrSuccess),
-        );
       }
+      yield state.copyWith(
+        isSaving: false,
+        showErrorMessages: true,
+        categoryFailureOrSuccessOption: optionOf(failureOrSuccess),
+      );
     });
   }
 }

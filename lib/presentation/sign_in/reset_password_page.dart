@@ -117,7 +117,7 @@ class ResetPasswordPage extends StatelessWidget {
                                 size: 40,
                               ),
                               title: Text(
-                                'Reset link sent successfully. Please check your mail box.',
+                                translate(context, "reset_password_link_sent"),
                                 style: didactGothicTextStyle(bold: true),
                               ),
                             ),

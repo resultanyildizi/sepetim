@@ -81,7 +81,9 @@ class PriceTextField extends StatelessWidget {
           cursorColor: sepetimGrey,
           style: Theme.of(context).textTheme.subtitle2,
           decoration: InputDecoration(
-              labelText: translate(context, 'enter_a_price'), counterText: ''),
+            labelText: translate(context, 'enter_a_price'),
+            counterText: '',
+          ),
           maxLength: 100,
           autocorrect: false,
           onTap: () {

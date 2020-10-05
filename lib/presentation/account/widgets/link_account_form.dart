@@ -4,6 +4,7 @@ import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/account/widgets/google_sign_in_button.dart';
 import 'package:Sepetim/presentation/account/widgets/text_fields.dart';
 import 'package:Sepetim/presentation/core/widgets/buttons.dart';
+import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/or_divider.dart';
@@ -86,6 +87,16 @@ class LinkAccountForm extends StatelessWidget {
                 FocusScope.of(context).unfocus();
               },
             ),
+            if (state.isSubmitting) ...[
+              Expanded(
+                child: Column(
+                  children: [
+                    const Spacer(),
+                    SmallCircularProgressIndicator(),
+                  ],
+                ),
+              ),
+            ]
           ],
         ),
       ),

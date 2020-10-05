@@ -149,5 +149,7 @@
   "link_description": "Sepetim, alışverişlerinizi düzenlemenin modern yolu.",
   "dynamic_link": "https://sepetimapp.page.link/tr",
   "insufficient_permission_title": "Yetersiz izin",
-  "insufficient_permission_message": "Bu işlemi yürütme izniniz yok. Bu mesajı muhtemelen kullanım haklarına sahip olmadığınız bir hesap üzerinde işlem yapmaya çalıştığınız için görüyorsunuz."
+  "insufficient_permission_message": "Bu işlemi yürütme izniniz yok. Bu mesajı muhtemelen kullanım haklarına sahip olmadığınız bir hesap üzerinde işlem yapmaya çalıştığınız için görüyorsunuz.",
+  "reset_password_link_sent": "Şifre yenileme linki başarıyla gönderildi. Lütfen mail kutunuzu kontrol edin.",
+  "cover_picture_changed": "Kapak resmi değiştirildi"
 }

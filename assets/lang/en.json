@@ -149,5 +149,7 @@
   "link_description": "Sepetim, the modern way to organize your shopping.",
   "dynamic_link": "https://sepetimapp.page.link/en",
   "insufficient_permission_title": "Insufficient permission",
-  "insufficient_permission_message": "You do not have permission to execute the specified operation. You are probably seeing this message because you are trying to operate on an account for which you do not have usage rights."
+  "insufficient_permission_message": "You do not have permission to execute the specified operation. You are probably seeing this message because you are trying to operate on an account for which you do not have usage rights.",
+  "reset_password_link_sent": "Reset link sent successfully. Please check your mail box.",
+  "cover_picture_changed": "Cover picture changed"
 }

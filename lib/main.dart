@@ -10,6 +10,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureInjection(Environment.prod);
   await Firebase.initializeApp();
+
   runApp(
     ChangeNotifierProvider(
         create: (_) => FormLinkObjects(), child: const AppWidget()),
