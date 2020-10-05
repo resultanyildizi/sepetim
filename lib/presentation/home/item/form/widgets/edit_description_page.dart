@@ -1,5 +1,7 @@
 import 'package:Sepetim/predefined_variables/colors.dart';
+import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/home/item/form/widgets/text_fields.dart';
+import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +9,7 @@ import 'package:Sepetim/application/item/form/item_form_bloc.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 
-class EditDescriptionPage extends StatelessWidget {
+class EditDescriptionPage extends StatefulWidget {
   final ItemFormBloc itemFormBloc;
   final String initialText;
   const EditDescriptionPage({
@@ -17,11 +19,41 @@ class EditDescriptionPage extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final textEditingController = TextEditingController();
-    textEditingController.text = initialText;
+  _EditDescriptionPageState createState() => _EditDescriptionPageState();
+}
 
-    return Scaffold(
+class _EditDescriptionPageState extends State<EditDescriptionPage> {
+  final textEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    textEditingController.text = widget.initialText;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async {
+        FocusScope.of(context).unfocus();
+        bool willPop = false;
+        if (textEditingController.text != widget.initialText) {
+          discardChangesPopup(
+            context,
+            yesFunction: () {
+              ExtendedNavigator.of(context)
+                  .popUntil((route) => route.settings.name == Routes.itemForm);
+            },
+            noFunction: () {
+              ExtendedNavigator.of(context).pop();
+            },
+          );
+        } else {
+          willPop = true;
+        }
+        return willPop;
+      },
+      child: Scaffold(
         appBar: AppBar(
           title: Text(
             'Sepetim',
@@ -31,7 +63,7 @@ class EditDescriptionPage extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 final value = textEditingController.text;
-                itemFormBloc
+                widget.itemFormBloc
                     .add(ItemFormEvent.descriptionChanged(value.trim()));
                 ExtendedNavigator.of(context).pop();
               },
@@ -49,8 +81,10 @@ class EditDescriptionPage extends StatelessWidget {
         body: DefaultPadding(
           child: DescriptionBodyTextField(
             textEditingController: textEditingController,
-            itemFormBloc: itemFormBloc,
+            itemFormBloc: widget.itemFormBloc,
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

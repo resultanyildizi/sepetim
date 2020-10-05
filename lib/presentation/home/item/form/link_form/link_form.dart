@@ -1,6 +1,7 @@
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/home/item/form/link_form/widgets/text_fields.dart';
 import 'package:Sepetim/presentation/home/item/form/misc/link_object_primitive.dart';
+import 'package:Sepetim/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -81,34 +82,19 @@ class _LinkFormState extends State<LinkForm> {
           onWillPop: () async {
             bool willPop = false;
             if (isItemChanged) {
-              actionPopup(context,
-                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                  title: Text(
-                    translate(context, 'discard_changes_title'),
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  content: Text(
-                    translate(context, 'discard_changes_message'),
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  actions: [
-                    RoundedButton(
-                      text: translate(context, 'yes'),
-                      onPressed: () {
-                        widget.formBloc.add(
-                            ItemFormEvent.initialized(dartz.some(oldItem)));
-                        ExtendedNavigator.of(context).pop();
-                        ExtendedNavigator.of(context).pop();
-                      },
-                    ),
-                    RoundedButton(
-                      text: translate(context, 'no'),
-                      onPressed: () {
-                        ExtendedNavigator.of(context).pop();
-                        willPop = false;
-                      },
-                    ),
-                  ]);
+              discardChangesPopup(
+                context,
+                yesFunction: () {
+                  widget.formBloc
+                      .add(ItemFormEvent.initialized(dartz.some(oldItem)));
+                  ExtendedNavigator.of(context).popUntil(
+                      (route) => route.settings.name == Routes.itemPage);
+                },
+                noFunction: () {
+                  ExtendedNavigator.of(context).pop();
+                  willPop = false;
+                },
+              );
             } else {
               willPop = true;
             }

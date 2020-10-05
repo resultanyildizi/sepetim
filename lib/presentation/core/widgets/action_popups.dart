@@ -68,3 +68,36 @@ Future insufficientPermissionPopup(BuildContext context) {
     ],
   );
 }
+
+Future discardChangesPopup(
+  BuildContext context, {
+  @required Function() yesFunction,
+  @required Function() noFunction,
+}) {
+  return actionPopup(
+    context,
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    title: Text(
+      translate(context, 'discard_changes_title'),
+      style: Theme.of(context).textTheme.headline3,
+    ),
+    content: Text(
+      translate(context, 'discard_changes_message'),
+      style: Theme.of(context).textTheme.bodyText1,
+    ),
+    actions: [
+      RoundedButton(
+        text: translate(context, 'yes'),
+        onPressed: () {
+          yesFunction();
+        },
+      ),
+      RoundedButton(
+        text: translate(context, 'no'),
+        onPressed: () {
+          noFunction();
+        },
+      ),
+    ],
+  );
+}
