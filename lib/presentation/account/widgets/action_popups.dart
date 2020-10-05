@@ -1,4 +1,6 @@
 import 'package:Sepetim/application/auth/account_transactions/account_transactions_bloc.dart';
+import 'package:Sepetim/application/auth/password_visibility/password_visibility_bloc.dart';
+import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
@@ -30,27 +32,46 @@ Future changePasswordPopup(
           children: [
             Text(translate(context, 'enter_new_password')),
             const SizedBox(height: 5.0),
-            Form(
-              autovalidate: state.showErrorMessages,
-              child: TextFormField(
-                controller: _textController,
-                decoration: InputDecoration(
-                    labelText: translate(context, 'new_password')),
-                autofocus: true,
-                obscureText: true,
-                onChanged: (value) {
-                  bloc.add(
-                    AccountTransactionsEvent.passwordChanged(
-                      value.trim(),
+            BlocProvider<PasswordVisibilityBloc>(
+              create: (context) => getIt<PasswordVisibilityBloc>(),
+              child:
+                  BlocBuilder<PasswordVisibilityBloc, PasswordVisibilityState>(
+                builder: (context, passwordState) => Form(
+                  autovalidate: state.showErrorMessages,
+                  child: TextFormField(
+                    controller: _textController,
+                    decoration: InputDecoration(
+                      labelText: translate(context, 'current_password'),
+                      suffixIcon: IconButton(
+                        icon: passwordState.isVisible
+                            ? const Icon(Icons.visibility_off)
+                            : const Icon(Icons.visibility),
+                        onPressed: () => context
+                            .bloc<PasswordVisibilityBloc>()
+                            .add(
+                              const PasswordVisibilityEvent.visibilityChanged(),
+                            ),
+                        color: sepetimLightGrey,
+                      ),
                     ),
-                  );
-                },
-                validator: (_) => bloc.state.password.value.fold(
-                  (f) => f.maybeMap(
-                    weakPassword: (_) => translate(context, 'weak_password'),
-                    orElse: () => null,
+                    autofocus: true,
+                    obscureText: true,
+                    onChanged: (value) {
+                      bloc.add(
+                        AccountTransactionsEvent.passwordChanged(
+                          value.trim(),
+                        ),
+                      );
+                    },
+                    validator: (_) => bloc.state.password.value.fold(
+                      (f) => f.maybeMap(
+                        weakPassword: (_) =>
+                            translate(context, 'weak_password'),
+                        orElse: () => null,
+                      ),
+                      (_) => null,
+                    ),
                   ),
-                  (_) => null,
                 ),
               ),
             ),
@@ -121,15 +142,37 @@ Future verifyPasswordPopup(
               children: [
                 Text(translate(context, 'enter_current_password')),
                 const SizedBox(height: 5.0),
-                Form(
-                  autovalidate: state.showErrorMessages,
-                  child: TextFormField(
-                    controller: _textController,
-                    decoration: InputDecoration(
-                        labelText: translate(context, 'current_password')),
-                    autofocus: true,
-                    obscureText: true,
-                    validator: (_) => validatorText,
+                BlocProvider<PasswordVisibilityBloc>(
+                  create: (context) => getIt<PasswordVisibilityBloc>(),
+                  child: BlocBuilder<PasswordVisibilityBloc,
+                      PasswordVisibilityState>(
+                    builder: (context, passwordState) => Form(
+                      autovalidate: state.showErrorMessages,
+                      child: TextFormField(
+                        obscureText: !passwordState.isVisible,
+                        cursorColor: sepetimGrey,
+                        keyboardType: TextInputType.visiblePassword,
+                        style: Theme.of(context).textTheme.subtitle2,
+                        autocorrect: false,
+                        controller: _textController,
+                        decoration: InputDecoration(
+                          labelText: translate(context, 'current_password'),
+                          suffixIcon: IconButton(
+                            icon: passwordState.isVisible
+                                ? const Icon(Icons.visibility_off)
+                                : const Icon(Icons.visibility),
+                            onPressed: () =>
+                                context.bloc<PasswordVisibilityBloc>().add(
+                                      const PasswordVisibilityEvent
+                                          .visibilityChanged(),
+                                    ),
+                            color: sepetimLightGrey,
+                          ),
+                        ),
+                        autofocus: true,
+                        validator: (_) => validatorText,
+                      ),
+                    ),
                   ),
                 ),
                 const Spacer(),
