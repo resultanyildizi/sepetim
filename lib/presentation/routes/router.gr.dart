@@ -26,6 +26,7 @@ import '../home/item/overview/widgets/item_page.dart';
 import '../home/item_category/form/item_category_form.dart';
 import '../home/item_group/form/item_group_form.dart';
 import '../home/item_group/overview/item_group_overview_page.dart';
+import '../settings/contact_us/contact_us_page.dart';
 import '../settings/themes/themes_page.dart';
 import '../sign_in/reset_password_page.dart';
 import '../sign_in/sign_in_page.dart';
@@ -48,6 +49,7 @@ class Routes {
   static const String resetPasswordPage = '/reset-password-page';
   static const String linkAccountPage = '/link-account-page';
   static const String themesPage = '/themes-page';
+  static const String contactUsPage = '/contact-us-page';
   static const all = <String>{
     splashPage,
     signInPage,
@@ -64,6 +66,7 @@ class Routes {
     resetPasswordPage,
     linkAccountPage,
     themesPage,
+    contactUsPage,
   };
 }
 
@@ -86,6 +89,7 @@ class Router extends RouterBase {
     RouteDef(Routes.resetPasswordPage, page: ResetPasswordPage),
     RouteDef(Routes.linkAccountPage, page: LinkAccountPage),
     RouteDef(Routes.themesPage, page: ThemesPage),
+    RouteDef(Routes.contactUsPage, page: ContactUsPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -227,6 +231,12 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    ContactUsPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ContactUsPage(),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -349,6 +359,8 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
       push<dynamic>(Routes.linkAccountPage);
 
   Future<dynamic> pushThemesPage() => push<dynamic>(Routes.themesPage);
+
+  Future<dynamic> pushContactUsPage() => push<dynamic>(Routes.contactUsPage);
 }
 
 /// ************************************************************************

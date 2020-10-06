@@ -5,12 +5,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
-Widget contactUsButton(
-  BuildContext context, {
-  @required Function() onPressed,
-}) {
+Widget contactUsButton(BuildContext context) {
   return FlatRectangleButton(
-    onPressed: onPressed,
+    onPressed: () {
+      ExtendedNavigator.of(context).push(Routes.contactUsPage);
+    },
     child: Text(
       translate(context, 'contact_us'),
       style: Theme.of(context).textTheme.bodyText2,

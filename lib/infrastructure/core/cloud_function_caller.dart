@@ -2,7 +2,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/services.dart';
 import 'package:meta/meta.dart';
 
-Future<void> callCloudFunction({
+Future<dynamic> callCloudFunction({
   @required String functionName,
   @required Map<String, String> data,
 }) async {
@@ -18,7 +18,7 @@ Future<void> callCloudFunction({
           message:
               "Error occured when cloud function was running. Error was: ${result.data["message"].toString()}");
     } else if (result.data["type"] == "success") {
-      return;
+      return result.data;
     }
   } else {
     throw PlatformException(

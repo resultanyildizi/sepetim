@@ -46,4 +46,8 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.invalidNumberSign({
     @required T failedValue,
   }) = InvalidNumberSign<T>;
+
+  const factory ValueFailure.tooShortMessage({
+    @required T failedValue,
+  }) = TooShortMessage<T>;
 }

@@ -14,6 +14,17 @@ Either<ValueFailure<String>, String> validateMaxStringLength(
   }
 }
 
+Either<ValueFailure<String>, String> validateMinStringLength(
+  String input,
+  int minLength,
+) {
+  if (input.length >= minLength) {
+    return right(input);
+  } else {
+    return left(ValueFailure.tooShortMessage(failedValue: input));
+  }
+}
+
 Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
   if (input.isNotEmpty) {
     return right(input);

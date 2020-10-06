@@ -11,6 +11,7 @@ extension FirebaseUserDoaminX on User {
       id: UniqueId.fromUniqueString(uid),
       signInType: _getSignInType(),
       emailOption: optionOf(email == "" ? null : email),
+      isAnonymous: isAnonymous,
     );
   }
 

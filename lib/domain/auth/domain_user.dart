@@ -10,5 +10,6 @@ abstract class DomainUser with _$DomainUser {
     @required UniqueId id,
     @required SignInType signInType,
     @required Option<String> emailOption,
+    @required bool isAnonymous,
   }) = _DomainUser;
 }

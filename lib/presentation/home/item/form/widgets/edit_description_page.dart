@@ -57,7 +57,7 @@ class _EditDescriptionPageState extends State<EditDescriptionPage> {
         appBar: AppBar(
           title: Text(
             'Sepetim',
-            style: robotoTextStyle(bold: true),
+            style: Theme.of(context).appBarTheme.textTheme.headline1,
           ),
           actions: <Widget>[
             GestureDetector(

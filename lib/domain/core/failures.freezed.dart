@@ -85,6 +85,13 @@ class _$ValueFailureTearOff {
       failedValue: failedValue,
     );
   }
+
+// ignore: unused_element
+  TooShortMessage<T> tooShortMessage<T>({@required T failedValue}) {
+    return TooShortMessage<T>(
+      failedValue: failedValue,
+    );
+  }
 }
 
 /// @nodoc
@@ -107,6 +114,7 @@ mixin _$ValueFailure<T> {
     @required Result invalidUrl(T failedValue),
     @required Result invalidPrice(T failedValue),
     @required Result invalidNumberSign(T failedValue),
+    @required Result tooShortMessage(T failedValue),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -120,6 +128,7 @@ mixin _$ValueFailure<T> {
     Result invalidUrl(T failedValue),
     Result invalidPrice(T failedValue),
     Result invalidNumberSign(T failedValue),
+    Result tooShortMessage(T failedValue),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -134,6 +143,7 @@ mixin _$ValueFailure<T> {
     @required Result invalidUrl(InvalidUrl<T> value),
     @required Result invalidPrice(InvalidPrice<T> value),
     @required Result invalidNumberSign(InvalidNumberSign<T> value),
+    @required Result tooShortMessage(TooShortMessage<T> value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -147,6 +157,7 @@ mixin _$ValueFailure<T> {
     Result invalidUrl(InvalidUrl<T> value),
     Result invalidPrice(InvalidPrice<T> value),
     Result invalidNumberSign(InvalidNumberSign<T> value),
+    Result tooShortMessage(TooShortMessage<T> value),
     @required Result orElse(),
   });
 
@@ -266,6 +277,7 @@ class _$InvalidEmail<T>
     @required Result invalidUrl(T failedValue),
     @required Result invalidPrice(T failedValue),
     @required Result invalidNumberSign(T failedValue),
+    @required Result tooShortMessage(T failedValue),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -277,6 +289,7 @@ class _$InvalidEmail<T>
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return invalidEmail(failedValue);
   }
 
@@ -293,6 +306,7 @@ class _$InvalidEmail<T>
     Result invalidUrl(T failedValue),
     Result invalidPrice(T failedValue),
     Result invalidNumberSign(T failedValue),
+    Result tooShortMessage(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -315,6 +329,7 @@ class _$InvalidEmail<T>
     @required Result invalidUrl(InvalidUrl<T> value),
     @required Result invalidPrice(InvalidPrice<T> value),
     @required Result invalidNumberSign(InvalidNumberSign<T> value),
+    @required Result tooShortMessage(TooShortMessage<T> value),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -326,6 +341,7 @@ class _$InvalidEmail<T>
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return invalidEmail(this);
   }
 
@@ -342,6 +358,7 @@ class _$InvalidEmail<T>
     Result invalidUrl(InvalidUrl<T> value),
     Result invalidPrice(InvalidPrice<T> value),
     Result invalidNumberSign(InvalidNumberSign<T> value),
+    Result tooShortMessage(TooShortMessage<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -446,6 +463,7 @@ class _$WeakPassword<T>
     @required Result invalidUrl(T failedValue),
     @required Result invalidPrice(T failedValue),
     @required Result invalidNumberSign(T failedValue),
+    @required Result tooShortMessage(T failedValue),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -457,6 +475,7 @@ class _$WeakPassword<T>
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return weakPassword(failedValue);
   }
 
@@ -473,6 +492,7 @@ class _$WeakPassword<T>
     Result invalidUrl(T failedValue),
     Result invalidPrice(T failedValue),
     Result invalidNumberSign(T failedValue),
+    Result tooShortMessage(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -495,6 +515,7 @@ class _$WeakPassword<T>
     @required Result invalidUrl(InvalidUrl<T> value),
     @required Result invalidPrice(InvalidPrice<T> value),
     @required Result invalidNumberSign(InvalidNumberSign<T> value),
+    @required Result tooShortMessage(TooShortMessage<T> value),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -506,6 +527,7 @@ class _$WeakPassword<T>
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return weakPassword(this);
   }
 
@@ -522,6 +544,7 @@ class _$WeakPassword<T>
     Result invalidUrl(InvalidUrl<T> value),
     Result invalidPrice(InvalidPrice<T> value),
     Result invalidNumberSign(InvalidNumberSign<T> value),
+    Result tooShortMessage(TooShortMessage<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -636,6 +659,7 @@ class _$ExceedingLength<T>
     @required Result invalidUrl(T failedValue),
     @required Result invalidPrice(T failedValue),
     @required Result invalidNumberSign(T failedValue),
+    @required Result tooShortMessage(T failedValue),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -647,6 +671,7 @@ class _$ExceedingLength<T>
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return exceedingLength(failedValue, max);
   }
 
@@ -663,6 +688,7 @@ class _$ExceedingLength<T>
     Result invalidUrl(T failedValue),
     Result invalidPrice(T failedValue),
     Result invalidNumberSign(T failedValue),
+    Result tooShortMessage(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -685,6 +711,7 @@ class _$ExceedingLength<T>
     @required Result invalidUrl(InvalidUrl<T> value),
     @required Result invalidPrice(InvalidPrice<T> value),
     @required Result invalidNumberSign(InvalidNumberSign<T> value),
+    @required Result tooShortMessage(TooShortMessage<T> value),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -696,6 +723,7 @@ class _$ExceedingLength<T>
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return exceedingLength(this);
   }
 
@@ -712,6 +740,7 @@ class _$ExceedingLength<T>
     Result invalidUrl(InvalidUrl<T> value),
     Result invalidPrice(InvalidPrice<T> value),
     Result invalidNumberSign(InvalidNumberSign<T> value),
+    Result tooShortMessage(TooShortMessage<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -812,6 +841,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     @required Result invalidUrl(T failedValue),
     @required Result invalidPrice(T failedValue),
     @required Result invalidNumberSign(T failedValue),
+    @required Result tooShortMessage(T failedValue),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -823,6 +853,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return empty(failedValue);
   }
 
@@ -839,6 +870,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     Result invalidUrl(T failedValue),
     Result invalidPrice(T failedValue),
     Result invalidNumberSign(T failedValue),
+    Result tooShortMessage(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -861,6 +893,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     @required Result invalidUrl(InvalidUrl<T> value),
     @required Result invalidPrice(InvalidPrice<T> value),
     @required Result invalidNumberSign(InvalidNumberSign<T> value),
+    @required Result tooShortMessage(TooShortMessage<T> value),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -872,6 +905,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return empty(this);
   }
 
@@ -888,6 +922,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     Result invalidUrl(InvalidUrl<T> value),
     Result invalidPrice(InvalidPrice<T> value),
     Result invalidNumberSign(InvalidNumberSign<T> value),
+    Result tooShortMessage(TooShortMessage<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -989,6 +1024,7 @@ class _$MultiLine<T> with DiagnosticableTreeMixin implements MultiLine<T> {
     @required Result invalidUrl(T failedValue),
     @required Result invalidPrice(T failedValue),
     @required Result invalidNumberSign(T failedValue),
+    @required Result tooShortMessage(T failedValue),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -1000,6 +1036,7 @@ class _$MultiLine<T> with DiagnosticableTreeMixin implements MultiLine<T> {
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return multiLine(failedValue);
   }
 
@@ -1016,6 +1053,7 @@ class _$MultiLine<T> with DiagnosticableTreeMixin implements MultiLine<T> {
     Result invalidUrl(T failedValue),
     Result invalidPrice(T failedValue),
     Result invalidNumberSign(T failedValue),
+    Result tooShortMessage(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1038,6 +1076,7 @@ class _$MultiLine<T> with DiagnosticableTreeMixin implements MultiLine<T> {
     @required Result invalidUrl(InvalidUrl<T> value),
     @required Result invalidPrice(InvalidPrice<T> value),
     @required Result invalidNumberSign(InvalidNumberSign<T> value),
+    @required Result tooShortMessage(TooShortMessage<T> value),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -1049,6 +1088,7 @@ class _$MultiLine<T> with DiagnosticableTreeMixin implements MultiLine<T> {
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return multiLine(this);
   }
 
@@ -1065,6 +1105,7 @@ class _$MultiLine<T> with DiagnosticableTreeMixin implements MultiLine<T> {
     Result invalidUrl(InvalidUrl<T> value),
     Result invalidPrice(InvalidPrice<T> value),
     Result invalidNumberSign(InvalidNumberSign<T> value),
+    Result tooShortMessage(TooShortMessage<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1169,6 +1210,7 @@ class _$InvalidImagePath<T>
     @required Result invalidUrl(T failedValue),
     @required Result invalidPrice(T failedValue),
     @required Result invalidNumberSign(T failedValue),
+    @required Result tooShortMessage(T failedValue),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -1180,6 +1222,7 @@ class _$InvalidImagePath<T>
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return invalidImagePath(failedValue);
   }
 
@@ -1196,6 +1239,7 @@ class _$InvalidImagePath<T>
     Result invalidUrl(T failedValue),
     Result invalidPrice(T failedValue),
     Result invalidNumberSign(T failedValue),
+    Result tooShortMessage(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1218,6 +1262,7 @@ class _$InvalidImagePath<T>
     @required Result invalidUrl(InvalidUrl<T> value),
     @required Result invalidPrice(InvalidPrice<T> value),
     @required Result invalidNumberSign(InvalidNumberSign<T> value),
+    @required Result tooShortMessage(TooShortMessage<T> value),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -1229,6 +1274,7 @@ class _$InvalidImagePath<T>
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return invalidImagePath(this);
   }
 
@@ -1245,6 +1291,7 @@ class _$InvalidImagePath<T>
     Result invalidUrl(InvalidUrl<T> value),
     Result invalidPrice(InvalidPrice<T> value),
     Result invalidNumberSign(InvalidNumberSign<T> value),
+    Result tooShortMessage(TooShortMessage<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1358,6 +1405,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     @required Result invalidUrl(T failedValue),
     @required Result invalidPrice(T failedValue),
     @required Result invalidNumberSign(T failedValue),
+    @required Result tooShortMessage(T failedValue),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -1369,6 +1417,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return listTooLong(failedValue, max);
   }
 
@@ -1385,6 +1434,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     Result invalidUrl(T failedValue),
     Result invalidPrice(T failedValue),
     Result invalidNumberSign(T failedValue),
+    Result tooShortMessage(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1407,6 +1457,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     @required Result invalidUrl(InvalidUrl<T> value),
     @required Result invalidPrice(InvalidPrice<T> value),
     @required Result invalidNumberSign(InvalidNumberSign<T> value),
+    @required Result tooShortMessage(TooShortMessage<T> value),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -1418,6 +1469,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return listTooLong(this);
   }
 
@@ -1434,6 +1486,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     Result invalidUrl(InvalidUrl<T> value),
     Result invalidPrice(InvalidPrice<T> value),
     Result invalidNumberSign(InvalidNumberSign<T> value),
+    Result tooShortMessage(TooShortMessage<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1538,6 +1591,7 @@ class _$InvalidUrl<T> with DiagnosticableTreeMixin implements InvalidUrl<T> {
     @required Result invalidUrl(T failedValue),
     @required Result invalidPrice(T failedValue),
     @required Result invalidNumberSign(T failedValue),
+    @required Result tooShortMessage(T failedValue),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -1549,6 +1603,7 @@ class _$InvalidUrl<T> with DiagnosticableTreeMixin implements InvalidUrl<T> {
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return invalidUrl(failedValue);
   }
 
@@ -1565,6 +1620,7 @@ class _$InvalidUrl<T> with DiagnosticableTreeMixin implements InvalidUrl<T> {
     Result invalidUrl(T failedValue),
     Result invalidPrice(T failedValue),
     Result invalidNumberSign(T failedValue),
+    Result tooShortMessage(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1587,6 +1643,7 @@ class _$InvalidUrl<T> with DiagnosticableTreeMixin implements InvalidUrl<T> {
     @required Result invalidUrl(InvalidUrl<T> value),
     @required Result invalidPrice(InvalidPrice<T> value),
     @required Result invalidNumberSign(InvalidNumberSign<T> value),
+    @required Result tooShortMessage(TooShortMessage<T> value),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -1598,6 +1655,7 @@ class _$InvalidUrl<T> with DiagnosticableTreeMixin implements InvalidUrl<T> {
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return invalidUrl(this);
   }
 
@@ -1614,6 +1672,7 @@ class _$InvalidUrl<T> with DiagnosticableTreeMixin implements InvalidUrl<T> {
     Result invalidUrl(InvalidUrl<T> value),
     Result invalidPrice(InvalidPrice<T> value),
     Result invalidNumberSign(InvalidNumberSign<T> value),
+    Result tooShortMessage(TooShortMessage<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1718,6 +1777,7 @@ class _$InvalidPrice<T>
     @required Result invalidUrl(T failedValue),
     @required Result invalidPrice(T failedValue),
     @required Result invalidNumberSign(T failedValue),
+    @required Result tooShortMessage(T failedValue),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -1729,6 +1789,7 @@ class _$InvalidPrice<T>
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return invalidPrice(failedValue);
   }
 
@@ -1745,6 +1806,7 @@ class _$InvalidPrice<T>
     Result invalidUrl(T failedValue),
     Result invalidPrice(T failedValue),
     Result invalidNumberSign(T failedValue),
+    Result tooShortMessage(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1767,6 +1829,7 @@ class _$InvalidPrice<T>
     @required Result invalidUrl(InvalidUrl<T> value),
     @required Result invalidPrice(InvalidPrice<T> value),
     @required Result invalidNumberSign(InvalidNumberSign<T> value),
+    @required Result tooShortMessage(TooShortMessage<T> value),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -1778,6 +1841,7 @@ class _$InvalidPrice<T>
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return invalidPrice(this);
   }
 
@@ -1794,6 +1858,7 @@ class _$InvalidPrice<T>
     Result invalidUrl(InvalidUrl<T> value),
     Result invalidPrice(InvalidPrice<T> value),
     Result invalidNumberSign(InvalidNumberSign<T> value),
+    Result tooShortMessage(TooShortMessage<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1899,6 +1964,7 @@ class _$InvalidNumberSign<T>
     @required Result invalidUrl(T failedValue),
     @required Result invalidPrice(T failedValue),
     @required Result invalidNumberSign(T failedValue),
+    @required Result tooShortMessage(T failedValue),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -1910,6 +1976,7 @@ class _$InvalidNumberSign<T>
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return invalidNumberSign(failedValue);
   }
 
@@ -1926,6 +1993,7 @@ class _$InvalidNumberSign<T>
     Result invalidUrl(T failedValue),
     Result invalidPrice(T failedValue),
     Result invalidNumberSign(T failedValue),
+    Result tooShortMessage(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1948,6 +2016,7 @@ class _$InvalidNumberSign<T>
     @required Result invalidUrl(InvalidUrl<T> value),
     @required Result invalidPrice(InvalidPrice<T> value),
     @required Result invalidNumberSign(InvalidNumberSign<T> value),
+    @required Result tooShortMessage(TooShortMessage<T> value),
   }) {
     assert(invalidEmail != null);
     assert(weakPassword != null);
@@ -1959,6 +2028,7 @@ class _$InvalidNumberSign<T>
     assert(invalidUrl != null);
     assert(invalidPrice != null);
     assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
     return invalidNumberSign(this);
   }
 
@@ -1975,6 +2045,7 @@ class _$InvalidNumberSign<T>
     Result invalidUrl(InvalidUrl<T> value),
     Result invalidPrice(InvalidPrice<T> value),
     Result invalidNumberSign(InvalidNumberSign<T> value),
+    Result tooShortMessage(TooShortMessage<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1993,4 +2064,191 @@ abstract class InvalidNumberSign<T> implements ValueFailure<T> {
   T get failedValue;
   @override
   $InvalidNumberSignCopyWith<T, InvalidNumberSign<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $TooShortMessageCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $TooShortMessageCopyWith(
+          TooShortMessage<T> value, $Res Function(TooShortMessage<T>) then) =
+      _$TooShortMessageCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$TooShortMessageCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $TooShortMessageCopyWith<T, $Res> {
+  _$TooShortMessageCopyWithImpl(
+      TooShortMessage<T> _value, $Res Function(TooShortMessage<T>) _then)
+      : super(_value, (v) => _then(v as TooShortMessage<T>));
+
+  @override
+  TooShortMessage<T> get _value => super._value as TooShortMessage<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+  }) {
+    return _then(TooShortMessage<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
+    ));
+  }
+}
+
+/// @nodoc
+class _$TooShortMessage<T>
+    with DiagnosticableTreeMixin
+    implements TooShortMessage<T> {
+  const _$TooShortMessage({@required this.failedValue})
+      : assert(failedValue != null);
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ValueFailure<$T>.tooShortMessage(failedValue: $failedValue)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ValueFailure<$T>.tooShortMessage'))
+      ..add(DiagnosticsProperty('failedValue', failedValue));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is TooShortMessage<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+
+  @override
+  $TooShortMessageCopyWith<T, TooShortMessage<T>> get copyWith =>
+      _$TooShortMessageCopyWithImpl<T, TooShortMessage<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result invalidEmail(T failedValue),
+    @required Result weakPassword(T failedValue),
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiLine(T failedValue),
+    @required Result invalidImagePath(T failedValue),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidUrl(T failedValue),
+    @required Result invalidPrice(T failedValue),
+    @required Result invalidNumberSign(T failedValue),
+    @required Result tooShortMessage(T failedValue),
+  }) {
+    assert(invalidEmail != null);
+    assert(weakPassword != null);
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(invalidImagePath != null);
+    assert(listTooLong != null);
+    assert(invalidUrl != null);
+    assert(invalidPrice != null);
+    assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
+    return tooShortMessage(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result invalidEmail(T failedValue),
+    Result weakPassword(T failedValue),
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiLine(T failedValue),
+    Result invalidImagePath(T failedValue),
+    Result listTooLong(T failedValue, int max),
+    Result invalidUrl(T failedValue),
+    Result invalidPrice(T failedValue),
+    Result invalidNumberSign(T failedValue),
+    Result tooShortMessage(T failedValue),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (tooShortMessage != null) {
+      return tooShortMessage(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result invalidEmail(InvalidEmail<T> value),
+    @required Result weakPassword(WeakPassword<T> value),
+    @required Result exceedingLength(ExceedingLength<T> value),
+    @required Result empty(Empty<T> value),
+    @required Result multiLine(MultiLine<T> value),
+    @required Result invalidImagePath(InvalidImagePath<T> value),
+    @required Result listTooLong(ListTooLong<T> value),
+    @required Result invalidUrl(InvalidUrl<T> value),
+    @required Result invalidPrice(InvalidPrice<T> value),
+    @required Result invalidNumberSign(InvalidNumberSign<T> value),
+    @required Result tooShortMessage(TooShortMessage<T> value),
+  }) {
+    assert(invalidEmail != null);
+    assert(weakPassword != null);
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(invalidImagePath != null);
+    assert(listTooLong != null);
+    assert(invalidUrl != null);
+    assert(invalidPrice != null);
+    assert(invalidNumberSign != null);
+    assert(tooShortMessage != null);
+    return tooShortMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result invalidEmail(InvalidEmail<T> value),
+    Result weakPassword(WeakPassword<T> value),
+    Result exceedingLength(ExceedingLength<T> value),
+    Result empty(Empty<T> value),
+    Result multiLine(MultiLine<T> value),
+    Result invalidImagePath(InvalidImagePath<T> value),
+    Result listTooLong(ListTooLong<T> value),
+    Result invalidUrl(InvalidUrl<T> value),
+    Result invalidPrice(InvalidPrice<T> value),
+    Result invalidNumberSign(InvalidNumberSign<T> value),
+    Result tooShortMessage(TooShortMessage<T> value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (tooShortMessage != null) {
+      return tooShortMessage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TooShortMessage<T> implements ValueFailure<T> {
+  const factory TooShortMessage({@required T failedValue}) =
+      _$TooShortMessage<T>;
+
+  @override
+  T get failedValue;
+  @override
+  $TooShortMessageCopyWith<T, TooShortMessage<T>> get copyWith;
 }

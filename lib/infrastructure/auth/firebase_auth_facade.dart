@@ -44,7 +44,7 @@ class FirebaseAuthFacade extends IAuthFacade {
       );
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'emaıl-already-ın-use') {
+      if (e.code == 'email-already-in-use') {
         return left(const AuthFailure.emailAlreadyInUse());
       } else {
         return left(const AuthFailure.serverError());
@@ -134,7 +134,7 @@ class FirebaseAuthFacade extends IAuthFacade {
       }
     } on FirebaseAuthException catch (e) {
       await _googleSignIn.signOut();
-      if (e.code == 'ınvalıd-credentıal') {
+      if (e.code == 'invalid-credential') {
         return left(const AuthFailure.invalidCredential());
       } else {
         return left(const AuthFailure.serverError());
@@ -168,11 +168,11 @@ class FirebaseAuthFacade extends IAuthFacade {
       }
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'emaıl-already-ın-use') {
+      if (e.code == 'email-already-in-use') {
         return left(const AuthFailure.emailAlreadyInUse());
-      } else if (e.code == 'credentıal-already-ın-use') {
+      } else if (e.code == 'credential-already-in-use') {
         return left(const AuthFailure.accountAlreadyExists());
-      } else if (e.code == 'provıder-already-lınked') {
+      } else if (e.code == 'provider-already-linked') {
         return left(const AuthFailure.accountAlreadyLinked());
       } else {
         return left(const AuthFailure.serverError());
@@ -208,13 +208,14 @@ class FirebaseAuthFacade extends IAuthFacade {
       return right(unit);
     } on FirebaseAuthException catch (e) {
       await _googleSignIn.signOut();
-      if (e.code == 'emaıl-already-ın-use') {
+
+      if (e.code == 'email-already-in-use') {
         return left(const AuthFailure.emailAlreadyInUse());
-      } else if (e.code == 'credentıal-already-ın-use') {
+      } else if (e.code == 'credential-already-in-use') {
         return left(const AuthFailure.accountAlreadyExists());
-      } else if (e.code == 'provıder-already-lınked') {
+      } else if (e.code == 'provider-already-linked') {
         return left(const AuthFailure.accountAlreadyLinked());
-      } else if (e.code == 'ınvalıd-credentıal') {
+      } else if (e.code == 'invalid-credential') {
         return left(const AuthFailure.invalidCredential());
       } else {
         return left(const AuthFailure.serverError());

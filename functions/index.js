@@ -1,6 +1,8 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const firebase_tools = require("firebase-tools");
+const nodemailer = require("nodemailer");
+const cors = require("cors")({ origin: true });
 
 admin.initializeApp();
 
@@ -153,6 +155,64 @@ const clearFirestoreData = async (firestorePath) => {
     throw err;
   }
 };
+
+let transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: functions.config().app.email.address,
+    pass: functions.config().app.email.lock,
+  },
+});
+
+exports.sendMail = functions.https.onCall((data, context) => {
+  const userId = data["userId"];
+  const userEmail = data["userEmail"];
+  const message = data["message"];
+
+  log("user id : " + userId);
+  log("user email : " + userEmail);
+  log("user message : " + message);
+
+  log("transporter options : " + transporter.options);
+
+  const htmlMessage = `
+      <img height="192" width="192" src="https://firebasestorage.googleapis.com/v0/b/sepetim-e2723.appspot.com/o/app_images%2Fic_launcher.png?alt=media&token=8cbbfa65-6b61-4409-9aea-3faf265b8b84"/>
+      <h3>User message from Sepetim</h3>
+      <p>
+      <b>User Id:</b> <a href="https://console.firebase.google.com/u/0/project/sepetim-e2723/authentication/users">${userId}</a><br>
+      <b>User email:</b> ${userEmail}<br>
+      <hr>
+      </p>
+      <p>
+      <b>Message:</b><br>
+      <div style="border: 1px solid grey; background-color: #fff39c; padding:8px; border-radius: 5px; font-weight: bold; font-family: Calibri, sans-serif;">
+      <p>${message}</p>
+      </div>
+      </p>`;
+
+  const mailOptions = {
+    from: functions.config().app.email.address,
+    to: functions.config().app.destination_email,
+    subject: `Message from ${userEmail}`,
+    html: htmlMessage,
+  };
+
+  return transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      return {
+        type: "error",
+        message: err.message,
+        code: err.code,
+      };
+    } else {
+      log("Mail sent : " + info);
+      return {
+        type: "success",
+        message: "success",
+      };
+    }
+  });
+});
 
 function log(message) {
   functions.logger.log(message);

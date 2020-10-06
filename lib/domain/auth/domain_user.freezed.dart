@@ -17,11 +17,13 @@ class _$DomainUserTearOff {
   _DomainUser call(
       {@required UniqueId id,
       @required SignInType signInType,
-      @required Option<String> emailOption}) {
+      @required Option<String> emailOption,
+      @required bool isAnonymous}) {
     return _DomainUser(
       id: id,
       signInType: signInType,
       emailOption: emailOption,
+      isAnonymous: isAnonymous,
     );
   }
 }
@@ -35,6 +37,7 @@ mixin _$DomainUser {
   UniqueId get id;
   SignInType get signInType;
   Option<String> get emailOption;
+  bool get isAnonymous;
 
   $DomainUserCopyWith<DomainUser> get copyWith;
 }
@@ -44,7 +47,11 @@ abstract class $DomainUserCopyWith<$Res> {
   factory $DomainUserCopyWith(
           DomainUser value, $Res Function(DomainUser) then) =
       _$DomainUserCopyWithImpl<$Res>;
-  $Res call({UniqueId id, SignInType signInType, Option<String> emailOption});
+  $Res call(
+      {UniqueId id,
+      SignInType signInType,
+      Option<String> emailOption,
+      bool isAnonymous});
 
   $SignInTypeCopyWith<$Res> get signInType;
 }
@@ -62,6 +69,7 @@ class _$DomainUserCopyWithImpl<$Res> implements $DomainUserCopyWith<$Res> {
     Object id = freezed,
     Object signInType = freezed,
     Object emailOption = freezed,
+    Object isAnonymous = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
@@ -70,6 +78,8 @@ class _$DomainUserCopyWithImpl<$Res> implements $DomainUserCopyWith<$Res> {
       emailOption: emailOption == freezed
           ? _value.emailOption
           : emailOption as Option<String>,
+      isAnonymous:
+          isAnonymous == freezed ? _value.isAnonymous : isAnonymous as bool,
     ));
   }
 
@@ -90,7 +100,11 @@ abstract class _$DomainUserCopyWith<$Res> implements $DomainUserCopyWith<$Res> {
           _DomainUser value, $Res Function(_DomainUser) then) =
       __$DomainUserCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id, SignInType signInType, Option<String> emailOption});
+  $Res call(
+      {UniqueId id,
+      SignInType signInType,
+      Option<String> emailOption,
+      bool isAnonymous});
 
   @override
   $SignInTypeCopyWith<$Res> get signInType;
@@ -111,6 +125,7 @@ class __$DomainUserCopyWithImpl<$Res> extends _$DomainUserCopyWithImpl<$Res>
     Object id = freezed,
     Object signInType = freezed,
     Object emailOption = freezed,
+    Object isAnonymous = freezed,
   }) {
     return _then(_DomainUser(
       id: id == freezed ? _value.id : id as UniqueId,
@@ -119,6 +134,8 @@ class __$DomainUserCopyWithImpl<$Res> extends _$DomainUserCopyWithImpl<$Res>
       emailOption: emailOption == freezed
           ? _value.emailOption
           : emailOption as Option<String>,
+      isAnonymous:
+          isAnonymous == freezed ? _value.isAnonymous : isAnonymous as bool,
     ));
   }
 }
@@ -128,10 +145,12 @@ class _$_DomainUser implements _DomainUser {
   const _$_DomainUser(
       {@required this.id,
       @required this.signInType,
-      @required this.emailOption})
+      @required this.emailOption,
+      @required this.isAnonymous})
       : assert(id != null),
         assert(signInType != null),
-        assert(emailOption != null);
+        assert(emailOption != null),
+        assert(isAnonymous != null);
 
   @override
   final UniqueId id;
@@ -139,10 +158,12 @@ class _$_DomainUser implements _DomainUser {
   final SignInType signInType;
   @override
   final Option<String> emailOption;
+  @override
+  final bool isAnonymous;
 
   @override
   String toString() {
-    return 'DomainUser(id: $id, signInType: $signInType, emailOption: $emailOption)';
+    return 'DomainUser(id: $id, signInType: $signInType, emailOption: $emailOption, isAnonymous: $isAnonymous)';
   }
 
   @override
@@ -156,7 +177,10 @@ class _$_DomainUser implements _DomainUser {
                     .equals(other.signInType, signInType)) &&
             (identical(other.emailOption, emailOption) ||
                 const DeepCollectionEquality()
-                    .equals(other.emailOption, emailOption)));
+                    .equals(other.emailOption, emailOption)) &&
+            (identical(other.isAnonymous, isAnonymous) ||
+                const DeepCollectionEquality()
+                    .equals(other.isAnonymous, isAnonymous)));
   }
 
   @override
@@ -164,7 +188,8 @@ class _$_DomainUser implements _DomainUser {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(signInType) ^
-      const DeepCollectionEquality().hash(emailOption);
+      const DeepCollectionEquality().hash(emailOption) ^
+      const DeepCollectionEquality().hash(isAnonymous);
 
   @override
   _$DomainUserCopyWith<_DomainUser> get copyWith =>
@@ -175,7 +200,8 @@ abstract class _DomainUser implements DomainUser {
   const factory _DomainUser(
       {@required UniqueId id,
       @required SignInType signInType,
-      @required Option<String> emailOption}) = _$_DomainUser;
+      @required Option<String> emailOption,
+      @required bool isAnonymous}) = _$_DomainUser;
 
   @override
   UniqueId get id;
@@ -183,6 +209,8 @@ abstract class _DomainUser implements DomainUser {
   SignInType get signInType;
   @override
   Option<String> get emailOption;
+  @override
+  bool get isAnonymous;
   @override
   _$DomainUserCopyWith<_DomainUser> get copyWith;
 }

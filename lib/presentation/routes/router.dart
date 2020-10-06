@@ -8,6 +8,7 @@ import 'package:Sepetim/presentation/home/item/overview/widgets/item_page.dart';
 import 'package:Sepetim/presentation/home/item_category/form/item_category_form.dart';
 import 'package:Sepetim/presentation/home/item_group/form/item_group_form.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/item_group_overview_page.dart';
+import 'package:Sepetim/presentation/settings/contact_us/contact_us_page.dart';
 import 'package:Sepetim/presentation/settings/themes/themes_page.dart';
 import 'package:Sepetim/presentation/sign_in/reset_password_page.dart';
 import 'package:Sepetim/presentation/sign_in/sign_in_page.dart';
@@ -31,5 +32,6 @@ import 'package:Sepetim/presentation/sign_in/verify_anonymous_login_page.dart';
   MaterialRoute(page: ResetPasswordPage),
   MaterialRoute(page: LinkAccountPage),
   MaterialRoute(page: ThemesPage),
+  MaterialRoute(page: ContactUsPage),
 ], generateNavigationHelperExtension: true)
 class $Router {}
