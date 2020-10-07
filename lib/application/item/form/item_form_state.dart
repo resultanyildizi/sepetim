@@ -9,6 +9,7 @@ abstract class ItemFormState with _$ItemFormState {
     @required bool isEditing,
     @required bool isSaving,
     @required int timeChangeScore,
+    @required bool isChanged,
     @required List<Option<File>> temporaryImageFiles,
     @required List<bool> isPictureRemoved,
   }) = _ItemFormState;
@@ -22,5 +23,6 @@ abstract class ItemFormState with _$ItemFormState {
         temporaryImageFiles: <Option<File>>[none(), none(), none()].toList(),
         isPictureRemoved: <bool>[false, false, false].toList(),
         timeChangeScore: 0,
+        isChanged: false,
       );
 }

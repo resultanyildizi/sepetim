@@ -16,7 +16,7 @@ class EmailMessageTextField extends StatelessWidget {
         counterStyle: didactGothicTextStyle(),
       ),
       minLines: 1,
-      maxLines: 100,
+      maxLines: 10,
       onChanged: (value) {
         context
             .bloc<ContactUsBloc>()

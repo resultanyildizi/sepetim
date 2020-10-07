@@ -20,7 +20,6 @@ class ContactUsPage extends StatelessWidget {
     return BlocProvider<ContactUsBloc>(
       create: (context) => getIt<ContactUsBloc>(),
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           title: Text(
             'Sepetim',
@@ -81,6 +80,7 @@ class ContactUsPage extends StatelessWidget {
                           ],
                           const DividerDefault(),
                           RoundedButton(
+                            height: 35,
                             width: screenWidthByScalar(context, 1.0),
                             onPressed: () {
                               context

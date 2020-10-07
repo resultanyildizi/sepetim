@@ -66,6 +66,7 @@ class ItemCategoryForm extends StatelessWidget {
           onWillPop: () async {
             bool willPop = true;
             if (state.isChanged) {
+              FocusScope.of(context).unfocus();
               discardChangesPopup(
                 context,
                 yesFunction: () {

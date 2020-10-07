@@ -39,6 +39,7 @@ class ItemGroupFormBloc extends Bloc<ItemGroupFormEvent, ItemGroupFormState> {
           group: state.group.copyWith(
             title: ShortTitle(e.title),
           ),
+          isChanged: true,
           groupFailureOrSuccessOption: none(),
         );
       },
@@ -60,6 +61,7 @@ class ItemGroupFormBloc extends Bloc<ItemGroupFormEvent, ItemGroupFormState> {
           isSaving: false,
           showErrorMessages: true,
           groupFailureOrSuccessOption: optionOf(failureOrSuccess),
+          isChanged: state.isChanged && !failureOrSuccess.isRight(),
         );
       },
     );

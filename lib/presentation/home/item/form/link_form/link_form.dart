@@ -72,6 +72,7 @@ class _LinkFormState extends State<LinkForm> {
               (_) {},
               (r) {
                 isItemChanged = false;
+                ExtendedNavigator.of(context).pop();
               },
             );
           },
@@ -82,6 +83,7 @@ class _LinkFormState extends State<LinkForm> {
           onWillPop: () async {
             bool willPop = false;
             if (isItemChanged) {
+              FocusScope.of(context).unfocus();
               discardChangesPopup(
                 context,
                 yesFunction: () {

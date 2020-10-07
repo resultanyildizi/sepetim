@@ -35,71 +35,89 @@ class ItemGroupForm extends StatelessWidget {
             ),
         ),
       ],
-      child: Scaffold(
-        resizeToAvoidBottomPadding: false,
-        appBar: AppBar(
-          title: Text('Sepetim',
-              style: Theme.of(context).appBarTheme.textTheme.headline1),
-        ),
-        body: BlocConsumer<ItemGroupFormBloc, ItemGroupFormState>(
-          listener: (context, state) {
-            state.groupFailureOrSuccessOption.fold(
-              () {},
-              (either) => either.fold(
-                (failure) => failure.map(
-                  unexpected: (_) => serverErrorPopup(context),
-                  insufficientPermission: (_) =>
-                      insufficientPermissionPopup(context),
-                  unableToUpdate: (_) => serverErrorPopup(context),
-                  networkException: (_) => networkExceptionPopup(context),
-                ),
-                (_) {
-                  ExtendedNavigator.of(context).popUntil((route) =>
-                      route.settings.name == Routes.itemGroupOverviewPage);
+      child: BlocConsumer<ItemGroupFormBloc, ItemGroupFormState>(
+        listener: (context, state) {
+          state.groupFailureOrSuccessOption.fold(
+            () {},
+            (either) => either.fold(
+              (failure) => failure.map(
+                unexpected: (_) => serverErrorPopup(context),
+                insufficientPermission: (_) =>
+                    insufficientPermissionPopup(context),
+                unableToUpdate: (_) => serverErrorPopup(context),
+                networkException: (_) => networkExceptionPopup(context),
+              ),
+              (_) {
+                ExtendedNavigator.of(context).popUntil((route) =>
+                    route.settings.name == Routes.itemGroupOverviewPage);
+              },
+            ),
+          );
+        },
+        builder: (context, state) => WillPopScope(
+          onWillPop: () async {
+            bool willPop = true;
+            if (state.isChanged) {
+              FocusScope.of(context).unfocus();
+              discardChangesPopup(
+                context,
+                yesFunction: () {
+                  ExtendedNavigator.of(context).pop();
+                  ExtendedNavigator.of(context).pop();
                 },
-              ),
-            );
+                noFunction: () {
+                  ExtendedNavigator.of(context).pop();
+                  willPop = false;
+                },
+              );
+            }
+
+            return willPop;
           },
-          builder: (context, state) {
-            return DefaultPadding(
-              child: Form(
-                autovalidate: state.showErrorMessages,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      translate(context, 'add_a_group'),
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      translate(context, 'title'),
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1
-                          .copyWith(fontSize: 18.0),
-                    ),
-                    const TitleTextField(),
-                    const SizedBox(height: 10),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          if (state.isSaving) ...[
-                            SmallCircularProgressIndicator()
-                          ],
-                          const DividerDefault(),
-                          SaveButton(
-                            categoryId: categoryId,
-                          ),
-                        ],
+          child: Scaffold(
+              resizeToAvoidBottomPadding: false,
+              appBar: AppBar(
+                title: Text('Sepetim',
+                    style: Theme.of(context).appBarTheme.textTheme.headline1),
+              ),
+              body: DefaultPadding(
+                child: Form(
+                  autovalidate: state.showErrorMessages,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        translate(context, 'add_a_group'),
+                        style: Theme.of(context).textTheme.headline2,
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 10),
+                      Text(
+                        translate(context, 'title'),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(fontSize: 18.0),
+                      ),
+                      const TitleTextField(),
+                      const SizedBox(height: 10),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            if (state.isSaving) ...[
+                              SmallCircularProgressIndicator()
+                            ],
+                            const DividerDefault(),
+                            SaveButton(
+                              categoryId: categoryId,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
-          },
+              )),
         ),
       ),
     );

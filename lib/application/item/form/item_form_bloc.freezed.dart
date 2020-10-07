@@ -1868,6 +1868,7 @@ class _$ItemFormStateTearOff {
       @required bool isEditing,
       @required bool isSaving,
       @required int timeChangeScore,
+      @required bool isChanged,
       @required List<Option<File>> temporaryImageFiles,
       @required List<bool> isPictureRemoved}) {
     return _ItemFormState(
@@ -1877,6 +1878,7 @@ class _$ItemFormStateTearOff {
       isEditing: isEditing,
       isSaving: isSaving,
       timeChangeScore: timeChangeScore,
+      isChanged: isChanged,
       temporaryImageFiles: temporaryImageFiles,
       isPictureRemoved: isPictureRemoved,
     );
@@ -1895,6 +1897,7 @@ mixin _$ItemFormState {
   bool get isEditing;
   bool get isSaving;
   int get timeChangeScore;
+  bool get isChanged;
   List<Option<File>> get temporaryImageFiles;
   List<bool> get isPictureRemoved;
 
@@ -1913,6 +1916,7 @@ abstract class $ItemFormStateCopyWith<$Res> {
       bool isEditing,
       bool isSaving,
       int timeChangeScore,
+      bool isChanged,
       List<Option<File>> temporaryImageFiles,
       List<bool> isPictureRemoved});
 
@@ -1936,6 +1940,7 @@ class _$ItemFormStateCopyWithImpl<$Res>
     Object isEditing = freezed,
     Object isSaving = freezed,
     Object timeChangeScore = freezed,
+    Object isChanged = freezed,
     Object temporaryImageFiles = freezed,
     Object isPictureRemoved = freezed,
   }) {
@@ -1952,6 +1957,7 @@ class _$ItemFormStateCopyWithImpl<$Res>
       timeChangeScore: timeChangeScore == freezed
           ? _value.timeChangeScore
           : timeChangeScore as int,
+      isChanged: isChanged == freezed ? _value.isChanged : isChanged as bool,
       temporaryImageFiles: temporaryImageFiles == freezed
           ? _value.temporaryImageFiles
           : temporaryImageFiles as List<Option<File>>,
@@ -1986,6 +1992,7 @@ abstract class _$ItemFormStateCopyWith<$Res>
       bool isEditing,
       bool isSaving,
       int timeChangeScore,
+      bool isChanged,
       List<Option<File>> temporaryImageFiles,
       List<bool> isPictureRemoved});
 
@@ -2012,6 +2019,7 @@ class __$ItemFormStateCopyWithImpl<$Res>
     Object isEditing = freezed,
     Object isSaving = freezed,
     Object timeChangeScore = freezed,
+    Object isChanged = freezed,
     Object temporaryImageFiles = freezed,
     Object isPictureRemoved = freezed,
   }) {
@@ -2028,6 +2036,7 @@ class __$ItemFormStateCopyWithImpl<$Res>
       timeChangeScore: timeChangeScore == freezed
           ? _value.timeChangeScore
           : timeChangeScore as int,
+      isChanged: isChanged == freezed ? _value.isChanged : isChanged as bool,
       temporaryImageFiles: temporaryImageFiles == freezed
           ? _value.temporaryImageFiles
           : temporaryImageFiles as List<Option<File>>,
@@ -2047,6 +2056,7 @@ class _$_ItemFormState implements _ItemFormState {
       @required this.isEditing,
       @required this.isSaving,
       @required this.timeChangeScore,
+      @required this.isChanged,
       @required this.temporaryImageFiles,
       @required this.isPictureRemoved})
       : assert(item != null),
@@ -2055,6 +2065,7 @@ class _$_ItemFormState implements _ItemFormState {
         assert(isEditing != null),
         assert(isSaving != null),
         assert(timeChangeScore != null),
+        assert(isChanged != null),
         assert(temporaryImageFiles != null),
         assert(isPictureRemoved != null);
 
@@ -2071,13 +2082,15 @@ class _$_ItemFormState implements _ItemFormState {
   @override
   final int timeChangeScore;
   @override
+  final bool isChanged;
+  @override
   final List<Option<File>> temporaryImageFiles;
   @override
   final List<bool> isPictureRemoved;
 
   @override
   String toString() {
-    return 'ItemFormState(item: $item, showErrorMessages: $showErrorMessages, itemFailureOrSuccessOption: $itemFailureOrSuccessOption, isEditing: $isEditing, isSaving: $isSaving, timeChangeScore: $timeChangeScore, temporaryImageFiles: $temporaryImageFiles, isPictureRemoved: $isPictureRemoved)';
+    return 'ItemFormState(item: $item, showErrorMessages: $showErrorMessages, itemFailureOrSuccessOption: $itemFailureOrSuccessOption, isEditing: $isEditing, isSaving: $isSaving, timeChangeScore: $timeChangeScore, isChanged: $isChanged, temporaryImageFiles: $temporaryImageFiles, isPictureRemoved: $isPictureRemoved)';
   }
 
   @override
@@ -2103,6 +2116,9 @@ class _$_ItemFormState implements _ItemFormState {
             (identical(other.timeChangeScore, timeChangeScore) ||
                 const DeepCollectionEquality()
                     .equals(other.timeChangeScore, timeChangeScore)) &&
+            (identical(other.isChanged, isChanged) ||
+                const DeepCollectionEquality()
+                    .equals(other.isChanged, isChanged)) &&
             (identical(other.temporaryImageFiles, temporaryImageFiles) ||
                 const DeepCollectionEquality()
                     .equals(other.temporaryImageFiles, temporaryImageFiles)) &&
@@ -2120,6 +2136,7 @@ class _$_ItemFormState implements _ItemFormState {
       const DeepCollectionEquality().hash(isEditing) ^
       const DeepCollectionEquality().hash(isSaving) ^
       const DeepCollectionEquality().hash(timeChangeScore) ^
+      const DeepCollectionEquality().hash(isChanged) ^
       const DeepCollectionEquality().hash(temporaryImageFiles) ^
       const DeepCollectionEquality().hash(isPictureRemoved);
 
@@ -2136,6 +2153,7 @@ abstract class _ItemFormState implements ItemFormState {
       @required bool isEditing,
       @required bool isSaving,
       @required int timeChangeScore,
+      @required bool isChanged,
       @required List<Option<File>> temporaryImageFiles,
       @required List<bool> isPictureRemoved}) = _$_ItemFormState;
 
@@ -2151,6 +2169,8 @@ abstract class _ItemFormState implements ItemFormState {
   bool get isSaving;
   @override
   int get timeChangeScore;
+  @override
+  bool get isChanged;
   @override
   List<Option<File>> get temporaryImageFiles;
   @override

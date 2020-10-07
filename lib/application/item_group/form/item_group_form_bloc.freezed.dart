@@ -465,13 +465,16 @@ class _$ItemGroupFormStateTearOff {
       @required
           bool isSaving,
       @required
-          bool isEditing}) {
+          bool isEditing,
+      @required
+          bool isChanged}) {
     return _ItemGroupFormState(
       group: group,
       showErrorMessages: showErrorMessages,
       groupFailureOrSuccessOption: groupFailureOrSuccessOption,
       isSaving: isSaving,
       isEditing: isEditing,
+      isChanged: isChanged,
     );
   }
 }
@@ -487,6 +490,7 @@ mixin _$ItemGroupFormState {
   Option<Either<ItemGroupFailure, Unit>> get groupFailureOrSuccessOption;
   bool get isSaving;
   bool get isEditing;
+  bool get isChanged;
 
   $ItemGroupFormStateCopyWith<ItemGroupFormState> get copyWith;
 }
@@ -501,7 +505,8 @@ abstract class $ItemGroupFormStateCopyWith<$Res> {
       bool showErrorMessages,
       Option<Either<ItemGroupFailure, Unit>> groupFailureOrSuccessOption,
       bool isSaving,
-      bool isEditing});
+      bool isEditing,
+      bool isChanged});
 
   $ItemGroupCopyWith<$Res> get group;
 }
@@ -522,6 +527,7 @@ class _$ItemGroupFormStateCopyWithImpl<$Res>
     Object groupFailureOrSuccessOption = freezed,
     Object isSaving = freezed,
     Object isEditing = freezed,
+    Object isChanged = freezed,
   }) {
     return _then(_value.copyWith(
       group: group == freezed ? _value.group : group as ItemGroup,
@@ -534,6 +540,7 @@ class _$ItemGroupFormStateCopyWithImpl<$Res>
               as Option<Either<ItemGroupFailure, Unit>>,
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
+      isChanged: isChanged == freezed ? _value.isChanged : isChanged as bool,
     ));
   }
 
@@ -560,7 +567,8 @@ abstract class _$ItemGroupFormStateCopyWith<$Res>
       bool showErrorMessages,
       Option<Either<ItemGroupFailure, Unit>> groupFailureOrSuccessOption,
       bool isSaving,
-      bool isEditing});
+      bool isEditing,
+      bool isChanged});
 
   @override
   $ItemGroupCopyWith<$Res> get group;
@@ -584,6 +592,7 @@ class __$ItemGroupFormStateCopyWithImpl<$Res>
     Object groupFailureOrSuccessOption = freezed,
     Object isSaving = freezed,
     Object isEditing = freezed,
+    Object isChanged = freezed,
   }) {
     return _then(_ItemGroupFormState(
       group: group == freezed ? _value.group : group as ItemGroup,
@@ -596,6 +605,7 @@ class __$ItemGroupFormStateCopyWithImpl<$Res>
               as Option<Either<ItemGroupFailure, Unit>>,
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
+      isChanged: isChanged == freezed ? _value.isChanged : isChanged as bool,
     ));
   }
 }
@@ -607,12 +617,14 @@ class _$_ItemGroupFormState implements _ItemGroupFormState {
       @required this.showErrorMessages,
       @required this.groupFailureOrSuccessOption,
       @required this.isSaving,
-      @required this.isEditing})
+      @required this.isEditing,
+      @required this.isChanged})
       : assert(group != null),
         assert(showErrorMessages != null),
         assert(groupFailureOrSuccessOption != null),
         assert(isSaving != null),
-        assert(isEditing != null);
+        assert(isEditing != null),
+        assert(isChanged != null);
 
   @override
   final ItemGroup group;
@@ -624,10 +636,12 @@ class _$_ItemGroupFormState implements _ItemGroupFormState {
   final bool isSaving;
   @override
   final bool isEditing;
+  @override
+  final bool isChanged;
 
   @override
   String toString() {
-    return 'ItemGroupFormState(group: $group, showErrorMessages: $showErrorMessages, groupFailureOrSuccessOption: $groupFailureOrSuccessOption, isSaving: $isSaving, isEditing: $isEditing)';
+    return 'ItemGroupFormState(group: $group, showErrorMessages: $showErrorMessages, groupFailureOrSuccessOption: $groupFailureOrSuccessOption, isSaving: $isSaving, isEditing: $isEditing, isChanged: $isChanged)';
   }
 
   @override
@@ -649,7 +663,10 @@ class _$_ItemGroupFormState implements _ItemGroupFormState {
                     .equals(other.isSaving, isSaving)) &&
             (identical(other.isEditing, isEditing) ||
                 const DeepCollectionEquality()
-                    .equals(other.isEditing, isEditing)));
+                    .equals(other.isEditing, isEditing)) &&
+            (identical(other.isChanged, isChanged) ||
+                const DeepCollectionEquality()
+                    .equals(other.isChanged, isChanged)));
   }
 
   @override
@@ -659,7 +676,8 @@ class _$_ItemGroupFormState implements _ItemGroupFormState {
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(groupFailureOrSuccessOption) ^
       const DeepCollectionEquality().hash(isSaving) ^
-      const DeepCollectionEquality().hash(isEditing);
+      const DeepCollectionEquality().hash(isEditing) ^
+      const DeepCollectionEquality().hash(isChanged);
 
   @override
   _$ItemGroupFormStateCopyWith<_ItemGroupFormState> get copyWith =>
@@ -677,7 +695,9 @@ abstract class _ItemGroupFormState implements ItemGroupFormState {
       @required
           bool isSaving,
       @required
-          bool isEditing}) = _$_ItemGroupFormState;
+          bool isEditing,
+      @required
+          bool isChanged}) = _$_ItemGroupFormState;
 
   @override
   ItemGroup get group;
@@ -689,6 +709,8 @@ abstract class _ItemGroupFormState implements ItemGroupFormState {
   bool get isSaving;
   @override
   bool get isEditing;
+  @override
+  bool get isChanged;
   @override
   _$ItemGroupFormStateCopyWith<_ItemGroupFormState> get copyWith;
 }

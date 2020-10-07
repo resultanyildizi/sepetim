@@ -9,6 +9,7 @@ abstract class ItemGroupFormState with _$ItemGroupFormState {
         Option<Either<ItemGroupFailure, Unit>> groupFailureOrSuccessOption,
     @required bool isSaving,
     @required bool isEditing,
+    @required bool isChanged,
   }) = _ItemGroupFormState;
 
   factory ItemGroupFormState.initial() => ItemGroupFormState(
@@ -16,6 +17,7 @@ abstract class ItemGroupFormState with _$ItemGroupFormState {
         groupFailureOrSuccessOption: none(),
         isEditing: false,
         isSaving: false,
+        isChanged: false,
         showErrorMessages: false,
       );
 }

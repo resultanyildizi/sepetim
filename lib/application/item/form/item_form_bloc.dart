@@ -46,6 +46,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
           item: state.item.copyWith(
             title: ShortTitle(e.title),
           ),
+          isChanged: true,
           timeChangeScore: state.timeChangeScore + 1,
           itemFailureOrSuccessOption: none(),
         );
@@ -55,6 +56,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
           item: state.item.copyWith(
             price: Price(e.price),
           ),
+          isChanged: true,
           timeChangeScore: state.timeChangeScore + 1,
           itemFailureOrSuccessOption: none(),
         );
@@ -64,6 +66,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
           item: state.item.copyWith(
             description: DescriptionBody(e.descriptionBody),
           ),
+          isChanged: true,
           timeChangeScore: state.timeChangeScore + 1,
           itemFailureOrSuccessOption: none(),
         );
@@ -118,6 +121,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
               temporaryImageFiles: tempImageFiles,
               isPictureRemoved: newIsPictureRemovedList,
               timeChangeScore: state.timeChangeScore + 1,
+              isChanged: true,
               itemFailureOrSuccessOption: none(),
             );
           },
@@ -149,6 +153,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
                   .map((lnkObjPrm) => lnkObjPrm.toDomain())
                   .toList())),
           timeChangeScore: state.timeChangeScore + 1,
+          isChanged: true,
           itemFailureOrSuccessOption: none(),
         );
       },
@@ -230,6 +235,7 @@ class ItemFormBloc extends Bloc<ItemFormEvent, ItemFormState> {
           isSaving: false,
           showErrorMessages: true,
           itemFailureOrSuccessOption: optionOf(failureOrSuccess),
+          isChanged: state.isChanged && !failureOrSuccess.isRight(),
         );
       },
     );
