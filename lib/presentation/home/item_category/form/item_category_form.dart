@@ -31,93 +31,109 @@ class ItemCategoryForm extends StatelessWidget {
             ..add(ItemCategoryFormEvent.initialized(optionOf(editedCategory))),
         ),
       ],
-      child: Scaffold(
-        resizeToAvoidBottomPadding: false,
-        appBar: AppBar(
-          title: Text('Sepetim',
-              style: Theme.of(context).appBarTheme.textTheme.headline1),
-        ),
-        body: BlocConsumer<ItemCategoryFormBloc, ItemCategoryFormState>(
-          listener: (context, state) {
-            state.categoryFailureOrSuccessOption.fold(
-              () {},
-              (either) {
-                either.fold(
-                  (failure) {
-                    failure.map(
-                      unexpected: (_) {
-                        serverErrorPopup(context);
-                      },
-                      insufficientPermission: (_) {
-                        insufficientPermissionPopup(context);
-                      },
-                      unableToUpdate: (_) {
-                        serverErrorPopup(context);
-                      },
-                      networkException: (_) {
-                        networkExceptionPopup(context);
-                      },
-                      imageLoadCanceled: (_) {},
-                    );
-                  },
-                  (_) {
-                    ExtendedNavigator.of(context).popUntil((route) =>
-                        route.settings.name == Routes.applicationContentPage);
-                  },
-                );
-              },
-            );
+      child: BlocConsumer<ItemCategoryFormBloc, ItemCategoryFormState>(
+        listener: (context, state) {
+          state.categoryFailureOrSuccessOption.fold(
+            () {},
+            (either) {
+              either.fold(
+                (failure) {
+                  failure.map(
+                    unexpected: (_) {
+                      serverErrorPopup(context);
+                    },
+                    insufficientPermission: (_) {
+                      insufficientPermissionPopup(context);
+                    },
+                    unableToUpdate: (_) {
+                      serverErrorPopup(context);
+                    },
+                    networkException: (_) {
+                      networkExceptionPopup(context);
+                    },
+                    imageLoadCanceled: (_) {},
+                  );
+                },
+                (_) {
+                  ExtendedNavigator.of(context).popUntil((route) =>
+                      route.settings.name == Routes.applicationContentPage);
+                },
+              );
+            },
+          );
+        },
+        builder: (context, state) => WillPopScope(
+          onWillPop: () async {
+            bool willPop = true;
+            if (state.isChanged) {
+              discardChangesPopup(
+                context,
+                yesFunction: () {
+                  ExtendedNavigator.of(context).popUntil((route) =>
+                      route.settings.name == Routes.applicationContentPage);
+                },
+                noFunction: () {
+                  ExtendedNavigator.of(context).pop();
+                  willPop = false;
+                },
+              );
+            }
+            return willPop;
           },
-          builder: (context, state) {
-            return DefaultPadding(
-              child: Form(
-                autovalidate: state.showErrorMessages,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      translate(context, 'add_a_category'),
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                    const SizedBox(height: 10),
-                    Text(translate(context, 'title'),
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1
-                            .copyWith(fontSize: 18.0)),
-                    const TitleTextField(),
-                    const SizedBox(height: 10),
-                    Text(translate(context, 'colors'),
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1
-                            .copyWith(fontSize: 18.0)),
-                    const SizedBox(height: 10),
-                    const ColorPickerField(),
-                    const SizedBox(height: 20),
-                    Text(translate(context, 'cover_picture'),
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1
-                            .copyWith(fontSize: 18.0)),
-                    const CoverPictureField(),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          if (state.isSaving) ...[
-                            SmallCircularProgressIndicator()
-                          ],
-                          const DividerDefault(),
-                          SaveButton(),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+          child: Scaffold(
+              resizeToAvoidBottomPadding: false,
+              appBar: AppBar(
+                title: Text('Sepetim',
+                    style: Theme.of(context).appBarTheme.textTheme.headline1),
               ),
-            );
-          },
+              body: DefaultPadding(
+                child: Form(
+                  autovalidate: state.showErrorMessages,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        translate(context, 'add_a_category'),
+                        style: Theme.of(context).textTheme.headline2,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(translate(context, 'title'),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontSize: 18.0)),
+                      const TitleTextField(),
+                      const SizedBox(height: 10),
+                      Text(translate(context, 'colors'),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontSize: 18.0)),
+                      const SizedBox(height: 10),
+                      const ColorPickerField(),
+                      const SizedBox(height: 20),
+                      Text(translate(context, 'cover_picture'),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontSize: 18.0)),
+                      const CoverPictureField(),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            if (state.isSaving) ...[
+                              SmallCircularProgressIndicator()
+                            ],
+                            const DividerDefault(),
+                            SaveButton(),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )),
         ),
       ),
     );

@@ -107,7 +107,7 @@ class ResetPasswordPage extends StatelessWidget {
                             constraints: BoxConstraints(
                                 maxWidth: screenWidthByScalar(context, 1)),
                             decoration: BoxDecoration(
-                              color: Colors.lightGreenAccent,
+                              color: sepetimYellow,
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: ListTile(

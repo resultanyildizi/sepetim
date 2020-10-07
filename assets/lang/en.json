@@ -159,5 +159,6 @@
   "send_email": "Send email",
   "send_a_message": "Send a message",
   "send": "Send",
-  "too_short_message": "Message can't be shorter than 10 characters"
+  "too_short_message": "Message can't be shorter than 10 characters",
+  "message_sent_successfully": "Your message has been sent successfully"
 }

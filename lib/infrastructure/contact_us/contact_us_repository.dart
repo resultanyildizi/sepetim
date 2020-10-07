@@ -46,7 +46,8 @@ class ContactUsRepository extends IContactUsRepository {
       );
 
       return right(unit);
-    } on PlatformException catch (_) {
+    } on PlatformException catch (e) {
+      print(e.code);
       return left(const ContactUsFailure.unexpectedServerError());
     }
   }

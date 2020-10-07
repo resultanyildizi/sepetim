@@ -11,14 +11,18 @@ Future<dynamic> callCloudFunction({
 
   final result = await function.call(data);
 
-  if (result != null && result.data != null) {
-    if (result.data["type"] == "error") {
-      throw PlatformException(
-          code: result.data["code"].toString(),
-          message:
-              "Error occured when cloud function was running. Error was: ${result.data["message"].toString()}");
-    } else if (result.data["type"] == "success") {
-      return result.data;
+  if (result != null) {
+    if (result.data != null) {
+      if (result.data["type"] == "error") {
+        throw PlatformException(
+            code: result.data["code"].toString(),
+            message:
+                "Error occured when cloud function was running. Error was: ${result.data["message"].toString()}");
+      } else if (result.data["type"] == "success") {
+        return result.data;
+      }
+    } else {
+      return result;
     }
   } else {
     throw PlatformException(

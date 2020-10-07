@@ -46,6 +46,7 @@ class ItemCategoryFormBloc
         category: state.category.copyWith(
           title: ShortTitle(e.title),
         ),
+        isChanged: true,
         categoryFailureOrSuccessOption: none(),
       );
     }, colorChanged: (e) async* {
@@ -53,6 +54,7 @@ class ItemCategoryFormBloc
         category: state.category.copyWith(
           color: ItemCategoryColor(e.color),
         ),
+        isChanged: true,
         categoryFailureOrSuccessOption: none(),
       );
     }, coverImageChanged: (e) async* {
@@ -67,6 +69,7 @@ class ItemCategoryFormBloc
         (imageFile) => state.copyWith(
           temporaryImageFile: some(imageFile),
           isCoverRemoved: false,
+          isChanged: true,
           categoryFailureOrSuccessOption: none(),
         ),
       );
@@ -74,6 +77,7 @@ class ItemCategoryFormBloc
       yield state.copyWith(
         isCoverRemoved: true,
         temporaryImageFile: none(),
+        isChanged: true,
         categoryFailureOrSuccessOption: none(),
       );
     }, saved: (e) async* {
@@ -121,6 +125,7 @@ class ItemCategoryFormBloc
         isSaving: false,
         showErrorMessages: true,
         categoryFailureOrSuccessOption: optionOf(failureOrSuccess),
+        isChanged: state.isChanged && !failureOrSuccess.isRight(),
       );
     });
   }

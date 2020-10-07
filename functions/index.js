@@ -165,17 +165,18 @@ let transporter = nodemailer.createTransport({
 });
 
 exports.sendMail = functions.https.onCall((data, context) => {
-  const userId = data["userId"];
-  const userEmail = data["userEmail"];
-  const message = data["message"];
+  try {
+    const userId = data["userId"];
+    const userEmail = data["userEmail"];
+    const message = data["message"];
 
-  log("user id : " + userId);
-  log("user email : " + userEmail);
-  log("user message : " + message);
+    log("user id : " + userId);
+    log("user email : " + userEmail);
+    log("user message : " + message);
 
-  log("transporter options : " + transporter.options);
+    log("transporter options : " + transporter.options);
 
-  const htmlMessage = `
+    const htmlMessage = `
       <img height="192" width="192" src="https://firebasestorage.googleapis.com/v0/b/sepetim-e2723.appspot.com/o/app_images%2Fic_launcher.png?alt=media&token=8cbbfa65-6b61-4409-9aea-3faf265b8b84"/>
       <h3>User message from Sepetim</h3>
       <p>
@@ -190,28 +191,35 @@ exports.sendMail = functions.https.onCall((data, context) => {
       </div>
       </p>`;
 
-  const mailOptions = {
-    from: functions.config().app.email.address,
-    to: functions.config().app.destination_email,
-    subject: `Message from ${userEmail}`,
-    html: htmlMessage,
-  };
+    const mailOptions = {
+      from: functions.config().app.email.address,
+      to: functions.config().app.destination_email,
+      subject: `Message from ${userEmail}`,
+      html: htmlMessage,
+    };
 
-  return transporter.sendMail(mailOptions, (err, info) => {
-    if (err) {
-      return {
-        type: "error",
-        message: err.message,
-        code: err.code,
-      };
-    } else {
-      log("Mail sent : " + info);
-      return {
-        type: "success",
-        message: "success",
-      };
-    }
-  });
+    return transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        return {
+          type: "error",
+          message: err.message,
+          code: err.code,
+        };
+      } else {
+        log("Mail sent : " + info);
+        return {
+          type: "success",
+          message: "success",
+        };
+      }
+    });
+  } catch (err) {
+    return {
+      type: "error",
+      message: err.message,
+      code: err.code,
+    };
+  }
 });
 
 function log(message) {

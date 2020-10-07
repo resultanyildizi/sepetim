@@ -976,6 +976,8 @@ class _$ItemCategoryFormStateTearOff {
       @required
           bool isCoverRemoved,
       @required
+          bool isChanged,
+      @required
           Option<File> temporaryImageFile}) {
     return _ItemCategoryFormState(
       category: category,
@@ -984,6 +986,7 @@ class _$ItemCategoryFormStateTearOff {
       isSaving: isSaving,
       isEditing: isEditing,
       isCoverRemoved: isCoverRemoved,
+      isChanged: isChanged,
       temporaryImageFile: temporaryImageFile,
     );
   }
@@ -1001,6 +1004,7 @@ mixin _$ItemCategoryFormState {
   bool get isSaving;
   bool get isEditing;
   bool get isCoverRemoved;
+  bool get isChanged;
   Option<File> get temporaryImageFile;
 
   $ItemCategoryFormStateCopyWith<ItemCategoryFormState> get copyWith;
@@ -1018,6 +1022,7 @@ abstract class $ItemCategoryFormStateCopyWith<$Res> {
       bool isSaving,
       bool isEditing,
       bool isCoverRemoved,
+      bool isChanged,
       Option<File> temporaryImageFile});
 
   $ItemCategoryCopyWith<$Res> get category;
@@ -1040,6 +1045,7 @@ class _$ItemCategoryFormStateCopyWithImpl<$Res>
     Object isSaving = freezed,
     Object isEditing = freezed,
     Object isCoverRemoved = freezed,
+    Object isChanged = freezed,
     Object temporaryImageFile = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1057,6 +1063,7 @@ class _$ItemCategoryFormStateCopyWithImpl<$Res>
       isCoverRemoved: isCoverRemoved == freezed
           ? _value.isCoverRemoved
           : isCoverRemoved as bool,
+      isChanged: isChanged == freezed ? _value.isChanged : isChanged as bool,
       temporaryImageFile: temporaryImageFile == freezed
           ? _value.temporaryImageFile
           : temporaryImageFile as Option<File>,
@@ -1088,6 +1095,7 @@ abstract class _$ItemCategoryFormStateCopyWith<$Res>
       bool isSaving,
       bool isEditing,
       bool isCoverRemoved,
+      bool isChanged,
       Option<File> temporaryImageFile});
 
   @override
@@ -1113,6 +1121,7 @@ class __$ItemCategoryFormStateCopyWithImpl<$Res>
     Object isSaving = freezed,
     Object isEditing = freezed,
     Object isCoverRemoved = freezed,
+    Object isChanged = freezed,
     Object temporaryImageFile = freezed,
   }) {
     return _then(_ItemCategoryFormState(
@@ -1130,6 +1139,7 @@ class __$ItemCategoryFormStateCopyWithImpl<$Res>
       isCoverRemoved: isCoverRemoved == freezed
           ? _value.isCoverRemoved
           : isCoverRemoved as bool,
+      isChanged: isChanged == freezed ? _value.isChanged : isChanged as bool,
       temporaryImageFile: temporaryImageFile == freezed
           ? _value.temporaryImageFile
           : temporaryImageFile as Option<File>,
@@ -1148,6 +1158,7 @@ class _$_ItemCategoryFormState
       @required this.isSaving,
       @required this.isEditing,
       @required this.isCoverRemoved,
+      @required this.isChanged,
       @required this.temporaryImageFile})
       : assert(category != null),
         assert(showErrorMessages != null),
@@ -1155,6 +1166,7 @@ class _$_ItemCategoryFormState
         assert(isSaving != null),
         assert(isEditing != null),
         assert(isCoverRemoved != null),
+        assert(isChanged != null),
         assert(temporaryImageFile != null);
 
   @override
@@ -1171,11 +1183,13 @@ class _$_ItemCategoryFormState
   @override
   final bool isCoverRemoved;
   @override
+  final bool isChanged;
+  @override
   final Option<File> temporaryImageFile;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ItemCategoryFormState(category: $category, showErrorMessages: $showErrorMessages, categoryFailureOrSuccessOption: $categoryFailureOrSuccessOption, isSaving: $isSaving, isEditing: $isEditing, isCoverRemoved: $isCoverRemoved, temporaryImageFile: $temporaryImageFile)';
+    return 'ItemCategoryFormState(category: $category, showErrorMessages: $showErrorMessages, categoryFailureOrSuccessOption: $categoryFailureOrSuccessOption, isSaving: $isSaving, isEditing: $isEditing, isCoverRemoved: $isCoverRemoved, isChanged: $isChanged, temporaryImageFile: $temporaryImageFile)';
   }
 
   @override
@@ -1190,6 +1204,7 @@ class _$_ItemCategoryFormState
       ..add(DiagnosticsProperty('isSaving', isSaving))
       ..add(DiagnosticsProperty('isEditing', isEditing))
       ..add(DiagnosticsProperty('isCoverRemoved', isCoverRemoved))
+      ..add(DiagnosticsProperty('isChanged', isChanged))
       ..add(DiagnosticsProperty('temporaryImageFile', temporaryImageFile));
   }
 
@@ -1217,6 +1232,9 @@ class _$_ItemCategoryFormState
             (identical(other.isCoverRemoved, isCoverRemoved) ||
                 const DeepCollectionEquality()
                     .equals(other.isCoverRemoved, isCoverRemoved)) &&
+            (identical(other.isChanged, isChanged) ||
+                const DeepCollectionEquality()
+                    .equals(other.isChanged, isChanged)) &&
             (identical(other.temporaryImageFile, temporaryImageFile) ||
                 const DeepCollectionEquality()
                     .equals(other.temporaryImageFile, temporaryImageFile)));
@@ -1231,6 +1249,7 @@ class _$_ItemCategoryFormState
       const DeepCollectionEquality().hash(isSaving) ^
       const DeepCollectionEquality().hash(isEditing) ^
       const DeepCollectionEquality().hash(isCoverRemoved) ^
+      const DeepCollectionEquality().hash(isChanged) ^
       const DeepCollectionEquality().hash(temporaryImageFile);
 
   @override
@@ -1255,6 +1274,8 @@ abstract class _ItemCategoryFormState implements ItemCategoryFormState {
       @required
           bool isCoverRemoved,
       @required
+          bool isChanged,
+      @required
           Option<File> temporaryImageFile}) = _$_ItemCategoryFormState;
 
   @override
@@ -1269,6 +1290,8 @@ abstract class _ItemCategoryFormState implements ItemCategoryFormState {
   bool get isEditing;
   @override
   bool get isCoverRemoved;
+  @override
+  bool get isChanged;
   @override
   Option<File> get temporaryImageFile;
   @override
