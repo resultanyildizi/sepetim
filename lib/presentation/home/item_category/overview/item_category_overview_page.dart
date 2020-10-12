@@ -197,7 +197,9 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                             ),
                           ),
                         ] else ...[
-                          BoxesImage(),
+                          BoxesImage(
+                            text: translate(context, 'categories_are_empty'),
+                          ),
                         ]
                       ],
                     ),

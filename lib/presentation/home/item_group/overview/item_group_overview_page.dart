@@ -1,7 +1,7 @@
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
-import 'package:Sepetim/presentation/core/widgets/shelf_image.dart';
+import 'package:Sepetim/presentation/core/widgets/boxes_image.dart';
 import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/item_group_card.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/search_field.dart';
@@ -196,7 +196,9 @@ class ItemGroupOverviewPage extends StatelessWidget {
                             ),
                           ),
                         ] else ...[
-                          ShelfImage(),
+                          BoxesImage(
+                            text: translate(context, 'groups_are_empty'),
+                          ),
                         ]
                       ],
                     ),

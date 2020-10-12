@@ -10,5 +10,3 @@ const logoYellow =
 const googleLogo = AssetImage('assets/images/google_logo.jpg');
 
 const boxesImage = Image(image: AssetImage('assets/images/boxes.png'));
-
-const shelfImage = Image(image: AssetImage('assets/images/shelf.png'));

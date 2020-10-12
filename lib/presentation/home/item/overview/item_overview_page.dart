@@ -3,6 +3,7 @@ import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
+import 'package:Sepetim/presentation/core/widgets/boxes_image.dart';
 import 'package:Sepetim/presentation/home/item/overview/widgets/item_card.dart';
 import 'package:Sepetim/presentation/home/item/overview/widgets/search_field.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
@@ -198,19 +199,23 @@ class ItemOverviewPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Expanded(
-                      child: ListView.builder(
-                        itemBuilder: (context, index) {
-                          return ItemCard(
-                            item: state.items[index],
-                            category: category,
-                            group: group,
-                            key: Key(state.items[index].uid.getOrCrash()),
-                          );
-                        },
-                        itemCount: state.items.size,
+                    if (state.items.size > 0) ...[
+                      Expanded(
+                        child: ListView.builder(
+                          itemBuilder: (context, index) {
+                            return ItemCard(
+                              item: state.items[index],
+                              category: category,
+                              group: group,
+                              key: Key(state.items[index].uid.getOrCrash()),
+                            );
+                          },
+                          itemCount: state.items.size,
+                        ),
                       ),
-                    ),
+                    ] else ...[
+                      BoxesImage(text: translate(context, 'items_are_empty')),
+                    ]
                   ],
                 ),
                 floatingActionButton: DefaultFloatingActionButton(

@@ -160,8 +160,9 @@
   "send": "Gönder",
   "too_short_message": "Mesajınız 10 karakterden kısa olamaz",
   "message_sent_successfully": "Mesajınız başarıyla iletildi",
-  "categories_are_empty": "Hiç kategoriniz yok",
-  "groups_are_empty": "Hiç grubunuz yok"
+  "categories_are_empty": "Hiç kategori yok",
+  "groups_are_empty": "Hiç grup yok",
+  "items_are_empty": "Hiç ürün yok"
 
 
 }

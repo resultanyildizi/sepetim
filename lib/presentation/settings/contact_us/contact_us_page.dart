@@ -70,7 +70,17 @@ class ContactUsPage extends StatelessWidget {
                       translate(context, 'send_a_message'),
                       style: Theme.of(context).textTheme.headline2,
                     ),
-                    EmailMessageTextField(),
+                    Container(
+                      constraints: BoxConstraints(
+                        maxHeight: screenHeightByScalar(
+                          context,
+                          scalarSmall: 0.25,
+                          scalarMedium: 0.3,
+                          scalarBig: 0.35,
+                        ),
+                      ),
+                      child: EmailMessageTextField(),
+                    ),
                     Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
