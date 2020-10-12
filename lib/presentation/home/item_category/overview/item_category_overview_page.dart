@@ -6,6 +6,7 @@ import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
+import 'package:Sepetim/presentation/core/widgets/boxes_image.dart';
 import 'package:Sepetim/presentation/core/widgets/default_floating_action_button.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
@@ -176,24 +177,28 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                         const SizedBox(
                           height: 8.0,
                         ),
-                        Expanded(
-                          child: GridView.builder(
-                            padding: const EdgeInsets.only(bottom: 5.0),
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisSpacing: 8.0,
-                                    mainAxisSpacing: 8.0,
-                                    crossAxisCount: 2),
-                            itemBuilder: (context, index) {
-                              return ItemCategoryCard(
-                                key: Key(
-                                    state.categories[index].uid.getOrCrash()),
-                                category: state.categories[index],
-                              );
-                            },
-                            itemCount: state.categories.size,
+                        if (state.categories.size > 0) ...[
+                          Expanded(
+                            child: GridView.builder(
+                              padding: const EdgeInsets.only(bottom: 5.0),
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisSpacing: 8.0,
+                                      mainAxisSpacing: 8.0,
+                                      crossAxisCount: 2),
+                              itemBuilder: (context, index) {
+                                return ItemCategoryCard(
+                                  key: Key(
+                                      state.categories[index].uid.getOrCrash()),
+                                  category: state.categories[index],
+                                );
+                              },
+                              itemCount: state.categories.size,
+                            ),
                           ),
-                        ),
+                        ] else ...[
+                          BoxesImage(),
+                        ]
                       ],
                     ),
                   ),

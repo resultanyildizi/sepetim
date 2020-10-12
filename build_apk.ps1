@@ -1,5 +1,5 @@
 $SourcePath = ".\build\app\outputs\apk\release\"
-$DestinationPath = "C:\Users\rtanyildizi\Documents\GoogleDriveSync\"
+$DestinationPath = "C:\Users\rtanyildizi\Documents\GoogleDriveSync\Sepetim"
 $FileName = "app-release.apk" 
 $GoogleDriveFolderUrl = "https://drive.google.com/drive/u/0/folders/1ZmytH5o-XeVbXC8PIzj54Zu72oyDS7qj"
 $CommitMessage = $args[0]

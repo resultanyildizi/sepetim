@@ -1,6 +1,7 @@
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
+import 'package:Sepetim/presentation/core/widgets/shelf_image.dart';
 import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/item_group_card.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/search_field.dart';
@@ -180,18 +181,23 @@ class ItemGroupOverviewPage extends StatelessWidget {
                         const SizedBox(
                           height: 14.0,
                         ),
-                        Expanded(
-                          child: ListView.builder(
-                            itemBuilder: (context, index) {
-                              return ItemGroupCard(
-                                category: category,
-                                group: state.groups[index],
-                                key: Key(state.groups[index].uid.getOrCrash()),
-                              );
-                            },
-                            itemCount: state.groups.size,
+                        if (state.groups.size > 0) ...[
+                          Expanded(
+                            child: ListView.builder(
+                              itemBuilder: (context, index) {
+                                return ItemGroupCard(
+                                  category: category,
+                                  group: state.groups[index],
+                                  key:
+                                      Key(state.groups[index].uid.getOrCrash()),
+                                );
+                              },
+                              itemCount: state.groups.size,
+                            ),
                           ),
-                        ),
+                        ] else ...[
+                          ShelfImage(),
+                        ]
                       ],
                     ),
                   ),

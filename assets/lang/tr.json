@@ -159,5 +159,9 @@
   "send_a_message": "Mesaj gönder",
   "send": "Gönder",
   "too_short_message": "Mesajınız 10 karakterden kısa olamaz",
-  "message_sent_successfully": "Mesajınız başarıyla iletildi"
+  "message_sent_successfully": "Mesajınız başarıyla iletildi",
+  "categories_are_empty": "Hiç kategoriniz yok",
+  "groups_are_empty": "Hiç grubunuz yok"
+
+
 }

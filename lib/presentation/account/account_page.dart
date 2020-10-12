@@ -95,6 +95,8 @@ class AccountPage extends StatelessWidget {
                   );
                 },
                 child: Scaffold(
+                  resizeToAvoidBottomPadding: false,
+                  resizeToAvoidBottomInset: false,
                   appBar: AppBar(
                     title: Text(
                       'Sepetim',

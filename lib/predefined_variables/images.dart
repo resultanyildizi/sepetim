@@ -8,3 +8,7 @@ const logoYellow =
     Image(image: AssetImage('assets/application_logo/logo_yellow.png'));
 
 const googleLogo = AssetImage('assets/images/google_logo.jpg');
+
+const boxesImage = Image(image: AssetImage('assets/images/boxes.png'));
+
+const shelfImage = Image(image: AssetImage('assets/images/shelf.png'));
