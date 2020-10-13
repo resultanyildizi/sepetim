@@ -1,4 +1,7 @@
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
+import 'package:Sepetim/presentation/routes/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 RichText termsAndPrivacyPolicyWidgetEn(BuildContext context) {
@@ -17,6 +20,9 @@ RichText termsAndPrivacyPolicyWidgetEn(BuildContext context) {
             context,
             'terms_of_service',
           ),
+          recognizer: TapGestureRecognizer()
+            ..onTap = () =>
+                ExtendedNavigator.of(context).push(Routes.termsOfServicePage),
           style: const TextStyle(color: Colors.blue),
         ),
         TextSpan(
@@ -28,6 +34,9 @@ RichText termsAndPrivacyPolicyWidgetEn(BuildContext context) {
             'privacy_policy',
           ),
           style: const TextStyle(color: Colors.blue),
+          recognizer: TapGestureRecognizer()
+            ..onTap = () =>
+                ExtendedNavigator.of(context).push(Routes.privacyPolicyPage),
         ),
         const TextSpan(text: '.'),
       ],
@@ -49,6 +58,9 @@ RichText termsAndPrivacyPolicyWidgetTr(BuildContext context) {
             'terms_of_service',
           ),
           style: const TextStyle(color: Colors.blue),
+          recognizer: TapGestureRecognizer()
+            ..onTap = () =>
+                ExtendedNavigator.of(context).push(Routes.termsOfServicePage),
         ),
         TextSpan(
           text: translate(context, 'and'),
@@ -59,6 +71,9 @@ RichText termsAndPrivacyPolicyWidgetTr(BuildContext context) {
             'privacy_policy',
           ),
           style: const TextStyle(color: Colors.blue),
+          recognizer: TapGestureRecognizer()
+            ..onTap = () =>
+                ExtendedNavigator.of(context).push(Routes.privacyPolicyPage),
         ),
         TextSpan(
           text: translate(context, 'you_agree'),

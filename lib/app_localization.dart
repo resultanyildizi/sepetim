@@ -20,7 +20,7 @@ class AppLocalizations {
   static const LocalizationsDelegate<AppLocalizations> delegate =
       _AppLocalizationsDelegate();
 
-  Map<String, String> _localizedStrings;
+  Map<String, dynamic> _localizedStrings;
 
   Future<bool> load() async {
     final String jsonString =
@@ -30,13 +30,19 @@ class AppLocalizations {
         json.decode(jsonString) as Map<String, dynamic>;
 
     _localizedStrings = jsonMap.map(
-      (key, value) => MapEntry(key, value.toString()),
+      (key, value) => MapEntry(key, value),
     );
     return true;
   }
 
   String translate(String key) {
-    return _localizedStrings[key];
+    final keys = key.split("/");
+    if (keys.length == 2) {
+      final _sectionJson = _localizedStrings[keys[0]] as Map<String, dynamic>;
+      return _sectionJson[keys[1]].toString();
+    }
+
+    return _localizedStrings[key].toString();
   }
 
   RichText termsAndPrivacyPolicy(BuildContext context) {

@@ -32,6 +32,8 @@ import '../sign_in/reset_password_page.dart';
 import '../sign_in/sign_in_page.dart';
 import '../sign_in/verify_anonymous_login_page.dart';
 import '../splash/splash_page.dart';
+import '../terms_and_privacy_policy/privacy_policy_page.dart';
+import '../terms_and_privacy_policy/terms_of_service_page.dart';
 
 class Routes {
   static const String splashPage = '/';
@@ -50,6 +52,8 @@ class Routes {
   static const String linkAccountPage = '/link-account-page';
   static const String themesPage = '/themes-page';
   static const String contactUsPage = '/contact-us-page';
+  static const String termsOfServicePage = '/terms-of-service-page';
+  static const String privacyPolicyPage = '/privacy-policy-page';
   static const all = <String>{
     splashPage,
     signInPage,
@@ -67,6 +71,8 @@ class Routes {
     linkAccountPage,
     themesPage,
     contactUsPage,
+    termsOfServicePage,
+    privacyPolicyPage,
   };
 }
 
@@ -90,6 +96,8 @@ class Router extends RouterBase {
     RouteDef(Routes.linkAccountPage, page: LinkAccountPage),
     RouteDef(Routes.themesPage, page: ThemesPage),
     RouteDef(Routes.contactUsPage, page: ContactUsPage),
+    RouteDef(Routes.termsOfServicePage, page: TermsOfServicePage),
+    RouteDef(Routes.privacyPolicyPage, page: PrivacyPolicyPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -237,6 +245,18 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    TermsOfServicePage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => TermsOfServicePage(),
+        settings: data,
+      );
+    },
+    PrivacyPolicyPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => PrivacyPolicyPage(),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -361,6 +381,12 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushThemesPage() => push<dynamic>(Routes.themesPage);
 
   Future<dynamic> pushContactUsPage() => push<dynamic>(Routes.contactUsPage);
+
+  Future<dynamic> pushTermsOfServicePage() =>
+      push<dynamic>(Routes.termsOfServicePage);
+
+  Future<dynamic> pushPrivacyPolicyPage() =>
+      push<dynamic>(Routes.privacyPolicyPage);
 }
 
 /// ************************************************************************
