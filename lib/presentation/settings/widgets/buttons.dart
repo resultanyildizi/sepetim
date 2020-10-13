@@ -17,12 +17,11 @@ Widget contactUsButton(BuildContext context) {
   );
 }
 
-Widget termsOfServiceButton(
-  BuildContext context, {
-  @required Function() onPressed,
-}) {
+Widget termsOfServiceButton(BuildContext context) {
   return FlatRectangleButton(
-    onPressed: onPressed,
+    onPressed: () {
+      ExtendedNavigator.of(context).push(Routes.termsOfServicePage);
+    },
     child: Text(
       translate(context, 'terms_of_service_btn'),
       style: Theme.of(context).textTheme.bodyText2,
@@ -30,12 +29,11 @@ Widget termsOfServiceButton(
   );
 }
 
-Widget privacyPolicyButton(
-  BuildContext context, {
-  @required Function() onPressed,
-}) {
+Widget privacyPolicyButton(BuildContext context) {
   return FlatRectangleButton(
-    onPressed: onPressed,
+    onPressed: () {
+      ExtendedNavigator.of(context).push(Routes.privacyPolicyPage);
+    },
     child: Text(
       translate(context, 'privacy_policy_btn'),
       style: Theme.of(context).textTheme.bodyText2,

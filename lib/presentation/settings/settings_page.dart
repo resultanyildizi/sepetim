@@ -85,11 +85,11 @@ class SettingsPage extends StatelessWidget {
                     const SizedBox(
                       height: 15.0,
                     ),
-                    termsOfServiceButton(context, onPressed: () {}),
+                    termsOfServiceButton(context),
                     const SizedBox(
                       height: 15.0,
                     ),
-                    privacyPolicyButton(context, onPressed: () {}),
+                    privacyPolicyButton(context),
                   ],
                 ),
               ),
