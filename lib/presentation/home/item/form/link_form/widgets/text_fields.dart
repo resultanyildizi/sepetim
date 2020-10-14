@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:Sepetim/domain/link_object/value_objects.dart';
 import 'package:flutter/material.dart';
 
@@ -25,8 +27,9 @@ class LinkTitleTextField extends StatelessWidget {
       style: Theme.of(context).textTheme.subtitle1,
       decoration: InputDecoration(
         labelText: translate(context, 'enter_a_title'),
-        counterStyle: robotoTextStyle(),
+        counterText: "",
       ),
+      onChanged: (value) {},
       maxLength: ShortTitle.maxLength,
       autocorrect: false,
       validator: (_) => ShortTitle(textEditingController.text).value.fold(

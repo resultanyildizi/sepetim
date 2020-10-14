@@ -193,7 +193,7 @@ class AccountPage extends StatelessWidget {
                 ),
               );
             },
-            // TODO: "Implement"
+            // TODO: Complete that part
             orElse: () => Scaffold(
               appBar: AppBar(
                 title: Text(

@@ -95,24 +95,25 @@ class ItemPage extends StatelessWidget {
             ),
           ),
           floatingActionButton: DefaultFloatingActionButton(
-              onPressed: () {
-                context.formLinks = state.item.linkObjects.value.fold(
-                    (_) => mutableListOf<LinkObjectPrimitive>(),
-                    (linkObjects) => linkObjects
-                        .map((u) => LinkObjectPrimitive.fromDomain(u))
-                        .toMutableList());
-                formBloc.add(ItemFormEvent.initialized(some(state.item)));
-                ExtendedNavigator.of(context).push(
-                  Routes.linkForm,
-                  arguments: LinkFormArguments(
-                    category: category,
-                    group: group,
-                    formBloc: formBloc,
-                    actorBloc: context.bloc<ItemActorBloc>(),
-                  ),
-                );
-              },
-              iconData: Icons.public),
+            onPressed: () {
+              context.formLinks = state.item.linkObjects.value.fold(
+                  (_) => mutableListOf<LinkObjectPrimitive>(),
+                  (linkObjects) => linkObjects
+                      .map((u) => LinkObjectPrimitive.fromDomain(u))
+                      .toMutableList());
+              formBloc.add(ItemFormEvent.initialized(some(state.item)));
+              ExtendedNavigator.of(context).push(
+                Routes.linkForm,
+                arguments: LinkFormArguments(
+                  category: category,
+                  group: group,
+                  formBloc: formBloc,
+                  actorBloc: context.bloc<ItemActorBloc>(),
+                ),
+              );
+            },
+            iconData: Icons.public,
+          ),
         ),
       ),
     );
@@ -425,21 +426,7 @@ class ItemPage extends StatelessWidget {
                 (route) => route.settings.name == Routes.itemOverviewPage);
           },
           actionInProgress: (_) {
-            actionPopup(
-              context,
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              content: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    '${translate(context, 'deleting')}...',
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  SmallCircularProgressIndicator(),
-                ],
-              ),
-              barrierDismissible: false,
-            );
+            deletingPopup(context);
           },
           orElse: () {},
         );

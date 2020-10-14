@@ -47,98 +47,14 @@ class ItemGroupOverviewPage extends StatelessWidget {
       child: BlocBuilder<ItemGroupWatcherBloc, ItemGroupWatcherState>(
         builder: (context, state) {
           return state.map(
-            initial: (_) => Scaffold(
-              resizeToAvoidBottomPadding: false,
-              appBar: AppBar(
-                title: Text('Sepetim',
-                    style: Theme.of(context).appBarTheme.textTheme.headline1),
-              ),
-              body: DefaultPadding(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SearchField(
-                      watcherBloc: context.bloc<ItemGroupWatcherBloc>(),
-                      categoryId: category.uid,
-                      controller: _controller,
-                    ),
-                    const SizedBox(
-                      height: 12.0,
-                    ),
-                    Text(
-                      '${translate(context, 'groups')} - ${category.title.getOrCrash()}',
-                      style: Theme.of(context).textTheme.headline1,
-                    ),
-                    Expanded(
-                      child: Center(child: Container()),
-                    ),
-                  ],
-                ),
-              ),
-              floatingActionButton: DefaultFloatingActionButton(
-                onPressed: () {},
-                iconData: Icons.add,
-              ),
-            ),
-            loading: (_) => Scaffold(
-              resizeToAvoidBottomPadding: false,
-              appBar: AppBar(
-                title: Text('Sepetim',
-                    style: Theme.of(context).appBarTheme.textTheme.headline1),
-              ),
-              body: DefaultPadding(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SearchField(
-                      watcherBloc: context.bloc<ItemGroupWatcherBloc>(),
-                      categoryId: category.uid,
-                      controller: _controller,
-                    ),
-                    const SizedBox(
-                      height: 12.0,
-                    ),
-                    Text(
-                      '${translate(context, 'groups')} - ${category.title.getOrCrash()}',
-                      style: Theme.of(context).textTheme.headline1,
-                    ),
-                    const Expanded(
-                      child: Center(
-                        child: SizedBox(
-                            width: 30.0,
-                            height: 30.0,
-                            child: CircularProgressIndicator()),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              floatingActionButton: DefaultFloatingActionButton(
-                onPressed: () {},
-                iconData: Icons.add,
-              ),
-            ),
+            initial: (_) => buildInitial(context, _controller),
+            loading: (_) => buildLoading(context, _controller),
             loadSuccess: (state) {
               return BlocListener<ItemGroupActorBloc, ItemGroupActorState>(
                 listener: (context, state) {
                   state.map(
                     initial: (_) {},
-                    actionInProgress: (_) => actionPopup(
-                      context,
-                      backgroundColor:
-                          Theme.of(context).scaffoldBackgroundColor,
-                      content: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            '${translate(context, 'deleting')}...',
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                          SmallCircularProgressIndicator(),
-                        ],
-                      ),
-                      barrierDismissible: false,
-                    ),
+                    actionInProgress: (_) => deletingPopup(context),
                     deleteFailure: (failure) {
                       ExtendedNavigator.of(context).pop();
                       failure.groupFailure.maybeMap(
@@ -216,29 +132,113 @@ class ItemGroupOverviewPage extends StatelessWidget {
                 ),
               );
             },
-            loadFailure: (_) => Scaffold(
-              appBar: AppBar(
-                title: Text('Sepetim',
-                    style: Theme.of(context).appBarTheme.textTheme.headline1),
-              ),
-              body: DefaultPadding(
-                child: Center(
-                  child: Container(
-                    width: screenWidthByScalar(context, 0.8),
-                    child: Text(
-                      translate(context, 'please_report'),
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                  ),
-                ),
-              ),
-              floatingActionButton: DefaultFloatingActionButton(
-                onPressed: () {},
-                iconData: Icons.add,
-              ),
-            ),
+            loadFailure: (_) => buildFailure(context),
           );
         },
+      ),
+    );
+  }
+
+  // Todo: Complete that part
+  Scaffold buildFailure(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Sepetim',
+            style: Theme.of(context).appBarTheme.textTheme.headline1),
+      ),
+      body: DefaultPadding(
+        child: Center(
+          child: Container(
+            width: screenWidthByScalar(context, 0.8),
+            child: Text(
+              translate(context, 'please_report'),
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+          ),
+        ),
+      ),
+      floatingActionButton: DefaultFloatingActionButton(
+        onPressed: () {},
+        iconData: Icons.add,
+      ),
+    );
+  }
+
+  Scaffold buildLoading(
+      BuildContext context, TextEditingController _controller) {
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        title: Text('Sepetim',
+            style: Theme.of(context).appBarTheme.textTheme.headline1),
+      ),
+      body: DefaultPadding(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SearchField(
+              watcherBloc: context.bloc<ItemGroupWatcherBloc>(),
+              categoryId: category.uid,
+              controller: _controller,
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            Text(
+              '${translate(context, 'groups')} - ${category.title.getOrCrash()}',
+              style: Theme.of(context).textTheme.headline1,
+            ),
+            const Expanded(
+              child: Center(
+                child: SizedBox(
+                    width: 30.0,
+                    height: 30.0,
+                    child: CircularProgressIndicator()),
+              ),
+            )
+          ],
+        ),
+      ),
+      floatingActionButton: DefaultFloatingActionButton(
+        onPressed: () {},
+        iconData: Icons.add,
+      ),
+    );
+  }
+
+  Scaffold buildInitial(
+      BuildContext context, TextEditingController _controller) {
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        title: Text('Sepetim',
+            style: Theme.of(context).appBarTheme.textTheme.headline1),
+      ),
+      body: DefaultPadding(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SearchField(
+              watcherBloc: context.bloc<ItemGroupWatcherBloc>(),
+              categoryId: category.uid,
+              controller: _controller,
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            Text(
+              '${translate(context, 'groups')} - ${category.title.getOrCrash()}',
+              style: Theme.of(context).textTheme.headline1,
+            ),
+            Expanded(
+              child: Center(child: Container()),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: DefaultFloatingActionButton(
+        onPressed: () {},
+        iconData: Icons.add,
       ),
     );
   }

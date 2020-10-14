@@ -11,15 +11,20 @@ Future actionPopup(
   return showDialog(
     context: context,
     barrierDismissible: barrierDismissible ?? true,
-    builder: (BuildContext context) => AlertDialog(
-      backgroundColor: backgroundColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+    builder: (BuildContext context) => WillPopScope(
+      onWillPop: () async {
+        return barrierDismissible ?? true;
+      },
+      child: AlertDialog(
+        backgroundColor: backgroundColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        title: title,
+        content: content,
+        actionsPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+        actions: actions,
       ),
-      title: title,
-      content: content,
-      actionsPadding: const EdgeInsets.symmetric(horizontal: 8.0),
-      actions: actions,
     ),
   );
 }

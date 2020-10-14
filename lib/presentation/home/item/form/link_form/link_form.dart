@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:Sepetim/domain/link_object/link_object.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/home/item/form/link_form/widgets/text_fields.dart';
 import 'package:Sepetim/presentation/home/item/form/misc/link_object_primitive.dart';
@@ -134,6 +137,9 @@ class _LinkFormState extends State<LinkForm> {
                       textEditingController: titleTextEditingController,
                       formBloc: widget.formBloc,
                     ),
+                    const SizedBox(
+                      height: 12.0,
+                    ),
                     Text(
                       translate(context, 'url'),
                       style: Theme.of(context)
@@ -161,6 +167,13 @@ class _LinkFormState extends State<LinkForm> {
                       translate(context, 'links'),
                       style: Theme.of(context).textTheme.headline2,
                     ),
+                    Text(
+                      translate(context, 'long_press_to_delete'),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1
+                          .copyWith(fontSize: 12.0),
+                    ),
                     const SizedBox(
                       height: 10.0,
                     ),
@@ -168,85 +181,7 @@ class _LinkFormState extends State<LinkForm> {
                       constraints: BoxConstraints(
                         maxHeight: MediaQuery.of(context).size.height - 475,
                       ),
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          final link =
-                              state.item.linkObjects.getOrCrash()[index];
-                          return ListTile(
-                            contentPadding:
-                                const EdgeInsets.symmetric(horizontal: 2.0),
-                            subtitle: Text(
-                              link.link.getOrCrash().length <= 30
-                                  ? link.link.getOrCrash()
-                                  : '${link.link.getOrCrash().substring(0, 30)}...',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1
-                                  .copyWith(fontSize: 12.0),
-                            ),
-                            title: Text(
-                              link.title.getOrCrash().length <= 20
-                                  ? link.title.getOrCrash()
-                                  : '${link.title.getOrCrash().substring(0, 20)}...',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1
-                                  .copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18.0,
-                                  ),
-                            ),
-                            trailing: IconButton(
-                              icon: Icon(
-                                Icons.content_copy,
-                                color: Theme.of(context).iconTheme.color,
-                              ),
-                              onPressed: () async {
-                                if (isCopyAvaliable) {
-                                  isCopyAvaliable = false;
-                                  Clipboard.setData(
-                                    ClipboardData(
-                                      text: link.link.getOrCrash(),
-                                    ),
-                                  ).then(
-                                    (_) async {
-                                      await Fluttertoast.showToast(
-                                        msg: translate(context, 'link_copied'),
-                                        toastLength: Toast.LENGTH_SHORT,
-                                        gravity: ToastGravity.CENTER,
-                                        backgroundColor: Colors.grey[900],
-                                        textColor: Colors.white,
-                                        fontSize: 16.0,
-                                      );
-                                      isCopyAvaliable = true;
-                                    },
-                                  );
-                                }
-                              },
-                            ),
-                            key: Key(
-                              link.uid.getOrCrash(),
-                            ),
-                            onLongPress: () {
-                              deletePopup(
-                                context,
-                                title: translate(context, 'delete_link_title'),
-                                message:
-                                    translate(context, 'delete_link_message'),
-                                action: () => deleteLinkObject(context, index),
-                              );
-                            },
-                            onTap: () async {
-                              final url = link.link.getOrCrash();
-                              if (await canLaunch(url)) {
-                                await launch(url);
-                              } else {}
-                            },
-                          );
-                        },
-                        itemCount: state.item.linkObjects.getOrCrash().size,
-                      ),
+                      child: linksListView(state),
                     ),
                     Expanded(
                       child: Column(
@@ -284,6 +219,85 @@ class _LinkFormState extends State<LinkForm> {
     );
   }
 
+  ListView linksListView(ItemFormState state) {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        final link = state.item.linkObjects.getOrCrash()[index];
+        return link.failureOption.fold(
+            () => linkSuccess(link, context, index), (a) => linkFailure());
+      },
+      itemCount: state.item.linkObjects.getOrCrash().size,
+    );
+  }
+
+  // Todo: Complete that part
+  ListTile linkFailure() => ListTile();
+
+  ListTile linkSuccess(LinkObject link, BuildContext context, int index) {
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 2.0),
+      title: Text(
+        link.title.fittedString(maxLength: 18),
+        style: Theme.of(context).textTheme.bodyText1.copyWith(
+              fontWeight: FontWeight.bold,
+              fontSize: 18.0,
+            ),
+      ),
+      subtitle: Text(
+        link.link.getOrCrash().length <= 30
+            ? link.link.getOrCrash()
+            : '${link.link.getOrCrash().substring(0, 30)}...',
+        style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 12.0),
+      ),
+      trailing: IconButton(
+        icon: Icon(
+          Icons.content_copy,
+          color: Theme.of(context).iconTheme.color,
+        ),
+        onPressed: () async {
+          if (isCopyAvaliable) {
+            isCopyAvaliable = false;
+            Clipboard.setData(
+              ClipboardData(
+                text: link.link.getOrCrash(),
+              ),
+            ).then(
+              (_) async {
+                await Fluttertoast.showToast(
+                  msg: translate(context, 'link_copied'),
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  backgroundColor: Colors.grey[900],
+                  textColor: Colors.white,
+                  fontSize: 16.0,
+                );
+                isCopyAvaliable = true;
+              },
+            );
+          }
+        },
+      ),
+      key: Key(
+        link.uid.getOrCrash(),
+      ),
+      onLongPress: () {
+        deletePopup(
+          context,
+          title: translate(context, 'delete_link_title'),
+          message: translate(context, 'delete_link_message'),
+          action: () => deleteLinkObject(context, index),
+        );
+      },
+      onTap: () async {
+        final url = link.link.getOrCrash();
+        if (await canLaunch(url)) {
+          await launch(url);
+        } else {}
+      },
+    );
+  }
+
   void addLinkObject(ItemFormState state, BuildContext context) {
     final title = ShortTitle(titleTextEditingController.text.trim());
     final link = Link(urlTextEditingController.text.trim());
@@ -304,32 +318,36 @@ class _LinkFormState extends State<LinkForm> {
         urlTextEditingController.text = "";
         showErrorMessages = false;
       } else {
-        actionPopup(
-          context,
-          backgroundColor: Colors.white,
-          title: Text(
-            translate(context, 'link_adding_limit_title'),
-            style: didactGothicTextStyle(),
-          ),
-          content: Text(
-            translate(context, 'link_adding_limit_message'),
-          ),
-          barrierDismissible: true,
-          actions: [
-            RoundedButton(
-              text: translate(context, 'okay'),
-              onPressed: () {
-                ExtendedNavigator.of(context).pop();
-              },
-            ),
-          ],
-        );
+        linkLimitPopup(context);
       }
     } else {
       setState(() {
         showErrorMessages = true;
       });
     }
+  }
+
+  Future linkLimitPopup(BuildContext context) {
+    return actionPopup(
+      context,
+      backgroundColor: Colors.white,
+      title: Text(
+        translate(context, 'link_adding_limit_title'),
+        style: didactGothicTextStyle(),
+      ),
+      content: Text(
+        translate(context, 'link_adding_limit_message'),
+      ),
+      barrierDismissible: true,
+      actions: [
+        RoundedButton(
+          text: translate(context, 'okay'),
+          onPressed: () {
+            ExtendedNavigator.of(context).pop();
+          },
+        ),
+      ],
+    );
   }
 
   void deleteLinkObject(BuildContext context, int index) {

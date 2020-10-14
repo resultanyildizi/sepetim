@@ -4,12 +4,10 @@ import 'package:Sepetim/application/item_category/watcher/item_category_watcher_
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
-import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/boxes_image.dart';
 import 'package:Sepetim/presentation/core/widgets/default_floating_action_button.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
-import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
 import 'package:Sepetim/presentation/home/item_category/overview/widgets/item_category_card.dart';
 import 'package:Sepetim/presentation/home/item_category/overview/widgets/search_field.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
@@ -42,77 +40,8 @@ class ItemCategoryOverviewPage extends StatelessWidget {
       child: BlocBuilder<ItemCategoryWatcherBloc, ItemCategoryWatcherState>(
         builder: (context, state) {
           return state.map(
-            initial: (_) => Scaffold(
-              resizeToAvoidBottomPadding: false,
-              appBar: AppBar(
-                title: Text(
-                  'Sepetim',
-                  style: Theme.of(context).appBarTheme.textTheme.headline1,
-                ),
-              ),
-              body: DefaultPadding(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SearchField(
-                      controller: _controller,
-                    ),
-                    const SizedBox(
-                      height: 12.0,
-                    ),
-                    Text(
-                      translate(context, 'categories'),
-                      style: Theme.of(context).textTheme.headline1,
-                    ),
-                    Expanded(
-                      child: Center(child: Container()),
-                    ),
-                  ],
-                ),
-              ),
-              floatingActionButton: DefaultFloatingActionButton(
-                iconData: Icons.add,
-                onPressed: () {},
-              ),
-            ),
-            loading: (_) => Scaffold(
-              resizeToAvoidBottomPadding: false,
-              appBar: AppBar(
-                title: Text(
-                  'Sepetim',
-                  style: Theme.of(context).appBarTheme.textTheme.headline1,
-                ),
-              ),
-              body: DefaultPadding(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SearchField(
-                      controller: _controller,
-                    ),
-                    const SizedBox(
-                      height: 12.0,
-                    ),
-                    Text(
-                      translate(context, 'categories'),
-                      style: Theme.of(context).textTheme.headline1,
-                    ),
-                    const Expanded(
-                      child: Center(
-                        child: SizedBox(
-                            width: 30.0,
-                            height: 30.0,
-                            child: CircularProgressIndicator()),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              floatingActionButton: DefaultFloatingActionButton(
-                iconData: Icons.add,
-                onPressed: () {},
-              ),
-            ),
+            initial: (_) => buildInitial(context, _controller),
+            loading: (_) => buildLoading(context, _controller),
             loadSuccess: (state) {
               return BlocListener<ItemCategoryActorBloc,
                   ItemCategoryActorState>(
@@ -120,22 +49,7 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                   state.map(
                     initial: (_) {},
                     actionInProgress: (_) {
-                      actionPopup(
-                        context,
-                        backgroundColor:
-                            Theme.of(context).scaffoldBackgroundColor,
-                        content: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              '${translate(context, 'deleting')}...',
-                              style: Theme.of(context).textTheme.bodyText1,
-                            ),
-                            SmallCircularProgressIndicator(),
-                          ],
-                        ),
-                        barrierDismissible: false,
-                      );
+                      deletingPopup(context);
                     },
                     deleteFailure: (failure) {
                       ExtendedNavigator.of(context).pop();
@@ -215,31 +129,115 @@ class ItemCategoryOverviewPage extends StatelessWidget {
                 ),
               );
             },
-            loadFailure: (_) => Scaffold(
-              appBar: AppBar(
-                title: Text(
-                  'Sepetim',
-                  style: Theme.of(context).appBarTheme.textTheme.headline1,
-                ),
-              ),
-              body: DefaultPadding(
-                child: Center(
-                  child: Container(
-                    width: screenWidthByScalar(context, 0.8),
-                    child: Text(
-                      translate(context, 'please_report'),
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                  ),
-                ),
-              ),
-              floatingActionButton: DefaultFloatingActionButton(
-                onPressed: () {},
-                iconData: Icons.add,
-              ),
-            ),
+            loadFailure: (_) => buildFailure(context),
           );
         },
+      ),
+    );
+  }
+
+  // TODO: Complete that part
+  Scaffold buildFailure(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Sepetim',
+          style: Theme.of(context).appBarTheme.textTheme.headline1,
+        ),
+      ),
+      body: DefaultPadding(
+        child: Center(
+          child: Container(
+            width: screenWidthByScalar(context, 0.8),
+            child: Text(
+              translate(context, 'please_report'),
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+          ),
+        ),
+      ),
+      floatingActionButton: DefaultFloatingActionButton(
+        onPressed: () {},
+        iconData: Icons.add,
+      ),
+    );
+  }
+
+  Scaffold buildLoading(
+      BuildContext context, TextEditingController _controller) {
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        title: Text(
+          'Sepetim',
+          style: Theme.of(context).appBarTheme.textTheme.headline1,
+        ),
+      ),
+      body: DefaultPadding(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SearchField(
+              controller: _controller,
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            Text(
+              translate(context, 'categories'),
+              style: Theme.of(context).textTheme.headline1,
+            ),
+            const Expanded(
+              child: Center(
+                child: SizedBox(
+                    width: 30.0,
+                    height: 30.0,
+                    child: CircularProgressIndicator()),
+              ),
+            )
+          ],
+        ),
+      ),
+      floatingActionButton: DefaultFloatingActionButton(
+        iconData: Icons.add,
+        onPressed: () {},
+      ),
+    );
+  }
+
+  Scaffold buildInitial(
+      BuildContext context, TextEditingController _controller) {
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        title: Text(
+          'Sepetim',
+          style: Theme.of(context).appBarTheme.textTheme.headline1,
+        ),
+      ),
+      body: DefaultPadding(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SearchField(
+              controller: _controller,
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            Text(
+              translate(context, 'categories'),
+              style: Theme.of(context).textTheme.headline1,
+            ),
+            Expanded(
+              child: Center(child: Container()),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: DefaultFloatingActionButton(
+        iconData: Icons.add,
+        onPressed: () {},
       ),
     );
   }

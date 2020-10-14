@@ -30,83 +30,91 @@ class ItemGroupCard extends StatelessWidget {
         ),
       ],
       child: group.failureOption.fold(
-        () => BlocBuilder<ItemWatcherBloc, ItemWatcherState>(
-          builder: (context, state) => GestureDetector(
-            onTap: () {
-              ExtendedNavigator.of(context).push(
-                Routes.itemOverviewPage,
-                arguments: ItemOverviewPageArguments(
-                  category: category,
-                  group: group,
-                  watcherBloc: context.bloc<ItemWatcherBloc>(),
-                  key: Key(group.uid.getOrCrash()),
-                ),
-              );
-            },
-            child: Container(
-                height: 160,
-                margin: const EdgeInsets.fromLTRB(5, 0, 5, 24),
-                decoration: BoxDecoration(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withAlpha(70),
-                        blurRadius: 4,
-                        offset: const Offset(0, 4),
-                      ),
-                    ]),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+        () => cardSuccess(),
+        (a) => cardFailure(context),
+      ),
+    );
+  }
+
+  Container cardFailure(BuildContext context) {
+    return Container(
+      height: 160,
+      margin: const EdgeInsets.fromLTRB(5, 0, 5, 24),
+      decoration: BoxDecoration(
+          color: sepetimSmoothRed,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withAlpha(70),
+              blurRadius: 4,
+              offset: const Offset(0, 4),
+            ),
+          ]),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.error_outline, size: 60),
+          const SizedBox(height: 3),
+          Text(
+            translate(context, 'something_went_wrong'),
+            style: robotoTextStyle(color: Colors.white),
+          ),
+          const SizedBox(height: 3),
+          // TODO: Implement report function
+          ErrorOutlineButton(onPressed: () {})
+        ],
+      ),
+    );
+  }
+
+  BlocBuilder<ItemWatcherBloc, ItemWatcherState> cardSuccess() {
+    return BlocBuilder<ItemWatcherBloc, ItemWatcherState>(
+      builder: (context, state) => GestureDetector(
+        onTap: () {
+          ExtendedNavigator.of(context).push(
+            Routes.itemOverviewPage,
+            arguments: ItemOverviewPageArguments(
+              category: category,
+              group: group,
+              watcherBloc: context.bloc<ItemWatcherBloc>(),
+              key: Key(group.uid.getOrCrash()),
+            ),
+          );
+        },
+        child: Container(
+            height: 160,
+            margin: const EdgeInsets.fromLTRB(5, 0, 5, 24),
+            decoration: BoxDecoration(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                borderRadius: BorderRadius.circular(8),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withAlpha(70),
+                    blurRadius: 4,
+                    offset: const Offset(0, 4),
+                  ),
+                ]),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Row(
                     children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Text(group.title.fittedString(maxLength: 22),
-                              style: Theme.of(context).textTheme.headline2),
-                          Expanded(
-                            child: ItemGroupActionButtons(
-                              categoryId: category.uid,
-                              group: group,
-                            ),
-                          )
-                        ],
-                      ),
-                      Expanded(child: itemWatcherState(context, state)),
+                      Text(group.title.fittedString(maxLength: 22),
+                          style: Theme.of(context).textTheme.headline2),
+                      Expanded(
+                        child: ItemGroupActionButtons(
+                          categoryId: category.uid,
+                          group: group,
+                        ),
+                      )
                     ],
                   ),
-                )),
-          ),
-        ),
-        (a) => Container(
-          height: 160,
-          margin: const EdgeInsets.fromLTRB(5, 0, 5, 24),
-          decoration: BoxDecoration(
-              color: sepetimSmoothRed,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withAlpha(70),
-                  blurRadius: 4,
-                  offset: const Offset(0, 4),
-                ),
-              ]),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.error_outline, size: 60),
-              const SizedBox(height: 3),
-              Text(
-                translate(context, 'something_went_wrong'),
-                style: robotoTextStyle(color: Colors.white),
+                  Expanded(child: itemWatcherState(context, state)),
+                ],
               ),
-              const SizedBox(height: 3),
-              // TODO: Implement report function
-              ErrorOutlineButton(onPressed: () {})
-            ],
-          ),
-        ),
+            )),
       ),
     );
   }
@@ -141,6 +149,7 @@ class ItemGroupCard extends StatelessWidget {
           valueColor: const AlwaysStoppedAnimation(sepetimYellow),
         ),
       ]),
+      // Todo: Complete that part
       loadFailure: (_) => Center(
         child: Text(translate(context, 'please_report')),
       ),

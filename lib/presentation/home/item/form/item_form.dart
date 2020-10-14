@@ -57,8 +57,8 @@ class ItemForm extends StatelessWidget {
                   imageLoadCanceled: (_) {},
                 ),
                 (_) {
-                  ExtendedNavigator.of(context).popUntil(
-                      (route) => route.settings.name == Routes.itemPage);
+                  ExtendedNavigator.of(context).popUntil((route) =>
+                      route.settings.name == Routes.itemOverviewPage);
                 },
               );
             },
