@@ -1,5 +1,6 @@
 import 'package:Sepetim/app_localization.dart';
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
+import 'package:Sepetim/application/contact_us/contact_us_bloc.dart';
 import 'package:Sepetim/application/theme/theme_bloc.dart';
 import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
@@ -23,6 +24,9 @@ class AppWidget extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
+        ),
+        BlocProvider(
+          create: (context) => getIt<ContactUsBloc>(),
         ),
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(

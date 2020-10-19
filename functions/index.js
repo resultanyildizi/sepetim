@@ -169,6 +169,7 @@ exports.sendMail = functions.https.onCall((data, context) => {
     const userId = data["userId"];
     const userEmail = data["userEmail"];
     const message = data["message"];
+    const isReport = data["isReport"];
 
     log("user id : " + userId);
     log("user email : " + userEmail);
@@ -176,9 +177,15 @@ exports.sendMail = functions.https.onCall((data, context) => {
 
     log("transporter options : " + transporter.options);
 
+    const backColor = isReport === "false" ? '#fff39c' : '#e2747e';
+    const title = isReport === "false" ? 'User message from Sepetim' : 'Error message from Sepetim';
+    const subject = isReport === "false" ? `Message from ${userEmail}` : `Report from ${userEmail}`;
+    const textColor = isReport === "false" ? 'black' : 'white';
+
+
     const htmlMessage = `
       <img height="192" width="192" src="https://firebasestorage.googleapis.com/v0/b/sepetim-e2723.appspot.com/o/app_images%2Fic_launcher.png?alt=media&token=8cbbfa65-6b61-4409-9aea-3faf265b8b84"/>
-      <h3>User message from Sepetim</h3>
+      <h3>${title}</h3>
       <p>
       <b>User Id:</b> <a href="https://console.firebase.google.com/u/0/project/sepetim-e2723/authentication/users">${userId}</a><br>
       <b>User email:</b> ${userEmail}<br>
@@ -186,7 +193,7 @@ exports.sendMail = functions.https.onCall((data, context) => {
       </p>
       <p>
       <b>Message:</b><br>
-      <div style="border: 1px solid grey; background-color: #fff39c; padding:8px; border-radius: 5px; font-weight: bold; font-family: Calibri, sans-serif;">
+      <div style="border: 1px solid grey; background-color: ${backColor} ; padding:8px; border-radius: 5px; font-weight: bold; font-family: Calibri, sans-serif; color: ${textColor}">
       <p>${message}</p>
       </div>
       </p>`;
@@ -194,7 +201,7 @@ exports.sendMail = functions.https.onCall((data, context) => {
     const mailOptions = {
       from: functions.config().app.email.address,
       to: functions.config().app.destination_email,
-      subject: `Message from ${userEmail}`,
+      subject: subject,
       html: htmlMessage,
     };
 

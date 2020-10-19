@@ -98,22 +98,53 @@ class RoundedIconButton extends StatelessWidget {
   }
 }
 
+enum ErrorOutlineButtonState { normal, loading, done }
+
 class ErrorOutlineButton extends StatelessWidget {
   final Function() onPressed;
+  final ErrorOutlineButtonState state;
+  final Color color;
   const ErrorOutlineButton({
     Key key,
     @required this.onPressed,
+    this.state = ErrorOutlineButtonState.normal,
+    this.color = Colors.white,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return OutlineButton(
       color: Colors.white,
-      borderSide: const BorderSide(color: Colors.white),
-      highlightedBorderColor: Colors.white,
-      onPressed: onPressed,
-      child: Text(translate(context, 'report_issue')),
+      borderSide: BorderSide(color: color),
+      highlightedBorderColor: color,
+      onPressed: state == ErrorOutlineButtonState.normal ? onPressed : () {},
+      textColor: color,
+      child: content(context),
     );
+  }
+
+  Widget content(BuildContext context) {
+    switch (state) {
+      case ErrorOutlineButtonState.loading:
+        {
+          return SizedBox(
+            height: 15,
+            width: 15,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(color),
+            ),
+          );
+        }
+      case ErrorOutlineButtonState.done:
+        {
+          return const Icon(Icons.check);
+        }
+      default:
+        return Text(
+          translate(context, 'report_issue'),
+          style: robotoTextStyle(color: color),
+        );
+    }
   }
 }
 

@@ -95,7 +95,7 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
             // TODO: Complete that part
-            orElse: () => DefaultPadding(),
+            orElse: () => const DefaultPadding(),
           );
         },
       ),

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -43,6 +44,25 @@ class ContactUsBloc extends Bloc<ContactUsEvent, ContactUsState> {
               await _contactUsRepository.sendEmail(message: state.message);
         }
 
+        yield state.copyWith(
+          contactUsFailureOrUnitOption: optionOf(failureOrSuccess),
+          isSending: false,
+          showErrorMessages: true,
+        );
+      },
+      reportMailSent: (e) async* {
+        Either<ContactUsFailure, Unit> failureOrSuccess;
+        yield state.copyWith(
+          contactUsFailureOrUnitOption: none(),
+          isSending: true,
+        );
+
+        failureOrSuccess = await _contactUsRepository.sendReportEmail(
+          categoryId: e.categoryId,
+          groupId: e.groupId,
+          itemId: e.itemId,
+          details: e.details,
+        );
         yield state.copyWith(
           contactUsFailureOrUnitOption: optionOf(failureOrSuccess),
           isSending: false,

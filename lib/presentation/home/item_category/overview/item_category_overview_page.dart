@@ -3,6 +3,7 @@ import 'package:Sepetim/application/item_category/selector/item_category_selecto
 import 'package:Sepetim/application/item_category/watcher/item_category_watcher_bloc.dart';
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/injection.dart';
+import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/boxes_image.dart';
@@ -136,7 +137,6 @@ class ItemCategoryOverviewPage extends StatelessWidget {
     );
   }
 
-  // TODO: Complete that part
   Scaffold buildFailure(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -146,14 +146,26 @@ class ItemCategoryOverviewPage extends StatelessWidget {
         ),
       ),
       body: DefaultPadding(
-        child: Center(
-          child: Container(
-            width: screenWidthByScalar(context, 0.8),
-            child: Text(
-              translate(context, 'please_report'),
-              style: Theme.of(context).textTheme.bodyText1,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: screenWidthByScalar(context, 0.8),
+              child: Text(
+                translate(context, 'please_report'),
+                style: Theme.of(context).textTheme.bodyText1,
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
+            const SizedBox(height: 6),
+            reactiveErrorOutlineButton(
+              categoryId: null,
+              groupId: null,
+              itemId: null,
+              details: "The user can't watch her/his categories.",
+              color: sepetimSmoothRed,
+            ),
+          ],
         ),
       ),
       floatingActionButton: DefaultFloatingActionButton(

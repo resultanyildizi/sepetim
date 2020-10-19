@@ -1,7 +1,13 @@
 import 'package:Sepetim/app_localization.dart';
+import 'package:Sepetim/application/contact_us/contact_us_bloc.dart';
+import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/domain/item/item.dart';
 import 'package:Sepetim/domain/item/value_objects.dart';
+import 'package:Sepetim/presentation/core/widgets/buttons.dart';
+import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/kt.dart';
 
 double screenWidthByScalar(BuildContext context, double scalar) {
@@ -36,4 +42,47 @@ Price totalItemsPrice(KtList<Item> items) {
     }
   });
   return Price(totalPrice.toString());
+}
+
+BlocConsumer<ContactUsBloc, ContactUsState> reactiveErrorOutlineButton({
+  @required UniqueId categoryId,
+  @required UniqueId groupId,
+  @required UniqueId itemId,
+  @required String details,
+  Color color = Colors.white,
+}) {
+  ErrorOutlineButtonState buttonState = ErrorOutlineButtonState.normal;
+  return BlocConsumer<ContactUsBloc, ContactUsState>(
+    listener: (context, state) {
+      state.contactUsFailureOrUnitOption.fold(
+        () {},
+        (either) => either.fold(
+          (f) => f.map(
+            networkException: (_) => networkExceptionPopup(context),
+            unexpectedServerError: (_) => serverErrorPopup(context),
+          ),
+          (_) {
+            buttonState = ErrorOutlineButtonState.done;
+          },
+        ),
+      );
+    },
+    builder: (context, state) {
+      return ErrorOutlineButton(
+        onPressed: () {
+          buttonState = ErrorOutlineButtonState.loading;
+          context.bloc<ContactUsBloc>().add(
+                ContactUsEvent.reportMailSent(
+                  categoryId: optionOf(categoryId),
+                  groupId: optionOf(groupId),
+                  itemId: optionOf(itemId),
+                  details: details,
+                ),
+              );
+        },
+        state: buttonState,
+        color: color,
+      );
+    },
+  );
 }

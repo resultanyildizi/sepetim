@@ -1,5 +1,4 @@
 import 'package:Sepetim/application/contact_us/contact_us_bloc.dart';
-import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
@@ -17,97 +16,94 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ContactUsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ContactUsBloc>(
-      create: (context) => getIt<ContactUsBloc>(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Sepetim',
-            style: Theme.of(context).appBarTheme.textTheme.headline1,
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Sepetim',
+          style: Theme.of(context).appBarTheme.textTheme.headline1,
         ),
-        body: BlocConsumer<ContactUsBloc, ContactUsState>(
-          listener: (context, state) {
-            state.contactUsFailureOrUnitOption.fold(
-              () {},
-              (either) => either.fold(
-                (failure) => failure.map(
-                  networkException: (_) => networkExceptionPopup(context),
-                  unexpectedServerError: (_) => serverErrorPopup(context),
-                ),
-                (_) {
-                  ExtendedNavigator.of(context).pop();
-                  Flushbar(
-                    flushbarPosition: FlushbarPosition.TOP,
-                    flushbarStyle: FlushbarStyle.FLOATING,
-                    backgroundColor: sepetimGrey,
-                    borderRadius: 5,
-                    margin: const EdgeInsets.only(left: 10, right: 10),
-                    duration: const Duration(seconds: 2),
-                    isDismissible: false,
-                    icon: const Icon(
-                      Icons.check_circle,
-                      color: sepetimYellow,
-                    ),
-                    messageText: Text(
-                      translate(context, "message_sent_successfully"),
-                      style: didactGothicTextStyle(
-                          bold: true, fontSize: 12, color: sepetimYellow),
-                    ),
-                  ).show(context);
-                },
+      ),
+      body: BlocConsumer<ContactUsBloc, ContactUsState>(
+        listener: (context, state) {
+          state.contactUsFailureOrUnitOption.fold(
+            () {},
+            (either) => either.fold(
+              (failure) => failure.map(
+                networkException: (_) => networkExceptionPopup(context),
+                unexpectedServerError: (_) => serverErrorPopup(context),
               ),
-            );
-          },
-          builder: (context, state) {
-            return DefaultPadding(
-              child: Form(
-                autovalidate: state.showErrorMessages,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      translate(context, 'send_a_message'),
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                    Container(
-                      constraints: BoxConstraints(
-                        maxHeight: screenHeightByScalar(
-                          context,
-                          scalarSmall: 0.25,
-                          scalarMedium: 0.3,
-                          scalarBig: 0.35,
-                        ),
+              (_) {
+                ExtendedNavigator.of(context).pop();
+                Flushbar(
+                  flushbarPosition: FlushbarPosition.TOP,
+                  flushbarStyle: FlushbarStyle.FLOATING,
+                  backgroundColor: sepetimGrey,
+                  borderRadius: 5,
+                  margin: const EdgeInsets.only(left: 10, right: 10),
+                  duration: const Duration(seconds: 2),
+                  isDismissible: false,
+                  icon: const Icon(
+                    Icons.check_circle,
+                    color: sepetimYellow,
+                  ),
+                  messageText: Text(
+                    translate(context, "message_sent_successfully"),
+                    style: didactGothicTextStyle(
+                        bold: true, fontSize: 12, color: sepetimYellow),
+                  ),
+                ).show(context);
+              },
+            ),
+          );
+        },
+        builder: (context, state) {
+          return DefaultPadding(
+            child: Form(
+              autovalidate: state.showErrorMessages,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    translate(context, 'send_a_message'),
+                    style: Theme.of(context).textTheme.headline2,
+                  ),
+                  Container(
+                    constraints: BoxConstraints(
+                      maxHeight: screenHeightByScalar(
+                        context,
+                        scalarSmall: 0.25,
+                        scalarMedium: 0.3,
+                        scalarBig: 0.35,
                       ),
-                      child: EmailMessageTextField(),
                     ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          if (state.isSending) ...[
-                            SmallCircularProgressIndicator()
-                          ],
-                          const DividerDefault(),
-                          RoundedButton(
-                            height: 35,
-                            width: screenWidthByScalar(context, 1.0),
-                            onPressed: () {
-                              context
-                                  .bloc<ContactUsBloc>()
-                                  .add(const ContactUsEvent.emailSent());
-                            },
-                            text: translate(context, 'send'),
-                          )
+                    child: EmailMessageTextField(),
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        if (state.isSending) ...[
+                          SmallCircularProgressIndicator()
                         ],
-                      ),
+                        const DividerDefault(),
+                        RoundedButton(
+                          height: 35,
+                          width: screenWidthByScalar(context, 1.0),
+                          onPressed: () {
+                            context
+                                .bloc<ContactUsBloc>()
+                                .add(const ContactUsEvent.emailSent());
+                          },
+                          text: translate(context, 'send'),
+                        )
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

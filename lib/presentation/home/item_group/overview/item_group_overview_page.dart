@@ -1,8 +1,7 @@
 import 'package:Sepetim/domain/core/enums.dart';
-import 'package:Sepetim/presentation/core/widgets/action_popup.dart';
+import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/presentation/core/widgets/action_popups.dart';
 import 'package:Sepetim/presentation/core/widgets/boxes_image.dart';
-import 'package:Sepetim/presentation/core/widgets/small_circular_progress_indicator.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/item_group_card.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/search_field.dart';
 import 'package:Sepetim/presentation/sign_in/widgets/auth_failure_popups.dart';
@@ -139,7 +138,6 @@ class ItemGroupOverviewPage extends StatelessWidget {
     );
   }
 
-  // Todo: Complete that part
   Scaffold buildFailure(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -147,14 +145,26 @@ class ItemGroupOverviewPage extends StatelessWidget {
             style: Theme.of(context).appBarTheme.textTheme.headline1),
       ),
       body: DefaultPadding(
-        child: Center(
-          child: Container(
-            width: screenWidthByScalar(context, 0.8),
-            child: Text(
-              translate(context, 'please_report'),
-              style: Theme.of(context).textTheme.bodyText1,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: screenWidthByScalar(context, 0.8),
+              child: Text(
+                translate(context, 'please_report'),
+                style: Theme.of(context).textTheme.bodyText1,
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
+            const SizedBox(height: 6),
+            reactiveErrorOutlineButton(
+              categoryId: category.uid,
+              groupId: null,
+              itemId: null,
+              details: "The user can't watch her/his groups.",
+              color: sepetimSmoothRed,
+            ),
+          ],
         ),
       ),
       floatingActionButton: DefaultFloatingActionButton(

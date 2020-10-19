@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:Sepetim/presentation/core/widgets/buttons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +34,6 @@ class ItemCategoryCard extends StatelessWidget {
           },
         ),
       ),
-      // TODO: Implement report us button
       (failure) => cardFailure(context),
     );
   }
@@ -44,10 +42,18 @@ class ItemCategoryCard extends StatelessWidget {
       BuildContext context, ItemCategorySelectorState state) {
     return GestureDetector(
       onTap: () => goToNextPage(context),
-      child: Card(
-        elevation: 4.0,
-        color: category.color.getOrCrash(),
-        shape: RoundedRectangleBorder(
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment(1.0, 2.5),
+            colors: [
+              category.color.getOrCrash(),
+              Colors.black
+            ], // red to yellow
+            tileMode: TileMode.clamp, // repeats the gradient over the canvas
+          ),
+          color: category.color.getOrCrash(),
           borderRadius: BorderRadius.circular(20.0),
         ),
         child: Padding(
@@ -64,7 +70,7 @@ class ItemCategoryCard extends StatelessWidget {
                 ),
               ),
               const Divider(
-                color: sepetimGrey,
+                color: Colors.white,
                 height: 5.0,
                 thickness: 1.5,
                 indent: 10.0,
@@ -77,9 +83,9 @@ class ItemCategoryCard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.keyboard_arrow_left,
-                      color: Colors.grey[600],
+                      color: Colors.white,
                       size: 18,
                     ),
                     Stack(
@@ -104,9 +110,9 @@ class ItemCategoryCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Icon(
+                    const Icon(
                       Icons.keyboard_arrow_right,
-                      color: Colors.grey[600],
+                      color: Colors.white,
                       size: 18.0,
                     ),
                   ],
@@ -116,7 +122,7 @@ class ItemCategoryCard extends StatelessWidget {
                 height: 4.0,
               ),
               const Divider(
-                color: sepetimGrey,
+                color: Colors.white,
                 height: 5.0,
                 thickness: 1.5,
                 indent: 10.0,
@@ -129,17 +135,19 @@ class ItemCategoryCard extends StatelessWidget {
                   children: [
                     Text(
                       '${translate(context, 'groups_count')}: ${category.groupCount.getOrCrash()}',
-                      style: robotoTextStyle(fontSize: 10.0, bold: true),
+                      style: robotoTextStyle(
+                          fontSize: 10.0, bold: true, color: Colors.white),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         const Icon(Icons.date_range,
-                            color: sepetimGrey, size: 12.0),
+                            color: Colors.white, size: 12.0),
                         const SizedBox(width: 4.0),
                         Text(
                           category.creationTime.toString().substring(0, 16),
-                          style: robotoTextStyle(fontSize: 10.0, bold: true),
+                          style: robotoTextStyle(
+                              fontSize: 10.0, bold: true, color: Colors.white),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -164,7 +172,7 @@ class ItemCategoryCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.error_outline, size: 60),
+          const Icon(Icons.error_outline, size: 60, color: Colors.white),
           const SizedBox(
             height: 3.0,
           ),
@@ -176,7 +184,13 @@ class ItemCategoryCard extends StatelessWidget {
           const SizedBox(
             height: 3.0,
           ),
-          ErrorOutlineButton(onPressed: () {})
+          reactiveErrorOutlineButton(
+            categoryId: category.uid,
+            groupId: null,
+            itemId: null,
+            details:
+                "Quite likely there is a problem with the category's title, groupCount or coverImageUrl.",
+          ),
         ],
       ),
     );

@@ -24,6 +24,20 @@ class _$ContactUsEventTearOff {
   _EmailSent emailSent() {
     return const _EmailSent();
   }
+
+// ignore: unused_element
+  _ReportMailSent reportMailSent(
+      {@required Option<UniqueId> categoryId,
+      @required Option<UniqueId> groupId,
+      @required Option<UniqueId> itemId,
+      String details}) {
+    return _ReportMailSent(
+      categoryId: categoryId,
+      groupId: groupId,
+      itemId: itemId,
+      details: details,
+    );
+  }
 }
 
 /// @nodoc
@@ -36,22 +50,29 @@ mixin _$ContactUsEvent {
   Result when<Result extends Object>({
     @required Result emailMessageChanged(String emailMessage),
     @required Result emailSent(),
+    @required
+        Result reportMailSent(Option<UniqueId> categoryId,
+            Option<UniqueId> groupId, Option<UniqueId> itemId, String details),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result emailMessageChanged(String emailMessage),
     Result emailSent(),
+    Result reportMailSent(Option<UniqueId> categoryId, Option<UniqueId> groupId,
+        Option<UniqueId> itemId, String details),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result emailMessageChanged(_EmailMessageChanged value),
     @required Result emailSent(_EmailSent value),
+    @required Result reportMailSent(_ReportMailSent value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result emailMessageChanged(_EmailMessageChanged value),
     Result emailSent(_EmailSent value),
+    Result reportMailSent(_ReportMailSent value),
     @required Result orElse(),
   });
 }
@@ -138,9 +159,13 @@ class _$_EmailMessageChanged implements _EmailMessageChanged {
   Result when<Result extends Object>({
     @required Result emailMessageChanged(String emailMessage),
     @required Result emailSent(),
+    @required
+        Result reportMailSent(Option<UniqueId> categoryId,
+            Option<UniqueId> groupId, Option<UniqueId> itemId, String details),
   }) {
     assert(emailMessageChanged != null);
     assert(emailSent != null);
+    assert(reportMailSent != null);
     return emailMessageChanged(emailMessage);
   }
 
@@ -149,6 +174,8 @@ class _$_EmailMessageChanged implements _EmailMessageChanged {
   Result maybeWhen<Result extends Object>({
     Result emailMessageChanged(String emailMessage),
     Result emailSent(),
+    Result reportMailSent(Option<UniqueId> categoryId, Option<UniqueId> groupId,
+        Option<UniqueId> itemId, String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -163,9 +190,11 @@ class _$_EmailMessageChanged implements _EmailMessageChanged {
   Result map<Result extends Object>({
     @required Result emailMessageChanged(_EmailMessageChanged value),
     @required Result emailSent(_EmailSent value),
+    @required Result reportMailSent(_ReportMailSent value),
   }) {
     assert(emailMessageChanged != null);
     assert(emailSent != null);
+    assert(reportMailSent != null);
     return emailMessageChanged(this);
   }
 
@@ -174,6 +203,7 @@ class _$_EmailMessageChanged implements _EmailMessageChanged {
   Result maybeMap<Result extends Object>({
     Result emailMessageChanged(_EmailMessageChanged value),
     Result emailSent(_EmailSent value),
+    Result reportMailSent(_ReportMailSent value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -231,9 +261,13 @@ class _$_EmailSent implements _EmailSent {
   Result when<Result extends Object>({
     @required Result emailMessageChanged(String emailMessage),
     @required Result emailSent(),
+    @required
+        Result reportMailSent(Option<UniqueId> categoryId,
+            Option<UniqueId> groupId, Option<UniqueId> itemId, String details),
   }) {
     assert(emailMessageChanged != null);
     assert(emailSent != null);
+    assert(reportMailSent != null);
     return emailSent();
   }
 
@@ -242,6 +276,8 @@ class _$_EmailSent implements _EmailSent {
   Result maybeWhen<Result extends Object>({
     Result emailMessageChanged(String emailMessage),
     Result emailSent(),
+    Result reportMailSent(Option<UniqueId> categoryId, Option<UniqueId> groupId,
+        Option<UniqueId> itemId, String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -256,9 +292,11 @@ class _$_EmailSent implements _EmailSent {
   Result map<Result extends Object>({
     @required Result emailMessageChanged(_EmailMessageChanged value),
     @required Result emailSent(_EmailSent value),
+    @required Result reportMailSent(_ReportMailSent value),
   }) {
     assert(emailMessageChanged != null);
     assert(emailSent != null);
+    assert(reportMailSent != null);
     return emailSent(this);
   }
 
@@ -267,6 +305,7 @@ class _$_EmailSent implements _EmailSent {
   Result maybeMap<Result extends Object>({
     Result emailMessageChanged(_EmailMessageChanged value),
     Result emailSent(_EmailSent value),
+    Result reportMailSent(_ReportMailSent value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -279,6 +318,175 @@ class _$_EmailSent implements _EmailSent {
 
 abstract class _EmailSent implements ContactUsEvent {
   const factory _EmailSent() = _$_EmailSent;
+}
+
+/// @nodoc
+abstract class _$ReportMailSentCopyWith<$Res> {
+  factory _$ReportMailSentCopyWith(
+          _ReportMailSent value, $Res Function(_ReportMailSent) then) =
+      __$ReportMailSentCopyWithImpl<$Res>;
+  $Res call(
+      {Option<UniqueId> categoryId,
+      Option<UniqueId> groupId,
+      Option<UniqueId> itemId,
+      String details});
+}
+
+/// @nodoc
+class __$ReportMailSentCopyWithImpl<$Res>
+    extends _$ContactUsEventCopyWithImpl<$Res>
+    implements _$ReportMailSentCopyWith<$Res> {
+  __$ReportMailSentCopyWithImpl(
+      _ReportMailSent _value, $Res Function(_ReportMailSent) _then)
+      : super(_value, (v) => _then(v as _ReportMailSent));
+
+  @override
+  _ReportMailSent get _value => super._value as _ReportMailSent;
+
+  @override
+  $Res call({
+    Object categoryId = freezed,
+    Object groupId = freezed,
+    Object itemId = freezed,
+    Object details = freezed,
+  }) {
+    return _then(_ReportMailSent(
+      categoryId: categoryId == freezed
+          ? _value.categoryId
+          : categoryId as Option<UniqueId>,
+      groupId:
+          groupId == freezed ? _value.groupId : groupId as Option<UniqueId>,
+      itemId: itemId == freezed ? _value.itemId : itemId as Option<UniqueId>,
+      details: details == freezed ? _value.details : details as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_ReportMailSent implements _ReportMailSent {
+  const _$_ReportMailSent(
+      {@required this.categoryId,
+      @required this.groupId,
+      @required this.itemId,
+      this.details})
+      : assert(categoryId != null),
+        assert(groupId != null),
+        assert(itemId != null);
+
+  @override
+  final Option<UniqueId> categoryId;
+  @override
+  final Option<UniqueId> groupId;
+  @override
+  final Option<UniqueId> itemId;
+  @override
+  final String details;
+
+  @override
+  String toString() {
+    return 'ContactUsEvent.reportMailSent(categoryId: $categoryId, groupId: $groupId, itemId: $itemId, details: $details)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ReportMailSent &&
+            (identical(other.categoryId, categoryId) ||
+                const DeepCollectionEquality()
+                    .equals(other.categoryId, categoryId)) &&
+            (identical(other.groupId, groupId) ||
+                const DeepCollectionEquality()
+                    .equals(other.groupId, groupId)) &&
+            (identical(other.itemId, itemId) ||
+                const DeepCollectionEquality().equals(other.itemId, itemId)) &&
+            (identical(other.details, details) ||
+                const DeepCollectionEquality().equals(other.details, details)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(categoryId) ^
+      const DeepCollectionEquality().hash(groupId) ^
+      const DeepCollectionEquality().hash(itemId) ^
+      const DeepCollectionEquality().hash(details);
+
+  @override
+  _$ReportMailSentCopyWith<_ReportMailSent> get copyWith =>
+      __$ReportMailSentCopyWithImpl<_ReportMailSent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result emailMessageChanged(String emailMessage),
+    @required Result emailSent(),
+    @required
+        Result reportMailSent(Option<UniqueId> categoryId,
+            Option<UniqueId> groupId, Option<UniqueId> itemId, String details),
+  }) {
+    assert(emailMessageChanged != null);
+    assert(emailSent != null);
+    assert(reportMailSent != null);
+    return reportMailSent(categoryId, groupId, itemId, details);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result emailMessageChanged(String emailMessage),
+    Result emailSent(),
+    Result reportMailSent(Option<UniqueId> categoryId, Option<UniqueId> groupId,
+        Option<UniqueId> itemId, String details),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (reportMailSent != null) {
+      return reportMailSent(categoryId, groupId, itemId, details);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result emailMessageChanged(_EmailMessageChanged value),
+    @required Result emailSent(_EmailSent value),
+    @required Result reportMailSent(_ReportMailSent value),
+  }) {
+    assert(emailMessageChanged != null);
+    assert(emailSent != null);
+    assert(reportMailSent != null);
+    return reportMailSent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result emailMessageChanged(_EmailMessageChanged value),
+    Result emailSent(_EmailSent value),
+    Result reportMailSent(_ReportMailSent value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (reportMailSent != null) {
+      return reportMailSent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReportMailSent implements ContactUsEvent {
+  const factory _ReportMailSent(
+      {@required Option<UniqueId> categoryId,
+      @required Option<UniqueId> groupId,
+      @required Option<UniqueId> itemId,
+      String details}) = _$_ReportMailSent;
+
+  Option<UniqueId> get categoryId;
+  Option<UniqueId> get groupId;
+  Option<UniqueId> get itemId;
+  String get details;
+  _$ReportMailSentCopyWith<_ReportMailSent> get copyWith;
 }
 
 /// @nodoc

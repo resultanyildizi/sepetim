@@ -2,6 +2,7 @@ import 'package:Sepetim/application/item/form/item_form_bloc.dart';
 import 'package:Sepetim/domain/core/enums.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
 import 'package:Sepetim/injection.dart';
+import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/boxes_image.dart';
 import 'package:Sepetim/presentation/home/item/overview/widgets/item_card.dart';
@@ -137,24 +138,33 @@ class ItemOverviewPage extends StatelessWidget {
     );
   }
 
-  //Todo: Complete that part
   Scaffold buildFailure(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Sepetim',
-          style: Theme.of(context).appBarTheme.textTheme.headline1,
-        ),
+        title: Text('Sepetim',
+            style: Theme.of(context).appBarTheme.textTheme.headline1),
       ),
       body: DefaultPadding(
-        child: Center(
-          child: Container(
-            width: screenWidthByScalar(context, 0.8),
-            child: Text(
-              translate(context, 'please_report'),
-              style: Theme.of(context).textTheme.bodyText1,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: screenWidthByScalar(context, 0.8),
+              child: Text(
+                translate(context, 'please_report'),
+                style: Theme.of(context).textTheme.bodyText1,
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
+            const SizedBox(height: 6),
+            reactiveErrorOutlineButton(
+              categoryId: category.uid,
+              groupId: group.uid,
+              itemId: null,
+              details: "The user can't watch her/his items.",
+              color: sepetimSmoothRed,
+            ),
+          ],
         ),
       ),
       floatingActionButton: DefaultFloatingActionButton(

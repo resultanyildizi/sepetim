@@ -1,4 +1,3 @@
-import 'package:Sepetim/presentation/core/widgets/buttons.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dartz/dartz.dart';
@@ -33,7 +32,6 @@ class ItemCard extends StatelessWidget {
     );
   }
 
-  // Todo: Complete that part
   Container cardFailure(BuildContext context) {
     return Container(
       height: 160,
@@ -65,7 +63,11 @@ class ItemCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.error_outline, size: 40),
+                const Icon(
+                  Icons.error_outline,
+                  size: 40,
+                  color: Colors.white,
+                ),
                 const SizedBox(
                   height: 3.0,
                 ),
@@ -74,8 +76,13 @@ class ItemCard extends StatelessWidget {
                   style: robotoTextStyle(color: Colors.white),
                 ),
                 const SizedBox(height: 3.0),
-                // TODO: Implement report function
-                ErrorOutlineButton(onPressed: () {}),
+                reactiveErrorOutlineButton(
+                  categoryId: category.uid,
+                  groupId: group.uid,
+                  itemId: item.uid,
+                  details:
+                      "Quite likely there is a problem with the item's title, price, selectedIndex or imageUrls.",
+                ),
               ],
             ),
           ),

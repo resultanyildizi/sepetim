@@ -6,7 +6,6 @@ import 'package:Sepetim/injection.dart';
 import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
-import 'package:Sepetim/presentation/core/widgets/buttons.dart';
 import 'package:Sepetim/presentation/home/item/overview/widgets/item_horizontal_listview.dart';
 import 'package:Sepetim/presentation/home/item_group/overview/widgets/action_buttons.dart';
 import 'package:Sepetim/presentation/routes/router.gr.dart';
@@ -53,15 +52,19 @@ class ItemGroupCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.error_outline, size: 60),
+          const Icon(Icons.error_outline, size: 60, color: Colors.white),
           const SizedBox(height: 3),
           Text(
             translate(context, 'something_went_wrong'),
             style: robotoTextStyle(color: Colors.white),
           ),
-          const SizedBox(height: 3),
-          // TODO: Implement report function
-          ErrorOutlineButton(onPressed: () {})
+          // const SizedBox(height: 3),
+          reactiveErrorOutlineButton(
+            categoryId: category.uid,
+            groupId: group.uid,
+            itemId: null,
+            details: "Quite likely there is a problem with the group's title.",
+          ),
         ],
       ),
     );
@@ -141,18 +144,36 @@ class ItemGroupCard extends StatelessWidget {
           ],
         );
       },
-      loading: (_) => Column(children: <Widget>[
-        const Spacer(),
-        LinearProgressIndicator(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          minHeight: 2,
-          valueColor: const AlwaysStoppedAnimation(sepetimYellow),
-        ),
-      ]),
-      // Todo: Complete that part
-      loadFailure: (_) => Center(
-        child: Text(translate(context, 'please_report')),
+      loading: (_) => Column(
+        children: <Widget>[
+          const Spacer(),
+          LinearProgressIndicator(
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            minHeight: 2,
+            valueColor: const AlwaysStoppedAnimation(sepetimYellow),
+          ),
+        ],
       ),
+      loadFailure: (_) {
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                translate(context, 'please_report'),
+                textAlign: TextAlign.center,
+              ),
+              reactiveErrorOutlineButton(
+                categoryId: category.uid,
+                groupId: group.uid,
+                itemId: null,
+                details: "The user can't watch her/his items.",
+                color: sepetimSmoothRed,
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }
