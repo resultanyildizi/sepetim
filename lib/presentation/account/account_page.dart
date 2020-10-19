@@ -1,6 +1,7 @@
 import 'package:Sepetim/application/auth/account_transactions/account_transactions_bloc.dart';
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/injection.dart';
+import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/predefined_variables/text_styles.dart';
 import 'package:Sepetim/presentation/account/widgets/action_popups.dart';
@@ -32,78 +33,82 @@ class AccountPage extends StatelessWidget {
           );
         },
         builder: (context, state) {
-          return state.maybeMap(
-            authenticated: (state) {
-              return BlocListener<AccountTransactionsBloc,
-                  AccountTransactionsState>(
-                listener: (context, state) {
-                  state.authFailureOrUnitOption.fold(
-                    () {},
-                    (either) {
-                      either.fold(
-                        (failure) {
-                          failure.maybeMap(
-                            serverError: (_) {
+          return Scaffold(
+            resizeToAvoidBottomPadding: false,
+            resizeToAvoidBottomInset: false,
+            appBar: AppBar(
+              title: Text(
+                'Sepetim',
+                style: Theme.of(context).appBarTheme.textTheme.headline1,
+              ),
+            ),
+            body: state.maybeMap(
+              authenticated: (state) {
+                return BlocListener<AccountTransactionsBloc,
+                    AccountTransactionsState>(
+                  listener: (context, state) {
+                    state.authFailureOrUnitOption.fold(
+                      () {},
+                      (either) {
+                        either.fold(
+                          (failure) {
+                            failure.maybeMap(
+                              serverError: (_) {
+                                ExtendedNavigator.of(context).popUntil(
+                                    (route) =>
+                                        route.settings.name ==
+                                        Routes.applicationContentPage);
+                                return serverErrorPopup(context);
+                              },
+                              deleteAccountError: (_) {
+                                ExtendedNavigator.of(context).popUntil(
+                                    (route) =>
+                                        route.settings.name ==
+                                        Routes.applicationContentPage);
+                                return deleteAccountErrorPopup(context);
+                              },
+                              networkException: (_) {
+                                ExtendedNavigator.of(context).popUntil(
+                                    (route) =>
+                                        route.settings.name ==
+                                        Routes.applicationContentPage);
+                                return networkExceptionPopup(context);
+                              },
+                              tooManyRequests: (_) {
+                                ExtendedNavigator.of(context).popUntil(
+                                    (route) =>
+                                        route.settings.name ==
+                                        Routes.applicationContentPage);
+                                return tooManyRequestsPopup(context);
+                              },
+                              orElse: () {},
+                            );
+                          },
+                          (_) {
+                            if (state.isAccountDeleted) {
+                              context
+                                  .bloc<AuthBloc>()
+                                  .add(const AuthEvent.authCheckRequested());
+                            }
+                            if (state.isPasswordVerified) {
                               ExtendedNavigator.of(context).popUntil((route) =>
                                   route.settings.name ==
                                   Routes.applicationContentPage);
-                              return serverErrorPopup(context);
-                            },
-                            deleteAccountError: (_) {
+                              changePasswordPopup(context,
+                                  context.bloc<AccountTransactionsBloc>());
+                            }
+                            if (state.isPasswordUpdated) {
                               ExtendedNavigator.of(context).popUntil((route) =>
                                   route.settings.name ==
                                   Routes.applicationContentPage);
-                              return deleteAccountErrorPopup(context);
-                            },
-                            networkException: (_) {
-                              ExtendedNavigator.of(context).popUntil((route) =>
-                                  route.settings.name ==
-                                  Routes.applicationContentPage);
-                              return networkExceptionPopup(context);
-                            },
-                            tooManyRequests: (_) {
-                              ExtendedNavigator.of(context).popUntil((route) =>
-                                  route.settings.name ==
-                                  Routes.applicationContentPage);
-                              return tooManyRequestsPopup(context);
-                            },
-                            orElse: () {},
-                          );
-                        },
-                        (_) {
-                          if (state.isAccountDeleted) {
-                            context
-                                .bloc<AuthBloc>()
-                                .add(const AuthEvent.authCheckRequested());
-                          }
-                          if (state.isPasswordVerified) {
-                            ExtendedNavigator.of(context).popUntil((route) =>
-                                route.settings.name ==
-                                Routes.applicationContentPage);
-                            changePasswordPopup(context,
-                                context.bloc<AccountTransactionsBloc>());
-                          }
-                          if (state.isPasswordUpdated) {
-                            ExtendedNavigator.of(context).popUntil((route) =>
-                                route.settings.name ==
-                                Routes.applicationContentPage);
-                            successfulPopup(context);
-                          }
-                        },
-                      );
-                    },
-                  );
-                },
-                child: Scaffold(
-                  resizeToAvoidBottomPadding: false,
-                  resizeToAvoidBottomInset: false,
-                  appBar: AppBar(
-                    title: Text(
-                      'Sepetim',
-                      style: Theme.of(context).appBarTheme.textTheme.headline1,
-                    ),
-                  ),
-                  body: DefaultPadding(
+                              successfulPopup(context);
+                            }
+                          },
+                        );
+                      },
+                    );
+                  },
+                  child: DefaultPadding(
                       child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -190,20 +195,27 @@ class AccountPage extends StatelessWidget {
                       deleteAccountButton(context),
                     ],
                   )),
-                ),
-              );
-            },
-            // TODO: Complete that part
-            orElse: () => Scaffold(
-              appBar: AppBar(
-                title: Text(
-                  'Sepetim',
-                  style: robotoTextStyle(bold: true),
-                ),
-              ),
-              body: const DefaultPadding(
-                child: Center(
-                  child: Text('Account'),
+                );
+              },
+              orElse: () => DefaultPadding(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      translate(context, 'please_report'),
+                      style: Theme.of(context).textTheme.bodyText1,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 6.0),
+                    reactiveErrorOutlineButton(
+                      categoryId: null,
+                      groupId: null,
+                      itemId: null,
+                      details:
+                          "There is an authentication problem with the user. The app couldn't push the sign in page even if the user was unauthanticated.",
+                      color: sepetimSmoothRed,
+                    ),
+                  ],
                 ),
               ),
             ),

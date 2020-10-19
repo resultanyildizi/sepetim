@@ -1,4 +1,5 @@
 import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
+import 'package:Sepetim/predefined_variables/colors.dart';
 import 'package:Sepetim/predefined_variables/helper_functions.dart';
 import 'package:Sepetim/presentation/core/widgets/default_padding.dart';
 import 'package:Sepetim/presentation/core/widgets/logo.dart';
@@ -94,8 +95,27 @@ class SettingsPage extends StatelessWidget {
                 ),
               ),
             ),
-            // TODO: Complete that part
-            orElse: () => const DefaultPadding(),
+            orElse: () => DefaultPadding(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    translate(context, 'please_report'),
+                    style: Theme.of(context).textTheme.bodyText1,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 6.0),
+                  reactiveErrorOutlineButton(
+                    categoryId: null,
+                    groupId: null,
+                    itemId: null,
+                    details:
+                        "There is an authentication problem with the user. The app couldn't push the sign in page even if the user was unauthanticated.",
+                    color: sepetimSmoothRed,
+                  ),
+                ],
+              ),
+            ),
           );
         },
       ),

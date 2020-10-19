@@ -223,7 +223,7 @@ class _LinkFormState extends State<LinkForm> {
       itemBuilder: (context, index) {
         final link = state.item.linkObjects.getOrCrash()[index];
         return link.failureOption.fold(
-            () => linkSuccess(link, context, index), (a) => linkFailure());
+            () => linkSuccess(link, context, index), (f) => linkFailure());
       },
       itemCount: state.item.linkObjects.getOrCrash().size,
     );
