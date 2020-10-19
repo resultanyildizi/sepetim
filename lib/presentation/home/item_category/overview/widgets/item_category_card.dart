@@ -42,120 +42,124 @@ class ItemCategoryCard extends StatelessWidget {
       BuildContext context, ItemCategorySelectorState state) {
     return GestureDetector(
       onTap: () => goToNextPage(context),
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment(1.0, 2.5),
-            colors: [
-              category.color.getOrCrash(),
-              Colors.black
-            ], // red to yellow
-            tileMode: TileMode.clamp, // repeats the gradient over the canvas
-          ),
-          color: category.color.getOrCrash(),
+      child: Card(
+        elevation: 4.0,
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                category.title.fittedString(
-                  maxLength: 14,
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: const Alignment(1.0, 2.5),
+              colors: [category.color.getOrCrash(), Colors.black],
+            ),
+            color: category.color.getOrCrash(),
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  category.title.fittedString(
+                    maxLength: 14,
+                  ),
+                  style: didactGothicTextStyle(
+                    bold: true,
+                  ),
                 ),
-                style: didactGothicTextStyle(
-                  bold: true,
+                const Divider(
+                  color: Colors.white,
+                  height: 5.0,
+                  thickness: 1.5,
+                  indent: 10.0,
+                  endIndent: 10.0,
                 ),
-              ),
-              const Divider(
-                color: Colors.white,
-                height: 5.0,
-                thickness: 1.5,
-                indent: 10.0,
-                endIndent: 10.0,
-              ),
-              const SizedBox(
-                height: 4.0,
-              ),
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Icon(
-                      Icons.keyboard_arrow_left,
-                      color: Colors.white,
-                      size: 18,
-                    ),
-                    Stack(
-                      children: <Widget>[
-                        AnimatedOpacity(
-                          duration: const Duration(milliseconds: 500),
-                          opacity: isSelected(state) ? 1 : 0,
-                          alwaysIncludeSemantics: true,
-                          child: Visibility(
-                            visible: isSelected(state),
-                            child: getIconButtons(context),
+                const SizedBox(
+                  height: 4.0,
+                ),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Icon(
+                        Icons.keyboard_arrow_left,
+                        color: Colors.white,
+                        size: 18,
+                      ),
+                      Stack(
+                        children: <Widget>[
+                          AnimatedOpacity(
+                            duration: const Duration(milliseconds: 500),
+                            opacity: isSelected(state) ? 1 : 0,
+                            alwaysIncludeSemantics: true,
+                            child: Visibility(
+                              visible: isSelected(state),
+                              child: getIconButtons(context),
+                            ),
                           ),
-                        ),
-                        AnimatedOpacity(
-                          duration: const Duration(milliseconds: 500),
-                          opacity: isSelected(state) ? 0 : 1,
-                          alwaysIncludeSemantics: true,
-                          child: Visibility(
-                            visible: !isSelected(state),
-                            child: getNetworkImage(),
+                          AnimatedOpacity(
+                            duration: const Duration(milliseconds: 500),
+                            opacity: isSelected(state) ? 0 : 1,
+                            alwaysIncludeSemantics: true,
+                            child: Visibility(
+                              visible: !isSelected(state),
+                              child: getNetworkImage(),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const Icon(
-                      Icons.keyboard_arrow_right,
-                      color: Colors.white,
-                      size: 18.0,
-                    ),
-                  ],
+                        ],
+                      ),
+                      const Icon(
+                        Icons.keyboard_arrow_right,
+                        color: Colors.white,
+                        size: 18.0,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 4.0,
-              ),
-              const Divider(
-                color: Colors.white,
-                height: 5.0,
-                thickness: 1.5,
-                indent: 10.0,
-                endIndent: 10.0,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      '${translate(context, 'groups_count')}: ${category.groupCount.getOrCrash()}',
-                      style: robotoTextStyle(
-                          fontSize: 10.0, bold: true, color: Colors.white),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        const Icon(Icons.date_range,
-                            color: Colors.white, size: 12.0),
-                        const SizedBox(width: 4.0),
-                        Text(
-                          category.creationTime.toString().substring(0, 16),
-                          style: robotoTextStyle(
-                              fontSize: 10.0, bold: true, color: Colors.white),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ],
+                const SizedBox(
+                  height: 4.0,
                 ),
-              ),
-            ],
+                const Divider(
+                  color: Colors.white,
+                  height: 5.0,
+                  thickness: 1.5,
+                  indent: 10.0,
+                  endIndent: 10.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        '${translate(context, 'groups_count')}: ${category.groupCount.getOrCrash()}',
+                        style: robotoTextStyle(
+                            fontSize: 10.0, bold: true, color: Colors.white),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Icon(Icons.date_range,
+                              color: Colors.white, size: 12.0),
+                          const SizedBox(width: 4.0),
+                          Text(
+                            category.creationTime.toString().substring(0, 16),
+                            style: robotoTextStyle(
+                                fontSize: 10.0,
+                                bold: true,
+                                color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
