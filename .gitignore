@@ -46,4 +46,6 @@ app.*.map.json
 # Build scripts
 ./build_apk.ps1
 
+android/app/google-services.json
+
 node_modules
