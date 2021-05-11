@@ -104,8 +104,8 @@ GetIt $initGetIt(
   gh.factory<ItemActorBloc>(() => ItemActorBloc(get<IItemRepository>()));
   gh.factory<ItemCategoryActorBloc>(
       () => ItemCategoryActorBloc(get<IItemCategoryRepository>()));
-  gh.factory<ItemCategoryFormBloc>(
-      () => ItemCategoryFormBloc(get<IItemCategoryRepository>()));
+  gh.factory<ItemCategoryFormBloc>(() =>
+      ItemCategoryFormBloc(get<IItemCategoryRepository>(), get<IAuthFacade>()));
   gh.factory<ItemCategoryWatcherBloc>(
       () => ItemCategoryWatcherBloc(get<IItemCategoryRepository>()));
   gh.factory<ItemFormBloc>(() => ItemFormBloc(get<IItemRepository>()));

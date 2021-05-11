@@ -24,7 +24,8 @@ class _$ItemCategoryDtoTearOff {
       @required String coverImageUrl,
       @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
       @required int creationTime,
-      @required int groupCount}) {
+      @required int groupCount,
+      @required String userId}) {
     return _ItemCategoryDto(
       uid: uid,
       title: title,
@@ -33,6 +34,7 @@ class _$ItemCategoryDtoTearOff {
       serverTimeStamp: serverTimeStamp,
       creationTime: creationTime,
       groupCount: groupCount,
+      userId: userId,
     );
   }
 
@@ -57,6 +59,7 @@ mixin _$ItemCategoryDto {
   FieldValue get serverTimeStamp;
   int get creationTime;
   int get groupCount;
+  String get userId;
 
   Map<String, dynamic> toJson();
   $ItemCategoryDtoCopyWith<ItemCategoryDto> get copyWith;
@@ -74,7 +77,8 @@ abstract class $ItemCategoryDtoCopyWith<$Res> {
       String coverImageUrl,
       @ServerTimeStampConverter() FieldValue serverTimeStamp,
       int creationTime,
-      int groupCount});
+      int groupCount,
+      String userId});
 }
 
 /// @nodoc
@@ -95,6 +99,7 @@ class _$ItemCategoryDtoCopyWithImpl<$Res>
     Object serverTimeStamp = freezed,
     Object creationTime = freezed,
     Object groupCount = freezed,
+    Object userId = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed ? _value.uid : uid as String,
@@ -109,6 +114,7 @@ class _$ItemCategoryDtoCopyWithImpl<$Res>
       creationTime:
           creationTime == freezed ? _value.creationTime : creationTime as int,
       groupCount: groupCount == freezed ? _value.groupCount : groupCount as int,
+      userId: userId == freezed ? _value.userId : userId as String,
     ));
   }
 }
@@ -127,7 +133,8 @@ abstract class _$ItemCategoryDtoCopyWith<$Res>
       String coverImageUrl,
       @ServerTimeStampConverter() FieldValue serverTimeStamp,
       int creationTime,
-      int groupCount});
+      int groupCount,
+      String userId});
 }
 
 /// @nodoc
@@ -150,6 +157,7 @@ class __$ItemCategoryDtoCopyWithImpl<$Res>
     Object serverTimeStamp = freezed,
     Object creationTime = freezed,
     Object groupCount = freezed,
+    Object userId = freezed,
   }) {
     return _then(_ItemCategoryDto(
       uid: uid == freezed ? _value.uid : uid as String,
@@ -164,6 +172,7 @@ class __$ItemCategoryDtoCopyWithImpl<$Res>
       creationTime:
           creationTime == freezed ? _value.creationTime : creationTime as int,
       groupCount: groupCount == freezed ? _value.groupCount : groupCount as int,
+      userId: userId == freezed ? _value.userId : userId as String,
     ));
   }
 }
@@ -179,13 +188,15 @@ class _$_ItemCategoryDto extends _ItemCategoryDto {
       @required this.coverImageUrl,
       @required @ServerTimeStampConverter() this.serverTimeStamp,
       @required this.creationTime,
-      @required this.groupCount})
+      @required this.groupCount,
+      @required this.userId})
       : assert(title != null),
         assert(color != null),
         assert(coverImageUrl != null),
         assert(serverTimeStamp != null),
         assert(creationTime != null),
         assert(groupCount != null),
+        assert(userId != null),
         super._();
 
   factory _$_ItemCategoryDto.fromJson(Map<String, dynamic> json) =>
@@ -207,10 +218,12 @@ class _$_ItemCategoryDto extends _ItemCategoryDto {
   final int creationTime;
   @override
   final int groupCount;
+  @override
+  final String userId;
 
   @override
   String toString() {
-    return 'ItemCategoryDto(uid: $uid, title: $title, color: $color, coverImageUrl: $coverImageUrl, serverTimeStamp: $serverTimeStamp, creationTime: $creationTime, groupCount: $groupCount)';
+    return 'ItemCategoryDto(uid: $uid, title: $title, color: $color, coverImageUrl: $coverImageUrl, serverTimeStamp: $serverTimeStamp, creationTime: $creationTime, groupCount: $groupCount, userId: $userId)';
   }
 
   @override
@@ -234,7 +247,9 @@ class _$_ItemCategoryDto extends _ItemCategoryDto {
                     .equals(other.creationTime, creationTime)) &&
             (identical(other.groupCount, groupCount) ||
                 const DeepCollectionEquality()
-                    .equals(other.groupCount, groupCount)));
+                    .equals(other.groupCount, groupCount)) &&
+            (identical(other.userId, userId) ||
+                const DeepCollectionEquality().equals(other.userId, userId)));
   }
 
   @override
@@ -246,7 +261,8 @@ class _$_ItemCategoryDto extends _ItemCategoryDto {
       const DeepCollectionEquality().hash(coverImageUrl) ^
       const DeepCollectionEquality().hash(serverTimeStamp) ^
       const DeepCollectionEquality().hash(creationTime) ^
-      const DeepCollectionEquality().hash(groupCount);
+      const DeepCollectionEquality().hash(groupCount) ^
+      const DeepCollectionEquality().hash(userId);
 
   @override
   _$ItemCategoryDtoCopyWith<_ItemCategoryDto> get copyWith =>
@@ -267,7 +283,8 @@ abstract class _ItemCategoryDto extends ItemCategoryDto {
       @required String coverImageUrl,
       @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
       @required int creationTime,
-      @required int groupCount}) = _$_ItemCategoryDto;
+      @required int groupCount,
+      @required String userId}) = _$_ItemCategoryDto;
 
   factory _ItemCategoryDto.fromJson(Map<String, dynamic> json) =
       _$_ItemCategoryDto.fromJson;
@@ -288,6 +305,8 @@ abstract class _ItemCategoryDto extends ItemCategoryDto {
   int get creationTime;
   @override
   int get groupCount;
+  @override
+  String get userId;
   @override
   _$ItemCategoryDtoCopyWith<_ItemCategoryDto> get copyWith;
 }

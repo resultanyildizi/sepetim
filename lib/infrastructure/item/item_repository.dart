@@ -47,9 +47,8 @@ class ItemRepository extends IItemRepository {
         return left(const ItemFailure.networkException());
       }
 
-      final userDoc = await _firestore.userDocument();
       final categoryDoc =
-          userDoc.categoryCollection.doc(categoryId.getOrCrash());
+          _firestore.categoryCollection.doc(categoryId.getOrCrash());
       final groupDoc = categoryDoc.groupCollection.doc(groupId.getOrCrash());
 
       final itemDto = ItemDto.fromDomain(item);
@@ -76,9 +75,8 @@ class ItemRepository extends IItemRepository {
         return left(const ItemFailure.networkException());
       }
 
-      final userDoc = await _firestore.userDocument();
       final categoryDoc =
-          userDoc.categoryCollection.doc(categoryId.getOrCrash());
+          _firestore.categoryCollection.doc(categoryId.getOrCrash());
       final groupDoc = categoryDoc.groupCollection.doc(groupId.getOrCrash());
 
       final itemDto = ItemDto.fromDomain(item);
@@ -110,12 +108,12 @@ class ItemRepository extends IItemRepository {
         return left(const ItemFailure.networkException());
       }
 
-      final userDoc = await _firestore.userDocument();
+      final userId = await _firestore.userId();
 
       await callCloudFunction(
         functionName: "clearData",
         data: <String, String>{
-          "userId": userDoc.id,
+          "userId": userId,
           "categoryId": categoryId.getOrCrash(),
           "groupId": groupId.getOrCrash(),
           "itemId": item.uid.getOrCrash(),
@@ -259,8 +257,8 @@ class ItemRepository extends IItemRepository {
   @override
   Stream<Either<ItemFailure, KtList<Item>>> watchAll(
       UniqueId categoryId, UniqueId groupId, OrderType orderType) async* {
-    final userDoc = await _firestore.userDocument();
-    final categoryDoc = userDoc.categoryCollection.doc(categoryId.getOrCrash());
+    final categoryDoc =
+        _firestore.categoryCollection.doc(categoryId.getOrCrash());
     final groupDoc = categoryDoc.groupCollection.doc(groupId.getOrCrash());
 
     Stream<QuerySnapshot> orderedItemSnapshots;
@@ -302,8 +300,8 @@ class ItemRepository extends IItemRepository {
   @override
   Stream<Either<ItemFailure, KtList<Item>>> watchAllByTitle(UniqueId categoryId,
       UniqueId groupId, OrderType orderType, String title) async* {
-    final userDoc = await _firestore.userDocument();
-    final categoryDoc = userDoc.categoryCollection.doc(categoryId.getOrCrash());
+    final categoryDoc =
+        _firestore.categoryCollection.doc(categoryId.getOrCrash());
     final groupDoc = categoryDoc.groupCollection.doc(groupId.getOrCrash());
 
     Stream<QuerySnapshot> orderedItemSnapshots;

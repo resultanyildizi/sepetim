@@ -3,7 +3,7 @@ import 'package:Sepetim/application/auth/auth/auth_bloc_bloc.dart';
 import 'package:Sepetim/application/contact_us/contact_us_bloc.dart';
 import 'package:Sepetim/application/theme/theme_bloc.dart';
 import 'package:Sepetim/injection.dart';
-import 'package:Sepetim/presentation/routes/router.gr.dart';
+import 'package:Sepetim/presentation/routes/router.gr.dart' as auto;
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +33,7 @@ class AppWidget extends StatelessWidget {
         builder: (context, state) => MaterialApp(
           title: 'Sepetim',
           debugShowCheckedModeBanner: false,
-          builder: ExtendedNavigator(router: Router()),
+          builder: ExtendedNavigator(router: auto.Router()),
           theme: state.theme == AppTheme.light
               ? app_themes.sepetimLightTheme
               : app_themes.sepetimDarkTheme,

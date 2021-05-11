@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:Sepetim/domain/auth/i_auth_facade.dart';
 import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/domain/item_category/i_category_repository.dart';
 import 'package:Sepetim/domain/item_category/item_category.dart';
@@ -25,8 +26,9 @@ part 'item_category_form_bloc.freezed.dart';
 class ItemCategoryFormBloc
     extends Bloc<ItemCategoryFormEvent, ItemCategoryFormState> {
   final IItemCategoryRepository _categoryRepository;
+  final IAuthFacade _authFacade;
 
-  ItemCategoryFormBloc(this._categoryRepository)
+  ItemCategoryFormBloc(this._categoryRepository, this._authFacade)
       : super(ItemCategoryFormState.initial());
 
   @override
@@ -84,9 +86,19 @@ class ItemCategoryFormBloc
       Either<ItemCategoryFailure, Unit> failureOrSuccess;
       ImageUrl categoryImageUrl = state.category.coverImageUrl;
 
+      final user = await _authFacade.getSignedUser();
+
+      final userId = user.fold(
+        () => null,
+        (user) => user.id,
+      );
+
       yield state.copyWith(
         isSaving: true,
         categoryFailureOrSuccessOption: none(),
+        category: state.category.copyWith(
+          userId: userId,
+        ),
       );
 
       if (state.category.failureOption.isNone()) {

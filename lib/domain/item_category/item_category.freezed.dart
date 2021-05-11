@@ -20,7 +20,8 @@ class _$ItemCategoryTearOff {
       @required ItemCategoryColor color,
       @required ImageUrl coverImageUrl,
       @required DateTime creationTime,
-      @required NotNegativeIntegerNumber groupCount}) {
+      @required NotNegativeIntegerNumber groupCount,
+      @required UniqueId userId}) {
     return _ItemCategory(
       uid: uid,
       title: title,
@@ -28,6 +29,7 @@ class _$ItemCategoryTearOff {
       coverImageUrl: coverImageUrl,
       creationTime: creationTime,
       groupCount: groupCount,
+      userId: userId,
     );
   }
 }
@@ -44,6 +46,7 @@ mixin _$ItemCategory {
   ImageUrl get coverImageUrl;
   DateTime get creationTime;
   NotNegativeIntegerNumber get groupCount;
+  UniqueId get userId;
 
   $ItemCategoryCopyWith<ItemCategory> get copyWith;
 }
@@ -59,7 +62,8 @@ abstract class $ItemCategoryCopyWith<$Res> {
       ItemCategoryColor color,
       ImageUrl coverImageUrl,
       DateTime creationTime,
-      NotNegativeIntegerNumber groupCount});
+      NotNegativeIntegerNumber groupCount,
+      UniqueId userId});
 }
 
 /// @nodoc
@@ -78,6 +82,7 @@ class _$ItemCategoryCopyWithImpl<$Res> implements $ItemCategoryCopyWith<$Res> {
     Object coverImageUrl = freezed,
     Object creationTime = freezed,
     Object groupCount = freezed,
+    Object userId = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed ? _value.uid : uid as UniqueId,
@@ -92,6 +97,7 @@ class _$ItemCategoryCopyWithImpl<$Res> implements $ItemCategoryCopyWith<$Res> {
       groupCount: groupCount == freezed
           ? _value.groupCount
           : groupCount as NotNegativeIntegerNumber,
+      userId: userId == freezed ? _value.userId : userId as UniqueId,
     ));
   }
 }
@@ -109,7 +115,8 @@ abstract class _$ItemCategoryCopyWith<$Res>
       ItemCategoryColor color,
       ImageUrl coverImageUrl,
       DateTime creationTime,
-      NotNegativeIntegerNumber groupCount});
+      NotNegativeIntegerNumber groupCount,
+      UniqueId userId});
 }
 
 /// @nodoc
@@ -130,6 +137,7 @@ class __$ItemCategoryCopyWithImpl<$Res> extends _$ItemCategoryCopyWithImpl<$Res>
     Object coverImageUrl = freezed,
     Object creationTime = freezed,
     Object groupCount = freezed,
+    Object userId = freezed,
   }) {
     return _then(_ItemCategory(
       uid: uid == freezed ? _value.uid : uid as UniqueId,
@@ -144,6 +152,7 @@ class __$ItemCategoryCopyWithImpl<$Res> extends _$ItemCategoryCopyWithImpl<$Res>
       groupCount: groupCount == freezed
           ? _value.groupCount
           : groupCount as NotNegativeIntegerNumber,
+      userId: userId == freezed ? _value.userId : userId as UniqueId,
     ));
   }
 }
@@ -156,13 +165,15 @@ class _$_ItemCategory extends _ItemCategory with DiagnosticableTreeMixin {
       @required this.color,
       @required this.coverImageUrl,
       @required this.creationTime,
-      @required this.groupCount})
+      @required this.groupCount,
+      @required this.userId})
       : assert(uid != null),
         assert(title != null),
         assert(color != null),
         assert(coverImageUrl != null),
         assert(creationTime != null),
         assert(groupCount != null),
+        assert(userId != null),
         super._();
 
   @override
@@ -177,10 +188,12 @@ class _$_ItemCategory extends _ItemCategory with DiagnosticableTreeMixin {
   final DateTime creationTime;
   @override
   final NotNegativeIntegerNumber groupCount;
+  @override
+  final UniqueId userId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ItemCategory(uid: $uid, title: $title, color: $color, coverImageUrl: $coverImageUrl, creationTime: $creationTime, groupCount: $groupCount)';
+    return 'ItemCategory(uid: $uid, title: $title, color: $color, coverImageUrl: $coverImageUrl, creationTime: $creationTime, groupCount: $groupCount, userId: $userId)';
   }
 
   @override
@@ -193,7 +206,8 @@ class _$_ItemCategory extends _ItemCategory with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('color', color))
       ..add(DiagnosticsProperty('coverImageUrl', coverImageUrl))
       ..add(DiagnosticsProperty('creationTime', creationTime))
-      ..add(DiagnosticsProperty('groupCount', groupCount));
+      ..add(DiagnosticsProperty('groupCount', groupCount))
+      ..add(DiagnosticsProperty('userId', userId));
   }
 
   @override
@@ -214,7 +228,9 @@ class _$_ItemCategory extends _ItemCategory with DiagnosticableTreeMixin {
                     .equals(other.creationTime, creationTime)) &&
             (identical(other.groupCount, groupCount) ||
                 const DeepCollectionEquality()
-                    .equals(other.groupCount, groupCount)));
+                    .equals(other.groupCount, groupCount)) &&
+            (identical(other.userId, userId) ||
+                const DeepCollectionEquality().equals(other.userId, userId)));
   }
 
   @override
@@ -225,7 +241,8 @@ class _$_ItemCategory extends _ItemCategory with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(color) ^
       const DeepCollectionEquality().hash(coverImageUrl) ^
       const DeepCollectionEquality().hash(creationTime) ^
-      const DeepCollectionEquality().hash(groupCount);
+      const DeepCollectionEquality().hash(groupCount) ^
+      const DeepCollectionEquality().hash(userId);
 
   @override
   _$ItemCategoryCopyWith<_ItemCategory> get copyWith =>
@@ -240,7 +257,8 @@ abstract class _ItemCategory extends ItemCategory {
       @required ItemCategoryColor color,
       @required ImageUrl coverImageUrl,
       @required DateTime creationTime,
-      @required NotNegativeIntegerNumber groupCount}) = _$_ItemCategory;
+      @required NotNegativeIntegerNumber groupCount,
+      @required UniqueId userId}) = _$_ItemCategory;
 
   @override
   UniqueId get uid;
@@ -254,6 +272,8 @@ abstract class _ItemCategory extends ItemCategory {
   DateTime get creationTime;
   @override
   NotNegativeIntegerNumber get groupCount;
+  @override
+  UniqueId get userId;
   @override
   _$ItemCategoryCopyWith<_ItemCategory> get copyWith;
 }

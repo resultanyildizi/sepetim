@@ -5,18 +5,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 extension FirestoreX on FirebaseFirestore {
-  Future<DocumentReference> userDocument() async {
+  Future<String> userId() async {
     final userOption = await getIt<IAuthFacade>().getSignedUser();
     final user = userOption.getOrElse(() => throw NotAuthenticatedError());
 
-    return FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.id.getOrCrash());
+    return user.id.getOrCrash();
   }
 }
 
+extension FirstoreX on FirebaseFirestore {
+  CollectionReference get categoryCollection =>
+      FirebaseFirestore.instance.collection("categories");
+}
+
 extension DocumentReferenceX on DocumentReference {
-  CollectionReference get categoryCollection => collection('categories');
   CollectionReference get groupCollection => collection('groups');
   CollectionReference get itemCollection => collection('items');
 }

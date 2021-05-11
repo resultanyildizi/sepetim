@@ -46,12 +46,13 @@ class ItemCategoryRepository implements IItemCategoryRepository {
           connectivityResult != ConnectivityResult.wifi) {
         return left(const ItemCategoryFailure.networkException());
       }
-      final userDoc = await _firestore.userDocument();
+
       final categoryDto = ItemCategoryDto.fromDomain(category);
 
-      await userDoc.categoryCollection
+      await _firestore.categoryCollection
           .doc(categoryDto.uid)
           .set(categoryDto.toJson());
+
       return right(unit);
     } on FirebaseException catch (e) {
       if (e.code == 'permission-denied') {
@@ -73,10 +74,9 @@ class ItemCategoryRepository implements IItemCategoryRepository {
         return left(const ItemCategoryFailure.networkException());
       }
 
-      final userDoc = await _firestore.userDocument();
       final categoryDto = ItemCategoryDto.fromDomain(category);
 
-      await userDoc.categoryCollection
+      await _firestore.categoryCollection
           .doc(categoryDto.uid)
           .update(categoryDto.toJson());
       return right(unit);
@@ -102,12 +102,12 @@ class ItemCategoryRepository implements IItemCategoryRepository {
         return left(const ItemCategoryFailure.networkException());
       }
       final categoryId = category.uid;
-      final userDoc = await _firestore.userDocument();
+      final userId = await _firestore.userId();
 
       await callCloudFunction(
         functionName: 'clearData',
         data: <String, String>{
-          "userId": userDoc.id,
+          "userId": userId,
           "categoryId": categoryId.getOrCrash(),
         },
       );
@@ -236,27 +236,32 @@ class ItemCategoryRepository implements IItemCategoryRepository {
   @override
   Stream<Either<ItemCategoryFailure, KtList<ItemCategory>>> watchAll(
       OrderType orderType) async* {
-    final userDoc = await _firestore.userDocument();
+    final userId = await _firestore.userId();
 
     Stream<QuerySnapshot> orderedCategorySnapshots;
 
     switch (orderType) {
       case OrderType.date:
         {
-          orderedCategorySnapshots = userDoc.categoryCollection
+          orderedCategorySnapshots = _firestore.categoryCollection
+              .where("userId", isEqualTo: userId)
               .orderBy('creationTime', descending: true)
               .snapshots();
           break;
         }
       case OrderType.title:
         {
-          orderedCategorySnapshots =
-              userDoc.categoryCollection.orderBy('title').snapshots();
+          orderedCategorySnapshots = _firestore.categoryCollection
+              .where("userId", isEqualTo: userId)
+              .orderBy('title')
+              .snapshots();
           break;
         }
       default:
         {
-          orderedCategorySnapshots = userDoc.categoryCollection.snapshots();
+          orderedCategorySnapshots = _firestore.categoryCollection
+              .where("userId", isEqualTo: userId)
+              .snapshots();
           break;
         }
     }
@@ -278,27 +283,32 @@ class ItemCategoryRepository implements IItemCategoryRepository {
   @override
   Stream<Either<ItemCategoryFailure, KtList<ItemCategory>>> watchAllByTitle(
       OrderType orderType, String title) async* {
-    final userDoc = await _firestore.userDocument();
+    final userId = await _firestore.userId();
 
     Stream<QuerySnapshot> orderedCategorySnapshots;
 
     switch (orderType) {
       case OrderType.date:
         {
-          orderedCategorySnapshots = userDoc.categoryCollection
+          orderedCategorySnapshots = _firestore.categoryCollection
+              .where("userId", isEqualTo: userId)
               .orderBy('serverTimeStamp', descending: true)
               .snapshots();
           break;
         }
       case OrderType.title:
         {
-          orderedCategorySnapshots =
-              userDoc.categoryCollection.orderBy('title').snapshots();
+          orderedCategorySnapshots = _firestore.categoryCollection
+              .where("userId", isEqualTo: userId)
+              .orderBy('title')
+              .snapshots();
           break;
         }
       default:
         {
-          orderedCategorySnapshots = userDoc.categoryCollection.snapshots();
+          orderedCategorySnapshots = _firestore.categoryCollection
+              .where("userId", isEqualTo: userId)
+              .snapshots();
           break;
         }
     }

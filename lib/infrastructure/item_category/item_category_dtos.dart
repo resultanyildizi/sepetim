@@ -19,6 +19,7 @@ abstract class ItemCategoryDto implements _$ItemCategoryDto {
     @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
     @required int creationTime,
     @required int groupCount,
+    @required String userId,
   }) = _ItemCategoryDto;
 
   factory ItemCategoryDto.fromDomain(ItemCategory category) {
@@ -30,6 +31,7 @@ abstract class ItemCategoryDto implements _$ItemCategoryDto {
       serverTimeStamp: FieldValue.serverTimestamp(),
       creationTime: category.creationTime.millisecondsSinceEpoch,
       groupCount: category.groupCount.getOrCrash(),
+      userId: category.userId.getOrCrash(),
     );
   }
   ItemCategory toDomain() {
@@ -40,6 +42,7 @@ abstract class ItemCategoryDto implements _$ItemCategoryDto {
       coverImageUrl: ImageUrl(coverImageUrl),
       creationTime: DateTime.fromMillisecondsSinceEpoch(creationTime),
       groupCount: NotNegativeIntegerNumber(groupCount),
+      userId: UniqueId.fromUniqueString(userId),
     );
   }
 

@@ -18,15 +18,18 @@ abstract class ItemCategory implements _$ItemCategory {
     @required ImageUrl coverImageUrl,
     @required DateTime creationTime,
     @required NotNegativeIntegerNumber groupCount,
+    @required UniqueId userId,
   }) = _ItemCategory;
 
   factory ItemCategory.empty() => ItemCategory(
-      uid: UniqueId(),
-      title: ShortTitle(''),
-      color: ItemCategoryColor(ItemCategoryColor.predefinedColors[0]),
-      coverImageUrl: ImageUrl.defaultUrl(),
-      creationTime: DateTime.now().toUtc(),
-      groupCount: NotNegativeIntegerNumber(0));
+        uid: UniqueId(),
+        title: ShortTitle(''),
+        color: ItemCategoryColor(ItemCategoryColor.predefinedColors[0]),
+        coverImageUrl: ImageUrl.defaultUrl(),
+        creationTime: DateTime.now().toUtc(),
+        groupCount: NotNegativeIntegerNumber(0),
+        userId: UniqueId.fromUniqueString(''),
+      );
 
   Option<ValueFailure<dynamic>> get failureOption {
     return title.failureOrUnit

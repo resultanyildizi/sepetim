@@ -13,8 +13,8 @@ import 'package:Sepetim/domain/core/value_objects.dart';
 import 'package:Sepetim/domain/item_group/i_group_repository.dart';
 import 'package:Sepetim/domain/item_group/item_group.dart';
 import 'package:Sepetim/domain/item_group/item_group_failure.dart';
-import 'package:Sepetim/infrastructure/core/firebase_helpers.dart';
 import 'package:Sepetim/infrastructure/item_group/item_group_dtos.dart';
+import 'package:Sepetim/infrastructure/core/firebase_helpers.dart';
 
 @LazySingleton(as: IItemGroupRepository)
 class ItemGroupRepository implements IItemGroupRepository {
@@ -35,9 +35,9 @@ class ItemGroupRepository implements IItemGroupRepository {
         return left(const ItemGroupFailure.networkException());
       }
 
-      final userDoc = await _firestore.userDocument();
+      final userId = await _firestore.userId();
       final categoryDoc =
-          userDoc.categoryCollection.doc(categoryId.getOrCrash());
+          _firestore.categoryCollection.doc(categoryId.getOrCrash());
 
       final groupDto = ItemGroupDto.fromDomain(group);
 
@@ -48,7 +48,7 @@ class ItemGroupRepository implements IItemGroupRepository {
       await callCloudFunction(
         functionName: 'changeGroupCount',
         data: <String, String>{
-          'userId': userDoc.id,
+          'userId': userId,
           'categoryId': categoryId.getOrCrash(),
           'operation': 'increase',
         },
@@ -77,9 +77,8 @@ class ItemGroupRepository implements IItemGroupRepository {
         return left(const ItemGroupFailure.networkException());
       }
 
-      final userDoc = await _firestore.userDocument();
       final categoryDoc =
-          userDoc.categoryCollection.doc(categoryId.getOrCrash());
+          _firestore.categoryCollection.doc(categoryId.getOrCrash());
 
       final groupDto = ItemGroupDto.fromDomain(group);
 
@@ -108,15 +107,15 @@ class ItemGroupRepository implements IItemGroupRepository {
           connectivityResult != ConnectivityResult.wifi) {
         return left(const ItemGroupFailure.networkException());
       }
+      final userId = await _firestore.userId();
       final groupId = group.uid;
-      final userDoc = await _firestore.userDocument();
 
       await Future.wait(
         <Future>[
           callCloudFunction(
             functionName: 'clearData',
             data: <String, String>{
-              "userId": userDoc.id,
+              "userId": userId,
               "categoryId": categoryId.getOrCrash(),
               "groupId": groupId.getOrCrash(),
             },
@@ -124,7 +123,7 @@ class ItemGroupRepository implements IItemGroupRepository {
           callCloudFunction(
             functionName: 'changeGroupCount',
             data: <String, String>{
-              'userId': userDoc.id,
+              'userId': userId,
               'categoryId': categoryId.getOrCrash(),
               'operation': 'decrease',
             },
@@ -153,8 +152,8 @@ class ItemGroupRepository implements IItemGroupRepository {
   @override
   Stream<Either<ItemGroupFailure, KtList<ItemGroup>>> watchAll(
       UniqueId categoryId, OrderType orderType) async* {
-    final userDoc = await _firestore.userDocument();
-    final categoryDoc = userDoc.categoryCollection.doc(categoryId.getOrCrash());
+    final categoryDoc =
+        _firestore.categoryCollection.doc(categoryId.getOrCrash());
 
     Stream<QuerySnapshot> orderedGroupSnapshots;
 
@@ -199,8 +198,8 @@ class ItemGroupRepository implements IItemGroupRepository {
     OrderType orderType,
     String title,
   ) async* {
-    final userDoc = await _firestore.userDocument();
-    final categoryDoc = userDoc.categoryCollection.doc(categoryId.getOrCrash());
+    final categoryDoc =
+        _firestore.categoryCollection.doc(categoryId.getOrCrash());
 
     Stream<QuerySnapshot> orderedGroupSnapshots;
 
